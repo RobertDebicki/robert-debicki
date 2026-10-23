@@ -1,10 +1,21 @@
 # CHANGELOG
 
+## 2026-10-23 17:30, Claude Code
+
+**✅ Zrobione:**
+- Poprawki po recenzji zadania 11A: `initial_locales: 'default'` (tekst, zgodnie z typami Sveltii 0.221.8; wcześniej błędnie tablica), pole `alt` wymusza w panelu minimum 5 znaków (test porównuje z `minLength` ze schematu Zod), skrypt Sveltii z jsDelivr ma SRI `sha384` i `crossorigin="anonymous"` (suma policzona z pobranego pliku 0.221.8), podpowiedź przy `liczba` bez zmyślonego limitu 7 znaków.
+
+**🚧 W toku / nie wdrożone:**
+- Kroki 6-7 zadania 11 (OAuth, Worker logowania, R2, test na żywo). Nic nie jest wypchnięte.
+
+**🎯 Następny krok:**
+- Decyzja Roberta w sprawie wgrywania skanów do R2, potem kroki 6-7.
+
 ## 2026-10-23 17:10, Claude Code
 
 **✅ Zrobione:**
 - Zadanie 11, kroki 1-5: konfiguracja panelu Sveltia CMS 0.221.8 pod `/admin/`. `src/lib/panel.ts` (obiekt konfiguracji), `src/pages/admin/config.yml.ts` (eksport do YAML), `src/pages/admin/index.astro` (`noindex, nofollow`).
-- Kolekcje: wdrożenia, projekty, referencje, wpisy (folder na pozycję, `path: {{slug}}/{{locale}}`) oraz plik ustawień `ustawienia/{{locale}}.md`. i18n `multiple_files`, pl domyślny, en dodatkowy, nowa pozycja startuje tylko po polsku (`initial_locales: default`). Pola `tlumaczenie` i `zrodlo` ukryte (ustawia je skill).
+- Kolekcje: wdrożenia, projekty, referencje, wpisy (folder na pozycję, `path: {{slug}}/{{locale}}`) oraz plik ustawień `ustawienia/{{locale}}.md`. i18n `multiple_files`, pl domyślny, en dodatkowy, nowa pozycja startuje tylko po polsku (`initial_locales: 'default'`, tekst, nie tablica). Pola `tlumaczenie` i `zrodlo` ukryte (ustawia je skill).
 - Backend GitHub `RobertDebicki/robert-debicki`, gałąź `main`. `base_url` z `PUBLIC_PANEL_LOGOWANIE`; bez zmiennej config nie ma `base_url` i build przechodzi (sprawdzone oboma wariantami).
 - Zdjęcia wpisów trafiają do `src/assets/wpisy/` ze ścieżką `/src/assets/wpisy/...` (jak oczekuje pole `plik`). `skanUrl` to zwykłe pole z adresem https i hostem R2 (wzorzec z `HOSTY_R2`). `zgoda` wymagana z podpowiedzią o zgodzie klienta i zamazaniu podpisu, `alt` wymagany.
 - Test `testy/jednostkowe/panel.test.ts` liczy wymagalność, enumy i długości list ze schematów Zod (`z.toJSONSchema`), nie z przepisanej listy. Kontrola negatywna: po zmianie panelu test pada. Test e2e `panel.spec.ts`: noindex, YAML, brak `/admin/` w mapie.

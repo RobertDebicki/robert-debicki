@@ -3,7 +3,7 @@
  * Panel Sveltia CMS. Nie jest stroną serwisu: bez układu, z `noindex`, poza mapą witryny (filtr w astro.config.mjs).
  * Skrypt Sveltii z jsDelivr w przypiętej wersji; konfiguracja w ./config.yml (src/lib/panel.ts).
  */
-import { WERSJA_SVELTII } from '../../lib/panel';
+import { WERSJA_SVELTII, SRI_SVELTII } from '../../lib/panel';
 ---
 
 <!doctype html>
@@ -16,6 +16,6 @@ import { WERSJA_SVELTII } from '../../lib/panel';
     <link href="/admin/config.yml" type="application/yaml" rel="cms-config-url" />
   </head>
   <body>
-    <script is:inline src={`https://cdn.jsdelivr.net/npm/@sveltia/cms@${WERSJA_SVELTII}/dist/sveltia-cms.js`}></script>
+    <script is:inline src={`https://cdn.jsdelivr.net/npm/@sveltia/cms@${WERSJA_SVELTII}/dist/sveltia-cms.js`} integrity={SRI_SVELTII} crossorigin="anonymous"></script>
   </body>
 </html>

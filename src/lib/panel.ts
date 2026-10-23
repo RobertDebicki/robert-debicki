@@ -9,6 +9,8 @@
 import { HOSTY_R2, wdrozenia, projekty } from './schematy';
 
 export const WERSJA_SVELTII = '0.221.8';
+/** Suma kontrolna SRI pliku sveltia-cms.js 0.221.8 z jsDelivr. Przy zmianie wersji przelicz ją z pobranego pliku. */
+export const SRI_SVELTII = 'sha384-9Rn/H7VOK428tVMQ+jv0XKxagP5YQWbYKPbl/S80lmnId57tCgfJlzBbvVubYKIh';
 export const REPO = 'RobertDebicki/robert-debicki';
 /** Folder zdjęć wpisów w repozytorium i ścieżka zapisywana w polu `plik` (od korzenia repozytorium, jak w `wpisy.ts`). */
 export const FOLDER_ZDJEC = 'src/assets/wpisy';
@@ -54,7 +56,7 @@ const WDROZENIA: Pole = {
     [
       tekst('tytul', 'Tytuł'),
       tekst('branza', 'Branża klienta', { hint: 'Opisz branżę, nie nazwę klienta.' }),
-      tekst('liczba', 'Liczba główna', { hint: 'Krótko, do 7 znaków, np. 60 h albo 2 min.' }),
+      tekst('liczba', 'Liczba główna', { hint: 'Krótko, np. 60 h albo 2 min. Dłuższe wartości są wyświetlane mniejszą czcionką.' }),
       tekst('podpisLiczby', 'Podpis pod liczbą'),
       dlugi('opis', 'Opis: problem klienta, co zbudowałem, efekt'),
       lista('stack', 'Narzędzia', { label_singular: 'narzędzie' }),
@@ -144,7 +146,10 @@ const WPISY: Pole = {
         summary: '{{fields.alt}}',
         fields: [
           { name: 'plik', label: 'Plik', widget: 'image', choose_url: false, media_folder: FOLDER_ZDJEC, public_folder: SCIEZKA_ZDJEC },
-          tekst('alt', 'Opis zdjęcia (alt)', { hint: 'Co widać na zdjęciu, jednym zdaniem, co najmniej 5 znaków. Czytają to wyszukiwarki i osoby niewidome.' }),
+          tekst('alt', 'Opis zdjęcia (alt)', {
+            hint: 'Co widać na zdjęciu, jednym zdaniem, co najmniej 5 znaków. Czytają to wyszukiwarki i osoby niewidome.',
+            pattern: ['^.{5,}$', 'Opis musi mieć co najmniej 5 znaków: opisz, co widać na zdjęciu.'],
+          }),
         ],
       }),
       ...TLUMACZENIE,
@@ -235,7 +240,7 @@ export function konfiguracjaPanelu(sr: Srodowisko = {}): Record<string, unknown>
       default: { config: { max_file_size: 15_000_000, slugify_filename: true } },
       stock_assets: { providers: [] },
     },
-    i18n: { structure: 'multiple_files', locales: ['pl', 'en'], default_locale: 'pl', initial_locales: ['default'] },
+    i18n: { structure: 'multiple_files', locales: ['pl', 'en'], default_locale: 'pl', initial_locales: 'default' },
     // Cudzysłowy w YAML: bez nich data 2026-10-23 byłaby czytana jako data, a nie tekst.
     output: { omit_empty_optional_fields: true, yaml: { quote: 'double' } },
     collections: [...kolekcje, USTAWIENIA],
