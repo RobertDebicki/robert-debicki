@@ -37,8 +37,8 @@ jobs:
       - name: Przeglądarka dla testów e2e
         run: npx playwright install --with-deps chromium
 
-      # sprawdz:sekrety, sprawdz:tresc, sprawdz:skany, testy jednostkowe, build, testy e2e (w tym kontrast axe).
-      # Zadanie 10 dołoży do tego łańcucha kontrolę tłumaczeń.
+      # sprawdz:sekrety, sprawdz:tresc, sprawdz:skany, sprawdz:tlumaczenia (python3 z obrazu runnera,
+      # każda para pl.md + en.md), testy jednostkowe, build, testy e2e (w tym kontrast axe).
       - name: Łańcuch kontroli
         run: npm run sprawdz
 

@@ -1,0 +1,29 @@
+{
+  "en-US": {
+    "nazwa": "angielskim amerykańskim (en-US)",
+    "cudzyslow": ["“", "”", "‘", "’"],
+    "cudzyslow_wzor": "“…”, a w środku cytatu ‘…’",
+    "slownie_do": 9,
+    "pisownia_zakazana": {
+      "colours?|coloured|colouring": "color, colored",
+      "favour\\w*": "favor, favorite",
+      "behaviours?": "behavior",
+      "labours?": "labor",
+      "honours?": "honor",
+      "centres?|centred": "center",
+      "metres?": "meter",
+      "litres?": "liter",
+      "catalogues?": "catalog",
+      "programmes?": "program",
+      "dialogues?": "dialog (w interfejsie) albo dialogue (rozmowa)",
+      "licence": "license",
+      "defence": "defense",
+      "analyse[ds]?|analysing": "analyze",
+      "travell(?:ed|ing|er)": "traveled",
+      "cancell(?:ed|ing)": "canceled",
+      "modell(?:ed|ing)": "modeled, modeling",
+      "(?:optimi|organi|personali|reali|recogni|priori|customi|minimi|maximi|summari|utili|speciali|standardi|synchroni|digiti|authori|categori|finali|visuali|prioriti|automati|monetis|initiali|normali|centrali|emphasi|apologi)s(?:e|es|ed|ing|ation|ations)": "pisownia z -ize, -ization (optimize, organization)"
+    },
+    "zrodlo": "Microsoft English (United States) Localization Style Guide (pisownia amerykańska, cudzysłów “ ”, kropka i przecinek w cudzysłowie) i AP Stylebook (liczby od jednego do dziewięciu słownie)"
+  }
+}
