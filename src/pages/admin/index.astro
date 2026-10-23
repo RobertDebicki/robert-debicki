@@ -1,0 +1,21 @@
+---
+/**
+ * Panel Sveltia CMS. Nie jest stroną serwisu: bez układu, z `noindex`, poza mapą witryny (filtr w astro.config.mjs).
+ * Skrypt Sveltii z jsDelivr w przypiętej wersji; konfiguracja w ./config.yml (src/lib/panel.ts).
+ */
+import { WERSJA_SVELTII } from '../../lib/panel';
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Panel Roberta Dębickiego</title>
+    <link href="/admin/config.yml" type="application/yaml" rel="cms-config-url" />
+  </head>
+  <body>
+    <script is:inline src={`https://cdn.jsdelivr.net/npm/@sveltia/cms@${WERSJA_SVELTII}/dist/sveltia-cms.js`}></script>
+  </body>
+</html>

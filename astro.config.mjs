@@ -14,6 +14,8 @@ export default defineConfig({
   build: { inlineStylesheets: 'always' },
   integrations: [
     sitemap({
+      // panel Sveltii nie jest stroną serwisu
+      filter: (strona) => !new URL(strona).pathname.startsWith('/admin/'),
       i18n: { defaultLocale: 'pl', locales: { pl: 'pl-PL', en: 'en-US' } },
     }),
   ],
