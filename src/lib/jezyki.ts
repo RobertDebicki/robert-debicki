@@ -19,6 +19,9 @@ export interface Etykiety {
   menuSekcje: string;
   stopkaArkusz: string;
   stopkaFarby: string;
+  wpisy: string;
+  wszystkieWpisy: string;
+  brakWpisow: string;
 }
 
 // Typ Record<Jezyk, Etykiety> sprawia, że brak klucza w którymkolwiek języku jest błędem kompilacji.
@@ -38,6 +41,9 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     menuSekcje: 'Sekcje',
     stopkaArkusz: 'arkusz 1 z 1',
     stopkaFarby: 'czarny + 3 kolory dodatkowe · raster 15° / 75°',
+    wpisy: 'Wpisy',
+    wszystkieWpisy: 'Wszystkie wpisy',
+    brakWpisow: 'Brak wpisów w tym języku.',
   },
   en: {
     wdrozenia: 'Deployments',
@@ -54,6 +60,9 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     menuSekcje: 'Sections',
     stopkaArkusz: 'sheet 1 of 1',
     stopkaFarby: 'black + 3 spot colors · screen 15° / 75°',
+    wpisy: 'Posts',
+    wszystkieWpisy: 'All posts',
+    brakWpisow: 'No posts in English yet.',
   },
 };
 

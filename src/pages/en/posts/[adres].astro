@@ -1,0 +1,15 @@
+---
+import Strona from '../../../layouts/Strona.astro';
+import StronaWpisu from '../../../components/StronaWpisu.astro';
+import { wpisyWJezyku } from '../../../lib/wpisy';
+import { adresOdpowiednika } from '../../../lib/jezyki';
+
+export async function getStaticPaths() {
+  return (await wpisyWJezyku('en')).map(({ adres, entry, para }) => ({ params: { adres }, props: { entry, para } }));
+}
+const { adres } = Astro.params;
+const { entry, para } = Astro.props;
+---
+<Strona jezyk="en" tytul={`${entry.data.tytul} | Robert Dębicki`} opis={entry.data.zajawka} odpowiednik={adresOdpowiednika('en', 'wpisy', para)}>
+  <StronaWpisu jezyk="en" adres={adres!} entry={entry} />
+</Strona>

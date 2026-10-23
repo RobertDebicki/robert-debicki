@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { dataIso, dataCzytelna, obraz } from '../lib/wpisy';
+
+interface Props {
+  jezyk: Jezyk;
+  adres: string;
+  entry: any;
+}
+const { jezyk, adres, entry } = Astro.props;
+const e = etykiety(jezyk);
+const { Content } = await render(entry);
+const d = entry.data;
+const zdjecia = await Promise.all(d.zdjecia.map(async (z: { plik: string; alt: string }) => ({ src: await obraz(z.plik, `${adres}/${jezyk}`), alt: z.alt })));
+---
+<section style="--sw: var(--y)">
+  <p class="label mono"><a href={jezyk === 'pl' ? '/wpisy/' : '/en/posts/'}>{e.wpisy}</a></p>
+  <article class="wpis">
+    <header>
+      <h1 class="sec-title">{d.tytul}</h1>
+      <time class="mono" datetime={dataIso(d.data)}>{dataCzytelna(d.data, jezyk)}</time>
+    </header>
+    <div class="wpis-tresc">
+      <Content />
+    </div>
+    {zdjecia.map((z) => (
+      <figure class="wpis-zdjecie">
+        <Image src={z.src} alt={z.alt} widths={[480, 800, 1200]} sizes="(min-width: 800px) 800px, 100vw" />
+      </figure>
+    ))}
+  </article>
+</section>

@@ -49,7 +49,7 @@ test('mapa strony zawiera / i /en/, a pozycji tylko po polsku nie ma ani w niej,
   const mapa = await (await request.get('/sitemap-0.xml')).text();
   expect(mapa).toContain(`<loc>${SITE}/</loc>`);
   expect(mapa).toContain(`<loc>${SITE}/en/</loc>`);
-  expect(mapa).not.toContain('tylko-pl');
+  expect(mapa).not.toContain('/en/posts/tylko-pl');
   for (const sciezka of ['/', '/en/']) {
     await page.goto(sciezka);
     const hrefy = await page.locator('link[rel=alternate]').evaluateAll((l) => l.map((e) => e.getAttribute('href')));

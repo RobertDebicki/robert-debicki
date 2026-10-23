@@ -1,0 +1,19 @@
+---
+import Strona from '../../layouts/Strona.astro';
+import StronaWpisu from '../../components/StronaWpisu.astro';
+import { wpisyWJezyku } from '../../lib/wpisy';
+import { adresOdpowiednika, widocznaWJezyku } from '../../lib/jezyki';
+import { maListe } from '../../lib/wpisy';
+
+export async function getStaticPaths() {
+  return (await wpisyWJezyku('pl')).map(({ adres, entry, para }) => ({ params: { adres }, props: { entry, para } }));
+}
+const { adres } = Astro.params;
+const { entry, para } = Astro.props;
+// hreflang tylko przy dokładnym odpowiedniku; bez tłumaczenia przełącznik prowadzi do listy EN (o ile powstaje).
+const maEn = widocznaWJezyku(para, 'en');
+const przelacznik = maEn || (await maListe('en')) ? adresOdpowiednika('pl', 'wpisy', para) : undefined;
+---
+<Strona jezyk="pl" tytul={`${entry.data.tytul} | Robert Dębicki`} opis={entry.data.zajawka} odpowiednik={maEn ? `/en/posts/${adres}/` : undefined} przelacznik={przelacznik}>
+  <StronaWpisu jezyk="pl" adres={adres!} entry={entry} />
+</Strona>
