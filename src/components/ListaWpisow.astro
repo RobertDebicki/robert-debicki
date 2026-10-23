@@ -1,0 +1,27 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { wpisyWJezyku, dataIso, dataCzytelna } from '../lib/wpisy';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const { jezyk } = Astro.props;
+const e = etykiety(jezyk);
+const prefiks = jezyk === 'pl' ? '/wpisy/' : '/en/posts/';
+const wpisy = await wpisyWJezyku(jezyk);
+---
+<section style="--sw: var(--y)" aria-labelledby="wpisy-h">
+  <p class="label mono">{e.wpisy}</p>
+  <h1 class="sec-title" id="wpisy-h">{e.wpisy}</h1>
+  {wpisy.length === 0 && <p class="sec-intro">{e.brakWpisow}</p>}
+  <div class="wpisy-lista">
+    {wpisy.map(({ adres, entry }) => (
+      <article class="wpis-karta">
+        <time class="mono" datetime={dataIso(entry.data.data)}>{dataCzytelna(entry.data.data, jezyk)}</time>
+        <h2><a href={`${prefiks}${adres}/`}>{entry.data.tytul}</a></h2>
+        <p>{entry.data.zajawka}</p>
+      </article>
+    ))}
+  </div>
+</section>

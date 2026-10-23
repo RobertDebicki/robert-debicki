@@ -1,0 +1,12 @@
+---
+import Strona from '../../../layouts/Strona.astro';
+import ListaWpisow from '../../../components/ListaWpisow.astro';
+import { maListe } from '../../../lib/wpisy';
+
+export async function getStaticPaths() {
+  return (await maListe('en')) ? [{ params: { lista: undefined } }] : [];
+}
+---
+<Strona jezyk="en" tytul="Posts | Robert Dębicki" opis="Posts by Robert Dębicki on automation, applications and AI deployments." odpowiednik="/wpisy/">
+  <ListaWpisow jezyk="en" />
+</Strona>

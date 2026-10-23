@@ -1,0 +1,30 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { wpisyWJezyku, maListe, dataIso, dataCzytelna } from '../lib/wpisy';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const { jezyk } = Astro.props;
+const e = etykiety(jezyk);
+const prefiks = jezyk === 'pl' ? '/wpisy/' : '/en/posts/';
+const najnowsze = (await wpisyWJezyku(jezyk)).slice(0, 3);
+const zLista = await maListe(jezyk);
+---
+{najnowsze.length > 0 && (
+  <section id="wpisy" style="--sw: var(--y)" aria-labelledby="wpisy-h">
+    <p class="label mono">{e.wpisy}</p>
+    <h2 class="sec-title" id="wpisy-h">{e.wpisy}</h2>
+    <div class="wpisy-lista">
+      {najnowsze.map(({ adres, entry }) => (
+        <article class="wpis-karta">
+          <time class="mono" datetime={dataIso(entry.data.data)}>{dataCzytelna(entry.data.data, jezyk)}</time>
+          <h3><a href={`${prefiks}${adres}/`}>{entry.data.tytul}</a></h3>
+          <p>{entry.data.zajawka}</p>
+        </article>
+      ))}
+    </div>
+    {zLista && <p class="wpisy-wszystkie"><a href={prefiks}>{e.wszystkieWpisy}</a></p>}
+  </section>
+)}

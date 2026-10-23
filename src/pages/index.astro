@@ -3,6 +3,7 @@ import Strona from '../layouts/Strona.astro';
 import Otwarcie from '../components/Otwarcie.astro';
 import Wdrozenia from '../components/Wdrozenia.astro';
 import Projekty from '../components/Projekty.astro';
+import NajnowszeWpisy from '../components/NajnowszeWpisy.astro';
 import Doswiadczenie from '../components/Doswiadczenie.astro';
 import Narzedzia from '../components/Narzedzia.astro';
 import Kontakt from '../components/Kontakt.astro';
@@ -15,6 +16,7 @@ const odpowiednik = (await maStroneGlownaEn()) ? '/en/' : undefined;
   <Otwarcie jezyk="pl" />
   <Wdrozenia jezyk="pl" />
   <Projekty jezyk="pl" />
+  <NajnowszeWpisy jezyk="pl" />
   <Doswiadczenie jezyk="pl" />
   <Narzedzia jezyk="pl" />
   <Kontakt jezyk="pl" slot="poza-arkuszem" />

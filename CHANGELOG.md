@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026-10-23 17:00, Claude Code
+
+**✅ Zrobione:**
+- Zadanie 7: wpisy. `src/lib/wpisy.ts` (wpisy w języku posortowane po dacie malejąco, zdjęcia przez `import.meta.glob` i `astro:assets`, czytelna data, `maListe`). Komponenty `NajnowszeWpisy` (3 najnowsze, sekcja `#wpisy` na `/` i `/en/`), `ListaWpisow`, `StronaWpisu` (`<article>`, `<time datetime>`, `<Image>` z wymaganym `alt`, treść do 65ch). Strony: `/wpisy/`, `/wpisy/[adres]/`, `/en/posts/`, `/en/posts/[adres]/`. Etykiety `wpisy`, `wszystkieWpisy`, `brakWpisow` w PL i EN.
+- Pusta kolekcja (stan produkcyjny): `/wpisy/` nie powstaje, sekcji na stronie głównej nie ma, w menu nie ma linku. Lista to trasa rest `[...lista].astro` ze `getStaticPaths` zwracającym pustą tablicę (jak `/en/`).
+- EN: wpis bez `en.md` nie ma strony EN, nie jest na liście EN ani w mapie strony. Jego strona PL ma przełącznik do `/en/posts/` bez `hreflang`; wpis z tłumaczeniem ma odpowiednik i `hreflang`. Lista EN powstaje, gdy są wpisy PL i istnieje `ustawienia/en.md`.
+- Pole `zdjecia.plik` to ścieżka od korzenia repozytorium (np. `/src/assets/wpisy/foto.jpg`); brak pliku zatrzymuje build komunikatem po polsku.
+- Fikstury: dodane wpisy `najnowszy` (długi tytuł, zdjęcie) i `srodkowy` w `testy/fikstury/jezyki/wpisy/`, obraz w `testy/fikstury/zdjecia/`. `testy/e2e/wpisy.spec.ts` (fikstury) i `wpisy-puste.spec.ts` (prawdziwa treść). Zawężony test mapy strony w `jezyki.spec.ts` (strona PL wpisu tylko po polsku jest teraz w mapie, strony EN nie).
+- Testy: Vitest 29 PASS, `npm run build` OK, Playwright 38 PASS.
+
+**🚧 W toku / nie wdrożone:**
+- Mapa strony nie ma `xhtml:link` dla wpisów (adresy PL i EN się różnią); `hreflang` jest w `<head>`.
+- Ścieżka zdjęć w panelu Sveltia (`media_folder`) do ustalenia w zadaniu 8 zgodnie z konwencją `/src/assets/...`.
+- Brak prawdziwych wpisów. Nic nie jest wypchnięte.
+
+**🎯 Następny krok:**
+- Zadanie 8 z planu.
+
 ## 2026-10-23 16:10, Claude Code
 
 **✅ Zrobione:**

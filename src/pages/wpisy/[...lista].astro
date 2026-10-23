@@ -1,0 +1,16 @@
+---
+import Strona from '../../layouts/Strona.astro';
+import ListaWpisow from '../../components/ListaWpisow.astro';
+import { wpisyWJezyku, maListe } from '../../lib/wpisy';
+import { adresOdpowiednika } from '../../lib/jezyki';
+
+// Trasa rest zamiast index.astro: bez wpisów lista nie powstaje (getStaticPaths zwraca pustą tablicę).
+export async function getStaticPaths() {
+  return (await maListe('pl')) ? [{ params: { lista: undefined } }] : [];
+}
+const maEn = await maListe('en');
+const maWpisyEn = (await wpisyWJezyku('en')).length > 0;
+---
+<Strona jezyk="pl" tytul="Wpisy | Robert Dębicki" opis="Wpisy Roberta Dębickiego o automatyzacji, aplikacjach i wdrożeniach AI." odpowiednik={maWpisyEn ? '/en/posts/' : undefined} przelacznik={maEn ? '/en/posts/' : undefined}>
+  <ListaWpisow jezyk="pl" />
+</Strona>

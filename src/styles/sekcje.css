@@ -119,3 +119,18 @@ section { position: relative; padding-block: 88px; border-top: 1.5px solid var(-
   html { scroll-behavior: auto; }
   .plates .p, .btn { transition: none; }
 }
+
+/* Wpisy */
+.wpisy-lista { margin-top: 32px; display: grid; gap: 28px; }
+.wpis-karta { border-top: 2px solid var(--ink); padding-top: 16px; max-width: 40em; }
+.wpis-karta time, .wpis time { color: var(--muted); }
+.wpis-karta h2, .wpis-karta h3 { margin-top: 6px; font-size: 1.4rem; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+.wpis-karta p { margin-top: 8px; }
+.wpisy-wszystkie { margin-top: 28px; font-family: var(--font-data); font-size: var(--s--1); font-weight: 600; }
+.wpis header time { display: block; margin-top: 14px; }
+.wpis .sec-title { overflow-wrap: anywhere; }
+.wpis-tresc { margin-top: 32px; max-width: 65ch; }
+.wpis-tresc > * + * { margin-top: 1.1em; }
+.wpis-tresc h2, .wpis-tresc h3 { margin-top: 1.8em; font-size: 1.4rem; font-weight: 700; }
+.wpis-zdjecie { margin: 32px 0 0; max-width: 800px; }
+.wpis-zdjecie img { display: block; width: 100%; height: auto; }
