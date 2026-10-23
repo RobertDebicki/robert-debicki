@@ -1,4 +1,4 @@
-// Lighthouse mobile dla `/` (prawdziwa treść) i `/en/` (build z fiksturami, bo /en/ na prawdziwej treści dojdzie w zadaniu 10).
+// Lighthouse mobile dla `/` i `/en/`, obie na prawdziwej treści (angielska od zadania 10).
 // Budujemy z PUBLIC_INDEKSUJ=true: strona ma noindex do akceptacji, a SEO ma być mierzone tak, jak po publikacji.
 // Podsumowanie wyników trafia do docs/lighthouse/.
 import { spawnSync } from 'node:child_process';
@@ -13,7 +13,7 @@ rmSync('.lighthouseci', { recursive: true, force: true });
 
 const przebiegi = [
   { nazwa: '/', konfig: 'lighthouserc.json', katalog: 'pl', env: { PUBLIC_INDEKSUJ: 'true', WYJSCIE: './dist-lighthouse' } },
-  { nazwa: '/en/ (fikstury)', konfig: 'lighthouserc-en.json', katalog: 'en', env: { PUBLIC_INDEKSUJ: 'true', WYJSCIE: './dist-lighthouse-en', TRESC_BAZA: './testy/fikstury/jezyki' } },
+  { nazwa: '/en/', konfig: 'lighthouserc-en.json', katalog: 'en', env: { PUBLIC_INDEKSUJ: 'true', WYJSCIE: './dist-lighthouse-en' } },
 ];
 
 let blad = 0;
@@ -40,7 +40,7 @@ writeFileSync(
   `# Lighthouse mobile, ${data}\n\n` +
     'Mediana z trzech przebiegów, profil mobilny (domyślny dla Lighthouse CI), próg 95 w każdej kategorii.\n' +
     'Build z `PUBLIC_INDEKSUJ=true`: do akceptacji strona ma `noindex`, który obniżyłby wynik SEO, więc mierzymy stan po publikacji.\n' +
-    '`/en/` mierzony na buildzie z fiksturami (`testy/fikstury/jezyki`), bo angielska treść prawdziwa powstaje w zadaniu 10.\n\n' +
+    '`/en/` mierzony na prawdziwej treści (`src/content/**/en.md`).\n\n' +
     `| Strona | Przebiegi | Wydajność | Dostępność | Dobre praktyki | SEO |\n|---|---|---|---|---|---|\n${wiersze.join('\n')}\n`,
 );
 console.log(wiersze.join('\n'));

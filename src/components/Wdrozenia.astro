@@ -22,7 +22,7 @@ const PLYTY = { pomarancz: 'var(--c)', czerwien: 'var(--m)', zolty: 'var(--y)' }
       <li class="job" style={`--pl: ${PLYTY[w.plyta]}`}>
         <div>
           <Ikona nazwa={w.ikona} />
-          <div class="fig plates"><span class="p" aria-hidden="true">{w.liczba}</span><span class="p-k">{w.liczba}</span></div>
+          <div class={`fig plates${[...w.liczba].length > 7 ? ' dluga' : ''}`}><span class="p" aria-hidden="true">{w.liczba}</span><span class="p-k">{w.liczba}</span></div>
           <p class="fig-note">{w.podpisLiczby}</p>
         </div>
         <div>

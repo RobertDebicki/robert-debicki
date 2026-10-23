@@ -2,10 +2,11 @@ import { test, expect } from '@playwright/test';
 
 const szerokosci = [360, 390, 1024, 1440];
 
-for (const w of szerokosci) {
-  test(`brak przewijania w bok przy ${w} px`, async ({ page }) => {
+// /en/ na prawdziwej treści istnieje od zadania 10 (src/content/ustawienia/en.md); angielskie teksty są dłuższe.
+for (const [adres, w] of ['/', '/en/'].flatMap((a) => szerokosci.map((s) => [a, s] as const))) {
+  test(`brak przewijania w bok na ${adres} przy ${w} px`, async ({ page }) => {
     await page.setViewportSize({ width: w, height: 800 });
-    await page.goto('/');
+    await page.goto(adres);
     await page.evaluate(() => document.fonts.ready);
     const [scroll, inner] = await page.evaluate(() => [
       document.documentElement.scrollWidth,
@@ -52,3 +53,18 @@ test('html lang to pl, jest noindex, a konsola jest czysta', async ({ page }) =>
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   expect(bledy).toEqual([]);
 });
+
+// „hundreds” w EN jest dłuższe niż polskie liczby; przy nowrap nie może wejść na kolumnę z opisem.
+for (const [adres, w] of ['/', '/en/'].flatMap((a) => [360, 1024, 1440].map((s) => [a, s] as const))) {
+  test(`liczba wdrożenia mieści się w swojej kolumnie na ${adres} przy ${w} px`, async ({ page }) => {
+    await page.setViewportSize({ width: w, height: 800 });
+    await page.goto(adres);
+    await page.evaluate(() => document.fonts.ready);
+    const wystaje = await page.evaluate(() =>
+      [...document.querySelectorAll('.job .fig')]
+        .filter((f) => f.getBoundingClientRect().left + (f as HTMLElement).scrollWidth > f.parentElement!.getBoundingClientRect().right + 1)
+        .map((f) => f.textContent),
+    );
+    expect(wystaje).toEqual([]);
+  });
+}

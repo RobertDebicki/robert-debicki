@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-// `/` na prawdziwej treści (port 4399). `/en/` nie istnieje na prawdziwej treści do zadania 10,
-// więc angielska strona jest sprawdzana na buildzie z fiksturami (port 4400).
+// `/` i `/en/` na prawdziwej treści (port 4399; `/en/` od zadania 10) oraz `/en/` na buildzie z fiksturami (port 4400),
+// gdzie są też wpisy i referencje.
 const STRONY = [
   { nazwa: '/', url: 'http://localhost:4399/' },
+  { nazwa: '/en/', url: 'http://localhost:4399/en/' },
   { nazwa: '/en/ (fikstury)', url: 'http://localhost:4400/en/' },
 ];
 

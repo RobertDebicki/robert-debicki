@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026-10-23 16:46, Claude Code
+
+**✅ Zrobione:**
+- Zadanie 10, krok 5: angielska treść startowa (`tlumaczenie: ai`, `zrodlo` ze `skrypty/skrot.ts`): 6 wdrożeń, 4 projekty, `ustawienia/en.md`. Kontrola tłumaczeń: 11 par bez błędów i bez uwag. `/en/` powstaje na prawdziwej treści.
+- Kontrola: cudzysłowy YAML w listach (`stack: ["n8n", ...]`) nie są już zgłaszane jako cudzysłów spoza en-US (nowy test).
+- Przełącznik języka na `/`: selektor `.top nav a.przelacznik`, żeby działał zamierzony `padding: 4px 8px` (wcześniej przegrywał z `.top nav a` i podnosił nagłówek o 2 px, przez co porównanie z makietą dawało 4-6% różnicy). Porównanie z makietą znowu PASS.
+- Liczba wdrożenia dłuższa niż 7 znaków (EN „hundreds”) dostaje klasę `dluga` i mniejszy krój (0.72 × `--s-3`); bez tego przy 1024 i 1440 px wchodziła na kolumnę z opisem. Polskie wartości mają do 7 znaków, wygląd PL bez zmian (test makiety PASS). Nowy test w `uklad.spec.ts` (bez klasy pada na `/en/` przy 1024 i 1440 px).
+- Testy e2e na prawdziwym `/en/`: `lang="en"`, przełącznik do `/`, 3 linki hreflang, w menu brak „Posts”; `/` ma przełącznik i hreflang. Axe (kontrast, jasny i ciemny) i brak przewijania w bok przy 360/390/1024/1440 px także dla `/en/`.
+- Lighthouse `/en/` mierzony na prawdziwej treści: mediana z 3, `/` 99/100/100/100, `/en/` 99/100/100/100 (`docs/lighthouse/2026-10-23.md`).
+- `npm run sprawdz`: sekrety 0, treść 0, skany 0, tłumaczenia 14 testów + 11 par OK, Vitest 47 PASS, build OK, Playwright 67 PASS.
+
+**🚧 W toku / nie wdrożone:**
+- Tłumaczenia mają stan `ai`: czekają na przeczytanie przez osobę z USA (prośba do korektora w `narzedzia/tlumaczenie/jezyki/en.md`).
+- Nic nie jest wypchnięte; workflow nie uruchomiony w Actions.
+
+**🎯 Następny krok:**
+- Zadanie 11 z planu.
+
 ## 2026-10-23 16:40, Claude Code
 
 **✅ Zrobione:**
