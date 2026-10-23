@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-10-23 20:00, Claude Code
+
+**✅ Zrobione:**
+- Poprawki po przeglądzie zadania 9. Bramka Lighthouse w `lighthouserc*.json` używa `aggregationMethod: median-run` (zgodnie z "medianą z 3" w docs). `skrypty/lighthouse.mjs`: przebieg EN nie jest pomijany po błędzie PL (`blad = uruchom(...) || blad`), brak raportów nie wywraca skryptu.
+- Wydajność `/` z 95 do 99, `/en/` (fikstury) z 97 do 99: CSS wstawiony do HTML (`build.inlineStylesheets: 'always'`) i preload pięciu fontów pierwszego ekranu. Wygląd bez zmian. Zestawienie przed i po: `docs/lighthouse/2026-10-23-poprawa.md`.
+
+**🚧 W toku / nie wdrożone:**
+- Nic nie jest wypchnięte; workflow wciąż nie uruchomiony w Actions.
+
+**🎯 Następny krok:**
+- Zadanie 10 z planu.
+
 ## 2026-10-23 19:00, Claude Code
 
 **✅ Zrobione:**
