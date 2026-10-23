@@ -1,0 +1,36 @@
+:root {
+  --paper: #f4f5f1;
+  --ink: #131412;
+  --muted: #555850;
+  --rule: #131412;
+  --c: #ff5a1f;
+  --m: #d0201a;
+  --y: #ffc400;
+  --spot: #ffc400;
+  --band-accent: #ffc400;
+  --raster-alpha: 0.17;
+  --blend: multiply;
+  --font-display: "Anybody Variable", "Anybody", "Arial Black", Arial, sans-serif;
+  --font-body: "Onest Variable", "Onest", "Helvetica Neue", Arial, sans-serif;
+  --font-data: "Spline Sans Mono Variable", "Spline Sans Mono", ui-monospace, Menlo, monospace;
+  --s--1: 0.75rem;
+  --s-0: 1.0625rem;
+  --s-1: 1.3rem;
+  --s-2: clamp(1.7rem, 3.4vw, 2.6rem);
+  --s-3: clamp(2.6rem, 6vw, 4.6rem);
+  --s-4: clamp(3rem, 10vw, 7.6rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f100e; --ink: #f0f1ea; --muted: #a6a99d; --rule: #f0f1ea;
+    --c: #ff6a33; --m: #ff5442; --y: #ffcf3a; --spot: #ffcf3a; --band-accent: #d0201a;
+    --raster-alpha: 0.2; --blend: screen;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f100e; --ink: #f0f1ea; --muted: #a6a99d; --rule: #f0f1ea;
+  --c: #ff6a33; --m: #ff5442; --y: #ffcf3a; --spot: #ffcf3a; --band-accent: #d0201a;
+  --raster-alpha: 0.2; --blend: screen;
+  color-scheme: dark;
+}

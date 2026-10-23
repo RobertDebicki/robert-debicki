@@ -1,0 +1,44 @@
+---
+import Logo from './Logo.astro';
+
+interface Props {
+  jezyk: 'pl' | 'en';
+  odpowiednik?: string;
+}
+const { jezyk, odpowiednik } = Astro.props;
+
+const baza = jezyk === 'pl' ? '/' : '/en/';
+const menu = {
+  pl: [
+    ['wdrozenia', 'Wdrożenia', 'var(--c)'],
+    ['teraz', 'Projekty', 'var(--m)'],
+    ['droga', 'Doświadczenie', 'var(--y)'],
+    ['kontakt', 'Kontakt', 'var(--ink)'],
+  ],
+  en: [
+    ['wdrozenia', 'Deployments', 'var(--c)'],
+    ['teraz', 'Projects', 'var(--m)'],
+    ['droga', 'Experience', 'var(--y)'],
+    ['kontakt', 'Contact', 'var(--ink)'],
+  ],
+}[jezyk];
+const etykietaMenu = jezyk === 'pl' ? 'Sekcje' : 'Sections';
+const drugi = jezyk === 'pl' ? 'en' : 'pl';
+---
+<header class="top">
+  <div class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="top-in">
+    <a class="brand" href={`${baza}#start`}>
+      <Logo />
+      <span>Robert Dębicki</span>
+    </a>
+    <nav aria-label={etykietaMenu}>
+      {menu.map(([id, nazwa, barwa]) => (
+        <a href={`${baza}#${id}`} style={`--sw: ${barwa}`}>{nazwa}</a>
+      ))}
+      {odpowiednik && (
+        <a class="przelacznik" href={odpowiednik} hreflang={drugi} lang={drugi}>{drugi.toUpperCase()}</a>
+      )}
+    </nav>
+  </div>
+</header>

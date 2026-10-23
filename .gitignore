@@ -22,3 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# sekrety i zmienne lokalne
+.env.*
+!.env.example
+.dev.vars*
+
+# Playwright
+test-results/
+playwright-report/
