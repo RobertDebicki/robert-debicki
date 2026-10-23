@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-10-23 18:00, Claude Code
+
+**✅ Zrobione:**
+- Dokumenty `docs/superpowers/specs/` i `plans/` przygotowane pod publiczne repo: usunięte nazwy klientów, osób, cudzej strony i lokalne ścieżki, zastąpione neutralnym opisem wcześniejszego projektu. Uzasadnienia osobiste zamienione na zwykłe reguły treści. Decyzje, architektura, pola i testy bez zmian. `grep` po wzorcach wrażliwych: 0 trafień.
+
+**🚧 W toku / nie wdrożone:**
+- Nic nie jest wypchnięte.
+
+**🎯 Następny krok:**
+- Kroki 6-7 zadania 11 po decyzji Roberta w sprawie skanów w R2.
+
 ## 2026-10-23 17:30, Claude Code
 
 **✅ Zrobione:**
