@@ -1,0 +1,60 @@
+# Każdy push i każdy PR przechodzi pełny łańcuch kontroli (npm run sprawdz) oraz Lighthouse mobile.
+# Wdrożenie na Cloudflare dojdzie w zadaniu 12; na razie workflow niczego nie publikuje i nie używa sekretów.
+name: Strona
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: strona-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  NO_COLOR: "1"
+  FORCE_COLOR: "0"
+
+jobs:
+  kontrola:
+    name: Kontrole, testy i Lighthouse
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Przeglądarka dla testów e2e
+        run: npx playwright install --with-deps chromium
+
+      # sprawdz:sekrety, sprawdz:tresc, sprawdz:skany, testy jednostkowe, build, testy e2e (w tym kontrast axe).
+      # Zadanie 10 dołoży do tego łańcucha kontrolę tłumaczeń.
+      - name: Łańcuch kontroli
+        run: npm run sprawdz
+
+      # Build z PUBLIC_INDEKSUJ=true robi sam skrypt (wynik SEO po publikacji, nie z noindex).
+      - name: Lighthouse mobile (próg 95 w czterech kategoriach)
+        run: npm run sprawdz:lighthouse
+
+      - name: Raport Lighthouse
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse
+          path: |
+            docs/lighthouse/
+            .lighthouseci/
+          if-no-files-found: ignore
+
+  # WDROŻENIE: zadanie 12. Tu będzie osobne zadanie (needs: kontrola, tylko push na main, po zgodzie Roberta).
+  # Nie dodawać tu sekretów ani tokenów przed zadaniem 12.

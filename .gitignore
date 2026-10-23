@@ -37,3 +37,7 @@ testy/e2e/*-snapshots/
 
 # Build z fiksturami do testów języków
 dist-fikstury/
+
+# Lighthouse CI
+.lighthouseci/
+dist-lighthouse*/
