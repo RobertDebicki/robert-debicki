@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { z } from 'astro/zod';
 import { SCHEMATY, HOSTY_R2, type NazwaKolekcji } from '../../src/lib/schematy';
-import { konfiguracjaPanelu } from '../../src/lib/panel';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { konfiguracjaPanelu, SRI_SVELTII } from '../../src/lib/panel';
 
 type Pole = Record<string, any>;
 const konfig = konfiguracjaPanelu() as Pole;
@@ -104,6 +106,15 @@ describe('panel Sveltia: wpisy i zdjęcia', () => {
     expect(konfig.media_folder).toBe('src/assets/wpisy');
     expect(konfig.public_folder).toBe('/src/assets/wpisy');
   });
+  it('alt wymusza w panelu minimalną długość ze schematu Zod', () => {
+    const min = (z.toJSONSchema(SCHEMATY.wpisy, { io: 'input', unrepresentable: 'any' }) as Pole).properties.zdjecia.items.properties.alt.minLength as number;
+    expect(min).toBeGreaterThan(0);
+    const alt = zdjecia().fields.find((f: Pole) => f.name === 'alt');
+    const re = new RegExp(alt.pattern[0]);
+    expect(re.test('a'.repeat(min))).toBe(true);
+    expect(re.test('a'.repeat(min - 1))).toBe(false);
+    expect(alt.pattern[1]).toMatch(new RegExp(String(min)));
+  });
   it('wpis ma treść Markdown', () => {
     expect(polaPanelu('wpisy').find((p) => p.name === 'body')?.widget).toBe('markdown');
   });
@@ -111,7 +122,7 @@ describe('panel Sveltia: wpisy i zdjęcia', () => {
 
 describe('panel Sveltia: języki', () => {
   it('struktura multiple_files, pl domyślny, en dodatkowy, nowa pozycja tylko po polsku', () => {
-    expect(konfig.i18n).toMatchObject({ structure: 'multiple_files', locales: ['pl', 'en'], default_locale: 'pl', initial_locales: ['default'] });
+    expect(konfig.i18n).toMatchObject({ structure: 'multiple_files', locales: ['pl', 'en'], default_locale: 'pl', initial_locales: 'default' });
   });
   it('kolekcje folderowe zapisują folder na pozycję z pl.md i en.md, a ustawienia pliki {{locale}}.md', () => {
     for (const nazwa of ['wdrozenia', 'projekty', 'referencje', 'wpisy']) {
@@ -159,5 +170,14 @@ describe('panel Sveltia: backend', () => {
   it('w konfiguracji nie ma sekretów ani znaków zakazanych w treści', () => {
     const tekst = JSON.stringify(konfig);
     expect(tekst).not.toMatch(/secret|token|[\u2014\u2013]/i);
+  });
+});
+
+describe('panel Sveltia: skrypt z CDN', () => {
+  it('ma sumę SRI sha384 i crossorigin, a strona panelu jej używa', () => {
+    expect(SRI_SVELTII).toMatch(/^sha384-[A-Za-z0-9+/]{64}$/);
+    const astro = readFileSync(join(import.meta.dirname, '../../src/pages/admin/index.astro'), 'utf8');
+    expect(astro).toContain('integrity={SRI_SVELTII}');
+    expect(astro).toContain('crossorigin="anonymous"');
   });
 });

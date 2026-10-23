@@ -6,6 +6,8 @@ test('/admin/ ma noindex i wskazuje konfigurację panelu', async ({ request }) =
   expect(html).toMatch(/<meta name="robots" content="noindex, nofollow"/);
   expect(html).toContain('rel="cms-config-url"');
   expect(html).toContain('@sveltia/cms@0.221.8');
+  expect(html).toMatch(/integrity="sha384-[A-Za-z0-9+/]{64}"/);
+  expect(html).toContain('crossorigin="anonymous"');
 });
 
 test('/admin/config.yml to poprawny YAML z backendem GitHub i i18n multiple_files', async ({ request }) => {
