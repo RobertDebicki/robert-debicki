@@ -71,6 +71,10 @@ class KontrolaTlumaczenia(unittest.TestCase):
         # zrodlo (skrót SHA-256) i kolejnosc są tylko w nagłówku; ich cyfry nie są faktami z treści.
         self.assertEqual(k.bledy(PL, EN.replace("kolejnosc: 3", "kolejnosc: 12")), [])
 
+    def test_cudzyslowy_yaml_w_liscie_stack_nie_sa_uwaga(self):
+        tekst = EN.replace("kolejnosc: 3", 'stack: ["n8n", "Make.com"]\nkolejnosc: 3')
+        self.assertEqual(k.uwagi(tekst), [])
+
     def test_cudzyslow_polski_w_en_jest_uwaga_nie_bledem(self):
         tekst = EN.replace("dormant clients", "„quoted” clients")
         self.assertEqual(k.bledy(PL, tekst), [])

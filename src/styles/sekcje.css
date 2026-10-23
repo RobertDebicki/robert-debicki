@@ -47,6 +47,8 @@ section { position: relative; padding-block: 88px; border-top: 1.5px solid var(-
 .fig { font-family: var(--font-display); font-size: var(--s-3); font-weight: 850; font-variation-settings: "wdth" 115; line-height: 0.95; letter-spacing: -0.02em; white-space: nowrap; }
 .fig { justify-items: start; padding-bottom: 0.16em; background: linear-gradient(var(--pl), var(--pl)) left bottom / 1.4em 0.13em no-repeat; transition: background-size .5s cubic-bezier(.2,.8,.2,1); }
 .fig .p { display: none; }
+/* Liczba dłuższa niż 7 znaków (np. „hundreds” w EN) nie mieści się w kolumnie 23rem przy nowrap. Polskie wartości startowe mają do 7 znaków, więc wygląd PL bez zmian. */
+.fig.dluga { font-size: calc(var(--s-3) * 0.72); }
 .ready .job.in .fig { background-size: 2.6em 0.13em; }
 .job:hover .fig { background-size: 3.4em 0.13em; }
 .fig-note { margin-top: 16px; max-width: 19rem; font-size: 1.02rem; font-weight: 500; line-height: 1.45; color: var(--ink); }

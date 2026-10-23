@@ -69,6 +69,8 @@ def _tekst(surowy: str) -> str:
                 wartosc = m.group(2).strip()
                 if len(wartosc) > 1 and wartosc[0] == wartosc[-1] and wartosc[0] in "'\"":
                     wartosc = wartosc[1:-1]  # cudzysłów YAML wokół wartości, nie w tekście
+                elif wartosc.startswith("[") and wartosc.endswith("]"):
+                    wartosc = re.sub(r'"([^"]*)"', r"\1", wartosc[1:-1])  # lista YAML: cudzysłów wokół pozycji
                 wynik.append(wartosc)
             continue
         wynik.append(w)

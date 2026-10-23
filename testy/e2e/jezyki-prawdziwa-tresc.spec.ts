@@ -13,3 +13,15 @@ test('strona główna ma canonical, a przełącznik i hreflang tylko gdy istniej
   await expect(page.locator('link[rel=alternate][hreflang]')).toHaveCount(jestEn ? 3 : 0);
   expect((await request.get('/en/')).status()).toBe(jestEn ? 200 : 404);
 });
+
+test('/en/ na prawdziwej treści: lang="en", przełącznik do /, w menu bez Posts (nie ma wpisów)', async ({ page }) => {
+  test.skip(!jestEn, 'brak src/content/ustawienia/en.md, /en/ nie powstaje');
+  await page.goto('/en/');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(page.locator('a.przelacznik')).toHaveAttribute('href', '/');
+  await expect(page.locator('link[rel=alternate][hreflang]')).toHaveCount(3);
+  const menu = page.locator('header nav');
+  await expect(menu.getByRole('link', { name: 'Posts' })).toHaveCount(0);
+  await expect(menu.locator('a[href^="/en/posts"]')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Six systems running at client companies' })).toBeVisible();
+});
