@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 2026-10-23 19:00, Claude Code
+
+**✅ Zrobione:**
+- `npm run sprawdz` łączy: sekrety, treść, skany, Vitest, build, Playwright. `sprawdz:skany` jest teraz sprawdzany także po pełnej ścieżce w `public/` (np. `public/referencje/photo.jpg` jest zgłaszany); nowe testy.
+- `testy/e2e/dostepnosc.spec.ts` (`@axe-core/playwright`): 0 naruszeń `color-contrast` na `/` oraz na `/en/` (build z fiksturami) w trybie jasnym i ciemnym. Kontrast przeszedł bez zmian tokenów, więc żadnych wartości kolorów nie zmieniono (stare = nowe). Test ma zdolność wykrywania: z wymuszonym szarym tekstem (`AXE_SPRAWDZ_CZERWONE=1`) wszystkie 4 padają.
+- Lighthouse CI (`lighthouserc.json`, `lighthouserc-en.json`, `npm run sprawdz:lighthouse`), mobile, próg 0.95 w czterech kategoriach, build z `PUBLIC_INDEKSUJ=true`. Wynik (mediana z 3): `/` 95/100/100/100, `/en/` (fikstury) 97/100/96/100. Podsumowanie w `docs/lighthouse/`.
+- `.github/workflows/strona.yml`: na każdy push i PR `npm run sprawdz` oraz Lighthouse, raport jako artefakt. Miejsce na wdrożenie (zadanie 12) oznaczone komentarzem, bez sekretów. Walidacja lokalna: parsowanie YAML; faktyczny przebieg dopiero po utworzeniu repozytorium i zgodzie na push.
+- Testy animacji bez stałych `waitForTimeout`: oczekiwanie na warunek (`expect.poll`, klatki `requestAnimationFrame`), test klasy `in` na stałym oknie 390x700. 21 przebiegów (3 powtórzenia) bez błędu.
+
+**🚧 W toku / nie wdrożone:**
+- Pełny `npm run sprawdz` w jednym przebiegu zdarzało się zatrzymać na timeoutach 30 s przy obciążeniu komputera (load average 100+, inne procesy); kolejne kroki osobno: Vitest 44 PASS, Playwright 54 PASS (`--workers=2`), sekrety/treść/skany 0.
+- Workflow nie był uruchomiony w GitHub Actions (repozytorium nie istnieje). Nic nie jest wypchnięte.
+- Wydajność `/` wynosi dokładnie 95, margines zerowy.
+
+**🎯 Następny krok:**
+- Zadanie 10 z planu (kontrola tłumaczeń, dopisana do `npm run sprawdz` i workflow).
+
 ## 2026-10-23 18:00, Claude Code
 
 **✅ Zrobione:**

@@ -2,16 +2,14 @@ import { test, expect } from '@playwright/test';
 
 test('po 1,5 s html ma klasę ready, a warstwy płyt nazwiska znikają', async ({ page }) => {
   await page.goto('/');
-  await page.waitForTimeout(1500);
   await expect(page.locator('html')).toHaveClass(/ready/);
-  const krycie = await page.evaluate(() =>
-    [...document.querySelectorAll('h1 .p')].map((e) => getComputedStyle(e).opacity),
-  );
-  expect(krycie.length).toBeGreaterThan(0);
-  expect(krycie.every((o) => o === '0')).toBe(true);
+  const krycie = () => page.evaluate(() => [...document.querySelectorAll('h1 .p')].map((e) => getComputedStyle(e).opacity));
+  await expect.poll(async () => (await krycie()).length).toBeGreaterThan(0);
+  await expect.poll(async () => (await krycie()).every((o) => o === '0'), { timeout: 5000 }).toBe(true);
 });
 
 test('wdrożenia dostają klasę in dopiero po wejściu w widok', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 700 });
   await page.goto('/');
   const przed = await page.locator('.job.in').count();
   expect(przed).toBeLessThan(await page.locator('.job').count());
@@ -23,18 +21,21 @@ test.describe('ruch ograniczony', () => {
   test.use({ reducedMotion: 'reduce' });
   test('canvas rastra rysuje się raz i nie przerysowuje po 2 s', async ({ page }) => {
     await page.goto('/');
-    await page.waitForTimeout(500);
-    const a = await page.evaluate(() => (document.getElementById('raster') as HTMLCanvasElement).toDataURL());
-    await page.waitForTimeout(2000);
-    const b = await page.evaluate(() => (document.getElementById('raster') as HTMLCanvasElement).toDataURL());
-    expect(a).toBe(b);
-    const pusty = await page.evaluate(() => {
+    const klatki = (n: number) =>
+      page.evaluate((ile) => new Promise<void>((ok) => { let i = 0; const f = () => (++i >= ile ? ok() : requestAnimationFrame(f)); f(); }), n);
+    const obraz = () => page.evaluate(() => (document.getElementById('raster') as HTMLCanvasElement).toDataURL());
+    const pustyObraz = () => page.evaluate(() => {
       const c = document.createElement('canvas');
       const raster = document.getElementById('raster') as HTMLCanvasElement;
       c.width = raster.width; c.height = raster.height;
       return c.toDataURL();
     });
-    expect(a).not.toBe(pusty);
+    await expect.poll(async () => (await obraz()) !== (await pustyObraz())).toBe(true);
+    const a = await obraz();
+    await klatki(120);
+    const b = await obraz();
+    expect(a).toBe(b);
+    expect(a).not.toBe(await pustyObraz());
   });
   test('wszystkie wdrożenia od razu mają klasę in', async ({ page }) => {
     await page.goto('/');

@@ -1,5 +1,5 @@
 // Skany referencji nie wolno trzymać w repozytorium (leżą w R2, w repo jest tylko adres).
-// Zgłasza obraz lub PDF w src/content/referencje/ (cokolwiek tam leży) oraz w public/, gdy nazwa zawiera "referenc" lub "skan".
+// Zgłasza obraz lub PDF w src/content/referencje/ (cokolwiek tam leży) oraz w public/, gdy ścieżka (katalogi i nazwa) zawiera "referenc" lub "skan".
 import { readdirSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -28,7 +28,7 @@ export function znajdzSkany(korzen: string): string[] {
   const wzgledna = (p: string) => relative(korzen, p).split('\\').join('/');
   const wszystkie = [
     ...pliki(join(korzen, 'src/content/referencje')).filter((p) => ROZSZERZENIA.test(p)),
-    ...pliki(join(korzen, 'public')).filter((p) => ROZSZERZENIA.test(p) && NAZWA_SKANU.test(p.slice(p.lastIndexOf('/') + 1))),
+    ...pliki(join(korzen, 'public')).filter((p) => ROZSZERZENIA.test(p) && NAZWA_SKANU.test(wzgledna(p))),
   ];
   return wszystkie.map(wzgledna);
 }

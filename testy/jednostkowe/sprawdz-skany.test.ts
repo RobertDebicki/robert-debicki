@@ -63,3 +63,12 @@ describe('skrypt sprawdz-skany', () => {
     expect(uruchom(repo(['public/logo.png'])).status).toBe(0);
   });
 }, 60_000);
+
+describe('pełna ścieżka w public', () => {
+  it('zgłasza public/referencje/photo.jpg (katalog z "referenc", nazwa pliku neutralna)', () => {
+    expect(znajdzSkany(repo(['public/referencje/photo.jpg']))).toEqual(['public/referencje/photo.jpg']);
+  });
+  it('zgłasza public/skany/a.pdf, ale nie public/img/photo.jpg', () => {
+    expect(znajdzSkany(repo(['public/skany/a.pdf', 'public/img/photo.jpg']))).toEqual(['public/skany/a.pdf']);
+  });
+});

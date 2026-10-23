@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { rozdziel } from '../../src/lib/frontmatter';
 import { walidujPlik } from '../../src/lib/waliduj';
 import { ustawienia } from '../../src/lib/schematy';
+import { ZAKAZANE } from '../../skrypty/sprawdz-tresc';
 
 const TRESC = join(import.meta.dirname, '../../src/content');
 
@@ -22,23 +23,6 @@ function wszystkiePliki(katalog: string): string[] {
     return statSync(p).isDirectory() ? wszystkiePliki(p) : [p];
   });
 }
-
-// Lista inline; zadanie 9 przepina ten test na skrypt sprawdz-tresc.
-const ZAKAZANE: [string, RegExp][] = [
-  ['pauza', /—/],
-  ['półpauza', /–/],
-  ['wzorzec', /\bNDA\b/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /\bDTP\b/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /#wzorzec/i],
-  ['wzorzec', /rgb\(\s*253\s*,\s*67\s*,\s*190\s*\)/i],
-];
 
 describe('treść startowa', () => {
   it('sześć wdrożeń z liczbami w kolejności z makiety', () => {
