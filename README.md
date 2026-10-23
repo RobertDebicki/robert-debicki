@@ -1,43 +1,39 @@
-# Astro Starter Kit: Minimal
+# robert-debicki
 
-```sh
-npm create astro@latest -- --template minimal
+## Po polsku
+
+Strona osobista Roberta Dębickiego (Automation Developer / AI Engineer), zbudowana w Astro jako statyczny HTML. Wersja polska pod `/`, angielska pod `/en/`.
+
+### Uruchomienie lokalnie
+```bash
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # wynik w dist/
+npm test           # testy jednostkowe
+npm run sprawdz:sekrety
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Dodawanie treści
+Wpisy, projekty i referencje będą dodawane z panelu w przeglądarce pod `/admin/` (Sveltia CMS), który zapisuje treść jako pliki w repozytorium. Panel pojawi się w jednym z kolejnych kroków budowy, na razie go nie ma.
 
-## 🚀 Project Structure
+### Licencja
+Kod: licencja MIT (plik `LICENSE`). Treści strony oraz skany referencji są © Robert Dębicki i nie są objęte licencją MIT.
 
-Inside of your Astro project, you'll see the following folders and files:
+## In English
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Personal website of Robert Dębicki (Automation Developer / AI Engineer), built with Astro as static HTML. Polish at `/`, English at `/en/`.
+
+### Run locally
+```bash
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # output in dist/
+npm test           # unit tests
+npm run sprawdz:sekrety   # secret scan
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Adding content
+Posts, projects and references will be added from a browser panel at `/admin/` (Sveltia CMS), which saves content as files in the repository. The panel arrives in a later build step and does not exist yet.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### License
+Code: MIT license (see `LICENSE`). Site content and reference scans are © Robert Dębicki and are not covered by the MIT license.

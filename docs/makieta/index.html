@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Robert Dębicki, Automation Developer / AI. Automatyzacje procesów, aplikacje i wdrożenia AI. Wrocław albo zdalnie.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 64 56'><path d='M8 31C8 21.5 14 16.5 23 16.5H34' fill='none' stroke='%23ff5a1f' stroke-width='7'/><circle cx='34' cy='30' r='13.5' fill='none' stroke='%23ff5a1f' stroke-width='7'/><path d='M8 44.5V16.5M47.5 2.5V44.5' fill='none' stroke='%23131412' stroke-width='7'/></svg>">
+<title>Robert Dębicki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,400..900&family=Onest:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: strona złożona jak arkusz drukarski. Pasek kontrolny barw, znaczniki cięcia, raster dwóch farb w tle,
+   nazwisko wjeżdża w pasery, liczby z przesuniętej płyty. Farby: pomarańcz, czerwień, żółty i czarny. */
+:root {
+  --paper: #f4f5f1;
+  --ink: #131412;
+  --muted: #555850;
+  --rule: #131412;
+  --c: #ff5a1f;
+  --m: #d0201a;
+  --y: #ffc400;
+  --spot: #ffc400;
+  --band-accent: #ffc400;
+  --raster-alpha: 0.17;
+  --blend: multiply;
+  --font-display: "Anybody", "Arial Black", Arial, sans-serif;
+  --font-body: "Onest", "Helvetica Neue", Arial, sans-serif;
+  --font-data: "Spline Sans Mono", ui-monospace, Menlo, monospace;
+  --s--1: 0.75rem;
+  --s-0: 1.0625rem;
+  --s-1: 1.3rem;
+  --s-2: clamp(1.7rem, 3.4vw, 2.6rem);
+  --s-3: clamp(2.6rem, 6vw, 4.6rem);
+  --s-4: clamp(3rem, 10vw, 7.6rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f100e; --ink: #f0f1ea; --muted: #a6a99d; --rule: #f0f1ea;
+    --c: #ff6a33; --m: #ff5442; --y: #ffcf3a; --spot: #ffcf3a; --band-accent: #d0201a;
+    --raster-alpha: 0.2; --blend: screen;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f100e; --ink: #f0f1ea; --muted: #a6a99d; --rule: #f0f1ea;
+  --c: #ff6a33; --m: #ff5442; --y: #ffcf3a; --spot: #ffcf3a; --band-accent: #d0201a;
+  --raster-alpha: 0.2; --blend: screen;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--s-0)/1.6 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
+#raster { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--m); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.mono { font-family: var(--font-data); font-size: var(--s--1); letter-spacing: 0.02em; }
+
+/* Pasek kontrolny i nagłówek */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); background: var(--paper); border-bottom: 1.5px solid var(--rule); }
+.bar { display: grid; grid-template-columns: repeat(16, 1fr); height: 10px; }
+.bar i:nth-child(1) { background: var(--c); }
+.bar i:nth-child(2) { background: var(--m); }
+.bar i:nth-child(3) { background: var(--y); }
+.bar i:nth-child(4) { background: var(--ink); }
+.bar i:nth-child(5) { background: color-mix(in srgb, var(--c) 75%, var(--paper)); }
+.bar i:nth-child(6) { background: color-mix(in srgb, var(--m) 75%, var(--paper)); }
+.bar i:nth-child(7) { background: color-mix(in srgb, var(--y) 75%, var(--paper)); }
+.bar i:nth-child(8) { background: color-mix(in srgb, var(--ink) 75%, var(--paper)); }
+.bar i:nth-child(9) { background: color-mix(in srgb, var(--c) 40%, var(--paper)); }
+.bar i:nth-child(10) { background: color-mix(in srgb, var(--m) 40%, var(--paper)); }
+.bar i:nth-child(11) { background: color-mix(in srgb, var(--y) 40%, var(--paper)); }
+.bar i:nth-child(12) { background: color-mix(in srgb, var(--ink) 40%, var(--paper)); }
+.bar i:nth-child(13) { background: #7a2e0e; }
+.bar i:nth-child(14) { background: #b8860b; }
+.bar i:nth-child(15) { background: #c45a00; }
+.bar i:nth-child(16) { background: var(--spot); }
+.top-in { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 12px; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.logo { width: 34px; height: 29px; overflow: visible; }
+.lg-ink { stroke: var(--ink); }
+.lg-flow { stroke: var(--c); }
+.brand:hover .lg-flow { stroke: var(--y); }
+.icon { width: 52px; height: 52px; margin-bottom: 18px; color: var(--ink); fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.icon .acc { stroke: var(--pl); }
+.icon .accf { fill: var(--pl); stroke: none; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.top nav a { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; font-size: 0.92rem; padding-block: 6px; }
+.top nav a::before { content: ""; width: 10px; height: 10px; background: var(--sw); }
+.top nav a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* Arkusz ze znacznikami cięcia */
+.sheet { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
+.crop { position: absolute; width: 28px; height: 28px; color: var(--ink); display: none; }
+.crop.tl { top: 18px; left: -36px; } .crop.tr { top: 18px; right: -36px; transform: scaleX(-1); }
+.crop.bl { bottom: 18px; left: -36px; transform: scaleY(-1); } .crop.br { bottom: 18px; right: -36px; transform: scale(-1); }
+@media (min-width: 1280px) { .crop { display: block; } }
+
+/* Płyty: warstwy C, M, Y pod czarną, lekko niespasowane */
+.plates { display: grid; }
+.plates > span { grid-area: 1 / 1; }
+.plates .p { mix-blend-mode: var(--blend); transition: transform 1.1s cubic-bezier(.2,.8,.2,1); }
+.plates .p-c { color: var(--c); transform: translate(-0.12em, 0.05em); }
+.plates .p-m { color: var(--m); transform: translate(0.1em, -0.06em); }
+.plates .p-y { color: var(--y); transform: translate(0.03em, 0.1em); }
+.plates .p-k { position: relative; color: var(--ink); }
+.ready .hero .plates .p { transform: none; opacity: 0; transition: transform 1.1s cubic-bezier(.2,.8,.2,1), opacity .4s ease 1.1s; }
+
+/* Otwarcie */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 25rem; gap: 48px 64px; align-items: end; padding-block: 72px 80px; }
+.hero h1 { font-size: var(--s-4); font-weight: 850; font-variation-settings: "wdth" 125; line-height: 0.9; letter-spacing: -0.02em; }
+.role { margin-top: 28px; font-family: var(--font-display); font-size: var(--s-1); font-weight: 500; }
+.role b { font-weight: 800; background: var(--y); color: #131412; padding: 0 6px; }
+.lead { margin-top: 20px; font-size: 1.3rem; line-height: 1.45; max-width: 31em; }
+.lead + p { margin-top: 14px; color: var(--muted); max-width: 36em; }
+.cta { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; font-weight: 600; text-decoration: none; border: 2px solid var(--ink); background: var(--paper); box-shadow: 5px 5px 0 var(--c); transition: transform .15s, box-shadow .15s; }
+.btn.solid { background: var(--ink); color: var(--paper); box-shadow: 5px 5px 0 var(--m); }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--y); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--y); }
+
+.ticket { border: 2px solid var(--ink); background: var(--paper); font-size: 0.95rem; }
+.ticket header { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--ink); color: var(--paper); }
+.ticket dl { margin: 0; }
+.ticket dl div { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 12px; padding: 10px 14px; border-top: 1px solid color-mix(in srgb, var(--ink) 30%, transparent); }
+.ticket dl div:first-child { border-top: 0; }
+.ticket dt { color: var(--muted); }
+.ticket dd { margin: 0; font-weight: 600; }
+
+/* Sekcje */
+section { position: relative; padding-block: 88px; border-top: 1.5px solid var(--rule); }
+.label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.label::before { content: ""; width: 14px; height: 14px; background: var(--sw); }
+.sec-title { font-size: var(--s-2); font-weight: 820; font-variation-settings: "wdth" 118; line-height: 1.05; letter-spacing: -0.02em; max-width: 18em; }
+.sec-intro { margin-top: 16px; color: var(--muted); max-width: 40em; }
+
+/* Wdrożenia */
+.jobs { list-style: none; margin: 56px 0 0; padding: 0; display: grid; gap: 0; }
+.job { display: grid; grid-template-columns: minmax(0, 23rem) minmax(0, 1fr); gap: 16px 56px; padding-block: 40px; border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); }
+.fig { font-family: var(--font-display); font-size: var(--s-3); font-weight: 850; font-variation-settings: "wdth" 115; line-height: 0.95; letter-spacing: -0.02em; white-space: nowrap; }
+.fig { justify-items: start; padding-bottom: 0.16em; background: linear-gradient(var(--pl), var(--pl)) left bottom / 1.4em 0.13em no-repeat; transition: background-size .5s cubic-bezier(.2,.8,.2,1); }
+.fig .p { display: none; }
+.ready .job.in .fig { background-size: 2.6em 0.13em; }
+.job:hover .fig { background-size: 3.4em 0.13em; }
+.fig-note { margin-top: 16px; max-width: 19rem; font-size: 1.02rem; font-weight: 500; line-height: 1.45; color: var(--ink); }
+.job h3 { font-size: 1.45rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+.job .sector { color: var(--muted); margin-bottom: 8px; }
+.job p.desc { margin-top: 10px; max-width: 40em; }
+.stack { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.stack span::before { content: "+ "; color: var(--pl); font-weight: 600; }
+
+/* Teraz */
+.now { margin-top: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); }
+.now-item { position: relative; padding: 32px 28px 30px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--paper); }
+.now-item .sector { color: var(--muted); }
+.now-item h3 { margin-top: 8px; font-size: 1.4rem; font-weight: 700; line-height: 1.2; padding-right: 0; }
+.now-item p.desc { margin-top: 10px; }
+.stamp { display: inline-block; margin-top: 20px; padding: 7px 12px; border: 2px solid var(--m); color: var(--m); font-family: var(--font-data); font-size: var(--s--1); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; transform: rotate(-1.6deg); max-width: 100%; }
+.now-item:nth-child(2) .stamp { transform: rotate(1.2deg); }
+.now-item:nth-child(3) .stamp { transform: rotate(-0.8deg); }
+.now-item .stack { margin-top: 14px; }
+
+/* Droga */
+.road { margin-top: 48px; list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; max-width: 820px; }
+.road li { position: relative; padding: 34px 24px 0 0; }
+.road li::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 2px; background: var(--ink); }
+.road li::after { content: ""; position: absolute; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper) radial-gradient(circle, var(--ink) 2px, transparent 2.5px); }
+.road li:last-child::after { background: var(--spot); border-color: var(--ink); }
+.road .when { color: var(--muted); }
+.road h3 { margin-top: 6px; font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
+.road p { margin-top: 8px; font-size: 0.97rem; color: var(--muted); }
+.how { margin-top: 72px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 40px; }
+.how h3 { font-size: 1.1rem; font-weight: 700; }
+.how p { margin-top: 8px; }
+
+/* Umiejętności */
+.skills { margin: 48px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; }
+.skills div { display: grid; grid-template-columns: 14px 11rem minmax(0, 1fr); gap: 14px; align-items: baseline; padding-block: 14px; border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); }
+.skills div::before { content: ""; width: 14px; height: 14px; background: var(--sw); transform: translateY(2px); }
+.skills dt { font-weight: 650; }
+.skills dd { margin: 0; color: var(--muted); min-width: 0; }
+
+/* Kontakt: pełna płyta K */
+.contact { margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); background: var(--ink); color: var(--paper); border-top: 0; position: relative; z-index: 1; }
+.contact-in { max-width: 1180px; margin: 0 auto; }
+.contact .label::before { background: var(--band-accent); }
+.contact .sec-intro { color: color-mix(in srgb, var(--paper) 72%, var(--ink)); }
+.mail { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.mail a { font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 110; font-size: clamp(1.3rem, 4.6vw, 3.4rem); line-height: 1; letter-spacing: -0.02em; text-decoration: underline; text-decoration-color: var(--band-accent); text-decoration-thickness: 0.09em; text-underline-offset: 0.12em; overflow-wrap: anywhere; }
+.copy { font: 600 var(--s--1) var(--font-data); text-transform: uppercase; letter-spacing: 0.04em; color: var(--paper); background: transparent; border: 2px solid var(--paper); min-height: 44px; padding: 0 16px; cursor: pointer; }
+.copy:hover { background: var(--paper); color: var(--ink); }
+.links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 1.1rem; }
+.links a { text-decoration-color: var(--band-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+.slug { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 18px 40px; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 48px 64px; }
+  .hero h1 { font-size: 15vw; }
+  .job { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-block: 32px; }
+  .now { grid-template-columns: minmax(0, 1fr); }
+  .road { grid-template-columns: minmax(0, 1fr); }
+  .road li { padding: 0 0 30px 40px; }
+  .road li::before { top: 0; bottom: 0; left: 9px; right: auto; width: 2px; height: auto; }
+  .road li:last-child::before { display: none; }
+  .how { grid-template-columns: minmax(0, 1fr); }
+  .skills { grid-template-columns: minmax(0, 1fr); }
+  .skills div { grid-template-columns: 14px minmax(0, 1fr); }
+  .skills dd { grid-column: 2; }
+  section { padding-block: 64px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .plates .p, .btn { transition: none; }
+}
+
+html, body { margin: 0; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+</style>
+</head>
+<body>
+
+<canvas id="raster" aria-hidden="true"></canvas>
+
+<header class="top">
+  <div class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="top-in">
+    <a class="brand" href="#start">
+      <svg class="logo" viewBox="0 0 56 48" aria-hidden="true"><path class="lg-flow" d="M8 31C8 21.5 14 16.5 23 16.5H34" fill="none" stroke-width="7"/><circle class="lg-flow" cx="34" cy="30" r="13.5" fill="none" stroke-width="7"/><path class="lg-ink" d="M8 44.5V16.5M47.5 2.5V44.5" fill="none" stroke-width="7"/></svg>
+      <span>Robert Dębicki</span>
+    </a>
+    <nav aria-label="Sekcje">
+      <a href="#wdrozenia" style="--sw: var(--c)">Wdrożenia</a>
+      <a href="#teraz" style="--sw: var(--m)">Projekty</a>
+      <a href="#droga" style="--sw: var(--y)">Doświadczenie</a>
+      <a href="#kontakt" style="--sw: var(--ink)">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<div class="sheet">
+  <svg class="crop tl" viewBox="0 0 28 28" aria-hidden="true"><path d="M0 20h14M20 0v14" stroke="currentColor" stroke-width="1"/></svg>
+  <svg class="crop tr" viewBox="0 0 28 28" aria-hidden="true"><path d="M0 20h14M20 0v14" stroke="currentColor" stroke-width="1"/></svg>
+
+  <main>
+    <div class="hero" id="start">
+      <div>
+        <h1 class="plates" aria-label="Robert Dębicki">
+          <span class="p p-c" aria-hidden="true">Robert<br>Dębicki</span>
+          <span class="p p-m" aria-hidden="true">Robert<br>Dębicki</span>
+          <span class="p p-y" aria-hidden="true">Robert<br>Dębicki</span>
+          <span class="p-k" aria-hidden="true">Robert<br>Dębicki</span>
+        </h1>
+        <p class="role">Automation Developer <b>/ AI</b></p>
+        <p class="lead">Automatyzuję procesy w firmach i buduję aplikacje, z których na co dzień korzystają ich zespoły.</p>
+        <p>Scenariusze stawiam w n8n i Make.com. Strony i aplikacje tworzę z Claude Code, od WordPressa po aplikacje pisane od zera. Agentów AI wdrażam bezpośrednio w zespołach klientów.</p>
+        <div class="cta">
+          <a class="btn solid" href="#wdrozenia">Zobacz wdrożenia</a>
+          <a class="btn" href="#kontakt">Napisz do mnie</a>
+        </div>
+      </div>
+      <aside class="ticket" aria-label="Karta zlecenia">
+        <header><span class="mono">Karta zlecenia</span><span class="mono">10.2026</span></header>
+        <dl>
+          <div><dt>Szukam</dt><dd>Automation Developer, AI Engineer</dd></div>
+          <div><dt>Miejsce</dt><dd>Wrocław albo zdalnie</dd></div>
+          <div><dt>Automatyzacje</dt><dd>n8n, Make.com, integracje z CRM</dd></div>
+          <div><dt>AI</dt><dd>Claude Code, agenci AI, modele językowe w procesach</dd></div>
+          <div><dt>Kod</dt><dd>Python, FastAPI, Next.js, TypeScript</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <section id="wdrozenia" style="--sw: var(--c)" aria-labelledby="wdrozenia-h">
+      <p class="label mono">Wdrożenia</p>
+      <h2 class="sec-title" id="wdrozenia-h">Sześć systemów, które działają u klientów</h2>
+      <p class="sec-intro">Liczby pochodzą od klientów albo z systemów, które zbudowałem.</p>
+      <ul class="jobs">
+        <li class="job" style="--pl: var(--c)">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M3 13h27v20H3z"/><path d="M30 19h9l6 7v7H30"/><circle cx="11" cy="37" r="4"/><circle cx="37" cy="37" r="4"/><path class="acc" d="M16.5 17v9"/><circle class="accf" cx="16.5" cy="28" r="3.2"/></svg>
+            <div class="fig plates"><span class="p" aria-hidden="true">150+</span><span class="p-k">150+</span></div>
+            <p class="fig-note">pojazdów pod nadzorem 20 dyspozytorów</p>
+          </div>
+          <div>
+            <p class="sector mono">Transport chłodniczy</p>
+            <h3>Monitoring temperatur w transporcie</h3>
+            <p class="desc">Dyspozytor widzi na dashboardzie swoje pojazdy z odczytem temperatury w naczepach odświeżanym co minutę i informacją, czy kierowca jedzie zgodnie z harmonogramem. Gdy temperatura zbliża się do granicy, powiadomienie dostaje dyspozytor i kierowca. Logikę aplikacji przeniosłem do n8n na AWS, żeby nie przekraczać limitów workflow.</p>
+            <p class="stack mono"><span>n8n</span><span>AWS</span></p>
+          </div>
+        </li>
+        <li class="job" style="--pl: var(--m)">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="33" rx="2"/><path d="M5 18h38M15 5v8M33 5v8"/><path class="acc" d="M15 30l6 6 12-12"/></svg>
+            <div class="fig plates"><span class="p" aria-hidden="true">60 h</span><span class="p-k">60 h</span></div>
+            <p class="fig-note">mniej ręcznej pracy miesięcznie, według właściciela</p>
+          </div>
+          <div>
+            <p class="sector mono">Szkolenia, branża beauty</p>
+            <h3>Platforma sprzedaży i obsługi szkoleń</h3>
+            <p class="desc">Firma prowadziła zapisy i grafiki w Airtable, a każda zmiana oznaczała poprawki w kilku miejscach. Zbudowałem aplikację dla 12 trenerek z różnych województw: każda widzi swój kalendarz i wyniki, a administrator zarządza szkoleniami całej firmy. Dołożyłem stronę sprzedażową z wyborem terminu i płatnością online, połączoną z SellAsist.</p>
+            <p class="stack mono"><span>Airtable</span><span>SellAsist</span></p>
+          </div>
+        </li>
+        <li class="job" style="--pl: var(--y)">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="20" r="5"/><path d="M15 35c0-5 4-8.5 9-8.5s9 3.5 9 8.5"/><path class="acc" d="M41 18A18 18 0 1 0 42 30"/><path class="acc" d="M42 10v8h-8"/></svg>
+            <div class="fig plates"><span class="p" aria-hidden="true">+28</span><span class="p-k">+28</span></div>
+            <p class="fig-note">klientów ponad ręczną listę, z historią zamówień 174 717 zł</p>
+          </div>
+          <div>
+            <p class="sector mono">Producent mebli dla gastronomii</p>
+            <h3>Reaktywacja uśpionych klientów B2B</h3>
+            <p class="desc">Właściciel układał listę klientów do odzyskania ręcznie. Mój proces dzieli 230 klientów według czasu od ostatniego zamówienia i wartości historii, a model językowy włącza tylko przy 29 z nich. Najważniejszych klientów zostawia do telefonu właścicielowi, który akceptuje każdą wiadomość przed wysyłką. Segmentacja potwierdziła wszystkie 111 kontaktów z ręcznej listy.</p>
+            <p class="stack mono"><span>Python</span><span>SQL</span><span>Supabase</span><span>model językowy</span></p>
+          </div>
+        </li>
+        <li class="job" style="--pl: var(--c)">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8h6l3 8-4.5 3a21 21 0 0 0 10.5 10.5l3-4.5 8 3v6a4 4 0 0 1-4 4C19.5 38 10 28.5 10 12a4 4 0 0 1 4-4z"/><path class="acc" d="M30 7a11 11 0 0 1 11 11M30 13.5a4.5 4.5 0 0 1 4.5 4.5"/></svg>
+            <div class="fig plates"><span class="p" aria-hidden="true">2 min</span><span class="p-k">2 min</span></div>
+            <p class="fig-note">od formularza do telefonu, 15 rozmów dziennie</p>
+          </div>
+          <div>
+            <p class="sector mono">Obsługa zapytań ze strony</p>
+            <h3>Voice bot kwalifikujący leady</h3>
+            <p class="desc">Bot dzwoni do osoby, która wypełniła formularz kontaktowy, i zadaje pytania kwalifikujące. Z rozmowy robi notatkę dla handlowca z potrzebą i budżetem, a n8n zapisuje ją przy właściwej szansie sprzedaży w Pipedrive. Przerwane rozmowy i prośby o kontakt w innym terminie też trafiają do handlowca.</p>
+            <p class="stack mono"><span>ElevenLabs</span><span>Twilio</span><span>n8n</span><span>Pipedrive</span></p>
+          </div>
+        </li>
+        <li class="job" style="--pl: var(--m)">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 4h18l8 8v32H12z"/><path d="M30 4v8h8M17 16h8M17 31h14M17 37h10"/><path class="acc" d="M6 24h36"/><path class="acc" d="M6 18v-3h3M42 18v-3h-3M6 30v3h3M42 30v3h-3"/></svg>
+            <div class="fig plates"><span class="p" aria-hidden="true">setki</span><span class="p-k">setki</span></div>
+            <p class="fig-note">wniosków, dokumenty pobierane codziennie</p>
+          </div>
+          <div>
+            <p class="sector mono">Dofinansowania dla gmin</p>
+            <h3>Automatyzacja obiegu wniosków o dofinansowanie</h3>
+            <p class="desc">Zespół wyciągał dane z wniosków ręcznie i nie miał wspólnej bazy. Proces pobiera dokumenty z poczty i SharePointa, odczytuje je przez OCR z modelem językowym, wyciąga kwoty, terminy i dane kontrahentów, zapisuje je w Airtable i przypisuje opiekuna. Gdy odczyt jest niepewny, system prosi wskazaną osobę o potwierdzenie.</p>
+            <p class="stack mono"><span>n8n</span><span>OCR</span><span>Gemini</span><span>Airtable</span><span>SharePoint</span></p>
+          </div>
+        </li>
+        <li class="job" style="--pl: var(--y)">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 42h36"/><path d="M9 34v8M19 28v14"/><path class="acc" d="M29 21v21M39 12v30"/><path d="M8 24l10-7 9 4 13-12"/><path d="M33 9h7v7"/></svg>
+            <div class="fig plates"><span class="p" aria-hidden="true">1 mies.</span><span class="p-k">1 mies.</span></div>
+            <p class="fig-note">do kampanii prowadzonych bez agencji</p>
+          </div>
+          <div>
+            <p class="sector mono">Kampanie Google Ads</p>
+            <h3>Claude Code do prowadzenia kampanii i analityki</h3>
+            <p class="desc">Klient chciał prowadzić reklamy sam, bez agencji. Skonfigurowałem Claude Code z dostępem do Google Ads, GA4 i Search Console, tak żeby mógł tworzyć kampanie, analizować wyniki i znajdować frazy, które sprzedają. Po miesiącu prowadził kampanie samodzielnie i odnotował wzrost sprzedaży.</p>
+            <p class="stack mono"><span>Claude Code</span><span>Google Ads</span><span>GA4</span><span>Search Console</span></p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="teraz" style="--sw: var(--m)" aria-labelledby="teraz-h">
+      <p class="label mono">Projekty</p>
+      <h2 class="sec-title" id="teraz-h">Ostatnie projekty</h2>
+      <p class="sec-intro">Na pieczątce piszę, na jakim etapie jest każdy z nich. Stan na październik 2026.</p>
+      <div class="now">
+        <article class="now-item" style="--pl: var(--m)">
+          <p class="sector mono">Producent mebli dla gastronomii</p>
+          <h3>Strony i reklama producenta mebli</h3>
+          <p class="desc">Norweską stronę zbudowałem od zera, bo poprzednia celowała w słowo „losje”, które po norwesku oznacza lożę wolnomularską. Polską stronę przeniosłem z WordPressa do Astro z tym samym wyglądem i 89 adresami. Do tłumaczenia wpisów na pięć języków zbudowałem w Claude Code narzędzie, które sprawdza typografię każdego języka.</p>
+          <p class="stack mono"><span>Astro</span><span>TypeScript</span><span>Claude Code</span><span>Google Ads</span></p>
+          <p class="stamp">Strony działają na produkcji</p>
+        </article>
+        <article class="now-item" style="--pl: var(--m)">
+          <p class="sector mono">Pracownia grawerska</p>
+          <h3>Strona artystki z własnym panelem</h3>
+          <p class="desc">Artystka chciała sama dodawać prace i wpisy, więc przeniosłem jej stronę z WordPressa na Next.js z panelem Payload CMS. Zachowałem wygląd i działające adresy, a wersję angielską i metadane dla wyszukiwarek poprawiłem w nowym kodzie.</p>
+          <p class="stack mono"><span>Next.js</span><span>Payload CMS</span><span>GA4</span></p>
+          <p class="stamp">Działa na produkcji</p>
+        </article>
+        <article class="now-item" style="--pl: var(--m)">
+          <p class="sector mono">Biuro rachunkowe</p>
+          <h3>Aplikacja do obiegu rozliczeń</h3>
+          <p class="desc">Biuro chce, żeby rozliczenie zamknięte w programie księgowym trafiało dalej bez drugiego zatwierdzania. Piszę aplikację, która odbiera paczki XML z programu, sprawdza je i pokazuje księgowym statusy oraz wyjątki. Każda księgowa widzi tylko swoich klientów, a ponowiona paczka nie tworzy drugiego zlecenia.</p>
+          <p class="stack mono"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>React</span><span>Docker</span></p>
+          <p class="stamp">Demo na serwerze testowym</p>
+        </article>
+        <article class="now-item" style="--pl: var(--m)">
+          <p class="sector mono">Producent sterowników LED</p>
+          <h3>Strona firmowa ze sklepem B2B</h3>
+          <p class="desc">Buduję stronę i sklep na WooCommerce na serwerze klienta: katalog sterowników, zakup z karty produktu, ceny po rabacie dla firm i konto z historią zamówień. Podłączam program księgowy do pobierania zamówień. Przetestowałem 121 przekierowań ze starych adresów.</p>
+          <p class="stack mono"><span>WordPress</span><span>WooCommerce</span><span>PHP</span><span>REST API</span></p>
+          <p class="stamp">Przed publikacją</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="droga" style="--sw: var(--y)" aria-labelledby="droga-h">
+      <p class="label mono">Doświadczenie</p>
+      <h2 class="sec-title" id="droga-h">Od 2024 automatyzuję procesy w firmach</h2>
+      <ol class="road">
+        <li>
+          <p class="when mono">2024-2026</p>
+          <h3>Automation Developer, NoCodeWork</h3>
+          <p>Wdrażałem Claude Code u klientów, budowałem automatyzacje w n8n i Make.com i pisałem aplikacje z AI.</p>
+        </li>
+        <li>
+          <p class="when mono">od 08.2026</p>
+          <h3>Własna działalność</h3>
+          <p>Automatyzacje, aplikacje i sklepy dla firm z księgowości, produkcji mebli, elektroniki i rzemiosła artystycznego.</p>
+        </li>
+      </ol>
+      <div class="how">
+        <div>
+          <h3>Od procesu do przekazania</h3>
+          <p>Prowadzę wdrożenie od analizy procesu do uruchomienia i przekazania go zespołowi klienta. Scenariusze mają obsługę błędów i ponawianie operacji.</p>
+        </div>
+        <div>
+          <h3>Człowiek przy ryzykownej decyzji</h3>
+          <p>Gdy model językowy może się pomylić, decyzję zostawiam człowiekowi. Opiekun wniosku potwierdza niepewny odczyt, a właściciel akceptuje wiadomość, zanim wyjdzie.</p>
+        </div>
+        <div>
+          <h3>Kod razem z Claude Code</h3>
+          <p>Tak powstają aplikacje, strony i narzędzia wewnętrzne, które buduję dla klientów.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="umiejetnosci" aria-labelledby="umiejetnosci-h">
+      <p class="label mono" style="--sw: var(--spot)">Narzędzia</p>
+      <h2 class="sec-title" id="umiejetnosci-h">Czym pracuję</h2>
+      <dl class="skills">
+        <div style="--sw: var(--c)"><dt>Automatyzacja</dt><dd>n8n, Make.com</dd></div>
+        <div style="--sw: var(--m)"><dt>AI i LLM</dt><dd>Claude Code, Claude API, OpenAI API, Gemini, prompt engineering</dd></div>
+        <div style="--sw: var(--y)"><dt>Rozwój aplikacji</dt><dd>Next.js, React, Node.js, TypeScript, Python (skrypty i API), HTML, CSS</dd></div>
+        <div style="--sw: var(--ink)"><dt>Strony i sklepy</dt><dd>WordPress, WooCommerce, Astro</dd></div>
+        <div style="--sw: var(--c)"><dt>Bazy danych</dt><dd>SQL, Supabase (PostgreSQL), Airtable</dd></div>
+        <div style="--sw: var(--m)"><dt>CRM i integracje</dt><dd>HubSpot, Pipedrive, SellAsist, REST API, Webhooks</dd></div>
+        <div style="--sw: var(--y)"><dt>Marketing i analityka</dt><dd>Google Ads, GA4, Google Search Console</dd></div>
+        <div style="--sw: var(--ink)"><dt>Hosting i Git</dt><dd>Git, Docker, Coolify (aplikacje), AWS (n8n)</dd></div>
+      </dl>
+    </section>
+  </main>
+</div>
+
+<section id="kontakt" class="contact" style="--sw: var(--paper)" aria-labelledby="kontakt-h">
+  <div class="contact-in">
+    <p class="label mono">Kontakt</p>
+    <h2 class="sec-title" id="kontakt-h">Szukam stałej pracy jako Automation Developer albo AI Engineer</h2>
+    <p class="sec-intro">Wrocław albo zdalnie. Najszybciej odpowiadam mailowo.</p>
+    <div class="mail">
+      <a href="mailto:robert.debicki7@gmail.com" id="email">robert.debicki7@gmail.com</a>
+      <button type="button" class="copy" id="copy-email">Kopiuj adres</button>
+    </div>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/robert-d%C4%99bicki/" target="_blank" rel="noopener">LinkedIn: robert-dębicki</a>
+    </div>
+  </div>
+</section>
+
+<footer class="slug mono">
+  <span>robert-debicki · arkusz 1 z 1</span>
+  <span>czarny + 3 kolory dodatkowe · raster 15° / 75°</span>
+  <span>© 2026 Robert Dębicki</span>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Płyty wskakują w pasery po załadowaniu
+  requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('ready'); }); });
+
+  // Liczby rejestrują się, gdy wchodzą w widok
+  var items = document.querySelectorAll('.job, .now-item');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -15% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Kopiowanie adresu
+  document.getElementById('copy-email').addEventListener('click', function () {
+    var btn = this, el = document.getElementById('email');
+    function done() { btn.textContent = 'Skopiowano'; setTimeout(function () { btn.textContent = 'Kopiuj adres'; }, 1800); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Adres zaznaczony';
+    }
+    try { navigator.clipboard.writeText(el.textContent).then(done, fallback); } catch (e) { fallback(); }
+  });
+
+  // Raster w tle: pomarańcz 15°, żółty 75°, wielkość kropek z wolno płynącego pola i kursora
+  var cv = document.getElementById('raster');
+  var ctx = cv.getContext('2d');
+  if (!ctx) return;
+  var W = 0, H = 0, dpr = 1, step = 16, colors = {}, alpha = 0.2, blend = 'multiply';
+  var mx = -9999, my = -9999, tmx = -9999, tmy = -9999;
+  var screens = [{ a: 15 * Math.PI / 180, key: '--c', ph: 0 }, { a: 75 * Math.PI / 180, key: '--y', ph: 2.1 }];
+
+  function readTheme() {
+    var cs = getComputedStyle(root);
+    colors['--c'] = cs.getPropertyValue('--c').trim();
+    colors['--y'] = cs.getPropertyValue('--y').trim();
+    alpha = parseFloat(cs.getPropertyValue('--raster-alpha')) || 0.2;
+    blend = cs.getPropertyValue('--blend').trim() || 'multiply';
+  }
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    step = W < 640 ? 13 : 16;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    readTheme();
+  }
+  function bias(x) {
+    if (W < 900) return 0.5;
+    var k = Math.min(Math.max((x / W - 0.38) / 0.4, 0), 1);
+    return 0.22 + 0.78 * k * k * (3 - 2 * k);
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = blend === 'screen' ? 'screen' : 'multiply';
+    var fade = Math.max(0.3, 1 - window.scrollY / (H * 0.9));
+    ctx.globalAlpha = (W < 640 ? alpha * 0.7 : alpha) * fade;
+    mx += (tmx - mx) * 0.08; my += (tmy - my) * 0.08;
+    var sy = window.scrollY * 0.12;
+    var diag = Math.ceil(Math.hypot(W, H) / 2) + step;
+    var cx = W / 2, cy = H / 2, R = 190, maxR = step * 0.52;
+    for (var s = 0; s < screens.length; s++) {
+      var sc = screens[s], ca = Math.cos(sc.a), sa = Math.sin(sc.a);
+      ctx.fillStyle = colors[sc.key];
+      ctx.beginPath();
+      for (var u = -diag; u <= diag; u += step) {
+        for (var v = -diag; v <= diag; v += step) {
+          var x = cx + u * ca - v * sa, y = cy + u * sa + v * ca;
+          if (x < -step || x > W + step || y < -step || y > H + step) continue;
+          var wy = y + sy;
+          var f = 0.5 + 0.5 * Math.sin(x * 0.0042 + t * 0.00022 + sc.ph + Math.cos(wy * 0.0031 - t * 0.00017) * 1.7);
+          f = f * f * 0.62 * bias(x);
+          var dx = x - mx, dy = y - my;
+          f += 0.75 * Math.exp(-(dx * dx + dy * dy) / (2 * R * R));
+          if (f < 0.04) continue;
+          var r = maxR * Math.sqrt(Math.min(f, 1));
+          ctx.moveTo(x + r, y);
+          ctx.arc(x, y, r, 0, 6.2832);
+        }
+      }
+      ctx.fill();
+    }
+  }
+  var last = 0, running = true;
+  function loop(t) {
+    if (!running) return;
+    if (t - last > 33) { last = t; draw(t); }
+    requestAnimationFrame(loop);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readTheme);
+  new MutationObserver(readTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  window.addEventListener('pointermove', function (e) { tmx = e.clientX; tmy = e.clientY; }, { passive: true });
+  if (reduce) { draw(0); window.addEventListener('scroll', function () { draw(0); }, { passive: true }); return; }
+  document.addEventListener('visibilitychange', function () {
+    running = !document.hidden;
+    if (running) requestAnimationFrame(loop);
+  });
+  requestAnimationFrame(loop);
+})();
+</script>
+
+</body>
+</html>

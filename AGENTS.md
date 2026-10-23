@@ -1,22 +1,46 @@
-## Development
+# Strona osobista Roberta Dębickiego
 
-When starting the dev server, use background mode:
+## Cel
+Strona dla rekrutera i grafika: Robert dowozi działające systemy u klientów (Automation Developer, AI Engineer). Wygląd 1:1 z makiety `docs/makieta/index.html`. Treść ma być dodawana z panelu `/admin/` (Sveltia CMS), bez otwierania kodu. Repozytorium jest publiczne i ma samo świadczyć o autorze: czysty kod, testy, sensowna historia.
 
+Projekt: `docs/superpowers/specs/2026-10-23-strona-osobista-design.md`. Plan: `docs/superpowers/plans/2026-10-23-strona-osobista.md`.
+
+## Uruchomienie
+```bash
+npm install
+npm run dev            # serwer deweloperski
+npm run build          # statyczny HTML do dist/
+npm test               # Vitest
+npm run sprawdz:sekrety  # skan repo pod kątem kluczy i tokenów (musi dać 0)
 ```
-astro dev --background
-```
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+## Układ plików
+| Ścieżka | Przeznaczenie |
+|---|---|
+| `src/` | Kod strony (Astro) |
+| `skrypty/` | Skrypty pomocnicze, np. `skan-sekretow.ts` |
+| `testy/jednostkowe/` | Testy Vitest |
+| `docs/makieta/index.html` | Źródło prawdy wyglądu |
+| `docs/superpowers/specs/`, `plans/` | Projekt i plan budowy |
+| `CHANGELOG.md` | Stan pracy; wpis przy każdym commicie |
 
-## Documentation
+## Twarde zasady
+Zakazane w treści i wyglądzie (porażka, nawet jeśli technicznie działa):
+- Wygląd jak szablon: siatka kropek, `// komentarze`, zielony neon, Inter, Space Grotesk, karty z poświatą.
+- Kolory NoCodeWork: ciemny fiolet, róż `rgb(253,67,190)`, limonka `#c3f53c`.
+- Low-code, no-code, Bubble.io, Webflow w treści i na liście umiejętności.
+- Drukarnia, DTP, serwis urządzeń chłodniczych.
+- Wzmianka o NDA. Liczba projektów w treści.
+- Nazwy klientów przy wdrożeniach i projektach. Klientów opisujemy branżą.
+- Fakty, których Robert nie podał. Bez zmyślonych metryk.
+- Długie i krótkie myślniki w treści. Tylko zwykły dywiz w zakresach dat.
+- Klucze, tokeny i dane klientów w publicznym repo. Skany referencji nigdy w repo (leżą w R2, w repo tylko adres).
 
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+Ograniczenia globalne planu:
+- Fonty: Anybody (nagłówki, `wdth` 110-125, waga 800-850), Onest (tekst), Spline Sans Mono (etykiety). Paleta: `#ff5a1f`, `#d0201a`, `#ffc400`, `#131412`, papier `#f4f5f1`, tryb ciemny jak w makiecie.
+- Zmiana wyglądu tylko dla kontrastu tekstu (przyciemnienie w ramach tej samej barwy) i z wpisem w CHANGELOG.
+- Polski pod `/`, angielski (en-US) pod `/en/`. Brak `en.md` ukrywa pozycję w EN, nie blokuje wdrożenia.
+- Referencja wymaga `zgoda: true`.
+- `noindex` steruje zmienna `PUBLIC_INDEKSUJ` (domyślnie `false`).
+- Lighthouse mobile co najmniej 95 w czterech kategoriach. Brak przewijania w bok przy 360, 390, 1024, 1440 px.
+- Commit dopiero z wpisem w `CHANGELOG.md`. Push na `main` i wdrożenie tylko za zgodą Roberta w danej wiadomości.
