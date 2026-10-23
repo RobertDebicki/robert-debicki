@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-10-23 19:19, Claude Code
+
+**✅ Zrobione:**
+- CI: Node 24 z `.nvmrc` (setup-node czyta wersję z pliku zamiast `node-version: 22`), engines w `package.json` (`>=22.23.4`). Przyczyna: Node 22.23.3 w Actions poniżej wymagań Astro.
+
+**🚧 W toku / nie wdrożone:**
+- Nic.
+
+**🎯 Następny krok:**
+- Ponowny przebieg Actions.
+
 ## 2026-10-23 18:00, Claude Code
 
 **✅ Zrobione:**
