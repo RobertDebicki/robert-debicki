@@ -1,0 +1,24 @@
+---
+import Strona from '../../layouts/Strona.astro';
+import Otwarcie from '../../components/Otwarcie.astro';
+import Wdrozenia from '../../components/Wdrozenia.astro';
+import Projekty from '../../components/Projekty.astro';
+import Doswiadczenie from '../../components/Doswiadczenie.astro';
+import Narzedzia from '../../components/Narzedzia.astro';
+import Kontakt from '../../components/Kontakt.astro';
+import { maStroneGlownaEn } from '../../lib/pozycje';
+
+// Trasa z parametrem rest zamiast en/index.astro: tylko tak /en/ może nie powstać, gdy brak ustawienia/en.md
+// (getStaticPaths zwraca wtedy pustą listę). Nie blokuje to wdrożenia, strona EN pojawi się z tłumaczeniem.
+export async function getStaticPaths() {
+  return (await maStroneGlownaEn()) ? [{ params: { glowna: undefined } }] : [];
+}
+---
+<Strona jezyk="en" odpowiednik="/" tytul="Robert Dębicki" opis="Robert Dębicki, Automation Developer / AI. Process automation, applications and AI deployments. Wrocław, Poland, or remote.">
+  <Otwarcie jezyk="en" />
+  <Wdrozenia jezyk="en" />
+  <Projekty jezyk="en" />
+  <Doswiadczenie jezyk="en" />
+  <Narzedzia jezyk="en" />
+  <Kontakt jezyk="en" slot="poza-arkuszem" />
+</Strona>

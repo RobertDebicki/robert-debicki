@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026-10-23 16:10, Claude Code
+
+**✅ Zrobione:**
+- Zadanie 6: wersja angielska i routing języków. `src/lib/jezyki.ts`: `etykiety(jezyk)` zwraca prawdziwe angielskie (en-US) teksty interfejsu, słownik jest typowany `Record<Jezyk, Etykiety>`, więc brak klucza w EN to błąd kompilacji (bez cichego powrotu do polskiego). Dodane etykiety przycisku kopiowania, menu i stopki. `widocznaWJezyku` (EN bez `en.md` ukryte, `do-aktualizacji` widoczne) i `adresOdpowiednika` (wpis z tłumaczeniem: strona odpowiednika, bez: lista EN `/en/posts/`; referencje: listy; wdrożenia i projekty: strona główna).
+- `Kontakt.astro` ustawia `data-skopiowano` i `data-zaznaczony` z `etykiety`, więc skrypt `plyty.ts` nie używa już polskich zapasów w EN. `Naglowek` i `Stopka` biorą teksty z `etykiety`.
+- `Strona.astro`: `canonical` na każdej stronie, `hreflang` pl, en i x-default (PL) tylko gdy jest dokładny odpowiednik; osobny prop `przelacznik` dla listy zastępczej bez `hreflang`.
+- `astro.config.mjs`: `site` `https://robert-debicki.robert-debicki7.workers.dev`, `@astrojs/sitemap` z i18n (pl domyślny, en pod `/en/`). Sitemapa zawiera tylko wygenerowane strony, więc pozycje bez `en.md` w niej nie występują.
+- `/en/` to `src/pages/en/[...glowna].astro` (trasa rest zamiast `en/index.astro`), generowana tylko gdy istnieje `ustawienia/en.md`. Do czasu zadania 10 `/en/` nie powstaje, a `/` nie pokazuje przełącznika ani `hreflang`.
+- Testy na fiksturach: `TRESC_BAZA` podmienia katalog treści, `WYJSCIE` katalog wyjściowy (osobny `cacheDir`). `skrypty/serwery-e2e.mjs` buduje zwykłą stronę (port 4399) i build z `testy/fikstury/jezyki/` (port 4400); projekt Playwright `jezyki` testuje drugi. Fikstury: pozycje z `en.md`, bez, ze starym tłumaczeniem, wpisy i ustawienia pl/en.
+- Testy: Vitest 29 PASS, `npm run build` OK, Playwright 27 PASS (w tym 8 testów `jezyki` na fiksturach i test stanu `/en/` na prawdziwej treści).
+
+**🚧 W toku / nie wdrożone:**
+- Strony wpisów i referencji nie istnieją (zadania późniejsze); `adresOdpowiednika` dla nich sprawdzony tylko testem jednostkowym.
+- `<url>` w mapie strony nie ma `xhtml:link` dla stron o różnych adresach PL i EN (`/wpisy/` kontra `/en/posts/`); `hreflang` jest w `<head>`.
+- Prawdziwe `ustawienia/en.md` i `en.md` pozycji w zadaniu 10. Nic nie jest wypchnięte.
+
+**🎯 Następny krok:**
+- Zadanie 7 z planu.
+
 ## 2026-10-23 15:40, Claude Code
 
 **✅ Zrobione:**

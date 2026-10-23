@@ -17,7 +17,7 @@ const e = etykiety(jezyk);
     <p class="sec-intro">{k.wstep}</p>
     <div class="mail">
       <a href={`mailto:${k.email}`} id="email">{k.email}</a>
-      <button type="button" class="copy" id="copy-email">{e.kopiujAdres}</button>
+      <button type="button" class="copy" id="copy-email" data-skopiowano={e.skopiowano} data-zaznaczony={e.adresZaznaczony}>{e.kopiujAdres}</button>
     </div>
     <div class="links">
       <a href={k.linkedinUrl} target="_blank" rel="noopener">{k.linkedinTekst}</a>
