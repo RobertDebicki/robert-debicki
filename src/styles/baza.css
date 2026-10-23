@@ -58,3 +58,4 @@ html, body { margin: 0; }
 :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 .przelacznik { font-family: var(--font-data); font-size: var(--s--1); text-decoration: none; border: 1.5px solid var(--ink); padding: 4px 8px; }
 .przelacznik:hover { background: var(--ink); color: var(--paper); }
+#raster { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
