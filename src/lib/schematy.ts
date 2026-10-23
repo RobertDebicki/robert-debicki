@@ -70,8 +70,42 @@ export const wpisy = z.object({
   ...tlumaczenie,
 });
 
-/** Ustawienia strony: pola zależą od zadań 5 i 7, na razie dowolne. */
-export const ustawienia = z.looseObject({ ...tlumaczenie });
+const naglowekSekcji = z.object({ tytul: z.string(), wstep: z.string() });
+
+/** Ustawienia strony głównej: teksty sekcji, które nie są pozycjami kolekcji. Wszystkie pola wymagane. */
+export const ustawienia = z.object({
+  otwarcie: z.object({
+    imie: z.string(),
+    nazwisko: z.string(),
+    rola: z.string(),
+    rolaWyroznienie: z.string(),
+    lead: z.string(),
+    opis: z.string(),
+  }),
+  karta: z.object({
+    okres: z.string(),
+    wiersze: z.array(z.object({ etykieta: z.string(), wartosc: z.string() })).min(1),
+  }),
+  wdrozenia: naglowekSekcji,
+  projekty: naglowekSekcji,
+  doswiadczenie: z.object({
+    tytul: z.string(),
+    etapy: z.array(z.object({ kiedy: z.string(), stanowisko: z.string(), opis: z.string() })).min(1),
+    zasady: z.array(z.object({ tytul: z.string(), opis: z.string() })).length(3, { error: 'Pole zasady musi mieć dokładnie trzy zasady pracy.' }),
+  }),
+  narzedzia: z.object({
+    tytul: z.string(),
+    wiersze: z.array(z.object({ nazwa: z.string(), wartosc: z.string() })).min(1),
+  }),
+  kontakt: z.object({
+    tytul: z.string(),
+    wstep: z.string(),
+    email: z.email({ error: 'Pole email musi być adresem e-mail.' }),
+    linkedinUrl: z.url({ protocol: /^https$/, error: 'Pole linkedinUrl musi być adresem https.' }),
+    linkedinTekst: z.string(),
+  }),
+  ...tlumaczenie,
+});
 
 export const SCHEMATY = { wdrozenia, projekty, referencje, wpisy, ustawienia } as const;
 export type NazwaKolekcji = keyof typeof SCHEMATY;

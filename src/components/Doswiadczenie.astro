@@ -1,0 +1,33 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const { jezyk } = Astro.props;
+const { doswiadczenie: d } = await ustawienia(jezyk);
+const e = etykiety(jezyk);
+---
+<section id="droga" style="--sw: var(--y)" aria-labelledby="droga-h">
+  <p class="label mono">{e.doswiadczenie}</p>
+  <h2 class="sec-title" id="droga-h">{d.tytul}</h2>
+  <ol class="road">
+    {d.etapy.map((etap) => (
+      <li>
+        <p class="when mono">{etap.kiedy}</p>
+        <h3>{etap.stanowisko}</h3>
+        <p>{etap.opis}</p>
+      </li>
+    ))}
+  </ol>
+  <div class="how">
+    {d.zasady.map((z) => (
+      <div>
+        <h3>{z.tytul}</h3>
+        <p>{z.opis}</p>
+      </div>
+    ))}
+  </div>
+</section>

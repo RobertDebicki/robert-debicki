@@ -1,0 +1,37 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { pozycje, ustawienia } from '../lib/pozycje';
+import Ikona from './Ikona.astro';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const { jezyk } = Astro.props;
+const { wdrozenia: sekcja } = await ustawienia(jezyk);
+const lista = await pozycje('wdrozenia', jezyk);
+const e = etykiety(jezyk);
+const PLYTY = { pomarancz: 'var(--c)', czerwien: 'var(--m)', zolty: 'var(--y)' } as const;
+---
+<section id="wdrozenia" style="--sw: var(--c)" aria-labelledby="wdrozenia-h">
+  <p class="label mono">{e.wdrozenia}</p>
+  <h2 class="sec-title" id="wdrozenia-h">{sekcja.tytul}</h2>
+  <p class="sec-intro">{sekcja.wstep}</p>
+  <ul class="jobs">
+    {lista.map((w) => (
+      <li class="job in" style={`--pl: ${PLYTY[w.plyta]}`}>
+        <div>
+          <Ikona nazwa={w.ikona} />
+          <div class="fig plates"><span class="p" aria-hidden="true">{w.liczba}</span><span class="p-k">{w.liczba}</span></div>
+          <p class="fig-note">{w.podpisLiczby}</p>
+        </div>
+        <div>
+          <p class="sector mono">{w.branza}</p>
+          <h3>{w.tytul}</h3>
+          <p class="desc">{w.opis}</p>
+          <p class="stack mono">{w.stack.map((s) => <span>{s}</span>)}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

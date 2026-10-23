@@ -4,6 +4,7 @@ import '@fontsource-variable/onest';
 import '@fontsource-variable/spline-sans-mono';
 import '../styles/tokeny.css';
 import '../styles/baza.css';
+import '../styles/sekcje.css';
 import Naglowek from '../components/Naglowek.astro';
 import Stopka from '../components/Stopka.astro';
 
@@ -14,10 +15,11 @@ interface Props {
   odpowiednik?: string;
 }
 const { jezyk, tytul, opis, odpowiednik } = Astro.props;
+// <html class="ready">: stan końcowy animacji renderowany statycznie, zadanie 5 przenosi klasę do skryptu.
 const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
 ---
 <!doctype html>
-<html lang={jezyk}>
+<html lang={jezyk} class="ready">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -36,6 +38,7 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
         <slot />
       </main>
     </div>
+    <slot name="poza-arkuszem" />
     <Stopka />
   </body>
 </html>

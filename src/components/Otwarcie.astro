@@ -1,0 +1,29 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+import KartaZlecenia from './KartaZlecenia.astro';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const { jezyk } = Astro.props;
+const { otwarcie: o } = await ustawienia(jezyk);
+const e = etykiety(jezyk);
+const plyty = ['p p-c', 'p p-m', 'p p-y', 'p-k'];
+---
+<div class="hero" id="start">
+  <div>
+    <h1 class="plates" aria-label={`${o.imie} ${o.nazwisko}`}>
+      {plyty.map((klasa) => <span class={klasa} aria-hidden="true">{o.imie}<br />{o.nazwisko}</span>)}
+    </h1>
+    <p class="role">{o.rola} <b>{o.rolaWyroznienie}</b></p>
+    <p class="lead">{o.lead}</p>
+    <p>{o.opis}</p>
+    <div class="cta">
+      <a class="btn solid" href="#wdrozenia">{e.zobaczWdrozenia}</a>
+      <a class="btn" href="#kontakt">{e.napiszDoMnie}</a>
+    </div>
+  </div>
+  <KartaZlecenia jezyk={jezyk} />
+</div>
