@@ -1,9 +1,8 @@
 ---
 import Strona from '../../layouts/Strona.astro';
 import StronaWpisu from '../../components/StronaWpisu.astro';
-import { wpisyWJezyku } from '../../lib/wpisy';
+import { wpisyWJezyku, maListe } from '../../lib/wpisy';
 import { adresOdpowiednika, widocznaWJezyku } from '../../lib/jezyki';
-import { maListe } from '../../lib/wpisy';
 
 export async function getStaticPaths() {
   return (await wpisyWJezyku('pl')).map(({ adres, entry, para }) => ({ params: { adres }, props: { entry, para } }));

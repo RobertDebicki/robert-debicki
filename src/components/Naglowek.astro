@@ -2,6 +2,7 @@
 import Logo from './Logo.astro';
 import type { Jezyk } from '../lib/jezyki';
 import { etykiety } from '../lib/jezyki';
+import { maListe } from '../lib/wpisy';
 
 interface Props {
   jezyk: Jezyk;
@@ -17,6 +18,7 @@ const menu = [
   ['droga', e.doswiadczenie, 'var(--y)'],
   ['kontakt', e.kontakt, 'var(--ink)'],
 ];
+const maWpisy = await maListe(jezyk);
 const drugi = jezyk === 'pl' ? 'en' : 'pl';
 ---
 <header class="top">
@@ -30,6 +32,7 @@ const drugi = jezyk === 'pl' ? 'en' : 'pl';
       {menu.map(([id, nazwa, barwa]) => (
         <a href={`${baza}#${id}`} style={`--sw: ${barwa}`}>{nazwa}</a>
       ))}
+      {maWpisy && <a href={jezyk === 'pl' ? '/wpisy/' : '/en/posts/'} style="--sw: var(--y)">{e.wpisy}</a>}
       {przelacznik && (
         <a class="przelacznik" href={przelacznik} hreflang={drugi} lang={drugi}>{drugi.toUpperCase()}</a>
       )}

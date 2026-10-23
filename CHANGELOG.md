@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-10-23 17:30, Claude Code
+
+**✅ Zrobione:**
+- Poprawki zadania 7: link do listy wpisów w menu nagłówka (`Wpisy` / `Posts`, tylko gdy lista istnieje), ostrzejszy test mapy strony (żaden `<loc>` pod `/en/` nie zawiera `tylko-pl`), scalony import w `wpisy/[adres].astro`. Testy e2e rozszerzone o menu (fikstury) i brak linku (prawdziwa treść).
+
+**🚧 W toku / nie wdrożone:**
+- Nic nie jest wypchnięte.
+
+**🎯 Następny krok:**
+- Zadanie 8 z planu.
+
 ## 2026-10-23 17:00, Claude Code
 
 **✅ Zrobione:**

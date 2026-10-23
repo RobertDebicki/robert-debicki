@@ -69,3 +69,10 @@ for (const szer of [360, 390, 1024, 1440]) {
     }
   });
 }
+
+test('menu ma link do listy wpisów w obu językach', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('header nav a[href="/wpisy/"]')).toHaveText('Wpisy');
+  await page.goto('/en/');
+  await expect(page.locator('header nav a[href="/en/posts/"]')).toHaveText('Posts');
+});
