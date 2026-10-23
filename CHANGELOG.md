@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-10-23 19:30, Claude Code
+
+**✅ Zrobione:**
+- Lighthouse w CI: wydajność jest ostrzeżeniem (`CI=true` ustawia `warn` w wygenerowanym konfigu, próg 0.95 bez zmian), pozostałe kategorie nadal blokują. Lokalnie wszystkie cztery blokują. Podsumowanie w `docs/lighthouse/` zapisuje tryb i oznacza wynik wydajności jako ostrzeżenie. Przyczyna: maszyny Actions dają 76-77, lokalnie 99.
+- `strona.yml`: artefakt Lighthouse zawiera ukryty katalog `.lighthouseci/` (`include-hidden-files: true`).
+- Sprawdzone: `CI=true npm run sprawdz:lighthouse` i wersja lokalna zwracają kod 0, wygenerowane konfigi mają `warn` (CI) i `error` (lokalnie), YAML workflow się parsuje.
+
+**🚧 W toku / nie wdrożone:**
+- Nie wypchnięte. Gałąź `budowa`, scalona do `main` fast-forwardem.
+- Test z wynikiem wydajności poniżej 95 w CI nie był uruchomiony (wszystkie przebiegi dały 99), więc ścieżka "(ostrzeżenie)" w podsumowaniu jest nieprzetestowana.
+
+**🎯 Następny krok:**
+- Ponowny przebieg Actions. Pomiar wydajności na wdrożonej stronie w zadaniu 12.
+
 ## 2026-10-23 19:19, Claude Code
 
 **✅ Zrobione:**

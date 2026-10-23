@@ -54,6 +54,7 @@ jobs:
           path: |
             docs/lighthouse/
             .lighthouseci/
+          include-hidden-files: true
           if-no-files-found: ignore
 
   # WDROŻENIE: zadanie 12. Tu będzie osobne zadanie (needs: kontrola, tylko push na main, po zgodzie Roberta).
