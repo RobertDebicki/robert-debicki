@@ -37,10 +37,9 @@ p { margin: 0; }
 .bar i:nth-child(16) { background: var(--spot); }
 .top-in { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 12px; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-decoration: none; }
-.logo { width: 34px; height: 29px; overflow: visible; }
-.lg-ink { stroke: var(--ink); }
-.lg-flow { stroke: var(--c); }
-.brand:hover .lg-flow { stroke: var(--y); }
+.logo { width: auto; height: 29px; color: var(--ink); }
+.logo .logo-pomarancz { fill: var(--c); }
+.brand:hover .logo .logo-pomarancz { fill: var(--y); }
 .top nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
 .top nav a { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; font-size: 0.92rem; padding-block: 6px; }
 .top nav a::before { content: ""; width: 10px; height: 10px; background: var(--sw); }

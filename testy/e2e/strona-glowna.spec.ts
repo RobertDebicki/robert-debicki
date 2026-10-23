@@ -26,10 +26,35 @@ function cssFontow(): string {
     .join('\n');
 }
 
+/** Podmienia wszystkie wystąpienia; brak trafienia przerywa test (makieta zmieniła się bez nas). */
+function podmien(tekst: string, szukane: RegExp, nowe: string): string {
+  const wzor = new RegExp(szukane, 'g');
+  if (!wzor.test(tekst)) throw new Error(`Makieta: brak fragmentu ${szukane}`);
+  return tekst.replace(wzor, nowe);
+}
+
+/**
+ * Makieta z 23.10 ma stare logo (ligatura "rd") i stary pomarańcz #ff5a1f / #ff6a33. Obie rzeczy zmieniono celowo
+ * (logo od grafika, pomarańcz #EF7F1A z logo), więc w kopii makiety podmieniamy tylko je: token --c, znacznik SVG
+ * logo i reguły CSS logo (wzięte z baza.css strony). Reszta makiety zostaje wzorcem bez zmian.
+ */
+function makietaZNowymLogo(html: string): string {
+  const znak = readFileSync(join(KORZEN, 'src/assets/logo/znak.svg'), 'utf8')
+    .trim()
+    .replace('<svg ', '<svg class="logo" aria-hidden="true" focusable="false" ');
+  const cssLogo = readFileSync(join(KORZEN, 'src/styles/baza.css'), 'utf8')
+    .split('\n')
+    .filter((l) => /^(\.logo|\.brand:hover \.logo)/.test(l))
+    .join('\n');
+  let wynik = podmien(html, /--c: #ff5a1f;|--c: #ff6a33;/, '--c: #EF7F1A;');
+  wynik = podmien(wynik, /<svg class="logo"[\s\S]*?<\/svg>/, znak);
+  wynik = podmien(wynik, /\.logo \{[^\n]*\n\.lg-ink[^\n]*\n\.lg-flow[^\n]*\n\.brand:hover \.lg-flow[^\n]*/, cssLogo);
+  return wynik;
+}
+
 async function podstawMakiete(page: Page) {
-  await page.route(MAKIETA, (r) =>
-    r.fulfill({ contentType: 'text/html; charset=utf-8', body: readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8') }),
-  );
+  const html = makietaZNowymLogo(readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8'));
+  await page.route(MAKIETA, (r) => r.fulfill({ contentType: 'text/html; charset=utf-8', body: html }));
   await page.route('https://fonts.googleapis.com/**', (r) => r.fulfill({ contentType: 'text/css', body: cssFontow() }));
   await page.route('https://fonts.gstatic.com/**', (r) => {
     const sciezka = new URL(r.request().url()).pathname.slice(1);

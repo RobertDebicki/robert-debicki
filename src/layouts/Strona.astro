@@ -38,7 +38,9 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     {!indeksuj && <meta name="robots" content="noindex, nofollow" />}
     <meta name="description" content={opis} />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 64 56'><path d='M8 31C8 21.5 14 16.5 23 16.5H34' fill='none' stroke='%23ff5a1f' stroke-width='7'/><circle cx='34' cy='30' r='13.5' fill='none' stroke='%23ff5a1f' stroke-width='7'/><path d='M8 44.5V16.5M47.5 2.5V44.5' fill='none' stroke='%23131412' stroke-width='7'/></svg>" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={kanoniczny} />
     {odpowiednik && (
       <>

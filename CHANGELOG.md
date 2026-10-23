@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026-10-23 19:40, Claude Code
+
+**✅ Zrobione:**
+- Logo od grafika: źródło w `docs/logo/zrodlo-grafik.svg` (eksport CorelDRAW). Skrypt `skrypty/logo-z-fontu.mjs` zamienia napis z fontów SVG (Favela Regular i Medium, przeglądarki ich nie renderują) na ścieżki z wpisaną transformacją i generuje `src/assets/logo/znak.svg`, `logo-pelne.svg` (kopie w `docs/logo/`) oraz `public/favicon.svg`. viewBox przycięty do treści, czarne części `fill="currentColor"`, belka `class="logo-pomarancz"` z `#EF7F1A`.
+- Nagłówek: znak logo zamiast ligatury "rd" (wysokość 29 px jak wcześniej), link ma nazwę "Robert Dębicki, strona główna" / "Robert Dębicki, home page" (etykieta `stronaGlowna`), SVG `aria-hidden`.
+- Favicony: SVG z trybem ciemnym (czarny staje się biały), `favicon-32.png`, `apple-touch-icon.png` (180 px, białe tło) i `favicon.ico` (zamiast domyślnej ikony Astro) z `skrypty/favicony.mjs` (sharp z zależności Astro, bez nowego wpisu w package.json).
+- Paleta: `--c` z `#ff5a1f` (jasny) i `#ff6a33` (ciemny) na `#EF7F1A` w obu trybach. Pomarańcz nie jest kolorem małego tekstu (tylko kwadraty, belki, cień przycisku, płyta nagłówka h1, która znika). Kontrast `#EF7F1A`: 2,48 na papierze `#f4f5f1` (było 2,85), 7,01 na `#0f100e` (było 6,69). Test axe color-contrast: 0 naruszeń w 6 przebiegach, bez korekt.
+- Test zgodności z makietą: `docs/makieta/index.html` zostaje bez zmian jako zatwierdzony wzorzec, a test w swojej kopii podmienia tylko celowe zmiany: token `--c`, SVG logo (z `znak.svg`) i reguły CSS logo (z `baza.css`). Brak któregoś fragmentu w makiecie przerywa test. Próg 2% bez zmian.
+- Testy: `testy/jednostkowe/logo.test.ts` (pliki logo czyste, currentColor, pomarańcz, brak starego pomarańczu w `src/`), `testy/e2e/logo.spec.ts` (znak w nagłówku, nazwa dostępna, wysokość, favicony 200 z właściwym typem).
+- Sprawdzone: Vitest 76 PASS, build OK, Playwright 73 PASS, `sprawdz:tresc` 0, `sprawdz:sekrety` 0, Lighthouse `/` i `/en/`: 99/100/100/100.
+
+**🚧 W toku / nie wdrożone:**
+- Nie wypchnięte. Gałąź `budowa`, scalona do `main` fast-forwardem.
+- Pełne logo z napisem (`logo-pelne.svg`) nie jest jeszcze nigdzie użyte na stronie.
+
+**🎯 Następny krok:**
+- Akceptacja wyglądu nagłówka i favicony przez Roberta.
+
 ## 2026-10-23 19:30, Claude Code
 
 **✅ Zrobione:**

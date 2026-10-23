@@ -35,7 +35,7 @@ Zakazane w treści i wyglądzie (porażka, nawet jeśli technicznie działa):
 - Klucze, tokeny i dane klientów w publicznym repo. Skany referencji nigdy w repo (leżą w R2, w repo tylko adres).
 
 Ograniczenia globalne planu:
-- Fonty: Anybody (nagłówki, `wdth` 110-125, waga 800-850), Onest (tekst), Spline Sans Mono (etykiety). Paleta: `#ff5a1f`, `#d0201a`, `#ffc400`, `#131412`, papier `#f4f5f1`, tryb ciemny jak w makiecie.
+- Fonty: Anybody (nagłówki, `wdth` 110-125, waga 800-850), Onest (tekst), Spline Sans Mono (etykiety). Paleta: pomarańcz `#EF7F1A` z logo (od 23.10, wcześniej `#ff5a1f`; ten sam w trybie ciemnym), `#d0201a`, `#ffc400`, `#131412`, papier `#f4f5f1`, reszta trybu ciemnego jak w makiecie. Logo: `docs/logo/` (źródło od grafika `zrodlo-grafik.svg`), pliki w `src/assets/logo/` i favicony generują `node skrypty/logo-z-fontu.mjs` oraz `node skrypty/favicony.mjs` (sharp z zależności Astro). Nie edytować SVG logo ręcznie.
 - Zmiana wyglądu tylko dla kontrastu tekstu (przyciemnienie w ramach tej samej barwy) i z wpisem w CHANGELOG.
 - Polski pod `/`, angielski (en-US) pod `/en/`. Brak `en.md` ukrywa pozycję w EN, nie blokuje wdrożenia.
 - Referencja wymaga `zgoda: true`.

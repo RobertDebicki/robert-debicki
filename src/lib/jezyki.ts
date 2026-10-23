@@ -17,6 +17,8 @@ export interface Etykiety {
   /** Tekst przycisku, gdy kopiowanie nie jest dostępne i adres został tylko zaznaczony. */
   adresZaznaczony: string;
   menuSekcje: string;
+  /** Druga część nazwy dostępnej linku z logo, po imieniu i nazwisku. */
+  stronaGlowna: string;
   stopkaArkusz: string;
   stopkaFarby: string;
   wpisy: string;
@@ -46,6 +48,7 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     skopiowano: 'Skopiowano',
     adresZaznaczony: 'Adres zaznaczony',
     menuSekcje: 'Sekcje',
+    stronaGlowna: 'strona główna',
     stopkaArkusz: 'arkusz 1 z 1',
     stopkaFarby: 'czarny + 3 kolory dodatkowe · raster 15° / 75°',
     wpisy: 'Wpisy',
@@ -71,6 +74,7 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     skopiowano: 'Copied',
     adresZaznaczony: 'Address selected',
     menuSekcje: 'Sections',
+    stronaGlowna: 'home page',
     stopkaArkusz: 'sheet 1 of 1',
     stopkaFarby: 'black + 3 spot colors · screen 15° / 75°',
     wpisy: 'Posts',
