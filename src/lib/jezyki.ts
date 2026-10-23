@@ -22,6 +22,13 @@ export interface Etykiety {
   wpisy: string;
   wszystkieWpisy: string;
   brakWpisow: string;
+  referencje: string;
+  wszystkieReferencje: string;
+  brakReferencji: string;
+  otworzSkan: string;
+  otworzSkanPdf: string;
+  /** Początek tekstu alternatywnego skanu, po nim imię i nazwisko osoby. */
+  altSkanu: string;
 }
 
 // Typ Record<Jezyk, Etykiety> sprawia, że brak klucza w którymkolwiek języku jest błędem kompilacji.
@@ -44,6 +51,12 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     wpisy: 'Wpisy',
     wszystkieWpisy: 'Wszystkie wpisy',
     brakWpisow: 'Brak wpisów w tym języku.',
+    referencje: 'Referencje',
+    wszystkieReferencje: 'Wszystkie referencje',
+    brakReferencji: 'Brak referencji w tym języku.',
+    otworzSkan: 'Otwórz pełny skan referencji',
+    otworzSkanPdf: 'Otwórz skan referencji (PDF)',
+    altSkanu: 'Skan listu referencyjnego od',
   },
   en: {
     wdrozenia: 'Deployments',
@@ -63,6 +76,12 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     wpisy: 'Posts',
     wszystkieWpisy: 'All posts',
     brakWpisow: 'No posts in English yet.',
+    referencje: 'References',
+    wszystkieReferencje: 'All references',
+    brakReferencji: 'No references in English yet.',
+    otworzSkan: 'Open the full reference scan',
+    otworzSkanPdf: 'Open the reference scan (PDF)',
+    altSkanu: 'Scan of a reference letter from',
   },
 };
 

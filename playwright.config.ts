@@ -9,8 +9,8 @@ export default defineConfig({
   reporter: 'list',
   projects: [
     // Prawdziwa treść z src/content. Testy języków (jezyki.spec.ts) idą na build z fiksturami.
-    { name: 'chromium', testIgnore: /(jezyki|wpisy)\.spec\.ts/, use: { ...devices['Desktop Chrome'], baseURL: `http://localhost:${PORT}` } },
-    { name: 'jezyki', testMatch: /(jezyki|wpisy)\.spec\.ts/, use: { ...devices['Desktop Chrome'], baseURL: `http://localhost:${PORT_FIKSTURY}` } },
+    { name: 'chromium', testIgnore: /(jezyki|wpisy|referencje)\.spec\.ts/, use: { ...devices['Desktop Chrome'], baseURL: `http://localhost:${PORT}` } },
+    { name: 'jezyki', testMatch: /(jezyki|wpisy|referencje)\.spec\.ts/, use: { ...devices['Desktop Chrome'], baseURL: `http://localhost:${PORT_FIKSTURY}` } },
   ],
   webServer: {
     command: 'node skrypty/serwery-e2e.mjs',

@@ -1,0 +1,49 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { referencjeWJezyku, maListeReferencji, czyPdf } from '../lib/referencje';
+import { dataIso, dataCzytelna } from '../lib/wpisy';
+
+interface Props {
+  jezyk: Jezyk;
+  /** Strona z pełną listą (h1, bez limitu). Na stronie głównej: trzy najnowsze i link do listy. */
+  lista?: boolean;
+}
+const { jezyk, lista = false } = Astro.props;
+const e = etykiety(jezyk);
+const adresListy = jezyk === 'pl' ? '/referencje/' : '/en/references/';
+const wszystkie = await referencjeWJezyku(jezyk);
+const widoczne = lista ? wszystkie : wszystkie.slice(0, 3);
+const zLista = await maListeReferencji(jezyk);
+const Naglowek = lista ? 'h1' : 'h2';
+---
+{(lista || widoczne.length > 0) && (
+  <section id="referencje" style="--sw: var(--m)" aria-labelledby="referencje-h">
+    <p class="label mono">{e.referencje}</p>
+    <Naglowek class="sec-title" id="referencje-h">{e.referencje}</Naglowek>
+    {widoczne.length === 0 && <p class="sec-intro">{e.brakReferencji}</p>}
+    <div class="referencje-lista">
+      {widoczne.map(({ entry }) => {
+        const d = entry.data;
+        const pdf = czyPdf(d.skanUrl);
+        return (
+          <article class="referencja">
+            <blockquote>{d.cytat}</blockquote>
+            <p class="referencja-autor">
+              <strong>{d.osoba}</strong>, {d.funkcja}, {d.firma}
+            </p>
+            <time class="mono" datetime={dataIso(d.data)}>{dataCzytelna(d.data, jezyk)}</time>
+            {pdf ? (
+              <a class="referencja-skan-link" href={d.skanUrl} target="_blank" rel="noopener noreferrer">{e.otworzSkanPdf}</a>
+            ) : (
+              <a class="referencja-skan" href={d.skanUrl} target="_blank" rel="noopener noreferrer" aria-label={`${e.otworzSkan}: ${d.osoba}`}>
+                <img src={d.skanUrl} alt={`${e.altSkanu} ${d.osoba}`} width="794" height="1123" loading="lazy" decoding="async" />
+              </a>
+            )}
+          </article>
+        );
+      })}
+    </div>
+    {!lista && zLista && <p class="wpisy-wszystkie"><a href={adresListy}>{e.wszystkieReferencje}</a></p>}
+  </section>
+)}

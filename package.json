@@ -12,6 +12,7 @@
     "astro": "astro",
     "test": "vitest run",
     "sprawdz:sekrety": "tsx skrypty/skan-sekretow.ts .",
+    "sprawdz:skany": "tsx skrypty/sprawdz-skany.ts .",
     "test:e2e": "playwright test"
   },
   "dependencies": {
