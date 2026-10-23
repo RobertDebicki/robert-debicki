@@ -1,0 +1,15 @@
+---
+import Strona from '../../layouts/Strona.astro';
+import Referencje from '../../components/Referencje.astro';
+import { referencjeWJezyku, maListeReferencji } from '../../lib/referencje';
+
+// Trasa rest zamiast index.astro: bez referencji strona nie powstaje (getStaticPaths zwraca pustą tablicę).
+export async function getStaticPaths() {
+  return (await maListeReferencji('pl')) ? [{ params: { lista: undefined } }] : [];
+}
+const maEn = (await referencjeWJezyku('en')).length > 0;
+const maListeEn = await maListeReferencji('en');
+---
+<Strona jezyk="pl" tytul="Referencje | Robert Dębicki" opis="Referencje od klientów Roberta Dębickiego: cytaty i skany listów referencyjnych." odpowiednik={maEn ? '/en/references/' : undefined} przelacznik={maListeEn ? '/en/references/' : undefined}>
+  <Referencje jezyk="pl" lista />
+</Strona>

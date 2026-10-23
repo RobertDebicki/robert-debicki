@@ -3,6 +3,7 @@ import Logo from './Logo.astro';
 import type { Jezyk } from '../lib/jezyki';
 import { etykiety } from '../lib/jezyki';
 import { maListe } from '../lib/wpisy';
+import { maListeReferencji } from '../lib/referencje';
 
 interface Props {
   jezyk: Jezyk;
@@ -19,6 +20,7 @@ const menu = [
   ['kontakt', e.kontakt, 'var(--ink)'],
 ];
 const maWpisy = await maListe(jezyk);
+const maReferencje = await maListeReferencji(jezyk);
 const drugi = jezyk === 'pl' ? 'en' : 'pl';
 ---
 <header class="top">
@@ -33,6 +35,7 @@ const drugi = jezyk === 'pl' ? 'en' : 'pl';
         <a href={`${baza}#${id}`} style={`--sw: ${barwa}`}>{nazwa}</a>
       ))}
       {maWpisy && <a href={jezyk === 'pl' ? '/wpisy/' : '/en/posts/'} style="--sw: var(--y)">{e.wpisy}</a>}
+      {maReferencje && <a href={jezyk === 'pl' ? '/referencje/' : '/en/references/'} style="--sw: var(--m)">{e.referencje}</a>}
       {przelacznik && (
         <a class="przelacznik" href={przelacznik} hreflang={drugi} lang={drugi}>{drugi.toUpperCase()}</a>
       )}

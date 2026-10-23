@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-10-23 18:00, Claude Code
+
+**✅ Zrobione:**
+- Zadanie 8: referencje. `src/lib/referencje.ts` (referencje w języku od najnowszej, `maListeReferencji`, `czyPdf`), komponent `Referencje.astro` (cytat jako `<blockquote>`, osoba, funkcja, firma, `<time>`, skan jako zwykły `<img>` z `loading="lazy"`, `width`/`height` i `aspect-ratio`, `alt` z imieniem i nazwiskiem, w linku `target="_blank"` do `skanUrl`; skan PDF tylko jako link). Referencja nie linkuje do żadnego wdrożenia ani projektu.
+- Strony `/referencje/` i `/en/references/` (trasy rest jak listy wpisów), sekcja `#referencje` na `/` i `/en/` (trzy najnowsze i link do listy), link w menu. Bez referencji nie ma sekcji, strony ani linku. W EN tylko pozycje z `en.md`; przełączniki prowadzą do odpowiednika listy.
+- `npm run sprawdz:skany` (`skrypty/sprawdz-skany.ts`): błąd, gdy w `src/content/referencje/` leży jakikolwiek obraz lub PDF albo w `public/` leży taki plik z `referenc` lub `skan` w nazwie. Pomija `node_modules`, `dist*`, `.git`, `.astro`; nie zgłasza plików tekstowych.
+- Test, że build zatrzymuje się na referencji bez `zgoda: true` (`testy/jednostkowe/build-referencje.test.ts`): prawdziwy `npm run build` kończy się błędem po polsku z nazwą pliku i polem `zgoda`.
+- Fikstury referencji w `testy/fikstury/jezyki/referencje/` (jedna z EN, jedna tylko PL ze skanem PDF). Testy: Vitest 37 PASS, Playwright 50 PASS, `npm run build` OK, `sprawdz:skany` 0.
+
+**🚧 W toku / nie wdrożone:**
+- Brak prawdziwych referencji i skanów w R2. Nic nie jest wypchnięte.
+- Wyświetlanie `podpisZamazany` nie jest zaimplementowane (pole tylko w schemacie).
+
+**🎯 Następny krok:**
+- Zadanie 9 z planu.
+
 ## 2026-10-23 17:30, Claude Code
 
 **✅ Zrobione:**

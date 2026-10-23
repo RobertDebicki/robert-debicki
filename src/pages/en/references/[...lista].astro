@@ -1,0 +1,12 @@
+---
+import Strona from '../../../layouts/Strona.astro';
+import Referencje from '../../../components/Referencje.astro';
+import { maListeReferencji } from '../../../lib/referencje';
+
+export async function getStaticPaths() {
+  return (await maListeReferencji('en')) ? [{ params: { lista: undefined } }] : [];
+}
+---
+<Strona jezyk="en" tytul="References | Robert Dębicki" opis="References from clients of Robert Dębicki: quotes and scans of reference letters." odpowiednik="/referencje/">
+  <Referencje jezyk="en" lista />
+</Strona>
