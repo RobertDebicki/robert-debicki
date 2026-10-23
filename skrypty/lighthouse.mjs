@@ -20,9 +20,12 @@ let blad = 0;
 const wiersze = [];
 for (const p of przebiegi) {
   if (uruchom('npm', ['run', 'build'], p.env) !== 0) process.exit(1);
-  blad ||= uruchom('npx', ['lhci', 'autorun', `--config=${p.konfig}`]);
+  blad = uruchom('npx', ['lhci', 'autorun', `--config=${p.konfig}`]) || blad;
   const dir = `.lighthouseci/${p.katalog}`;
-  const lhr = readdirSync(dir).filter((f) => /\.report\.json$/.test(f)).map((f) => JSON.parse(readFileSync(`${dir}/${f}`, 'utf8')));
+  let pliki = [];
+  try { pliki = readdirSync(dir); } catch { /* brak raportów: wynik poniżej pokaże brak przebiegów */ }
+  const lhr = pliki.filter((f) => /\.report\.json$/.test(f)).map((f) => JSON.parse(readFileSync(`${dir}/${f}`, 'utf8')));
+  if (!lhr.length) { blad = 1; wiersze.push(`| ${p.nazwa} | 0 | brak | brak | brak | brak |`); continue; }
   const mediana = (k) => {
     const w = lhr.map((r) => r.categories[k].score).sort((a, b) => a - b);
     return w[Math.floor(w.length / 2)];

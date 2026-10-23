@@ -5,6 +5,11 @@ import '@fontsource-variable/spline-sans-mono';
 import '../styles/tokeny.css';
 import '../styles/baza.css';
 import '../styles/sekcje.css';
+import anybodyLatin from '@fontsource-variable/anybody/files/anybody-latin-wdth-normal.woff2?url';
+import anybodyLatinExt from '@fontsource-variable/anybody/files/anybody-latin-ext-wdth-normal.woff2?url';
+import onestLatin from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url';
+import onestLatinExt from '@fontsource-variable/onest/files/onest-latin-ext-wght-normal.woff2?url';
+import monoLatin from '@fontsource-variable/spline-sans-mono/files/spline-sans-mono-latin-wght-normal.woff2?url';
 import Naglowek from '../components/Naglowek.astro';
 import Stopka from '../components/Stopka.astro';
 import Raster from '../components/Raster.astro';
@@ -18,6 +23,8 @@ interface Props {
   /** Cel przełącznika języka, gdy odpowiednika nie ma, a jest lista zastępcza (bez `hreflang`). */
   przelacznik?: string;
 }
+// Fonty z pierwszego ekranu ładowane równolegle z HTML, a nie dopiero po odczytaniu CSS.
+const fontyKrytyczne = [anybodyLatin, anybodyLatinExt, onestLatin, onestLatinExt, monoLatin];
 const { jezyk, tytul, opis, odpowiednik, przelacznik = odpowiednik } = Astro.props;
 const kanoniczny = new URL(Astro.url.pathname, Astro.site).href;
 const adres = (sciezka: string) => new URL(sciezka, Astro.site).href;
@@ -41,6 +48,7 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
       </>
     )}
     <meta name="generator" content={Astro.generator} />
+    {fontyKrytyczne.map((f) => <link rel="preload" as="font" type="font/woff2" href={f} crossorigin />)}
     <title>{tytul}</title>
     <noscript><style>.plates .p { display: none; } .job .fig { background-size: 2.6em 0.13em; }</style></noscript>
   </head>
