@@ -1,0 +1,18 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const { jezyk } = Astro.props;
+const { karta } = await ustawienia(jezyk);
+const e = etykiety(jezyk);
+---
+<aside class="ticket" aria-label={e.kartaZlecenia}>
+  <header><span class="mono">{e.kartaZlecenia}</span><span class="mono">{karta.okres}</span></header>
+  <dl>
+    {karta.wiersze.map((w) => <div><dt>{w.etykieta}</dt><dd>{w.wartosc}</dd></div>)}
+  </dl>
+</aside>

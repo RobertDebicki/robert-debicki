@@ -1,0 +1,21 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const { jezyk } = Astro.props;
+const { narzedzia: n } = await ustawienia(jezyk);
+const e = etykiety(jezyk);
+// Kwadraciki wierszy idą cyklem farb jak w makiecie.
+const BARWY = ['var(--c)', 'var(--m)', 'var(--y)', 'var(--ink)'];
+---
+<section id="umiejetnosci" aria-labelledby="umiejetnosci-h">
+  <p class="label mono" style="--sw: var(--spot)">{e.narzedzia}</p>
+  <h2 class="sec-title" id="umiejetnosci-h">{n.tytul}</h2>
+  <dl class="skills">
+    {n.wiersze.map((w, i) => <div style={`--sw: ${BARWY[i % BARWY.length]}`}><dt>{w.nazwa}</dt><dd>{w.wartosc}</dd></div>)}
+  </dl>
+</section>

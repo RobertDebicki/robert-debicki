@@ -1,0 +1,29 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { pozycje, ustawienia } from '../lib/pozycje';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const { jezyk } = Astro.props;
+const { projekty: sekcja } = await ustawienia(jezyk);
+const lista = await pozycje('projekty', jezyk);
+const e = etykiety(jezyk);
+---
+<section id="teraz" style="--sw: var(--m)" aria-labelledby="teraz-h">
+  <p class="label mono">{e.projekty}</p>
+  <h2 class="sec-title" id="teraz-h">{sekcja.tytul}</h2>
+  <p class="sec-intro">{sekcja.wstep}</p>
+  <div class="now">
+    {lista.map((p) => (
+      <article class="now-item" style="--pl: var(--m)">
+        <p class="sector mono">{p.branza}</p>
+        <h3>{p.tytul}</h3>
+        <p class="desc">{p.opis}</p>
+        <p class="stack mono">{p.stack.map((s) => <span>{s}</span>)}</p>
+        <p class="stamp">{p.etap}</p>
+      </article>
+    ))}
+  </div>
+</section>

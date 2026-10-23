@@ -1,6 +1,17 @@
 ---
 import Strona from '../layouts/Strona.astro';
+import Otwarcie from '../components/Otwarcie.astro';
+import Wdrozenia from '../components/Wdrozenia.astro';
+import Projekty from '../components/Projekty.astro';
+import Doswiadczenie from '../components/Doswiadczenie.astro';
+import Narzedzia from '../components/Narzedzia.astro';
+import Kontakt from '../components/Kontakt.astro';
 ---
 <Strona jezyk="pl" tytul="Robert Dębicki" opis="Robert Dębicki, Automation Developer / AI. Automatyzacje procesów, aplikacje i wdrożenia AI. Wrocław albo zdalnie.">
-  <h1 id="start">Robert Dębicki Zażółć</h1>
+  <Otwarcie jezyk="pl" />
+  <Wdrozenia jezyk="pl" />
+  <Projekty jezyk="pl" />
+  <Doswiadczenie jezyk="pl" />
+  <Narzedzia jezyk="pl" />
+  <Kontakt jezyk="pl" slot="poza-arkuszem" />
 </Strona>

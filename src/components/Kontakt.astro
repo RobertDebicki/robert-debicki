@@ -1,0 +1,26 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const { jezyk } = Astro.props;
+const { kontakt: k } = await ustawienia(jezyk);
+const e = etykiety(jezyk);
+---
+<section id="kontakt" class="contact" style="--sw: var(--paper)" aria-labelledby="kontakt-h">
+  <div class="contact-in">
+    <p class="label mono">{e.kontakt}</p>
+    <h2 class="sec-title" id="kontakt-h">{k.tytul}</h2>
+    <p class="sec-intro">{k.wstep}</p>
+    <div class="mail">
+      <a href={`mailto:${k.email}`} id="email">{k.email}</a>
+      <button type="button" class="copy" id="copy-email">{e.kopiujAdres}</button>
+    </div>
+    <div class="links">
+      <a href={k.linkedinUrl} target="_blank" rel="noopener">{k.linkedinTekst}</a>
+    </div>
+  </div>
+</section>
