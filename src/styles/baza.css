@@ -1,0 +1,60 @@
+/* Baza i układ strony z makiety. Sekcje treści dochodzą w kolejnych zadaniach. */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--s-0)/1.6 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--m); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.mono { font-family: var(--font-data); font-size: var(--s--1); letter-spacing: 0.02em; }
+
+/* Pasek kontrolny i nagłówek */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); background: var(--paper); border-bottom: 1.5px solid var(--rule); }
+.bar { display: grid; grid-template-columns: repeat(16, 1fr); height: 10px; }
+.bar i:nth-child(1) { background: var(--c); }
+.bar i:nth-child(2) { background: var(--m); }
+.bar i:nth-child(3) { background: var(--y); }
+.bar i:nth-child(4) { background: var(--ink); }
+.bar i:nth-child(5) { background: color-mix(in srgb, var(--c) 75%, var(--paper)); }
+.bar i:nth-child(6) { background: color-mix(in srgb, var(--m) 75%, var(--paper)); }
+.bar i:nth-child(7) { background: color-mix(in srgb, var(--y) 75%, var(--paper)); }
+.bar i:nth-child(8) { background: color-mix(in srgb, var(--ink) 75%, var(--paper)); }
+.bar i:nth-child(9) { background: color-mix(in srgb, var(--c) 40%, var(--paper)); }
+.bar i:nth-child(10) { background: color-mix(in srgb, var(--m) 40%, var(--paper)); }
+.bar i:nth-child(11) { background: color-mix(in srgb, var(--y) 40%, var(--paper)); }
+.bar i:nth-child(12) { background: color-mix(in srgb, var(--ink) 40%, var(--paper)); }
+.bar i:nth-child(13) { background: #7a2e0e; }
+.bar i:nth-child(14) { background: #b8860b; }
+.bar i:nth-child(15) { background: #c45a00; }
+.bar i:nth-child(16) { background: var(--spot); }
+.top-in { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 12px; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.logo { width: 34px; height: 29px; overflow: visible; }
+.lg-ink { stroke: var(--ink); }
+.lg-flow { stroke: var(--c); }
+.brand:hover .lg-flow { stroke: var(--y); }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.top nav a { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; font-size: 0.92rem; padding-block: 6px; }
+.top nav a::before { content: ""; width: 10px; height: 10px; background: var(--sw); }
+.top nav a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* Arkusz ze znacznikami cięcia */
+.sheet { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
+.crop { position: absolute; width: 28px; height: 28px; color: var(--ink); display: none; }
+.crop.tl { top: 18px; left: -36px; } .crop.tr { top: 18px; right: -36px; transform: scaleX(-1); }
+.crop.bl { bottom: 18px; left: -36px; transform: scaleY(-1); } .crop.br { bottom: 18px; right: -36px; transform: scale(-1); }
+@media (min-width: 1280px) { .crop { display: block; } }
+.slug { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 18px 40px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html, body { margin: 0; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.przelacznik { font-family: var(--font-data); font-size: var(--s--1); text-decoration: none; border: 1.5px solid var(--ink); padding: 4px 8px; }
+.przelacznik:hover { background: var(--ink); color: var(--paper); }
