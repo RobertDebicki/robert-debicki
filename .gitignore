@@ -41,3 +41,7 @@ dist-fikstury/
 # Lighthouse CI
 .lighthouseci/
 dist-lighthouse*/
+
+# Python (kontrola tłumaczeń)
+__pycache__/
+.pytest_cache/

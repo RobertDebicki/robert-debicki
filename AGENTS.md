@@ -20,6 +20,8 @@ npm run sprawdz:sekrety  # skan repo pod kątem kluczy i tokenów (musi dać 0)
 | `src/` | Kod strony (Astro) |
 | `skrypty/` | Skrypty pomocnicze, np. `skan-sekretow.ts` |
 | `testy/jednostkowe/` | Testy Vitest |
+| `narzedzia/tlumaczenie/` | Zasady en-US i kontrola tłumaczeń PL na EN (`npm run sprawdz:tlumaczenia`) |
+| `.claude/skills/tlumacz-strone/` | Skill `/tlumacz-strone`: tworzy `en.md` dla pozycji bez tłumaczenia albo z nieaktualnym |
 | `docs/makieta/index.html` | Źródło prawdy wyglądu |
 | `docs/superpowers/specs/`, `plans/` | Projekt i plan budowy |
 | `CHANGELOG.md` | Stan pracy; wpis przy każdym commicie |

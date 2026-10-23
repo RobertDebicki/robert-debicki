@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026-10-23 16:40, Claude Code
+
+**✅ Zrobione:**
+- Zadanie 10, część 1: narzędzia tłumaczenia PL na EN (en-US). `narzedzia/tlumaczenie/kontrola_tlumaczenia.py` (przeniesiony i dostosowany skrypt z pakietu `/tlumacz`): porównuje liczby powyżej dziewięciu i daty miesiąc-rok w obie strony (zgubione i dopisane fakty), kwoty liczy jak liczby („174 717 zł” = „PLN 174,717” = „174,717 PLN”), „10.2026” = „October 2026” = „10/2026”. BŁĄD: rozjazd faktów, pisownia en-GB (lista w `jezyki.json`), długi i krótki myślnik. UWAGA: cudzysłów spoza en-US, przecinek dziesiętny, polski zapis daty. Poprawka względem pakietu: „+28” nie jest już brany za kierunkowy kraju.
+- `narzedzia/tlumaczenie/jezyki/en.md`: ogólne zasady z pakietu przestawione z en-GB na en-US, bez słowników i przykładów klientów. `jezyki.json` tylko z wpisem `en-US`.
+- Testy: `narzedzia/tlumaczenie/test_kontrola.py` (13, unittest, działa też pod pytest), `testy/jednostkowe/stan-tlumaczen.test.ts` (3).
+- `skrypty/skrot.ts` (wartość pola `zrodlo` liczona tym samym `skrotTresci` co build) i `skrypty/stan-tlumaczen.ts` (lista par ze stanem EN).
+- Skill `.claude/skills/tlumacz-strone/SKILL.md`. `npm run sprawdz:tlumaczenia` wpięty w `npm run sprawdz` (a więc w workflow); pary bez `en.md` są pomijane.
+
+**🚧 W toku / nie wdrożone:**
+- Treść startowa jeszcze bez `en.md`. Nic nie jest wypchnięte.
+
+**🎯 Następny krok:**
+- Zadanie 10, krok 5: tłumaczenie treści startowej skillem i kontrola `/en/` na prawdziwej treści.
+
 ## 2026-10-23 20:00, Claude Code
 
 **✅ Zrobione:**
