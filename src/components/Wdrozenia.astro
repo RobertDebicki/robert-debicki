@@ -19,7 +19,7 @@ const PLYTY = { pomarancz: 'var(--c)', czerwien: 'var(--m)', zolty: 'var(--y)' }
   <p class="sec-intro">{sekcja.wstep}</p>
   <ul class="jobs">
     {lista.map((w) => (
-      <li class="job in" style={`--pl: ${PLYTY[w.plyta]}`}>
+      <li class="job" style={`--pl: ${PLYTY[w.plyta]}`}>
         <div>
           <Ikona nazwa={w.ikona} />
           <div class="fig plates"><span class="p" aria-hidden="true">{w.liczba}</span><span class="p-k">{w.liczba}</span></div>

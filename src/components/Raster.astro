@@ -1,0 +1,103 @@
+---
+// Raster dwóch farb w tle (pomarańcz 15°, żółty 75°). Port skryptu z docs/makieta/index.html.
+---
+<canvas id="raster" aria-hidden="true"></canvas>
+<script>
+  const root = document.documentElement;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cv = document.getElementById('raster') as HTMLCanvasElement | null;
+  const ctx = cv?.getContext('2d');
+  if (cv && ctx) {
+    let W = 0, H = 0, dpr = 1, step = 16, alpha = 0.2, blend = 'multiply';
+    const colors: Record<string, string> = {};
+    let mx = -9999, my = -9999, tmx = -9999, tmy = -9999;
+    const screens = [
+      { a: (15 * Math.PI) / 180, key: '--c', ph: 0 },
+      { a: (75 * Math.PI) / 180, key: '--y', ph: 2.1 },
+    ];
+
+    const readTheme = () => {
+      const cs = getComputedStyle(root);
+      colors['--c'] = cs.getPropertyValue('--c').trim();
+      colors['--y'] = cs.getPropertyValue('--y').trim();
+      alpha = parseFloat(cs.getPropertyValue('--raster-alpha')) || 0.2;
+      blend = cs.getPropertyValue('--blend').trim() || 'multiply';
+    };
+    const bias = (x: number) => {
+      if (W < 900) return 0.5;
+      const k = Math.min(Math.max((x / W - 0.38) / 0.4, 0), 1);
+      return 0.22 + 0.78 * k * k * (3 - 2 * k);
+    };
+    const draw = (t: number) => {
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = blend === 'screen' ? 'screen' : 'multiply';
+      const fade = Math.max(0.3, 1 - window.scrollY / (H * 0.9));
+      ctx.globalAlpha = (W < 640 ? alpha * 0.7 : alpha) * fade;
+      mx += (tmx - mx) * 0.08;
+      my += (tmy - my) * 0.08;
+      const sy = window.scrollY * 0.12;
+      const diag = Math.ceil(Math.hypot(W, H) / 2) + step;
+      const cx = W / 2, cy = H / 2, R = 190, maxR = step * 0.52;
+      for (const sc of screens) {
+        const ca = Math.cos(sc.a), sa = Math.sin(sc.a);
+        ctx.fillStyle = colors[sc.key];
+        ctx.beginPath();
+        for (let u = -diag; u <= diag; u += step) {
+          for (let v = -diag; v <= diag; v += step) {
+            const x = cx + u * ca - v * sa, y = cy + u * sa + v * ca;
+            if (x < -step || x > W + step || y < -step || y > H + step) continue;
+            const wy = y + sy;
+            let f = 0.5 + 0.5 * Math.sin(x * 0.0042 + t * 0.00022 + sc.ph + Math.cos(wy * 0.0031 - t * 0.00017) * 1.7);
+            f = f * f * 0.62 * bias(x);
+            const dx = x - mx, dy = y - my;
+            f += 0.75 * Math.exp(-(dx * dx + dy * dy) / (2 * R * R));
+            if (f < 0.04) continue;
+            const r = maxR * Math.sqrt(Math.min(f, 1));
+            ctx.moveTo(x + r, y);
+            ctx.arc(x, y, r, 0, 6.2832);
+          }
+        }
+        ctx.fill();
+      }
+    };
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = window.innerWidth;
+      H = window.innerHeight;
+      step = W < 640 ? 13 : 16;
+      cv.width = Math.round(W * dpr);
+      cv.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      readTheme();
+      if (reduce) draw(0);
+    };
+    let last = 0, running = true;
+    const loop = (t: number) => {
+      if (!running) return;
+      if (t - last > 33) {
+        last = t;
+        draw(t);
+      }
+      requestAnimationFrame(loop);
+    };
+    const start = () => {
+      resize();
+      window.addEventListener('resize', resize);
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readTheme);
+      new MutationObserver(readTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+      window.addEventListener('pointermove', (e) => { tmx = e.clientX; tmy = e.clientY; }, { passive: true });
+      if (reduce) {
+        draw(0);
+        window.addEventListener('scroll', () => draw(0), { passive: true });
+        return;
+      }
+      document.addEventListener('visibilitychange', () => {
+        running = !document.hidden;
+        if (running) requestAnimationFrame(loop);
+      });
+      requestAnimationFrame(loop);
+    };
+    if (document.readyState === 'complete') requestAnimationFrame(start);
+    else window.addEventListener('load', () => requestAnimationFrame(start), { once: true });
+  }
+</script>

@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-10-23 15:40, Claude Code
+
+**✅ Zrobione:**
+- Zadanie 5: animacje przeniesione z makiety bez zmiany zachowania. `src/components/Raster.astro` (canvas `#raster` i skrypt: raster 15° pomarańcz i 75° żółty, rozkwit przy kursorze, paralaksa, wygaszanie do 30% po przewinięciu hero, słabszy na małych ekranach, skos na prawą stronę przy szerokich, 30 klatek na s, pauza w ukrytej karcie, ponowny odczyt motywu). Rysowanie startuje po `load` i `requestAnimationFrame`. Przy ograniczonym ruchu raster rysuje się raz (i przy przewijaniu).
+- `src/scripts/plyty.ts`: klasa `ready` na `<html>`, klasa `in` na `.job` i `.now-item` przez IntersectionObserver, kopiowanie adresu z zapasem przez zaznaczenie. Skrypty to moduły Astro, nie blokują renderowania.
+- Z markupu usunięte na stałe `class="ready"` i `class="job in"`; dodaje je skrypt. Bez JavaScript `<noscript>` w `<head>` ukrywa płyty i wydłuża paski liczb, więc cała treść jest widoczna.
+- Test wizualny: `przygotuj()` wymusza stan końcowy (`ready`, `in`) na stronie i na makiecie.
+- Testy: Vitest 22 PASS, `npm run build` OK, Playwright 18 PASS (w tym nowy `testy/e2e/animacje.spec.ts`: klasa `ready`, krycie płyt 0, `in` po wejściu w widok, brak przerysowania rastra przy reduced motion, moduły, przycisk kopiowania, strona bez JS).
+
+**🚧 W toku / nie wdrożone:**
+- Etykiety przycisku kopiowania ("Skopiowano", "Adres zaznaczony") są po polsku w skrypcie; wersja EN w zadaniu 6.
+- Nic nie jest wypchnięte.
+
+**🎯 Następny krok:**
+- Zadanie 6 z planu.
+
 ## 2026-10-23 14:38, Claude Code
 
 **✅ Zrobione:**

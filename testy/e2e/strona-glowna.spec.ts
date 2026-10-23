@@ -38,15 +38,14 @@ async function podstawMakiete(page: Page) {
 }
 
 /** Ukrywa raster (animowany canvas) i czeka na fonty. */
-async function przygotuj(page: Page, adres: string, makieta: boolean) {
+async function przygotuj(page: Page, adres: string) {
   await page.goto(adres);
   await page.addStyleTag({ content: '#raster { display: none !important; }' });
-  // Strona renderuje stan końcowy sama (animacje w zadaniu 5); makiecie go wymuszamy.
-  if (makieta)
-    await page.evaluate(() => {
-      document.documentElement.classList.add('ready');
-      document.querySelectorAll('.job').forEach((e) => e.classList.add('in'));
-    });
+  // Wymuszamy stan końcowy animacji na stronie i na makiecie (skrypty dodają te klasy dopiero po załadowaniu i przewinięciu).
+  await page.evaluate(() => {
+    document.documentElement.classList.add('ready');
+    document.querySelectorAll('.job').forEach((e) => e.classList.add('in'));
+  });
   await page.evaluate(() => document.fonts.ready);
 }
 
@@ -57,7 +56,7 @@ test.describe('zgodność z makietą', () => {
     test(`strona główna przy ${w} px różni się od makiety o mniej niż 2% pikseli`, async ({ page }, info) => {
       await page.setViewportSize({ width: w, height: 900 });
       await podstawMakiete(page);
-      await przygotuj(page, MAKIETA, true);
+      await przygotuj(page, MAKIETA);
       const wzor = await page.screenshot({ fullPage: true, animations: 'disabled' });
       // Wzorzec to zrzut makiety z tego samego przebiegu, zapisany jako snapshot do porównania.
       const nazwa = `makieta-${w}.png`;
@@ -65,7 +64,7 @@ test.describe('zgodność z makietą', () => {
       mkdirSync(dirname(sciezka), { recursive: true });
       writeFileSync(sciezka, wzor);
 
-      await przygotuj(page, '/', false);
+      await przygotuj(page, '/');
       const zrzut = await page.screenshot({ fullPage: true, animations: 'disabled' });
       expect(zrzut).toMatchSnapshot(nazwa, { maxDiffPixelRatio: 0.02 });
     });

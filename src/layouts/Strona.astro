@@ -7,6 +7,7 @@ import '../styles/baza.css';
 import '../styles/sekcje.css';
 import Naglowek from '../components/Naglowek.astro';
 import Stopka from '../components/Stopka.astro';
+import Raster from '../components/Raster.astro';
 
 interface Props {
   jezyk: 'pl' | 'en';
@@ -15,11 +16,10 @@ interface Props {
   odpowiednik?: string;
 }
 const { jezyk, tytul, opis, odpowiednik } = Astro.props;
-// <html class="ready">: stan końcowy animacji renderowany statycznie, zadanie 5 przenosi klasę do skryptu.
 const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
 ---
 <!doctype html>
-<html lang={jezyk} class="ready">
+<html lang={jezyk}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -28,8 +28,10 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 64 56'><path d='M8 31C8 21.5 14 16.5 23 16.5H34' fill='none' stroke='%23ff5a1f' stroke-width='7'/><circle cx='34' cy='30' r='13.5' fill='none' stroke='%23ff5a1f' stroke-width='7'/><path d='M8 44.5V16.5M47.5 2.5V44.5' fill='none' stroke='%23131412' stroke-width='7'/></svg>" />
     <meta name="generator" content={Astro.generator} />
     <title>{tytul}</title>
+    <noscript><style>.plates .p { display: none; } .job .fig { background-size: 2.6em 0.13em; }</style></noscript>
   </head>
   <body>
+    <Raster />
     <Naglowek jezyk={jezyk} odpowiednik={odpowiednik} />
     <div class="sheet">
       <svg class="crop tl" viewBox="0 0 28 28" aria-hidden="true"><path d="M0 20h14M20 0v14" stroke="currentColor" stroke-width="1"/></svg>
@@ -40,5 +42,8 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
     </div>
     <slot name="poza-arkuszem" />
     <Stopka />
+    <script>
+      import '../scripts/plyty';
+    </script>
   </body>
 </html>
