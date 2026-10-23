@@ -13,9 +13,15 @@ interface Props {
   jezyk: 'pl' | 'en';
   tytul: string;
   opis: string;
+  /** Dokładny odpowiednik tej strony w drugim języku. Jest podstawą `hreflang` i domyślnym celem przełącznika. */
   odpowiednik?: string;
+  /** Cel przełącznika języka, gdy odpowiednika nie ma, a jest lista zastępcza (bez `hreflang`). */
+  przelacznik?: string;
 }
-const { jezyk, tytul, opis, odpowiednik } = Astro.props;
+const { jezyk, tytul, opis, odpowiednik, przelacznik = odpowiednik } = Astro.props;
+const kanoniczny = new URL(Astro.url.pathname, Astro.site).href;
+const adres = (sciezka: string) => new URL(sciezka, Astro.site).href;
+const drugi = jezyk === 'pl' ? 'en' : 'pl';
 const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
 ---
 <!doctype html>
@@ -26,13 +32,21 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
     {!indeksuj && <meta name="robots" content="noindex, nofollow" />}
     <meta name="description" content={opis} />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 64 56'><path d='M8 31C8 21.5 14 16.5 23 16.5H34' fill='none' stroke='%23ff5a1f' stroke-width='7'/><circle cx='34' cy='30' r='13.5' fill='none' stroke='%23ff5a1f' stroke-width='7'/><path d='M8 44.5V16.5M47.5 2.5V44.5' fill='none' stroke='%23131412' stroke-width='7'/></svg>" />
+    <link rel="canonical" href={kanoniczny} />
+    {odpowiednik && (
+      <>
+        <link rel="alternate" hreflang={jezyk} href={kanoniczny} />
+        <link rel="alternate" hreflang={drugi} href={adres(odpowiednik)} />
+        <link rel="alternate" hreflang="x-default" href={jezyk === 'pl' ? kanoniczny : adres(odpowiednik)} />
+      </>
+    )}
     <meta name="generator" content={Astro.generator} />
     <title>{tytul}</title>
     <noscript><style>.plates .p { display: none; } .job .fig { background-size: 2.6em 0.13em; }</style></noscript>
   </head>
   <body>
     <Raster />
-    <Naglowek jezyk={jezyk} odpowiednik={odpowiednik} />
+    <Naglowek jezyk={jezyk} przelacznik={przelacznik} />
     <div class="sheet">
       <svg class="crop tl" viewBox="0 0 28 28" aria-hidden="true"><path d="M0 20h14M20 0v14" stroke="currentColor" stroke-width="1"/></svg>
       <svg class="crop tr" viewBox="0 0 28 28" aria-hidden="true"><path d="M0 20h14M20 0v14" stroke="currentColor" stroke-width="1"/></svg>
@@ -41,7 +55,7 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
       </main>
     </div>
     <slot name="poza-arkuszem" />
-    <Stopka />
+    <Stopka jezyk={jezyk} />
     <script>
       import '../scripts/plyty';
     </script>

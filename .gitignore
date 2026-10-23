@@ -34,3 +34,6 @@ playwright-report/
 
 # Zrzuty porównawcze makiety (tworzone w każdym przebiegu testu)
 testy/e2e/*-snapshots/
+
+# Build z fiksturami do testów języków
+dist-fikstury/

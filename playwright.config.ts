@@ -1,17 +1,21 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const PORT = 4399;
+const PORT_FIKSTURY = 4400;
 
 export default defineConfig({
   testDir: 'testy/e2e',
   fullyParallel: true,
   reporter: 'list',
-  use: { baseURL: `http://localhost:${PORT}` },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  projects: [
+    // Prawdziwa treść z src/content. Testy języków (jezyki.spec.ts) idą na build z fiksturami.
+    { name: 'chromium', testIgnore: /jezyki\.spec\.ts/, use: { ...devices['Desktop Chrome'], baseURL: `http://localhost:${PORT}` } },
+    { name: 'jezyki', testMatch: /jezyki\.spec\.ts/, use: { ...devices['Desktop Chrome'], baseURL: `http://localhost:${PORT_FIKSTURY}` } },
+  ],
   webServer: {
-    command: `npm run build && npm run preview -- --port ${PORT} --ignore-lock`,
+    command: 'node skrypty/serwery-e2e.mjs',
     url: `http://localhost:${PORT}`,
     reuseExistingServer: false,
-    timeout: 180_000,
+    timeout: 240_000,
   },
 });

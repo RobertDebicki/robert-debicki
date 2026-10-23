@@ -1,7 +1,14 @@
 ---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const e = etykiety(Astro.props.jezyk);
 ---
 <footer class="slug mono">
-  <span>robert-debicki · arkusz 1 z 1</span>
-  <span>czarny + 3 kolory dodatkowe · raster 15° / 75°</span>
+  <span>robert-debicki · {e.stopkaArkusz}</span>
+  <span>{e.stopkaFarby}</span>
   <span>© 2026 Robert Dębicki</span>
 </footer>

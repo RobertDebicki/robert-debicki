@@ -23,3 +23,9 @@ export async function ustawienia(jezyk: Jezyk) {
   if (!wpis) throw new Error(`Brak pliku src/content/ustawienia/${jezyk}.md`);
   return wpis.data;
 }
+
+/** Czy istnieje angielska strona główna (`ustawienia/en.md`). Bez niej `/en/` nie jest generowane. */
+export async function maStroneGlownaEn(): Promise<boolean> {
+  const { getEntry } = await import('astro:content');
+  return (await getEntry('ustawienia', 'en')) !== undefined;
+}

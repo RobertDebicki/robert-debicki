@@ -1,28 +1,22 @@
 ---
 import Logo from './Logo.astro';
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
 
 interface Props {
-  jezyk: 'pl' | 'en';
-  odpowiednik?: string;
+  jezyk: Jezyk;
+  przelacznik?: string;
 }
-const { jezyk, odpowiednik } = Astro.props;
+const { jezyk, przelacznik } = Astro.props;
 
+const e = etykiety(jezyk);
 const baza = jezyk === 'pl' ? '/' : '/en/';
-const menu = {
-  pl: [
-    ['wdrozenia', 'Wdrożenia', 'var(--c)'],
-    ['teraz', 'Projekty', 'var(--m)'],
-    ['droga', 'Doświadczenie', 'var(--y)'],
-    ['kontakt', 'Kontakt', 'var(--ink)'],
-  ],
-  en: [
-    ['wdrozenia', 'Deployments', 'var(--c)'],
-    ['teraz', 'Projects', 'var(--m)'],
-    ['droga', 'Experience', 'var(--y)'],
-    ['kontakt', 'Contact', 'var(--ink)'],
-  ],
-}[jezyk];
-const etykietaMenu = jezyk === 'pl' ? 'Sekcje' : 'Sections';
+const menu = [
+  ['wdrozenia', e.wdrozenia, 'var(--c)'],
+  ['teraz', e.projekty, 'var(--m)'],
+  ['droga', e.doswiadczenie, 'var(--y)'],
+  ['kontakt', e.kontakt, 'var(--ink)'],
+];
 const drugi = jezyk === 'pl' ? 'en' : 'pl';
 ---
 <header class="top">
@@ -32,12 +26,12 @@ const drugi = jezyk === 'pl' ? 'en' : 'pl';
       <Logo />
       <span>Robert Dębicki</span>
     </a>
-    <nav aria-label={etykietaMenu}>
+    <nav aria-label={e.menuSekcje}>
       {menu.map(([id, nazwa, barwa]) => (
         <a href={`${baza}#${id}`} style={`--sw: ${barwa}`}>{nazwa}</a>
       ))}
-      {odpowiednik && (
-        <a class="przelacznik" href={odpowiednik} hreflang={drugi} lang={drugi}>{drugi.toUpperCase()}</a>
+      {przelacznik && (
+        <a class="przelacznik" href={przelacznik} hreflang={drugi} lang={drugi}>{drugi.toUpperCase()}</a>
       )}
     </nav>
   </div>
