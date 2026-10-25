@@ -2,8 +2,18 @@ import { pobierzPary } from './tresc';
 import { widocznaWJezyku, type Jezyk } from './jezyki';
 import { maStroneGlownaEn } from './pozycje';
 
-/** Zdjęcia wpisów: pole `plik` to ścieżka od korzenia repozytorium, np. `/src/assets/wpisy/foto.jpg`. */
-const OBRAZY = import.meta.glob<{ default: ImageMetadata }>(['/src/assets/**/*.{jpg,jpeg,png,webp,avif}', '/testy/fikstury/**/*.{jpg,jpeg,png,webp,avif}']);
+/**
+ * Zdjęcia wpisów: pole `plik` to ścieżka od korzenia repozytorium, np. `/src/assets/wpisy/foto.jpg`.
+ * Rozszerzenie małymi albo wielkimi literami (telefon zapisuje `IMG_0001.JPG`). Zdjęcia z fikstur tylko w buildzie
+ * z fiksturami (`TRESC_BAZA`, stała z astro.config.mjs), żeby nie trafiły do produkcji.
+ */
+type Obrazy = Record<string, () => Promise<{ default: ImageMetadata }>>;
+const OBRAZY: Obrazy = import.meta.env.OBRAZY_Z_FIKSTUR
+  ? import.meta.glob<{ default: ImageMetadata }>([
+      '/src/assets/**/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}',
+      '/testy/fikstury/**/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}',
+    ])
+  : import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}');
 
 export async function obraz(plik: string, wpis: string) {
   const wczytaj = OBRAZY[plik];

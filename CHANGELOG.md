@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026-10-25 18:10, Claude Code
+
+**✅ Zrobione:**
+- `skrypty/sprawdz-zdjecia.ts` (`npm run sprawdz:zdjecia`, w łańcuchu `npm run sprawdz`): przerywa z polskim komunikatem i nazwą pliku, gdy obraz w `src/assets/` ma w EXIF lokalizację GPS (sharp z zależności Astro, odczyt katalogu GPS 0x8825) albo gdy nie da się go odczytać (np. HEIC). Test z JPEG wygenerowanym z EXIF GPS, z czystym JPEG i z plikiem HEIC.
+- `src/lib/wpisy.ts`: glob zdjęć przyjmuje rozszerzenia małymi i wielkimi literami (jpg, jpeg, png, webp, avif). Zdjęcie fikstury przemianowane na `foto.PNG`, więc test e2e wpisu sprawdza wielkie litery w buildzie.
+- Zdjęcia z `testy/fikstury/` tylko w buildzie z fiksturami: stała `import.meta.env.OBRAZY_Z_FIKSTUR` z `astro.config.mjs` (prawda tylko przy `TRESC_BAZA`), gałąź z fiksturami znika z buildu produkcyjnego. Wcześniej `dist/_astro/foto.*.png` był w buildzie produkcyjnym (sprawdzone: identyczny bajtowo z fiksturą). Test e2e `build-bez-fikstur.spec.ts`: w `dist/` brak pliku o zawartości obrazu z fikstur, w `dist-fikstury/` zdjęcie jest.
+- `docs/panel-instrukcja.md`: formaty zdjęć, eksport HEIC do JPG, kontrola lokalizacji.
+- Sprawdzone: Vitest `sprawdz-zdjecia` 5 PASS, Playwright `build-bez-fikstur` i `wpisy` 13 PASS, `sprawdz:zdjecia` na repo 0.
+
+**🚧 W toku / nie wdrożone:**
+- Pełne `npm run sprawdz` na końcu serii poprawek.
+
+**🎯 Następny krok:**
+- SEO (404, hreflang), przełącznik języka, CI, slug ASCII w panelu, dokumentacja.
+
 ## 2026-10-25 18:07, Claude Code
 
 **✅ Zrobione:**

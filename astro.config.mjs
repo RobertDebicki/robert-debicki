@@ -12,6 +12,9 @@ export default defineConfig({
   ...(wyjscie ? { outDir: wyjscie, cacheDir: `./node_modules/.astro-${wyjscie.replace(/\W/g, '')}` } : {}),
   // CSS w <style> zamiast osobnego pliku: usuwa blokujące renderowanie żądanie (Lighthouse: FCP).
   build: { inlineStylesheets: 'always' },
+  // Zdjęcia z testy/fikstury/ trafiają do buildu tylko przy treści z fikstur (src/lib/wpisy.ts). Stała jest
+  // wpisana w kod przy budowaniu, więc w buildzie produkcyjnym gałąź z fiksturami znika razem z plikami.
+  vite: { define: { 'import.meta.env.OBRAZY_Z_FIKSTUR': JSON.stringify(Boolean(process.env.TRESC_BAZA)) } },
   integrations: [
     sitemap({
       // panel Sveltii nie jest stroną serwisu

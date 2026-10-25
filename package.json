@@ -18,7 +18,8 @@
     "sprawdz:tresc": "tsx skrypty/sprawdz-tresc.ts .",
     "sprawdz:lighthouse": "node skrypty/lighthouse.mjs",
     "sprawdz:tlumaczenia": "python3 -m unittest discover -s narzedzia/tlumaczenie -p 'test_*.py' -b && python3 narzedzia/tlumaczenie/kontrola_tlumaczenia.py --katalog src/content",
-    "sprawdz": "npm run sprawdz:sekrety && npm run sprawdz:tresc && npm run sprawdz:skany && npm run sprawdz:tlumaczenia && npm test && npm run build && npm run test:e2e"
+    "sprawdz": "npm run sprawdz:sekrety && npm run sprawdz:tresc && npm run sprawdz:skany && npm run sprawdz:zdjecia && npm run sprawdz:tlumaczenia && npm test && npm run build && npm run test:e2e",
+    "sprawdz:zdjecia": "tsx skrypty/sprawdz-zdjecia.ts ."
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

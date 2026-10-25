@@ -44,6 +44,11 @@ Gdy token wygaśnie albo przestanie działać: utwórz nowy według kroków powy
 
 Zdjęcia trafiają do repozytorium (folder `src/assets/wpisy/`). Wgrywaj zdjęcia nie cięższe niż 15 MB. Nie wgrywaj tam skanów listów od klientów.
 
+Format i lokalizacja zdjęć:
+- Strona przyjmuje JPG, PNG, WebP i AVIF (rozszerzenie małymi albo wielkimi literami, np. `IMG_0001.JPG`).
+- Zdjęcia z iPhone'a w formacie HEIC najpierw wyeksportuj jako JPG (w aplikacji Zdjęcia: Eksportuj, format JPEG; albo w ustawieniach aparatu wybierz "Najbardziej zgodne"). Plik HEIC zatrzyma kontrolę przed wdrożeniem.
+- Telefon zapisuje w zdjęciu lokalizację GPS. Repozytorium i strona są publiczne, więc kontrola `npm run sprawdz:zdjecia` (część `npm run sprawdz`, także na GitHubie) zatrzymuje wdrożenie, gdy zdjęcie w `src/assets/` ma lokalizację, i podaje nazwę pliku. Przed wgraniem wyłącz lokalizację przy eksporcie (na iPhonie: przy udostępnianiu Opcje, wyłącz Lokalizację) albo zrób zrzut ekranu zdjęcia.
+
 ## Dodanie projektu (albo wdrożenia)
 
 1. Wybierz **Projekty** (albo **Wdrożenia**), potem nowy wpis.

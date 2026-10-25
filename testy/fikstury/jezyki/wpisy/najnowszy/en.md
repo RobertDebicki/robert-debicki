@@ -3,9 +3,9 @@ tytul: "Long English title of the newest test post about grant application autom
 data: 2026-10-20
 zajawka: "English teaser najnowszy."
 tlumaczenie: ai
-zrodlo: 68a51a2a8d16366ec66f743b53167f195bacacf895363b8abb345492295ec924
+zrodlo: b979fa4ec2add0af290c596b8a75b2a8dabdfc085719e34649dcb37544e64a85
 zdjecia:
-  - plik: "/testy/fikstury/zdjecia/foto.png"
+  - plik: "/testy/fikstury/zdjecia/foto.PNG"
     alt: "Test image in orange"
 ---
 English body najnowszy.
