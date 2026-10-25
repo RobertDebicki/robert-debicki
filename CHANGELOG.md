@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-10-25 17:36, Claude Code
+
+**✅ Zrobione:**
+- `strona.yml`: zadanie `wdroz` korzysta ze środowiska GitHub `claudeflare` (klucz `environment` z adresem Workera), czyli sekrety Cloudflare są czytane ze środowiska, a nie z sekretów repozytorium.
+
+**🚧 W toku / nie wdrożone:**
+- Pierwsze wdrożenie czeka na zgodę Roberta.
+
+**🎯 Następny krok:**
+- Push i obserwacja workflow `Strona` na GitHub.
+
 ## 2026-10-25 17:20, Claude Code
 
 **✅ Zrobione:**
