@@ -34,10 +34,18 @@ jobs:
 
       - run: npm ci
 
+      # Kontrola tłumaczeń czyta nagłówek pl.md przez PyYAML (skrót źródła liczony jak w buildzie).
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: PyYAML dla kontroli tłumaczeń
+        run: python -m pip install -r narzedzia/tlumaczenie/requirements.txt
+
       - name: Przeglądarka dla testów e2e
         run: npx playwright install --with-deps chromium
 
-      # sprawdz:sekrety, sprawdz:tresc, sprawdz:skany, sprawdz:tlumaczenia (python3 z obrazu runnera,
+      # sprawdz:sekrety, sprawdz:tresc, sprawdz:skany, sprawdz:tlumaczenia (python3 z setup-python,
       # każda para pl.md + en.md), testy jednostkowe, build, testy e2e (w tym kontrast axe).
       - name: Łańcuch kontroli
         run: npm run sprawdz

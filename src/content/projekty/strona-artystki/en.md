@@ -7,5 +7,5 @@ etap: "Live in production"
 stan: produkcja
 kolejnosc: 2
 tlumaczenie: ai
-zrodlo: b131dd9913d6e50ecb55e29edf91564c0526251ad5dac1d927be980991af3e12
+zrodlo: cd0182ee9944138c607cd6e9c682d714b4ab900aed9c044e11b1300bfd151698
 ---

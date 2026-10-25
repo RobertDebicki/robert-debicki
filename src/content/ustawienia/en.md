@@ -67,5 +67,5 @@ kontakt:
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 tlumaczenie: ai
-zrodlo: 6d054c0e03901e96e450ea5351da047b8ca71724eb7d0042ec829f930dcaea78
+zrodlo: f1dbc3f633932de51e961f812c23c08cbbffd4cdff15690dd9d1ded4ceba1933
 ---

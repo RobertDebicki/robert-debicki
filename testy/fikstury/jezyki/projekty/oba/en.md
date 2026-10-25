@@ -7,6 +7,6 @@ etap: "Etap"
 stan: produkcja
 kolejnosc: 1
 tlumaczenie: ai
-zrodlo: dcd4aaccf1827f18b22b2741d5507108e06c37b0d46dca44123c49db3a5215d3
+zrodlo: e6306dade4377e427d17a2f26218b0ca1f21c4212f6e86db89f2f95ee50c134f
 ---
 English body oba.

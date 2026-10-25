@@ -5,18 +5,26 @@ Użycie:
   python3 narzedzia/tlumaczenie/kontrola_tlumaczenia.py --katalog src/content
 Kod wyjścia: 0 brak błędów, 1 są błędy, 2 złe argumenty. UWAGA nie jest błędem.
 
+W trybie --katalog para, której en.md ma `zrodlo` inne niż skrót obecnego pl.md (PL zmieniony po tłumaczeniu,
+stan "do aktualizacji"), dostaje różnice faktów jako UWAGA, nie BŁĄD: edycja samego PL nie blokuje wdrożenia,
+a EN poprawi /tlumacz-strone. Gdy skrót się zgadza (EN jest aktualny), różnica faktów zostaje błędem.
+Skrót liczy `zrodlo_pl` tak samo jak strona (`src/lib/skrot.ts`).
+
 BŁĄD: liczba albo data z jednej strony nie występuje po drugiej, pisownia brytyjska, długi albo krótki myślnik.
 UWAGA: cudzysłów spoza en-US, przecinek dziesiętny, polski zapis daty.
 Liczby do `slownie_do` (en-US: 9) są pomijane, bo angielski pisze je zwykle słowami.
 Kwota jest liczbą jak każda inna: „174 717 zł”, „PLN 174,717” i „174,717 PLN” to ta sama wartość.
-Tylko biblioteka standardowa Pythona (3.9+).
+Biblioteka standardowa Pythona (3.9+) i PyYAML (nagłówek pl.md do skrótu, `requirements.txt`).
 """
 import argparse
+import hashlib
 import json
 import re
 import sys
 from collections import Counter
 from pathlib import Path
+
+import yaml
 
 JEZYKI = json.loads((Path(__file__).resolve().parent / "jezyki.json").read_text(encoding="utf-8"))
 JEZYK = "en-US"
@@ -151,15 +159,70 @@ def uwagi(tlumaczenie: str, jezyk: str = JEZYK) -> list:
     return wynik
 
 
-def sprawdz_pare(pl: Path, en: Path) -> int:
-    """Wypisuje wynik kontroli jednej pary i zwraca liczbę błędów."""
+class _Yaml12(yaml.SafeLoader):
+    """Wartości bez cudzysłowu jak w schemacie core YAML 1.2 (biblioteka `yaml` w JS): daty i yes/no zostają tekstem."""
+
+
+_Yaml12.yaml_implicit_resolvers = {}
+for _tag, _wzor, _pierwsze in [
+    ("tag:yaml.org,2002:null", r"^(?:~|null|Null|NULL|)$", ["~", "n", "N", ""]),
+    ("tag:yaml.org,2002:bool", r"^(?:true|True|TRUE|false|False|FALSE)$", list("tTfF")),
+    ("tag:yaml.org,2002:int", r"^(?:[-+]?[0-9]+|0o[0-7]+|0x[0-9a-fA-F]+)$", list("-+0123456789")),
+    ("tag:yaml.org,2002:float", r"^(?:[-+]?(?:\.[0-9]+|[0-9]+(?:\.[0-9]*)?)(?:[eE][-+]?[0-9]+)?"
+                                r"|[-+]?\.(?:inf|Inf|INF)|\.(?:nan|NaN|NAN))$", list("-+0123456789.")),
+]:
+    _Yaml12.add_implicit_resolver(_tag, re.compile(_wzor), _pierwsze)
+
+
+def _int12(loader, wezel):
+    tekst = loader.construct_scalar(wezel)
+    if tekst.startswith(("0o", "0x")):
+        return int(tekst[2:], 8 if tekst[1] == "o" else 16)
+    return int(tekst, 10)
+
+
+_Yaml12.add_constructor("tag:yaml.org,2002:int", _int12)
+
+
+def _json_kanoniczny(wartosc) -> str:
+    """Jak `kanonicznyJson` w src/lib/skrot.ts: klucze posortowane, bez spacji, liczby całkowite bez „.0”."""
+    if isinstance(wartosc, dict):
+        return "{" + ",".join(json.dumps(str(k), ensure_ascii=False) + ":" + _json_kanoniczny(wartosc[k])
+                              for k in sorted(wartosc, key=str)) + "}"
+    if isinstance(wartosc, list):
+        return "[" + ",".join(_json_kanoniczny(w) for w in wartosc) + "]"
+    if isinstance(wartosc, float) and wartosc.is_integer() and abs(wartosc) < 1e21:
+        return str(int(wartosc))
+    return json.dumps(wartosc, ensure_ascii=False)
+
+
+def zrodlo_pl(surowy: str) -> str:
+    """Skrót SHA-256 pl.md liczony jak `skrotTresci` w src/lib/skrot.ts (pole `zrodlo` w en.md)."""
+    tekst = surowy.replace("\r\n", "\n")
+    m = re.match(r"^---\n([\s\S]*?)\n---\n?([\s\S]*)\Z", tekst)
+    dane, tresc = (yaml.load(m.group(1), Loader=_Yaml12), m.group(2)) if m else ({}, tekst)
+    if not isinstance(dane, dict):
+        dane = {}
+    naglowek = {k: v for k, v in dane.items() if k not in ("tlumaczenie", "zrodlo")}
+    wejscie = _json_kanoniczny(naglowek) + "\n" + tresc.strip(" \t\n\r")
+    return hashlib.sha256(wejscie.encode("utf-8")).hexdigest()
+
+
+def zrodlo_en(surowy: str):
+    """Wartość pola `zrodlo` z nagłówka en.md albo None."""
+    m = re.search(r"^zrodlo:\s*['\"]?([0-9a-f]{64})['\"]?\s*$", surowy.replace("\r\n", "\n"), re.M)
+    return m.group(1) if m else None
+
+
+def sprawdz_pare(pl: Path, en: Path, tylko_uwagi: bool = False) -> int:
+    """Wypisuje wynik kontroli jednej pary i zwraca liczbę błędów. `tylko_uwagi`: różnice wypisuje jako UWAGA."""
     tlumaczenie = en.read_text(encoding="utf-8")
     lista = bledy(pl.read_text(encoding="utf-8"), tlumaczenie)
     for b in lista:
-        print(f"BŁĄD {en}: {b}")
+        print(f"{'UWAGA' if tylko_uwagi else 'BŁĄD'} {en}: {b}")
     for u in uwagi(tlumaczenie):
         print(f"UWAGA {en}: {u}")
-    return len(lista)
+    return 0 if tylko_uwagi else len(lista)
 
 
 def main(argv=None) -> int:
@@ -183,7 +246,13 @@ def main(argv=None) -> int:
             print(f"BŁĄD {en}: brak pliku źródłowego {pl}")
             liczba_bledow += 1
             continue
-        liczba_bledow += sprawdz_pare(pl, en)
+        nieaktualne = False
+        if a.katalog:
+            nieaktualne = zrodlo_en(en.read_text(encoding="utf-8")) != zrodlo_pl(pl.read_text(encoding="utf-8"))
+            if nieaktualne:
+                print(f"UWAGA {en}: PL zmieniony po tłumaczeniu (zrodlo inne niż skrót pl.md), EN do aktualizacji "
+                      f"przez /tlumacz-strone; różnice faktów poniżej nie blokują")
+        liczba_bledow += sprawdz_pare(pl, en, tylko_uwagi=nieaktualne)
     if liczba_bledow:
         print(f"Kontrola tłumaczeń: {liczba_bledow} błędów w {len(pary)} parach.")
         return 1

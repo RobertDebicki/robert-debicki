@@ -7,5 +7,5 @@ etap: "Sites live in production"
 stan: produkcja
 kolejnosc: 1
 tlumaczenie: ai
-zrodlo: b958a270ec22984e6de06f1d3874daab9facebd3f74df910940cb43d678f1041
+zrodlo: 5aa73525e52261154f0456011f8898dafb74ff19afbadc5084df4de314d357d8
 ---

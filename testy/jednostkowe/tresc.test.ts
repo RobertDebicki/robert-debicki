@@ -19,6 +19,22 @@ describe('skrotTresci', () => {
     expect(skrotTresci('a')).toMatch(/^[0-9a-f]{64}$/);
     expect(skrotTresci('a')).not.toBe(skrotTresci('b'));
   });
+
+  const S = join(import.meta.dirname, '../fikstury/skrot');
+  const oczekiwany = readFileSync(join(S, 'oczekiwany-skrot.txt'), 'utf8').trim();
+
+  it('ten sam pl.md zapisany listą w nawiasach i listą z myślnikami (inne cudzysłowy, CRLF) ma ten sam skrót co w Pythonie', () => {
+    for (const plik of ['pl-w-nawiasach.md', 'pl-z-myslnikami.md']) {
+      expect(skrotTresci(readFileSync(join(S, plik), 'utf8')), plik).toBe(oczekiwany);
+    }
+  });
+
+  it('pomija tlumaczenie i zrodlo, liczy zmianę wartości i treści', () => {
+    const pl = '---\ntytul: A\n---\nTreść.\n';
+    expect(skrotTresci('---\ntytul: A\ntlumaczenie: ai\nzrodlo: x\n---\n\nTreść.')).toBe(skrotTresci(pl));
+    expect(skrotTresci('---\ntytul: B\n---\nTreść.\n')).not.toBe(skrotTresci(pl));
+    expect(skrotTresci('---\ntytul: A\n---\nInna treść.\n')).not.toBe(skrotTresci(pl));
+  });
 });
 
 describe('zbudujPary', () => {

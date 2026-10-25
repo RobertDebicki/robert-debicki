@@ -9,5 +9,5 @@ ikona: sluchawka
 plyta: pomarancz
 kolejnosc: 4
 tlumaczenie: ai
-zrodlo: 50b97ea58d0a9500ed9cda2b568cf0d42fbf00bda999e36187ac1f571017bda0
+zrodlo: ac30359c6c6e23f61837c91b6d30292df6d86b478e138d700c265babe64239ab
 ---

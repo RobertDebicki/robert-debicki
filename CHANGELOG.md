@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-10-25 18:07, Claude Code
+
+**✅ Zrobione:**
+- Skrót `zrodlo` liczony z treści, nie z zapisu: kanoniczny JSON nagłówka pl.md (klucze posortowane, bez `tlumaczenie` i `zrodlo`) plus treść z LF bez białych znaków na brzegach. Ta sama funkcja w `src/lib/skrot.ts` (używają jej `src/lib/tresc.ts`, `skrypty/skrot.ts`, `skrypty/stan-tlumaczen.ts`) i w Pythonie (`zrodlo_pl` w `kontrola_tlumaczenia.py`, PyYAML z wartościami jak w YAML 1.2, daty i `yes` zostają tekstem). Ponowny zapis z panelu w innym formacie YAML nie oznacza już EN jako nieaktualnego.
+- Wspólna fikstura `testy/fikstury/skrot/`: ten sam pl.md z listą w nawiasach oraz z listą z myślnikami, cudzysłowami i CRLF; oba pliki dają w Vitest i w unittest skrót z `oczekiwany-skrot.txt`.
+- `zrodlo` przeliczone we wszystkich en.md (11 w `src/content`, 6 w fiksturach); treść bez zmian, `stan-tlumaczen.ts` pokazuje `ai` dla 11 pozycji, fikstura `nieaktualne` zostaje nieaktualna.
+- `kontrola_tlumaczenia.py --katalog`: gdy `zrodlo` w en.md różni się od skrótu pl.md, różnice faktów są UWAGĄ (kod 0), bo edycja samego PL nie może blokować wdrożenia. Przy zgodnym skrócie różnica faktów nadal jest BŁĘDEM. Testy obu przypadków.
+- CI: `actions/setup-python@v7` (Python 3.12) i `narzedzia/tlumaczenie/requirements.txt` (PyYAML 6.0.3).
+- Sprawdzone: Vitest 84 PASS, unittest 19 OK, `npm run sprawdz:tlumaczenia` 11 par bez błędów.
+
+**🚧 W toku / nie wdrożone:**
+- Krok setup-python w CI sprawdzi dopiero przebieg na GitHub (lokalnie Python 3.9 z PyYAML 6.0.3).
+
+**🎯 Następny krok:**
+- Zdjęcia z panelu, fikstura w buildzie, SEO i dostępność, CI, dokumentacja.
+
 ## 2026-10-25 18:02, Claude Code
 
 **✅ Zrobione:**

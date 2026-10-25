@@ -7,5 +7,5 @@ etap: "Pre-launch"
 stan: w-toku
 kolejnosc: 4
 tlumaczenie: ai
-zrodlo: 43ea22f9aa1169b03170b9061eefba0633c983e450e6f3474ef3f895988beacb
+zrodlo: d189e2832f2092066bb46f84ac8268146915b9f15759389271c5beb0fda017f8
 ---

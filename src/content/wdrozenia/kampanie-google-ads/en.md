@@ -9,5 +9,5 @@ ikona: wykres
 plyta: zolty
 kolejnosc: 6
 tlumaczenie: ai
-zrodlo: a89211d55f6ae7eb6ac61b67c88e9a24b7967d602dc13d3c0138a2b8fd738221
+zrodlo: 6dc5d1467b39f4de499252d27e9b3e932d98b36baee9c7437944eb92811b4925
 ---

@@ -3,8 +3,11 @@
 Uruchomienie: python3 -m pytest narzedzia/tlumaczenie -q
 albo bez pytest: python3 -m unittest discover -s narzedzia/tlumaczenie -p 'test_*.py'
 """
+import io
+import re
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 
 import kontrola_tlumaczenia as k
@@ -28,6 +31,30 @@ tlumaczenie: ai
 zrodlo: 2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881
 ---
 """
+
+
+SKROT = Path(__file__).resolve().parents[2] / "testy" / "fikstury" / "skrot"
+
+
+def aktualny(en: str, pl: str) -> str:
+    """en.md z polem zrodlo równym skrótowi pl.md (EN przetłumaczony z tego PL)."""
+    return re.sub(r"^zrodlo: .*$", f"zrodlo: {k.zrodlo_pl(pl)}", en, flags=re.M)
+
+
+class SkrotZrodla(unittest.TestCase):
+    def test_lista_w_nawiasach_i_z_myslnikami_daja_ten_sam_skrot_co_typescript(self):
+        oczekiwany = (SKROT / "oczekiwany-skrot.txt").read_text(encoding="utf-8").strip()
+        for plik in ("pl-w-nawiasach.md", "pl-z-myslnikami.md"):
+            surowy = (SKROT / plik).read_bytes().decode("utf-8")  # bez zamiany CRLF przy odczycie
+            self.assertEqual(k.zrodlo_pl(surowy), oczekiwany, plik)
+
+    def test_daty_i_yes_zostaja_tekstem_jak_w_yaml_1_2(self):
+        self.assertEqual(k.zrodlo_pl("---\ndata: 2026-10-23\nx: yes\n---\n"),
+                         k.zrodlo_pl('---\ndata: "2026-10-23"\nx: "yes"\n---\n'))
+
+    def test_zrodlo_en_czyta_pole_z_naglowka(self):
+        self.assertEqual(k.zrodlo_en(EN), "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881")
+        self.assertIsNone(k.zrodlo_en("---\ntytul: x\n---\n"))
 
 
 class KontrolaTlumaczenia(unittest.TestCase):
@@ -104,11 +131,27 @@ class PolecenieIKatalog(unittest.TestCase):
         self.assertEqual(k.main(["--zrodlo", str(d / "pl.md"), "--tlumaczenie", str(d / "en.md")]), 1)
 
     def test_katalog_sprawdza_pary_z_en_md_i_pomija_te_bez(self):
-        self.para("wdrozenia/zgodna", PL, EN)
+        self.para("wdrozenia/zgodna", PL, aktualny(EN, PL))
         self.para("wdrozenia/tylko-pl", PL)
         self.assertEqual(k.main(["--katalog", str(self.baza)]), 0)
-        self.para("projekty/zla", PL, EN.replace("230", "231"))
+        self.para("projekty/zla", PL, aktualny(EN.replace("230", "231"), PL))
         self.assertEqual(k.main(["--katalog", str(self.baza)]), 1)
+
+    def test_katalog_po_edycji_samego_pl_roznice_sa_uwaga_a_nie_bledem(self):
+        # EN przetłumaczony ze starego PL; Robert zmienia w panelu liczbę w PL. Wdrożenie nie może stanąć.
+        nowy_pl = PL.replace("230 klientów", "240 klientów")
+        self.para("wdrozenia/zmieniony-pl", nowy_pl, aktualny(EN, PL))
+        with redirect_stdout(io.StringIO()) as wyjscie:
+            self.assertEqual(k.main(["--katalog", str(self.baza)]), 0)
+        self.assertIn("UWAGA", wyjscie.getvalue())
+        self.assertIn("240", wyjscie.getvalue())
+        self.assertNotIn("BŁĄD", wyjscie.getvalue())
+
+    def test_katalog_aktualny_en_z_inna_liczba_to_blad(self):
+        self.para("wdrozenia/aktualny", PL, aktualny(EN.replace("230", "231"), PL))
+        with redirect_stdout(io.StringIO()) as wyjscie:
+            self.assertEqual(k.main(["--katalog", str(self.baza)]), 1)
+        self.assertIn("BŁĄD", wyjscie.getvalue())
 
     def test_en_md_bez_pl_md_to_blad(self):
         d = self.baza / "sierota"
