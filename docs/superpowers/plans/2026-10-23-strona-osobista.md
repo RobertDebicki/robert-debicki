@@ -6,7 +6,7 @@
 
 **Architektura:** Astro generuje statyczny HTML do `dist/`. Treść to pliki Markdown w kolekcjach Astro (folder na pozycję, `pl.md` i opcjonalnie `en.md`), edytowane w Sveltii pod `/admin/`, która commituje do GitHuba. GitHub Actions buduje, uruchamia kontrole i wdraża `dist/` jako statyczne pliki Workera `robert-debicki`. Skany referencji leżą w R2, w repo jest tylko ich adres.
 
-**Stos:** Astro 7, TypeScript strict, Sveltia CMS 0.221.8 (jsDelivr, jak w wcześniejszym projekcie), Vitest, Playwright, Lighthouse CI, Python 3 (kontrola tłumaczeń), wrangler 4.142.0, GitHub Actions.
+**Stos:** Astro 7, TypeScript strict, Sveltia CMS 0.221.8 (jsDelivr, jak we wcześniejszym projekcie), Vitest, Playwright, Lighthouse CI, Python 3 (kontrola tłumaczeń), wrangler 4.142.0, GitHub Actions.
 
 **Projekt:** `docs/superpowers/specs/2026-10-23-strona-osobista-design.md`. Wzorzec panelu i CI: wcześniejszy projekt z tym samym zestawem (Astro + Sveltia + Cloudflare): `src/lib/panel.ts`, `.github/workflows/strona.yml`, `wrangler.jsonc`.
 

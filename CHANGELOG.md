@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-10-25 18:02, Claude Code
+
+**✅ Zrobione:**
+- Usunięta nazwa klienta z projektu i planu (dwa miejsca), zastąpiona "we wcześniejszym projekcie".
+- `skrypty/sprawdz-tresc.ts`: osobna kontrola "nazwy klientów" w `src/`, `docs/`, `AGENTS.md`, `README.md` i `CHANGELOG.md`. Uruchamia ją `npm run sprawdz:tresc`, czyli też `npm run sprawdz`. Lista `KLIENCI` nie zawiera nazw (repozytorium jest publiczne): ma skrót SHA-256 rdzenia i dozwolone końcówki odmiany, porównywane z początkiem słowa albo 2-3 sklejonych słów. Nowy wpis: `npx tsx skrypty/sprawdz-tresc.ts --skrot rdzen`.
+- Testy na fikcyjnych nazwach (odmiana, nazwa z dwóch słów, inne końcówki bez trafienia), zwykłe słowa o podobnym początku bez trafień, repozytorium 0 trafień. Lokalnie (poza repo) sprawdzone, że lista łapie wszystkie 13 rdzeni z odmianą, także obie stare linie z projektu i planu.
+
+**🚧 W toku / nie wdrożone:**
+- Nazwa zostaje w historii git (bez przepisywania historii, zgodnie z poleceniem).
+
+**🎯 Następny krok:**
+- Pozostałe poprawki z przeglądu końcowego.
+
 ## 2026-10-25 17:36, Claude Code
 
 **✅ Zrobione:**

@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { afterAll, describe, expect, it } from 'vitest';
-import { znajdzZakazane } from '../../skrypty/sprawdz-tresc';
+import { KLIENCI, klienciWLinii, skrotRdzenia, znajdzNazwyKlientow, znajdzZakazane, type Klient } from '../../skrypty/sprawdz-tresc';
 
 const katalogi: string[] = [];
 function repo(pliki: Record<string, string>): string {
@@ -48,6 +48,43 @@ describe('znajdzZakazane', () => {
   });
 });
 
+describe('znajdzNazwyKlientow', () => {
+  // Fikcyjni klienci: lista prawdziwych w repozytorium ma tylko skróty, więc testy nie mogą zawierać nazw.
+  const fikcyjni: Klient[] = [
+    { skrot: skrotRdzenia('kowalex'), dlugosc: 7, koncowki: ['ie', 'u', 'em'] },
+    { skrot: skrotRdzenia('studiodębów'), dlugosc: 11 },
+  ];
+
+  it('łapie nazwę z odmianą w docs/ i AGENTS.md, także nazwę z dwóch słów', () => {
+    const k = repo({
+      'docs/plan.md': 'Panel jak w Kowalexie.\n',
+      'AGENTS.md': 'ok\nKlient: Kowalex Meble\nStudio Dębów, sklep\n',
+      'src/a.md': 'czysto\n',
+    });
+    expect(znajdzNazwyKlientow(k, fikcyjni).map((t) => `${t.plik}:${t.wiersz}:${t.nazwa}`).sort()).toEqual([
+      'AGENTS.md:2:klient nr 1',
+      'AGENTS.md:3:klient nr 2',
+      'docs/plan.md:1:klient nr 1',
+    ]);
+  });
+
+  it('nie łapie słów z tym samym początkiem i inną końcówką', () => {
+    expect(klienciWLinii('Kowalexowski, Kowalexik i Kowale.', fikcyjni)).toEqual([]);
+  });
+
+  it('lista prawdziwych klientów nie łapie zwykłych słów (prezes, prezentacja, press, sigmoida, kuchnia)', () => {
+    expect(klienciWLinii('Prezes, prezentacja, press release, sigmoida, kuchnia, Mariola.')).toEqual([]);
+  });
+
+  it('lista prawdziwych klientów to same skróty (16 znaków hex), bez nazw', () => {
+    for (const k of KLIENCI) expect(k.skrot).toMatch(/^[0-9a-f]{16}$/);
+  });
+
+  it('repozytorium nie ma nazw klientów', () => {
+    expect(znajdzNazwyKlientow(resolve('.'))).toEqual([]);
+  });
+});
+
 describe('skrypt sprawdz-tresc', () => {
   const uruchom = (k: string) => spawnSync('npx', ['tsx', resolve('skrypty/sprawdz-tresc.ts'), k], { encoding: 'utf8' });
 
@@ -56,6 +93,11 @@ describe('skrypt sprawdz-tresc', () => {
     expect(w.status).toBe(1);
     expect(w.stderr).toContain('src/a.md:2');
     expect(w.stderr).toContain('wzorzec');
+  });
+
+  it('--skrot wypisuje wpis do listy KLIENCI', () => {
+    const w = spawnSync('npx', ['tsx', resolve('skrypty/sprawdz-tresc.ts'), '--skrot', 'Kowalex'], { encoding: 'utf8' });
+    expect(w.stdout.trim()).toBe(`{ skrot: '${skrotRdzenia('kowalex')}', dlugosc: 7 }`);
   });
 
   it('kończy się sukcesem bez trafień', () => {

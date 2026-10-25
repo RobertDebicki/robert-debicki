@@ -109,7 +109,7 @@ Według pakietu zasad tłumaczenia z wcześniejszego projektu.
 
 - Ten sam Worker co dziś (`robert-debicki`), ten sam adres.
 - Commit na gałęzi głównej uruchamia build i wdrożenie automatycznie.
-- Logowanie do panelu przez GitHub, przez `sveltia-cms-auth` na Cloudflare. W wcześniejszym projekcie ten krok odłożono, więc tu trzeba go zrobić od początku.
+- Logowanie do panelu przez GitHub, przez `sveltia-cms-auth` na Cloudflare. We wcześniejszym projekcie ten krok odłożono, więc tu trzeba go zrobić od początku.
 
 ## Zostawione wykonawcy
 
