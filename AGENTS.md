@@ -29,6 +29,8 @@ npm run sprawdz:sekrety  # skan repo pod kątem kluczy i tokenów (musi dać 0)
 ## Twarde zasady
 Zakazane w treści i wyglądzie (porażka, nawet jeśli technicznie działa):
 - Wygląd jak szablon: siatka kropek, `// komentarze`, zielony neon, Inter, Space Grotesk, karty z poświatą.
+- Treść spoza zakresu. Zakres treści: automatyzacja procesów, AI i kod. Kontrola treści (`npm run sprawdz:tresc`) pilnuje listy wzorców zapisanej jako skróty (`WZORCE` w `skrypty/sprawdz-tresc.ts`); jawnej listy nie wpisujemy do repozytorium.
+- Liczba projektów w treści.
 - Nazwy klientów przy wdrożeniach i projektach. Klientów opisujemy branżą.
 - Fakty, których Robert nie podał. Bez zmyślonych metryk.
 - Długie i krótkie myślniki w treści. Tylko zwykły dywiz w zakresach dat.

@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { afterAll, describe, expect, it } from 'vitest';
-import { KLIENCI, klienciWLinii, skrotRdzenia, znajdzNazwyKlientow, znajdzZakazane, type Klient } from '../../skrypty/sprawdz-tresc';
+import { KLIENCI, WZORCE, klienciWLinii, skrotRdzenia, zakazaneWLinii, znajdzNazwyKlientow, znajdzZakazane, type Klient, type Wzorce } from '../../skrypty/sprawdz-tresc';
 
 const katalogi: string[] = [];
 function repo(pliki: Record<string, string>): string {
@@ -18,29 +18,60 @@ function repo(pliki: Record<string, string>): string {
 afterAll(() => katalogi.forEach((k) => rmSync(k, { recursive: true, force: true })));
 
 describe('znajdzZakazane', () => {
-  it('fikstura z pauzą, wzorzec, wzorzec i #wzorzec daje 4 trafienia z plikiem i wierszem', () => {
+  // Fikcyjne wzorce: prawdziwa lista ma tylko skróty, więc testy nie mogą zawierać jej słów.
+  const fikcyjne: Wzorce = {
+    slowa: [
+      { skrot: skrotRdzenia('qzx'), dlugosc: 3, koncowki: [] },
+      { skrot: skrotRdzenia('blorbex'), dlugosc: 7 },
+      { skrot: skrotRdzenia('kodwir'), dlugosc: 6, koncowki: ['u', 'owy'] },
+    ],
+    frazy: [[{ skrot: skrotRdzenia('kowal'), dlugosc: 5, koncowki: ['a', 'e'] }, { skrot: skrotRdzenia('młotkow'), dlugosc: 7 }]],
+    kolory: [skrotRdzenia('#123abc'), skrotRdzenia('rgb(1,2,3)')],
+  };
+
+  it('fikstura z pauzą, słowem, frazą i kolorem daje trafienia z plikiem i wierszem', () => {
     const k = repo({
-      'src/content/wdrozenia/a/pl.md': 'Linia pierwsza\nZbudowałem coś — szybko\nPodpisane wzorzec\nPlatforma wzorzec\n',
-      'src/styles/x.css': 'a { color: #wzorzec; }\n',
+      'src/content/wdrozenia/a/pl.md': 'Linia pierwsza\nZbudowałem coś — szybko\nPodpisane QZX\nPlatforma Blorbex.io\nKowale kuźni młotkowej\n',
+      'src/styles/x.css': 'a { color: #123ABC; }\nb { color: rgb(1, 2, 3); }\n',
     });
-    const t = znajdzZakazane(k);
-    expect(t).toHaveLength(4);
-    expect(t.map((x) => `${x.plik}:${x.wiersz}`).sort()).toEqual([
-      'src/content/wdrozenia/a/pl.md:2',
-      'src/content/wdrozenia/a/pl.md:3',
-      'src/content/wdrozenia/a/pl.md:4',
-      'src/styles/x.css:1',
+    expect(znajdzZakazane(k, fikcyjne).map((x) => `${x.plik}:${x.wiersz}:${x.nazwa}`).sort()).toEqual([
+      'src/content/wdrozenia/a/pl.md:2:pauza (—)',
+      'src/content/wdrozenia/a/pl.md:3:wzorzec słowny nr 1',
+      'src/content/wdrozenia/a/pl.md:4:wzorzec słowny nr 2',
+      'src/content/wdrozenia/a/pl.md:5:fraza nr 1',
+      'src/styles/x.css:1:kolor nr 1',
+      'src/styles/x.css:2:kolor nr 2',
     ]);
   });
 
-  it('nie skanuje AGENTS.md, docs/ ani testy/ (tam zakazane słowa występują celowo)', () => {
+  it('łapie słowo z dywizem i bez, nie łapie innej końcówki ani drugiego słowa frazy bez pierwszego', () => {
+    expect(zakazaneWLinii('Kod-wir, kod wiru, kodwirowy', fikcyjne)).toEqual(['wzorzec słowny nr 3']);
+    expect(zakazaneWLinii('Kodwirwork, qzxa, transport młotkowy, kowal z daleka, #123abd', fikcyjne)).toEqual([]);
+  });
+
+  it('nie skanuje AGENTS.md, docs/ ani testy/', () => {
     const k = repo({
-      'AGENTS.md': 'Zakazane: wzorzec, wzorzec — pauza\n',
-      'docs/plan.md': 'wzorzec\n',
-      'testy/fikstury/x/pl.md': 'wzorzec\n',
+      'AGENTS.md': 'Zakazane: QZX — pauza\n',
+      'docs/plan.md': 'blorbex\n',
+      'testy/fikstury/x/pl.md': 'blorbex\n',
       'src/content/a/pl.md': 'czysto\n',
     });
-    expect(znajdzZakazane(k)).toEqual([]);
+    expect(znajdzZakazane(k, fikcyjne)).toEqual([]);
+  });
+
+  it('prawdziwa lista to same skróty (16 znaków hex), bez słów', () => {
+    for (const k of [...WZORCE.slowa, ...WZORCE.frazy.flat()]) expect(k.skrot).toMatch(/^[0-9a-f]{16}$/);
+    for (const k of WZORCE.kolory) expect(k).toMatch(/^[0-9a-f]{16}$/);
+  });
+
+  // Tylko lokalnie: ZAKAZANE_PLAIN_TEST zawiera prawdziwe wzorce rozdzielone znakiem |, każdy musi dać trafienie.
+  it.skipIf(!process.env.ZAKAZANE_PLAIN_TEST)('prawdziwa lista łapie wzorce podane lokalnie', () => {
+    const niezlapane = process.env.ZAKAZANE_PLAIN_TEST!.split('|').filter((t) => zakazaneWLinii(t).length === 0);
+    expect(niezlapane).toEqual([]);
+  });
+
+  it('prawdziwa lista nie łapie branży klienta ani nazwy byłego pracodawcy', () => {
+    expect(zakazaneWLinii('Transport chłodniczy, transportu chłodniczego. Automation Developer, NoCodeWork.')).toEqual([]);
   });
 
   it('treść startowa repozytorium nie ma trafień', () => {
@@ -89,10 +120,10 @@ describe('skrypt sprawdz-tresc', () => {
   const uruchom = (k: string) => spawnSync('npx', ['tsx', resolve('skrypty/sprawdz-tresc.ts'), k], { encoding: 'utf8' });
 
   it('kończy się błędem z plikiem, wierszem i nazwą wzorca po polsku', () => {
-    const w = uruchom(repo({ 'src/a.md': 'ok\nPlatforma wzorzec\n' }));
+    const w = uruchom(repo({ 'src/a.md': 'ok\nSzybko — i dobrze\n' }));
     expect(w.status).toBe(1);
     expect(w.stderr).toContain('src/a.md:2');
-    expect(w.stderr).toContain('wzorzec');
+    expect(w.stderr).toContain('pauza');
   });
 
   it('--skrot wypisuje wpis do listy KLIENCI', () => {

@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { rozdziel } from '../../src/lib/frontmatter';
 import { walidujPlik } from '../../src/lib/waliduj';
 import { ustawienia } from '../../src/lib/schematy';
-import { ZAKAZANE } from '../../skrypty/sprawdz-tresc';
+import { zakazaneWLinii } from '../../skrypty/sprawdz-tresc';
 
 const TRESC = join(import.meta.dirname, '../../src/content');
 
@@ -60,7 +60,7 @@ describe('treść startowa', () => {
     const trafienia: string[] = [];
     for (const plik of wszystkiePliki(TRESC)) {
       const tekst = readFileSync(plik, 'utf8');
-      for (const [nazwa, wzor] of ZAKAZANE) if (wzor.test(tekst)) trafienia.push(`${plik}: ${nazwa}`);
+      for (const nazwa of zakazaneWLinii(tekst)) trafienia.push(`${plik}: ${nazwa}`);
     }
     expect(trafienia).toEqual([]);
   });

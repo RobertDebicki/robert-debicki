@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-10-25 18:31, Claude Code
+
+**✅ Zrobione:**
+- `skrypty/sprawdz-tresc.ts`: kontrola zakazanych wzorców przepisana na skróty, tak jak kontrola nazw klientów (`WZORCE`: słowa z dozwolonymi końcówkami, frazy z dwóch słów, kolory jako skrót zapisu `#rrggbb` albo `rgb(r,g,b)`). Jawnie zostały tylko dwa znaki: pauza i półpauza. Komunikat podaje numer wzorca, nie jego treść. Wynik na repozytorium: 0 trafień.
+- Testy na fikcyjnych wzorcach; test prawdziwej listy działa tylko lokalnie ze zmienną `ZAKAZANE_PLAIN_TEST` (w CI pominięty). Sprawdzone lokalnie poza repozytorium: wszystkie wzorce z listy Roberta dają trafienie, nazwa branży klienta i nazwa byłego pracodawcy nie.
+- AGENTS.md, spec, plan, README, CHANGELOG: zakres treści opisany neutralnie (automatyzacja procesów, AI i kod), bez jawnej listy wzorców. README: panel `/admin/` istnieje, logowanie tokenem GitHub. `wrangler.jsonc`: komentarz bez nieaktualnej wersji wranglera.
+- `npm run sprawdz` kod 0 (Vitest 93 PASS i 1 pominięty, build OK, Playwright 79 PASS na 2 procesach).
+
+**🚧 W toku / nie wdrożone:**
+- Nie wypchnięte. Historia gita nadal zawiera wcześniejsze wersje plików z jawną listą; usunięcie jej wymaga przepisania historii i decyzji Roberta.
+
+**🎯 Następny krok:**
+- Robert decyduje, czy przepisać historię repozytorium przed push na `main`.
+
 ## 2026-10-25 18:22, Claude Code
 
 **✅ Zrobione:**
@@ -263,6 +277,7 @@
 ## 2026-10-23 19:00, Claude Code
 
 **✅ Zrobione:**
+- Zadanie 9: kontrole jakości i CI. `skrypty/sprawdz-tresc.ts` (`npm run sprawdz:tresc`) skanuje `src/` pod kątem pauz, półpauz i wzorców spoza zakresu treści (kontrola zakazanych wzorców); komunikat po polsku z plikiem i wierszem. AGENTS.md, docs/ i testy/ są pominięte celowo. Jedyna lista wzorców (`ZAKAZANE`) jest eksportowana i używana też przez test treści startowej (usunięta kopia inline z zadania 4).
 - `npm run sprawdz` łączy: sekrety, treść, skany, Vitest, build, Playwright. `sprawdz:skany` jest teraz sprawdzany także po pełnej ścieżce w `public/` (np. `public/referencje/photo.jpg` jest zgłaszany); nowe testy.
 - `testy/e2e/dostepnosc.spec.ts` (`@axe-core/playwright`): 0 naruszeń `color-contrast` na `/` oraz na `/en/` (build z fiksturami) w trybie jasnym i ciemnym. Kontrast przeszedł bez zmian tokenów, więc żadnych wartości kolorów nie zmieniono (stare = nowe). Test ma zdolność wykrywania: z wymuszonym szarym tekstem (`AXE_SPRAWDZ_CZERWONE=1`) wszystkie 4 padają.
 - Lighthouse CI (`lighthouserc.json`, `lighthouserc-en.json`, `npm run sprawdz:lighthouse`), mobile, próg 0.95 w czterech kategoriach, build z `PUBLIC_INDEKSUJ=true`. Wynik (mediana z 3): `/` 95/100/100/100, `/en/` (fikstury) 97/100/96/100. Podsumowanie w `docs/lighthouse/`.

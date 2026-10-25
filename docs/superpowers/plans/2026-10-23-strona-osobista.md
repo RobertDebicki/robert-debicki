@@ -14,6 +14,8 @@
 
 - Wygląd 1:1 z `docs/makieta/index.html` (kopia makiety z 23.10.2026). Zmiana wyglądu tylko dla kontrastu tekstu: przyciemnienie w ramach tej samej barwy i wpis w CHANGELOG.
 - Fonty: Anybody (nagłówki, `wdth` 110-125, waga 800-850), Onest (tekst), Spline Sans Mono (etykiety). Paleta: `#ff5a1f`, `#d0201a`, `#ffc400`, `#131412`, papier `#f4f5f1`, tryb ciemny jak w makiecie.
+- Zakazane w treści: `—`, `–`, liczba projektów, nazwy klientów przy wdrożeniach i projektach.
+- Zakres treści: automatyzacja procesów, AI i kod. Kontrola treści (`npm run sprawdz:tresc`) pilnuje listy wzorców zapisanej jako skróty.
 - Polski pod `/`, angielski (en-US) pod `/en/`. Brak `en.md` ukrywa pozycję w EN, nie blokuje wdrożenia.
 - Skany referencji nigdy w repo. Referencja wymaga `zgoda: true`.
 - `noindex` sterowany zmienną `PUBLIC_INDEKSUJ` (domyślnie `false`).
@@ -158,6 +160,7 @@
 **Interfejsy:**
 - Produkuje: `npm run sprawdz` (sekrety, treść, skany, tłumaczenia, testy jednostkowe, build, e2e) i workflow, który uruchamia je przy każdym push i PR, a na `main` dodatkowo wdraża (zadanie 12).
 
+- [ ] **Krok 1:** test `sprawdz-tresc`: fikstura z `—` i wzorcami z listy daje trafienia z nazwą pliku i wierszem; treść startowa daje 0.
 - [ ] **Krok 2:** test axe: 0 naruszeń `color-contrast` na `/` i `/en/` w trybie jasnym i ciemnym.
 - [ ] **Krok 3:** FAIL. **Krok 4:** zaimplementuj; jeśli kontrast nie przechodzi, przyciemnij odcień tokena tekstu w tej samej barwie i zapisz zmianę w CHANGELOG.
 - [ ] **Krok 5:** `npx lhci autorun` z progiem 0.95 w czterech kategoriach dla `/` i `/en/` na profilu mobilnym; wynik zapisany w `docs/lighthouse/`.

@@ -30,6 +30,8 @@ Repozytorium jest publiczne. Ma być drugim dowodem umiejętności: czysty kod, 
 ## Czego nie wolno (porażka, nawet jeśli technicznie działa)
 
 - Wygląd jak szablon: siatka kropek, `// komentarze`, zielony neon, Inter, Space Grotesk, karty z poświatą.
+- Zakres treści: automatyzacja procesów, AI i kod. Kontrola treści (`npm run sprawdz:tresc`) pilnuje listy wzorców zapisanej jako skróty.
+- Liczba projektów („4 projekty”) w treści.
 - Nazwy klientów przy projektach. Klientów opisujemy branżą.
 - Fakty, których Robert nie podał albo których nie ma w jego materiałach. Bez zmyślonych metryk.
 - Długie i krótkie myślniki (`—`, `–`) w treści. Tylko zwykły dywiz w zakresach dat.

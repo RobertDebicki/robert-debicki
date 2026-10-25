@@ -14,7 +14,7 @@ npm run sprawdz:sekrety
 ```
 
 ### Dodawanie treści
-Wpisy, projekty i referencje będą dodawane z panelu w przeglądarce pod `/admin/` (Sveltia CMS), który zapisuje treść jako pliki w repozytorium. Panel pojawi się w jednym z kolejnych kroków budowy, na razie go nie ma.
+Wpisy, projekty i referencje dodaje się z panelu w przeglądarce pod `/admin/` (Sveltia CMS), który zapisuje treść jako pliki w repozytorium. Logowanie tokenem GitHub, instrukcja w `docs/panel-instrukcja.md`.
 
 ### Licencja
 Kod: licencja MIT (plik `LICENSE`). Treści strony oraz skany referencji są © Robert Dębicki i nie są objęte licencją MIT.
@@ -33,7 +33,7 @@ npm run sprawdz:sekrety   # secret scan
 ```
 
 ### Adding content
-Posts, projects and references will be added from a browser panel at `/admin/` (Sveltia CMS), which saves content as files in the repository. The panel arrives in a later build step and does not exist yet.
+Posts, projects and references are added from a browser panel at `/admin/` (Sveltia CMS), which saves content as files in the repository. Sign in with a GitHub token; instructions (in Polish) in `docs/panel-instrukcja.md`.
 
 ### License
 Code: MIT license (see `LICENSE`). Site content and reference scans are © Robert Dębicki and are not covered by the MIT license.

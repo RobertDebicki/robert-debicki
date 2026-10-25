@@ -1,25 +1,15 @@
-// Zakazane znaki i słowa w treści strony i kodzie źródłowym (src/). AGENTS.md, docs/ i testy/ są pominięte,
-// bo wymieniają zakazane wzorce celowo. Osobna kontrola nazw klientów obejmuje też docs/ i AGENTS.md.
+// Zakazane znaki i wzorce w treści strony i kodzie źródłowym (src/). AGENTS.md, docs/ i testy/ są pominięte.
+// Osobna kontrola nazw klientów obejmuje też docs/ i AGENTS.md.
 // Jedyna lista wzorców w repozytorium: importuje ją też test treści startowej.
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export const ZAKAZANE: [string, RegExp][] = [
+// Znaki zakazane jawnie: długi i krótki myślnik.
+export const ZNAKI: [string, RegExp][] = [
   ['pauza (—)', /—/],
   ['półpauza (–)', /–/],
-  ['wzorzec', /\bNDA\b/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /\bDTP\b/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec', /wzorzec/i],
-  ['wzorzec #wzorzec', /#wzorzec/i],
-  ['wzorzec rgb(wzorzec)', /rgb\(\s*253\s*,\s*67\s*,\s*190\s*\)/i],
 ];
 
 // Nazwy klientów i osób po stronie klienta. Repozytorium jest publiczne, więc lista nie może zawierać samych nazw:
@@ -54,22 +44,74 @@ export function skrotRdzenia(rdzen: string): string {
   return skrot;
 }
 
+function pasuje(znaki: string[], k: Klient): boolean {
+  if (znaki.length < k.dlugosc || skrotRdzenia(znaki.slice(0, k.dlugosc).join('')) !== k.skrot) return false;
+  const reszta = znaki.slice(k.dlugosc).join('');
+  return !k.koncowki || reszta === '' || k.koncowki.includes(reszta);
+}
+
+const slowaLinii = (linia: string) => linia.normalize('NFC').toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
+
 /** Numery (od 1) pozycji z listy `klienci`, których rdzeń z dozwoloną końcówką występuje w linii. */
 export function klienciWLinii(linia: string, klienci: Klient[] = KLIENCI): number[] {
-  const slowa = linia.normalize('NFC').toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
+  const slowa = slowaLinii(linia);
+  const min = Math.min(...klienci.map((k) => k.dlugosc));
   const wynik = new Set<number>();
   for (let i = 0; i < slowa.length; i++) {
     for (let n = 1; n <= 3 && i + n <= slowa.length; n++) {
       const znaki = [...slowa.slice(i, i + n).join('')];
-      if (znaki.length < 4 || znaki.length > 24) continue; // najkrótszy rdzeń ma 4 znaki, dłuższe zlepki to nie nazwy
+      if (znaki.length < min || znaki.length > 24) continue; // krótsze od najkrótszego rdzenia i dłuższe zlepki to nie nazwy
       klienci.forEach((k, nr) => {
-        if (znaki.length < k.dlugosc || skrotRdzenia(znaki.slice(0, k.dlugosc).join('')) !== k.skrot) return;
-        const reszta = znaki.slice(k.dlugosc).join('');
-        if (!k.koncowki || reszta === '' || k.koncowki.includes(reszta)) wynik.add(nr + 1);
+        if (pasuje(znaki, k)) wynik.add(nr + 1);
       });
     }
   }
   return [...wynik];
+}
+
+// Wzorce spoza zakresu treści, zapisane tak samo jak nazwy klientów (skróty, nie słowa):
+// `slowa` jak KLIENCI (słowo albo 2-3 sąsiednie słowa sklejone), `frazy` to dwa słowa, z których drugie stoi
+// najwyżej dwa słowa za pierwszym, `kolory` to skróty zapisu `#rrggbb` albo `rgb(r,g,b)` bez spacji, małymi literami.
+// Skrót nowego wzorca: npx tsx skrypty/sprawdz-tresc.ts --skrot rdzen
+export interface Wzorce { slowa: Klient[]; frazy: [Klient, Klient][]; kolory: string[] }
+const BYLY_PRACODAWCA = { skrot: 'd03ec45ab3013076', dlugosc: 10 };
+export const WZORCE: Wzorce = {
+  slowa: [
+    { skrot: '37242106bee67850', dlugosc: 3, koncowki: [] },
+    { skrot: 'd017f5c6aad25740', dlugosc: 3, koncowki: [] },
+    { skrot: '02a43bc256935301', dlugosc: 7 },
+    { skrot: '16bd7aea78c0f63b', dlugosc: 6, koncowki: ['u', 'em', 's', 'owy', 'owa', 'owe', 'owych', 'owym', 'owymi', 'ową', 'owego', 'owej', 'owemu'] },
+    { skrot: 'df4ac416257333cf', dlugosc: 6 },
+    { skrot: '77e5604feeaf6e01', dlugosc: 7 },
+    { skrot: 'f80f374f6ccfffe2', dlugosc: 6, koncowki: ['nia', 'ni', 'nię', 'nią', 'nie', 'niach', 'niami', 'niom', 'ń', 'z', 'za', 'zem', 'zowi', 'ze', 'zy', 'zach', 'zami', 'zom', 'zu'] },
+    { skrot: 'fe0c6f2f2b225546', dlugosc: 8 },
+  ],
+  frazy: [
+    [{ skrot: 'c757efb049d40ff8', dlugosc: 6, koncowki: ['u', 'em', 'ie', 'y', 'ów', 'om', 'ami', 'ach', 'owi', 'owy', 'owa', 'owe', 'owych', 'owanie', 'owania', 'owaniu', 'owaniem'] }, { skrot: 'cc51b1536c92fc98', dlugosc: 9 }],
+    [{ skrot: 'bbe1ab0d5ba51904', dlugosc: 5 }, BYLY_PRACODAWCA],
+    [{ skrot: '401edaabe7eadc48', dlugosc: 6 }, BYLY_PRACODAWCA],
+  ],
+  kolory: ['1c98ee9db042e8e5', 'bc427ad94c385d91'],
+};
+
+/** Nazwy zakazanych znaków i numery wzorców (bez ich treści) znalezionych w linii. */
+export function zakazaneWLinii(linia: string, wzorce: Wzorce = WZORCE): string[] {
+  const wynik = ZNAKI.filter(([, wzor]) => wzor.test(linia)).map(([nazwa]) => nazwa);
+  for (const nr of klienciWLinii(linia, wzorce.slowa)) wynik.push(`wzorzec słowny nr ${nr}`);
+  const slowa = slowaLinii(linia).map((s) => [...s]);
+  wzorce.frazy.forEach(([a, b], nr) => {
+    const jest = slowa.some((s, i) => pasuje(s, a) && slowa.slice(i + 1, i + 4).some((t) => pasuje(t, b)));
+    if (jest) wynik.push(`fraza nr ${nr + 1}`);
+  });
+  const male = linia.toLowerCase();
+  const kolory = [
+    ...(male.match(/#[0-9a-f]{3,8}\b/g) ?? []),
+    ...[...male.matchAll(/rgba?\(\s*(\d+)[\s,]+(\d+)[\s,]+(\d+)/g)].map((m) => `rgb(${m[1]},${m[2]},${m[3]})`),
+  ];
+  wzorce.kolory.forEach((skrot, nr) => {
+    if (kolory.some((k) => skrotRdzenia(k) === skrot)) wynik.push(`kolor nr ${nr + 1}`);
+  });
+  return wynik;
 }
 
 const KATALOGI = ['src'];
@@ -105,8 +147,8 @@ function szukaj(korzen: string, zakres: string[], wLinii: (linia: string) => str
   return wynik;
 }
 
-export function znajdzZakazane(korzen: string): Trafienie[] {
-  return szukaj(korzen, KATALOGI, (linia) => ZAKAZANE.filter(([, wzor]) => wzor.test(linia)).map(([nazwa]) => nazwa));
+export function znajdzZakazane(korzen: string, wzorce: Wzorce = WZORCE): Trafienie[] {
+  return szukaj(korzen, KATALOGI, (linia) => zakazaneWLinii(linia, wzorce));
 }
 
 export function znajdzNazwyKlientow(korzen: string, klienci: Klient[] = KLIENCI): Trafienie[] {
@@ -119,7 +161,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
 } else if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const korzen = resolve(process.argv[2] ?? '.');
   const trafienia = znajdzZakazane(korzen);
-  for (const t of trafienia) console.error(`${t.plik}:${t.wiersz}: zakazany wzorzec "${t.nazwa}". Usuń go lub zastąp (lista zasad: AGENTS.md).`);
+  for (const t of trafienia) console.error(`${t.plik}:${t.wiersz}: zakazany wzorzec (${t.nazwa}). Usuń go lub zastąp (zakres treści: AGENTS.md).`);
   console.log(`Zakazanych wzorców w treści i kodzie: ${trafienia.length}`);
   const klienci = znajdzNazwyKlientow(korzen);
   for (const t of klienci) console.error(`${t.plik}:${t.wiersz}: nazwa klienta (${t.nazwa} z listy KLIENCI). Opisz klienta branżą (repozytorium jest publiczne).`);
