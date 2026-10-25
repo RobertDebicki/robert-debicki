@@ -22,7 +22,7 @@ interface Props {
   odpowiednik?: string;
   /** Cel przełącznika języka, gdy odpowiednika nie ma, a jest lista zastępcza (bez `hreflang`). */
   przelacznik?: string;
-  /** Wymusza noindex niezależnie od PUBLIC_INDEKSUJ (strona 404). */
+  /** Wymusza noindex niezależnie od PUBLIC_INDEKSUJ i pomija canonical (strona 404 nie ma adresu kanonicznego). */
   noindex?: boolean;
 }
 // Fonty z pierwszego ekranu ładowane równolegle z HTML, a nie dopiero po odczytaniu CSS.
@@ -43,7 +43,7 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true' && !noindex;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="canonical" href={kanoniczny} />
+    {!noindex && <link rel="canonical" href={kanoniczny} />}
     {odpowiednik && (
       <>
         <link rel="alternate" hreflang={jezyk} href={kanoniczny} />

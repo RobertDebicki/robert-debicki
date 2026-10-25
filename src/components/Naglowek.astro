@@ -37,7 +37,7 @@ const drugi = jezyk === 'pl' ? 'en' : 'pl';
       {maWpisy && <a href={jezyk === 'pl' ? '/wpisy/' : '/en/posts/'} style="--sw: var(--y)">{e.wpisy}</a>}
       {maReferencje && <a href={jezyk === 'pl' ? '/referencje/' : '/en/references/'} style="--sw: var(--m)">{e.referencje}</a>}
       {przelacznik && (
-        <a class="przelacznik" href={przelacznik} hreflang={drugi} lang={drugi}>{drugi.toUpperCase()}</a>
+        <a class="przelacznik" href={przelacznik} hreflang={drugi} lang={drugi} aria-label={etykiety(drugi).wersjaJezyka}>{drugi.toUpperCase()}</a>
       )}
     </nav>
   </div>

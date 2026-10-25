@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-10-25 18:12, Claude Code
+
+**✅ Zrobione:**
+- Strona 404: bez `link rel=canonical` (prop `noindex` w `Strona.astro` pomija też canonical). Test `testy/e2e/strona-404.spec.ts`.
+- hreflang: mapa witryny używa tych samych kodów co HTML (`pl`, `en`, wcześniej `pl-PL` i `en-US`) i dostaje `x-default` na wersję polską przez `serialize` w `@astrojs/sitemap` (gdy adres ma odpowiednik). Test w `jezyki.spec.ts` porównuje kody w mapie i w HTML.
+- Przełącznik języka: nazwa dostępna "English version" / "Wersja polska" (nowa etykieta `wersjaJezyka`, w języku celu, zgodnie z `lang` linku), widoczny tekst EN / PL bez zmian. Test nazwy i tekstu.
+- Sprawdzone: Playwright 41 PASS (404, języki, wpisy, referencje, dostępność axe).
+
+**🚧 W toku / nie wdrożone:**
+- Mapa witryny łączy wersje językowe tylko przy tej samej ścieżce (`/` i `/en/`). Wpisy i referencje mają inne ścieżki w EN (`/wpisy/` i `/en/posts/`), więc w mapie nie mają `xhtml:link`, a w HTML mają hreflang. Bez zmian, do decyzji.
+
+**🎯 Następny krok:**
+- CI (test produkcyjny po wdrożeniu, wrangler z lockfile), slug ASCII w panelu, dokumentacja.
+
 ## 2026-10-25 18:10, Claude Code
 
 **✅ Zrobione:**

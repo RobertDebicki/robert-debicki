@@ -19,7 +19,13 @@ export default defineConfig({
     sitemap({
       // panel Sveltii nie jest stroną serwisu
       filter: (strona) => !new URL(strona).pathname.startsWith('/admin/'),
-      i18n: { defaultLocale: 'pl', locales: { pl: 'pl-PL', en: 'en-US' } },
+      // Te same kody co hreflang w HTML (src/layouts/Strona.astro): pl, en i x-default wskazujące wersję polską.
+      i18n: { defaultLocale: 'pl', locales: { pl: 'pl', en: 'en' } },
+      serialize: (wpis) => {
+        const pl = wpis.links?.find((l) => l.lang === 'pl');
+        if (pl && wpis.links.length > 1) wpis.links = [...wpis.links, { lang: 'x-default', url: pl.url }];
+        return wpis;
+      },
     }),
   ],
 });

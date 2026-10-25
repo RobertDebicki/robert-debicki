@@ -31,6 +31,8 @@ export interface Etykiety {
   otworzSkanPdf: string;
   /** Początek tekstu alternatywnego skanu, po nim imię i nazwisko osoby. */
   altSkanu: string;
+  /** Nazwa dostępna przełącznika prowadzącego do wersji w TYM języku (link ma lang tego języka, widać tylko PL/EN). */
+  wersjaJezyka: string;
 }
 
 // Typ Record<Jezyk, Etykiety> sprawia, że brak klucza w którymkolwiek języku jest błędem kompilacji.
@@ -60,6 +62,7 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     otworzSkan: 'Otwórz pełny skan referencji',
     otworzSkanPdf: 'Otwórz skan referencji (PDF)',
     altSkanu: 'Skan listu referencyjnego od',
+    wersjaJezyka: 'Wersja polska',
   },
   en: {
     wdrozenia: 'Deployments',
@@ -86,6 +89,7 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     otworzSkan: 'Open the full reference scan',
     otworzSkanPdf: 'Open the reference scan (PDF)',
     altSkanu: 'Scan of a reference letter from',
+    wersjaJezyka: 'English version',
   },
 };
 

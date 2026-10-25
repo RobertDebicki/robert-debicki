@@ -26,6 +26,25 @@ test('przełącznik na /en/ prowadzi do /', async ({ page }) => {
   await expect(page.locator('a.przelacznik')).toHaveAttribute('href', '/');
 });
 
+test('przełącznik ma nazwę dostępną w języku celu, a widoczny tekst zostaje skrótem', async ({ page }) => {
+  for (const [sciezka, nazwa, tekst] of [['/', 'English version', 'EN'], ['/en/', 'Wersja polska', 'PL']] as const) {
+    await page.goto(sciezka);
+    const link = page.locator('a.przelacznik');
+    await expect(link).toHaveAccessibleName(nazwa);
+    await expect(link).toHaveText(tekst);
+  }
+});
+
+test('mapa strony używa tych samych kodów hreflang co HTML (pl, en) i ma x-default na wersję polską', async ({ page, request }) => {
+  const mapa = await (await request.get('/sitemap-0.xml')).text();
+  const kody = new Set([...mapa.matchAll(/hreflang="([^"]+)"/g)].map((m) => m[1]));
+  expect([...kody].sort()).toEqual(['en', 'pl', 'x-default']);
+  expect(mapa).toContain(`hreflang="x-default" href="${SITE}/"`);
+  await page.goto('/');
+  const html = await page.locator('link[rel=alternate][hreflang]').evaluateAll((l) => l.map((e) => e.getAttribute('hreflang')));
+  expect(html.sort()).toEqual(['en', 'pl', 'x-default']);
+});
+
 test('/en/ pokazuje pozycje z en.md (także nieaktualne) i ukrywa te bez en.md', async ({ page }) => {
   await page.goto('/en/');
   const tekst = await page.locator('main').innerText();
