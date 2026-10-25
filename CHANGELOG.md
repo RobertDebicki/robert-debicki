@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-10-25 18:15, Claude Code
+
+**✅ Zrobione:**
+- `docs/panel-instrukcja.md`: zapis istniejącej pozycji przepisuje w `en.md` pola kopiowane z PL (`duplicate`, lista pól według kolekcji); każda zmiana w PL daje EN stan "do aktualizacji" do czasu `/tlumacz-strone` i nie blokuje wdrożenia; sam zapis bez zmian nie zmienia stanu.
+- Wpis CHANGELOG z 17:36 poprawiony: wdrożenie działa pod https://robert-debicki.robert-debicki7.workers.dev, przebieg 40212866413.
+- `LICENSE`: jedna linia, że treść, logo i skany referencji są © Robert Dębicki i nie są objęte MIT.
+- `AGENTS.md`: jak później zdjąć `noindex` (`PUBLIC_INDEKSUJ=true`, usunięcie zmiennej z zabezpieczenia w `strona.yml`, `public/robots.txt` z linią `Sitemap`, asercja w teście produkcyjnym). Nic nie zmienione w działaniu.
+
+**🚧 W toku / nie wdrożone:**
+- `README.md` nadal pisze, że panelu "na razie nie ma". Poza zakresem tej poprawki, do aktualizacji.
+
+**🎯 Następny krok:**
+- Pełne `npm run sprawdz` i Lighthouse, scalenie do `main` (bez push).
+
 ## 2026-10-25 18:14, Claude Code
 
 **✅ Zrobione:**
@@ -77,12 +91,13 @@
 
 **✅ Zrobione:**
 - `strona.yml`: zadanie `wdroz` korzysta ze środowiska GitHub `claudeflare` (klucz `environment` z adresem Workera), czyli sekrety Cloudflare są czytane ze środowiska, a nie z sekretów repozytorium.
+- Pierwsze wdrożenie wykonane za zgodą Roberta: strona działa pod https://robert-debicki.robert-debicki7.workers.dev (przebieg workflow `Strona` nr 40212866413).
 
 **🚧 W toku / nie wdrożone:**
-- Pierwsze wdrożenie czeka na zgodę Roberta.
+- Strona ma `noindex` (zamierzone do czasu decyzji Roberta).
 
 **🎯 Następny krok:**
-- Push i obserwacja workflow `Strona` na GitHub.
+- Poprawki z przeglądu końcowego całego projektu.
 
 ## 2026-10-25 17:20, Claude Code
 

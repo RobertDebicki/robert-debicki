@@ -84,7 +84,9 @@ Panel zapisuje tylko wersję polską (`pl.md`). Wersję angielską tworzy polece
 
 Co warto wiedzieć:
 - Pozycja bez wersji angielskiej widnieje tylko po polsku. Nie blokuje to wdrożenia.
-- Gdy po tłumaczeniu zmienisz polski tekst, angielska wersja zostaje na stronie, ale dostaje stan "do aktualizacji". Uruchom `/tlumacz-strone` ponownie.
+- Gdy po tłumaczeniu zmienisz cokolwiek w wersji polskiej (tekst albo inne pole), angielska wersja zostaje na stronie bez zmian, ale dostaje stan "do aktualizacji" i pokazuje stary tekst, dopóki nie uruchomisz `/tlumacz-strone`. Wdrożenie nie jest przez to blokowane: kontrola tłumaczeń wypisuje wtedy różnice jako uwagi.
+- Samo otwarcie i zapisanie pozycji bez zmian nie oznacza angielskiej wersji jako nieaktualnej. Stan liczy się z treści pól, nie z formatu, w jakim panel zapisze plik.
+- Zapis istniejącej pozycji w panelu zmienia też plik `en.md`, jeśli istnieje. Panel przepisuje do niego pola, które są wspólne dla obu języków i kopiowane z wersji polskiej: we wdrożeniach ikona, płyta i kolejność; w projektach etap i kolejność; w referencjach data, adres skanu, zgoda i zamazany podpis; we wpisach data. Teksty angielskie zostają, jak były.
 - Pól "tlumaczenie" i "zrodlo" w panelu nie widać. Ustawia je polecenie, nie ty.
 
 ## Gdy coś nie działa

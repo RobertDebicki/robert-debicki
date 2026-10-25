@@ -39,6 +39,6 @@ Ograniczenia globalne planu:
 - Zmiana wyglądu tylko dla kontrastu tekstu (przyciemnienie w ramach tej samej barwy) i z wpisem w CHANGELOG.
 - Polski pod `/`, angielski (en-US) pod `/en/`. Brak `en.md` ukrywa pozycję w EN, nie blokuje wdrożenia.
 - Referencja wymaga `zgoda: true`.
-- `noindex` steruje zmienna `PUBLIC_INDEKSUJ` (domyślnie `false`).
+- `noindex` steruje zmienna `PUBLIC_INDEKSUJ` (domyślnie `false`). Zdjęcie `noindex` później, tylko na decyzję Roberta (teraz nie): ustawić `PUBLIC_INDEKSUJ=true` w buildzie wdrożeniowym (`env` kroku buildu w zadaniu `wdroz`), usunąć `PUBLIC_INDEKSUJ` z pętli zabezpieczenia w `.github/workflows/strona.yml` (inaczej build się zatrzyma), dodać `public/robots.txt` z `User-agent: *`, `Allow: /` i linią `Sitemap: https://robert-debicki.robert-debicki7.workers.dev/sitemap-index.xml` (adres zmienić razem z domeną) oraz poprawić asercję `noindex` w `testy/e2e/produkcja.spec.ts`.
 - Lighthouse mobile co najmniej 95 w czterech kategoriach. Brak przewijania w bok przy 360, 390, 1024, 1440 px.
 - Commit dopiero z wpisem w `CHANGELOG.md`. Push na `main` i wdrożenie tylko za zgodą Roberta w danej wiadomości.
