@@ -1,7 +1,7 @@
 /**
  * Konfiguracja panelu jako YAML, budowana z `src/lib/panel.ts`.
- * Zmienne środowiska buildu: PUBLIC_PANEL_LOGOWANIE (adres Workera sveltia-cms-auth; bez niej config nie ma `base_url`,
- * a logowanie przez GitHub nie zadziała, ale lokalny build i testy przechodzą), PANEL_GALAZ (domyślnie main).
+ * Zmienne środowiska buildu: PUBLIC_PANEL_LOGOWANIE (opcjonalna; bez niej config nie ma `base_url`, a panel loguje się
+ * tokenem GitHub, zob. docs/panel-instrukcja.md), PANEL_GALAZ (domyślnie main).
  */
 import type { APIRoute } from 'astro';
 import { stringify } from 'yaml';

@@ -22,14 +22,16 @@ interface Props {
   odpowiednik?: string;
   /** Cel przełącznika języka, gdy odpowiednika nie ma, a jest lista zastępcza (bez `hreflang`). */
   przelacznik?: string;
+  /** Wymusza noindex niezależnie od PUBLIC_INDEKSUJ (strona 404). */
+  noindex?: boolean;
 }
 // Fonty z pierwszego ekranu ładowane równolegle z HTML, a nie dopiero po odczytaniu CSS.
 const fontyKrytyczne = [anybodyLatin, anybodyLatinExt, onestLatin, onestLatinExt, monoLatin];
-const { jezyk, tytul, opis, odpowiednik, przelacznik = odpowiednik } = Astro.props;
+const { jezyk, tytul, opis, odpowiednik, przelacznik = odpowiednik, noindex = false } = Astro.props;
 const kanoniczny = new URL(Astro.url.pathname, Astro.site).href;
 const adres = (sciezka: string) => new URL(sciezka, Astro.site).href;
 const drugi = jezyk === 'pl' ? 'en' : 'pl';
-const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true';
+const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true' && !noindex;
 ---
 <!doctype html>
 <html lang={jezyk}>

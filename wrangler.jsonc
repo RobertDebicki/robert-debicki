@@ -1,0 +1,11 @@
+{
+  // Worker ze statycznymi plikami. Wdrożenie: .github/workflows/strona.yml (npx wrangler@4.142.0 deploy).
+  // Worker "robert-debicki" już istnieje na Cloudflare i do tej pory serwował makietę statyczną.
+  "name": "robert-debicki",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}

@@ -1,5 +1,5 @@
 # Każdy push i każdy PR przechodzi pełny łańcuch kontroli (npm run sprawdz) oraz Lighthouse mobile.
-# Wdrożenie na Cloudflare dojdzie w zadaniu 12; na razie workflow niczego nie publikuje i nie używa sekretów.
+# Wdrożenie na Cloudflare (job wdroz): tylko push na main, po zielonych kontrolach i tylko gdy sekrety istnieją.
 name: Strona
 
 on:
@@ -25,9 +25,9 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -48,7 +48,7 @@ jobs:
 
       - name: Raport Lighthouse
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: lighthouse
           path: |
@@ -57,5 +57,47 @@ jobs:
           include-hidden-files: true
           if-no-files-found: ignore
 
-  # WDROŻENIE: zadanie 12. Tu będzie osobne zadanie (needs: kontrola, tylko push na main, po zgodzie Roberta).
-  # Nie dodawać tu sekretów ani tokenów przed zadaniem 12.
+  wdroz:
+    name: Wdrożenie na Cloudflare
+    needs: kontrola
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    concurrency:
+      group: wdrozenie
+      cancel-in-progress: false
+    env:
+      # Sekrety nie są dostępne w warunku `if` zadania, więc obecność sprawdzamy tu i pomijamy kroki.
+      MA_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+    steps:
+      - name: Sekrety Cloudflare
+        if: env.MA_TOKEN != 'true'
+        run: echo "::notice::Brak CLOUDFLARE_API_TOKEN lub CLOUDFLARE_ACCOUNT_ID, wdrożenie pominięte."
+
+      - uses: actions/checkout@v7
+        if: env.MA_TOKEN == 'true'
+
+      - uses: actions/setup-node@v7
+        if: env.MA_TOKEN == 'true'
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+        if: env.MA_TOKEN == 'true'
+
+      # Build produkcyjny: bez PUBLIC_INDEKSUJ (zostaje noindex), bez treści testowych (fikstury) i bez katalogu wyjściowego testów.
+      - name: Zabezpieczenie buildu produkcyjnego
+        if: env.MA_TOKEN == 'true'
+        run: |
+          for z in TRESC_BAZA WYJSCIE PUBLIC_INDEKSUJ; do
+            if [ -n "${!z:-}" ]; then echo "::error::Zmienna $z jest ustawiona w buildzie wdrożeniowym."; exit 1; fi
+          done
+          npm run build
+
+      - name: Wdrożenie (wrangler)
+        if: env.MA_TOKEN == 'true'
+        run: npx wrangler@4.142.0 deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

@@ -1,8 +1,8 @@
 # Panel strony: instrukcja
 
-Panel to strona pod adresem `/admin/` (pełny adres w sekcji Logowanie). Zapisuje treść jako pliki w repozytorium na GitHubie. Każdy zapis w panelu to commit na gałęzi `main`, a po nim strona buduje się i wdraża sama.
+Panel to strona pod adresem `/admin/` (na przykład https://robert-debicki.robert-debicki7.workers.dev/admin/). Zapisuje treść jako pliki w repozytorium na GitHubie. Każdy zapis w panelu to commit na gałęzi `main`, a po nim strona buduje się i wdraża sama.
 
-Stan na 23.10.2026: konfiguracja panelu jest gotowa w repozytorium, ale logowanie przez GitHub i magazyn na skany jeszcze nie są ustawione. Sekcje oznaczone "do uzupełnienia po konfiguracji" zawierają kroki, których wartości jeszcze nie istnieją.
+Stan na 25.10.2026: konfiguracja panelu jest gotowa w repozytorium, logowanie idzie przez token GitHub (bez dodatkowych usług). Magazyn na skany jeszcze nie jest ustawiony, sekcje oznaczone "do uzupełnienia po konfiguracji" zawierają kroki, których wartości jeszcze nie istnieją.
 
 ## Co jest w panelu
 
@@ -16,20 +16,23 @@ Stan na 23.10.2026: konfiguracja panelu jest gotowa w repozytorium, ale logowani
 
 Każda pozycja ma wersję polską i angielską. Piszesz po polsku. Angielską robi polecenie w Claude Code (sekcja Tłumaczenie).
 
-## Logowanie (do uzupełnienia po konfiguracji)
+## Logowanie tokenem GitHub
 
-Logowanie idzie przez konto GitHub `RobertDebicki`, za pośrednictwem małego Workera na Cloudflare (`sveltia-cms-auth`) i aplikacji OAuth na GitHubie.
+Panel loguje się osobistym tokenem GitHub, który ma dostęp tylko do repozytorium strony. Nie ma tu żadnego dodatkowego serwera logowania.
 
-Do uzupełnienia po konfiguracji:
-- adres panelu,
-- adres Workera logowania (ustawiany w zmiennej `PUBLIC_PANEL_LOGOWANIE` przy budowie strony),
-- kroki tworzenia aplikacji OAuth na GitHubie i Workera (klik po kliku),
-- gdzie wpisać identyfikator i sekret aplikacji (tylko w Cloudflare, nigdy w repozytorium).
+Utworzenie tokena (raz na rok):
+1. Zaloguj się na GitHub jako `RobertDebicki`. Wejdź w Settings, Developer settings, Personal access tokens, **Fine-grained tokens**, **Generate new token**.
+2. Nazwa: na przykład `panel strony`. **Expiration**: 1 rok (365 dni).
+3. **Repository access**: Only select repositories, wybierz tylko repozytorium `robert-debicki`.
+4. **Permissions**, Repository permissions: **Contents** ustaw na **Read and write**. Pozostałych uprawnień nie dodawaj (Metadata: Read-only dodaje się samo).
+5. Kliknij **Generate token** i od razu skopiuj token (GitHub pokaże go tylko raz). Nie wklejaj go do rozmowy, maila ani plików w repozytorium.
 
-Gdy to będzie ustawione, logowanie wygląda tak:
-1. Wejdź na adres panelu i kliknij "Zaloguj się przez GitHub".
-2. Przy pierwszym razie GitHub zapyta o zgodę dla aplikacji. Zatwierdź.
-3. Po zalogowaniu widzisz listę kolekcji po lewej stronie.
+Logowanie do panelu:
+1. Otwórz adres `/admin/` swojej strony.
+2. Wybierz **Sign in with token** (logowanie tokenem), wklej token i zatwierdź.
+3. Po zalogowaniu widzisz listę kolekcji po lewej stronie. Panel zapamięta token w tej przeglądarce.
+
+Gdy token wygaśnie albo przestanie działać: utwórz nowy według kroków powyżej i zaloguj się ponownie. Stary token usuń na GitHubie (Settings, Developer settings).
 
 ## Dodanie wpisu
 

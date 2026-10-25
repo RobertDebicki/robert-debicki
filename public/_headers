@@ -1,0 +1,6 @@
+# Nagłówki bezpieczeństwa dla wszystkich ścieżek (statyczne zasoby Workera).
+# Content-Security-Policy świadomie pominięte: panel Sveltii (/admin/) i skany z R2 wymagają osobnych
+# zezwoleń (script-src jsDelivr, connect-src api.github.com, img-src R2). Dodać po ustaleniu adresu R2.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

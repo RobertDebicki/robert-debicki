@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026-10-25 17:20, Claude Code
+
+**✅ Zrobione:**
+- Zadanie 12, część lokalna: `wrangler.jsonc` (Worker `robert-debicki`, katalog `./dist`, `not_found_handling: 404-page`, `html_handling: auto-trailing-slash`, `compatibility_date` 2026-10-01), `public/_headers` (`X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`; CSP pominięte, bo panel Sveltii i R2 potrzebują osobnych zezwoleń).
+- `src/pages/404.astro` w stylu strony (PL z krótką linią EN, linki do `/` i `/en/`), zawsze `noindex` (nowy opcjonalny prop `noindex` w układzie `Strona.astro`), poza mapą witryny (brak w `sitemap-0.xml`).
+- `strona.yml`: zadanie `wdroz` (tylko push na `main`, po `kontrola`, kroki pomijane gdy brak sekretów `CLOUDFLARE_API_TOKEN` i `CLOUDFLARE_ACCOUNT_ID`), blokada gdy ustawione `TRESC_BAZA`, `WYJSCIE` lub `PUBLIC_INDEKSUJ`, polecenie wrangler 4.142.0. Akcje podniesione do `checkout@v7`, `setup-node@v7`, `upload-artifact@v7` (action.yml każdej: node24).
+- Test produkcyjny `testy/e2e/produkcja.spec.ts` (tylko z `ADRES`, inaczej pominięty), `playwright.produkcja.config.ts` i skrypt `npm run test:produkcja`.
+- Logowanie do panelu: token GitHub (fine-grained, Contents read/write, tylko to repozytorium, ważność 1 rok). `docs/panel-instrukcja.md` przepisana, usunięte wzmianki o Workerze `sveltia-cms-auth`. Ścieżka kodu bez `base_url` zostaje.
+- Sprawdzone: Vitest 76 PASS, build OK, Playwright 73 PASS, `sprawdz:tresc` 0, `sprawdz:sekrety` 0, YAML workflow się parsuje, `npm run test:produkcja` bez `ADRES` daje 4 pominięte.
+
+**🚧 W toku / nie wdrożone:**
+- Nie wypchnięte, nie wdrożone. Próba suchego przebiegu wrangler nie została uruchomiona (blokada hooka publikacji).
+- Test produkcyjny nie przeszedł na prawdziwym adresie. Na lokalnym serwerze statycznym przeszły noindex, logo, 6 liczb i `/admin/`; nagłówek nosniff i stronę 404 sprawdzi dopiero Cloudflare.
+- Sekrety `CLOUDFLARE_API_TOKEN` i `CLOUDFLARE_ACCOUNT_ID` nie są ustawione w GitHub.
+
+**🎯 Następny krok:**
+- Za zgodą Roberta: dodać sekrety w GitHub, wypchnąć `main`, uruchomić `ADRES=https://robert-debicki.robert-debicki7.workers.dev npm run test:produkcja`, dopisać w `Robert_CV/CHANGELOG.md`, że `Robert_CV/strona/` i `wrangler.jsonc` są historyczne.
+
 ## 2026-10-23 19:40, Claude Code
 
 **✅ Zrobione:**

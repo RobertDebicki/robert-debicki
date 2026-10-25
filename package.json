@@ -14,6 +14,7 @@
     "sprawdz:sekrety": "tsx skrypty/skan-sekretow.ts .",
     "sprawdz:skany": "tsx skrypty/sprawdz-skany.ts .",
     "test:e2e": "playwright test",
+    "test:produkcja": "playwright test -c playwright.produkcja.config.ts",
     "sprawdz:tresc": "tsx skrypty/sprawdz-tresc.ts .",
     "sprawdz:lighthouse": "node skrypty/lighthouse.mjs",
     "sprawdz:tlumaczenia": "python3 -m unittest discover -s narzedzia/tlumaczenie -p 'test_*.py' -b && python3 narzedzia/tlumaczenie/kontrola_tlumaczenia.py --katalog src/content",
