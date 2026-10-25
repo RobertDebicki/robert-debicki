@@ -43,8 +43,15 @@ export const KLIENCI: Klient[] = [
   { skrot: '1e5db0f6ad1b6ab2', dlugosc: 12 },
 ];
 
+const pamiec = new Map<string, string>();
 export function skrotRdzenia(rdzen: string): string {
-  return createHash('sha256').update(rdzen.normalize('NFC').toLowerCase(), 'utf8').digest('hex').slice(0, 16);
+  const klucz = rdzen.normalize('NFC').toLowerCase();
+  let skrot = pamiec.get(klucz);
+  if (skrot === undefined) {
+    skrot = createHash('sha256').update(klucz, 'utf8').digest('hex').slice(0, 16);
+    pamiec.set(klucz, skrot);
+  }
+  return skrot;
 }
 
 /** Numery (od 1) pozycji z listy `klienci`, których rdzeń z dozwoloną końcówką występuje w linii. */
@@ -54,6 +61,7 @@ export function klienciWLinii(linia: string, klienci: Klient[] = KLIENCI): numbe
   for (let i = 0; i < slowa.length; i++) {
     for (let n = 1; n <= 3 && i + n <= slowa.length; n++) {
       const znaki = [...slowa.slice(i, i + n).join('')];
+      if (znaki.length < 4 || znaki.length > 24) continue; // najkrótszy rdzeń ma 4 znaki, dłuższe zlepki to nie nazwy
       klienci.forEach((k, nr) => {
         if (znaki.length < k.dlugosc || skrotRdzenia(znaki.slice(0, k.dlugosc).join('')) !== k.skrot) return;
         const reszta = znaki.slice(k.dlugosc).join('');

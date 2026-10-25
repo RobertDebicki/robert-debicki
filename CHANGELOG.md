@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-10-25 18:22, Claude Code
+
+**✅ Zrobione:**
+- Kontrola nazw klientów szybsza: pamięć skrótów rdzeni i pomijanie zlepków krótszych niż 4 albo dłuższych niż 24 znaki (wynik ten sam, 13 rdzeni nadal wykrywanych lokalnie).
+- `vitest.config.ts`: `testTimeout` 30 s. Na obciążonej maszynie (load około 5) testy uruchamiające `npx tsx` przekraczały domyślne 5 s (raz `stan-tlumaczen`, raz skan repozytorium); po zmianie 3 z 3 przebiegów `npm test` zielone.
+- Pełna weryfikacja: `npm run sprawdz` kod 0 (sekrety 0, zakazane wzorce 0, nazwy klientów 0, skany 0, zdjęcia z GPS 0, unittest 19 OK, kontrola tłumaczeń 11 par bez błędów, Vitest 90 PASS, build OK, Playwright 79 PASS). Lighthouse mobile `/` i `/en/`: 99/100/100/100 (`docs/lighthouse/2026-10-25.md`).
+
+**🚧 W toku / nie wdrożone:**
+- Nie wypchnięte. Gałąź `budowa`, scalona do `main` fast-forwardem. Wdrożenie dopiero po push na `main` za zgodą Roberta.
+
+**🎯 Następny krok:**
+- Za zgodą Roberta: push `main`, obserwacja workflow `Strona` (setup-python, wdrożenie, test produkcyjny po wdrożeniu).
+
 ## 2026-10-25 18:15, Claude Code
 
 **✅ Zrobione:**

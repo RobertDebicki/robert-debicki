@@ -82,7 +82,7 @@ describe('znajdzNazwyKlientow', () => {
 
   it('repozytorium nie ma nazw klientów', () => {
     expect(znajdzNazwyKlientow(resolve('.'))).toEqual([]);
-  });
+  }, 30_000);
 });
 
 describe('skrypt sprawdz-tresc', () => {
