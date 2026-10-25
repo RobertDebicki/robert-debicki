@@ -167,6 +167,9 @@ describe('panel Sveltia: backend', () => {
     const z = konfiguracjaPanelu({ adresLogowania: 'https://panel-logowanie.example.workers.dev' }) as Pole;
     expect(z.backend.base_url).toBe('https://panel-logowanie.example.workers.dev');
   });
+  it('adresy pozycji tylko z ASCII, polskie znaki zamieniane na litery bez ogonków', () => {
+    expect(konfig.slug).toEqual({ encoding: 'ascii', clean_accents: true });
+  });
   it('w konfiguracji nie ma sekretów ani znaków zakazanych w treści', () => {
     const tekst = JSON.stringify(konfig);
     expect(tekst).not.toMatch(/secret|token|[\u2014\u2013]/i);

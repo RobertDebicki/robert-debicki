@@ -240,6 +240,9 @@ export function konfiguracjaPanelu(sr: Srodowisko = {}): Record<string, unknown>
       default: { config: { max_file_size: 15_000_000, slugify_filename: true } },
       stock_assets: { providers: [] },
     },
+    // Adres pozycji (nazwa folderu, część URL) tylko z ASCII: "Wdrożenie łąk" daje "wdrozenie-lak", nie "wdrożenie-łąk".
+    // Klucze jak w typie SlugOptions Sveltii 0.221.8 (types/public.d.ts).
+    slug: { encoding: 'ascii', clean_accents: true },
     i18n: { structure: 'multiple_files', locales: ['pl', 'en'], default_locale: 'pl', initial_locales: 'default' },
     // Cudzysłowy w YAML: bez nich data 2026-10-23 byłaby czytana jako data, a nie tekst.
     output: { omit_empty_optional_fields: true, yaml: { quote: 'double' } },

@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026-10-25 18:14, Claude Code
+
+**✅ Zrobione:**
+- CI `strona.yml`: `push` tylko na `main` plus `pull_request` do `main` (gałąź z PR nie uruchamia workflow dwa razy). Po wdrożeniu w zadaniu `wdroz`: instalacja Chromium i `npm run test:produkcja` z `ADRES=https://robert-debicki.robert-debicki7.workers.dev`. `playwright.produkcja.config.ts`: 2 powtórki w CI (brzeg Cloudflare tuż po wdrożeniu).
+- wrangler 4.142.0 w `devDependencies` (dokładna wersja, w `package-lock.json`), wdrożenie przez `npx wrangler deploy` z lockfile zamiast pobierania `wrangler@4.142.0`.
+- Panel: `slug: { encoding: 'ascii', clean_accents: true }` w konfiguracji Sveltii (klucze sprawdzone w `types/public.d.ts` wersji 0.221.8, typ `SlugOptions` w `CmsConfig`). Test w `panel.test.ts`.
+- Sprawdzone: YAML workflow się parsuje (wyzwalacze i kroki `wdroz` odczytane), `npx wrangler --version` 4.142.0, test produkcyjny na obecnym adresie 4 PASS, Vitest `panel` 21 PASS.
+
+**🚧 W toku / nie wdrożone:**
+- Nowe kroki CI sprawdzi dopiero przebieg na GitHub po wypchnięciu.
+- Działanie opcji slug w samym panelu (nowa pozycja z polskimi znakami) niesprawdzone w przeglądarce.
+
+**🎯 Następny krok:**
+- Dokumentacja: panel, CHANGELOG, LICENSE, zdjęcie noindex w AGENTS.md.
+
 ## 2026-10-25 18:12, Claude Code
 
 **✅ Zrobione:**

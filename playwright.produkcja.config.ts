@@ -5,5 +5,7 @@ export default defineConfig({
   testDir: 'testy/e2e',
   testMatch: /produkcja\.spec\.ts/,
   reporter: 'list',
+  // Tuż po wdrożeniu brzeg Cloudflare może jeszcze chwilę podawać poprzednią wersję.
+  retries: process.env.CI ? 2 : 0,
   use: { ...devices['Desktop Chrome'] },
 });

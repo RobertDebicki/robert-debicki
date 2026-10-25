@@ -1,9 +1,12 @@
-# Każdy push i każdy PR przechodzi pełny łańcuch kontroli (npm run sprawdz) oraz Lighthouse mobile.
-# Wdrożenie na Cloudflare (job wdroz): tylko push na main, po zielonych kontrolach i tylko gdy sekrety istnieją.
+# Push na main i każdy PR do main przechodzą pełny łańcuch kontroli (npm run sprawdz) oraz Lighthouse mobile.
+# Push na inną gałąź nie uruchamia workflow (PR z tej gałęzi uruchomi go raz, bez podwójnego przebiegu).
+# Wdrożenie na Cloudflare (job wdroz): tylko push na main, po zielonych kontrolach i tylko gdy sekrety istnieją,
+# a po nim test produkcyjny na prawdziwym adresie.
 name: Strona
 
 on:
   push:
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -106,9 +109,20 @@ jobs:
           done
           npm run build
 
+      # wrangler w wersji z package-lock.json (devDependencies), bez pobierania w czasie wdrożenia.
       - name: Wdrożenie (wrangler)
         if: env.MA_TOKEN == 'true'
-        run: npx wrangler@4.142.0 deploy
+        run: npx wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Przeglądarka dla testu produkcyjnego
+        if: env.MA_TOKEN == 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Test produkcyjny (noindex, logo, 6 liczb, nosniff, 404, /admin/)
+        if: env.MA_TOKEN == 'true'
+        run: npm run test:produkcja
+        env:
+          ADRES: https://robert-debicki.robert-debicki7.workers.dev
