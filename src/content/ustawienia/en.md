@@ -4,7 +4,7 @@ otwarcie:
   nazwisko: "Dębicki"
   rola: "Automation Developer"
   rolaWyroznienie: "/ AI"
-  lead: "I automate business processes and build the apps that teams use every day."
+  lead: "I automate business processes and build the apps their teams use every day."
   opis: "I build workflows in n8n and Make.com. I create websites and apps with Claude Code, from WordPress to apps written from scratch. I roll out AI agents directly within my clients' teams."
 karta:
   okres: "10/2026"
@@ -40,7 +40,7 @@ doswiadczenie:
     - tytul: "A human in the loop for risky decisions"
       opis: "When a language model could get it wrong, I leave the decision to a person. The case manager confirms an uncertain reading, and the owner approves each message before it goes out."
     - tytul: "Code written with Claude Code"
-      opis: "That's how I build the apps, websites, and internal tools I make for clients."
+      opis: "That's how I build apps, websites, and internal tools for clients."
 narzedzia:
   tytul: "What I work with"
   wiersze:

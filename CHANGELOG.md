@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-10-28 14:05, Claude Code
+
+**✅ Zrobione:**
+- Przegląd tłumaczeń skillem `/tlumacz-strone`: 11 par w stanie `ai`, żadna `brak` ani `do-aktualizacji`; kontrola skryptem bez błędów i uwag. Przeczytane wszystkie pary: fakty, liczby, narzędzia i branże zgodne z PL.
+- Poprawki w EN (bez zmian w PL): `ustawienia` lead "the apps their teams use" (w PL "ich zespoły"), zasada o Claude Code bez powtórzenia "build ... I make", `monitoring-temperatur` zdanie o harmonogramie kierowcy gramatycznie pełne. `npm run sprawdz` kod 0.
+
+**🚧 W toku / nie wdrożone:**
+- Nie wypchnięte. Do decyzji Roberta: "Settlement workflow app" (rozliczenie w biurze rachunkowym, znaczenie do potwierdzenia) i "Wrocław or remote" bez "Poland".
+- Wszystkie EN nadal `ai`, czekają na native speakera (prośba na końcu `narzedzia/tlumaczenie/jezyki/en.md`).
+
+**🎯 Następny krok:**
+- Odpowiedzi Roberta na dwa pytania, potem push za jego zgodą.
+
 ## 2026-10-28 13:35, Claude Code
 
 **✅ Zrobione (poprawki z audytu SEO Roberta, przed zdjęciem noindex):**
