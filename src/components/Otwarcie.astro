@@ -10,12 +10,14 @@ interface Props {
 const { jezyk } = Astro.props;
 const { otwarcie: o } = await ustawienia(jezyk);
 const e = etykiety(jezyk);
-const plyty = ['p p-c', 'p p-m', 'p p-y', 'p-k'];
+const plyty = ['p p-c', 'p p-m', 'p p-y'];
 ---
 <div class="hero" id="start">
   <div>
-    <h1 class="plates" aria-label={`${o.imie} ${o.nazwisko}`}>
-      {plyty.map((klasa) => <span class={klasa} aria-hidden="true">{o.imie}<br />{o.nazwisko}</span>)}
+    <h1 class="plates">
+      {/* Kolorowe płyty biorą tekst z data-t przez CSS, więc w treści strony nazwisko występuje raz. */}
+      {plyty.map((klasa) => <span class={klasa} aria-hidden="true" data-t={`${o.imie}\n${o.nazwisko}`} />)}
+      <span class="p-k">{o.imie} <br />{o.nazwisko}</span>
     </h1>
     <p class="role">{o.rola} <b>{o.rolaWyroznienie}</b></p>
     <p class="lead">{o.lead}</p>

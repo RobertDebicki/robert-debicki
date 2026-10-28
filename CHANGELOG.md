@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026-10-28 13:35, Claude Code
+
+**✅ Zrobione (poprawki z audytu SEO Roberta, przed zdjęciem noindex):**
+- Tytuły z frazami: PL "Robert Dębicki | Automation Developer, automatyzacje n8n i AI", EN "Robert Dębicki | Automation Developer, n8n and AI deployments".
+- Open Graph i Twitter Card w `Strona.astro`; obraz `public/og.png` 1200 x 630 z `skrypty/obraz-og.mjs` (fonty i znak strony).
+- JSON-LD Person i WebSite (`DaneStrukturalne.astro`, dane z `ustawienia`: rola, LinkedIn, e-mail, Wrocław, narzędzia jako knowsAbout).
+- H1: nazwisko w treści raz; kolorowe płyty biorą tekst z `data-t` przez CSS. Zrzut H1 z płytami identyczny co do piksela z wersją sprzed zmiany (390 i 1440 px).
+- `public/robots.txt` (Allow, Disallow /admin/, Sitemap), `public/_redirects` (/sitemap.xml 301 na /sitemap-index.xml), pole kliknięcia adresu e-mail powiększone pseudo-elementem bez zmiany układu.
+- Testy: `testy/e2e/seo.spec.ts` (9), test produkcyjny sprawdza og.png, robots.txt i przekierowanie. `npm run sprawdz` kod 0 (Vitest 93, Playwright 88).
+- Audyt: punkt o braku mapy strony był błędny (mapa jest pod /sitemap-index.xml, 404 dawał tylko /sitemap.xml).
+
+**🚧 W toku / nie wdrożone:**
+- Commit na `budowa` i `main` lokalnie, bez push (czeka na zgodę Roberta). `noindex` zostaje do akceptacji grafika. Własna domena: zmiana `site`, linii Sitemap, Always Use HTTPS i 301 z workers.dev (AGENTS.md).
+- llms.txt pominięty (żadna duża wyszukiwarka nie potwierdziła, że go używa). Liczby wdrożeń nadal mają ukrytą kopię tekstu (`.fig .p`, display: none).
+
+**🎯 Następny krok:**
+- Za zgodą Roberta: push `main`, potem sprawdzić podgląd linku (LinkedIn Post Inspector) i Rich Results Test na żywym adresie.
+
 ## 2026-10-25 18:31, Claude Code
 
 **✅ Zrobione:**

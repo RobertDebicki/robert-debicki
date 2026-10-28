@@ -25,6 +25,14 @@ test('produkcja: nieistniejący adres zwraca 404 ze stroną 404', async ({ page 
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
 });
 
+test('produkcja: obraz podglądu, robots.txt z mapą i przekierowanie /sitemap.xml', async ({ request }) => {
+  expect((await request.get(`${ADRES}/og.png`)).status()).toBe(200);
+  expect(await (await request.get(`${ADRES}/robots.txt`)).text()).toMatch(/^Sitemap: .+\/sitemap-index\.xml$/m);
+  const odp = await request.get(`${ADRES}/sitemap.xml`, { maxRedirects: 0 });
+  expect(odp.status()).toBe(301);
+  expect(odp.headers()['location']).toMatch(/\/sitemap-index\.xml$/);
+});
+
 test('produkcja: /admin/ zwraca 200', async ({ request }) => {
   const odp = await request.get(`${ADRES}/admin/`);
   expect(odp.status()).toBe(200);

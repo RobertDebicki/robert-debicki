@@ -1,0 +1,2 @@
+# Astro zapisuje mapę strony jako sitemap-index.xml; część narzędzi szuka jej pod /sitemap.xml.
+/sitemap.xml /sitemap-index.xml 301

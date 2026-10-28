@@ -32,6 +32,9 @@ const kanoniczny = new URL(Astro.url.pathname, Astro.site).href;
 const adres = (sciezka: string) => new URL(sciezka, Astro.site).href;
 const drugi = jezyk === 'pl' ? 'en' : 'pl';
 const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true' && !noindex;
+// Podgląd linku (LinkedIn, Slack, mail): public/og.png, generowany przez skrypty/obraz-og.mjs.
+const obrazOg = adres('/og.png');
+const lokalizacja = { pl: 'pl_PL', en: 'en_US' } as const;
 ---
 <!doctype html>
 <html lang={jezyk}>
@@ -51,6 +54,19 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true' && !noindex;
         <link rel="alternate" hreflang="x-default" href={jezyk === 'pl' ? kanoniczny : adres(odpowiednik)} />
       </>
     )}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Robert Dębicki" />
+    <meta property="og:title" content={tytul} />
+    <meta property="og:description" content={opis} />
+    <meta property="og:url" content={kanoniczny} />
+    <meta property="og:locale" content={lokalizacja[jezyk]} />
+    {odpowiednik && <meta property="og:locale:alternate" content={lokalizacja[drugi]} />}
+    <meta property="og:image" content={obrazOg} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Robert Dębicki, Automation Developer / AI" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <slot name="glowa" />
     <meta name="generator" content={Astro.generator} />
     {fontyKrytyczne.map((f) => <link rel="preload" as="font" type="font/woff2" href={f} crossorigin />)}
     <title>{tytul}</title>

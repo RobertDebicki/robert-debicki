@@ -7,6 +7,7 @@ import Referencje from '../../components/Referencje.astro';
 import NajnowszeWpisy from '../../components/NajnowszeWpisy.astro';
 import Doswiadczenie from '../../components/Doswiadczenie.astro';
 import Narzedzia from '../../components/Narzedzia.astro';
+import DaneStrukturalne from '../../components/DaneStrukturalne.astro';
 import Kontakt from '../../components/Kontakt.astro';
 import { maStroneGlownaEn } from '../../lib/pozycje';
 
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
   return (await maStroneGlownaEn()) ? [{ params: { glowna: undefined } }] : [];
 }
 ---
-<Strona jezyk="en" odpowiednik="/" tytul="Robert Dębicki" opis="Robert Dębicki, Automation Developer / AI. Process automation, applications and AI deployments. Wrocław, Poland, or remote.">
+<Strona jezyk="en" odpowiednik="/" tytul="Robert Dębicki | Automation Developer, n8n and AI deployments" opis="Robert Dębicki, Automation Developer / AI. Process automation, applications and AI deployments. Wrocław, Poland, or remote.">
   <Otwarcie jezyk="en" />
   <Wdrozenia jezyk="en" />
   <Projekty jezyk="en" />
@@ -25,4 +26,5 @@ export async function getStaticPaths() {
   <Doswiadczenie jezyk="en" />
   <Narzedzia jezyk="en" />
   <Kontakt jezyk="en" slot="poza-arkuszem" />
+  <DaneStrukturalne jezyk="en" slot="glowa" />
 </Strona>

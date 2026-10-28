@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Adres zmienić razem z domeną (astro.config.mjs, pole site).
+Sitemap: https://robert-debicki.robert-debicki7.workers.dev/sitemap-index.xml

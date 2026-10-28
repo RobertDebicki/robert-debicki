@@ -6,6 +6,7 @@
 /* Płyty: warstwy C, M, Y pod czarną, lekko niespasowane */
 .plates { display: grid; }
 .plates > span { grid-area: 1 / 1; }
+.plates .p[data-t]::before { content: attr(data-t); white-space: pre-line; }
 .plates .p { mix-blend-mode: var(--blend); transition: transform 1.1s cubic-bezier(.2,.8,.2,1); }
 .plates .p-c { color: var(--c); transform: translate(-0.12em, 0.05em); }
 .plates .p-m { color: var(--m); transform: translate(0.1em, -0.06em); }
@@ -96,6 +97,9 @@ section { position: relative; padding-block: 88px; border-top: 1.5px solid var(-
 .contact .sec-intro { color: color-mix(in srgb, var(--paper) 72%, var(--ink)); }
 .mail { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
 .mail a { font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 110; font-size: clamp(1.3rem, 4.6vw, 3.4rem); line-height: 1; letter-spacing: -0.02em; text-decoration: underline; text-decoration-color: var(--band-accent); text-decoration-thickness: 0.09em; text-underline-offset: 0.12em; overflow-wrap: anywhere; }
+/* Większe pole kliknięcia na telefonie (min. 24 px) bez zmiany układu. */
+.mail a { position: relative; }
+.mail a::after { content: ""; position: absolute; inset: -6px 0; }
 .copy { font: 600 var(--s--1) var(--font-data); text-transform: uppercase; letter-spacing: 0.04em; color: var(--paper); background: transparent; border: 2px solid var(--paper); min-height: 44px; padding: 0 16px; cursor: pointer; }
 .copy:hover { background: var(--paper); color: var(--ink); }
 .links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 1.1rem; }

@@ -46,7 +46,8 @@ test.describe('ruch ograniczony', () => {
 test('skrypt rastra nie blokuje renderowania (type="module")', async ({ page }) => {
   await page.goto('/');
   const skrypty = await page.evaluate(() =>
-    [...document.querySelectorAll('script')].map((s) => s.getAttribute('type')),
+    // JSON-LD to dane, przeglądarka go nie wykonuje
+    [...document.querySelectorAll('script:not([type="application/ld+json"])')].map((s) => s.getAttribute('type')),
   );
   expect(skrypty.length).toBeGreaterThan(0);
   expect(skrypty.every((t) => t === 'module')).toBe(true);

@@ -1,0 +1,35 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+
+interface Props {
+  jezyk: Jezyk;
+}
+// Schema.org Person i WebSite dla Google i wyszukiwarek AI. Wszystkie wartości z ustawień strony,
+// knowsAbout to narzędzia z sekcji "Z czym pracuję" (każda pozycja wiersza osobno).
+const { jezyk } = Astro.props;
+const { otwarcie: o, kontakt: k, narzedzia: n } = await ustawienia(jezyk);
+const strona = new URL(jezyk === 'pl' ? '/' : '/en/', Astro.site).href;
+const osoba = new URL('/#osoba', Astro.site).href;
+const dane = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': osoba,
+      name: `${o.imie} ${o.nazwisko}`,
+      jobTitle: o.rola,
+      description: o.lead,
+      url: strona,
+      email: `mailto:${k.email}`,
+      address: { '@type': 'PostalAddress', addressLocality: 'Wrocław', addressCountry: 'PL' },
+      sameAs: [k.linkedinUrl],
+      knowsAbout: n.wiersze.flatMap((w) => w.wartosc.split(', ')),
+    },
+    { '@type': 'WebSite', url: strona, name: `${o.imie} ${o.nazwisko}`, inLanguage: jezyk, author: { '@id': osoba } },
+  ],
+};
+// "<" zamienione, żeby tekst z treści nie zamknął znacznika <script>.
+const json = JSON.stringify(dane).replaceAll('<', '\\u003c');
+---
+<script type="application/ld+json" set:html={json} />
