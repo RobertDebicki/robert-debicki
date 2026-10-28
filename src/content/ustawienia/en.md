@@ -12,7 +12,7 @@ karta:
     - etykieta: "Looking for"
       wartosc: "Automation Developer, AI Engineer"
     - etykieta: "Location"
-      wartosc: "Wrocław or remote"
+      wartosc: "Wrocław, Poland, or remote"
     - etykieta: "Automation"
       wartosc: "n8n, Make.com, CRM integrations"
     - etykieta: "AI"
@@ -62,7 +62,7 @@ narzedzia:
       wartosc: "Git, Docker, Coolify (apps), AWS (n8n)"
 kontakt:
   tytul: "Looking for a full-time role as an Automation Developer or AI Engineer"
-  wstep: "Wrocław or remote. Email is the fastest way to reach me."
+  wstep: "Wrocław, Poland, or remote. Email is the fastest way to reach me."
   email: "robert.debicki7@gmail.com"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"

@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-10-28 14:20, Claude Code
+
+**✅ Zrobione:**
+- Odpowiedzi Roberta wpisane w EN: `obieg-rozliczen` "Month-end close workflow app" i "a month closed in its accounting software" (księgowa zamyka miesiąc), `ustawienia` "Wrocław, Poland, or remote" w karcie i w kontakcie (dla czytelników spoza Polski). `npm run sprawdz` kod 0.
+
+**🚧 W toku / nie wdrożone:**
+- Nie wypchnięte (razem z b32cb37). EN nadal `ai`, czeka na native speakera.
+
+**🎯 Następny krok:**
+- Push `main` za zgodą Roberta.
+
 ## 2026-10-28 14:05, Claude Code
 
 **✅ Zrobione:**

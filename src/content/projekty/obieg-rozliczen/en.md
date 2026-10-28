@@ -1,7 +1,7 @@
 ---
-tytul: "Settlement workflow app"
+tytul: "Month-end close workflow app"
 branza: "Accounting firm"
-opis: "The firm wants a settlement closed in its accounting software to move on without a second approval. I'm writing an app that receives XML batches from the software, validates them, and shows accountants statuses and exceptions. Each accountant sees only their own clients, and a resent batch doesn't create a duplicate job."
+opis: "The firm wants a month closed in its accounting software to move on without a second approval. I'm writing an app that receives XML batches from the software, validates them, and shows accountants statuses and exceptions. Each accountant sees only their own clients, and a resent batch doesn't create a duplicate job."
 stack: ["Python", "FastAPI", "PostgreSQL", "React", "Docker"]
 etap: "Demo on a test server"
 stan: w-toku
