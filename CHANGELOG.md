@@ -6,10 +6,10 @@
 - Odpowiedzi Roberta wpisane w EN: `obieg-rozliczen` "Month-end close workflow app" i "a month closed in its accounting software" (księgowa zamyka miesiąc), `ustawienia` "Wrocław, Poland, or remote" w karcie i w kontakcie (dla czytelników spoza Polski). `npm run sprawdz` kod 0.
 
 **🚧 W toku / nie wdrożone:**
-- Nie wypchnięte (razem z b32cb37). EN nadal `ai`, czeka na native speakera.
+- EN nadal `ai`, czeka na native speakera.
 
 **🎯 Następny krok:**
-- Push `main` za zgodą Roberta.
+- Wypchnięte za zgodą Roberta, run 40692175590 zielony; poprawki widoczne na /en/. Dalej: uwagi grafika, potem zdjęcie `noindex`.
 
 ## 2026-10-28 14:05, Claude Code
 
