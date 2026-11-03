@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-03 19:45, Claude Code
+
+**✅ Zrobione:**
+- Dodany `REVIEW.md`: kryteria przeglądu zmian w tym projekcie (prawdziwe błędy, ryzyko wysokie, jak sprawdzać, sekcja „Reguły nauczone”). Link w `AGENTS.md` pod nagłówkiem.
+- Globalnie (`~/.claude/CLAUDE.md`): ocena ryzyka zmiany, limit 3 rund poprawek, skill `test-nowego-uzytkownika`.
+
+**🚧 W toku / nie wdrożone:**
+- Sekcja „Reguły nauczone” pusta, uzupełniana po kolejnych przeglądach za zgodą Roberta.
+
+**🎯 Następny krok:**
+- Bez zmian, zob. poprzedni wpis.
+
 ## 2026-10-28 14:20, Claude Code
 
 **✅ Zrobione:**

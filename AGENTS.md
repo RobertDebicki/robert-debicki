@@ -1,5 +1,7 @@
 # Strona osobista Roberta Dębickiego
 
+> Kryteria przeglądu zmian: `REVIEW.md` w tym folderze. Czytaj przed każdym przeglądem.
+
 ## Cel
 Strona dla rekrutera i grafika: Robert dowozi działające systemy u klientów (Automation Developer, AI Engineer). Wygląd 1:1 z makiety `docs/makieta/index.html`. Treść ma być dodawana z panelu `/admin/` (Sveltia CMS), bez otwierania kodu. Repozytorium jest publiczne i ma samo świadczyć o autorze: czysty kod, testy, sensowna historia.
 
