@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-11 20:30, Claude Code
+
+**✅ Zrobione (weryfikacja Search Console, ryzyko niskie: metatag w `<head>`):**
+- Weryfikacja przez Menedżera tagów Google nie przeszła (komunikat GSC: nie znaleziono identyfikatora kontenera na stronie głównej, bo kontener ładuje się dopiero po zgodzie). Zgodnie z ustaleniem nie wczytujemy go bez zgody.
+- Metoda „Tag HTML”: `src/layouts/Strona.astro` ma `<meta name="google-site-verification" content="ug2L…49E" />` (wartość od Roberta z GSC, nie jest tajna). Test `testy/e2e/seo.spec.ts` dla `/` i `/en/` (najpierw czerwony).
+
+**🚧 W toku / nie wdrożone:**
+- Zmiana jest na gałęzi `changelog-wdrozenie-analityki`, nie wypchnięta; wymaga PR i `npm run wdroz -- --wgraj` za zgodą Roberta w danej wiadomości. Dopiero po wdrożeniu GSC może zweryfikować tag.
+
+**🎯 Następny krok:**
+- Po wdrożeniu: Robert klika „Zweryfikuj” w GSC (metoda Tag HTML), potem zgłasza mapę `https://robert-debicki.pl/sitemap-index.xml`.
+
 ## 2026-11-11 20:00, Claude Code
 
 **✅ Zrobione (wdrożenie na produkcję za zgodą Roberta: „zgoda na PR i zgoda na wypchnięcie zmian na produkcję”):**
