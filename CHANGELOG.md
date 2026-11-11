@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-11 20:55, Claude Code
+
+**✅ Zrobione (wdrożenie metatagu Search Console, ryzyko niskie):**
+- PR #3 scalony po zielonym CI. `npm run wdroz -- --wgraj`: 28 plików na home.pl, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-11T19-49-53-971Z`, odbiór zgodny, `.htaccess` działa.
+- Na żywej stronie metatag `google-site-verification` jest na `/` i `/en/` (curl), `test:produkcja` 5 z 5.
+
+**🚧 W toku:**
+- 🔴 Weryfikacja w GSC i zgłoszenie mapy: dopiero po kliknięciu Roberta. Do potwierdzenia w polityce: retencja GA4, zawartość kontenera GTM, forma administratora. Przekierowania `.com`/`.com.pl` gubią ścieżkę.
+
+**🎯 Następny krok:**
+- Robert klika „Zweryfikuj” w GSC (Tag HTML), zgłasza `https://robert-debicki.pl/sitemap-index.xml`, sprawdza GA4 w czasie rzeczywistym.
+
 ## 2026-11-11 20:30, Claude Code
 
 **✅ Zrobione (weryfikacja Search Console, ryzyko niskie: metatag w `<head>`):**
