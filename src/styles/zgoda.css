@@ -1,0 +1,42 @@
+/* Baner zgody na analitykę: ten sam język co reszta strony (arkusz drukarski, paski CMY, mono, grube ramki). */
+.zgoda { position: fixed; inset: auto 0 0; z-index: 40; background: var(--paper); color: var(--ink); border-top: 2px solid var(--ink); padding-bottom: env(safe-area-inset-bottom, 0px); box-shadow: 0 -8px 0 color-mix(in srgb, var(--ink) 8%, transparent); }
+.zgoda[hidden] { display: none; }
+.zgoda:focus { outline: none; }
+.zgoda-bar { display: grid; grid-template-columns: repeat(4, 1fr); height: 8px; }
+.zgoda-bar i:nth-child(1) { background: var(--c); }
+.zgoda-bar i:nth-child(2) { background: var(--m); }
+.zgoda-bar i:nth-child(3) { background: var(--y); }
+.zgoda-bar i:nth-child(4) { background: var(--ink); }
+.zgoda-in { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 16px 40px; padding: 18px max(16px, env(safe-area-inset-right, 0px)) 20px max(16px, env(safe-area-inset-left, 0px)); }
+.zgoda .label { margin-bottom: 8px; }
+.zgoda h2 { font-size: var(--s-1); font-weight: 820; font-variation-settings: "wdth" 118; line-height: 1.1; letter-spacing: -0.01em; }
+.zgoda-tekst p:last-child { margin-top: 8px; color: var(--muted); max-width: 46em; font-size: 0.95rem; line-height: 1.5; }
+.zgoda-akcje { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+/* Oba przyciski mają ten sam kształt i wagę: odmowa jest tak samo łatwa jak zgoda. Różni je tylko kolor cienia. */
+.zgoda .btn { cursor: pointer; font: inherit; font-weight: 600; color: var(--ink); min-height: 48px; }
+.zgoda .zgoda-tak { box-shadow: 5px 5px 0 var(--c); }
+.zgoda .zgoda-nie { box-shadow: 5px 5px 0 var(--m); }
+.zgoda .btn:hover { box-shadow: 8px 8px 0 var(--y); }
+.zgoda-link { color: var(--ink); text-underline-offset: 3px; padding: 12px 4px; }
+@media (max-width: 760px) {
+  .zgoda-in { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 12px 14px; }
+  .zgoda .label { display: none; }
+  .zgoda h2 { font-size: 1.1rem; }
+  .zgoda-tekst p:last-child { margin-top: 6px; font-size: 0.88rem; line-height: 1.42; }
+  .zgoda .btn { min-height: 46px; padding: 0 16px; }
+  .zgoda-akcje .btn { flex: 1 1 8.5rem; justify-content: center; }
+  .zgoda-link { flex-basis: 100%; padding-block: 4px; }
+}
+/* Stopka: odnośnik do polityki i przycisk otwierający ustawienia wyglądają jak reszta napisów w stopce. */
+.slug a, .slug .zgoda-otworz { color: inherit; font: inherit; letter-spacing: inherit; }
+.slug .zgoda-otworz { background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .zgoda .btn { transition: none; } }
+
+/* Strona polityki prywatności */
+.polityka { padding-block: clamp(2.5rem, 8vw, 6rem); max-width: 46rem; }
+.polityka section { margin-top: clamp(1.75rem, 4vw, 2.5rem); border-top: 1.5px solid var(--rule); padding-block: 18px 0; }
+.polityka h2 { font-size: var(--s-1); font-weight: 820; font-variation-settings: "wdth" 114; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 12px; }
+.polityka p + p, .polityka ul { margin-top: 12px; }
+.polityka ul { padding-left: 1.2em; display: grid; gap: 8px; }
+.polityka li::marker { color: var(--m); }
+.polityka-data { margin-top: 2.5rem; color: var(--muted); }

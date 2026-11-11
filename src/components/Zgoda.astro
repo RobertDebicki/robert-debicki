@@ -1,0 +1,24 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+
+interface Props {
+  jezyk: Jezyk;
+}
+const e = etykiety(Astro.props.jezyk);
+---
+<div id="zgoda" class="zgoda" role="dialog" aria-modal="false" aria-labelledby="zgoda-h" tabindex="-1" hidden>
+  <div class="zgoda-bar" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="zgoda-in">
+    <div class="zgoda-tekst">
+      <p class="label mono" style="--sw: var(--c)">{e.zgodaUstawienia}</p>
+      <h2 id="zgoda-h">{e.zgodaTytul}</h2>
+      <p>{e.zgodaTekst}</p>
+    </div>
+    <div class="zgoda-akcje">
+      <button type="button" class="btn zgoda-tak" data-zgoda="tak">{e.zgodaAkceptuje}</button>
+      <button type="button" class="btn zgoda-nie" data-zgoda="nie">{e.zgodaOdrzucam}</button>
+      <a class="zgoda-link mono" href={e.politykaAdres}>{e.zgodaPolitykaLink}</a>
+    </div>
+  </div>
+</div>

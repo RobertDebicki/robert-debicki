@@ -11,4 +11,5 @@ const e = etykiety(Astro.props.jezyk);
   <span>robert-debicki · {e.stopkaArkusz}</span>
   <span>{e.stopkaFarby}</span>
   <span>© 2026 Robert Dębicki</span>
+  <span><a href={e.politykaAdres}>{e.zgodaPolitykaLink}</a> · <button type="button" class="zgoda-otworz" data-zgoda-otworz>{e.zgodaUstawienia}</button></span>
 </footer>

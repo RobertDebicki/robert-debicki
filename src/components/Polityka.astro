@@ -1,0 +1,25 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { polityka } from '../lib/polityka';
+import { ustawienia } from '../lib/pozycje';
+
+interface Props {
+  jezyk: Jezyk;
+}
+// Jeden adres kontaktowy dla obu języków. Ustawienia PL istnieją zawsze, a EN może jeszcze nie być.
+const { kontakt } = await ustawienia('pl');
+const p = polityka(Astro.props.jezyk, kontakt.email);
+---
+<article class="polityka" aria-labelledby="polityka-h">
+  <p class="label mono" style="--sw: var(--m)">{p.etykieta}</p>
+  <h1 class="sec-title" id="polityka-h">{p.tytul}</h1>
+  <p class="sec-intro">{p.wstep}</p>
+  {p.sekcje.map((s) => (
+    <section>
+      <h2>{s.naglowek}</h2>
+      {s.akapity?.map((a) => <p>{a}</p>)}
+      {s.lista && <ul>{s.lista.map((l) => <li>{l}</li>)}</ul>}
+    </section>
+  ))}
+  <p class="polityka-data mono">{p.aktualizacja}</p>
+</article>

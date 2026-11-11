@@ -33,6 +33,14 @@ export interface Etykiety {
   altSkanu: string;
   /** Nazwa dostępna przełącznika prowadzącego do wersji w TYM języku (link ma lang tego języka, widać tylko PL/EN). */
   wersjaJezyka: string;
+  /** Baner zgody na analitykę oraz odnośniki w stopce. */
+  zgodaTytul: string;
+  zgodaTekst: string;
+  zgodaAkceptuje: string;
+  zgodaOdrzucam: string;
+  zgodaPolitykaLink: string;
+  zgodaUstawienia: string;
+  politykaAdres: string;
 }
 
 // Typ Record<Jezyk, Etykiety> sprawia, że brak klucza w którymkolwiek języku jest błędem kompilacji.
@@ -63,6 +71,13 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     otworzSkanPdf: 'Otwórz skan referencji (PDF)',
     altSkanu: 'Skan listu referencyjnego od',
     wersjaJezyka: 'Wersja polska',
+    zgodaTytul: 'Mierzę ruch na stronie?',
+    zgodaTekst: 'Chcę wiedzieć, ile osób czyta tę stronę i co ich interesuje. Do tego używam Google Analytics, ale tylko za Twoją zgodą. Bez niej nic nie jest wysyłane do Google.',
+    zgodaAkceptuje: 'Akceptuję',
+    zgodaOdrzucam: 'Odrzucam',
+    zgodaPolitykaLink: 'Polityka prywatności',
+    zgodaUstawienia: 'Ustawienia cookies',
+    politykaAdres: '/polityka-prywatnosci/',
   },
   en: {
     wdrozenia: 'Deployments',
@@ -90,6 +105,13 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     otworzSkanPdf: 'Open the reference scan (PDF)',
     altSkanu: 'Scan of a reference letter from',
     wersjaJezyka: 'English version',
+    zgodaTytul: 'Can I measure traffic?',
+    zgodaTekst: 'I want to know how many people read this site and what interests them. I use Google Analytics for that, but only with your consent. Without it, nothing is sent to Google.',
+    zgodaAkceptuje: 'Accept',
+    zgodaOdrzucam: 'Decline',
+    zgodaPolitykaLink: 'Privacy policy',
+    zgodaUstawienia: 'Cookie settings',
+    politykaAdres: '/en/privacy-policy/',
   },
 };
 
