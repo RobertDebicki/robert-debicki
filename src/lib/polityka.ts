@@ -29,7 +29,7 @@ const POLITYKI: Record<Jezyk, Polityka> = {
       {
         naglowek: 'Jakie dane i po co',
         lista: [
-          'Analityka odwiedzin (Google Analytics 4, wdrożone przez kontener tagu Google, tylko po zgodzie): informacje o korzystaniu ze strony, m.in. odwiedzane podstrony, typ urządzenia i przeglądarki oraz przybliżona lokalizacja. Cel: wiedzieć, ile osób czyta stronę i co je interesuje.',
+          'Analityka odwiedzin (Google Analytics 4, wdrożone przez kontener tagu Google, tylko po zgodzie): informacje o korzystaniu ze strony, m.in. odwiedzane podstrony, typ urządzenia i przeglądarki, przybliżona lokalizacja oraz kliknięcia w adres e-mail i link do LinkedIn (bez treści wiadomości). Cel: wiedzieć, ile osób czyta stronę i co je interesuje.',
           'Wiadomości e-mail: gdy piszesz na adres z tej strony, używam danych z wiadomości, żeby Ci odpowiedzieć i prowadzić dalszą korespondencję.',
           'Dane techniczne połączenia: strona działa na serwerach home.pl S.A., a serwer może zapisywać standardowe informacje o połączeniu (adres IP, czas, adres żądanego pliku). Cel: bezpieczeństwo i prawidłowe działanie strony.',
         ],
@@ -94,7 +94,7 @@ const POLITYKI: Record<Jezyk, Polityka> = {
       {
         naglowek: 'What data and why',
         lista: [
-          'Visit analytics (Google Analytics 4, deployed through a Google tag container, only with consent): information about how the site is used, including pages visited, device and browser type and approximate location. Purpose: to know how many people read the site and what interests them.',
+          'Visit analytics (Google Analytics 4, deployed through a Google tag container, only with consent): information about how the site is used, including pages visited, device and browser type, approximate location and clicks on the email address and the LinkedIn link (never the content of any message). Purpose: to know how many people read the site and what interests them.',
           'Email messages: when you write to the address on this site, I use the data in your message to reply and to continue the correspondence.',
           'Technical connection data: the site runs on servers of home.pl S.A., and the server may record standard connection information (IP address, time, requested file). Purpose: security and correct operation of the site.',
         ],

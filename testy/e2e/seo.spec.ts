@@ -77,3 +77,19 @@ test('robots.txt wskazuje mapę strony', async ({ request }) => {
   expect(tekst).toMatch(/^User-agent: \*$/m);
   expect(tekst).toMatch(/^Sitemap: https:\/\/.+\/sitemap-index\.xml$/m);
 });
+
+test('llms.txt opisuje autora dla asystentów AI: nazwa, rola, kontakt, narzędzia i strony', async ({ request }) => {
+  const odp = await request.get('/llms.txt');
+  expect(odp.status()).toBe(200);
+  expect(odp.headers()['content-type']).toMatch(/^text\/plain/);
+  const tekst = await odp.text();
+  expect(tekst.split('\n')[0]).toBe('# Robert Dębicki');
+  expect(tekst).toMatch(/^> Automation Developer\./m);
+  expect(tekst).toContain('robert.debicki7@gmail.com');
+  expect(tekst).toContain('https://www.linkedin.com/in/robert-d%C4%99bicki/');
+  expect(tekst).toMatch(/^- Automatyzacja: n8n, Make\.com$/m);
+  expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/\)$/m);
+  expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/en\/\)$/m);
+  expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/polityka-prywatnosci\/\)$/m);
+  expect(tekst).not.toMatch(/[—–]/);
+});
