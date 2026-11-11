@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test';
 
 // Metadane dla wyszukiwarek i podglądu linku (LinkedIn, Slack, mail). Wartości z src/content/ustawienia.
 for (const [adres, jezyk, tytul] of [
-  ['/', 'pl', 'Robert Dębicki | Automation Developer, automatyzacje n8n i AI'],
-  ['/en/', 'en', 'Robert Dębicki | Automation Developer, n8n and AI deployments'],
+  ['/', 'pl', 'Robert Dębicki | Automation Developer, automatyzacje n8n, AI'],
+  ['/en/', 'en', 'Robert Dębicki | Automation Developer, n8n and AI systems'],
 ] as const) {
   test(`${adres}: tytuł z frazami, Open Graph i Twitter Card`, async ({ page }) => {
     await page.goto(adres);
@@ -11,6 +11,11 @@ for (const [adres, jezyk, tytul] of [
     const meta = (atr: string) => page.locator(`meta[property="${atr}"], meta[name="${atr}"]`);
     await expect(meta('og:title')).toHaveAttribute('content', tytul);
     await expect(meta('og:description')).toHaveAttribute('content', /Automation Developer/);
+    // Długości pod wyniki wyszukiwania: tytuł do 60 znaków, opis 120 do 155.
+    expect(tytul.length).toBeLessThanOrEqual(60);
+    const opis = (await meta('description').getAttribute('content')) ?? '';
+    expect(opis.length).toBeGreaterThanOrEqual(120);
+    expect(opis.length).toBeLessThanOrEqual(155);
     await expect(meta('og:type')).toHaveAttribute('content', 'website');
     await expect(meta('og:url')).toHaveAttribute('content', new RegExp(`${adres.replace(/\//g, '\\/')}$`));
     await expect(meta('og:locale')).toHaveAttribute('content', jezyk === 'pl' ? 'pl_PL' : 'en_US');

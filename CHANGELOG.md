@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-11-11 17:55, Claude Code
+
+**✅ Zrobione (audyt SEO żywej strony, ryzyko niskie: tylko metadane):**
+- Tytuł PL skrócony z 61 do 60 znaków, tytuł EN z 61 do 57 (limit 60). Opisy PL (147 zn.) i EN (149 zn.) w widełkach 120 do 155, z wezwaniem „Napisz do mnie” / „Get in touch”, bez nowych faktów (n8n i Make.com są w treści hero). Pliki: `src/pages/index.astro`, `src/pages/en/[...glowna].astro`.
+- `testy/e2e/seo.spec.ts`: asercje długości tytułu (do 60) i opisu (120 do 155); najpierw czerwone na starych tytułach, po zmianie 9 z 9. `npm test` 93 pass, `sprawdz:tresc` 0.
+- Świadomie bez zmian: H1 (zostaje samo nazwisko, zmiana zmieniłaby wygląd hero), `lastmod` w mapie (2 strony bez własnych dat), `noindex` (zdejmujemy po decyzji Roberta, tylko po poprawkach).
+
+**🚧 W toku / nie wdrożone:**
+- Commit lokalny, bez push i wdrożenia (decyzja Roberta 11.11).
+- Własna domena z home.pl: czeka na nazwę domeny i potwierdzenie zdjęcia `noindex`.
+
+**🎯 Następny krok:**
+- Podpięcie domeny: Cloudflare (domena dla Workera, DNS), zmiana `site`, linii `Sitemap`, przekierowanie 301 z workers.dev, potem `PUBLIC_INDEKSUJ=true` wg `AGENTS.md`.
+
 ## 2026-11-03 19:45, Claude Code
 
 **✅ Zrobione:**
