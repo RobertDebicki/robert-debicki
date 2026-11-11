@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 2026-11-11 21:40, Claude Code
+
+**✅ Zrobione (odwzorowanie ustawień prestameble.pl pod wyszukiwarki i AI; gałąź `llms-i-zdarzenia`, ryzyko średnie: zdarzenia analityczne za zgodą, nie wdrożone):**
+- **Wzorzec (odczyt przez AdLoop, nic nie zmieniane na prestameble):** GA4 ma 4 zdarzenia kluczowe (`generate_lead`, `klik_telefon`, `klik_email`, `purchase`), retencja 2 miesiące, GTM; w 90 dni kanał „AI Assistant” 167 sesji (chatgpt.com 162, claude.ai 4), Organic Search 479; GSC: usługa z prefiksem URL, 5 map bez błędów; `llms.txt` jest (200). Związek `llms.txt` z ruchem z AI niezmierzony.
+- **`/llms.txt`** (`src/lib/llms.ts`, `src/pages/llms.txt.ts`): generowany z ustawień PL (nazwa, rola, opis, miejsce, kontakt, narzędzia, strony PL, EN i polityka), bez myślników. Test jednostkowy (5) i e2e w `seo.spec.ts`.
+- **Zdarzenia kliknięć GA4:** `klik_email`, `klik_linkedin`, `kopiuj_email` (atrybut `data-zdarzenie` w `Kontakt.astro`, nasłuch w `src/scripts/zgoda.ts`, `gtag('event', …)`). Idą tylko, gdy analityka jest włączona po „Akceptuję”: bez zgody i przed decyzją nic nie trafia do `dataLayer`, a po późniejszej zgodzie nic się nie odtwarza (3 testy e2e).
+- **Polityka PL i EN:** dopisane kliknięcia w adres e-mail i link do LinkedIn jako dane analityczne (test e2e).
+- Wyniki: `npm test` 142 pass/1 skipped, e2e 117 pass, treść 0, sekrety 0. Czerwony krok widziany tylko dla testu jednostkowego `llms`; testy e2e nowych zachowań napisane przed kodem, ale ich czerwonego uruchomienia nie wykonałem.
+- Poprawka konfiguracji AdLoopa: `ga4.property_id` musi mieć postać `properties/563831727`.
+
+**🚧 W toku / nie wdrożone:**
+- Zmiany lokalne, bez push i wdrożenia (wymaga zgody Roberta). Po wdrożeniu sprawdzić na żywo z prawdziwym Google, czy `gtag('event', …)` przez kontener daje żądanie `g/collect` z `en=klik_email` (⚠️ założenie, niezmierzone).
+- Do zrobienia przez Roberta w panelach: GSC „Zweryfikuj” i mapa `sitemap-index.xml`, Bing Webmaster Tools (import z GSC), GA4: retencja 14 miesięcy i oznaczenie `klik_email`, `klik_linkedin` jako zdarzeń kluczowych (dopiero po pierwszym wystąpieniu).
+
+**🎯 Następny krok:**
+- Przegląd `/code-review high`, potem zgoda Roberta na push, PR i wdrożenie; w panelach kroki z listy powyżej.
+
 ## 2026-11-11 21:30, Claude Code
 
 **✅ Zrobione (AdLoop dla robert-debicki.pl, ryzyko niskie: konfiguracja poza repo, tylko odczyt):**

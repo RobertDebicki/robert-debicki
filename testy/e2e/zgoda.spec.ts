@@ -238,3 +238,44 @@ test('odrzucenie usuwa istniejące ciasteczko _ga ustawione na domenie hosta', a
   await baner(page).getByRole('button', { name: 'Odrzucam' }).click();
   expect((await context.cookies()).map((c) => c.name)).not.toContain('_ga');
 });
+
+// Zdarzenia kliknięć (e-mail, LinkedIn, kopiowanie adresu) to też dane analityczne: wysyłamy je do Google dopiero po zgodzie.
+const zdarzenia = async (page: Page) => (await wpisyDataLayer(page)).filter((w) => w[0] === 'event').map((w) => w[1]);
+const klikniecia = async (page: Page) => {
+  // Kliknięcie w mailto i w link zewnętrzny nie może nas wyprowadzić ze strony w teście.
+  await page.evaluate(() => document.querySelectorAll('#kontakt a').forEach((a) => a.addEventListener('click', (e) => e.preventDefault())));
+  await page.locator('#email').click();
+  await page.locator('#kontakt .links a').click();
+  await page.locator('#copy-email').click();
+};
+
+test('po zgodzie kliknięcia w e-mail, LinkedIn i kopiowanie adresu idą jako zdarzenia GA4', async ({ page }) => {
+  await podstawGoogle(page);
+  await page.goto('/');
+  await baner(page).getByRole('button', { name: 'Akceptuję' }).click();
+  await klikniecia(page);
+  expect(await zdarzenia(page)).toEqual(['klik_email', 'klik_linkedin', 'kopiuj_email']);
+});
+
+test('bez zgody kliknięcia nie tworzą żadnych zdarzeń w dataLayer', async ({ page }) => {
+  await podstawGoogle(page);
+  await page.goto('/');
+  await baner(page).getByRole('button', { name: 'Odrzucam' }).click();
+  await klikniecia(page);
+  expect(await zdarzenia(page)).toEqual([]);
+});
+
+test('przed decyzją (baner otwarty) kliknięcia nie tworzą zdarzeń, a po późniejszej zgodzie nie są odtwarzane', async ({ page }) => {
+  await podstawGoogle(page);
+  await page.goto('/');
+  await klikniecia(page);
+  await baner(page).getByRole('button', { name: 'Akceptuję' }).click();
+  expect(await zdarzenia(page)).toEqual([]);
+});
+
+test('polityka wymienia kliknięcia w adres e-mail i LinkedIn jako zbierane po zgodzie (PL i EN)', async ({ page }) => {
+  await page.goto('/polityka-prywatnosci/');
+  await expect(page.locator('main')).toContainText(/kliknięcia w adres e-mail i link do LinkedIn/);
+  await page.goto('/en/privacy-policy/');
+  await expect(page.locator('main')).toContainText(/clicks on the email address and the LinkedIn link/);
+});

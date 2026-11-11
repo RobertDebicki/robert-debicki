@@ -90,3 +90,11 @@ else if (zapisany === null) pokaz(false);
 
 baner?.querySelectorAll<HTMLButtonElement>('[data-zgoda]').forEach((b) => b.addEventListener('click', () => zdecyduj(b.dataset.zgoda === 'tak' ? 'tak' : 'nie')));
 document.querySelectorAll('[data-zgoda-otworz]').forEach((b) => b.addEventListener('click', () => pokaz(true)));
+
+// Zdarzenia kliknięć (e-mail, LinkedIn, kopiowanie adresu; atrybut data-zdarzenie) idą do GA4 tylko, gdy analityka jest już włączona.
+// Przed decyzją albo po odmowie nic nie trafia do dataLayer, więc po późniejszej zgodzie nic się nie odtwarza.
+document.addEventListener('click', (e) => {
+  if (!zaladowany) return;
+  const nazwa = (e.target as Element | null)?.closest<HTMLElement>('[data-zdarzenie]')?.dataset.zdarzenie;
+  if (nazwa) gtag('event', nazwa);
+});
