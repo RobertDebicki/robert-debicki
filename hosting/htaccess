@@ -10,7 +10,8 @@ RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://robert-debicki.pl%{REQUEST_URI} [R=301,L]
 
 # Astro zapisuje mapę strony jako sitemap-index.xml; część narzędzi szuka jej pod /sitemap.xml.
-Redirect 301 /sitemap.xml /sitemap-index.xml
+# Adres bezwzględny z https: bez niego Apache zbudował przekierowanie na http://, czyli drugi skok (zmierzone 11.11).
+Redirect 301 /sitemap.xml https://robert-debicki.pl/sitemap-index.xml
 
 ErrorDocument 404 /404.html
 

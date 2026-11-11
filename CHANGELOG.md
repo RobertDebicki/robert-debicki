@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 2026-11-11 19:25, Claude Code
+
+**✅ Zrobione (strona na żywo pod `https://robert-debicki.pl/`, wgrana za zgodą Roberta w wiadomości „Wgraj”):**
+- `npm run wdroz -- --wgraj` (commit `21fad3c`): 26 plików, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-11T17-58-11-368Z`, odbiór skryptu: wszystkie pliki zgodne z lokalnymi (SHA-256), `.htaccess` działa.
+- **Odbiór niezależny:** `ADRES=https://robert-debicki.pl npm run test:produkcja` 5 z 5; brak plików `.part` na serwerze; http→https 301, `www`→bez `www` 301 (ścieżka zachowana), 404 ze stroną 404, `nosniff`, `gzip`, `_astro/` z `immutable`; `robots` `noindex, nofollow`, canonical `https://robert-debicki.pl/`.
+- **Lighthouse mobile (3 przebiegi na `/` i `/en/`, narzędzie `lighthouse` na żywej domenie):** wydajność 98 do 100 (LCP 1,1 do 2,0 s), dostępność 100, dobre praktyki 100, SEO 66. SEO 66 ma jedną przyczynę: `is-crawlable` (noindex celowo). Wymóg ≥95 spełniony poza SEO, które po zdjęciu noindex powinno wzrosnąć (⚠️ do zmierzenia po zdjęciu).
+- `hosting/htaccess`: przekierowanie `/sitemap.xml` na adres bezwzględny https (zmierzone: dotąd szło najpierw na `http://`, czyli dwa skoki). Poprawka w repo, **nie wgrana**.
+
+**🚧 W toku / nie wdrożone:**
+- Zmiana `htaccess` czeka na wgranie (`--wgraj`, za zgodą Roberta).
+- `.com` i `.com.pl` przekierowują 301 na `https://robert-debicki.pl` bez zachowania ścieżki (`.com/en/` kończy na `/`). Naprawa wymaga zmiany w panelu home.pl (lokalizacja www obu domen na „Główny katalog”) i reguły w `.htaccess`.
+- `noindex` zostaje do akceptacji grafika; zdjęcie: `PUBLIC_INDEKSUJ=true npm run wdroz -- --wgraj --indeksuj` (AGENTS.md).
+- Dalej: push `main` na GitHub (kod z `site` na nowej domenie), zgłoszenie domeny w Search Console po zdjęciu noindex.
+
+**🎯 Następny krok:**
+- Decyzja Roberta: ponowne wgranie z poprawką sitemap, przekierowania `.com`, push na GitHub, termin zdjęcia `noindex`.
+
 ## 2026-11-11 19:10, Claude Code
 
 **✅ Zrobione (pierwsze wgranie na home.pl: usterka, naprawa, ryzyko wysokie):**
