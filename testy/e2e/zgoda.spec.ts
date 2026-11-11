@@ -4,7 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 // Baner zgody na analitykę. Pozostałe testy startują z zapisaną decyzją „nie” (playwright.config.ts), tu zaczynamy od zera.
 test.use({ storageState: { cookies: [], origins: [] } });
 
-const TAG = 'https://www.googletagmanager.com/gtm.js?id=GTM-NMV5XT8J';
+const TAG = 'https://www.googletagmanager.com/gtm.js?id=GTM-T7N4RZD8';
 
 // Google jest podstawiony: test nie łączy się z prawdziwym serwerem, a my widzimy, czy żądanie w ogóle wyszło.
 async function podstawGoogle(page: Page): Promise<string[]> {
@@ -240,7 +240,7 @@ test('odrzucenie usuwa istniejące ciasteczko _ga ustawione na domenie hosta', a
 });
 
 // Zdarzenia kliknięć (e-mail, LinkedIn, kopiowanie adresu) to też dane analityczne: wysyłamy je do Google dopiero po zgodzie.
-// Zdarzenia własne to zwykłe obiekty `{ event: nazwa }` (kontener GTM łapie je wyzwalaczem „Zdarzenie niestandardowe”; polecenie gtag('event') kontener ignoruje, zmierzone na żywo 11.11).
+// Zdarzenia własne to zwykłe obiekty `{ event: nazwa }` (kontener GTM łapie je wyzwalaczem „Zdarzenie niestandardowe”).
 const zdarzenia = async (page: Page) =>
   (await wpisyDataLayer(page))
     .map((w) => w[0] as { event?: string })

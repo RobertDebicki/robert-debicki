@@ -94,7 +94,6 @@ document.querySelectorAll('[data-zgoda-otworz]').forEach((b) => b.addEventListen
 // Zdarzenia kliknięć (e-mail, LinkedIn, kopiowanie adresu; atrybut data-zdarzenie) trafiają do dataLayer tylko, gdy analityka jest już włączona.
 // Przed decyzją albo po odmowie nic się nie zapisuje, więc po późniejszej zgodzie nic się nie odtwarza.
 // To zwykłe obiekty { event }: kontener GTM przekazuje je do GA4 wyzwalaczem „Zdarzenie niestandardowe” i tagiem zdarzenia GA4 (ustawia się w panelu GTM).
-// Polecenie gtag('event') nie wystarcza: kontener go nie przekazuje (zmierzone 11.11 z prawdziwym Google).
 function zdarzenieKlikniecia(e: Event): void {
   if (!zaladowany) return;
   const nazwa = (e.target as Element | null)?.closest<HTMLElement>('[data-zdarzenie]')?.dataset.zdarzenie;

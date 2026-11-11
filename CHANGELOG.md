@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026-11-11 22:40, Claude Code
+
+**✅ Zrobione (przejście na własny kontener GTM `GTM-T7N4RZD8`, ryzyko wysokie: pomiar analityczny; gałąź `gtm-nowy-kontener`, nie wdrożone):**
+- **Dlaczego:** `GTM-NMV5XT8J` (z fragmentu GA4) nie jest widoczny w Menedżerze tagów Roberta, więc nie da się w nim dodać wyzwalacza ani tagu zdarzeń. Konto `robert-debicki` ma jeden kontener, `GTM-T7N4RZD8` (był pusty). Wzorzec jak u prestameble: kontener GTM, zdarzenia przez `dataLayer.push({ event })`, tagi zdarzeń GA4 w GTM.
+- **Robert w GTM (opublikowane 11.11):** Tag Google `G-4CQH9ZBDBC` (Initialization - All Pages), tag zdarzenia GA4 `{{Event}}` z wyzwalaczem Zdarzenie niestandardowe (regex `klik_email|klik_linkedin|kopiuj_email`). Nadmiarowy tag „Google Analytics G-4CQH9ZBDBC” usunięty. Wersja kontenera zawiera też dwa automatyczne ustawienia GTM („automatyczne wykrywanie zdarzeń”, „dane przekazywane przez użytkowników”): ⚠️ ich wartości niesprawdzone, do potwierdzenia przez Roberta.
+- **Kod:** `ID_TAGU = GTM-T7N4RZD8` (`src/lib/zgoda.ts`), test jednostkowy i e2e zaktualizowane (test najpierw czerwony), `AGENTS.md` opisuje kontener i tagi.
+- **Pomiar z prawdziwym Google (lokalny build, żądania `g/collect` przerywane, nazwy zdarzeń z adresu i treści POST):** przed zgodą 0 zdarzeń; po „Akceptuję”: `page_view` raz, `scroll`, `klik_email`, `klik_linkedin`, `kopiuj_email` (kopiuj po dłuższym czekaniu: GA4 grupuje zdarzenia); po „Odrzucam” 0 zdarzeń.
+- **Wycofanie:** wcześniejszy wpis (21:40) twierdził, że `gtag('event')` nie działa z kontenerem (zmierzone). Tamten pomiar czytał tylko adres żądania i mógł przeoczyć zdarzenia zgrupowane w treści POST, więc twierdzenie jest **niepotwierdzone**; komentarze w kodzie poprawione. Działa `dataLayer.push({ event })` z wyzwalaczem GTM.
+- `npm test` 145 pass/1 skipped, e2e zgoda i seo 39 pass, treść 0, sekrety 0.
+
+**🚧 W toku / nie wdrożone:**
+- Wdrożenie wymaga PR i `npm run wdroz -- --wgraj` za zgodą Roberta. Do czasu wdrożenia żywa strona nadal ładuje `GTM-NMV5XT8J` (zbiera `page_view`, bez zdarzeń kliknięć).
+- Po wdrożeniu: pomiar na żywej stronie (`ADRES=https://robert-debicki.pl`), `page_view` raz, zdarzenia kliknięć.
+- **Zrobione przez Roberta 11.11 (na jego słowo, bez zrzutów po zmianie):** GA4: retencja 14 miesięcy, wyłączone Google Signals, zbieranie danych przekazywanych przez użytkowników i personalizacja reklam (stan przed zmianą widoczny na zrzutach: wszystkie trzy włączone, lokalizacja i urządzenie włączone, zostawione). Bing Webmaster Tools: import z GSC, mapa `sitemap-index.xml` ze statusem Success (zrzut). Wersja 2 kontenera GTM opublikowana (zrzut).
+- Do zrobienia: zdarzenia kluczowe w GA4 (`klik_email`, `klik_linkedin`) po pierwszym wystąpieniu zdarzeń na żywej stronie; sprawdzenie liczby URL w Bingu za kilka dni.
+
+**🎯 Następny krok:**
+- Zgoda Roberta na PR, scalenie i wdrożenie.
+
 ## 2026-11-11 21:40, Claude Code
 
 **✅ Zrobione (odwzorowanie ustawień prestameble.pl pod wyszukiwarki i AI; gałąź `llms-i-zdarzenia`, ryzyko wysokie: dane analityczne i zgoda, nie wdrożone):**
