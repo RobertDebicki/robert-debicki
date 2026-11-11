@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 2026-11-11 19:10, Claude Code
+
+**✅ Zrobione (pierwsze wgranie na home.pl: usterka, naprawa, ryzyko wysokie):**
+- Login FTP to `claude@robert-debicki.pl` (nie opis z panelu „we wszystkich domenach”, który dawał 530). `KATALOG=/` to katalog domeny: na serwerze był tylko placeholder home.pl (`index.html` 3335 B, `tmp`).
+- 🔴→✅ **Usterka pierwszego `--wgraj`:** 14 z 26 plików (w tym `index.html`; próg rozmiaru zmierzono tylko jako: 24 KB przechodzi, 48 KB nie) wgrało się jako puste (0 B), curl zgłosił `451 Error during read from data connection`, a skrypt nie zatrzymał nadpisywania. Przez ok. 1 minutę `https://robert-debicki.pl/` zwracało pustą stronę (0 B, status 200). Zmierzone: porównanie sum SHA-256 plików z żywej strony i z `dist/` (11 zgodnych, 14 różnych) i ETag `0-…`.
+- **Naprawa strony:** `index.html` przywrócony z kopii zapasowej (`~/Backups/robert-debicki-ftp/2026-11-11T17-50-30-231Z`), strona znów pokazuje „Strona w przygotowaniu” (3335 B).
+- **Przyczyna (zmierzona na plikach próbnych w `/tmp` na serwerze, potem usuniętych):** 4, 12 i 24 KB przechodzą, 48 KB daje 451; z `tls-max = 1.2` 48 KB i 600 KB przechodzą (226). Czyli TLS 1.3 na kanale danych home.pl z curlem z macOS. `--disable-epsv` i `--tlsv1.2` nie pomagają.
+- **Poprawki skryptu:** `tls-max = 1.2` w każdym transferze; wgrywanie pod nazwą `.part` i podmiana po udanym transferze (`-RNFR`/`-RNTO`, sprawdzone na serwerze: 350 i 250), więc nieudany transfer nigdy nie zostawi pustego pliku strony; odbiór porównuje SHA-256 każdego pliku z żywej strony z lokalnym (łapie puste i ucięte), nie tylko status 200. Testy: `testy/jednostkowe/wdroz.test.ts` 20 (najpierw 2 czerwone), `npm test` 113 pass.
+- Typ błędu: „błąd transferu nie zatrzymuje nadpisywania ani nie jest wykryty przy odbiorze”. Poprawione w obu miejscach (wgrywanie i odbiór).
+- Przegląd świeżego agenta, runda 2 (tylko zmiany po rundzie 1): 10 uwag, poprawione wszystkie. Typy: „błąd transferu nie zatrzymuje reszty listy” (wgrywanie w 3 etapach: zasoby, HTML, `.htaccess`; błąd etapu przerywa następne), „odbiór nie sprawdza `.htaccess`” (sprawdzane zachowanie: http→https 301 i nagłówek nosniff), „odbiór bez testu” (`sprawdzZgodnosc` wydzielona, 4 testy z podstawionym pobieraniem: pusty plik, 404, ucięty, błąd sieci), „błąd jednego pliku przerywa pętlę odbioru” (błąd per plik na liście), „adres odbioru bez kodowania segmentów”, „nazwa w RNFR/RNTO bez ucieczki”, „osierocone `.part`” (wypisywane po błędzie), „limit czasu tylko dla pierwszego transferu” (`max-time` w każdym bloku), „liczba bez dowodu w komentarzu” (próg opisany jako zmierzony tylko między 24 a 48 KB), „odbiór ignoruje KATALOG” (pomijany, gdy KATALOG inny niż `/`). `npm test` 121 pass.
+
+**🚧 W toku / nie wdrożone:**
+- Strona na żywo nadal pokazuje placeholder home.pl (+ nowy `.htaccess` i 11 poprawnych plików: favicony, sitemapy, `admin/`, `robots.txt`, jedna czcionka). 🔴 Ponowne `--wgraj` czeka na zgodę Roberta po poprawce i przeglądzie.
+
+**🎯 Następny krok:**
+- Przegląd zmian (`/code-review`), commit, zgoda Roberta na ponowne `--wgraj`, odbiór `ADRES=https://robert-debicki.pl npm run test:produkcja` i Lighthouse mobile.
+
 ## 2026-11-11 18:45, Claude Code
 
 **✅ Zrobione (hosting home.pl, ryzyko wysokie: dostęp do serwera i adres strony):**

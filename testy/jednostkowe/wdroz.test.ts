@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { adresPliku, cytujDlaCurl, konfiguracjaTransferow, parsujListing, plikiDoWgrania, wczytajKonfiguracje } from '../../skrypty/wdroz';
+import { adresPliku, cytujDlaCurl, konfiguracjaTransferow, parsujListing, plikiDoWgrania, podzielNaEtapy, sprawdzZgodnosc, transferWgrania, wczytajKonfiguracje } from '../../skrypty/wdroz';
 
 describe('wczytajKonfiguracje', () => {
   it('czyta HOST, USER, PASSWORD i KATALOG, ignoruje komentarze i puste linie', () => {
@@ -87,9 +87,73 @@ describe('konfiguracjaTransferow', () => {
     expect(wynik.match(/user = "u@x:p\\"w"/g)).toHaveLength(2);
   });
 
+  it('wymusza TLS 1.2: z TLS 1.3 serwer home.pl zrywa większe transfery (451: 24 KB przechodzi, 48 KB nie), a plik zostaje pusty', () => {
+    expect(wynik.match(/tls-max = 1\.2/g)).toHaveLength(2);
+  });
+
+  it('ustawia limit czasu w każdym bloku, bo --max-time z wiersza poleceń nie obejmuje kolejnych transferów', () => {
+    expect(wynik.match(/max-time = 120/g)).toHaveLength(2);
+  });
+
   it('wymusza TLS i wypisuje kod wyniku każdego transferu', () => {
     expect(wynik.match(/ssl-reqd/g)).toHaveLength(2);
     expect(wynik.match(/write-out = "%\{exitcode\} %\{url\}\\n"/g)).toHaveLength(2);
+  });
+});
+
+describe('transferWgrania', () => {
+  it('wgrywa pod nazwą .part i podmienia dopiero po udanym transferze, więc błąd nie zostawia pustego pliku strony', () => {
+    const t = transferWgrania('h.pl', '/', 'en/index.html', '/tmp/x/index.html');
+    expect(t.adres).toBe('ftp://h.pl/en/index.html.part');
+    expect(t.opcje).toEqual(['upload-file = "/tmp/x/index.html"', 'ftp-create-dirs', 'quote = "-RNFR index.html.part"', 'quote = "-RNTO index.html"']);
+  });
+});
+
+describe('transferWgrania: nazwy specjalne', () => {
+  it('ucieka cudzysłów i ukośnik w komendach RNFR i RNTO', () => {
+    const t = transferWgrania('h.pl', '/', 'a"b.html', '/tmp/a');
+    expect(t.opcje).toContain('quote = "-RNFR a\\"b.html.part"');
+    expect(t.opcje).toContain('quote = "-RNTO a\\"b.html"');
+  });
+});
+
+describe('podzielNaEtapy', () => {
+  it('zasoby osobno, potem HTML, na końcu .htaccess, tak żeby błąd wcześniejszego etapu zatrzymał kolejne', () => {
+    const e = podzielNaEtapy(['_astro/a.woff2', 'og.png', 'index.html', 'en/index.html', '.htaccess']);
+    expect(e).toEqual([['_astro/a.woff2', 'og.png'], ['index.html', 'en/index.html'], ['.htaccess']]);
+  });
+  it('pomija puste etapy', () => {
+    expect(podzielNaEtapy(['index.html', '.htaccess'])).toEqual([['index.html'], ['.htaccess']]);
+  });
+});
+
+describe('sprawdzZgodnosc', () => {
+  const pliki = [{ zdalny: 'index.html', tresc: Buffer.from('<html>cała strona</html>') }, { zdalny: 'og.png', tresc: Buffer.from('PNG-DANE') }];
+  const ok = (tresc: Buffer) => ({ status: 200, tresc });
+
+  it('zwraca pustą listę, gdy wszystko zgodne', async () => {
+    const r = await sprawdzZgodnosc(pliki, async (z) => ok(pliki.find((p) => p.zdalny === z)!.tresc));
+    expect(r).toEqual([]);
+  });
+
+  it('zgłasza pusty plik mimo statusu 200', async () => {
+    const r = await sprawdzZgodnosc(pliki, async (z) => ok(z === 'index.html' ? Buffer.alloc(0) : pliki[1].tresc));
+    expect(r).toHaveLength(1);
+    expect(r[0]).toMatch(/index\.html/);
+  });
+
+  it('zgłasza ucięty plik i status 404', async () => {
+    const r = await sprawdzZgodnosc(pliki, async (z) => (z === 'og.png' ? { status: 404, tresc: Buffer.from('nie ma') } : ok(pliki[0].tresc.subarray(0, 5))));
+    expect(r).toHaveLength(2);
+  });
+
+  it('błąd sieci na jednym pliku trafia na listę, a reszta nadal jest sprawdzana', async () => {
+    const r = await sprawdzZgodnosc(pliki, async (z) => {
+      if (z === 'index.html') throw new Error('timeout');
+      return ok(Buffer.from('inna treść'));
+    });
+    expect(r).toHaveLength(2);
+    expect(r[0]).toMatch(/timeout/);
   });
 });
 

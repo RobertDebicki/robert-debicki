@@ -3,8 +3,9 @@
 //   npm run wdroz -- --na-sucho           pokazuje, co zostałoby wgrane (bez połączenia)
 //   npm run wdroz -- --wgraj              kontrole, build, kopia zapasowa serwera, wgranie, odbiór
 //   dodatkowo --indeksuj                  pozwala na build z PUBLIC_INDEKSUJ=true (zdjęcie noindex, tylko na decyzję Roberta)
-// Skrypt niczego nie usuwa na serwerze i nie wychodzi poza katalog KATALOG z konfiguracji.
+// Skrypt niczego nie usuwa na serwerze (nieudany transfer może zostawić plik .part, skrypt go wypisze) i nie wychodzi poza KATALOG.
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
@@ -67,6 +68,47 @@ export function adresPliku(host: string, katalog: string, wzgledna: string): str
   return `ftp://${host}/${segmenty.join('/')}`;
 }
 
+// Plik trafia najpierw pod nazwą .part i dopiero po udanym transferze jest podmieniany (RNFR/RNTO po transferze).
+// Nieudany transfer zostawia najwyżej osierocony .part (wypisywany po błędzie do ręcznego usunięcia), nigdy pusty albo ucięty plik strony.
+export function transferWgrania(host: string, katalog: string, zdalna: string, lokalny: string): Transfer {
+  const nazwa = zdalna.split('/').pop() as string;
+  return {
+    adres: `${adresPliku(host, katalog, zdalna)}.part`,
+    opcje: [
+      `upload-file = "${cytujDlaCurl(lokalny)}"`,
+      'ftp-create-dirs',
+      `quote = "-RNFR ${cytujDlaCurl(nazwa)}.part"`,
+      `quote = "-RNTO ${cytujDlaCurl(nazwa)}"`,
+    ],
+  };
+}
+
+// Etapy wgrywania: zasoby, potem strony HTML, na końcu .htaccess. Błąd wcześniejszego etapu zatrzymuje kolejne,
+// więc strona nie wskazuje na brakujące pliki, a przekierowania nie włączają się przy niepełnym wgraniu.
+export function podzielNaEtapy(zdalne: string[]): string[][] {
+  const zasoby = zdalne.filter((z) => !z.endsWith('.html') && z !== '.htaccess');
+  const html = zdalne.filter((z) => z.endsWith('.html'));
+  const htaccess = zdalne.filter((z) => z === '.htaccess');
+  return [zasoby, html, htaccess].filter((e) => e.length);
+}
+
+export type Odpowiedz = { status: number; tresc: Buffer };
+
+// Porównuje zawartość każdego pliku z tym, co serwer faktycznie zwraca. Błąd na jednym pliku trafia na listę, reszta jest sprawdzana dalej.
+export async function sprawdzZgodnosc(pliki: { zdalny: string; tresc: Buffer }[], pobierz: (zdalny: string) => Promise<Odpowiedz>): Promise<string[]> {
+  const hash = (b: Buffer) => createHash('sha256').update(b).digest('hex');
+  const rozne: string[] = [];
+  for (const p of pliki) {
+    try {
+      const odp = await pobierz(p.zdalny);
+      if (odp.status !== 200 || hash(odp.tresc) !== hash(p.tresc)) rozne.push(`${p.zdalny} (status ${odp.status}, ${odp.tresc.length} B zamiast ${p.tresc.length} B)`);
+    } catch (e) {
+      rozne.push(`${p.zdalny} (${(e as Error).message})`);
+    }
+  }
+  return rozne;
+}
+
 // Jeden proces curl na wiele transferów (jedna sesja zamiast setek logowań). Hasło tylko w konfiguracji podanej przez stdin.
 export function konfiguracjaTransferow(k: Konfiguracja, transfery: Transfer[]): string {
   return transfery
@@ -75,6 +117,11 @@ export function konfiguracjaTransferow(k: Konfiguracja, transfery: Transfer[]): 
         `user = "${cytujDlaCurl(`${k.user}:${k.password}`)}"`,
         `url = "${cytujDlaCurl(t.adres)}"`,
         'ssl-reqd',
+        // Z TLS 1.3 serwer home.pl zrywa większe transfery błędem 451 i zostawia pusty plik (zmierzone 11.11:
+        // 24 KB przechodzi, 48 KB nie; próg leży między nimi). Z TLS 1.2 przechodzi 600 KB.
+        'tls-max = 1.2',
+        // Limit czasu w każdym bloku: --max-time z wiersza poleceń nie obejmuje kolejnych transferów po "next".
+        'max-time = 120',
         'write-out = "%{exitcode} %{url}\\n"',
         ...t.opcje,
       ].join('\n'),
@@ -161,17 +208,50 @@ function wyjscie(polecenie: string, argumenty: string[]): string {
   return String(uruchomProces(polecenie, argumenty, { cwd: KORZEN, encoding: 'utf8' }).stdout ?? '').trim();
 }
 
-// Po wgraniu .htaccess strona musi odpowiadać 200 bez pętli przekierowań; inaczej głośny komunikat z miejscem kopii.
-async function odbior(kopia: string | null): Promise<void> {
+// Po wgraniu: każdy plik z żywej strony ma mieć zawartość lokalnego (łapie puste i ucięte), strona główna nie może wpaść
+// w pętlę przekierowań, a .htaccess (nieobjęty porównaniem) sprawdzamy po zachowaniu: http na https oraz nagłówek nosniff.
+async function odbior(k: Konfiguracja, lista: { lokalny: string; zdalny: string }[], kopia: string | null): Promise<void> {
   const przywroc = kopia ? `Kopia poprzedniej zawartości: ${kopia}` : 'Serwer był pusty, nie ma kopii.';
-  try {
-    const odp = await fetch(ADRES_STRONY, { redirect: 'follow', signal: AbortSignal.timeout(20_000) });
-    if (odp.status !== 200) throw new Error(`status ${odp.status}`);
-    console.log(`Odbiór: ${ADRES_STRONY} odpowiada 200.`);
-  } catch (e) {
-    console.error(`UWAGA: ${ADRES_STRONY} nie odpowiada poprawnie (${(e as Error).message}). Możliwa pętla przekierowań z .htaccess. ${przywroc}`);
-    process.exitCode = 1;
+  if (k.katalog !== '/') {
+    console.log(`Odbiór pominięty: KATALOG to ${k.katalog}, a adres ${ADRES_STRONY} odpowiada katalogowi głównemu.`);
+    return;
   }
+  const zle: string[] = [];
+  try {
+    const glowna = await fetch(ADRES_STRONY, { redirect: 'follow', signal: AbortSignal.timeout(20_000) });
+    if (glowna.headers.get('x-content-type-options') !== 'nosniff') zle.push('brak nagłówka X-Content-Type-Options (.htaccess nie działa?)');
+    const http = await fetch(ADRES_STRONY.replace('https://', 'http://'), { redirect: 'manual', signal: AbortSignal.timeout(20_000) });
+    if (http.status !== 301 || !(http.headers.get('location') ?? '').startsWith(ADRES_STRONY)) zle.push(`http nie przekierowuje na https (status ${http.status})`);
+  } catch (e) {
+    zle.push(`${ADRES_STRONY} nie odpowiada (${(e as Error).message}); możliwa pętla przekierowań z .htaccess`);
+  }
+  const adres = (zdalny: string) => new URL(zdalny.split('/').map(encodeURIComponent).join('/'), ADRES_STRONY);
+  const pliki = lista.filter((x) => x.zdalny !== '.htaccess').map((x) => ({ zdalny: x.zdalny, tresc: readFileSync(x.lokalny) }));
+  const rozne = await sprawdzZgodnosc(pliki, async (z) => {
+    const odp = await fetch(adres(z), { redirect: 'follow', signal: AbortSignal.timeout(20_000) });
+    return { status: odp.status, tresc: Buffer.from(await odp.arrayBuffer()) };
+  });
+  if (rozne.length) zle.push(`${rozne.length} plików różni się od lokalnych: ${rozne.join('; ')}`);
+  if (zle.length) {
+    console.error(`UWAGA: odbiór nie przeszedł: ${zle.join(' | ')}. ${przywroc}`);
+    process.exitCode = 1;
+    return;
+  }
+  console.log(`Odbiór: wszystkie pliki na ${ADRES_STRONY} zgodne z lokalnymi, .htaccess działa.`);
+}
+
+// Po nieudanym wgraniu: osierocone pliki .part na serwerze (skrypt niczego nie usuwa).
+function znajdzPart(k: Konfiguracja): string[] {
+  const wynik: string[] = [];
+  const idz = (zdalny: string): void => {
+    for (const w of listuj(k, zdalny)) {
+      const pelna = `${zdalny === '/' ? '' : zdalny}/${w.nazwa}`;
+      if (w.katalog) idz(pelna);
+      else if (w.nazwa.endsWith('.part')) wynik.push(pelna);
+    }
+  };
+  idz(k.katalog);
+  return wynik;
 }
 
 async function wgraj(k: Konfiguracja, indeksuj: boolean): Promise<void> {
@@ -191,9 +271,18 @@ async function wgraj(k: Konfiguracja, indeksuj: boolean): Promise<void> {
   const lista = listaDoWgrania();
   const kopia = kopiaZapasowa(k);
   console.log(kopia ? `Kopia zapasowa serwera: ${kopia}` : 'Serwer pusty, kopii nie trzeba.');
-  curl(k, lista.map((p) => ({ adres: adresPliku(k.host, k.katalog, p.zdalny), opcje: [`upload-file = "${cytujDlaCurl(p.lokalny)}"`, 'ftp-create-dirs'] })));
+  const lokalnie = new Map(lista.map((p) => [p.zdalny, p.lokalny]));
+  try {
+    for (const etap of podzielNaEtapy(lista.map((p) => p.zdalny))) {
+      curl(k, etap.map((z) => transferWgrania(k.host, k.katalog, z, lokalnie.get(z) as string)));
+    }
+  } catch (e) {
+    let osierocone = '';
+    try { osierocone = znajdzPart(k).join(', '); } catch { /* błąd listowania nie może przykryć błędu wgrywania */ }
+    throw new Error(`${(e as Error).message}\nWgrywanie przerwane przed kolejnym etapem. Osierocone pliki .part na serwerze (usuń ręcznie): ${osierocone || 'brak lub nie udało się sprawdzić'}. Kopia: ${kopia ?? 'brak'}`);
+  }
   console.log(`Wgrano ${lista.length} plików do ${k.host}${k.katalog}.`);
-  await odbior(kopia);
+  await odbior(k, lista, kopia);
   console.log('Dalej: ADRES=https://robert-debicki.pl npm run test:produkcja');
 }
 
