@@ -1,5 +1,5 @@
-// Zgoda na analitykę (Google Analytics 4 wdrożone przez kontener tagu Google, identyfikator GTM-…). Kontener nie jest ładowany, dopóki odwiedzający nie kliknie „Akceptuję”.
-export const ID_TAGU = 'GTM-NMV5XT8J';
+// Zgoda na analitykę (Google Analytics 4 wdrożone przez kontener Menedżera tagów Google, identyfikator GTM-…; tagi i wyzwalacze są w panelu GTM, konto robert-debicki). Kontener nie jest ładowany, dopóki odwiedzający nie kliknie „Akceptuję”.
+export const ID_TAGU = 'GTM-T7N4RZD8';
 export const KLUCZ_WYBORU = 'zgoda-analityka';
 
 export type Wybor = 'tak' | 'nie';

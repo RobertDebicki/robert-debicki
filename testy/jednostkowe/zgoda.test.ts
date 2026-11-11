@@ -5,8 +5,8 @@ describe('adresTagu', () => {
   it('składa adres tagu Google dokładnie tak, jak podaje GA4 (gtm.js z identyfikatorem kontenera)', () => {
     expect(adresTagu('GTM-ABC123')).toBe('https://www.googletagmanager.com/gtm.js?id=GTM-ABC123');
   });
-  it('ID_TAGU to kontener z GA4 Roberta', () => {
-    expect(ID_TAGU).toBe('GTM-NMV5XT8J');
+  it('ID_TAGU to kontener Roberta w Menedżerze tagów (konto robert-debicki)', () => {
+    expect(ID_TAGU).toBe('GTM-T7N4RZD8');
   });
   it('odrzuca identyfikator o nieoczekiwanym formacie, żeby nie wstrzyknąć obcego adresu', () => {
     expect(() => adresTagu('x&y=1')).toThrow(/identyfikator/i);
