@@ -12,20 +12,23 @@ export interface DaneLlms {
   strony: { nazwa: string; adres: string }[];
 }
 
+const bezKropki = (t: string) => t.trim().replace(/\.+$/, '');
+
 export function llmsTxt(d: DaneLlms): string {
+  // Pola z panelu mogą być puste albo kończyć się kropką: puste pomijamy, kropkę składamy sami.
+  const streszczenie = [bezKropki(d.rola), bezKropki(d.lead)].filter(Boolean).join('. ') + '.';
   const linie = [
     `# ${d.imie} ${d.nazwisko}`,
     '',
-    `> ${d.rola}. ${d.lead}`,
+    `> ${streszczenie}`,
     '',
-    d.opis,
-    '',
-    `Miejsce: ${d.miejsce}.`,
+    ...(d.opis.trim() ? [d.opis.trim(), ''] : []),
+    ...(d.miejsce.trim() ? [`Miejsce: ${bezKropki(d.miejsce)}.`] : []),
     `Kontakt: ${d.email}, LinkedIn: ${d.linkedinUrl}`,
     '',
     '## Czym pracuję',
     '',
-    ...d.narzedzia.map((n) => `- ${n.nazwa}: ${n.wartosc}`),
+    ...d.narzedzia.filter((n) => n.wartosc.trim()).map((n) => `- ${n.nazwa}: ${n.wartosc}`),
     '',
     '## Strony',
     '',

@@ -2,20 +2,22 @@
 
 ## 2026-11-11 21:40, Claude Code
 
-**✅ Zrobione (odwzorowanie ustawień prestameble.pl pod wyszukiwarki i AI; gałąź `llms-i-zdarzenia`, ryzyko średnie: zdarzenia analityczne za zgodą, nie wdrożone):**
+**✅ Zrobione (odwzorowanie ustawień prestameble.pl pod wyszukiwarki i AI; gałąź `llms-i-zdarzenia`, ryzyko wysokie: dane analityczne i zgoda, nie wdrożone):**
 - **Wzorzec (odczyt przez AdLoop, nic nie zmieniane na prestameble):** GA4 ma 4 zdarzenia kluczowe (`generate_lead`, `klik_telefon`, `klik_email`, `purchase`), retencja 2 miesiące, GTM; w 90 dni kanał „AI Assistant” 167 sesji (chatgpt.com 162, claude.ai 4), Organic Search 479; GSC: usługa z prefiksem URL, 5 map bez błędów; `llms.txt` jest (200). Związek `llms.txt` z ruchem z AI niezmierzony.
 - **`/llms.txt`** (`src/lib/llms.ts`, `src/pages/llms.txt.ts`): generowany z ustawień PL (nazwa, rola, opis, miejsce, kontakt, narzędzia, strony PL, EN i polityka), bez myślników. Test jednostkowy (5) i e2e w `seo.spec.ts`.
-- **Zdarzenia kliknięć GA4:** `klik_email`, `klik_linkedin`, `kopiuj_email` (atrybut `data-zdarzenie` w `Kontakt.astro`, nasłuch w `src/scripts/zgoda.ts`, `gtag('event', …)`). Idą tylko, gdy analityka jest włączona po „Akceptuję”: bez zgody i przed decyzją nic nie trafia do `dataLayer`, a po późniejszej zgodzie nic się nie odtwarza (3 testy e2e).
+- **Zdarzenia kliknięć:** `klik_email`, `klik_linkedin`, `kopiuj_email` (atrybut `data-zdarzenie` w `Kontakt.astro`, nasłuch `click` i `auxclick` w `src/scripts/zgoda.ts`, `dataLayer.push({ event })`). Idą tylko, gdy analityka jest włączona po „Akceptuję”: bez zgody i przed decyzją nic nie trafia do `dataLayer`, a po późniejszej zgodzie nic się nie odtwarza (testy e2e). `kopiuj_email` liczy kliknięcia przycisku (próby), nie udane skopiowania.
+- **Pomiar z prawdziwym Google (kontener `GTM-NMV5XT8J`, żądania `g/collect` przerywane, żeby nie zaśmiecać GA4):** `gtag('event', …)` nie wysyła nic (ani bez, ani z `send_to`), wyszło tylko `page_view` i `scroll`. Pierwsza wersja kodu (gtag) była więc błędna i została zastąpiona `dataLayer.push({ event })`. Aby GA4 dostał te zdarzenia, w GTM trzeba dodać wyzwalacz „Zdarzenie niestandardowe” (`klik_email|klik_linkedin|kopiuj_email`, regex) i tag „Zdarzenie GA4” z nazwą `{{Event}}`.
 - **Polityka PL i EN:** dopisane kliknięcia w adres e-mail i link do LinkedIn jako dane analityczne (test e2e).
 - Wyniki: `npm test` 142 pass/1 skipped, e2e 117 pass, treść 0, sekrety 0. Czerwony krok widziany tylko dla testu jednostkowego `llms`; testy e2e nowych zachowań napisane przed kodem, ale ich czerwonego uruchomienia nie wykonałem.
+- Przegląd świeżego agenta (`/code-review high`, runda 1), 8 uwag: zdarzenia przez `gtag` (naprawione i zmierzone, patrz wyżej), `llms.txt` zależny od etykiety „Miejsce” i puste pola (generator pomija puste pola i podwojoną kropkę, 3 testy), brak `auxclick` (dodany, test), kodowanie `.txt` na Apache (`AddDefaultCharset UTF-8` w `hosting/htaccess`, do sprawdzenia `curl -I` po wdrożeniu), poziom ryzyka (podniesiony do wysokiego). Bez zmian: test e2e `llms.txt` z treścią z panelu (jak istniejące testy SEO), `kopiuj_email` jako próby.
 - Poprawka konfiguracji AdLoopa: `ga4.property_id` musi mieć postać `properties/563831727`.
 
 **🚧 W toku / nie wdrożone:**
-- Zmiany lokalne, bez push i wdrożenia (wymaga zgody Roberta). Po wdrożeniu sprawdzić na żywo z prawdziwym Google, czy `gtag('event', …)` przez kontener daje żądanie `g/collect` z `en=klik_email` (⚠️ założenie, niezmierzone).
+- Zmiany lokalne, bez push i wdrożenia (wymaga zgody Roberta). Po dodaniu wyzwalacza i tagu w GTM sprawdzić z prawdziwym Google, czy idzie `g/collect` z `en=klik_email`. Po wdrożeniu `curl -I https://robert-debicki.pl/llms.txt` (charset UTF-8).
 - Do zrobienia przez Roberta w panelach: GSC „Zweryfikuj” i mapa `sitemap-index.xml`, Bing Webmaster Tools (import z GSC), GA4: retencja 14 miesięcy i oznaczenie `klik_email`, `klik_linkedin` jako zdarzeń kluczowych (dopiero po pierwszym wystąpieniu).
 
 **🎯 Następny krok:**
-- Przegląd `/code-review high`, potem zgoda Roberta na push, PR i wdrożenie; w panelach kroki z listy powyżej.
+- Zgoda Roberta na push, PR i wdrożenie (po `/security-review`); w panelach kroki z listy powyżej.
 
 ## 2026-11-11 21:30, Claude Code
 

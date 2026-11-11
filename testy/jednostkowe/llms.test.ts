@@ -44,4 +44,19 @@ describe('llmsTxt', () => {
     expect(tekst.endsWith('\n')).toBe(true);
     expect(tekst).not.toMatch(/[—–]/);
   });
+  it('pomija puste pola: bez linii „Miejsce:” i bez pustego cytatu', () => {
+    const t = llmsTxt({ ...dane, miejsce: '', lead: '', opis: '' });
+    expect(t).not.toContain('Miejsce:');
+    expect(t).toMatch(/^> Automation Developer\.$/m);
+    expect(t).not.toMatch(/^> \.$/m);
+  });
+  it('nie podwaja kropki, gdy rola albo lead kończą się kropką', () => {
+    const t = llmsTxt({ ...dane, rola: 'Automation Developer.' });
+    expect(t).toMatch(/^> Automation Developer\. Automatyzuję procesy w firmach\.$/m);
+    expect(t).not.toContain('..');
+  });
+  it('pomija narzędzia z pustą wartością', () => {
+    const t = llmsTxt({ ...dane, narzedzia: [{ nazwa: 'Pusto', wartosc: '' }, ...dane.narzedzia] });
+    expect(t).not.toContain('- Pusto');
+  });
 });

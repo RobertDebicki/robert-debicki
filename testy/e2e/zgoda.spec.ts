@@ -240,7 +240,12 @@ test('odrzucenie usuwa istniejące ciasteczko _ga ustawione na domenie hosta', a
 });
 
 // Zdarzenia kliknięć (e-mail, LinkedIn, kopiowanie adresu) to też dane analityczne: wysyłamy je do Google dopiero po zgodzie.
-const zdarzenia = async (page: Page) => (await wpisyDataLayer(page)).filter((w) => w[0] === 'event').map((w) => w[1]);
+// Zdarzenia własne to zwykłe obiekty `{ event: nazwa }` (kontener GTM łapie je wyzwalaczem „Zdarzenie niestandardowe”; polecenie gtag('event') kontener ignoruje, zmierzone na żywo 11.11).
+const zdarzenia = async (page: Page) =>
+  (await wpisyDataLayer(page))
+    .map((w) => w[0] as { event?: string })
+    .filter((e) => e && typeof e === 'object' && /^(klik_|kopiuj_)/.test(e.event ?? ''))
+    .map((e) => e.event);
 const klikniecia = async (page: Page) => {
   // Kliknięcie w mailto i w link zewnętrzny nie może nas wyprowadzić ze strony w teście.
   await page.evaluate(() => document.querySelectorAll('#kontakt a').forEach((a) => a.addEventListener('click', (e) => e.preventDefault())));
@@ -255,6 +260,15 @@ test('po zgodzie kliknięcia w e-mail, LinkedIn i kopiowanie adresu idą jako zd
   await baner(page).getByRole('button', { name: 'Akceptuję' }).click();
   await klikniecia(page);
   expect(await zdarzenia(page)).toEqual(['klik_email', 'klik_linkedin', 'kopiuj_email']);
+});
+
+test('środkowy przycisk myszy na LinkedIn też liczy się jako klik_linkedin', async ({ page }) => {
+  await podstawGoogle(page);
+  await page.goto('/');
+  await baner(page).getByRole('button', { name: 'Akceptuję' }).click();
+  await page.evaluate(() => document.querySelectorAll('#kontakt a').forEach((a) => a.addEventListener('auxclick', (e) => e.preventDefault())));
+  await page.locator('#kontakt .links a').click({ button: 'middle' });
+  expect(await zdarzenia(page)).toEqual(['klik_linkedin']);
 });
 
 test('bez zgody kliknięcia nie tworzą żadnych zdarzeń w dataLayer', async ({ page }) => {
