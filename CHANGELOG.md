@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026-11-11 18:45, Claude Code
+
+**✅ Zrobione (hosting home.pl, ryzyko wysokie: dostęp do serwera i adres strony):**
+- Domena główna `robert-debicki.pl`: `site` w `astro.config.mjs`, `Sitemap` w `public/robots.txt`, stałe `SITE` w testach i domyślny `site_url` panelu (`src/lib/panel.ts`). Pomiar z zewnątrz 11.11: wszystkie 3 domeny wskazują na `46.242.250.87` (serwer2643459), certyfikaty działają (HTTP/2 200 na `.pl` i `www`, 301 na `.com` i `.com.pl`).
+- `skrypty/wdroz.ts` (`npm run wdroz`): FTPS przez curl, jedna sesja na wiele plików, hasło z pliku poza repo przez stdin curl (nie w liście procesów), odmowa przy zbyt szerokich uprawnieniach pliku, tylko wgrywanie (bez usuwania), HTML na końcu, `.htaccess` ostatni. Przed wgraniem: czysty git, gałąź main, bez `PUBLIC_INDEKSUJ` (chyba że jawne `--indeksuj`), pięć kontrol `sprawdz:*`, `npm test`, build, kopia zapasowa serwera z plikami ukrytymi (`LIST -a`) do `~/Backups/robert-debicki-ftp/`. Po wgraniu odbiór `https://robert-debicki.pl/` (200 bez pętli). Testy: `testy/jednostkowe/wdroz.test.ts` (18, najpierw czerwone).
+- `hosting/htaccess`: https i bez www (301, z wyjątkiem `/.well-known/`), `/sitemap.xml` 301, 404, nagłówki, cache plików z hashem (`FilesMatch`), kompresja. Zastępuje `_headers` i `_redirects` z Cloudflare.
+- Przegląd świeżego agenta (`/code-review` high), runda 1: 9 uwag, poprawione wszystkie. Typy: „po cichu pominięty wiersz listingu” (listing rzuca błąd przy nieznanym formacie, także symlink i DOS, ACL `+` rozpoznane), „kopia nie obejmuje plików ukrytych” (`LIST -a`), „kontrole słabsze niż `sprawdz`”, „zablokowane zdjęcie noindex” (flaga `--indeksuj`, akapit w AGENTS.md zaktualizowany), „ryzyko pętli i `.well-known` w `.htaccess`” (wyjątek i odbiór po wgraniu), „setki sesji FTPS” (jeden curl), „błąd uruchomienia curl jako TypeError”, „zmienna środowiskowa w cache” (FilesMatch), „test bez asercji” (zamieniony na prawdziwy). Całość: `npm test` 111 pass, e2e chromium i jezyki 88 z 88, sekrety 0, treść 0.
+
+**🚧 W toku / nie wdrożone:**
+- 🔴 Nie sprawdzone: połączenie FTPS z kontem Roberta (brak pliku `~/.config/robert-debicki-ftp`), katalog domeny na serwerze, działanie `.htaccess` na home.pl (ryzyko pętli przekierowań, jeśli `%{HTTPS}` nie jest widoczne za proxy), czy 301 `.com` i `.com.pl` zachowuje ścieżkę (zmierzone: NIE, `.com/en/` kończy na `/`).
+- Commit lokalny, bez push i bez wgrania na serwer. `noindex` zostaje.
+
+**🎯 Następny krok:**
+- Robert tworzy plik konfiguracji, `npm run wdroz -- --lista` pokazuje katalog domeny, ustawiamy `KATALOG`, `--na-sucho`, potem `--wgraj` za zgodą, odbiór `ADRES=https://robert-debicki.pl npm run test:produkcja` i Lighthouse mobile.
+
 ## 2026-11-11 17:55, Claude Code
 
 **✅ Zrobione (audyt SEO żywej strony, ryzyko niskie: tylko metadane):**

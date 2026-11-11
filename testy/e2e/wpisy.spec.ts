@@ -1,7 +1,7 @@
 // Testy idą na build z fiksturami (testy/fikstury/jezyki/wpisy), projekt "jezyki". Pusta kolekcja: test na zwykłym buildzie (projekt "chromium", plik wpisy-puste.spec.ts).
 import { test, expect } from '@playwright/test';
 
-const SITE = 'https://robert-debicki.robert-debicki7.workers.dev';
+const SITE = 'https://robert-debicki.pl';
 
 test('strona główna PL pokazuje 3 najnowsze wpisy od najnowszego, bez najstarszego', async ({ page }) => {
   await page.goto('/');

@@ -233,7 +233,7 @@ export function konfiguracjaPanelu(sr: Srodowisko = {}): Record<string, unknown>
       },
     },
     app_title: 'Panel Roberta Dębickiego',
-    site_url: sr.adresStrony ?? 'https://robert-debicki.robert-debicki7.workers.dev',
+    site_url: sr.adresStrony ?? 'https://robert-debicki.pl',
     media_folder: FOLDER_ZDJEC,
     public_folder: SCIEZKA_ZDJEC,
     media_libraries: {

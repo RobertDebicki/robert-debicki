@@ -14,6 +14,7 @@ npm run dev            # serwer deweloperski
 npm run build          # statyczny HTML do dist/
 npm test               # Vitest
 npm run sprawdz:sekrety  # skan repo pod kątem kluczy i tokenów (musi dać 0)
+npm run wdroz -- --na-sucho   # hosting home.pl (FTPS): lista plików; też --lista, --wgraj (tylko za zgodą Roberta w danej wiadomości)
 ```
 
 ## Układ plików
@@ -43,7 +44,8 @@ Ograniczenia globalne planu:
 - Zmiana wyglądu tylko dla kontrastu tekstu (przyciemnienie w ramach tej samej barwy) i z wpisem w CHANGELOG.
 - Polski pod `/`, angielski (en-US) pod `/en/`. Brak `en.md` ukrywa pozycję w EN, nie blokuje wdrożenia.
 - Referencja wymaga `zgoda: true`.
-- `noindex` steruje zmienna `PUBLIC_INDEKSUJ` (domyślnie `false`). Zdjęcie `noindex` później, tylko na decyzję Roberta (teraz nie): ustawić `PUBLIC_INDEKSUJ=true` w buildzie wdrożeniowym (`env` kroku buildu w zadaniu `wdroz`), usunąć `PUBLIC_INDEKSUJ` z pętli zabezpieczenia w `.github/workflows/strona.yml` (inaczej build się zatrzyma), przy zmianie domeny poprawić adres w `site` (`astro.config.mjs`) i w linii `Sitemap` w `public/robots.txt`, a w Cloudflare włączyć „Always Use HTTPS” i przekierowanie 301 z workers.dev na domenę oraz poprawić asercję `noindex` w `testy/e2e/produkcja.spec.ts`.
+- `noindex` steruje zmienna `PUBLIC_INDEKSUJ` (domyślnie `false`). Zdjęcie `noindex` później, tylko na decyzję Roberta (teraz nie): na hostingu home.pl wdrożyć z `PUBLIC_INDEKSUJ=true npm run wdroz -- --wgraj --indeksuj` (bez `--indeksuj` skrypt odmawia), poprawić asercję `noindex` w `testy/e2e/produkcja.spec.ts`, a dla kopii na Cloudflare (workers.dev) ustawić `PUBLIC_INDEKSUJ=true` w buildzie wdrożeniowym i usunąć `PUBLIC_INDEKSUJ` z pętli zabezpieczenia w `.github/workflows/strona.yml` (inaczej build się zatrzyma) albo zostawić tę kopię z `noindex`. `site` (`astro.config.mjs`) i linia `Sitemap` (`public/robots.txt`) już wskazują `https://robert-debicki.pl`.
 - SEO: tytuły stron głównych w `src/pages/index.astro` i `src/pages/en/[...glowna].astro`, Open Graph i Twitter w `src/layouts/Strona.astro`, JSON-LD (Person, WebSite) w `src/components/DaneStrukturalne.astro` z danych `ustawienia`. Obraz podglądu `public/og.png` (1200 x 630) generuje `node skrypty/obraz-og.mjs`; uruchomić ponownie po zmianie logo albo roli.
 - Lighthouse mobile co najmniej 95 w czterech kategoriach. Brak przewijania w bok przy 360, 390, 1024, 1440 px.
+- Hosting: home.pl (Apache), host `serwer2643459.hosting-home.pl`, FTPS, domena główna `robert-debicki.pl`, `.com` i `.com.pl` przekierowuje panel home.pl. Wdrożenie lokalne `npm run wdroz` (`skrypty/wdroz.ts`), dane logowania w `~/.config/robert-debicki-ftp` (poza repo, `chmod 600`; nie czytać, nie wklejać do rozmowy). Skrypt niczego nie usuwa na serwerze. Reguły Apache: `hosting/htaccess` (wgrywany jako `.htaccess`). Cloudflare (`workers.dev`) zostaje drugą, testową kopią przez CI.
 - Commit dopiero z wpisem w `CHANGELOG.md`. Push na `main` i wdrożenie tylko za zgodą Roberta w danej wiadomości.

@@ -8,7 +8,7 @@ const wyjscie = process.env.WYJSCIE;
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://robert-debicki.robert-debicki7.workers.dev',
+  site: 'https://robert-debicki.pl',
   ...(wyjscie ? { outDir: wyjscie, cacheDir: `./node_modules/.astro-${wyjscie.replace(/\W/g, '')}` } : {}),
   // CSS w <style> zamiast osobnego pliku: usuwa blokujące renderowanie żądanie (Lighthouse: FCP).
   build: { inlineStylesheets: 'always' },
