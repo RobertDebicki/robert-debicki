@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { adresPliku, cytujDlaCurl, konfiguracjaTransferow, parsujListing, plikiDoWgrania, podzielNaEtapy, sprawdzZgodnosc, transferWgrania, wczytajKonfiguracje } from '../../skrypty/wdroz';
+import { adresPliku, cytujDlaCurl, konfiguracjaTransferow, parsujListing, plikiDoWgrania, podzielNaEtapy, sprawdzZgodnosc, srodowiskoBuildu, transferWgrania, wczytajKonfiguracje, zgodnoscRobots } from '../../skrypty/wdroz';
 
 describe('wczytajKonfiguracje', () => {
   it('czyta HOST, USER, PASSWORD i KATALOG, ignoruje komentarze i puste linie', () => {
@@ -154,6 +154,29 @@ describe('sprawdzZgodnosc', () => {
     });
     expect(r).toHaveLength(2);
     expect(r[0]).toMatch(/timeout/);
+  });
+});
+
+describe('srodowiskoBuildu', () => {
+  it('domyślnie (indeksowanie) ustawia PUBLIC_INDEKSUJ=true, nadpisując wartość z otoczenia', () => {
+    expect(srodowiskoBuildu({ PATH: '/bin', PUBLIC_INDEKSUJ: 'false' }, true)).toEqual({ PATH: '/bin', PUBLIC_INDEKSUJ: 'true' });
+  });
+  it('z --noindex usuwa PUBLIC_INDEKSUJ z otoczenia, więc build ma noindex', () => {
+    const env = srodowiskoBuildu({ PATH: '/bin', PUBLIC_INDEKSUJ: 'true' }, false);
+    expect(env).toEqual({ PATH: '/bin' });
+  });
+});
+
+describe('zgodnoscRobots', () => {
+  const zNoindex = '<head><meta name="robots" content="noindex, nofollow"></head>';
+  const bez = '<head><title>x</title></head>';
+  it('tryb indeksowania: brak metatagu robots jest zgodny, noindex to błąd', () => {
+    expect(zgodnoscRobots(bez, true)).toBeNull();
+    expect(zgodnoscRobots(zNoindex, true)).toMatch(/robots/);
+  });
+  it('tryb noindex: noindex jest zgodny, brak metatagu to błąd', () => {
+    expect(zgodnoscRobots(zNoindex, false)).toBeNull();
+    expect(zgodnoscRobots(bez, false)).toMatch(/noindex/);
   });
 });
 

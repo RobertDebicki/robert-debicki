@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-11-11 19:50, Claude Code
+
+**✅ Zrobione (przygotowanie zdjęcia noindex na `robert-debicki.pl`, ryzyko wysokie: strona wejdzie do wyszukiwarek):**
+- **Decyzja Roberta 11.11 (cytat z wiadomości):** „zrób push na gtihub i zdejmij noindex”. Wcześniej: „zdejmiemy po poprawkach”.
+- `skrypty/wdroz.ts`: build domyślnie z `PUBLIC_INDEKSUJ=true` (`srodowiskoBuildu`, nadpisuje wartość z powłoki); `--noindex` przywraca noindex; odbiór sprawdza tryb żywej strony (`zgodnoscRobots`: z indeksowaniem brak metatagu robots, z `--noindex` jest noindex). Flaga `--indeksuj` z poprzedniego wpisu **nie istnieje**.
+- `public/robots.txt`: usunięte `Disallow: /admin/` (blokada uniemożliwiała crawlerowi odczyt `noindex` z panelu; `/admin/` zostaje z metatagiem noindex i poza mapą strony).
+- `testy/e2e/produkcja.spec.ts`: na `robert-debicki.pl` oczekuje braku metatagu robots i canonical na siebie, na pozostałych adresach (kopia Cloudflare) noindex. Najpierw czerwony na żywej stronie z noindex.
+- Przegląd świeżego agenta (`/code-review` high), runda 3 (tylko zmiany po rundzie 2): 7 uwag, poprawione. Typy: „brak bezpiecznego wyłącznika i weryfikacji trybu” (`--noindex`, odbiór sprawdza robots), „zmiana zachowania bez wpisu i bez testu” (ten wpis, 4 testy `srodowiskoBuildu` i `zgodnoscRobots`), „robots.txt blokuje odczyt noindex”, „asercja bez canonical”. `npm test` 125 pass, e2e chromium i jezyki 88 z 88.
+
+**🚧 W toku / nie wdrożone:**
+- Commit lokalny. Push na GitHub i wgranie bez noindex na home.pl czekają na potwierdzenie (straż publikacji nie dopuściła pushu bez zgody w ostatniej wiadomości).
+- GA4 i Search Console: czekają na decyzje Roberta (identyfikator GA4, zgoda na pliki cookie, metoda weryfikacji GSC).
+
+**🎯 Następny krok:**
+- Push, `npm run wdroz -- --wgraj`, odbiór `ADRES=https://robert-debicki.pl npm run test:produkcja`, zgłoszenie domeny w Search Console.
+
 ## 2026-11-11 19:25, Claude Code
 
 **✅ Zrobione (strona na żywo pod `https://robert-debicki.pl/`, wgrana za zgodą Roberta w wiadomości „Wgraj”):**

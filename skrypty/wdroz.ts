@@ -2,7 +2,8 @@
 //   npm run wdroz -- --lista [/sciezka]   tylko wypisuje zawartość katalogu na serwerze
 //   npm run wdroz -- --na-sucho           pokazuje, co zostałoby wgrane (bez połączenia)
 //   npm run wdroz -- --wgraj              kontrole, build, kopia zapasowa serwera, wgranie, odbiór
-//   dodatkowo --indeksuj                  pozwala na build z PUBLIC_INDEKSUJ=true (zdjęcie noindex, tylko na decyzję Roberta)
+//   Build domyślnie z PUBLIC_INDEKSUJ=true (noindex zdjęty na domenie głównej decyzją Roberta 11.11);
+//   --noindex przywraca noindex (powrót na czas przebudowy), odbiór sprawdza, że żywa strona ma ten tryb.
 // Skrypt niczego nie usuwa na serwerze (nieudany transfer może zostawić plik .part, skrypt go wypisze) i nie wychodzi poza KATALOG.
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -81,6 +82,22 @@ export function transferWgrania(host: string, katalog: string, zdalna: string, l
       `quote = "-RNTO ${cytujDlaCurl(nazwa)}"`,
     ],
   };
+}
+
+// Środowisko buildu: tryb indeksowania ustawiamy jawnie, żeby wartość z powłoki nie zmieniła go po cichu.
+export function srodowiskoBuildu(env: NodeJS.ProcessEnv, indeksuj: boolean): NodeJS.ProcessEnv {
+  const wynik = { ...env };
+  if (indeksuj) wynik.PUBLIC_INDEKSUJ = 'true';
+  else delete wynik.PUBLIC_INDEKSUJ;
+  return wynik;
+}
+
+// Czy żywa strona główna jest w zamierzonym trybie: z indeksowaniem bez metatagu robots, bez indeksowania z noindex.
+export function zgodnoscRobots(html: string, indeksuj: boolean): string | null {
+  const maRobots = /<meta\s+name="robots"/i.test(html);
+  if (indeksuj && maRobots) return 'strona ma metatag robots mimo trybu indeksowania (zostało noindex?)';
+  if (!indeksuj && !/noindex/i.test(html.match(/<meta\s+name="robots"[^>]*>/i)?.[0] ?? '')) return 'brak noindex mimo trybu --noindex';
+  return null;
 }
 
 // Etapy wgrywania: zasoby, potem strony HTML, na końcu .htaccess. Błąd wcześniejszego etapu zatrzymuje kolejne,
@@ -210,7 +227,7 @@ function wyjscie(polecenie: string, argumenty: string[]): string {
 
 // Po wgraniu: każdy plik z żywej strony ma mieć zawartość lokalnego (łapie puste i ucięte), strona główna nie może wpaść
 // w pętlę przekierowań, a .htaccess (nieobjęty porównaniem) sprawdzamy po zachowaniu: http na https oraz nagłówek nosniff.
-async function odbior(k: Konfiguracja, lista: { lokalny: string; zdalny: string }[], kopia: string | null): Promise<void> {
+async function odbior(k: Konfiguracja, lista: { lokalny: string; zdalny: string }[], kopia: string | null, indeksuj: boolean): Promise<void> {
   const przywroc = kopia ? `Kopia poprzedniej zawartości: ${kopia}` : 'Serwer był pusty, nie ma kopii.';
   if (k.katalog !== '/') {
     console.log(`Odbiór pominięty: KATALOG to ${k.katalog}, a adres ${ADRES_STRONY} odpowiada katalogowi głównemu.`);
@@ -220,6 +237,8 @@ async function odbior(k: Konfiguracja, lista: { lokalny: string; zdalny: string 
   try {
     const glowna = await fetch(ADRES_STRONY, { redirect: 'follow', signal: AbortSignal.timeout(20_000) });
     if (glowna.headers.get('x-content-type-options') !== 'nosniff') zle.push('brak nagłówka X-Content-Type-Options (.htaccess nie działa?)');
+    const blad = zgodnoscRobots(await glowna.text(), indeksuj);
+    if (blad) zle.push(blad);
     const http = await fetch(ADRES_STRONY.replace('https://', 'http://'), { redirect: 'manual', signal: AbortSignal.timeout(20_000) });
     if (http.status !== 301 || !(http.headers.get('location') ?? '').startsWith(ADRES_STRONY)) zle.push(`http nie przekierowuje na https (status ${http.status})`);
   } catch (e) {
@@ -258,16 +277,13 @@ async function wgraj(k: Konfiguracja, indeksuj: boolean): Promise<void> {
   for (const z of ['TRESC_BAZA', 'WYJSCIE']) {
     if (process.env[z]) throw new Error(`Zmienna ${z} jest ustawiona. Build wdrożeniowy ma iść bez niej.`);
   }
-  const indeks = process.env.PUBLIC_INDEKSUJ;
-  if (indeks && !indeksuj) throw new Error('PUBLIC_INDEKSUJ jest ustawione. Zdjęcie noindex wymaga jawnego --indeksuj (tylko na decyzję Roberta).');
-  if (indeksuj && indeks !== 'true') throw new Error('--indeksuj wymaga PUBLIC_INDEKSUJ=true.');
   if (wyjscie('git', ['status', '--porcelain'])) throw new Error('Są niezatwierdzone zmiany. Zrób commit przed wdrożeniem.');
   const galaz = wyjscie('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
   if (galaz !== 'main') throw new Error(`Wdrażamy tylko z gałęzi main, jesteś na: ${galaz}`);
   // Te same kontrole co w `npm run sprawdz`, bez e2e (te idą na własnym buildzie).
   for (const skrypt of ['sprawdz:sekrety', 'sprawdz:tresc', 'sprawdz:skany', 'sprawdz:zdjecia', 'sprawdz:tlumaczenia']) uruchom('npm', ['run', skrypt]);
   uruchom('npm', ['test']);
-  uruchom('npm', ['run', 'build']);
+  uruchom('npm', ['run', 'build'], srodowiskoBuildu(process.env, indeksuj));
   const lista = listaDoWgrania();
   const kopia = kopiaZapasowa(k);
   console.log(kopia ? `Kopia zapasowa serwera: ${kopia}` : 'Serwer pusty, kopii nie trzeba.');
@@ -282,7 +298,7 @@ async function wgraj(k: Konfiguracja, indeksuj: boolean): Promise<void> {
     throw new Error(`${(e as Error).message}\nWgrywanie przerwane przed kolejnym etapem. Osierocone pliki .part na serwerze (usuń ręcznie): ${osierocone || 'brak lub nie udało się sprawdzić'}. Kopia: ${kopia ?? 'brak'}`);
   }
   console.log(`Wgrano ${lista.length} plików do ${k.host}${k.katalog}.`);
-  await odbior(k, lista, kopia);
+  await odbior(k, lista, kopia, indeksuj);
   console.log('Dalej: ADRES=https://robert-debicki.pl npm run test:produkcja');
 }
 
@@ -300,8 +316,8 @@ async function main(argv: string[]): Promise<void> {
     for (const w of listuj(k, sciezka)) console.log(`${w.katalog ? 'katalog' : 'plik   '}  ${w.nazwa}`);
     return;
   }
-  if (argv.includes('--wgraj')) return wgraj(k, argv.includes('--indeksuj'));
-  console.log('Użycie: npm run wdroz -- --lista [/sciezka] | --na-sucho | --wgraj [--indeksuj]');
+  if (argv.includes('--wgraj')) return wgraj(k, !argv.includes('--noindex'));
+  console.log('Użycie: npm run wdroz -- --lista [/sciezka] | --na-sucho | --wgraj [--noindex]');
   process.exitCode = 1;
 }
 
