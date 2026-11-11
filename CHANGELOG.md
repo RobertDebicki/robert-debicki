@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-11-11 21:30, Claude Code
+
+**✅ Zrobione (AdLoop dla robert-debicki.pl, ryzyko niskie: konfiguracja poza repo, tylko odczyt):**
+- Osobna konfiguracja `~/.adloop-robert/` (`config.yaml`, kopia `credentials.json`; poza repo, nie czytać ani wklejać): GA4 `property_id` 563831727 (z adresu panelu GA4), Search Console `https://robert-debicki.pl/`, `require_dry_run: true`. Prestameble (`~/.adloop/`) nietknięte.
+- Serwer MCP `adloop` dopisany lokalnie do projektu (`claude mcp add -s local`, nie w `.mcp.json`, bo repo jest publiczne): `ADLOOP_CONFIG=~/.adloop-robert/config.yaml`, narzędzia `ga4,gsc,tracking,web,gtm`.
+
+**🚧 W toku:**
+- 🔴 Brak `~/.adloop-robert/token.json`: autoryzacja OAuth kontem robert.debicki7@gmail.com zablokowana przez Google ("Spróbuj jeszcze raz za 6 dni", nowe klucze dostępu), na każdej przeglądarce. Decyzja Roberta: czekamy 6 dni (od 11.11 wieczorem, czyli próba najwcześniej wieczorem 17.11).
+- Uwaga: AdLoop prosi OAuth o szersze zakresy niż odczyt (`analytics.edit`, `adwords`, `content`). Zapasowy wariant bez OAuth: konto serwisowe z rolą Odczyt w GA4 i GSC (AdLoop obsługuje klucz `service_account` w `credentials.json`).
+- Search Console: "Zweryfikuj" (Tag HTML) i zgłoszenie mapy czeka na Roberta. Polityka: retencja GA4, zawartość kontenera GTM, forma administratora.
+
+**🎯 Następny krok:**
+- Od 17.11 wieczorem: uruchomić logowanie (skrypt wypisujący adres, bo `!` w oknie rozmowy nie uruchamia poleceń), sprawdzić `token.json`, zrestartować sesję, `health_check` AdLoopa i pierwszy odczyt GA4 oraz GSC (przed zapisem skill `adloop-rules`).
+
 ## 2026-11-11 20:55, Claude Code
 
 **✅ Zrobione (wdrożenie metatagu Search Console, ryzyko niskie):**
