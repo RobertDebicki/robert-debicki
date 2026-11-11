@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-11-11 22:50, Claude Code
+
+**✅ Zrobione (wdrożenie PR #5 na produkcję za zgodą Roberta: „zrób push, PR i wdróż”, ryzyko wysokie):**
+- PR #5 scalony (`edaf799`) po zielonym CI. `npm run wdroz -- --wgraj`: 29 plików na home.pl, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-11T21-39-06-500Z`, odbiór zgodny, `.htaccess` działa. `test:produkcja` 5 z 5.
+- Żywa strona ładuje `GTM-T7N4RZD8` (curl). **Pomiar na żywej stronie** z prawdziwym Google (żądania `g/collect` przerywane, nazwy zdarzeń z adresu i treści POST): przed zgodą 0 zdarzeń; po „Akceptuję”: `page_view` raz, `scroll`, `klik_email`, `klik_linkedin`, `kopiuj_email`; po „Odrzucam” 0 zdarzeń.
+
+**🚧 W toku:**
+- Zdarzenia kluczowe w GA4: oznaczyć `klik_email` i `klik_linkedin` po tym, jak prawdziwy odwiedzający wygeneruje je na stronie (przerwane żądania testowe nie dotarły do GA4).
+- Bing: sprawdzić za kilka dni liczbę URL w mapie. AdLoop dla robert-debicki.pl: autoryzacja najwcześniej wieczorem 17.11. Przekierowania `.com`/`.com.pl` gubią ścieżkę; konto FTP ma dostęp do całego hostingu; polityka: forma administratora i przegląd prawny.
+
+**🎯 Następny krok:**
+- Od 17.11 wieczorem: dokończyć autoryzację AdLoopa i odczytać GA4 i GSC; w GA4 oznaczyć zdarzenia kluczowe po pierwszym wystąpieniu.
+
 ## 2026-11-11 22:40, Claude Code
 
 **✅ Zrobione (przejście na własny kontener GTM `GTM-T7N4RZD8`, ryzyko wysokie: pomiar analityczny; gałąź `gtm-nowy-kontener`, nie wdrożone):**
