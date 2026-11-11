@@ -13,7 +13,8 @@
 **🚧 W toku / nie wdrożone:**
 - Wdrożenie wymaga PR i `npm run wdroz -- --wgraj` za zgodą Roberta. Do czasu wdrożenia żywa strona nadal ładuje `GTM-NMV5XT8J` (zbiera `page_view`, bez zdarzeń kliknięć).
 - Po wdrożeniu: pomiar na żywej stronie (`ADRES=https://robert-debicki.pl`), `page_view` raz, zdarzenia kliknięć.
-- Kroki Roberta: sprawdzenie dwóch automatycznych ustawień GTM, Bing Webmaster Tools, GA4 retencja 14 miesięcy i zdarzenia kluczowe po pierwszym wystąpieniu.
+- **Zrobione przez Roberta 11.11 (na jego słowo, bez zrzutów po zmianie):** GA4: retencja 14 miesięcy, wyłączone Google Signals, zbieranie danych przekazywanych przez użytkowników i personalizacja reklam (stan przed zmianą widoczny na zrzutach: wszystkie trzy włączone, lokalizacja i urządzenie włączone, zostawione). Bing Webmaster Tools: import z GSC, mapa `sitemap-index.xml` ze statusem Success (zrzut). Wersja 2 kontenera GTM opublikowana (zrzut).
+- Do zrobienia: zdarzenia kluczowe w GA4 (`klik_email`, `klik_linkedin`) po pierwszym wystąpieniu zdarzeń na żywej stronie; sprawdzenie liczby URL w Bingu za kilka dni.
 
 **🎯 Następny krok:**
 - Zgoda Roberta na PR, scalenie i wdrożenie.
