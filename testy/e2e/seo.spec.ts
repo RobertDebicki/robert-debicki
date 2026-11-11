@@ -25,6 +25,11 @@ for (const [adres, jezyk, tytul] of [
     await expect(meta('twitter:card')).toHaveAttribute('content', 'summary_large_image');
   });
 
+  test(`${adres}: metatag weryfikacji własności Google Search Console`, async ({ page }) => {
+    await page.goto(adres);
+    await expect(page.locator('meta[name="google-site-verification"]')).toHaveAttribute('content', 'ug2LBsjDLEVt3TScZOzzdaCjnJznbJBmDzTL-L0K49E');
+  });
+
   test(`${adres}: JSON-LD z Person i WebSite`, async ({ page }) => {
     await page.goto(adres);
     const bloki = await page.locator('script[type="application/ld+json"]').allTextContents();
