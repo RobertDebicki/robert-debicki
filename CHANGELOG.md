@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026-11-11 20:00, Claude Code
+
+**✅ Zrobione (wdrożenie na produkcję za zgodą Roberta: „zgoda na PR i zgoda na wypchnięcie zmian na produkcję”):**
+- PR #2 (analityka, baner, polityka) scalony po zielonym CI (`54a1013`). `npm run wdroz -- --wgraj`: 28 plików na home.pl, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-11T18-52-13-900Z`, odbiór skryptu zgodny.
+- **Strona jest indeksowana:** na żywej `robert-debicki.pl` brak metatagu robots (0 trafień), `test:produkcja` 5 z 5 (oczekuje braku robots i canonical na siebie), mapa strony zawiera `/polityka-prywatnosci/` i `/en/privacy-policy/`, wszystkie 5 adresów 200.
+- **Test na żywo z prawdziwym Google (Playwright):** przed zgodą baner widoczny i 0 żądań do Google; po „Akceptuję” baner znika, ładuje się `gtm.js?id=GTM-NMV5XT8J` i idzie żądanie `g/collect` do GA4 (strumień `G-4CQH9ZBDBC`), kontener `GTM-NMV5XT8J` załadowany, ustawione `_ga` i `_ga_4CQH9ZBDBC`.
+
+**🚧 W toku / nie wdrożone:**
+- 🔴 Search Console, weryfikacja przez GTM: Google szuka fragmentu kontenera w kodzie strony, a u nas identyfikator jest tylko w skrypcie ładowanym po zgodzie (w surowym HTML jest raz, w skrypcie banera, nie jako snippet GTM). Czy weryfikacja przejdzie, nie wiadomo; zapasowa metoda to rekord TXT w DNS home.pl.
+- 🔴 Do potwierdzenia przez Roberta w polityce: okres przechowywania danych w GA4, zawartość kontenera GTM (tylko GA4?), forma administratora; tekst warto pokazać prawnikowi.
+- Ten wpis jest na gałęzi `changelog-wdrozenie-analityki`, niewypchniętej.
+
+**🎯 Następny krok:**
+- Robert klika „Zweryfikuj” w Search Console (metoda Google Tag Manager); jeśli się nie uda: rekord TXT w DNS home.pl. Potem zgłoszenie mapy `https://robert-debicki.pl/sitemap-index.xml`, sprawdzenie ruchu w GA4 (czas rzeczywisty) i uzupełnienie polityki.
+
 ## 2026-11-11 20:10, Claude Code
 
 **✅ Zrobione (analityka GA4 za zgodą, baner i polityka prywatności; gałąź `analityka-baner-polityka`, ryzyko wysokie: dane osobowe i zgoda):**
