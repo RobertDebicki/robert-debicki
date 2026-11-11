@@ -1,0 +1,9 @@
+---
+import Strona from '../layouts/Strona.astro';
+import Polityka from '../components/Polityka.astro';
+import { politykaMeta } from '../lib/polityka';
+const p = politykaMeta('pl');
+---
+<Strona jezyk="pl" tytul={`${p.tytul} | Robert Dębicki`} opis={p.opisMeta} odpowiednik="/en/privacy-policy/">
+  <Polityka jezyk="pl" />
+</Strona>

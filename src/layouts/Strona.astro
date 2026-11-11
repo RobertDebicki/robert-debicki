@@ -5,6 +5,7 @@ import '@fontsource-variable/spline-sans-mono';
 import '../styles/tokeny.css';
 import '../styles/baza.css';
 import '../styles/sekcje.css';
+import '../styles/zgoda.css';
 import anybodyLatin from '@fontsource-variable/anybody/files/anybody-latin-wdth-normal.woff2?url';
 import anybodyLatinExt from '@fontsource-variable/anybody/files/anybody-latin-ext-wdth-normal.woff2?url';
 import onestLatin from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url';
@@ -13,6 +14,7 @@ import monoLatin from '@fontsource-variable/spline-sans-mono/files/spline-sans-m
 import Naglowek from '../components/Naglowek.astro';
 import Stopka from '../components/Stopka.astro';
 import Raster from '../components/Raster.astro';
+import Zgoda from '../components/Zgoda.astro';
 
 interface Props {
   jezyk: 'pl' | 'en';
@@ -84,8 +86,10 @@ const lokalizacja = { pl: 'pl_PL', en: 'en_US' } as const;
     </div>
     <slot name="poza-arkuszem" />
     <Stopka jezyk={jezyk} />
+    <Zgoda jezyk={jezyk} />
     <script>
       import '../scripts/plyty';
+      import '../scripts/zgoda';
     </script>
   </body>
 </html>

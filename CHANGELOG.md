@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 2026-11-11 20:10, Claude Code
+
+**✅ Zrobione (analityka GA4 za zgodą, baner i polityka prywatności; gałąź `analityka-baner-polityka`, ryzyko wysokie: dane osobowe i zgoda):**
+- **Prośba Roberta 11.11 (cytat):** „dodaj własny baner który będzie nawiązywał do designu strony, dodaj stronę z polityką prywatności”, kod tagu pochodzi z GA4 (kontener `GTM-NMV5XT8J`, zrzut z „Konfigurowanie tagu Google”). Wcześniejsza uwaga Claude, że snippet jest niekompletny, była błędna i została wycofana.
+- **Baner** (`src/components/Zgoda.astro`, `src/styles/zgoda.css`, `src/scripts/zgoda.ts`): paski CMY, mono, grube ramki, przyciski z cieniem jak na reszcie strony; „Akceptuję” i „Odrzucam” mają ten sam kształt i wagę. Tag Google ładuje się dopiero po akceptacji; domyślnie Consent Mode `denied`; wybór w `localStorage` (`zgoda-analityka`), „Ustawienia cookies” w stopce otwiera baner ponownie; odrzucenie po zgodzie usuwa `_ga`/`_ga_*` (także z domen nadrzędnych) i przeładowuje stronę, bo załadowanego kontenera nie da się wyładować. Działa przy zablokowanej pamięci przeglądarki.
+- **Polityka prywatności** (`/polityka-prywatnosci/`, `/en/privacy-policy/`): `src/lib/polityka.ts`, e-mail z ustawień PL (panel). Teksty prawne w kodzie to wyjątek od zasady „treść z panelu”.
+- Makieta (`docs/makieta/index.html`) dostała linię stopki z odnośnikami prawnymi; baner i strona polityki to nowe elementy bez odpowiednika w makiecie (zamierzona zmiana wyglądu na prośbę Roberta). `playwright.config.ts`: pozostałe testy startują z zapisanym wyborem „nie”, żeby baner nie zasłaniał zrzutów.
+- **Testy:** `testy/jednostkowe/zgoda.test.ts` (12), `testy/e2e/zgoda.spec.ts` (22: baner, dataLayer, zgoda i odmowa, ponowna akceptacja, przeładowanie przy wycofaniu, fokus i Tab, pamięć zablokowana, kontrast jasny i ciemny, 360/390/1024/1440 bez przewijania w bok, polityka PL i EN). `npm test` 137 pass, e2e 109 pass, sekrety 0, treść 0, tłumaczenia OK.
+- **Lighthouse mobile:** `/` i `/en/` z banerem: wydajność 98, reszta 100; strony polityki: wydajność 98 do 99, dostępność 100, praktyki 100, CLS 0, SEO 100 (build produkcyjny, bez noindex).
+- Przegląd świeżego agenta (`/code-review` high), 2 rundy: 12 + 8 uwag, poprawione. Typy: „stan zgody niespójny przy ponownej akceptacji” (osobno `wlaczAnalityke`), „fokus zabierany przy wczytaniu”, „usuwanie cookies tylko z jednej domeny”, „dostęp do localStorage poza try”, „strona EN zależna od en.md”, „wycofanie zgody nie zatrzymuje załadowanego kontenera” (przeładowanie), „nieaktualna podstawa prawna w tekście” (bez numeru artykułu, odwołanie do Prawa komunikacji elektronicznej), „zdania w polityce bez potwierdzenia” (usunięte lub złagodzone), „test z fałszywą nazwą” (Tab naprawdę), „dublowane etykiety”.
+
+**🚧 W toku / nie wdrożone:**
+- Gałąź nie jest wypchnięta, bez PR i bez wgrania na home.pl (straż publikacji wymaga zgody Roberta).
+- 🔴 **Do potwierdzenia przez Roberta w polityce:** (1) okres przechowywania danych w GA4 (Administracja, Zbieranie danych, Przechowywanie danych; w tekście jest tylko „okres ustawiony w usłudze”), (2) czy w kontenerze `GTM-NMV5XT8J` są wyłącznie tagi GA4 (polityka opisuje tylko GA4, a `_ga` i `_ga_*` to jedyne usuwane cookies), (3) forma administratora (osoba prywatna czy działalność), (4) tekst prawny warto pokazać prawnikowi.
+- Search Console: weryfikacja własności (rekord TXT w DNS home.pl albo przez ten sam kontener GTM), potem zgłoszenie mapy `https://robert-debicki.pl/sitemap-index.xml`.
+
+**🎯 Następny krok:**
+- Zgoda Roberta: push gałęzi, PR, scalenie, `npm run wdroz -- --wgraj`, odbiór `ADRES=https://robert-debicki.pl npm run test:produkcja`; sprawdzić w GA4 (Raporty w czasie rzeczywistym) po kliknięciu „Akceptuję” na żywej stronie.
+
 ## 2026-11-11 19:50, Claude Code
 
 **✅ Zrobione (przygotowanie zdjęcia noindex na `robert-debicki.pl`, ryzyko wysokie: strona wejdzie do wyszukiwarek):**
