@@ -4,13 +4,19 @@ import { test, expect } from '@playwright/test';
 // Bez ADRES jest pomijany, żeby CI zostało zielone.
 const ADRES = process.env.ADRES?.replace(/\/$/, '');
 test.skip(!ADRES, 'Ustaw ADRES, żeby uruchomić test produkcyjny');
+// Domena główna (hosting home.pl) jest indeksowana od 11.11. Kopia na Cloudflare (workers.dev) zostaje z noindex.
+const indeksowana = !!ADRES && new URL(ADRES).hostname === 'robert-debicki.pl';
 
 for (const [sciezka, jezyk] of [['/', 'pl'], ['/en/', 'en']] as const) {
-  test(`produkcja ${sciezka}: 200, noindex, logo i 6 liczb wdrożeń`, async ({ page }) => {
+  test(`produkcja ${sciezka}: 200, robots, logo i 6 liczb wdrożeń`, async ({ page }) => {
     const odp = await page.goto(`${ADRES}${sciezka}`);
     expect(odp!.status()).toBe(200);
     await expect(page.locator('html')).toHaveAttribute('lang', jezyk);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+    const robots = page.locator('meta[name="robots"]');
+    if (indeksowana) {
+      await expect(robots).toHaveCount(0); // bez metatagu robots strona jest indeksowana
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${ADRES}${sciezka}`);
+    } else await expect(robots).toHaveAttribute('content', /noindex/);
     await expect(page.locator('header .brand svg.logo')).toHaveCount(1);
     await expect(page.locator('#wdrozenia .job .fig .p-k')).toHaveCount(6);
     const naglowki = await odp!.allHeaders();

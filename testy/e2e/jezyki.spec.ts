@@ -1,7 +1,7 @@
 // Te testy idą na build z fiksturami (testy/fikstury/jezyki/), patrz skrypty/serwery-e2e.mjs i projekt "jezyki".
 import { test, expect } from '@playwright/test';
 
-const SITE = 'https://robert-debicki.robert-debicki7.workers.dev';
+const SITE = 'https://robert-debicki.pl';
 
 test('/en/ ma lang=en, canonical i hreflang pl, en, x-default', async ({ page }) => {
   await page.goto('/en/');

@@ -1,5 +1,96 @@
 # CHANGELOG
 
+## 2026-11-11 19:50, Claude Code
+
+**✅ Zrobione (przygotowanie zdjęcia noindex na `robert-debicki.pl`, ryzyko wysokie: strona wejdzie do wyszukiwarek):**
+- **Decyzja Roberta 11.11 (cytat z wiadomości):** „zrób push na gtihub i zdejmij noindex”. Wcześniej: „zdejmiemy po poprawkach”.
+- `skrypty/wdroz.ts`: build domyślnie z `PUBLIC_INDEKSUJ=true` (`srodowiskoBuildu`, nadpisuje wartość z powłoki); `--noindex` przywraca noindex; odbiór sprawdza tryb żywej strony (`zgodnoscRobots`: z indeksowaniem brak metatagu robots, z `--noindex` jest noindex). Flaga `--indeksuj` z poprzedniego wpisu **nie istnieje**.
+- `public/robots.txt`: usunięte `Disallow: /admin/` (blokada uniemożliwiała crawlerowi odczyt `noindex` z panelu; `/admin/` zostaje z metatagiem noindex i poza mapą strony).
+- `testy/e2e/produkcja.spec.ts`: na `robert-debicki.pl` oczekuje braku metatagu robots i canonical na siebie, na pozostałych adresach (kopia Cloudflare) noindex. Najpierw czerwony na żywej stronie z noindex.
+- Przegląd świeżego agenta (`/code-review` high), runda 3 (tylko zmiany po rundzie 2): 7 uwag, poprawione. Typy: „brak bezpiecznego wyłącznika i weryfikacji trybu” (`--noindex`, odbiór sprawdza robots), „zmiana zachowania bez wpisu i bez testu” (ten wpis, 4 testy `srodowiskoBuildu` i `zgodnoscRobots`), „robots.txt blokuje odczyt noindex”, „asercja bez canonical”. `npm test` 125 pass, e2e chromium i jezyki 88 z 88.
+
+**🚧 W toku / nie wdrożone:**
+- Commit lokalny. Push na GitHub i wgranie bez noindex na home.pl czekają na potwierdzenie (straż publikacji nie dopuściła pushu bez zgody w ostatniej wiadomości).
+- GA4 i Search Console: czekają na decyzje Roberta (identyfikator GA4, zgoda na pliki cookie, metoda weryfikacji GSC).
+
+**🎯 Następny krok:**
+- Push, `npm run wdroz -- --wgraj`, odbiór `ADRES=https://robert-debicki.pl npm run test:produkcja`, zgłoszenie domeny w Search Console.
+
+## 2026-11-11 19:25, Claude Code
+
+**✅ Zrobione (strona na żywo pod `https://robert-debicki.pl/`, wgrana za zgodą Roberta w wiadomości „Wgraj”):**
+- `npm run wdroz -- --wgraj` (commit `21fad3c`): 26 plików, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-11T17-58-11-368Z`, odbiór skryptu: wszystkie pliki zgodne z lokalnymi (SHA-256), `.htaccess` działa.
+- **Odbiór niezależny:** `ADRES=https://robert-debicki.pl npm run test:produkcja` 5 z 5; brak plików `.part` na serwerze; http→https 301, `www`→bez `www` 301 (ścieżka zachowana), 404 ze stroną 404, `nosniff`, `gzip`, `_astro/` z `immutable`; `robots` `noindex, nofollow`, canonical `https://robert-debicki.pl/`.
+- **Lighthouse mobile (3 przebiegi na `/` i `/en/`, narzędzie `lighthouse` na żywej domenie):** wydajność 98 do 100 (LCP 1,1 do 2,0 s), dostępność 100, dobre praktyki 100, SEO 66. SEO 66 ma jedną przyczynę: `is-crawlable` (noindex celowo). Wymóg ≥95 spełniony poza SEO, które po zdjęciu noindex powinno wzrosnąć (⚠️ do zmierzenia po zdjęciu).
+- `hosting/htaccess`: przekierowanie `/sitemap.xml` na adres bezwzględny https (zmierzone: dotąd szło najpierw na `http://`, czyli dwa skoki). Poprawka w repo, **nie wgrana**.
+
+**🚧 W toku / nie wdrożone:**
+- Zmiana `htaccess` czeka na wgranie (`--wgraj`, za zgodą Roberta).
+- `.com` i `.com.pl` przekierowują 301 na `https://robert-debicki.pl` bez zachowania ścieżki (`.com/en/` kończy na `/`). Naprawa wymaga zmiany w panelu home.pl (lokalizacja www obu domen na „Główny katalog”) i reguły w `.htaccess`.
+- `noindex` zostaje do akceptacji grafika; zdjęcie: `PUBLIC_INDEKSUJ=true npm run wdroz -- --wgraj --indeksuj` (AGENTS.md).
+- Dalej: push `main` na GitHub (kod z `site` na nowej domenie), zgłoszenie domeny w Search Console po zdjęciu noindex.
+
+**🎯 Następny krok:**
+- Decyzja Roberta: ponowne wgranie z poprawką sitemap, przekierowania `.com`, push na GitHub, termin zdjęcia `noindex`.
+
+## 2026-11-11 19:10, Claude Code
+
+**✅ Zrobione (pierwsze wgranie na home.pl: usterka, naprawa, ryzyko wysokie):**
+- Login FTP to `claude@robert-debicki.pl` (nie opis z panelu „we wszystkich domenach”, który dawał 530). `KATALOG=/` to katalog domeny: na serwerze był tylko placeholder home.pl (`index.html` 3335 B, `tmp`).
+- 🔴→✅ **Usterka pierwszego `--wgraj`:** 14 z 26 plików (w tym `index.html`; próg rozmiaru zmierzono tylko jako: 24 KB przechodzi, 48 KB nie) wgrało się jako puste (0 B), curl zgłosił `451 Error during read from data connection`, a skrypt nie zatrzymał nadpisywania. Przez ok. 1 minutę `https://robert-debicki.pl/` zwracało pustą stronę (0 B, status 200). Zmierzone: porównanie sum SHA-256 plików z żywej strony i z `dist/` (11 zgodnych, 14 różnych) i ETag `0-…`.
+- **Naprawa strony:** `index.html` przywrócony z kopii zapasowej (`~/Backups/robert-debicki-ftp/2026-11-11T17-50-30-231Z`), strona znów pokazuje „Strona w przygotowaniu” (3335 B).
+- **Przyczyna (zmierzona na plikach próbnych w `/tmp` na serwerze, potem usuniętych):** 4, 12 i 24 KB przechodzą, 48 KB daje 451; z `tls-max = 1.2` 48 KB i 600 KB przechodzą (226). Czyli TLS 1.3 na kanale danych home.pl z curlem z macOS. `--disable-epsv` i `--tlsv1.2` nie pomagają.
+- **Poprawki skryptu:** `tls-max = 1.2` w każdym transferze; wgrywanie pod nazwą `.part` i podmiana po udanym transferze (`-RNFR`/`-RNTO`, sprawdzone na serwerze: 350 i 250), więc nieudany transfer nigdy nie zostawi pustego pliku strony; odbiór porównuje SHA-256 każdego pliku z żywej strony z lokalnym (łapie puste i ucięte), nie tylko status 200. Testy: `testy/jednostkowe/wdroz.test.ts` 20 (najpierw 2 czerwone), `npm test` 113 pass.
+- Typ błędu: „błąd transferu nie zatrzymuje nadpisywania ani nie jest wykryty przy odbiorze”. Poprawione w obu miejscach (wgrywanie i odbiór).
+- Przegląd świeżego agenta, runda 2 (tylko zmiany po rundzie 1): 10 uwag, poprawione wszystkie. Typy: „błąd transferu nie zatrzymuje reszty listy” (wgrywanie w 3 etapach: zasoby, HTML, `.htaccess`; błąd etapu przerywa następne), „odbiór nie sprawdza `.htaccess`” (sprawdzane zachowanie: http→https 301 i nagłówek nosniff), „odbiór bez testu” (`sprawdzZgodnosc` wydzielona, 4 testy z podstawionym pobieraniem: pusty plik, 404, ucięty, błąd sieci), „błąd jednego pliku przerywa pętlę odbioru” (błąd per plik na liście), „adres odbioru bez kodowania segmentów”, „nazwa w RNFR/RNTO bez ucieczki”, „osierocone `.part`” (wypisywane po błędzie), „limit czasu tylko dla pierwszego transferu” (`max-time` w każdym bloku), „liczba bez dowodu w komentarzu” (próg opisany jako zmierzony tylko między 24 a 48 KB), „odbiór ignoruje KATALOG” (pomijany, gdy KATALOG inny niż `/`). `npm test` 121 pass.
+
+**🚧 W toku / nie wdrożone:**
+- Strona na żywo nadal pokazuje placeholder home.pl (+ nowy `.htaccess` i 11 poprawnych plików: favicony, sitemapy, `admin/`, `robots.txt`, jedna czcionka). 🔴 Ponowne `--wgraj` czeka na zgodę Roberta po poprawce i przeglądzie.
+
+**🎯 Następny krok:**
+- Przegląd zmian (`/code-review`), commit, zgoda Roberta na ponowne `--wgraj`, odbiór `ADRES=https://robert-debicki.pl npm run test:produkcja` i Lighthouse mobile.
+
+## 2026-11-11 18:45, Claude Code
+
+**✅ Zrobione (hosting home.pl, ryzyko wysokie: dostęp do serwera i adres strony):**
+- Domena główna `robert-debicki.pl`: `site` w `astro.config.mjs`, `Sitemap` w `public/robots.txt`, stałe `SITE` w testach i domyślny `site_url` panelu (`src/lib/panel.ts`). Pomiar z zewnątrz 11.11: wszystkie 3 domeny wskazują na `46.242.250.87` (serwer2643459), certyfikaty działają (HTTP/2 200 na `.pl` i `www`, 301 na `.com` i `.com.pl`).
+- `skrypty/wdroz.ts` (`npm run wdroz`): FTPS przez curl, jedna sesja na wiele plików, hasło z pliku poza repo przez stdin curl (nie w liście procesów), odmowa przy zbyt szerokich uprawnieniach pliku, tylko wgrywanie (bez usuwania), HTML na końcu, `.htaccess` ostatni. Przed wgraniem: czysty git, gałąź main, bez `PUBLIC_INDEKSUJ` (chyba że jawne `--indeksuj`), pięć kontrol `sprawdz:*`, `npm test`, build, kopia zapasowa serwera z plikami ukrytymi (`LIST -a`) do `~/Backups/robert-debicki-ftp/`. Po wgraniu odbiór `https://robert-debicki.pl/` (200 bez pętli). Testy: `testy/jednostkowe/wdroz.test.ts` (18, najpierw czerwone).
+- `hosting/htaccess`: https i bez www (301, z wyjątkiem `/.well-known/`), `/sitemap.xml` 301, 404, nagłówki, cache plików z hashem (`FilesMatch`), kompresja. Zastępuje `_headers` i `_redirects` z Cloudflare.
+- Przegląd świeżego agenta (`/code-review` high), runda 1: 9 uwag, poprawione wszystkie. Typy: „po cichu pominięty wiersz listingu” (listing rzuca błąd przy nieznanym formacie, także symlink i DOS, ACL `+` rozpoznane), „kopia nie obejmuje plików ukrytych” (`LIST -a`), „kontrole słabsze niż `sprawdz`”, „zablokowane zdjęcie noindex” (flaga `--indeksuj`, akapit w AGENTS.md zaktualizowany), „ryzyko pętli i `.well-known` w `.htaccess`” (wyjątek i odbiór po wgraniu), „setki sesji FTPS” (jeden curl), „błąd uruchomienia curl jako TypeError”, „zmienna środowiskowa w cache” (FilesMatch), „test bez asercji” (zamieniony na prawdziwy). Całość: `npm test` 111 pass, e2e chromium i jezyki 88 z 88, sekrety 0, treść 0.
+
+**🚧 W toku / nie wdrożone:**
+- 🔴 Nie sprawdzone: połączenie FTPS z kontem Roberta (brak pliku `~/.config/robert-debicki-ftp`), katalog domeny na serwerze, działanie `.htaccess` na home.pl (ryzyko pętli przekierowań, jeśli `%{HTTPS}` nie jest widoczne za proxy), czy 301 `.com` i `.com.pl` zachowuje ścieżkę (zmierzone: NIE, `.com/en/` kończy na `/`).
+- Commit lokalny, bez push i bez wgrania na serwer. `noindex` zostaje.
+
+**🎯 Następny krok:**
+- Robert tworzy plik konfiguracji, `npm run wdroz -- --lista` pokazuje katalog domeny, ustawiamy `KATALOG`, `--na-sucho`, potem `--wgraj` za zgodą, odbiór `ADRES=https://robert-debicki.pl npm run test:produkcja` i Lighthouse mobile.
+
+## 2026-11-11 17:55, Claude Code
+
+**✅ Zrobione (audyt SEO żywej strony, ryzyko niskie: tylko metadane):**
+- Tytuł PL skrócony z 61 do 60 znaków, tytuł EN z 61 do 57 (limit 60). Opisy PL (147 zn.) i EN (149 zn.) w widełkach 120 do 155, z wezwaniem „Napisz do mnie” / „Get in touch”, bez nowych faktów (n8n i Make.com są w treści hero). Pliki: `src/pages/index.astro`, `src/pages/en/[...glowna].astro`.
+- `testy/e2e/seo.spec.ts`: asercje długości tytułu (do 60) i opisu (120 do 155); najpierw czerwone na starych tytułach, po zmianie 9 z 9. `npm test` 93 pass, `sprawdz:tresc` 0.
+- Świadomie bez zmian: H1 (zostaje samo nazwisko, zmiana zmieniłaby wygląd hero), `lastmod` w mapie (2 strony bez własnych dat), `noindex` (zdejmujemy po decyzji Roberta, tylko po poprawkach).
+
+**🚧 W toku / nie wdrożone:**
+- Commit lokalny, bez push i wdrożenia (decyzja Roberta 11.11).
+- Własna domena z home.pl: czeka na nazwę domeny i potwierdzenie zdjęcia `noindex`.
+
+**🎯 Następny krok:**
+- Podpięcie domeny: Cloudflare (domena dla Workera, DNS), zmiana `site`, linii `Sitemap`, przekierowanie 301 z workers.dev, potem `PUBLIC_INDEKSUJ=true` wg `AGENTS.md`.
+
+## 2026-11-03 19:45, Claude Code
+
+**✅ Zrobione:**
+- Dodany `REVIEW.md`: kryteria przeglądu zmian w tym projekcie (prawdziwe błędy, ryzyko wysokie, jak sprawdzać, sekcja „Reguły nauczone”). Link w `AGENTS.md` pod nagłówkiem.
+- Globalnie (`~/.claude/CLAUDE.md`): ocena ryzyka zmiany, limit 3 rund poprawek, skill `test-nowego-uzytkownika`.
+
+**🚧 W toku / nie wdrożone:**
+- Sekcja „Reguły nauczone” pusta, uzupełniana po kolejnych przeglądach za zgodą Roberta.
+
+**🎯 Następny krok:**
+- Bez zmian, zob. poprzedni wpis.
+
 ## 2026-10-28 14:20, Claude Code
 
 **✅ Zrobione:**
