@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-12 10:05, Claude Code
+
+**✅ Zrobione (odbiór po wdrożeniu bez fałszywych alarmów, ryzyko niskie):**
+- `skrypty/wdroz.ts`: limit pobrania przy odbiorze 60 s zamiast 20 s (`LIMIT_POBRANIA_MS`); błąd sieci na pliku ponawiany raz, niezgodna treść zgłaszana od razu. Powód: przy obu wdrożeniach 12.11 po 4 pliki zgłoszone z powodu przekroczonego czasu, sumy SHA-256 zgodne.
+- Testy najpierw czerwone (ponowienie), potem zielone: `wdroz.test.ts` 34, vitest 154 pass/1 skipped.
+- Scalony zaległy wpis CHANGELOG o wdrożeniu EN (`changelog-en-wdrozone`); `changelog-blog-wdrozony` był już w `main` (PR #7).
+
+**🎯 Następny krok:**
+- Przy następnym wdrożeniu sprawdzić, czy odbiór przechodzi bez uwag.
+
 ## 2026-11-12 09:55, Claude Code
 
 **✅ Zrobione (wpisy EN wdrożone na robert-debicki.pl, zgoda Roberta 12.11 „scalone wdróż”):**

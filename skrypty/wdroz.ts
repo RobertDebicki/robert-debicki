@@ -117,7 +117,9 @@ export async function sprawdzZgodnosc(pliki: { zdalny: string; tresc: Buffer }[]
   const rozne: string[] = [];
   for (const p of pliki) {
     try {
-      const odp = await pobierz(p.zdalny);
+      // Błąd sieci (przekroczony czas, zerwane połączenie) ponawiamy raz: home.pl czasem odpowiada wolno na pojedynczy plik.
+      // Niezgodną treść zgłaszamy od razu, bez ponawiania.
+      const odp = await pobierz(p.zdalny).catch(() => pobierz(p.zdalny));
       if (odp.status !== 200 || hash(odp.tresc) !== hash(p.tresc)) rozne.push(`${p.zdalny} (status ${odp.status}, ${odp.tresc.length} B zamiast ${p.tresc.length} B)`);
     } catch (e) {
       rozne.push(`${p.zdalny} (${(e as Error).message})`);
@@ -227,6 +229,9 @@ function wyjscie(polecenie: string, argumenty: string[]): string {
 
 // Po wgraniu: każdy plik z żywej strony ma mieć zawartość lokalnego (łapie puste i ucięte), strona główna nie może wpaść
 // w pętlę przekierowań, a .htaccess (nieobjęty porównaniem) sprawdzamy po zachowaniu: http na https oraz nagłówek nosniff.
+/** Limit czasu jednego pobrania przy odbiorze; 20 s dawało fałszywe alarmy na pojedynczych plikach (12.11). */
+const LIMIT_POBRANIA_MS = 60_000;
+
 async function odbior(k: Konfiguracja, lista: { lokalny: string; zdalny: string }[], kopia: string | null, indeksuj: boolean): Promise<void> {
   const przywroc = kopia ? `Kopia poprzedniej zawartości: ${kopia}` : 'Serwer był pusty, nie ma kopii.';
   if (k.katalog !== '/') {
@@ -235,11 +240,11 @@ async function odbior(k: Konfiguracja, lista: { lokalny: string; zdalny: string 
   }
   const zle: string[] = [];
   try {
-    const glowna = await fetch(ADRES_STRONY, { redirect: 'follow', signal: AbortSignal.timeout(20_000) });
+    const glowna = await fetch(ADRES_STRONY, { redirect: 'follow', signal: AbortSignal.timeout(LIMIT_POBRANIA_MS) });
     if (glowna.headers.get('x-content-type-options') !== 'nosniff') zle.push('brak nagłówka X-Content-Type-Options (.htaccess nie działa?)');
     const blad = zgodnoscRobots(await glowna.text(), indeksuj);
     if (blad) zle.push(blad);
-    const http = await fetch(ADRES_STRONY.replace('https://', 'http://'), { redirect: 'manual', signal: AbortSignal.timeout(20_000) });
+    const http = await fetch(ADRES_STRONY.replace('https://', 'http://'), { redirect: 'manual', signal: AbortSignal.timeout(LIMIT_POBRANIA_MS) });
     if (http.status !== 301 || !(http.headers.get('location') ?? '').startsWith(ADRES_STRONY)) zle.push(`http nie przekierowuje na https (status ${http.status})`);
   } catch (e) {
     zle.push(`${ADRES_STRONY} nie odpowiada (${(e as Error).message}); możliwa pętla przekierowań z .htaccess`);
@@ -247,7 +252,7 @@ async function odbior(k: Konfiguracja, lista: { lokalny: string; zdalny: string 
   const adres = (zdalny: string) => new URL(zdalny.split('/').map(encodeURIComponent).join('/'), ADRES_STRONY);
   const pliki = lista.filter((x) => x.zdalny !== '.htaccess').map((x) => ({ zdalny: x.zdalny, tresc: readFileSync(x.lokalny) }));
   const rozne = await sprawdzZgodnosc(pliki, async (z) => {
-    const odp = await fetch(adres(z), { redirect: 'follow', signal: AbortSignal.timeout(20_000) });
+    const odp = await fetch(adres(z), { redirect: 'follow', signal: AbortSignal.timeout(LIMIT_POBRANIA_MS) });
     return { status: odp.status, tresc: Buffer.from(await odp.arrayBuffer()) };
   });
   if (rozne.length) zle.push(`${rozne.length} plików różni się od lokalnych: ${rozne.join('; ')}`);

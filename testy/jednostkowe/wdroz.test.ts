@@ -147,6 +147,24 @@ describe('sprawdzZgodnosc', () => {
     expect(r).toHaveLength(2);
   });
 
+  it('pojedynczy błąd sieci jest ponawiany raz; zgodny plik po ponowieniu nie trafia na listę', async () => {
+    const proby: Record<string, number> = {};
+    const r = await sprawdzZgodnosc(pliki, async (z) => {
+      proby[z] = (proby[z] ?? 0) + 1;
+      if (z === 'index.html' && proby[z] === 1) throw new Error('timeout');
+      return ok(pliki.find((p) => p.zdalny === z)!.tresc);
+    });
+    expect(r).toEqual([]);
+    expect(proby['index.html']).toBe(2);
+  });
+
+  it('niezgodna treść nie jest ponawiana', async () => {
+    let proby = 0;
+    const r = await sprawdzZgodnosc([pliki[0]], async () => { proby++; return ok(Buffer.from('inna treść')); });
+    expect(r).toHaveLength(1);
+    expect(proby).toBe(1);
+  });
+
   it('błąd sieci na jednym pliku trafia na listę, a reszta nadal jest sprawdzana', async () => {
     const r = await sprawdzZgodnosc(pliki, async (z) => {
       if (z === 'index.html') throw new Error('timeout');
