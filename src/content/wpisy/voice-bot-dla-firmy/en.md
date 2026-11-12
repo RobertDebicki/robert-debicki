@@ -37,7 +37,7 @@ The bot doesn't sell or negotiate. It gathers information and saves the sales re
 
 ## A voice bot for your business and the AI Act
 
-Since August 2, 2026, customers must know they're talking to AI if it isn't obvious. When a bot calls, it's good practice for it to introduce itself in the first sentence. I cover the details in the post [AI Act for small businesses](/en/posts/ai-act-dla-malej-firmy/).
+Since Aug. 2, 2026, customers must know they're talking to AI if it isn't obvious. When a bot calls, it's good practice for it to introduce itself in the first sentence. I cover the details in the post [AI Act for small businesses](/en/posts/ai-act-dla-malej-firmy/).
 
 ## Questions and answers
 
@@ -54,4 +54,4 @@ Those cases go to the sales rep too. The rep then sees that the contact needs a 
 In the project described here, Pipedrive. I also work with HubSpot and API integrations.
 
 ### How much does a voice bot for your business cost?
-The price depends on the number of questions, the CRM, and calling hours. Tell me how many inquiries you get a day, and I'll prepare a quote.
+The price depends on the number of questions, the CRM, and calling hours. Tell me what kind of inquiries you get each day, and I'll prepare a quote.

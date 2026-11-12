@@ -12,7 +12,9 @@
 - Teksty EN czekają na korektę osoby z USA (prośba na końcu `narzedzia/tlumaczenie/jezyki/en.md`); stan `ai` → `sprawdzone` po korekcie.
 
 **🎯 Następny krok:**
-- PR, scalenie i `npm run wdroz -- --wgraj` (zgoda Roberta z 12.11 w tej rozmowie).
+- PR, scalenie i wdrożenie. Wdrożenie tylko za zgodą Roberta w danej wiadomości (ta zgoda dotyczy rozmowy z 12.11 i nie przechodzi na kolejne sesje).
+
+**✅ Poprawki po `/code-review medium`:** „small online store” → „small store” (dopisany fakt), CTA voice bota „what kind of inquiries” (PL: jakich, nie ile), daty EN w jednym stylu AP i reguła w `jezyki/en.md`, podpis wykresu PL i EN „ponad 10 osób” jak w źródle (`zrodlo` w `en.md` przeliczone), `zrzuty.mjs` odrzuca nieznany argument. Bez zmian: komunikaty kontroli przy złym formacie daty (błąd i tak jest zgłaszany), ALT w `grafiki_en.py` zdublowane z `en.md` (pomocnik w docs/, zgodność sprawdzona skryptem).
 
 ## 2026-11-12 09:10, Claude Code
 

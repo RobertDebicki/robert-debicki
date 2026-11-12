@@ -11,7 +11,7 @@ AI_ACT = [
   <div class="dymek bot">Let me check that for you.</div>
 </div>
 <div class="czat-opis"><p class="mono">One sentence is enough</p><p>The customer knows from the first message that they're talking to AI. Article 50 of the AI Act requires this when it isn't obvious.</p></div>'''),
-    figura('AI Act timeline from February 2025 to August 2028 with August 2, 2026 marked as in force now', '''<ol class="os">
+    figura('AI Act timeline from February 2025 to August 2028 with Aug. 2, 2026 marked as in force now', '''<ol class="os">
   <li><time class="mono">Feb. 2, 2025</time><b>AI literacy</b><span>Article 4 applies.</span></li>
   <li class="teraz"><time class="mono">Aug. 2, 2026</time><b>Transparency</b><span>Customers know they're talking to AI. In force now.</span></li>
   <li><time class="mono">Dec. 2, 2026</time><b>Content labeling</b><span>Transition period ends for vendors.</span></li>

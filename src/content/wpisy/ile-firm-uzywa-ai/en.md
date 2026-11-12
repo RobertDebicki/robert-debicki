@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/ile-firm-uzywa-ai-en-miniatura.png"
   alt: "Large figure of 8.36 percent of companies in Poland using AI according to Eurostat, compared with the European Union"
 tlumaczenie: ai
-zrodlo: 372584eadb3f476d997326ba098d5bc17622778c6172a67e93deb1afde50ee01
+zrodlo: 8194447892791ee612c44db0acaec4680c4015b6dca77c16965b01c95fbd9d41
 ---
 **Business process automation** is still an advantage, not the norm. According to Statistics Poland (GUS), 8.7% of Polish companies used artificial intelligence in 2025. I explain how to pick your first process to automate and what results my clients saw. Want to check what to automate in your company? Email me.
 
@@ -18,7 +18,7 @@ A PIE report adds that 77% of companies don't want to adopt AI until they have t
 
 ![Bar chart: 8.36 percent of companies in Poland use AI, compared with 19.95 percent in the European Union](/src/assets/wpisy/ile-firm-uzywa-ai-en-1.png)
 
-*Companies with 10 or more employees. Source: Eurostat via podatki.biz.*
+*Companies with more than 10 employees. Source: Eurostat via podatki.biz.*
 
 ## How to start business process automation
 

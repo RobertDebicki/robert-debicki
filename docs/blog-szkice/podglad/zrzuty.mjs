@@ -6,6 +6,7 @@ import { chromium } from '@playwright/test';
 import { fileURLToPath } from 'node:url';
 
 // Bez argumentu: polskie grafiki z podglad.html. Z argumentem `en`: angielskie z grafiki-en.html, pliki z `-en-`.
+if (process.argv[2] && process.argv[2] !== 'en') throw new Error(`Nieznany argument ${process.argv[2]}: użyj bez argumentu (PL) albo z "en".`);
 const en = process.argv[2] === 'en';
 const podglad = new URL(en ? './grafiki-en.html' : './podglad.html', import.meta.url).href;
 const sufiks = en ? '-en' : '';

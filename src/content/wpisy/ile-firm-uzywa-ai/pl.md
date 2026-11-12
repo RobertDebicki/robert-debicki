@@ -16,7 +16,7 @@ Raport PIE dodaje, że 77 procent firm nie chce wdrażać AI, dopóki nie będzi
 
 ![Wykres słupkowy: AI stosuje 8,36 procent firm w Polsce wobec 19,95 procent w Unii Europejskiej](/src/assets/wpisy/ile-firm-uzywa-ai-1.png)
 
-*Firmy od 10 osób. Źródło: Eurostat za podatki.biz.*
+*Firmy zatrudniające ponad 10 osób. Źródło: Eurostat za podatki.biz.*
 
 ## Jak zacząć automatyzację procesów w firmie
 

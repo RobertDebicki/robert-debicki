@@ -8,23 +8,23 @@ miniatura:
 tlumaczenie: ai
 zrodlo: 3936d76b5b8ec63daf75adb6260c3753f5cb61c968e475d328327999bbef38ea
 ---
-**The AI Act for small businesses** already applies to you if your website runs a chat or a bot answers your phone. The transparency rules have applied since August 2, 2026. I explain what they mean in practice and what you can check in one evening. Do you have a bot and aren't sure it meets the requirements? Send me an email.
+**The AI Act for small businesses** already applies to you if your website runs a chat or a bot answers your phone. The transparency rules have applied since Aug. 2, 2026. I explain what they mean in practice and what you can check in one evening. Do you have a bot and aren't sure it meets the requirements? Send me an email.
 
 ![Website chat window where the bot opens the conversation by saying it is an AI assistant](/src/assets/wpisy/ai-act-dla-malej-firmy-en-1.png)
 
-## What applies since August 2, 2026
+## What applies since Aug. 2, 2026
 
 In its guidelines of July 20, 2026, the European Commission confirmed that the obligations in Article 50 apply from that date. The core rule is simple. Customers must know they're talking to artificial intelligence, unless it's obvious. They must be told at the first contact at the latest.
 
 The article on Prawo.pl describes these [AI Act obligations from August 2026](https://www.prawo.pl/biznes/ai-act-jakie-obowiazki-maja-firmy-od-sierpnia-2026,1550271.html).
 
-![AI Act timeline from February 2025 to August 2028 with August 2, 2026 marked as in force now](/src/assets/wpisy/ai-act-dla-malej-firmy-en-2.png)
+![AI Act timeline from February 2025 to August 2028 with Aug. 2, 2026 marked as in force now](/src/assets/wpisy/ai-act-dla-malej-firmy-en-2.png)
 
 *Source: Prawo.pl, Aug. 11, 2026.*
 
 ## What's on the vendor and what's on you
 
-Technical labeling of AI-generated content falls mainly on the tool vendor. For systems placed on the market before August 2, 2026, the transition period runs until December 2, 2026.
+Technical labeling of AI-generated content falls mainly on the tool vendor. For systems placed on the market before Aug. 2, 2026, the transition period runs until Dec. 2, 2026.
 
 You're responsible for how the tool works with your customers. Check that the bot introduces itself, and read your contract with the vendor. Using AI to write a product description or an ad graphic doesn't automatically mean you have to disclose it.
 
@@ -32,7 +32,7 @@ You're responsible for how the tool works with your customers. Check that the bo
 
 ## What the AI Act for small businesses pushes back
 
-Obligations for high-risk systems, for example in hiring or in assessing access to services, will apply from December 2, 2027. For systems built into regulated products, the deadline is August 2, 2028. A typical chat in a small online store usually isn't such a system.
+Obligations for high-risk systems, for example in hiring or in assessing access to services, will apply from Dec. 2, 2027. For systems built into regulated products, the deadline is Aug. 2, 2028. A typical chat in a small store usually isn't such a system.
 
 ## The AI Act for small businesses in three steps
 
