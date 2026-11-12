@@ -32,12 +32,31 @@ test('strona wpisu ma article, time z datetime i zdjęcie z altem', async ({ pag
   await page.goto('/wpisy/najnowszy/');
   await expect(page.locator('article')).toHaveCount(1);
   await expect(page.locator('article time')).toHaveAttribute('datetime', '2026-10-20');
-  const img = page.locator('article img');
+  const img = page.locator('.wpis-zdjecie img');
   await expect(img).toHaveAttribute('alt', 'Testowy obraz w kolorze pomarańczowym');
   expect(await img.getAttribute('src')).toMatch(/^\/_astro\//);
   await expect(img).toHaveAttribute('width', /\d+/);
   await expect(img).toHaveAttribute('height', /\d+/);
   await expect(page.locator('html')).toHaveAttribute('lang', 'pl');
+});
+
+test('lista PL pokazuje miniaturkę z altem tylko przy wpisie, który ją ma', async ({ page }) => {
+  await page.goto('/wpisy/');
+  const zMiniatura = page.locator('main article', { hasText: 'Najnowszy wpis testowy' });
+  const img = zMiniatura.locator('img');
+  await expect(img).toHaveAttribute('alt', 'Miniatura testowa w kolorze pomarańczowym na liście wpisów');
+  expect(await img.getAttribute('src')).toMatch(/^\/_astro\//);
+  await expect(img).toHaveAttribute('width', /\d+/);
+  await expect(page.locator('main article', { hasText: 'Wpis środkowy' }).locator('img')).toHaveCount(0);
+});
+
+test('grafika wstawiona w treść wpisu ścieżką z panelu jest zoptymalizowanym obrazem z altem', async ({ page }) => {
+  await page.goto('/wpisy/najnowszy/');
+  const img = page.locator('.wpis-tresc img');
+  await expect(img).toHaveAttribute('alt', 'Grafika testowa wstawiona w treść wpisu');
+  expect(await img.getAttribute('src')).toMatch(/^\/_astro\//);
+  await expect(img).toHaveAttribute('width', /\d+/);
+  await expect(img).toHaveAttribute('height', /\d+/);
 });
 
 test('przełącznik: wpis z tłumaczeniem do odpowiednika z hreflang, bez tłumaczenia do listy EN bez hreflang', async ({ page }) => {

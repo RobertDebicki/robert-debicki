@@ -40,8 +40,17 @@ function zJezykami(pola: Pole[], kopiowane: string[] = []): Pole[] {
   return pola.map((p) => (p.name === 'body' ? { ...p, i18n: true } : { ...p, i18n: kopiowane.includes(p.name as string) ? 'duplicate' : true }));
 }
 
-const body = (label: string): Pole => ({ name: 'body', label, widget: 'markdown', required: false, hint: 'Śródtytuły ##, pogrubienie **tekst**, link [tekst](adres).' });
+const body = (label: string): Pole => ({ name: 'body', label, widget: 'markdown', required: false, hint: 'Śródtytuły ##, pogrubienie **tekst**, link [tekst](adres). Grafika: przycisk obrazu; nazwa pliku małymi literami, bez spacji i polskich znaków (np. wykres-1.png), typ png, jpg, webp, avif, gif albo svg, inaczej strona się nie zbuduje.' });
 const data = (name: string, label: string, hint?: string): Pole => ({ name, label, widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, picker_utc: false, ...(hint ? { hint } : {}) });
+
+/** Plik i alt: zdjęcia pod wpisem i miniatura na liście. Grafikę w treść wstawia przycisk obrazu w edytorze treści. */
+const POLA_ZDJECIA: Pole[] = [
+  { name: 'plik', label: 'Plik', widget: 'image', choose_url: false, media_folder: FOLDER_ZDJEC, public_folder: SCIEZKA_ZDJEC },
+  tekst('alt', 'Opis zdjęcia (alt)', {
+    hint: 'Co widać na zdjęciu, jednym zdaniem, co najmniej 5 znaków. Czytają to wyszukiwarki i osoby niewidome.',
+    pattern: ['^.{5,}$', 'Opis musi mieć co najmniej 5 znaków: opisz, co widać na zdjęciu.'],
+  }),
+];
 
 const etapy = ['w-toku', 'produkcja'];
 const WDROZENIA: Pole = {
@@ -140,17 +149,12 @@ const WPISY: Pole = {
       tekst('tytul', 'Tytuł'),
       data('data', 'Data publikacji'),
       dlugi('zajawka', 'Zajawka', { hint: 'Jedno lub dwa zdania na liście wpisów.' }),
+      { ...obiekt('miniatura', 'Miniatura na liście wpisów', POLA_ZDJECIA), required: false, hint: 'Obraz 16:9 obok tytułu na liście /wpisy/. Bez miniatury karta ma sam tekst.' },
       lista('zdjecia', 'Zdjęcia', {
         label_singular: 'zdjęcie',
         required: false,
         summary: '{{fields.alt}}',
-        fields: [
-          { name: 'plik', label: 'Plik', widget: 'image', choose_url: false, media_folder: FOLDER_ZDJEC, public_folder: SCIEZKA_ZDJEC },
-          tekst('alt', 'Opis zdjęcia (alt)', {
-            hint: 'Co widać na zdjęciu, jednym zdaniem, co najmniej 5 znaków. Czytają to wyszukiwarki i osoby niewidome.',
-            pattern: ['^.{5,}$', 'Opis musi mieć co najmniej 5 znaków: opisz, co widać na zdjęciu.'],
-          }),
-        ],
+        fields: POLA_ZDJECIA,
       }),
       ...TLUMACZENIE,
       body('Treść wpisu'),

@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { satteri } from '@astrojs/markdown-satteri';
+import obrazyWTresci from './src/lib/obrazy-w-tresci.mjs';
 
 // Build testowy (testy e2e języków) używa treści z fikstur: TRESC_BAZA wskazuje katalog z kolekcjami,
 // WYJSCIE katalog wyjściowy. Bez tych zmiennych build jest zwykły: ./src/content i dist/.
@@ -15,6 +17,8 @@ export default defineConfig({
   // Zdjęcia z testy/fikstury/ trafiają do buildu tylko przy treści z fikstur (src/lib/wpisy.ts). Stała jest
   // wpisana w kod przy budowaniu, więc w buildzie produkcyjnym gałąź z fiksturami znika razem z plikami.
   vite: { define: { 'import.meta.env.OBRAZY_Z_FIKSTUR': JSON.stringify(Boolean(process.env.TRESC_BAZA)) } },
+  // Obrazy wstawione w treść wpisu z panelu (ścieżka od korzenia repo) przechodzą przez optymalizację Astro.
+  markdown: { processor: satteri({ mdastPlugins: [obrazyWTresci({ foldery: ['/src/assets/wpisy/', ...(process.env.TRESC_BAZA ? ['/testy/fikstury/zdjecia/'] : [])] })] }) },
   integrations: [
     sitemap({
       // panel Sveltii nie jest stroną serwisu

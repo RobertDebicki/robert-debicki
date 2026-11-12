@@ -90,6 +90,8 @@ test.describe('zgodność z makietą', () => {
       writeFileSync(sciezka, wzor);
 
       await przygotuj(page, '/');
+      // Makieta nie ma sekcji wpisów ani linku do nich w menu: pojawiają się, gdy kolekcja ma wpisy. Porównujemy resztę.
+      await page.addStyleTag({ content: '#wpisy, header nav a[href="/wpisy/"] { display: none !important; }' });
       const zrzut = await page.screenshot({ fullPage: true, animations: 'disabled' });
       expect(zrzut).toMatchSnapshot(nazwa, { maxDiffPixelRatio: 0.02 });
     });

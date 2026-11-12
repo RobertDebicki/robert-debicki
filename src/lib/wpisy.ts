@@ -17,7 +17,7 @@ const OBRAZY: Obrazy = import.meta.env.OBRAZY_Z_FIKSTUR
 
 export async function obraz(plik: string, wpis: string) {
   const wczytaj = OBRAZY[plik];
-  if (!wczytaj) throw new Error(`Wpis ${wpis}: nie znaleziono zdjęcia ${plik}. Sprawdź pole zdjecia.plik.`);
+  if (!wczytaj) throw new Error(`Wpis ${wpis}: nie znaleziono zdjęcia ${plik}. Sprawdź pole plik w zdjęciach albo w miniaturze.`);
   return (await wczytaj()).default;
 }
 

@@ -1,5 +1,63 @@
 # CHANGELOG
 
+## 2026-11-12 08:50, Claude Code
+
+**✅ Zrobione (5 wpisów na blogu, gałąź `blog-piec-wpisow`, nie wdrożone):**
+- Wpisy w `src/content/wpisy/<adres>/pl.md`, daty wstecz co tydzień (14.10, 21.10, 28.10, 04.11, 11.11) decyzją Roberta. Zdania ⚠️ z `docs/blog-szkice/README.md` zostają decyzją Roberta.
+- 16 grafik i 5 miniaturek jako PNG w `src/assets/wpisy/` (zrzut z makiety, kolumna 600 px, skala 2), ALT przy każdej, podpisy jako tekst pod grafiką. Ścieżka: `generuj.py` → `zrzuty.mjs` → `eksport.py` w `docs/blog-szkice/podglad/`.
+- Dwa linki wewnętrzne między wpisami (anchor z frazą), twarde spacje w „10 000” i „174 717”.
+- Testy, które zakładały brak wpisów na prawdziwej treści, sprawdzają teraz oba stany: `wpisy-puste.spec.ts`, menu EN w `jezyki-prawdziwa-tresc.spec.ts` (Posts z „No posts in English yet”, jak w `maListe`), porównanie z makietą ukrywa sekcję wpisów i link w menu (makieta ich nie ma).
+- `npm run sprawdz`: treść 0, GPS 0, tłumaczenia OK, vitest 148 pass/1 skipped, e2e 120 pass. Zrzuty listy i wpisu 1440 jasny i ciemny, 390: bez przewijania w bok.
+
+**✅ Poprawki po `/code-review medium` (runda 1, 10 uwag):**
+- Przeinaczony fakt: wpis n8n mówił, że logika „przekroczyła limity”, karta: przeniesiona, „żeby nie przekraczać limitów”. Ten sam typ: „około 15 rozmów” zamiast „15” (karta), też na grafice. Poprawione w szkicach, wpisach i PNG.
+- Wtyczka obrazów: brak pliku w `/src/assets/` zatrzymuje build (wcześniej cicho zepsuty obrazek), `%` i polskie znaki w nazwie bez wywracania buildu (testy najpierw czerwone).
+- Komunikat `obraz()` wskazuje też miniaturę; `eksport.py` nie nadpisuje wpisów bez `--nadpisz`; README szkiców: źródłem treści jest panel; ALT miniaturki: „według Eurostatu”.
+- Bez zmian: porównanie z makietą pomija sekcję wpisów (makieta jej nie ma), wspólny helper w testach (refaktor bez błędu).
+- Runda 2 (9 uwag, jeden typ: nietypowe nazwy plików grafik): odkodowanie po kawałku (dosłowny `%` obok zakodowanego „ż”), odrzucenie `#` i `?`, folder, wyjście poza folder (też `%2e%2e`) i zła wielkość liter zatrzymują build; komunikat ze ścieżką wpisu w repo; mocniejszy test z istniejącym plikiem; cofnięty szum w `n8n-make-czy-zapier-3.png`. Wtyczka 7 testów, vitest 153 pass/1 skipped, e2e 120 pass.
+- Runda 3 znów znalazła przypadki brzegowe nazw plików (wielkość liter w folderze, `..x.png`, `%41`). Po 3 rundach zmiana podejścia za zgodą Roberta: wtyczka przyjmuje tylko bezpieczne nazwy w `/src/assets/wpisy/` (małe litery, cyfry, `.`, `-`, `_`; rozszerzenie bez względu na wielkość liter), plik z `public/` zostaje, każda inna ścieżka od `/` zatrzymuje build komunikatem. Bez odkodowywania `%`. Podpowiedź w panelu przy treści wpisu. Wtyczka 5 testów, vitest 151 pass/1 skipped, e2e 120 pass.
+- Przegląd uproszczonej wtyczki (8 uwag): usunięte przepuszczanie plików z `public/` (źródło 5 uwag: `..`, wielkość liter, katalogi, `?`), osobny komunikat dla niedozwolonego typu pliku (np. `.heic`), typy w podpowiedzi panelu, bez podwójnego sprawdzania pliku. Bez zmian: obrazy w stylu przypisów i surowy `<img>` (panel ich nie wstawia). Wtyczka 6 testów, vitest 152 pass/1 skipped, e2e 120 pass.
+- Decyzja Roberta: wpisy zostaną przetłumaczone na EN (z angielskimi grafikami) po wdrożeniu wersji PL; do tego czasu menu EN „Posts” prowadzi do pustej listy.
+- (rozstrzygnięte wyżej) menu EN „Posts” prowadzi do pustej listy, która trafia do mapy strony.
+
+**🎯 Następny krok:**
+- `/code-review`, potem PR, scalenie i `npm run wdroz -- --wgraj` (zgoda Roberta z 12.11 w rozmowie).
+- Później: angielskie wersje wpisów przez `/tlumacz-strone` (do tego czasu w EN menu „Posts” prowadzi do pustej listy).
+
+## 2026-11-12 08:30, Claude Code
+
+**✅ Zrobione (grafiki w treści wpisu i miniaturki na liście, ryzyko średnie: kod listy i panelu; gałąź `blog-piec-wpisow`, nie wdrożone):**
+- Grafika wstawiona w treść wpisu z panelu (ścieżka `/src/assets/wpisy/...`) idzie przez optymalizację Astro: wtyczka Sätteri `src/lib/obrazy-w-tresci.mjs` zamienia ją na ścieżkę względną. Astro 7 domyślnie używa Sätteri, więc `remarkPlugins` nie działają; `@astrojs/markdown-satteri` 0.4.5 dopisana jako zależność bezpośrednia (ta sama wersja, którą instaluje Astro).
+- Pole `miniatura` (plik i alt, opcjonalne) w schemacie wpisów i panelu; lista `/wpisy/` pokazuje miniaturkę 16:9 obok tytułu, karta bez miniatury bez zmian. Strona główna (3 najnowsze wpisy) bez miniaturek.
+- Testy najpierw czerwone: e2e miniaturki i grafiki w treści, jednostkowy panelu; potem zielone (e2e wpisów 13, panel 22, wtyczka 2).
+- ⚠️ Pułapka: cache treści Astro (`node_modules/.astro*`) nie unieważnił wpisu po zmianie schematu (pole `miniatura` znikało). Przed buildem po zmianie schematu usuń cache.
+
+## 2026-11-11 23:30, Claude Code
+
+**✅ Zrobione (5 szkiców wpisów na bloga, ryzyko niskie: tylko tekst w `docs/blog-szkice/`, nic nie trafia na stronę, nie wdrożone):**
+- Tematy: AI Act dla małej firmy, pierwsza automatyzacja procesów, odczyt dokumentów, voice bot, n8n/Make/Zapier. Źródła i punkty do potwierdzenia: `docs/blog-szkice/README.md`.
+- Reguły DNK dostosowane do strony Roberta, sprawdzone skryptem (długości, fraza, linki, FAQ, myślniki).
+- Makiety wpisów z grafikami: `docs/blog-szkice/podglad/podglad.html` (generuje `python3 docs/blog-szkice/podglad/generuj.py` z plików .md). 15 grafik w HTML i CSS w wyglądzie strony (oś czasu AI Act, makieta czatu, wykres Eurostat, schemat odczytu dokumentów, oś 2 minut voice bota, licznik opłat n8n/Make/Zapier i inne), pod każdą propozycja ALT. Zrzuty 1440 jasny i ciemny, 390, 360: bez przewijania w bok.
+- Weryfikacja faktów w szkicach (11.11): 5 błędów i 5 zdań bez źródła poprawionych w tekście, grafikach, miniaturkach i ALT; lista ✅/⚠️ w `docs/blog-szkice/README.md`.
+- Lista wpisów z miniaturkami 16:9 w podglądzie (sekcja na górze); miniaturki zapisywane też jako pliki `docs/blog-szkice/podglad/miniatury/*.svg`. Zrzuty 1440 jasny i ciemny, 390, 360: bez przewijania w bok.
+- Do wdrożenia na stronie grafiki trzeba będzie zamienić na pliki SVG w `src/assets/wpisy/` albo dodać obsługę grafik w treści wpisu (dziś wpis ma tylko zdjęcia pod tekstem).
+
+**🎯 Następny krok:**
+- Robert czyta szkice, potwierdza fakty z README, publikuje po jednym (kopia do `src/content/wpisy/<adres>/pl.md`, data w dniu publikacji).
+
+## 2026-11-11 22:50, Claude Code
+
+**✅ Zrobione (wdrożenie PR #5 na produkcję za zgodą Roberta: „zrób push, PR i wdróż”, ryzyko wysokie):**
+- PR #5 scalony (`edaf799`) po zielonym CI. `npm run wdroz -- --wgraj`: 29 plików na home.pl, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-11T21-39-06-500Z`, odbiór zgodny, `.htaccess` działa. `test:produkcja` 5 z 5.
+- Żywa strona ładuje `GTM-T7N4RZD8` (curl). **Pomiar na żywej stronie** z prawdziwym Google (żądania `g/collect` przerywane, nazwy zdarzeń z adresu i treści POST): przed zgodą 0 zdarzeń; po „Akceptuję”: `page_view` raz, `scroll`, `klik_email`, `klik_linkedin`, `kopiuj_email`; po „Odrzucam” 0 zdarzeń.
+
+**🚧 W toku:**
+- Zdarzenia kluczowe w GA4: oznaczyć `klik_email` i `klik_linkedin` po tym, jak prawdziwy odwiedzający wygeneruje je na stronie (przerwane żądania testowe nie dotarły do GA4).
+- Bing: sprawdzić za kilka dni liczbę URL w mapie. AdLoop dla robert-debicki.pl: autoryzacja najwcześniej wieczorem 17.11. Przekierowania `.com`/`.com.pl` gubią ścieżkę; konto FTP ma dostęp do całego hostingu; polityka: forma administratora i przegląd prawny.
+
+**🎯 Następny krok:**
+- Od 17.11 wieczorem: dokończyć autoryzację AdLoopa i odczytać GA4 i GSC; w GA4 oznaczyć zdarzenia kluczowe po pierwszym wystąpieniu.
+
 ## 2026-11-11 22:40, Claude Code
 
 **✅ Zrobione (przejście na własny kontener GTM `GTM-T7N4RZD8`, ryzyko wysokie: pomiar analityczny; gałąź `gtm-nowy-kontener`, nie wdrożone):**

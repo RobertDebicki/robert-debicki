@@ -53,20 +53,20 @@ export const referencje = z.object({
   ...tlumaczenie,
 });
 
+const zdjecie = z.object({
+  plik: z.string(),
+  alt: z
+    .string({ error: 'Pole alt jest wymagane: opisz zdjęcie (tekst alternatywny).' })
+    .min(5, { error: 'Pole alt musi mieć co najmniej 5 znaków: opisz zdjęcie.' }),
+});
+
 export const wpisy = z.object({
   tytul: z.string(),
   data: z.coerce.date(),
   zajawka: z.string(),
-  zdjecia: z
-    .array(
-      z.object({
-        plik: z.string(),
-        alt: z
-          .string({ error: 'Pole alt jest wymagane: opisz zdjęcie (tekst alternatywny).' })
-          .min(5, { error: 'Pole alt musi mieć co najmniej 5 znaków: opisz zdjęcie.' }),
-      }),
-    )
-    .default([]),
+  /** Obraz przy wpisie na liście /wpisy/. Bez miniatury karta ma sam tekst. */
+  miniatura: zdjecie.optional(),
+  zdjecia: z.array(zdjecie).default([]),
   ...tlumaczenie,
 });
 

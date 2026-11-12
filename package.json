@@ -23,6 +23,7 @@
     "wdroz": "tsx skrypty/wdroz.ts"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "0.4.5",
     "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/anybody": "^5.3.0",
     "@fontsource-variable/onest": "^5.3.1",

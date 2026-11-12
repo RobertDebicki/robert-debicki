@@ -140,6 +140,13 @@ section { position: relative; padding-block: 88px; border-top: 1.5px solid var(-
 .wpis-tresc h2, .wpis-tresc h3 { margin-top: 1.8em; font-size: 1.4rem; font-weight: 700; }
 .wpis-zdjecie { margin: 32px 0 0; max-width: 800px; }
 .wpis-zdjecie img { display: block; width: 100%; height: auto; }
+.wpis-tresc img { display: block; max-width: 100%; height: auto; margin-block: 2em; box-shadow: 6px 6px 0 var(--c); }
+.wpis-tresc p:has(> img) + p > em:only-child { color: var(--muted); font-size: 0.9rem; font-style: normal; }
+.wpis-karta.z-miniatura { max-width: 60rem; display: grid; grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: 16px 32px; align-items: start; }
+.wpis-miniatura { display: block; border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); transition: transform .15s, box-shadow .15s; }
+.wpis-miniatura img { display: block; width: 100%; height: auto; }
+.wpis-karta:hover .wpis-miniatura { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--c); }
+@media (max-width: 700px) { .wpis-karta.z-miniatura { grid-template-columns: 1fr; } }
 
 /* Referencje */
 .referencje-lista { margin-top: 32px; display: grid; gap: 40px; }
