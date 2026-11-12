@@ -17,11 +17,10 @@ describe('obrazy w treści wpisu: ścieżka z panelu na względną', () => {
     expect(wynik('/src/assets/wpisy/grafika-1.png')).toBe('../../../assets/wpisy/grafika-1.png');
     expect(wynik('/src/assets/wpisy/zdjecie_2.v2.JPG')).toBe('../../../assets/wpisy/zdjecie_2.v2.JPG');
   });
-  it('nie rusza adresów zewnętrznych, względnych i plików z public/', () => {
+  it('nie rusza adresów zewnętrznych i względnych', () => {
     expect(wynik('https://example.com/a.png')).toBeNull();
     expect(wynik('//example.com/a.png')).toBeNull();
     expect(wynik('./a.png')).toBeNull();
-    expect(wynik('/og.png')).toBeNull();
   });
   it('nazwa spoza zasady (wielkie litery, polskie znaki, spacja, %, #, ?, podfolder, ..) zatrzymuje build prośbą o zmianę nazwy', () => {
     for (const nazwa of ['Duza.png', 'żółw.png', 'moja grafika.png', 'wzrost-100%25.png', 'a%23b.png', 'a.png?v=2', 'a.png#x', 'inne/a.png', '../a.png', '..a.png', '']) {
@@ -34,5 +33,11 @@ describe('obrazy w treści wpisu: ścieżka z panelu na względną', () => {
   it('inna ścieżka od / (spoza folderu i spoza public/) zatrzymuje build', () => {
     expect(() => wynik('/src/assets/inne/a.png')).toThrow(/\/src\/assets\/wpisy\//);
     expect(() => wynik('/brak-w-public.png')).toThrow(/\/src\/assets\/wpisy\//);
+    expect(() => wynik('/og.png')).toThrow(/\/src\/assets\/wpisy\//);
+    expect(() => wynik('/../src/assets/wpisy/grafika-1.png')).toThrow(/\/src\/assets\/wpisy\//);
+    expect(() => wynik('/')).toThrow(/\/src\/assets\/wpisy\//);
+  });
+  it('niedozwolony typ pliku ma osobny komunikat z listą typów', () => {
+    expect(() => wynik('/src/assets/wpisy/zdjecie.heic')).toThrow(/typ pliku.*png/);
   });
 });
