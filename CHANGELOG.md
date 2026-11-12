@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-11-11 23:30, Claude Code
+
+**✅ Zrobione (5 szkiców wpisów na bloga, ryzyko niskie: tylko tekst w `docs/blog-szkice/`, nic nie trafia na stronę, nie wdrożone):**
+- Tematy: AI Act dla małej firmy, pierwsza automatyzacja procesów, odczyt dokumentów, voice bot, n8n/Make/Zapier. Źródła i punkty do potwierdzenia: `docs/blog-szkice/README.md`.
+- Reguły DNK dostosowane do strony Roberta, sprawdzone skryptem (długości, fraza, linki, FAQ, myślniki).
+- Makiety wpisów z grafikami: `docs/blog-szkice/podglad/podglad.html` (generuje `python3 docs/blog-szkice/podglad/generuj.py` z plików .md). 15 grafik w HTML i CSS w wyglądzie strony (oś czasu AI Act, makieta czatu, wykres Eurostat, schemat odczytu dokumentów, oś 2 minut voice bota, licznik opłat n8n/Make/Zapier i inne), pod każdą propozycja ALT. Zrzuty 1440 jasny i ciemny, 390, 360: bez przewijania w bok.
+- Weryfikacja faktów w szkicach (11.11): 5 błędów i 5 zdań bez źródła poprawionych w tekście, grafikach, miniaturkach i ALT; lista ✅/⚠️ w `docs/blog-szkice/README.md`.
+- Lista wpisów z miniaturkami 16:9 w podglądzie (sekcja na górze); miniaturki zapisywane też jako pliki `docs/blog-szkice/podglad/miniatury/*.svg`. Zrzuty 1440 jasny i ciemny, 390, 360: bez przewijania w bok.
+- Do wdrożenia na stronie grafiki trzeba będzie zamienić na pliki SVG w `src/assets/wpisy/` albo dodać obsługę grafik w treści wpisu (dziś wpis ma tylko zdjęcia pod tekstem).
+
+**🎯 Następny krok:**
+- Robert czyta szkice, potwierdza fakty z README, publikuje po jednym (kopia do `src/content/wpisy/<adres>/pl.md`, data w dniu publikacji).
+
 ## 2026-11-11 22:50, Claude Code
 
 **✅ Zrobione (wdrożenie PR #5 na produkcję za zgodą Roberta: „zrób push, PR i wdróż”, ryzyko wysokie):**

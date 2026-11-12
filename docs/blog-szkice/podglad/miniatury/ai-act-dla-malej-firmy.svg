@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Okno czatu z botem, który mówi Jestem asystentem AI, i znak zgodności z AI Act"><rect width="480" height="270" fill="#EF7F1A"/>
+<text x="28" y="44" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#131412">AI ACT · 02.08.2026</text>
+<rect x="28" y="66" width="300" height="176" fill="#f4f5f1" stroke="#131412" stroke-width="4"/>
+<rect x="28" y="66" width="300" height="30" fill="#131412"/><circle cx="46" cy="81" r="6" fill="#EF7F1A"/>
+<rect x="44" y="114" width="268" height="46" rx="4" fill="#ffc400" stroke="#131412" stroke-width="3"/>
+<text x="56" y="143" font-family="Anybody, Arial Black, Arial, sans-serif" font-weight="850" font-size="15" fill="#131412">Jestem asystentem AI</text>
+<rect x="150" y="176" width="160" height="42" rx="4" fill="#131412"/>
+<rect x="166" y="194" width="110" height="7" fill="#f4f5f1"/>
+<circle cx="400" cy="150" r="52" fill="#131412"/><path d="M376 150l16 16 32-34" fill="none" stroke="#ffc400" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>

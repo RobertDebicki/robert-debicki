@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Duża liczba 8,36 procent firm z AI w Polsce i porównanie z Unią Europejską"><rect width="480" height="270" fill="#d0201a"/>
+<text x="28" y="44" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#f4f5f1">FIRMY Z AI · 2025</text>
+<text x="28" y="132" font-family="Anybody, Arial Black, Arial, sans-serif" font-weight="850" font-size="74" fill="#f4f5f1">8,36%</text>
+<text x="30" y="160" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#f4f5f1">POLSKA</text>
+<rect x="28" y="196" width="66" height="22" fill="#ffc400"/><text x="104" y="213" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#f4f5f1">PL</text>
+<rect x="28" y="228" width="158" height="22" fill="#f4f5f1"/><text x="196" y="245" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#f4f5f1">UE 19,95%</text>
+<g fill="none" stroke="#131412" stroke-width="5" stroke-linejoin="round"><rect x="330" y="70" width="120" height="150" fill="#f4f5f1"/></g>
+<path d="M352 196h76M352 170h76M352 144h50" stroke="#131412" stroke-width="6"/><circle cx="420" cy="96" r="14" fill="#ffc400" stroke="#131412" stroke-width="4"/></svg>

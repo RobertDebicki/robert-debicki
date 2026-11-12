@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><title>Podgląd wpisów bloga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,400..900&family=Onest:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap">
+<style>/* Podgląd wpisów: tokeny i typografia jak w src/styles/tokeny.css i makiecie. */
+:root {
+  --paper: #f4f5f1; --ink: #131412; --muted: #555850; --rule: #131412;
+  --c: #EF7F1A; --m: #d0201a; --y: #ffc400; --spot: #ffc400;
+  --font-display: "Anybody", "Arial Black", Arial, sans-serif;
+  --font-body: "Onest", "Helvetica Neue", Arial, sans-serif;
+  --font-data: "Spline Sans Mono", ui-monospace, Menlo, monospace;
+  --s--1: 0.75rem; --s-0: 1.0625rem; --s-2: clamp(1.7rem, 3.4vw, 2.6rem); --s-3: clamp(2.2rem, 5vw, 3.6rem);
+  --linia: color-mix(in srgb, var(--ink) 25%, transparent);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #0f100e; --ink: #f0f1ea; --muted: #a6a99d; --rule: #f0f1ea; --m: #ff5442; --y: #ffcf3a; --spot: #ffcf3a; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --paper: #0f100e; --ink: #f0f1ea; --muted: #a6a99d; --rule: #f0f1ea; --m: #ff5442; --y: #ffcf3a; --spot: #ffcf3a; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 var(--s-0)/1.6 var(--font-body); padding-inline: 16px; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.mono { font-family: var(--font-data); font-size: var(--s--1); letter-spacing: 0.02em; }
+
+.top { position: sticky; top: 0; z-index: 20; margin-inline: -16px; background: var(--paper); border-bottom: 1.5px solid var(--rule); }
+.bar { display: grid; grid-template-columns: repeat(16, 1fr); height: 10px; }
+.bar i:nth-child(4n+1) { background: var(--c); } .bar i:nth-child(4n+2) { background: var(--m); }
+.bar i:nth-child(4n+3) { background: var(--y); } .bar i:nth-child(4n) { background: var(--ink); }
+.top-in { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 24px; padding: 12px 16px; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; }
+
+.sheet { max-width: 1180px; margin: 0 auto; }
+section { padding-block: 72px; border-top: 1.5px solid var(--rule); }
+section:first-child { border-top: 0; }
+.label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.label::before { content: ""; width: 14px; height: 14px; background: var(--sw, var(--pl)); }
+.sec-title { font-size: var(--s-2); font-weight: 820; font-variation-settings: "wdth" 118; line-height: 1.05; letter-spacing: -0.02em; max-width: 18em; overflow-wrap: anywhere; }
+.sec-intro { margin-top: 16px; color: var(--muted); max-width: 40em; }
+
+.spis { list-style: none; padding: 0; margin: 36px 0 0; display: grid; gap: 0; max-width: 46em; }
+.spis li { border-top: 2px solid var(--ink); }
+.spis a { display: grid; gap: 4px; padding: 14px 0 18px; text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; line-height: 1.2; }
+.spis a .mono { color: var(--muted); font-weight: 500; display: flex; align-items: center; gap: 8px; }
+.spis a .mono::before { content: ""; width: 10px; height: 10px; background: var(--pl); }
+.spis a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+.wpis header time { display: block; margin-top: 14px; color: var(--muted); }
+.google { margin-top: 24px; max-width: 40em; border-left: 4px solid var(--pl); padding: 4px 0 4px 14px; display: grid; gap: 4px; color: var(--muted); font-size: 0.8rem; }
+.google span { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; }
+.google b { color: var(--ink); font-family: var(--font-body); font-size: 1.05rem; }
+
+.wpis-tresc { margin-top: 40px; max-width: 46rem; }
+.wpis-tresc > * + * { margin-top: 1.1em; }
+.wpis-tresc h2 { margin-top: 2.2em; font-size: 1.55rem; font-weight: 800; font-variation-settings: "wdth" 112; line-height: 1.15; }
+.wpis-tresc .wstep { font-size: 1.22rem; line-height: 1.5; }
+.wpis-tresc strong { background: linear-gradient(transparent 62%, color-mix(in srgb, var(--pl) 45%, transparent) 62%); }
+.wpis-tresc a { text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--pl); }
+.lista { padding-left: 2.2em; } .lista li + li { margin-top: 6px; }
+.lista li::marker { font-family: var(--font-data); font-weight: 600; }
+.wroc { margin-top: 48px; }
+
+/* FAQ */
+.faq { border-top: 2px solid var(--ink); }
+.faq details { border-bottom: 1px solid var(--linia); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; line-height: 1.3; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-data); font-size: 1.4rem; line-height: 1; color: var(--pl); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { padding: 0 0 18px; max-width: 40em; }
+
+/* Grafiki */
+.graf { margin: 2em 0 0; padding: 22px; border: 2px solid var(--ink); background: var(--paper); box-shadow: 6px 6px 0 var(--pl); display: grid; gap: 18px; }
+.graf figcaption { color: var(--muted); font-size: 0.9rem; }
+.graf .alt { color: var(--muted); border-top: 1px dashed var(--linia); padding-top: 10px; font-size: 0.7rem; }
+.graf-tyt { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
+.duza { font-family: var(--font-display); font-weight: 850; font-variation-settings: "wdth" 115; font-size: var(--s-3); line-height: 0.95; letter-spacing: -0.02em; }
+
+.czat { border: 2px solid var(--ink); max-width: 26rem; display: grid; gap: 10px; padding: 0 14px 16px; }
+.czat-gora { margin-inline: -14px; padding: 8px 14px; background: var(--ink); color: var(--paper); display: flex; align-items: center; gap: 8px; }
+.kropka { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+.dymek { max-width: 85%; padding: 10px 14px; border: 2px solid var(--ink); line-height: 1.4; font-size: 0.98rem; }
+.dymek.bot { justify-self: start; border-radius: 2px 14px 14px 14px; }
+.dymek.bot:first-of-type { background: var(--y); color: #131412; border-color: #131412; }
+.dymek.klient { justify-self: end; background: var(--ink); color: var(--paper); border-radius: 14px 2px 14px 14px; }
+.czat-opis { display: grid; gap: 6px; max-width: 30em; }
+.czat-opis .mono { color: var(--muted); }
+
+.os, .minuty { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
+.minuty { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.os li, .minuty li { position: relative; display: grid; gap: 4px; align-content: start; padding: 26px 14px 4px 0; border-top: 4px solid var(--ink); }
+.os li::before, .minuty li::before { content: ""; position: absolute; top: -12px; left: 0; width: 18px; height: 18px; border: 3px solid var(--ink); background: var(--paper); border-radius: 50%; }
+.os li.teraz::before, .minuty li.teraz::before { background: var(--c); border-color: var(--c); }
+.os li.teraz b, .minuty li.teraz b { background: var(--y); color: #131412; padding: 0 4px; justify-self: start; }
+.os li.pozniej { border-top-style: dashed; color: var(--muted); }
+.os b, .minuty b { font-family: var(--font-display); font-size: 0.98rem; font-variation-settings: "wdth" 100; justify-self: start; }
+.os span, .minuty span { font-size: 0.9rem; line-height: 1.35; }
+.os time, .minuty time { color: var(--muted); }
+
+.dwie { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 14px; }
+.kol { border: 2px solid var(--ink); padding: 14px 16px; }
+.kol.ty { background: var(--ink); color: var(--paper); }
+.kol .mono { text-transform: uppercase; letter-spacing: 0.08em; }
+.kol ul { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.kol li { display: flex; gap: 10px; line-height: 1.35; }
+.kol li::before { content: ""; flex: none; width: 10px; height: 10px; margin-top: 0.4em; background: var(--pl); }
+
+.kroki { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 14px; }
+.kroki li { border-top: 4px solid var(--ink); padding-top: 12px; display: grid; gap: 4px; align-content: start; }
+.kroki li.wazne { border-top-color: var(--m); }
+.kroki .nr { font-family: var(--font-display); font-weight: 850; font-size: 2.4rem; line-height: 1; color: var(--pl); }
+.kroki li.wazne .nr { color: var(--m); }
+.kroki b { font-family: var(--font-display); font-size: 1.1rem; }
+.kroki span:last-child { font-size: 0.95rem; line-height: 1.4; }
+.kara { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; padding-top: 14px; border-top: 1px solid var(--linia); }
+.kara span:last-child { max-width: 26em; line-height: 1.4; }
+
+.slupki { display: grid; gap: 10px; }
+.slupki .rz { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 4rem; align-items: center; gap: 12px; }
+.slupki .etk { font-size: 0.95rem; }
+.slupki .tor { height: 22px; }
+.slupki .sl { display: block; height: 100%; background: color-mix(in srgb, var(--ink) 30%, var(--paper)); border-radius: 0 4px 4px 0; }
+.slupki .sl.pl { background: var(--c); }
+.slupki .rz:first-child .etk, .slupki .rz:first-child .wart { font-weight: 700; }
+.slupki .rz:hover .sl { outline: 2px solid var(--ink); outline-offset: 2px; }
+.slupki .wart { text-align: right; font-size: 0.85rem; }
+
+.liczby { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 18px; }
+.liczby div { display: grid; gap: 8px; align-content: start; padding-bottom: 8px; background: linear-gradient(var(--pl), var(--pl)) left top / 1.4em 5px no-repeat; padding-top: 16px; }
+.liczby div span:last-child { line-height: 1.4; font-size: 0.95rem; }
+
+.przeplyw { display: grid; gap: 0; justify-items: stretch; }
+.wezel { border: 2px solid var(--ink); padding: 10px 14px; display: grid; gap: 2px; background: var(--paper); }
+.wezel .mono { color: var(--muted); }
+.wezel b { font-family: var(--font-display); font-size: 1.05rem; }
+.wezel span:last-child { font-size: 0.9rem; color: var(--muted); }
+.strz { height: 28px; width: 2px; background: var(--ink); justify-self: center; position: relative; }
+.strz::after { content: ""; position: absolute; bottom: -2px; left: -6px; border: 7px solid transparent; border-top: 9px solid var(--ink); border-bottom: 0; }
+.rozwidlenie { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 14px; }
+.wezel.ok { border-color: var(--ink); box-shadow: inset 6px 0 0 var(--c); padding-left: 20px; }
+.wezel.czlowiek { background: var(--y); color: #131412; border-color: #131412; }
+.wezel.czlowiek .mono, .wezel.czlowiek span:last-child { color: #3a3b36; }
+
+.potw { display: grid; grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr); gap: 18px; align-items: start; }
+.skan { aspect-ratio: 3 / 4; border: 2px solid var(--ink); padding: 14px 12px; display: grid; gap: 10px; align-content: start; }
+.skan i { display: block; height: 7px; background: color-mix(in srgb, var(--ink) 22%, transparent); }
+.skan i.kr { width: 60%; }
+.pola { margin: 0; display: grid; gap: 0; }
+.pola > div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--linia); }
+.pola dt { color: var(--muted); }
+.pola dd { margin: 0; font-weight: 600; }
+.pola .niep dd { background: color-mix(in srgb, var(--y) 55%, transparent); padding: 0 6px; justify-self: start; }
+.pola .niep em { font-style: normal; color: var(--m); margin-left: 6px; }
+.pola .przyc { display: flex; flex-wrap: wrap; gap: 10px; border: 0; padding-top: 14px; }
+.btn { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; font-weight: 600; border: 2px solid var(--ink); background: var(--paper); box-shadow: 4px 4px 0 var(--c); }
+.btn.solid { background: var(--ink); color: var(--paper); box-shadow: 4px 4px 0 var(--m); }
+
+.ticket { border: 2px solid var(--ink); font-size: 0.95rem; max-width: 30rem; }
+.ticket header { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--ink); color: var(--paper); }
+.ticket dl { margin: 0; }
+.ticket dl div { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 12px; padding: 10px 14px; border-top: 1px solid var(--linia); }
+.ticket dl div:first-child { border-top: 0; }
+.ticket dt { color: var(--muted); }
+.ticket dd { margin: 0; font-weight: 600; }
+
+.licznik { display: grid; gap: 12px; }
+.licznik .rz { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) 7.5rem; align-items: center; gap: 12px; }
+.licznik b { font-family: var(--font-display); font-size: 1.1rem; }
+.kw { display: grid; grid-template-columns: repeat(5, minmax(0, 2.6rem)); gap: 6px; }
+.kw i { display: block; height: 2.2rem; border: 2px solid var(--ink); }
+.kw i.p { background: color-mix(in srgb, var(--ink) 30%, var(--paper)); }
+.n8n .kw i.p { background: var(--c); }
+.kw i.cale { grid-column: 1 / -1; }
+.licznik .mono { font-size: 0.85rem; font-weight: 600; }
+
+.tab-wrap { overflow-x: auto; }
+.tab { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 30rem; }
+.tab th, .tab td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--linia); vertical-align: top; }
+.tab thead th { font-family: var(--font-display); font-size: 1.05rem; border-bottom: 2px solid var(--ink); }
+.tab thead th:last-child { background: var(--c); color: #131412; }
+.tab tbody th { font-weight: 600; color: var(--muted); }
+
+@media (max-width: 560px) {
+  .graf { padding: 16px; box-shadow: 4px 4px 0 var(--pl); }
+  .potw { grid-template-columns: 1fr; } .skan { max-width: 9rem; }
+  .slupki .rz { grid-template-columns: 6rem minmax(0, 1fr) 3.4rem; gap: 8px; }
+  .licznik .rz { grid-template-columns: 1fr; gap: 6px; }
+}
+
+@media (max-width: 760px) {
+  .os, .minuty { grid-template-columns: 1fr; }
+  .os li, .minuty li { border-top: 0; border-left: 4px solid var(--ink); padding: 4px 0 18px 22px; }
+  .os li.pozniej { border-left-style: dashed; }
+  .os li::before, .minuty li::before { top: 4px; left: -11px; }
+}
+
+/* Lista wpisów z miniaturkami */
+.karty { margin-top: 40px; display: grid; gap: 0; max-width: 60rem; }
+.karta { display: grid; grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: 18px 32px; align-items: start; padding-block: 28px; border-top: 2px solid var(--ink); }
+.mini { display: block; border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); transition: transform .15s, box-shadow .15s; }
+.mini svg { display: block; width: 100%; height: auto; }
+.karta:hover .mini { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--pl); }
+.karta time { color: var(--muted); }
+.karta h3 { margin-top: 6px; font-size: 1.45rem; font-weight: 800; font-variation-settings: "wdth" 112; line-height: 1.15; overflow-wrap: anywhere; }
+.karta h3 a { text-decoration: none; }
+.karta:hover h3 a { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--pl); }
+.karta p { margin-top: 10px; color: var(--muted); max-width: 36em; }
+@media (max-width: 640px) { .karta { grid-template-columns: 1fr; } }
+</style></head><body>
+<div class="top"><div class="bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="top-in"><span class="brand">Robert Dębicki</span><span class="mono">Podgląd szkiców bloga, nie jest na stronie</span></div></div>
+<main class="sheet">
+<section id="spis"><p class="label mono" style="--sw:var(--c)">Strona /wpisy/</p><h2 class="sec-title">Wpisy</h2>
+<p class="sec-intro">Tak wyglądałaby lista z miniaturkami. Pod każdą grafiką we wpisie jest propozycja tekstu ALT.</p><div class="karty"><article class="karta" style="--pl:var(--c)">
+  <a class="mini" href="#ai-act-dla-malej-firmy" tabindex="-1" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Okno czatu z botem, który mówi Jestem asystentem AI, i znak zgodności z AI Act"><rect width="480" height="270" fill="#EF7F1A"/>
+<text x="28" y="44" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#131412">AI ACT · 02.08.2026</text>
+<rect x="28" y="66" width="300" height="176" fill="#f4f5f1" stroke="#131412" stroke-width="4"/>
+<rect x="28" y="66" width="300" height="30" fill="#131412"/><circle cx="46" cy="81" r="6" fill="#EF7F1A"/>
+<rect x="44" y="114" width="268" height="46" rx="4" fill="#ffc400" stroke="#131412" stroke-width="3"/>
+<text x="56" y="143" font-family="Anybody, Arial Black, Arial, sans-serif" font-weight="850" font-size="15" fill="#131412">Jestem asystentem AI</text>
+<rect x="150" y="176" width="160" height="42" rx="4" fill="#131412"/>
+<rect x="166" y="194" width="110" height="7" fill="#f4f5f1"/>
+<circle cx="400" cy="150" r="52" fill="#131412"/><path d="M376 150l16 16 32-34" fill="none" stroke="#ffc400" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <div><time class="mono">17.11.2026</time><h3><a href="#ai-act-dla-malej-firmy">AI Act dla małej firmy: lista na 2026</a></h3><p>AI Act dla małej firmy: od 2.08.2026 klient musi wiedzieć, że rozmawia z botem. Sprawdź w 3 krokach, co zrobić. Napisz, pomogę.</p></div>
+</article><article class="karta" style="--pl:var(--m)">
+  <a class="mini" href="#ile-firm-uzywa-ai" tabindex="-1" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Duża liczba 8,36 procent firm z AI w Polsce i porównanie z Unią Europejską"><rect width="480" height="270" fill="#d0201a"/>
+<text x="28" y="44" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#f4f5f1">FIRMY Z AI · 2025</text>
+<text x="28" y="132" font-family="Anybody, Arial Black, Arial, sans-serif" font-weight="850" font-size="74" fill="#f4f5f1">8,36%</text>
+<text x="30" y="160" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#f4f5f1">POLSKA</text>
+<rect x="28" y="196" width="66" height="22" fill="#ffc400"/><text x="104" y="213" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#f4f5f1">PL</text>
+<rect x="28" y="228" width="158" height="22" fill="#f4f5f1"/><text x="196" y="245" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#f4f5f1">UE 19,95%</text>
+<g fill="none" stroke="#131412" stroke-width="5" stroke-linejoin="round"><rect x="330" y="70" width="120" height="150" fill="#f4f5f1"/></g>
+<path d="M352 196h76M352 170h76M352 144h50" stroke="#131412" stroke-width="6"/><circle cx="420" cy="96" r="14" fill="#ffc400" stroke="#131412" stroke-width="4"/></svg></a>
+  <div><time class="mono">24.11.2026</time><h3><a href="#ile-firm-uzywa-ai">Automatyzacja procesów w firmie: jak zacząć</a></h3><p>Automatyzacja procesów w firmie: AI stosuje 8,7% polskich firm. Zobacz, jak wybrać pierwszy proces i co dało to moim klientom. Napisz do mnie.</p></div>
+</article><article class="karta" style="--pl:var(--y)">
+  <a class="mini" href="#automatyczny-odczyt-dokumentow" tabindex="-1" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Stos dokumentów, strzałka i tabela z danymi, jeden wiersz oznaczony do sprawdzenia"><rect width="480" height="270" fill="#ffc400"/>
+<text x="28" y="44" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#131412">PDF → BAZA</text>
+<rect x="44" y="78" width="120" height="156" fill="#f4f5f1" stroke="#131412" stroke-width="4"/>
+<rect x="30" y="66" width="120" height="156" fill="#f4f5f1" stroke="#131412" stroke-width="4"/>
+<path d="M48 96h84M48 118h84M48 140h56M48 162h84M48 184h50" stroke="#131412" stroke-width="6"/>
+<path d="M190 150h64" stroke="#131412" stroke-width="6"/><path d="M248 134l18 16-18 16" fill="none" stroke="#131412" stroke-width="6" stroke-linejoin="round"/>
+<rect x="286" y="76" width="166" height="148" fill="#f4f5f1" stroke="#131412" stroke-width="4"/>
+<path d="M286 113h166M286 150h166M286 187h166" stroke="#131412" stroke-width="3"/>
+<path d="M300 96l8 8 14-14M300 133l8 8 14-14" fill="none" stroke="#EF7F1A" stroke-width="5"/>
+<rect x="296" y="160" width="146" height="22" fill="#EF7F1A"/><text x="306" y="177" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#131412">? sprawdź</text>
+<path d="M300 207l8 8 14-14" fill="none" stroke="#EF7F1A" stroke-width="5"/></svg></a>
+  <div><time class="mono">01.12.2026</time><h3><a href="#automatyczny-odczyt-dokumentow">Automatyczny odczyt dokumentów przez AI</a></h3><p>Automatyczny odczyt dokumentów przez AI: setki wniosków trafia do jednej bazy, a niepewne odczyty sprawdza człowiek. Napisz, co masz do przepisywania.</p></div>
+</article><article class="karta" style="--pl:var(--c)">
+  <a class="mini" href="#voice-bot-dla-firmy" tabindex="-1" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Duży napis 2:00 i słuchawka telefonu, bot oddzwania do klienta w dwie minuty"><rect width="480" height="270" fill="#EF7F1A"/>
+<text x="28" y="44" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#131412">FORMULARZ → TELEFON</text>
+<text x="24" y="190" font-family="Anybody, Arial Black, Arial, sans-serif" font-weight="850" font-size="108" fill="#131412">2:00</text>
+<circle cx="404" cy="140" r="56" fill="#131412"/>
+<path transform="translate(12 0)" d="M366 112c-6 6-6 18 6 34s28 26 38 22l10-10-16-14-8 6c-6-2-16-12-18-18l6-8-12-18z" fill="#ffc400"/>
+<path transform="translate(12 0)" d="M418 104a26 26 0 0 1 18 18M414 86a44 44 0 0 1 36 36" fill="none" stroke="#ffc400" stroke-width="5" stroke-linecap="round"/>
+<rect x="28" y="222" width="300" height="20" fill="#f4f5f1"/><text x="38" y="237" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="13" fill="#131412">notatka: potrzeba, budżet</text></svg></a>
+  <div><time class="mono">08.12.2026</time><h3><a href="#voice-bot-dla-firmy">Voice bot dla firmy: oddzwonienie w 2 min</a></h3><p>Voice bot dla firmy dzwoni do osoby z formularza w 2 minuty i robi notatkę dla handlowca. Zobacz, jak działa i co z AI Act. Napisz do mnie.</p></div>
+</article><article class="karta" style="--pl:var(--m)">
+  <a class="mini" href="#n8n-make-czy-zapier" tabindex="-1" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Porównanie jednostek: cztery zadania w Zapier, pięć operacji w Make, jedno uruchomienie w n8n"><rect width="480" height="270" fill="#d0201a"/>
+<text x="28" y="44" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#f4f5f1">WYZWALACZ + 4 AKCJE</text>
+<text x="28" y="98" font-family="Anybody, Arial Black, Arial, sans-serif" font-weight="850" font-size="22" fill="#f4f5f1">Zapier</text>
+<text x="28" y="160" font-family="Anybody, Arial Black, Arial, sans-serif" font-weight="850" font-size="22" fill="#f4f5f1">Make</text>
+<text x="28" y="222" font-family="Anybody, Arial Black, Arial, sans-serif" font-weight="850" font-size="22" fill="#f4f5f1">n8n</text>
+<rect x="130" y="70" width="52" height="40" fill="#f4f5f1" stroke="#131412" stroke-width="3"/><rect x="192" y="70" width="52" height="40" fill="#f4f5f1" stroke="#131412" stroke-width="3"/><rect x="254" y="70" width="52" height="40" fill="#f4f5f1" stroke="#131412" stroke-width="3"/><rect x="316" y="70" width="52" height="40" fill="#f4f5f1" stroke="#131412" stroke-width="3"/><rect x="130" y="132" width="52" height="40" fill="#f4f5f1" stroke="#131412" stroke-width="3"/><rect x="192" y="132" width="52" height="40" fill="#f4f5f1" stroke="#131412" stroke-width="3"/><rect x="254" y="132" width="52" height="40" fill="#f4f5f1" stroke="#131412" stroke-width="3"/><rect x="316" y="132" width="52" height="40" fill="#f4f5f1" stroke="#131412" stroke-width="3"/><rect x="378" y="132" width="52" height="40" fill="#f4f5f1" stroke="#131412" stroke-width="3"/>
+<rect x="130" y="194" width="300" height="40" fill="#ffc400" stroke="#131412" stroke-width="3"/>
+<text x="146" y="221" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="16" fill="#131412">1 uruchomienie</text></svg></a>
+  <div><time class="mono">15.12.2026</time><h3><a href="#n8n-make-czy-zapier">n8n, Make czy Zapier: jak wybrać do firmy</a></h3><p>n8n, Make czy Zapier: każde liczy opłaty inaczej. Zobacz na przykładzie 1 scenariusza, ile jednostek zużyjesz i co wybrać. Napisz, doradzę.</p></div>
+</article></div></section>
+<section><article id="ai-act-dla-malej-firmy" class="wpis" style="--pl:var(--c)">
+  <p class="label mono">Wpis 1 z 5 · /wpisy/ai-act-dla-malej-firmy/</p>
+  <header><h1 class="sec-title">AI Act dla małej firmy: lista na 2026</h1><time class="mono">17.11.2026</time>
+  <p class="google mono"><span>Wynik w Google</span><b>AI Act dla małej firmy: lista na 2026 | Robert Dębicki</b>AI Act dla małej firmy: od 2.08.2026 klient musi wiedzieć, że rozmawia z botem. Sprawdź w 3 krokach, co zrobić. Napisz, pomogę.</p></header>
+  <div class="wpis-tresc"><p class="wstep"><strong>AI Act dla małej firmy</strong> dotyczy Cię już dziś, jeśli na stronie działa czat albo na telefon odpowiada bot. Od 2 sierpnia 2026 obowiązują przepisy o przejrzystości. Opisuję, co one znaczą w praktyce i co sprawdzisz w jeden wieczór. Masz bota i nie wiesz, czy spełnia wymagania? Napisz do mnie maila.</p>
+<figure class="graf" role="img" aria-label="Okno czatu na stronie firmy, w którym bot zaczyna rozmowę zdaniem, że jest asystentem AI"><div class="czat">
+  <div class="czat-gora mono"><span class="kropka"></span>Czat na stronie</div>
+  <div class="dymek bot"><b>Dzień dobry, jestem asystentem AI.</b> Odpowiem na pytania o ofertę albo przekażę sprawę do zespołu.</div>
+  <div class="dymek klient">Ile trwa realizacja zamówienia?</div>
+  <div class="dymek bot">Sprawdzę to dla Ciebie.</div>
+</div>
+<div class="czat-opis"><p class="mono">Wystarczy jedno zdanie</p><p>Klient wie od pierwszej wiadomości, że rozmawia z AI. Tego wymaga artykuł 50 AI Act, gdy nie jest to oczywiste.</p></div><p class="alt mono">ALT: Okno czatu na stronie firmy, w którym bot zaczyna rozmowę zdaniem, że jest asystentem AI</p></figure>
+<h2>Co obowiązuje od 2 sierpnia 2026</h2>
+<p>Komisja Europejska potwierdziła w wytycznych z 20 lipca 2026, że obowiązki z artykułu 50 stosuje się od tej daty. Najważniejsza zasada jest prosta. Klient ma wiedzieć, że rozmawia ze sztuczną inteligencją, chyba że jest to oczywiste. Informacja ma paść najpóźniej przy pierwszym kontakcie.</p>
+<p>Opisują to <a href="https://www.prawo.pl/biznes/ai-act-jakie-obowiazki-maja-firmy-od-sierpnia-2026,1550271.html">obowiązki z AI Act od sierpnia 2026</a> w artykule na Prawo.pl.</p>
+<figure class="graf" role="img" aria-label="Oś czasu AI Act od lutego 2025 do sierpnia 2028 z zaznaczonym 2 sierpnia 2026 jako obowiązującym teraz"><ol class="os">
+  <li><time class="mono">02.02.2025</time><b>Kompetencje AI</b><span>Art. 4 obowiązuje.</span></li>
+  <li class="teraz"><time class="mono">02.08.2026</time><b>Przejrzystość</b><span>Klient wie, że rozmawia z AI. Obowiązuje teraz.</span></li>
+  <li><time class="mono">02.12.2026</time><b>Oznaczanie treści</b><span>Koniec okresu przejściowego dla dostawców.</span></li>
+  <li class="pozniej"><time class="mono">02.12.2027</time><b>Wysokie ryzyko</b><span>Np. rekrutacja, dostęp do usług.</span></li>
+  <li class="pozniej"><time class="mono">02.08.2028</time><b>Produkty regulowane</b><span>AI wbudowana w produkty.</span></li>
+</ol><figcaption>Źródło: Prawo.pl, 11.08.2026.</figcaption><p class="alt mono">ALT: Oś czasu AI Act od lutego 2025 do sierpnia 2028 z zaznaczonym 2 sierpnia 2026 jako obowiązującym teraz</p></figure>
+<h2>Co jest po stronie dostawcy, a co po Twojej</h2>
+<p>Techniczne oznaczanie treści generowanych przez AI spoczywa głównie na dostawcy narzędzia. Dla systemów wprowadzonych przed 2 sierpnia 2026 okres przejściowy trwa do 2 grudnia 2026.</p>
+<p>Ty odpowiadasz za to, jak narzędzie działa u Twoich klientów. Sprawdź, czy bot się przedstawia, i przeczytaj umowę z dostawcą. Samo użycie AI do opisu produktu albo grafiki reklamowej nie oznacza automatycznie obowiązku informowania o tym.</p>
+<figure class="graf" role="img" aria-label="Porównanie obowiązków AI Act: co należy do dostawcy narzędzia, a co do firmy, która z niego korzysta"><div class="dwie">
+  <div class="kol"><p class="mono">Dostawca narzędzia</p><ul><li>Techniczne oznaczanie treści z AI</li><li>Informacja o AI zaprojektowana w produkcie</li></ul></div>
+  <div class="kol ty"><p class="mono">Ty</p><ul><li>Sprawdzasz, czy bot się przedstawia</li><li>Czytasz umowę z dostawcą</li><li>Ujawniasz deepfake'i</li></ul></div>
+</div><p class="alt mono">ALT: Porównanie obowiązków AI Act: co należy do dostawcy narzędzia, a co do firmy, która z niego korzysta</p></figure>
+<h2>Co AI Act dla małej firmy przesuwa na później</h2>
+<p>Obowiązki dla systemów wysokiego ryzyka, na przykład w rekrutacji czy ocenie dostępu do usług, zaczną obowiązywać 2 grudnia 2027. Dla systemów wbudowanych w regulowane produkty termin to 2 sierpnia 2028. Typowy czat w małym sklepie zwykle nie jest takim systemem.</p>
+<h2>AI Act dla małej firmy w trzech krokach</h2>
+<ol class="lista"><li>Spisz miejsca, w których klient rozmawia z AI: czat na stronie, bot telefoniczny, automatyczne odpowiedzi w mailach.</li><li>Dodaj na początku rozmowy jedno zdanie, na przykład „Jestem asystentem AI”.</li><li>Przejrzyj grafiki, nagrania i wideo. Obrazy i dźwięk udające prawdziwe osoby wymagają ujawnienia.</li></ol>
+<p>Za naruszenie przepisów o przejrzystości grozi kara do 15 mln euro albo do 3 procent światowego obrotu, zależnie od tego, która kwota jest wyższa. Dla małych i średnich firm przewidziano niższy limit. To progi maksymalne, nie stała stawka. Ten tekst nie jest poradą prawną. Przy wątpliwościach zapytaj prawnika.</p>
+<figure class="graf" role="img" aria-label="Trzy kroki dostosowania małej firmy do AI Act: lista miejsc z AI, zdanie powitalne, przegląd grafik"><ol class="kroki">
+  <li><span class="nr">1</span><b>Spisz miejsca z AI</b><span>Czat, bot w telefonie, automatyczne maile.</span></li>
+  <li><span class="nr">2</span><b>Dodaj jedno zdanie</b><span>„Jestem asystentem AI” na starcie rozmowy.</span></li>
+  <li><span class="nr">3</span><b>Przejrzyj media</b><span>Obraz i dźwięk udające ludzi wymagają ujawnienia.</span></li>
+</ol>
+<div class="kara"><span class="duza">15 mln €</span><span>albo 3% obrotu to <b>maksymalna</b> kara za brak przejrzystości. Dla MŚP limit jest niższy.</span></div><p class="alt mono">ALT: Trzy kroki dostosowania małej firmy do AI Act: lista miejsc z AI, zdanie powitalne, przegląd grafik</p></figure>
+<h2>Pytania i odpowiedzi</h2>
+<div class="faq">
+<details><summary>Czy muszę informować klientów, że rozmawiają z botem?</summary><p>Tak, jeśli nie jest to oczywiste. Najlepiej zrobić to w pierwszej wiadomości.</p></details>
+<details><summary>Czy AI Act obejmuje też gotowe narzędzia, które tylko kupuję?</summary><p>Tak. Obowiązek zaprojektowania informacji ma dostawca, ale sprawdzenie wdrożenia i umowy zostaje po Twojej stronie.</p></details>
+<details><summary>Czy AI Act dla małej firmy wymaga rejestru narzędzi AI?</summary><p>Nie. Prawo.pl zaznacza, że przepisy nie wymagają rejestru ani stanowiska „AI officera”. Lista miejsc, gdzie używasz AI, to jednak dobry pierwszy krok.</p></details>
+<details><summary>Czy opis produktu napisany przez AI trzeba oznaczać?</summary><p>Nie automatycznie. Obowiązek dotyczy określonych treści, na przykład deepfake'ów i tekstów o sprawach interesu publicznego.</p></details>
+<details><summary>Ile to kosztuje, żeby się dostosować?</summary><p>Zależy od narzędzia i umowy z dostawcą. Napisz, jakiego bota używasz, a policzę to dla Twojego przypadku.</p></details>
+</div></div>
+  <p class="wroc mono"><a href="#spis">Wróć do spisu</a></p>
+</article></section><section><article id="ile-firm-uzywa-ai" class="wpis" style="--pl:var(--m)">
+  <p class="label mono">Wpis 2 z 5 · /wpisy/ile-firm-uzywa-ai/</p>
+  <header><h1 class="sec-title">Automatyzacja procesów w firmie: jak zacząć</h1><time class="mono">24.11.2026</time>
+  <p class="google mono"><span>Wynik w Google</span><b>Automatyzacja procesów w firmie: jak zacząć | Robert Dębicki</b>Automatyzacja procesów w firmie: AI stosuje 8,7% polskich firm. Zobacz, jak wybrać pierwszy proces i co dało to moim klientom. Napisz do mnie.</p></header>
+  <div class="wpis-tresc"><p class="wstep"><strong>Automatyzacja procesów w firmie</strong> to nadal przewaga, nie standard. Według GUS w 2025 roku sztuczną inteligencję stosowało 8,7 procent polskich firm. Opisuję, jak wybrać pierwszy proces do zautomatyzowania i jakie efekty widzieli moi klienci. Chcesz sprawdzić, co zautomatyzować u siebie? Napisz do mnie.</p>
+<h2>Ile firm używa AI i do czego</h2>
+<p>Z danych GUS za 2025 rok wynika, że 8,7 procent firm w Polsce stosuje AI. Wśród zastosowań GUS wymienia generowanie tekstu lub głosu (5,3 procent firm) oraz analizę tekstu (2,1 procent). Eurostat podaje dla Polski 8,36 procent, a dla całej Unii 19,95 procent firm zatrudniających ponad 10 osób.</p>
+<p>Raport PIE dodaje, że 77 procent firm nie chce wdrażać AI, dopóki nie będzie to konieczne. Wyniki opisuje serwis <a href="https://www.podatki.biz/artykuly/rosnie-wykorzystanie-ai-w-firmach-jednak-wolniej-niz-oczekiwano_16_61140.htm">dane o AI w polskich firmach</a>.</p>
+<figure class="graf" role="img" aria-label="Wykres słupkowy: AI stosuje 8,36 procent firm w Polsce wobec 19,95 procent w Unii Europejskiej"><p class="graf-tyt">Firmy, które stosują AI w 2025 roku</p><div class="slupki"><div class="rz" title="Polska: 8,36%"><span class="etk">Polska</span><span class="tor"><span class="sl pl" style="width:13.9%"></span></span><span class="wart mono">8,36%</span></div><div class="rz" title="UE, wszystkie: 19,95%"><span class="etk">UE, wszystkie</span><span class="tor"><span class="sl" style="width:33.2%"></span></span><span class="wart mono">19,95%</span></div><div class="rz" title="UE, małe: 17,13%"><span class="etk">UE, małe</span><span class="tor"><span class="sl" style="width:28.5%"></span></span><span class="wart mono">17,13%</span></div><div class="rz" title="UE, średnie: 30,36%"><span class="etk">UE, średnie</span><span class="tor"><span class="sl" style="width:50.6%"></span></span><span class="wart mono">30,36%</span></div><div class="rz" title="UE, duże: 55,03%"><span class="etk">UE, duże</span><span class="tor"><span class="sl" style="width:91.7%"></span></span><span class="wart mono">55,03%</span></div></div><figcaption>Firmy od 10 osób. Źródło: Eurostat za podatki.biz.</figcaption><p class="alt mono">ALT: Wykres słupkowy: AI stosuje 8,36 procent firm w Polsce wobec 19,95 procent w Unii Europejskiej</p></figure>
+<h2>Jak zacząć automatyzację procesów w firmie</h2>
+<p>Zacznij od jednego zadania, które ktoś w Twojej firmie powtarza co tydzień według tych samych reguł. Zadaj trzy pytania:</p>
+<ol class="lista"><li>Ile godzin miesięcznie zajmuje to zadanie?</li><li>Czy dane wejściowe są zawsze w tym samym miejscu, na przykład w poczcie albo formularzu?</li><li>Co się stanie, gdy system się pomyli, i kto to zauważy?</li></ol>
+<p>Trzecie pytanie jest najważniejsze. Tam, gdzie pomyłka kosztuje, zostawiam decyzję człowiekowi.</p>
+<figure class="graf" role="img" aria-label="Trzy pytania przed pierwszą automatyzacją: ile godzin zajmuje zadanie, skąd są dane, co jeśli system się pomyli"><ol class="kroki">
+  <li><span class="nr">1</span><b>Ile godzin?</b><span>Ile miesięcznie zajmuje to zadanie.</span></li>
+  <li><span class="nr">2</span><b>Skąd dane?</b><span>Zawsze z tego samego miejsca: poczta, formularz.</span></li>
+  <li class="wazne"><span class="nr">3</span><b>Co przy pomyłce?</b><span>Kto ją zauważy. Tu decyduje człowiek.</span></li>
+</ol><p class="alt mono">ALT: Trzy pytania przed pierwszą automatyzacją: ile godzin zajmuje zadanie, skąd są dane, co jeśli system się pomyli</p></figure>
+<h2>Efekty automatyzacji procesów w firmie</h2>
+<p>W firmie szkoleniowej zbudowałem aplikację do zapisów i grafików dla 12 trenerek. Według właściciela firma ma o 60 godzin mniej ręcznej pracy miesięcznie.</p>
+<p>W firmie, która zbierała dane z wniosków o dofinansowanie dla gmin, proces codziennie pobiera dokumenty i zapisuje dane w jednej bazie. Opisuję go w osobnym wpisie.</p>
+<p>Producent mebli dla gastronomii dostał proces, który dzieli 230 klientów według czasu od ostatniego zamówienia. Model językowy włącza się tylko przy 29 z nich. Segmentacja znalazła 28 klientów ponad ręczną listę właściciela, z historią zamówień wartą 174 717 zł.</p>
+<figure class="graf" role="img" aria-label="Trzy wyniki wdrożeń: 60 godzin mniej pracy miesięcznie, model AI przy 29 z 230 klientów, 28 klientów ponad ręczną listę"><div class="liczby">
+  <div><span class="duza">60 h</span><span>mniej ręcznej pracy miesięcznie w firmie szkoleniowej, według właściciela</span></div>
+  <div><span class="duza">29 z 230</span><span>klientów, przy których włącza się model językowy</span></div>
+  <div><span class="duza">+28</span><span>klientów ponad ręczną listę, historia zamówień 174 717 zł</span></div>
+</div><p class="alt mono">ALT: Trzy wyniki wdrożeń: 60 godzin mniej pracy miesięcznie, model AI przy 29 z 230 klientów, 28 klientów ponad ręczną listę</p></figure>
+<h2>Pytania i odpowiedzi</h2>
+<div class="faq">
+<details><summary>Od jakiej firmy ma sens automatyzacja?</summary><p>Od takiej, w której ktoś co tydzień wykonuje to samo zadanie ręcznie. Wielkość firmy nie jest warunkiem.</p></details>
+<details><summary>Ile trwa pierwsze wdrożenie?</summary><p>Zależy od procesu. W jednym z projektów klient po miesiącu prowadził kampanie samodzielnie. Czas dla Twojego procesu podaję po rozmowie o szczegółach.</p></details>
+<details><summary>Czy automatyzacja procesów w firmie wymaga programisty?</summary><p>Nie. Prowadzę wdrożenie od analizy procesu do przekazania go zespołowi. Scenariusze mają obsługę błędów i ponawianie operacji.</p></details>
+<details><summary>Czy AI zastąpi moich pracowników?</summary><p>W opisanych wdrożeniach decyzje zostają u ludzi. Przykład: właściciel akceptuje każdą wiadomość do klienta przed wysyłką.</p></details>
+<details><summary>Od czego zacząć rozmowę?</summary><p>Od jednego zdania: „Co robimy ręcznie co tydzień?”. Napisz mi je w mailu.</p></details>
+</div></div>
+  <p class="wroc mono"><a href="#spis">Wróć do spisu</a></p>
+</article></section><section><article id="automatyczny-odczyt-dokumentow" class="wpis" style="--pl:var(--y)">
+  <p class="label mono">Wpis 3 z 5 · /wpisy/automatyczny-odczyt-dokumentow/</p>
+  <header><h1 class="sec-title">Automatyczny odczyt dokumentów przez AI</h1><time class="mono">01.12.2026</time>
+  <p class="google mono"><span>Wynik w Google</span><b>Automatyczny odczyt dokumentów przez AI | Robert Dębicki</b>Automatyczny odczyt dokumentów przez AI: setki wniosków trafia do jednej bazy, a niepewne odczyty sprawdza człowiek. Napisz, co masz do przepisywania.</p></header>
+  <div class="wpis-tresc"><p class="wstep"><strong>Automatyczny odczyt dokumentów</strong> oszczędza czas wszędzie tam, gdzie ktoś przepisuje kwoty i terminy z PDF do tabeli. Opisuję wdrożenie, w którym system codziennie czyta setki wniosków i zapisuje dane w jednej bazie. Pokazuję też, co się dzieje, gdy odczyt jest niepewny. Przepisujesz dokumenty ręcznie? Napisz do mnie.</p>
+<h2>Problem: dane w plikach i brak wspólnej bazy</h2>
+<p>Zespół, dla którego pracowałem, wyciągał dane z wniosków o dofinansowanie dla gmin ręcznie. Dokumenty przychodziły mailem i leżały na SharePoincie. Zespół nie miał wspólnej bazy danych.</p>
+<figure class="graf" role="img" aria-label="Porównanie przed i po: ręczne przepisywanie wniosków z plików kontra jedna baza z opiekunem każdego wniosku"><div class="dwie">
+  <div class="kol"><p class="mono">Przed</p><ul><li>Dane przepisywane ręcznie</li><li>Pliki w poczcie i na SharePoincie</li><li>Brak wspólnej bazy</li></ul></div>
+  <div class="kol ty"><p class="mono">Po</p><ul><li>Dokumenty pobierane codziennie</li><li>Jedna baza w Airtable</li><li>Każdy wniosek ma opiekuna</li></ul></div>
+</div><p class="alt mono">ALT: Porównanie przed i po: ręczne przepisywanie wniosków z plików kontra jedna baza z opiekunem każdego wniosku</p></figure>
+<h2>Jak działa automatyczny odczyt dokumentów</h2>
+<p>System działa w czterech krokach:</p>
+<ol class="lista"><li>Pobiera dokumenty z poczty i SharePointa, codziennie.</li><li>Odczytuje je przez OCR razem z modelem językowym.</li><li>Wyciąga kwoty, terminy i dane kontrahentów.</li><li>Zapisuje dane w Airtable i przypisuje opiekuna wniosku.</li></ol>
+<p>Całość stoi na n8n. Do odczytu używam modelu Gemini.</p>
+<figure class="graf" role="img" aria-label="Schemat odczytu dokumentów: poczta i SharePoint, OCR z modelem językowym, dane w Airtable, niepewne do człowieka"><div class="przeplyw">
+  <div class="wezel"><span class="mono">1</span><b>Poczta i SharePoint</b><span>pobieranie codziennie</span></div>
+  <div class="strz" aria-hidden="true"></div>
+  <div class="wezel"><span class="mono">2</span><b>OCR i model językowy</b><span>Gemini czyta dokument</span></div>
+  <div class="strz" aria-hidden="true"></div>
+  <div class="wezel"><span class="mono">3</span><b>Kwoty, terminy, kontrahenci</b><span>wyciągnięte dane</span></div>
+  <div class="strz" aria-hidden="true"></div>
+  <div class="rozwidlenie">
+    <div class="wezel ok"><span class="mono">pewny odczyt</span><b>Airtable</b><span>zapis i opiekun wniosku</span></div>
+    <div class="wezel czlowiek"><span class="mono">niepewny odczyt</span><b>Człowiek potwierdza</b><span>wskazana osoba zatwierdza</span></div>
+  </div>
+</div><figcaption>Całość działa w n8n.</figcaption><p class="alt mono">ALT: Schemat odczytu dokumentów: poczta i SharePoint, OCR z modelem językowym, dane w Airtable, niepewne do człowieka</p></figure>
+<h2>Co z odczytem, którego system nie jest pewny</h2>
+<p>Model językowy może się pomylić, a pomyłka w kwocie kosztuje. Dlatego gdy odczyt jest niepewny, system prosi wskazaną osobę o potwierdzenie.</p>
+<p>Dzięki temu automatyzacja nie udaje nieomylnej. Pewne odczyty idą same, niepewne trafiają do człowieka.</p>
+<figure class="graf" role="img" aria-label="Makieta ekranu potwierdzenia: skan wniosku obok odczytanej kwoty oznaczonej jako niepewna do zatwierdzenia"><div class="potw">
+  <div class="skan" aria-hidden="true"><i></i><i></i><i class="kr"></i><i></i><i class="kr"></i><i></i></div>
+  <dl class="pola">
+    <div><dt class="mono">Kontrahent</dt><dd>Gmina, przykład</dd></div>
+    <div><dt class="mono">Termin</dt><dd>30.11</dd></div>
+    <div class="niep"><dt class="mono">Kwota</dt><dd>12 400 zł <em class="mono">niepewne</em></dd></div>
+    <div class="przyc"><span class="btn solid">Zatwierdź</span><span class="btn">Popraw</span></div>
+  </dl>
+</div><figcaption>Ilustracja zasady, nie zrzut z systemu klienta. Dane przykładowe.</figcaption><p class="alt mono">ALT: Makieta ekranu potwierdzenia: skan wniosku obok odczytanej kwoty oznaczonej jako niepewna do zatwierdzenia</p></figure>
+<h2>Co zmienia się dla zespołu</h2>
+<p>Automatyczny odczyt dokumentów zdejmuje z zespołu przepisywanie. Zespół ma jedną bazę zamiast folderów z plikami. System przypisuje opiekuna do każdego wniosku. Nie podaję tu liczby zaoszczędzonych godzin, bo nie mam zmierzonej wartości. Wiem natomiast, że proces obsługuje setki wniosków i działa codziennie.</p>
+<h2>Pytania i odpowiedzi</h2>
+<div class="faq">
+<details><summary>Czy automatyczny odczyt dokumentów obejmuje każdy typ?</summary><p>Nie. Najlepiej radzi sobie z dokumentami o powtarzalnym układzie, jak wnioski, faktury czy umowy. Skany słabej jakości częściej trafiają do potwierdzenia przez człowieka.</p></details>
+<details><summary>Co jeśli system źle odczyta kwotę?</summary><p>Przy niepewnym odczycie system pyta człowieka. Gdy odczyt wygląda na pewny, kwoty okresowo sprawdzaj wyrywkowo.</p></details>
+<details><summary>Czy muszę zmieniać program, którego używam?</summary><p>Zwykle nie. W opisanym wdrożeniu system pobiera dokumenty z poczty i SharePointa, a dane zapisuje w Airtable.</p></details>
+<details><summary>Ile kosztuje takie wdrożenie?</summary><p>Cena zależy od liczby typów dokumentów i miejsc zapisu. Napisz, jakie dokumenty przepisujesz, a podam wycenę.</p></details>
+<details><summary>Czy dane z dokumentów są bezpieczne?</summary><p>To zależy od wybranych usług i umów z ich dostawcami. Przed wdrożeniem ustalam z Tobą, gdzie dane mogą trafiać. Przy danych osobowych to ważne ze względu na RODO.</p></details>
+</div></div>
+  <p class="wroc mono"><a href="#spis">Wróć do spisu</a></p>
+</article></section><section><article id="voice-bot-dla-firmy" class="wpis" style="--pl:var(--c)">
+  <p class="label mono">Wpis 4 z 5 · /wpisy/voice-bot-dla-firmy/</p>
+  <header><h1 class="sec-title">Voice bot dla firmy: oddzwonienie w 2 min</h1><time class="mono">08.12.2026</time>
+  <p class="google mono"><span>Wynik w Google</span><b>Voice bot dla firmy: oddzwonienie w 2 min | Robert Dębicki</b>Voice bot dla firmy dzwoni do osoby z formularza w 2 minuty i robi notatkę dla handlowca. Zobacz, jak działa i co z AI Act. Napisz do mnie.</p></header>
+  <div class="wpis-tresc"><p class="wstep"><strong>Voice bot dla firmy</strong> może zadzwonić do osoby, która wypełniła formularz na Twojej stronie, w 2 minuty od wysłania. Opisuję wdrożenie, w którym bot obsługuje około 15 rozmów dziennie i przekazuje handlowcowi gotową notatkę. Chcesz oddzwaniać szybciej do zapytań? Napisz do mnie.</p>
+<figure class="graf" role="img" aria-label="Oś czasu voice bota: formularz o 0:00, telefon bota o 2:00, notatka z potrzebą i budżetem trafia do Pipedrive"><ol class="minuty">
+  <li><time class="mono">0:00</time><b>Formularz</b><span>Klient wysyła zapytanie.</span></li>
+  <li class="teraz"><time class="mono">2:00</time><b>Bot dzwoni</b><span>Pytania kwalifikujące.</span></li>
+  <li><time class="mono">po rozmowie</time><b>Notatka</b><span>Potrzeba i budżet.</span></li>
+  <li><time class="mono">n8n</time><b>Pipedrive</b><span>Przy właściwej szansie sprzedaży.</span></li>
+</ol>
+<div class="kara"><span class="duza">~15</span><span>rozmów dziennie w opisanym wdrożeniu</span></div><p class="alt mono">ALT: Oś czasu voice bota: formularz o 0:00, telefon bota o 2:00, notatka z potrzebą i budżetem trafia do Pipedrive</p></figure>
+<h2>Po co oddzwaniać do leada od razu</h2>
+<p>Osoba, która właśnie wysłała formularz, ma sprawę w głowie. Handlowiec nie zawsze może zadzwonić od razu, bo prowadzi inne rozmowy.</p>
+<h2>Jak działa ten voice bot krok po kroku</h2>
+<ol class="lista"><li>Klient wysyła formularz kontaktowy na stronie.</li><li>Bot dzwoni do niego w ciągu 2 minut i zadaje pytania kwalifikujące.</li><li>Z rozmowy powstaje notatka z potrzebą klienta i jego budżetem.</li><li>Scenariusz w n8n zapisuje notatkę przy właściwej szansie sprzedaży w Pipedrive.</li></ol>
+<p>Przerwane rozmowy i prośby o kontakt w innym terminie też trafiają do handlowca. Nic nie ginie po drodze. Bot zbudowałem na ElevenLabs i Twilio.</p>
+<figure class="graf" role="img" aria-label="Makieta notatki voice bota w CRM z polami potrzeba, budżet i następny krok dla handlowca"><div class="ticket">
+  <header class="mono"><span>Notatka z rozmowy bota</span><span>Pipedrive</span></header>
+  <dl>
+    <div><dt>Potrzeba</dt><dd>Opis potrzeby klienta</dd></div>
+    <div><dt>Budżet</dt><dd>Kwota podana w rozmowie</dd></div>
+    <div><dt>Status</dt><dd>Rozmowa zakończona albo do ponowienia</dd></div>
+    <div><dt>Następny krok</dt><dd>Telefon handlowca</dd></div>
+  </dl>
+</div><figcaption>Ilustracja pól notatki. Treść przykładowa.</figcaption><p class="alt mono">ALT: Makieta notatki voice bota w CRM z polami potrzeba, budżet i następny krok dla handlowca</p></figure>
+<h2>Co robi voice bot dla firmy, a co handlowiec</h2>
+<p>Bot nie sprzedaje i nie negocjuje. Zbiera informacje i oszczędza handlowcowi pierwszą rozmowę, w której i tak padają te same pytania. Handlowiec dostaje notatkę, widzi budżet i potrzebę, więc od razu wie, od czego zacząć telefon.</p>
+<figure class="graf" role="img" aria-label="Podział pracy: voice bot zbiera informacje i robi notatkę, handlowiec prowadzi rozmowę sprzedażową"><div class="dwie">
+  <div class="kol"><p class="mono">Voice bot</p><ul><li>Dzwoni w 2 minuty</li><li>Zadaje pytania kwalifikujące</li><li>Zapisuje notatkę</li></ul></div>
+  <div class="kol ty"><p class="mono">Handlowiec</p><ul><li>Zna potrzebę przed telefonem</li><li>Sprzedaje i negocjuje</li><li>Oddzwania do przerwanych</li></ul></div>
+</div><p class="alt mono">ALT: Podział pracy: voice bot zbiera informacje i robi notatkę, handlowiec prowadzi rozmowę sprzedażową</p></figure>
+<h2>Voice bot dla firmy a przepisy AI Act</h2>
+<p>Od 2 sierpnia 2026 klient ma wiedzieć, że rozmawia z AI, jeśli nie jest to oczywiste. Przy telefonie od bota dobrym zwyczajem jest przedstawienie się w pierwszym zdaniu rozmowy. Szczegóły opisuję we wpisie o AI Act dla małej firmy.</p>
+<h2>Pytania i odpowiedzi</h2>
+<div class="faq">
+<details><summary>Czy klient pozna, że rozmawia z botem?</summary><p>Powinien to usłyszeć na początku rozmowy. Wymagają tego przepisy przejrzystości AI Act, gdy nie jest to oczywiste.</p></details>
+<details><summary>Ile rozmów dziennie obsłuży bot?</summary><p>W opisanym wdrożeniu to około 15 rozmów dziennie. Liczba zależy od liczby formularzy w Twojej firmie.</p></details>
+<details><summary>Co jeśli klient nie odbierze albo przerwie rozmowę?</summary><p>Takie przypadki też trafiają do handlowca. Ma wtedy informację, że kontakt jest do ponowienia, razem z tym, co klient zdążył powiedzieć.</p></details>
+<details><summary>W jakim CRM to działa?</summary><p>W opisanym wdrożeniu w Pipedrive. Pracuję też z HubSpotem i integracjami przez API.</p></details>
+<details><summary>Ile kosztuje voice bot dla firmy?</summary><p>Cena zależy od liczby pytań, CRM i godzin dzwonienia. Napisz, jakich zapytań dostajesz dziennie, a przygotuję wycenę.</p></details>
+</div></div>
+  <p class="wroc mono"><a href="#spis">Wróć do spisu</a></p>
+</article></section><section><article id="n8n-make-czy-zapier" class="wpis" style="--pl:var(--m)">
+  <p class="label mono">Wpis 5 z 5 · /wpisy/n8n-make-czy-zapier/</p>
+  <header><h1 class="sec-title">n8n, Make czy Zapier: jak wybrać do firmy</h1><time class="mono">15.12.2026</time>
+  <p class="google mono"><span>Wynik w Google</span><b>n8n, Make czy Zapier: jak wybrać do firmy | Robert Dębicki</b>n8n, Make czy Zapier: każde liczy opłaty inaczej. Zobacz na przykładzie 1 scenariusza, ile jednostek zużyjesz i co wybrać. Napisz, doradzę.</p></header>
+  <div class="wpis-tresc"><p class="wstep"><strong>n8n, Make czy Zapier</strong> to pytanie, które słyszę od właścicieli firm przed pierwszą automatyzacją. Wszystkie trzy łączą programy ze sobą i wykonują zadania za Ciebie. Różnią się tym, jak liczą koszty i ile wiedzy technicznej wymagają. Opisuję, na co patrzeć, zanim wybierzesz. Nie wiesz, które narzędzie pasuje do Twojej firmy? Napisz do mnie.</p>
+<h2>Czym różni się n8n, Make i Zapier</h2>
+<p>Najważniejsza różnica to sposób naliczania opłat. Zapier liczy zadania, Make liczy operacje, a n8n liczy uruchomienia scenariusza. Weź scenariusz z wyzwalaczem i czterema akcjami, który obsługuje jeden rekord. W Zapierze to 4 zadania, bo wyzwalacz nie zużywa zadań. W Make to 5 operacji, bo wyzwalacz też się liczy. W n8n to jedno uruchomienie. Przy kilku automatyzacjach różnica jest mała. Przy wielu rośnie.</p>
+<p>Ceny zmieniają się często, więc przed decyzją sprawdź aktualny cennik na stronie producenta. Porównanie narzędzi opisuje <a href="https://www.digidop.com/blog/n8n-vs-make-vs-zapier">porównanie n8n, Make i Zapier</a>.</p>
+<figure class="graf" role="img" aria-label="Scenariusz z wyzwalaczem i czterema akcjami: 4 zadania w Zapierze, 5 operacji w Make, 1 uruchomienie w n8n"><p class="graf-tyt">Wyzwalacz i 4 akcje, jeden rekord: ile jednostek zużyjesz</p>
+<div class="licznik">
+  <div class="rz"><b>Zapier</b><span class="kw"><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class=""></i></span><span class="mono">4 zadania</span></div>
+  <div class="rz"><b>Make</b><span class="kw"><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i></span><span class="mono">5 operacji</span></div>
+  <div class="rz n8n"><b>n8n</b><span class="kw"><i class="p cale"></i></span><span class="mono">1 uruchomienie</span></div>
+</div><figcaption>Źródła: pomoc Zapier i Make, Digidop (n8n). Ceny sprawdź w aktualnym cenniku.</figcaption><p class="alt mono">ALT: Scenariusz z wyzwalaczem i czterema akcjami: 4 zadania w Zapierze, 5 operacji w Make, 1 uruchomienie w n8n</p></figure>
+<h2>n8n, Make czy Zapier: które do jakiej firmy</h2>
+<p>Porównania opisują Zapiera jako najprostszy w obsłudze. Ma też najwięcej gotowych połączeń: na swojej stronie podaje ponad 10 000 aplikacji, a Make ponad 3500. Pasuje, gdy nikt w firmie nie zna się na technice i potrzebujesz szybkiego startu.</p>
+<p>Make ma graficzny edytor scenariuszy, w którym widać, co dokąd płynie. To kompromis dla osób z umiarkowaną wiedzą techniczną.</p>
+<p>n8n wymaga najwięcej wiedzy, ale daje największą kontrolę. Można go postawić na własnym serwerze, więc dane zostają u Ciebie. To ważne przy dokumentach klientów i RODO. Samodzielny hosting wymaga jednak konfiguracji i utrzymania.</p>
+<figure class="graf" role="img" aria-label="Tabela porównania n8n, Make i Zapier: prostota obsługi, wiedza techniczna, miejsce danych"><div class="tab-wrap"><table class="tab">
+  <thead><tr><th></th><th>Zapier</th><th>Make</th><th>n8n</th></tr></thead>
+  <tbody>
+    <tr><th>Start</th><td>Najprostszy</td><td>Edytor graficzny</td><td>Wymaga wiedzy</td></tr>
+    <tr><th>Gotowe połączenia</th><td>10 000+</td><td>3500+</td><td>ok. 1000, plus API</td></tr>
+    <tr><th>Dane</th><td>Chmura dostawcy</td><td>Chmura dostawcy</td><td>Może być Twój serwer</td></tr>
+    <tr><th>Dla kogo</th><td>Bez techniki</td><td>Średnia wiedza</td><td>Kontrola i skala</td></tr>
+  </tbody>
+</table></div><p class="alt mono">ALT: Tabela porównania n8n, Make i Zapier: prostota obsługi, wiedza techniczna, miejsce danych</p></figure>
+<h2>Dlaczego w moich wdrożeniach często wybieram n8n</h2>
+<p>Przy monitoringu temperatur w transporcie logika aplikacji przekroczyła limity workflow. Przeniosłem ją do n8n na AWS. System pilnuje ponad 150 pojazdów, a 20 dyspozytorów widzi odczyty odświeżane co minutę. Przy odczycie dokumentów i voice botach też używam n8n.</p>
+<p>To nie jest reguła dla każdego. Przy prostej automatyzacji dla małego zespołu Zapier albo Make wystarczą.</p>
+<figure class="graf" role="img" aria-label="Wdrożenie n8n na AWS w transporcie chłodniczym: ponad 150 pojazdów, 20 dyspozytorów, odczyt co minutę"><div class="liczby">
+  <div><span class="duza">150+</span><span>pojazdów pod nadzorem</span></div>
+  <div><span class="duza">20</span><span>dyspozytorów na dashboardzie</span></div>
+  <div><span class="duza">1 min</span><span>odświeżanie temperatury w naczepach</span></div>
+</div><p class="alt mono">ALT: Wdrożenie n8n na AWS w transporcie chłodniczym: ponad 150 pojazdów, 20 dyspozytorów, odczyt co minutę</p></figure>
+<h2>Pytania i odpowiedzi</h2>
+<div class="faq">
+<details><summary>Które narzędzie jest najtańsze?</summary><p>To zależy od liczby kroków, rekordów i uruchomień. Policz jeden swój scenariusz w aktualnych cennikach wszystkich trzech narzędzi.</p></details>
+<details><summary>Czy muszę umieć programować?</summary><p>Nie w Zapierze i Make. W n8n przydaje się podstawowa wiedza techniczna, zwłaszcza przy własnym serwerze.</p></details>
+<details><summary>Czy mogę później zmienić narzędzie?</summary><p>Tak, ale scenariusze trzeba odbudować, bo nie przenoszą się między narzędziami. Dlatego wybierz świadomie.</p></details>
+<details><summary>Gdzie są przechowywane moje dane?</summary><p>W Zapierze i Make w chmurze dostawcy. W n8n możesz wybrać własny serwer. Zawsze sprawdź umowę powierzenia danych.</p></details>
+<details><summary>n8n, Make czy Zapier: które wybrać dla mojej firmy?</summary><p>Napisz, co chcesz zautomatyzować i ile osób będzie z tego korzystać. Odpowiem, które narzędzie pasuje i dlaczego.</p></details>
+</div></div>
+  <p class="wroc mono"><a href="#spis">Wróć do spisu</a></p>
+</article></section>
+</main></body></html>

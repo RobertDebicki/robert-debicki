@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" role="img" aria-label="Stos dokumentów, strzałka i tabela z danymi, jeden wiersz oznaczony do sprawdzenia"><rect width="480" height="270" fill="#ffc400"/>
+<text x="28" y="44" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#131412">PDF → BAZA</text>
+<rect x="44" y="78" width="120" height="156" fill="#f4f5f1" stroke="#131412" stroke-width="4"/>
+<rect x="30" y="66" width="120" height="156" fill="#f4f5f1" stroke="#131412" stroke-width="4"/>
+<path d="M48 96h84M48 118h84M48 140h56M48 162h84M48 184h50" stroke="#131412" stroke-width="6"/>
+<path d="M190 150h64" stroke="#131412" stroke-width="6"/><path d="M248 134l18 16-18 16" fill="none" stroke="#131412" stroke-width="6" stroke-linejoin="round"/>
+<rect x="286" y="76" width="166" height="148" fill="#f4f5f1" stroke="#131412" stroke-width="4"/>
+<path d="M286 113h166M286 150h166M286 187h166" stroke="#131412" stroke-width="3"/>
+<path d="M300 96l8 8 14-14M300 133l8 8 14-14" fill="none" stroke="#EF7F1A" stroke-width="5"/>
+<rect x="296" y="160" width="146" height="22" fill="#EF7F1A"/><text x="306" y="177" font-family="Spline Sans Mono, Menlo, monospace" font-weight="600" font-size="14" fill="#131412">? sprawdź</text>
+<path d="M300 207l8 8 14-14" fill="none" stroke="#EF7F1A" stroke-width="5"/></svg>
