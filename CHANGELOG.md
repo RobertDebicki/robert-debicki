@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 2026-11-12 09:40, Claude Code
+
+**✅ Zrobione (tłumaczenie EN 5 wpisów skillem `/tlumacz-strone`, gałąź `tlumaczenie-wpisow-en`):**
+- `en.md` dla: ai-act-dla-malej-firmy, ile-firm-uzywa-ai, automatyczny-odczyt-dokumentow, voice-bot-dla-firmy, n8n-make-czy-zapier; stan `ai`, `zrodlo` ze skrótu `pl.md`. Linki wewnętrzne na `/en/posts/...`, kwota PLN 174,717, daty w zapisie en-US.
+- 16 grafik i 5 miniaturek po angielsku (`src/assets/wpisy/*-en-*.png`) z `docs/blog-szkice/podglad/grafiki_en.py` i `node zrzuty.mjs en`; ALT w `en.md` zgodne z grafikami (sprawdzone skryptem).
+- Kontrola tłumaczeń rozpoznaje pełne daty z dniem („20 lipca 2026”, „2.08.2026” ↔ „July 20, 2026”, „Aug. 2, 2026”, „7/20/2026”), decyzją Roberta zamiast zapisu brytyjskiego; pełne daty liczone przed regułą godzin („od 2.08” to nie godzina). Test najpierw czerwony; 20 testów skryptu OK, 16 par bez błędów.
+- `npm run sprawdz`: treść 0, GPS 0, vitest 152 pass/1 skipped, e2e 120 pass. Zrzuty `/en/posts/` (1440) i wpisu (390): bez przewijania w bok, przełącznik do PL.
+
+**🚧 W toku / nie wdrożone:**
+- Teksty EN czekają na korektę osoby z USA (prośba na końcu `narzedzia/tlumaczenie/jezyki/en.md`); stan `ai` → `sprawdzone` po korekcie.
+
+**🎯 Następny krok:**
+- PR, scalenie i wdrożenie. Wdrożenie tylko za zgodą Roberta w danej wiadomości (ta zgoda dotyczy rozmowy z 12.11 i nie przechodzi na kolejne sesje).
+
+**✅ Poprawki po `/code-review medium`:** „small online store” → „small store” (dopisany fakt), CTA voice bota „what kind of inquiries” (PL: jakich, nie ile), daty EN w jednym stylu AP i reguła w `jezyki/en.md`, podpis wykresu PL i EN „ponad 10 osób” jak w źródle (`zrodlo` w `en.md` przeliczone), `zrzuty.mjs` odrzuca nieznany argument. Bez zmian: komunikaty kontroli przy złym formacie daty (błąd i tak jest zgłaszany), ALT w `grafiki_en.py` zdublowane z `en.md` (pomocnik w docs/, zgodność sprawdzona skryptem).
+
+## 2026-11-12 09:10, Claude Code
+
+**✅ Zrobione (5 wpisów wdrożonych na robert-debicki.pl, zgoda Roberta 12.11):**
+- PR #6 scalony (CI na Linuksie: kontrole, testy i Lighthouse pass). `/security-review`: brak podatności.
+- `npm run wdroz -- --wgraj`: 67 plików, kopia zapasowa serwera w `~/Backups/robert-debicki-ftp/2026-11-12T08-04-46-964Z`. Odbiór zgłosił 4 pliki (przekroczony czas pobierania); sumy SHA-256 serwer i lokalnie zgodne dla wszystkich 4.
+- `test:produkcja` 5 pass. `/wpisy/` i strony wpisów 200, 5 wpisów w mapie strony, 5 miniaturek na liście, bez metatagu robots (indeksowanie).
+
+**🎯 Następny krok:**
+- Wersje EN wpisów z angielskimi grafikami (`/tlumacz-strone` + grafiki z makiety po angielsku). Do tego czasu menu EN „Posts” prowadzi do pustej listy.
+
 ## 2026-11-12 08:50, Claude Code
 
 **✅ Zrobione (5 wpisów na blogu, gałąź `blog-piec-wpisow`, nie wdrożone):**

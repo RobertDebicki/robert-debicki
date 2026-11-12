@@ -57,6 +57,14 @@ def _miesiace_slowem(miesiace: list) -> re.Pattern:
 _DATA_PL_SLOWEM = _miesiace_slowem(_MIESIACE_PL)
 _DATA_EN_SLOWEM = _miesiace_slowem(_MIESIACE_EN)
 
+# Pełna data z dniem: po polsku „20 lipca 2026” albo „2.08.2026”, w en-US „July 20, 2026”, „Aug. 2, 2026”, „7/20/2026”.
+_DZIEN = r"(0?[1-9]|[12]\d|3[01])"
+_MIES = r"(0?[1-9]|1[0-2])"
+_PELNA_PL_CYFRY = re.compile(rf"(?<![\d.]){_DZIEN}\.{_MIES}\.(\d{{4}})(?!\d|\.\d)")  # kropka kończąca zdanie dozwolona
+_PELNA_EN_CYFRY = re.compile(rf"(?<![\d/]){_MIES}/{_DZIEN}/(\d{{4}})(?![\d/])")
+_PELNA_PL_SLOWEM = re.compile(rf"\b{_DZIEN}\s+(" + "|".join(f"(?:{m})" for m in _MIESIACE_PL) + r")\s+(\d{4})\b", re.I)
+_PELNA_EN_SLOWEM = re.compile(r"\b(" + "|".join(f"(?:{m})" for m in _MIESIACE_EN) + rf")\s+{_DZIEN},?\s+(\d{{4}})\b", re.I)
+
 MYSLNIKI = {"\u2014": "długi myślnik (U+2014)", "\u2013": "krótki myślnik (U+2013)"}
 _CUDZYSLOWY = "\"„“”«»‘’‚‹›"
 
@@ -99,6 +107,26 @@ def _norma(zapis: str) -> str:
     return z.rstrip("0").rstrip(".") if "." in z else z
 
 
+def _wyjmij_pelne_daty(tekst: str, polski: bool) -> tuple:
+    """Zamienia datę z dniem na znacznik „DD.MM.RRRR”; robione przed „miesiąc rok”, żeby dzień nie został luźną liczbą."""
+    daty, miesiace = Counter(), _MIESIACE_PL if polski else _MIESIACE_EN
+
+    def zapisz(dzien, miesiac, rok):
+        daty[f"{int(dzien):02d}.{int(miesiac):02d}.{rok}"] += 1
+        return " "
+
+    def nr(slowo):
+        return next(i for i, wzor in enumerate(miesiace, 1) if re.fullmatch(wzor, slowo, re.I))
+
+    if polski:
+        tekst = _PELNA_PL_CYFRY.sub(lambda m: zapisz(m.group(1), m.group(2), m.group(3)), tekst)
+        tekst = _PELNA_PL_SLOWEM.sub(lambda m: zapisz(m.group(1), nr(m.group(2)), m.group(3)), tekst)
+    else:
+        tekst = _PELNA_EN_CYFRY.sub(lambda m: zapisz(m.group(2), m.group(1), m.group(3)), tekst)
+        tekst = _PELNA_EN_SLOWEM.sub(lambda m: zapisz(m.group(2), nr(m.group(1)), m.group(3)), tekst)
+    return tekst, daty
+
+
 def _wyjmij_daty(tekst: str, cyfry: re.Pattern, slowem: re.Pattern, miesiace: list) -> tuple:
     """Zamienia „miesiąc rok” na znaczniki „MM.RRRR”, żeby PL i EN dało się porównać mimo innego zapisu."""
     daty = Counter()
@@ -116,12 +144,15 @@ def _wyjmij_daty(tekst: str, cyfry: re.Pattern, slowem: re.Pattern, miesiace: li
 
 
 def fakty(surowy: str, zrodlowy: bool, slownie_do: int = 9) -> Counter:
-    """Liczby większe niż `slownie_do` i daty miesiąc-rok (klucz „data MM.RRRR”)."""
-    tekst = _KIERUNKOWY.sub(" ", _CZAS.sub(" ", _tekst(surowy)))
+    """Liczby większe niż `slownie_do`, daty z dniem (klucz „data DD.MM.RRRR”) i miesiąc-rok („data MM.RRRR”)."""
+    # Pełne daty przed godzinami: „od 2.08.2026” to data, a reguła godzin wzięłaby „od 2.08” za „od 2:08”.
+    tekst, pelne = _wyjmij_pelne_daty(_tekst(surowy), zrodlowy)
+    tekst = _KIERUNKOWY.sub(" ", _CZAS.sub(" ", tekst))
     if zrodlowy:
         tekst, daty = _wyjmij_daty(tekst, _DATA_PL_CYFRY, _DATA_PL_SLOWEM, _MIESIACE_PL)
     else:
         tekst, daty = _wyjmij_daty(tekst, _DATA_EN_CYFRY, _DATA_EN_SLOWEM, _MIESIACE_EN)
+    daty += pelne
     wynik = Counter({f"data {d}": n for d, n in daty.items()})
     for m in _SAMA_LICZBA.finditer(tekst):
         n = _norma(m.group(0))

@@ -80,7 +80,7 @@ def wykres():
     return figura(
         'Wykres słupkowy: AI stosuje 8,36 procent firm w Polsce wobec 19,95 procent w Unii Europejskiej',
         f'<p class="graf-tyt">Firmy, które stosują AI w 2025 roku</p><div class="slupki">{rzedy}</div>',
-        'Firmy od 10 osób. Źródło: Eurostat za podatki.biz.',
+        'Firmy zatrudniające ponad 10 osób. Źródło: Eurostat za podatki.biz.',
     )
 
 

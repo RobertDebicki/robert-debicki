@@ -10,7 +10,7 @@ nasze = ustalenie projektu. Zasady ogólne przeniesione z pakietu `/tlumacz` (we
 - Niczego nie dopisujesz: żadnych nowych liczb, efektów, przymiotników „wartościujących”, nazw klientów.
 - Klienta opisujesz branżą tak jak w PL. Nazwy produktów i narzędzi zostają bez zmian (n8n, Make.com, Claude Code, Airtable).
 - Zdanie niejasne w PL: zapytaj Roberta, zamiast zgadywać.
-- Kontrola `kontrola_tlumaczenia.py` porównuje liczby powyżej dziewięciu i daty miesiąc-rok. Przejście kontroli
+- Kontrola `kontrola_tlumaczenia.py` porównuje liczby powyżej dziewięciu, daty z dniem i daty miesiąc-rok. Przejście kontroli
   nie zwalnia z czytania: nazwy, warunki i zastrzeżenia sprawdzasz sam.
 
 ## Forma i ton
@@ -33,6 +33,7 @@ nasze = ustalenie projektu. Zasady ogólne przeniesione z pakietu `/tlumacz` (we
 - Separator dziesiętny kropka („12.5”), tysiące przecinkiem („1,600”, „174,717”) (MS 4.1.10).
 - Kwota w złotych: kod waluty i liczba bez przeliczania („PLN 174,717” albo „174,717 PLN”); nigdy w dolarach (nasze).
 - Data: „October 2026”, „Oct. 2026” albo „10/2026”; nie „10.2026” (MS 4.1.2; kontrola zgłasza polski zapis jako UWAGA).
+- Data z dniem w stylu AP, tak samo w całym tekście: „Aug. 2, 2026”, „Dec. 2, 2027”, „Feb. 2, 2025”; marzec do lipca pełną nazwą („July 20, 2026”). Bez „20 July 2026” i „July 20th” (AP; kontrola ich nie rozpoznaje jako daty i zgłosi błąd).
 - Oxford comma w wyliczeniu: „n8n, Make.com, and Airtable” (MS 4.1.12; AP go nie wymaga, w treści strony stosujemy).
 - Tytuły i nagłówki wielką literą tylko na początku i w nazwach własnych (sentence case) (MS 4.1.4).
 - Po dwukropku w zdaniu mała litera, chyba że po nim jest całe zdanie (MS 4.1.4).

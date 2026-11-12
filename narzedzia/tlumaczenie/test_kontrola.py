@@ -94,6 +94,16 @@ class KontrolaTlumaczenia(unittest.TestCase):
         bledy = k.bledy(pl, en.replace("August", "September"))
         self.assertTrue(any("08.2026" in b for b in bledy), bledy)
 
+    def test_pelna_data_z_dniem_po_polsku_i_po_amerykansku_to_ta_sama_data(self):
+        pl = "Wytyczne z 20 lipca 2026. Od 2.08.2026 obowiązuje. Źródło: 11.08.2026. Termin: 2 grudnia 2027."
+        en = "Guidelines of July 20, 2026. In force since Aug. 2, 2026. Source: Aug. 11, 2026. Deadline: December 2, 2027."
+        self.assertEqual(k.bledy(pl, en), [])
+        self.assertEqual(k.bledy(pl, en.replace("Aug. 11, 2026", "8/11/2026")), [])
+        bledy = k.bledy(pl, en.replace("July 20, 2026", "July 21, 2026"))
+        self.assertTrue(any("20.07.2026" in b for b in bledy), bledy)
+        bledy = k.bledy(pl, en.replace("December 2, 2027", "December 2, 2028"))
+        self.assertTrue(any("02.12.2027" in b for b in bledy), bledy)
+
     def test_pola_techniczne_nie_sa_porownywane(self):
         # zrodlo (skrót SHA-256) i kolejnosc są tylko w nagłówku; ich cyfry nie są faktami z treści.
         self.assertEqual(k.bledy(PL, EN.replace("kolejnosc: 3", "kolejnosc: 12")), [])
