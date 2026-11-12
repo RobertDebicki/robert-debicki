@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-12 09:55, Claude Code
+
+**✅ Zrobione (wpisy EN wdrożone na robert-debicki.pl, zgoda Roberta 12.11 „scalone wdróż”):**
+- PR #7 scalony przez Roberta. `npm run wdroz -- --wgraj`: 103 pliki, kopia zapasowa `~/Backups/robert-debicki-ftp/2026-11-12T08-50-42-325Z`. Odbiór zgłosił 4 pliki (przekroczony czas); sumy SHA-256 serwer i lokalnie zgodne dla wszystkich 4.
+- `test:produkcja` 5 pass. `/en/posts/` i strony wpisów EN 200, 5 miniaturek EN, 5 wpisów EN w mapie strony.
+
+**🚧 W toku:**
+- Teksty EN w stanie `ai`: korekta osoby z USA (prośba na końcu `narzedzia/tlumaczenie/jezyki/en.md`), potem `tlumaczenie: sprawdzone`.
+
+**🎯 Następny krok:**
+- Korekta EN przez native speakera; zdarzenia kluczowe w GA4 po pierwszych kliknięciach (wpis z 11.11).
+
 ## 2026-11-12 09:40, Claude Code
 
 **✅ Zrobione (tłumaczenie EN 5 wpisów skillem `/tlumacz-strone`, gałąź `tlumaczenie-wpisow-en`):**
