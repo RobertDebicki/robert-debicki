@@ -18,7 +18,7 @@ export default defineConfig({
   // wpisana w kod przy budowaniu, więc w buildzie produkcyjnym gałąź z fiksturami znika razem z plikami.
   vite: { define: { 'import.meta.env.OBRAZY_Z_FIKSTUR': JSON.stringify(Boolean(process.env.TRESC_BAZA)) } },
   // Obrazy wstawione w treść wpisu z panelu (ścieżka od korzenia repo) przechodzą przez optymalizację Astro.
-  markdown: { processor: satteri({ mdastPlugins: [obrazyWTresci({ dozwolone: ['/src/assets/', ...(process.env.TRESC_BAZA ? ['/testy/fikstury/'] : [])] })] }) },
+  markdown: { processor: satteri({ mdastPlugins: [obrazyWTresci({ foldery: ['/src/assets/wpisy/', ...(process.env.TRESC_BAZA ? ['/testy/fikstury/zdjecia/'] : [])] })] }) },
   integrations: [
     sitemap({
       // panel Sveltii nie jest stroną serwisu

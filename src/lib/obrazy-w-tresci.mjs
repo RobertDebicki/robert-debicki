@@ -1,65 +1,55 @@
-// Panel (Sveltia) wstawia obraz w treść wpisu ścieżką od korzenia repozytorium, np. `/src/assets/wpisy/grafika.png`
+// Panel (Sveltia) wstawia obraz w treść wpisu ścieżką od korzenia repozytorium, np. `/src/assets/wpisy/grafika-1.png`
 // (media_folder i public_folder w panel.ts). Astro traktuje ścieżkę z `/` jako plik z public/ i nie optymalizuje go,
 // więc wtyczka Sätteri (procesor Markdown w Astro 7) zamienia ją na ścieżkę względną od pliku .md.
 // Wtedy Astro robi z niej obraz z wymiarami i WebP. Wtyczka działa przed zbieraniem obrazów przez Astro.
-import { readdirSync, statSync } from 'node:fs';
-import { basename, dirname, isAbsolute, join, relative, sep } from 'node:path';
+// Przyjmujemy tylko bezpieczne nazwy plików: bez kodowania %, polskich znaków i wielkich liter nie ma przypadków,
+// w których build na macOS przechodzi, a obrazek na stronie jest zepsuty.
+import { existsSync, readdirSync } from 'node:fs';
+import { dirname, join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const KORZEN = fileURLToPath(new URL('../..', import.meta.url));
-
-/** Odkodowuje %XX; ciągi, których nie da się odkodować (np. dosłowny `%`), zostawia bez zmian zamiast odrzucać całość. */
-function odkoduj(url) {
-  return url.replace(/(?:%[0-9A-Fa-f]{2})+/g, (ciag) => {
-    try {
-      return decodeURIComponent(ciag);
-    } catch {
-      return ciag;
-    }
-  });
-}
-
-/** Czy `cel` to plik o dokładnie tej nazwie (z wielkością liter: macOS jej nie rozróżnia, Linux w CI tak). */
-function plikDokladnie(cel) {
-  try {
-    return statSync(cel).isFile() && readdirSync(dirname(cel)).includes(basename(cel));
-  } catch {
-    return false;
-  }
-}
+const NAZWA = /^[a-z0-9_-]+(?:\.[a-z0-9_-]+)*\.(?:png|jpe?g|webp|avif|gif|svg)$/;
 
 /**
- * Ścieżka względna od pliku .md do obrazu, zakodowana jak adres (Astro robi na niej decodeURI), albo null,
- * gdy adresu nie zmieniamy (zewnętrzny, względny, spoza dozwolonych folderów). Każdy inny problem zatrzymuje build
- * czytelnym komunikatem: inaczej na stronie zostałby obrazek z adresem, którego serwer nie zna.
+ * Ścieżka względna od pliku .md do obrazu albo null, gdy adresu nie zmieniamy (zewnętrzny, względny, plik z public/).
+ * Każda inna ścieżka od `/` zatrzymuje build, bo na stronie dałaby zepsuty obrazek.
+ * @param {string[]} foldery foldery od korzenia repo, z `/` na końcu
  */
-export function sciezkaWzgledna(url, plikMd, dozwolone, korzen = KORZEN) {
-  const sciezka = odkoduj(url);
-  if (!sciezka.startsWith('/') || sciezka.startsWith('//')) return null;
-  const folder = dozwolone.find((d) => sciezka.startsWith(d));
-  if (!folder) return null;
+export function sciezkaWzgledna(url, plikMd, foldery, korzen = KORZEN) {
+  if (!url.startsWith('/') || url.startsWith('//')) return null;
   const wpis = relative(korzen, plikMd).split(sep).join('/');
-  const cel = join(korzen, sciezka);
-  const wFolderze = relative(join(korzen, folder), cel);
-  if (wFolderze.startsWith('..') || isAbsolute(wFolderze)) throw new Error(`Wpis ${wpis}: obraz ${url} wskazuje poza ${folder}.`);
-  if (/[#?]/.test(sciezka)) throw new Error(`Wpis ${wpis}: nazwa obrazu ${sciezka} ma znak # albo ?, więc zmień nazwę pliku.`);
-  if (!plikDokladnie(cel)) throw new Error(`Wpis ${wpis}: nie znaleziono obrazu ${sciezka} wstawionego w treść. Sprawdź nazwę pliku i wielkość liter.`);
-  const wzgledna = relative(dirname(plikMd), cel).split(sep).join('/');
-  return encodeURI(wzgledna.startsWith('.') ? wzgledna : `./${wzgledna}`);
+  const folder = foldery.find((f) => url.startsWith(f));
+  if (!folder) {
+    if (existsSync(join(korzen, 'public', url))) return null;
+    throw new Error(`Wpis ${wpis}: obraz ${url} musi leżeć w ${foldery[0]} (wstaw go z panelu).`);
+  }
+  const nazwa = url.slice(folder.length);
+  const kropka = nazwa.lastIndexOf('.');
+  // Rozszerzenie bez względu na wielkość liter (telefon zapisuje .JPG), reszta nazwy tylko małymi literami.
+  if (kropka < 0 || !NAZWA.test(nazwa.slice(0, kropka) + nazwa.slice(kropka).toLowerCase())) {
+    throw new Error(`Wpis ${wpis}: nazwa obrazu „${nazwa}” jest niedozwolona, zmień nazwę pliku na małe litery, cyfry, dywiz i podkreślnik, bez spacji i polskich znaków.`);
+  }
+  const cel = join(korzen, folder, nazwa);
+  // Porównanie z listą folderu, bo macOS nie rozróżnia wielkości liter, a Linux w CI tak.
+  if (!existsSync(cel) || !readdirSync(dirname(cel)).includes(nazwa)) {
+    throw new Error(`Wpis ${wpis}: nie znaleziono obrazu ${url}. Sprawdź nazwę pliku.`);
+  }
+  return relative(dirname(plikMd), cel).split(sep).join('/');
 }
 
 /**
  * Fabryka wtyczki mdast dla Sätteri: dostaje adres pliku .md (`fileURL`) przed parsowaniem.
- * @param {{ dozwolone: string[] }} opcje foldery (od korzenia, z `/` na końcu), z których obrazy wolno przepisać
+ * @param {{ foldery: string[] }} opcje foldery (od korzenia, z `/` na końcu), z których obrazy wolno wstawiać w treść
  */
-export default function obrazyWTresci({ dozwolone }) {
+export default function obrazyWTresci({ foldery }) {
   return ({ fileURL }) => {
     if (!fileURL || fileURL.protocol !== 'file:') return null;
     const plikMd = fileURLToPath(fileURL);
     return {
       name: 'obrazy-w-tresci',
       image(wezel, ctx) {
-        const nowa = wezel.url && sciezkaWzgledna(wezel.url, plikMd, dozwolone);
+        const nowa = wezel.url && sciezkaWzgledna(wezel.url, plikMd, foldery);
         if (nowa) ctx.setProperty(wezel, 'url', nowa);
       },
     };

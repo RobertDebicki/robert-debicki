@@ -15,7 +15,9 @@
 - Komunikat `obraz()` wskazuje też miniaturę; `eksport.py` nie nadpisuje wpisów bez `--nadpisz`; README szkiców: źródłem treści jest panel; ALT miniaturki: „według Eurostatu”.
 - Bez zmian: porównanie z makietą pomija sekcję wpisów (makieta jej nie ma), wspólny helper w testach (refaktor bez błędu).
 - Runda 2 (9 uwag, jeden typ: nietypowe nazwy plików grafik): odkodowanie po kawałku (dosłowny `%` obok zakodowanego „ż”), odrzucenie `#` i `?`, folder, wyjście poza folder (też `%2e%2e`) i zła wielkość liter zatrzymują build; komunikat ze ścieżką wpisu w repo; mocniejszy test z istniejącym plikiem; cofnięty szum w `n8n-make-czy-zapier-3.png`. Wtyczka 7 testów, vitest 153 pass/1 skipped, e2e 120 pass.
-- Otwarte, decyzja Roberta: menu EN „Posts” prowadzi do pustej listy, która trafia do mapy strony.
+- Runda 3 znów znalazła przypadki brzegowe nazw plików (wielkość liter w folderze, `..x.png`, `%41`). Po 3 rundach zmiana podejścia za zgodą Roberta: wtyczka przyjmuje tylko bezpieczne nazwy w `/src/assets/wpisy/` (małe litery, cyfry, `.`, `-`, `_`; rozszerzenie bez względu na wielkość liter), plik z `public/` zostaje, każda inna ścieżka od `/` zatrzymuje build komunikatem. Bez odkodowywania `%`. Podpowiedź w panelu przy treści wpisu. Wtyczka 5 testów, vitest 151 pass/1 skipped, e2e 120 pass.
+- Decyzja Roberta: wpisy zostaną przetłumaczone na EN (z angielskimi grafikami) po wdrożeniu wersji PL; do tego czasu menu EN „Posts” prowadzi do pustej listy.
+- (rozstrzygnięte wyżej) menu EN „Posts” prowadzi do pustej listy, która trafia do mapy strony.
 
 **🎯 Następny krok:**
 - `/code-review`, potem PR, scalenie i `npm run wdroz -- --wgraj` (zgoda Roberta z 12.11 w rozmowie).

@@ -6,43 +6,33 @@ import { sciezkaWzgledna } from '../../src/lib/obrazy-w-tresci.mjs';
 
 const korzen = mkdtempSync(join(tmpdir(), 'obrazy-'));
 mkdirSync(join(korzen, 'src/assets/wpisy'), { recursive: true });
-for (const plik of ['grafika.png', 'wzrost-100%.png', 'żółw.png', '100%-ż.png', 'a#b.png']) writeFileSync(join(korzen, 'src/assets/wpisy', plik), '');
-writeFileSync(join(korzen, 'package.json'), '{}');
+mkdirSync(join(korzen, 'public'), { recursive: true });
+for (const plik of ['grafika-1.png', 'zdjecie_2.v2.JPG', 'Duza.png']) writeFileSync(join(korzen, 'src/assets/wpisy', plik), '');
+writeFileSync(join(korzen, 'public/og.png'), '');
 const md = join(korzen, 'src/content/wpisy/adres/pl.md');
-const DOZWOLONE = ['/src/assets/'];
-const wynik = (url: string) => sciezkaWzgledna(url, md, DOZWOLONE, korzen);
+const wynik = (url: string) => sciezkaWzgledna(url, md, ['/src/assets/wpisy/'], korzen);
 
 describe('obrazy w treści wpisu: ścieżka z panelu na względną', () => {
-  it('ścieżkę od korzenia repo do istniejącego pliku zamienia na względną od pliku .md', () => {
-    expect(wynik('/src/assets/wpisy/grafika.png')).toBe('../../../assets/wpisy/grafika.png');
+  it('plik z /src/assets/wpisy/ o bezpiecznej nazwie zamienia na ścieżkę względną od pliku .md', () => {
+    expect(wynik('/src/assets/wpisy/grafika-1.png')).toBe('../../../assets/wpisy/grafika-1.png');
+    expect(wynik('/src/assets/wpisy/zdjecie_2.v2.JPG')).toBe('../../../assets/wpisy/zdjecie_2.v2.JPG');
   });
-  it('nie rusza adresów zewnętrznych, względnych i spoza dozwolonych folderów', () => {
+  it('nie rusza adresów zewnętrznych, względnych i plików z public/', () => {
     expect(wynik('https://example.com/a.png')).toBeNull();
     expect(wynik('//example.com/a.png')).toBeNull();
     expect(wynik('./a.png')).toBeNull();
     expect(wynik('/og.png')).toBeNull();
   });
-  it('brak pliku zatrzymuje build komunikatem ze ścieżką wpisu w repo, nie z dysku', () => {
-    expect(() => wynik('/src/assets/wpisy/brak.png')).toThrow(/src\/content\/wpisy\/adres\/pl\.md.*brak\.png/);
-    expect(() => wynik('/src/assets/wpisy/brak.png')).not.toThrow(new RegExp(korzen.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  it('nazwa spoza zasady (wielkie litery, polskie znaki, spacja, %, #, ?, podfolder, ..) zatrzymuje build prośbą o zmianę nazwy', () => {
+    for (const nazwa of ['Duza.png', 'żółw.png', 'moja grafika.png', 'wzrost-100%25.png', 'a%23b.png', 'a.png?v=2', 'a.png#x', 'inne/a.png', '../a.png', '..a.png', '']) {
+      expect(() => wynik(`/src/assets/wpisy/${nazwa}`), nazwa).toThrow(/zmień nazwę/);
+    }
   });
-  it('folder zamiast pliku i inna wielkość liter zatrzymują build (macOS nie rozróżnia liter, Linux w CI tak)', () => {
-    expect(() => wynik('/src/assets/wpisy/')).toThrow(/nie znaleziono/);
-    expect(() => wynik('/src/assets/')).toThrow(/nie znaleziono/);
-    expect(() => wynik('/src/assets/wpisy/Grafika.PNG')).toThrow(/nie znaleziono/);
+  it('bezpieczna nazwa bez pliku zatrzymuje build komunikatem ze ścieżką wpisu w repo', () => {
+    expect(() => wynik('/src/assets/wpisy/brak.png')).toThrow(/src\/content\/wpisy\/adres\/pl\.md: nie znaleziono obrazu \/src\/assets\/wpisy\/brak\.png/);
   });
-  it('ścieżka z .. (także zakodowanym) nie wychodzi poza dozwolony folder', () => {
-    expect(() => wynik('/src/assets/%2e%2e/%2e%2e/package.json')).toThrow(/poza/);
-    expect(() => wynik('/src/assets/../../package.json')).toThrow(/poza/);
-  });
-  it('nazwy z % i polskimi znakami: wynik po decodeURI w Astro trafia w plik, także przy mieszanym kodowaniu', () => {
-    expect(decodeURI(wynik('/src/assets/wpisy/wzrost-100%25.png')!)).toBe('../../../assets/wpisy/wzrost-100%.png');
-    expect(decodeURI(wynik('/src/assets/wpisy/wzrost-100%.png')!)).toBe('../../../assets/wpisy/wzrost-100%.png');
-    expect(decodeURI(wynik('/src/assets/wpisy/%C5%BC%C3%B3%C5%82w.png')!)).toBe('../../../assets/wpisy/żółw.png');
-    expect(decodeURI(wynik('/src/assets/wpisy/żółw.png')!)).toBe('../../../assets/wpisy/żółw.png');
-    expect(decodeURI(wynik('/src/assets/wpisy/100%-%C5%BC.png')!)).toBe('../../../assets/wpisy/100%-ż.png');
-  });
-  it('nazwa z # albo ? zatrzymuje build prośbą o zmianę nazwy (Astro czyta je jako kotwicę i zapytanie)', () => {
-    expect(() => wynik('/src/assets/wpisy/a%23b.png')).toThrow(/zmień nazwę/);
+  it('inna ścieżka od / (spoza folderu i spoza public/) zatrzymuje build', () => {
+    expect(() => wynik('/src/assets/inne/a.png')).toThrow(/\/src\/assets\/wpisy\//);
+    expect(() => wynik('/brak-w-public.png')).toThrow(/\/src\/assets\/wpisy\//);
   });
 });

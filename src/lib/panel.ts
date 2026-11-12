@@ -40,7 +40,7 @@ function zJezykami(pola: Pole[], kopiowane: string[] = []): Pole[] {
   return pola.map((p) => (p.name === 'body' ? { ...p, i18n: true } : { ...p, i18n: kopiowane.includes(p.name as string) ? 'duplicate' : true }));
 }
 
-const body = (label: string): Pole => ({ name: 'body', label, widget: 'markdown', required: false, hint: 'Śródtytuły ##, pogrubienie **tekst**, link [tekst](adres).' });
+const body = (label: string): Pole => ({ name: 'body', label, widget: 'markdown', required: false, hint: 'Śródtytuły ##, pogrubienie **tekst**, link [tekst](adres). Grafika: przycisk obrazu; nazwa pliku małymi literami, bez spacji i polskich znaków (np. wykres-1.png), inaczej strona się nie zbuduje.' });
 const data = (name: string, label: string, hint?: string): Pole => ({ name, label, widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, picker_utc: false, ...(hint ? { hint } : {}) });
 
 /** Plik i alt: zdjęcia pod wpisem i miniatura na liście. Grafikę w treść wstawia przycisk obrazu w edytorze treści. */
