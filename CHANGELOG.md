@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-12 09:10, Claude Code
+
+**✅ Zrobione (5 wpisów wdrożonych na robert-debicki.pl, zgoda Roberta 12.11):**
+- PR #6 scalony (CI na Linuksie: kontrole, testy i Lighthouse pass). `/security-review`: brak podatności.
+- `npm run wdroz -- --wgraj`: 67 plików, kopia zapasowa serwera w `~/Backups/robert-debicki-ftp/2026-11-12T08-04-46-964Z`. Odbiór zgłosił 4 pliki (przekroczony czas pobierania); sumy SHA-256 serwer i lokalnie zgodne dla wszystkich 4.
+- `test:produkcja` 5 pass. `/wpisy/` i strony wpisów 200, 5 wpisów w mapie strony, 5 miniaturek na liście, bez metatagu robots (indeksowanie).
+
+**🎯 Następny krok:**
+- Wersje EN wpisów z angielskimi grafikami (`/tlumacz-strone` + grafiki z makiety po angielsku). Do tego czasu menu EN „Posts” prowadzi do pustej listy.
+
 ## 2026-11-12 08:50, Claude Code
 
 **✅ Zrobione (5 wpisów na blogu, gałąź `blog-piec-wpisow`, nie wdrożone):**
