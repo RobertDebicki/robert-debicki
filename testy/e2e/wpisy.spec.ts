@@ -12,6 +12,23 @@ test('strona główna PL pokazuje 3 najnowsze wpisy od najnowszego, bez najstars
   await expect(sekcja.locator('a[href="/wpisy/"]')).toBeVisible();
 });
 
+test('strona główna pokazuje miniaturkę przy wpisie, który ją ma', async ({ page }) => {
+  await page.goto('/');
+  const img = page.locator('#wpisy article', { hasText: 'Najnowszy wpis testowy' }).locator('img');
+  await expect(img).toHaveAttribute('alt', 'Miniatura testowa w kolorze pomarańczowym na liście wpisów');
+  expect(await img.getAttribute('src')).toMatch(/^\/_astro\//);
+  await expect(page.locator('#wpisy article', { hasText: 'Wpis środkowy' }).locator('img')).toHaveCount(0);
+});
+
+test('kolumna wpisu na laptopie jest wyśrodkowana, nie przy lewej krawędzi', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/wpisy/najnowszy/');
+  const box = (await page.locator('.wpis-tresc').boundingBox())!;
+  const lewy = box.x;
+  const prawy = 1440 - (box.x + box.width);
+  expect(Math.abs(lewy - prawy), `lewy ${lewy}, prawy ${prawy}`).toBeLessThan(40);
+});
+
 test('strona główna EN nie pokazuje wpisu tylko po polsku', async ({ page }) => {
   await page.goto('/en/');
   const tekst = await page.locator('#wpisy').innerText();

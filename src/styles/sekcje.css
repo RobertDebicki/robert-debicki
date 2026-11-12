@@ -147,6 +147,14 @@ section { position: relative; padding-block: 88px; border-top: 1.5px solid var(-
 .wpis-miniatura img { display: block; width: 100%; height: auto; }
 .wpis-karta:hover .wpis-miniatura { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--c); }
 @media (max-width: 700px) { .wpis-karta.z-miniatura { grid-template-columns: 1fr; } }
+/* Strona główna: 3 najnowsze wpisy w kolumnach, miniatura nad tytułem. */
+.wpisy-siatka { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 40px 32px; }
+.wpisy-siatka .wpis-karta { max-width: none; }
+.wpisy-siatka .wpis-miniatura { margin-bottom: 16px; }
+/* Strona wpisu: kolumna treści na środku arkusza, linia sekcji zostaje na całą szerokość. */
+.sekcja-wpisu > * { max-width: 46rem; margin-inline: auto; }
+.sekcja-wpisu .wpis-tresc { max-width: none; }
+.sekcja-wpisu > .label { display: flex; }
 
 /* Referencje */
 .referencje-lista { margin-top: 32px; display: grid; gap: 40px; }
