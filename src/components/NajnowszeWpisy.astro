@@ -1,7 +1,8 @@
 ---
 import type { Jezyk } from '../lib/jezyki';
 import { etykiety } from '../lib/jezyki';
-import { wpisyWJezyku, maListe, dataIso, dataCzytelna } from '../lib/wpisy';
+import { Image } from 'astro:assets';
+import { wpisyWJezyku, maListe, dataIso, dataCzytelna, zMiniaturami } from '../lib/wpisy';
 
 interface Props {
   jezyk: Jezyk;
@@ -9,16 +10,21 @@ interface Props {
 const { jezyk } = Astro.props;
 const e = etykiety(jezyk);
 const prefiks = jezyk === 'pl' ? '/wpisy/' : '/en/posts/';
-const najnowsze = (await wpisyWJezyku(jezyk)).slice(0, 3);
+const najnowsze = await zMiniaturami((await wpisyWJezyku(jezyk)).slice(0, 3), jezyk);
 const zLista = await maListe(jezyk);
 ---
 {najnowsze.length > 0 && (
   <section id="wpisy" style="--sw: var(--y)" aria-labelledby="wpisy-h">
     <p class="label mono">{e.wpisy}</p>
     <h2 class="sec-title" id="wpisy-h">{e.wpisy}</h2>
-    <div class="wpisy-lista">
-      {najnowsze.map(({ adres, entry }) => (
+    <div class="wpisy-lista wpisy-siatka">
+      {najnowsze.map(({ adres, entry, miniatura }) => (
         <article class="wpis-karta">
+          {miniatura && (
+            <a class="wpis-miniatura" href={`${prefiks}${adres}/`} tabindex="-1" aria-hidden="true">
+              <Image src={miniatura.src} alt={miniatura.alt} widths={[400, 800]} sizes="(min-width: 900px) 360px, 100vw" loading="lazy" />
+            </a>
+          )}
           <time class="mono" datetime={dataIso(entry.data.data)}>{dataCzytelna(entry.data.data, jezyk)}</time>
           <h3><a href={`${prefiks}${adres}/`}>{entry.data.tytul}</a></h3>
           <p>{entry.data.zajawka}</p>

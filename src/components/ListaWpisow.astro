@@ -2,7 +2,7 @@
 import type { Jezyk } from '../lib/jezyki';
 import { etykiety } from '../lib/jezyki';
 import { Image } from 'astro:assets';
-import { wpisyWJezyku, dataIso, dataCzytelna, obraz } from '../lib/wpisy';
+import { wpisyWJezyku, dataIso, dataCzytelna, zMiniaturami } from '../lib/wpisy';
 
 interface Props {
   jezyk: Jezyk;
@@ -10,12 +10,7 @@ interface Props {
 const { jezyk } = Astro.props;
 const e = etykiety(jezyk);
 const prefiks = jezyk === 'pl' ? '/wpisy/' : '/en/posts/';
-const wpisy = await Promise.all(
-  (await wpisyWJezyku(jezyk)).map(async (w) => {
-    const m = w.entry.data.miniatura;
-    return { ...w, miniatura: m ? { src: await obraz(m.plik, `${w.adres}/${jezyk}`), alt: m.alt } : undefined };
-  }),
-);
+const wpisy = await zMiniaturami(await wpisyWJezyku(jezyk), jezyk);
 ---
 <section style="--sw: var(--y)" aria-labelledby="wpisy-h">
   <p class="label mono">{e.wpisy}</p>

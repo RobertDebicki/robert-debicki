@@ -16,7 +16,7 @@ const { Content } = await render(entry);
 const d = entry.data;
 const zdjecia = await Promise.all(d.zdjecia.map(async (z: { plik: string; alt: string }) => ({ src: await obraz(z.plik, `${adres}/${jezyk}`), alt: z.alt })));
 ---
-<section style="--sw: var(--y)">
+<section class="sekcja-wpisu" style="--sw: var(--y)">
   <p class="label mono"><a href={jezyk === 'pl' ? '/wpisy/' : '/en/posts/'}>{e.wpisy}</a></p>
   <article class="wpis">
     <header>

@@ -31,6 +31,16 @@ export async function wpisyWJezyku(jezyk: Jezyk) {
     .sort((a, b) => b.entry.data.data.getTime() - a.entry.data.data.getTime());
 }
 
+/** Dokłada do wpisów miniaturę gotową dla <Image> (lista /wpisy/ i strona główna). Wpis bez miniatury dostaje undefined. */
+export async function zMiniaturami<T extends { adres: string; entry: { data: { miniatura?: { plik: string; alt: string } } } }>(wpisy: T[], jezyk: Jezyk) {
+  return Promise.all(
+    wpisy.map(async (w) => {
+      const m = w.entry.data.miniatura;
+      return { ...w, miniatura: m ? { src: await obraz(m.plik, `${w.adres}/${jezyk}`), alt: m.alt } : undefined };
+    }),
+  );
+}
+
 /** Lista PL istnieje, gdy jest choć jeden wpis. Lista EN dodatkowo wymaga angielskiej strony głównej (tam prowadzi przełącznik z wpisu tylko po polsku). */
 export async function maListe(jezyk: Jezyk): Promise<boolean> {
   if ((await wpisyWJezyku('pl')).length === 0) return false;

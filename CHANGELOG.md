@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-12 10:30, Claude Code
+
+**✅ Zrobione (wygląd wpisów po uwagach Roberta ze zrzutu, ryzyko niskie; gałąź `wyglad-wpisow`, nie wdrożone):**
+- Strona główna: 3 najnowsze wpisy w kolumnach z miniaturką nad tytułem (`NajnowszeWpisy.astro`, klasa `wpisy-siatka`); na telefonie jeden pod drugim.
+- Strona wpisu: kolumna 46rem na środku arkusza (`sekcja-wpisu`), linia sekcji na całą szerokość. Wcześniej treść przy lewej krawędzi (zmierzone: 130 px z lewej, 575 px z prawej przy 1440).
+- Miniatury liczy wspólna funkcja `zMiniaturami()` w `src/lib/wpisy.ts` (lista i strona główna).
+- Testy najpierw czerwone: miniatura na stronie głównej, wyśrodkowanie `.wpis-tresc` przy 1440. `npm run sprawdz`: vitest 154 pass/1 skipped, e2e 122 pass, treść 0. Zrzuty: wpis 1440 ciemny, strona główna 1440 i 390, bez przewijania w bok.
+- GA4 (zdarzenia kluczowe) nie sprawdzone: Robert przerwał odczyt przez AdLoop.
+
+**🎯 Następny krok:**
+- Zgoda Roberta na scalenie i wdrożenie; przy wdrożeniu sprawdzić, czy odbiór przechodzi bez uwag (nowy limit 60 s).
+
 ## 2026-11-12 10:05, Claude Code
 
 **✅ Zrobione (odbiór po wdrożeniu bez fałszywych alarmów, ryzyko niskie):**
