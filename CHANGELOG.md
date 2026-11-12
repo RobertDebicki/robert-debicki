@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-12 10:30, Claude Code (wdrożenie)
+
+**✅ Zrobione (PR #9 wdrożony na robert-debicki.pl, zgoda Roberta 12.11 „wdróż”):**
+- `npm run wdroz -- --wgraj`: 109 plików, kopia `~/Backups/robert-debicki-ftp/2026-11-12T09-24-38-724Z`. Odbiór bez uwag (limit 60 s działa, wcześniej po 4 fałszywe alarmy).
+- `test:produkcja` 5 pass. Żywa strona: 3 miniaturki na stronie głównej; kolumna wpisu PL i EN wyśrodkowana (352 px z lewej i z prawej przy 1440).
+
+**🎯 Następny krok:**
+- Korekta tekstów EN przez osobę z USA; zdarzenia kluczowe w GA4 (odłożone, Robert przerwał odczyt 12.11).
+
 ## 2026-11-12 10:30, Claude Code
 
 **✅ Zrobione (wygląd wpisów po uwagach Roberta ze zrzutu, ryzyko niskie; gałąź `wyglad-wpisow`, nie wdrożone):**
