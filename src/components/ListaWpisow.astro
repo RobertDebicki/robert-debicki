@@ -1,7 +1,8 @@
 ---
 import type { Jezyk } from '../lib/jezyki';
 import { etykiety } from '../lib/jezyki';
-import { wpisyWJezyku, dataIso, dataCzytelna } from '../lib/wpisy';
+import { Image } from 'astro:assets';
+import { wpisyWJezyku, dataIso, dataCzytelna, obraz } from '../lib/wpisy';
 
 interface Props {
   jezyk: Jezyk;
@@ -9,18 +10,30 @@ interface Props {
 const { jezyk } = Astro.props;
 const e = etykiety(jezyk);
 const prefiks = jezyk === 'pl' ? '/wpisy/' : '/en/posts/';
-const wpisy = await wpisyWJezyku(jezyk);
+const wpisy = await Promise.all(
+  (await wpisyWJezyku(jezyk)).map(async (w) => {
+    const m = w.entry.data.miniatura;
+    return { ...w, miniatura: m ? { src: await obraz(m.plik, `${w.adres}/${jezyk}`), alt: m.alt } : undefined };
+  }),
+);
 ---
 <section style="--sw: var(--y)" aria-labelledby="wpisy-h">
   <p class="label mono">{e.wpisy}</p>
   <h1 class="sec-title" id="wpisy-h">{e.wpisy}</h1>
   {wpisy.length === 0 && <p class="sec-intro">{e.brakWpisow}</p>}
   <div class="wpisy-lista">
-    {wpisy.map(({ adres, entry }) => (
-      <article class="wpis-karta">
-        <time class="mono" datetime={dataIso(entry.data.data)}>{dataCzytelna(entry.data.data, jezyk)}</time>
-        <h2><a href={`${prefiks}${adres}/`}>{entry.data.tytul}</a></h2>
-        <p>{entry.data.zajawka}</p>
+    {wpisy.map(({ adres, entry, miniatura }, i) => (
+      <article class:list={['wpis-karta', { 'z-miniatura': miniatura }]}>
+        {miniatura && (
+          <a class="wpis-miniatura" href={`${prefiks}${adres}/`} tabindex="-1" aria-hidden="true">
+            <Image src={miniatura.src} alt={miniatura.alt} widths={[480, 800]} sizes="(min-width: 700px) 20rem, 100vw" loading={i < 2 ? 'eager' : 'lazy'} />
+          </a>
+        )}
+        <div>
+          <time class="mono" datetime={dataIso(entry.data.data)}>{dataCzytelna(entry.data.data, jezyk)}</time>
+          <h2><a href={`${prefiks}${adres}/`}>{entry.data.tytul}</a></h2>
+          <p>{entry.data.zajawka}</p>
+        </div>
       </article>
     ))}
   </div>

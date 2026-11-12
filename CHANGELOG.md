@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-12 08:30, Claude Code
+
+**✅ Zrobione (grafiki w treści wpisu i miniaturki na liście, ryzyko średnie: kod listy i panelu; gałąź `blog-piec-wpisow`, nie wdrożone):**
+- Grafika wstawiona w treść wpisu z panelu (ścieżka `/src/assets/wpisy/...`) idzie przez optymalizację Astro: wtyczka Sätteri `src/lib/obrazy-w-tresci.mjs` zamienia ją na ścieżkę względną. Astro 7 domyślnie używa Sätteri, więc `remarkPlugins` nie działają; `@astrojs/markdown-satteri` 0.4.5 dopisana jako zależność bezpośrednia (ta sama wersja, którą instaluje Astro).
+- Pole `miniatura` (plik i alt, opcjonalne) w schemacie wpisów i panelu; lista `/wpisy/` pokazuje miniaturkę 16:9 obok tytułu, karta bez miniatury bez zmian. Strona główna (3 najnowsze wpisy) bez miniaturek.
+- Testy najpierw czerwone: e2e miniaturki i grafiki w treści, jednostkowy panelu; potem zielone (e2e wpisów 13, panel 22, wtyczka 2).
+- ⚠️ Pułapka: cache treści Astro (`node_modules/.astro*`) nie unieważnił wpisu po zmianie schematu (pole `miniatura` znikało). Przed buildem po zmianie schematu usuń cache.
+
 ## 2026-11-11 23:30, Claude Code
 
 **✅ Zrobione (5 szkiców wpisów na bloga, ryzyko niskie: tylko tekst w `docs/blog-szkice/`, nic nie trafia na stronę, nie wdrożone):**

@@ -115,6 +115,19 @@ describe('panel Sveltia: wpisy i zdjęcia', () => {
     expect(re.test('a'.repeat(min - 1))).toBe(false);
     expect(alt.pattern[1]).toMatch(new RegExp(String(min)));
   });
+  it('miniatura jest opcjonalna, ma plik w src/assets/wpisy i alt z minimalną długością ze schematu', () => {
+    const miniatura = polaPanelu('wpisy').find((p) => p.name === 'miniatura')!;
+    expect(miniatura.widget).toBe('object');
+    expect(miniatura.required).toBe(false);
+    const [plik, alt] = [miniatura.fields.find((f: Pole) => f.name === 'plik'), miniatura.fields.find((f: Pole) => f.name === 'alt')];
+    expect(plik.widget).toBe('image');
+    expect(plik.media_folder).toBe('src/assets/wpisy');
+    expect(plik.public_folder).toBe('/src/assets/wpisy');
+    const min = (z.toJSONSchema(SCHEMATY.wpisy, { io: 'input', unrepresentable: 'any' }) as Pole).properties.miniatura.properties.alt.minLength as number;
+    expect(min).toBeGreaterThan(0);
+    expect(new RegExp(alt.pattern[0]).test('a'.repeat(min - 1))).toBe(false);
+    expect(new RegExp(alt.pattern[0]).test('a'.repeat(min))).toBe(true);
+  });
   it('wpis ma treść Markdown', () => {
     expect(polaPanelu('wpisy').find((p) => p.name === 'body')?.widget).toBe('markdown');
   });
