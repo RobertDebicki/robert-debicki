@@ -14,6 +14,7 @@
 - Wtyczka obrazów: brak pliku w `/src/assets/` zatrzymuje build (wcześniej cicho zepsuty obrazek), `%` i polskie znaki w nazwie bez wywracania buildu (testy najpierw czerwone).
 - Komunikat `obraz()` wskazuje też miniaturę; `eksport.py` nie nadpisuje wpisów bez `--nadpisz`; README szkiców: źródłem treści jest panel; ALT miniaturki: „według Eurostatu”.
 - Bez zmian: porównanie z makietą pomija sekcję wpisów (makieta jej nie ma), wspólny helper w testach (refaktor bez błędu).
+- Runda 2 (9 uwag, jeden typ: nietypowe nazwy plików grafik): odkodowanie po kawałku (dosłowny `%` obok zakodowanego „ż”), odrzucenie `#` i `?`, folder, wyjście poza folder (też `%2e%2e`) i zła wielkość liter zatrzymują build; komunikat ze ścieżką wpisu w repo; mocniejszy test z istniejącym plikiem; cofnięty szum w `n8n-make-czy-zapier-3.png`. Wtyczka 7 testów, vitest 153 pass/1 skipped, e2e 120 pass.
 - Otwarte, decyzja Roberta: menu EN „Posts” prowadzi do pustej listy, która trafia do mapy strony.
 
 **🎯 Następny krok:**
