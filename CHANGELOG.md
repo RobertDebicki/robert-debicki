@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-11-12 08:50, Claude Code
+
+**✅ Zrobione (5 wpisów na blogu, gałąź `blog-piec-wpisow`, nie wdrożone):**
+- Wpisy w `src/content/wpisy/<adres>/pl.md`, daty wstecz co tydzień (14.10, 21.10, 28.10, 04.11, 11.11) decyzją Roberta. Zdania ⚠️ z `docs/blog-szkice/README.md` zostają decyzją Roberta.
+- 16 grafik i 5 miniaturek jako PNG w `src/assets/wpisy/` (zrzut z makiety, kolumna 600 px, skala 2), ALT przy każdej, podpisy jako tekst pod grafiką. Ścieżka: `generuj.py` → `zrzuty.mjs` → `eksport.py` w `docs/blog-szkice/podglad/`.
+- Dwa linki wewnętrzne między wpisami (anchor z frazą), twarde spacje w „10 000” i „174 717”.
+- Testy, które zakładały brak wpisów na prawdziwej treści, sprawdzają teraz oba stany: `wpisy-puste.spec.ts`, menu EN w `jezyki-prawdziwa-tresc.spec.ts` (Posts z „No posts in English yet”, jak w `maListe`), porównanie z makietą ukrywa sekcję wpisów i link w menu (makieta ich nie ma).
+- `npm run sprawdz`: treść 0, GPS 0, tłumaczenia OK, vitest 148 pass/1 skipped, e2e 120 pass. Zrzuty listy i wpisu 1440 jasny i ciemny, 390: bez przewijania w bok.
+
+**🎯 Następny krok:**
+- `/code-review`, potem PR, scalenie i `npm run wdroz -- --wgraj` (zgoda Roberta z 12.11 w rozmowie).
+- Później: angielskie wersje wpisów przez `/tlumacz-strone` (do tego czasu w EN menu „Posts” prowadzi do pustej listy).
+
 ## 2026-11-12 08:30, Claude Code
 
 **✅ Zrobione (grafiki w treści wpisu i miniaturki na liście, ryzyko średnie: kod listy i panelu; gałąź `blog-piec-wpisow`, nie wdrożone):**

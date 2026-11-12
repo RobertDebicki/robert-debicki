@@ -1,6 +1,6 @@
 ---
 tytul: "Voice bot dla firmy: oddzwonienie w 2 min"
-data: 2026-12-08
+data: 2026-11-04
 zajawka: "Voice bot dla firmy dzwoni do osoby z formularza w 2 minuty i robi notatkę dla handlowca. Zobacz, jak działa i co z AI Act. Napisz do mnie."
 ---
 **Voice bot dla firmy** może zadzwonić do osoby, która wypełniła formularz na Twojej stronie, w 2 minuty od wysłania. Opisuję wdrożenie, w którym bot obsługuje około 15 rozmów dziennie i przekazuje handlowcowi gotową notatkę. Chcesz oddzwaniać szybciej do zapytań? Napisz do mnie.
@@ -24,7 +24,7 @@ Bot nie sprzedaje i nie negocjuje. Zbiera informacje i oszczędza handlowcowi pi
 
 ## Voice bot dla firmy a przepisy AI Act
 
-Od 2 sierpnia 2026 klient ma wiedzieć, że rozmawia z AI, jeśli nie jest to oczywiste. Przy telefonie od bota dobrym zwyczajem jest przedstawienie się w pierwszym zdaniu rozmowy. Szczegóły opisuję we wpisie o AI Act dla małej firmy.
+Od 2 sierpnia 2026 klient ma wiedzieć, że rozmawia z AI, jeśli nie jest to oczywiste. Przy telefonie od bota dobrym zwyczajem jest przedstawienie się w pierwszym zdaniu rozmowy. Szczegóły opisuję we wpisie [AI Act dla małej firmy](/wpisy/ai-act-dla-malej-firmy/).
 
 ## Pytania i odpowiedzi
 

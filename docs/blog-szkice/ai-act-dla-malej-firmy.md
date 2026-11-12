@@ -1,6 +1,6 @@
 ---
 tytul: "AI Act dla małej firmy: lista na 2026"
-data: 2026-11-17
+data: 2026-10-14
 zajawka: "AI Act dla małej firmy: od 2.08.2026 klient musi wiedzieć, że rozmawia z botem. Sprawdź w 3 krokach, co zrobić. Napisz, pomogę."
 ---
 **AI Act dla małej firmy** dotyczy Cię już dziś, jeśli na stronie działa czat albo na telefon odpowiada bot. Od 2 sierpnia 2026 obowiązują przepisy o przejrzystości. Opisuję, co one znaczą w praktyce i co sprawdzisz w jeden wieczór. Masz bota i nie wiesz, czy spełnia wymagania? Napisz do mnie maila.

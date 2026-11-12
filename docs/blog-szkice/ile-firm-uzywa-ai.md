@@ -1,6 +1,6 @@
 ---
 tytul: "Automatyzacja procesów w firmie: jak zacząć"
-data: 2026-11-24
+data: 2026-10-21
 zajawka: "Automatyzacja procesów w firmie: AI stosuje 8,7% polskich firm. Zobacz, jak wybrać pierwszy proces i co dało to moim klientom. Napisz do mnie."
 ---
 **Automatyzacja procesów w firmie** to nadal przewaga, nie standard. Według GUS w 2025 roku sztuczną inteligencję stosowało 8,7 procent polskich firm. Opisuję, jak wybrać pierwszy proces do zautomatyzowania i jakie efekty widzieli moi klienci. Chcesz sprawdzić, co zautomatyzować u siebie? Napisz do mnie.
@@ -25,9 +25,9 @@ Trzecie pytanie jest najważniejsze. Tam, gdzie pomyłka kosztuje, zostawiam dec
 
 W firmie szkoleniowej zbudowałem aplikację do zapisów i grafików dla 12 trenerek. Według właściciela firma ma o 60 godzin mniej ręcznej pracy miesięcznie.
 
-W firmie, która zbierała dane z wniosków o dofinansowanie dla gmin, proces codziennie pobiera dokumenty i zapisuje dane w jednej bazie. Opisuję go w osobnym wpisie.
+W firmie, która zbierała dane z wniosków o dofinansowanie dla gmin, proces codziennie pobiera dokumenty i zapisuje dane w jednej bazie. Opisuję go we wpisie [automatyczny odczyt dokumentów przez AI](/wpisy/automatyczny-odczyt-dokumentow/).
 
-Producent mebli dla gastronomii dostał proces, który dzieli 230 klientów według czasu od ostatniego zamówienia. Model językowy włącza się tylko przy 29 z nich. Segmentacja znalazła 28 klientów ponad ręczną listę właściciela, z historią zamówień wartą 174 717 zł.
+Producent mebli dla gastronomii dostał proces, który dzieli 230 klientów według czasu od ostatniego zamówienia. Model językowy włącza się tylko przy 29 z nich. Segmentacja znalazła 28 klientów ponad ręczną listę właściciela, z historią zamówień wartą 174 717 zł.
 
 ## Pytania i odpowiedzi
 

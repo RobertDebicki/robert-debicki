@@ -1,6 +1,6 @@
 ---
 tytul: "Automatyczny odczyt dokumentów przez AI"
-data: 2026-12-01
+data: 2026-10-28
 zajawka: "Automatyczny odczyt dokumentów przez AI: setki wniosków trafia do jednej bazy, a niepewne odczyty sprawdza człowiek. Napisz, co masz do przepisywania."
 ---
 **Automatyczny odczyt dokumentów** oszczędza czas wszędzie tam, gdzie ktoś przepisuje kwoty i terminy z PDF do tabeli. Opisuję wdrożenie, w którym system codziennie czyta setki wniosków i zapisuje dane w jednej bazie. Pokazuję też, co się dzieje, gdy odczyt jest niepewny. Przepisujesz dokumenty ręcznie? Napisz do mnie.
