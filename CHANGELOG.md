@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 2026-11-12 09:40, Claude Code
+
+**✅ Zrobione (tłumaczenie EN 5 wpisów skillem `/tlumacz-strone`, gałąź `tlumaczenie-wpisow-en`):**
+- `en.md` dla: ai-act-dla-malej-firmy, ile-firm-uzywa-ai, automatyczny-odczyt-dokumentow, voice-bot-dla-firmy, n8n-make-czy-zapier; stan `ai`, `zrodlo` ze skrótu `pl.md`. Linki wewnętrzne na `/en/posts/...`, kwota PLN 174,717, daty w zapisie en-US.
+- 16 grafik i 5 miniaturek po angielsku (`src/assets/wpisy/*-en-*.png`) z `docs/blog-szkice/podglad/grafiki_en.py` i `node zrzuty.mjs en`; ALT w `en.md` zgodne z grafikami (sprawdzone skryptem).
+- Kontrola tłumaczeń rozpoznaje pełne daty z dniem („20 lipca 2026”, „2.08.2026” ↔ „July 20, 2026”, „Aug. 2, 2026”, „7/20/2026”), decyzją Roberta zamiast zapisu brytyjskiego; pełne daty liczone przed regułą godzin („od 2.08” to nie godzina). Test najpierw czerwony; 20 testów skryptu OK, 16 par bez błędów.
+- `npm run sprawdz`: treść 0, GPS 0, vitest 152 pass/1 skipped, e2e 120 pass. Zrzuty `/en/posts/` (1440) i wpisu (390): bez przewijania w bok, przełącznik do PL.
+
+**🚧 W toku / nie wdrożone:**
+- Teksty EN czekają na korektę osoby z USA (prośba na końcu `narzedzia/tlumaczenie/jezyki/en.md`); stan `ai` → `sprawdzone` po korekcie.
+
+**🎯 Następny krok:**
+- PR, scalenie i `npm run wdroz -- --wgraj` (zgoda Roberta z 12.11 w tej rozmowie).
+
 ## 2026-11-12 09:10, Claude Code
 
 **✅ Zrobione (5 wpisów wdrożonych na robert-debicki.pl, zgoda Roberta 12.11):**

@@ -5,7 +5,10 @@
 import { chromium } from '@playwright/test';
 import { fileURLToPath } from 'node:url';
 
-const podglad = new URL('./podglad.html', import.meta.url).href;
+// Bez argumentu: polskie grafiki z podglad.html. Z argumentem `en`: angielskie z grafiki-en.html, pliki z `-en-`.
+const en = process.argv[2] === 'en';
+const podglad = new URL(en ? './grafiki-en.html' : './podglad.html', import.meta.url).href;
+const sufiks = en ? '-en' : '';
 const cel = fileURLToPath(new URL('../../../src/assets/wpisy/', import.meta.url));
 
 const przegladarka = await chromium.launch();
@@ -17,8 +20,8 @@ await strona.addStyleTag({ content: '.top{position:static} .graf .alt, .graf fig
 for (const wpis of await strona.locator('article.wpis').all()) {
   const adres = await wpis.getAttribute('id');
   const grafiki = await wpis.locator('figure.graf').all();
-  for (const [i, g] of grafiki.entries()) await g.screenshot({ path: `${cel}${adres}-${i + 1}.png` });
-  await strona.locator(`.karta a.mini[href="#${adres}"] svg`).screenshot({ path: `${cel}${adres}-miniatura.png` });
+  for (const [i, g] of grafiki.entries()) await g.screenshot({ path: `${cel}${adres}${sufiks}-${i + 1}.png` });
+  await strona.locator(`.karta a.mini[href="#${adres}"] svg`).screenshot({ path: `${cel}${adres}${sufiks}-miniatura.png` });
   console.log(adres, grafiki.length, 'grafik i miniatura');
 }
 await przegladarka.close();
