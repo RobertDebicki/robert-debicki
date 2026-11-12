@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 2026-11-12 10:05, Claude Code
+
+**✅ Zrobione (odbiór po wdrożeniu bez fałszywych alarmów, ryzyko niskie):**
+- `skrypty/wdroz.ts`: limit pobrania przy odbiorze 60 s zamiast 20 s (`LIMIT_POBRANIA_MS`); błąd sieci na pliku ponawiany raz, niezgodna treść zgłaszana od razu. Powód: przy obu wdrożeniach 12.11 po 4 pliki zgłoszone z powodu przekroczonego czasu, sumy SHA-256 zgodne.
+- Testy najpierw czerwone (ponowienie), potem zielone: `wdroz.test.ts` 34, vitest 154 pass/1 skipped.
+- Scalony zaległy wpis CHANGELOG o wdrożeniu EN (`changelog-en-wdrozone`); `changelog-blog-wdrozony` był już w `main` (PR #7).
+
+**🎯 Następny krok:**
+- Przy następnym wdrożeniu sprawdzić, czy odbiór przechodzi bez uwag.
+
+## 2026-11-12 09:55, Claude Code
+
+**✅ Zrobione (wpisy EN wdrożone na robert-debicki.pl, zgoda Roberta 12.11 „scalone wdróż”):**
+- PR #7 scalony przez Roberta. `npm run wdroz -- --wgraj`: 103 pliki, kopia zapasowa `~/Backups/robert-debicki-ftp/2026-11-12T08-50-42-325Z`. Odbiór zgłosił 4 pliki (przekroczony czas); sumy SHA-256 serwer i lokalnie zgodne dla wszystkich 4.
+- `test:produkcja` 5 pass. `/en/posts/` i strony wpisów EN 200, 5 miniaturek EN, 5 wpisów EN w mapie strony.
+
+**🚧 W toku:**
+- Teksty EN w stanie `ai`: korekta osoby z USA (prośba na końcu `narzedzia/tlumaczenie/jezyki/en.md`), potem `tlumaczenie: sprawdzone`.
+
+**🎯 Następny krok:**
+- Korekta EN przez native speakera; zdarzenia kluczowe w GA4 po pierwszych kliknięciach (wpis z 11.11).
+
 ## 2026-11-12 09:40, Claude Code
 
 **✅ Zrobione (tłumaczenie EN 5 wpisów skillem `/tlumacz-strone`, gałąź `tlumaczenie-wpisow-en`):**
