@@ -4,7 +4,7 @@ data: 2026-10-21
 zajawka: "Automatyzacja procesów w firmie: AI stosuje 8,7% polskich firm. Zobacz, jak wybrać pierwszy proces i co dało to moim klientom. Napisz do mnie."
 miniatura:
   plik: "/src/assets/wpisy/ile-firm-uzywa-ai-miniatura.png"
-  alt: "Duża liczba 8,36 procent firm z AI w Polsce i porównanie z Unią Europejską"
+  alt: "Duża liczba 8,36 procent firm z AI w Polsce według Eurostatu i porównanie z Unią Europejską"
 ---
 **Automatyzacja procesów w firmie** to nadal przewaga, nie standard. Według GUS w 2025 roku sztuczną inteligencję stosowało 8,7 procent polskich firm. Opisuję, jak wybrać pierwszy proces do zautomatyzowania i jakie efekty widzieli moi klienci. Chcesz sprawdzić, co zautomatyzować u siebie? Napisz do mnie.
 

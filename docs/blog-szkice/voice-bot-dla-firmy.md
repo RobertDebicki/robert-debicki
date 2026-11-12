@@ -3,7 +3,7 @@ tytul: "Voice bot dla firmy: oddzwonienie w 2 min"
 data: 2026-11-04
 zajawka: "Voice bot dla firmy dzwoni do osoby z formularza w 2 minuty i robi notatkę dla handlowca. Zobacz, jak działa i co z AI Act. Napisz do mnie."
 ---
-**Voice bot dla firmy** może zadzwonić do osoby, która wypełniła formularz na Twojej stronie, w 2 minuty od wysłania. Opisuję wdrożenie, w którym bot obsługuje około 15 rozmów dziennie i przekazuje handlowcowi gotową notatkę. Chcesz oddzwaniać szybciej do zapytań? Napisz do mnie.
+**Voice bot dla firmy** może zadzwonić do osoby, która wypełniła formularz na Twojej stronie, w 2 minuty od wysłania. Opisuję wdrożenie, w którym bot obsługuje 15 rozmów dziennie i przekazuje handlowcowi gotową notatkę. Chcesz oddzwaniać szybciej do zapytań? Napisz do mnie.
 
 ## Po co oddzwaniać do leada od razu
 
@@ -32,7 +32,7 @@ Od 2 sierpnia 2026 klient ma wiedzieć, że rozmawia z AI, jeśli nie jest to oc
 Powinien to usłyszeć na początku rozmowy. Wymagają tego przepisy przejrzystości AI Act, gdy nie jest to oczywiste.
 
 ### Ile rozmów dziennie obsłuży bot?
-W opisanym wdrożeniu to około 15 rozmów dziennie. Liczba zależy od liczby formularzy w Twojej firmie.
+W opisanym wdrożeniu to 15 rozmów dziennie. Liczba zależy od liczby formularzy w Twojej firmie.
 
 ### Co jeśli klient nie odbierze albo przerwie rozmowę?
 Takie przypadki też trafiają do handlowca. Ma wtedy informację, że kontakt jest do ponowienia, razem z tym, co klient zdążył powiedzieć.

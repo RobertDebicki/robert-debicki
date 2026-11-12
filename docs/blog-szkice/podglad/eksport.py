@@ -1,8 +1,10 @@
 """Przenosi szkice na stronę: src/content/wpisy/<adres>/pl.md z grafikami jako obrazkami PNG.
 Najpierw: python3 docs/blog-szkice/podglad/generuj.py, potem node docs/blog-szkice/podglad/zrzuty.mjs (PNG do src/assets/wpisy/).
-Uruchom: python3 docs/blog-szkice/podglad/eksport.py"""
+Uruchom: python3 docs/blog-szkice/podglad/eksport.py
+Istniejącego pl.md nie nadpisuje (mógł być poprawiony w panelu /admin/), chyba że z flagą --nadpisz."""
 import html
 import re
+import sys
 from pathlib import Path
 
 import generuj
@@ -45,6 +47,9 @@ def main():
         alt_mini = re.search(r'aria-label="([^"]*)"', generuj.MINIATURY[nazwa]).group(1)
         fm = fm.rstrip('\n') + f'\nminiatura:\n  plik: "{ZDJECIA}/{nazwa}-miniatura.png"\n  alt: "{html.unescape(alt_mini)}"\n'
         cel = KORZEN / 'src/content/wpisy' / nazwa / 'pl.md'
+        if cel.exists() and '--nadpisz' not in sys.argv:
+            print('Pominięto (już istnieje, użyj --nadpisz):', cel.relative_to(KORZEN))
+            continue
         cel.parent.mkdir(parents=True, exist_ok=True)
         cel.write_text(f'---{fm}---\n' + '\n\n'.join(wyjscie) + '\n')
         print('Zapisano', cel.relative_to(KORZEN))

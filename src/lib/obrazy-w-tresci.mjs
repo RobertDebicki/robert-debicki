@@ -8,14 +8,27 @@ import { fileURLToPath } from 'node:url';
 
 const KORZEN = fileURLToPath(new URL('../..', import.meta.url));
 
-/** Ścieżka względna od pliku .md do obrazu albo null, gdy adresu nie zmieniamy (zewnętrzny, spoza folderów, brak pliku). */
+function odkoduj(url) {
+  try {
+    return decodeURI(url);
+  } catch {
+    return url; // błędna sekwencja %: traktujemy adres dosłownie
+  }
+}
+
+/**
+ * Ścieżka względna od pliku .md do obrazu, zakodowana jak adres (Astro robi na niej decodeURI), albo null,
+ * gdy adresu nie zmieniamy (zewnętrzny, względny, spoza dozwolonych folderów). Brak pliku w dozwolonym folderze
+ * zatrzymuje build: inaczej na stronie zostałby obrazek z adresem, którego serwer nie zna.
+ */
 export function sciezkaWzgledna(url, plikMd, dozwolone, korzen = KORZEN) {
-  if (!url.startsWith('/') || url.startsWith('//')) return null;
-  if (!dozwolone.some((d) => url.startsWith(d))) return null;
-  const cel = join(korzen, url);
-  if (!existsSync(cel)) return null;
+  const sciezka = odkoduj(url);
+  if (!sciezka.startsWith('/') || sciezka.startsWith('//')) return null;
+  if (!dozwolone.some((d) => sciezka.startsWith(d))) return null;
+  const cel = join(korzen, sciezka);
+  if (!existsSync(cel)) throw new Error(`Wpis ${plikMd}: nie znaleziono obrazu ${sciezka} wstawionego w treść. Sprawdź nazwę pliku.`);
   const wzgledna = relative(dirname(plikMd), cel).split(sep).join('/');
-  return wzgledna.startsWith('.') ? wzgledna : `./${wzgledna}`;
+  return encodeURI(wzgledna.startsWith('.') ? wzgledna : `./${wzgledna}`);
 }
 
 /**
@@ -29,7 +42,7 @@ export default function obrazyWTresci({ dozwolone }) {
     return {
       name: 'obrazy-w-tresci',
       image(wezel, ctx) {
-        const nowa = wezel.url && sciezkaWzgledna(decodeURI(wezel.url), plikMd, dozwolone);
+        const nowa = wezel.url && sciezkaWzgledna(wezel.url, plikMd, dozwolone);
         if (nowa) ctx.setProperty(wezel, 'url', nowa);
       },
     };

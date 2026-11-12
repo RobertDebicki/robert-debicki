@@ -21,7 +21,7 @@ n8n wymaga najwięcej wiedzy, ale daje największą kontrolę. Można go postawi
 
 ## Dlaczego w moich wdrożeniach często wybieram n8n
 
-Przy monitoringu temperatur w transporcie logika aplikacji przekroczyła limity workflow. Przeniosłem ją do n8n na AWS. System pilnuje ponad 150 pojazdów, a 20 dyspozytorów widzi odczyty odświeżane co minutę. Przy odczycie dokumentów i voice botach też używam n8n.
+Przy monitoringu temperatur w transporcie przeniosłem logikę aplikacji do n8n na AWS, żeby nie przekraczać limitów workflow. System pilnuje ponad 150 pojazdów, a 20 dyspozytorów widzi odczyty odświeżane co minutę. Przy odczycie dokumentów i voice botach też używam n8n.
 
 To nie jest reguła dla każdego. Przy prostej automatyzacji dla małego zespołu Zapier albo Make wystarczą.
 

@@ -151,7 +151,7 @@ DWIE_MINUTY = figura(
   <li><time class="mono">po rozmowie</time><b>Notatka</b><span>Potrzeba i budżet.</span></li>
   <li><time class="mono">n8n</time><b>Pipedrive</b><span>Przy właściwej szansie sprzedaży.</span></li>
 </ol>
-<div class="kara"><span class="duza">~15</span><span>rozmów dziennie w opisanym wdrożeniu</span></div>''',
+<div class="kara"><span class="duza">15</span><span>rozmów dziennie w opisanym wdrożeniu</span></div>''',
 )
 
 NOTATKA = figura(
@@ -264,7 +264,7 @@ MINIATURY = {
 <rect x="28" y="228" width="158" height="22" fill="{P}"/><text x="196" y="245" {MONO} font-size="14" fill="{P}">UE 19,95%</text>
 <g fill="none" stroke="{K}" stroke-width="5" stroke-linejoin="round"><rect x="330" y="70" width="120" height="150" fill="{P}"/></g>
 <path d="M352 196h76M352 170h76M352 144h50" stroke="{K}" stroke-width="6"/><circle cx="420" cy="96" r="14" fill="{Y}" stroke="{K}" stroke-width="4"/>''',
-        'Duża liczba 8,36 procent firm z AI w Polsce i porównanie z Unią Europejską'),
+        'Duża liczba 8,36 procent firm z AI w Polsce według Eurostatu i porównanie z Unią Europejską'),
     'automatyczny-odczyt-dokumentow': svg(Y, f'''
 <text x="28" y="44" {MONO} font-size="14" fill="{K}">PDF → BAZA</text>
 <rect x="44" y="78" width="120" height="156" fill="{P}" stroke="{K}" stroke-width="4"/>

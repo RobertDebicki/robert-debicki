@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/voice-bot-dla-firmy-miniatura.png"
   alt: "Duży napis 2:00 i słuchawka telefonu, bot oddzwania do klienta w dwie minuty"
 ---
-**Voice bot dla firmy** może zadzwonić do osoby, która wypełniła formularz na Twojej stronie, w 2 minuty od wysłania. Opisuję wdrożenie, w którym bot obsługuje około 15 rozmów dziennie i przekazuje handlowcowi gotową notatkę. Chcesz oddzwaniać szybciej do zapytań? Napisz do mnie.
+**Voice bot dla firmy** może zadzwonić do osoby, która wypełniła formularz na Twojej stronie, w 2 minuty od wysłania. Opisuję wdrożenie, w którym bot obsługuje 15 rozmów dziennie i przekazuje handlowcowi gotową notatkę. Chcesz oddzwaniać szybciej do zapytań? Napisz do mnie.
 
 ![Oś czasu voice bota: formularz o 0:00, telefon bota o 2:00, notatka z potrzebą i budżetem trafia do Pipedrive](/src/assets/wpisy/voice-bot-dla-firmy-1.png)
 
@@ -43,7 +43,7 @@ Od 2 sierpnia 2026 klient ma wiedzieć, że rozmawia z AI, jeśli nie jest to oc
 Powinien to usłyszeć na początku rozmowy. Wymagają tego przepisy przejrzystości AI Act, gdy nie jest to oczywiste.
 
 ### Ile rozmów dziennie obsłuży bot?
-W opisanym wdrożeniu to około 15 rozmów dziennie. Liczba zależy od liczby formularzy w Twojej firmie.
+W opisanym wdrożeniu to 15 rozmów dziennie. Liczba zależy od liczby formularzy w Twojej firmie.
 
 ### Co jeśli klient nie odbierze albo przerwie rozmowę?
 Takie przypadki też trafiają do handlowca. Ma wtedy informację, że kontakt jest do ponowienia, razem z tym, co klient zdążył powiedzieć.

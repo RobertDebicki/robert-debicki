@@ -9,6 +9,13 @@
 - Testy, które zakładały brak wpisów na prawdziwej treści, sprawdzają teraz oba stany: `wpisy-puste.spec.ts`, menu EN w `jezyki-prawdziwa-tresc.spec.ts` (Posts z „No posts in English yet”, jak w `maListe`), porównanie z makietą ukrywa sekcję wpisów i link w menu (makieta ich nie ma).
 - `npm run sprawdz`: treść 0, GPS 0, tłumaczenia OK, vitest 148 pass/1 skipped, e2e 120 pass. Zrzuty listy i wpisu 1440 jasny i ciemny, 390: bez przewijania w bok.
 
+**✅ Poprawki po `/code-review medium` (runda 1, 10 uwag):**
+- Przeinaczony fakt: wpis n8n mówił, że logika „przekroczyła limity”, karta: przeniesiona, „żeby nie przekraczać limitów”. Ten sam typ: „około 15 rozmów” zamiast „15” (karta), też na grafice. Poprawione w szkicach, wpisach i PNG.
+- Wtyczka obrazów: brak pliku w `/src/assets/` zatrzymuje build (wcześniej cicho zepsuty obrazek), `%` i polskie znaki w nazwie bez wywracania buildu (testy najpierw czerwone).
+- Komunikat `obraz()` wskazuje też miniaturę; `eksport.py` nie nadpisuje wpisów bez `--nadpisz`; README szkiców: źródłem treści jest panel; ALT miniaturki: „według Eurostatu”.
+- Bez zmian: porównanie z makietą pomija sekcję wpisów (makieta jej nie ma), wspólny helper w testach (refaktor bez błędu).
+- Otwarte, decyzja Roberta: menu EN „Posts” prowadzi do pustej listy, która trafia do mapy strony.
+
 **🎯 Następny krok:**
 - `/code-review`, potem PR, scalenie i `npm run wdroz -- --wgraj` (zgoda Roberta z 12.11 w rozmowie).
 - Później: angielskie wersje wpisów przez `/tlumacz-strone` (do tego czasu w EN menu „Posts” prowadzi do pustej listy).

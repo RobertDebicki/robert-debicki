@@ -1,6 +1,6 @@
 # Szkice wpisów na bloga
 
-Pięć szkiców. Nie są na stronie. Publikacja jednego wpisu: skopiuj plik do `src/content/wpisy/<adres>/pl.md` (adres = nazwa pliku bez `.md`) albo dodaj go z panelu `/admin/`, ustaw `data` na dzień publikacji, potem `npm run build` i `npm test`.
+Pięć wpisów opublikowanych 12.11 w `src/content/wpisy/` (daty wstecz 14.10 do 11.11). **Źródłem treści jest teraz panel `/admin/` i `src/content/wpisy/`**, nie te szkice. Szkice i makieta (`podglad/`) zostają jako historia i do odtworzenia grafik: `generuj.py` → `zrzuty.mjs` (PNG do `src/assets/wpisy/`) → `eksport.py` (nie nadpisuje istniejących wpisów bez `--nadpisz`).
 
 | Plik | Fraza główna | Źródła zewnętrzne |
 |---|---|---|
