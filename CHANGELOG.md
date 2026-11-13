@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-13 19:50, Claude Code
+
+**✅ Zrobione (poprawki po końcowym przeglądzie całej gałęzi; nie wdrożone):**
+- Przegląd całej gałęzi (85d4a24..6ba0c1e): bez uwag krytycznych; sekrety 0, nazwy klientów 0, build z indeksowaniem bez metatagu robots na nowych stronach, mapa strony i `llms.txt` z nowymi stronami, canonical i hreflang poprawne, brak przewijania w bok na 10 nowych adresach, reguła `/cv/` w `<IfModule>`.
+- Uwaga ważna: polityka prywatności (`src/lib/polityka.ts`, PL i EN) wymienia teraz kliknięcia w numer telefonu obok e-maila i LinkedIn („bez treści wiadomości i rozmów”), bo strona wysyła `klik_telefon`. Test w `zgoda.spec.ts` najpierw czerwony. Komentarz w `src/scripts/zgoda.ts` zaktualizowany.
+- Drobna: listy `/uslugi/` i `/en/services/` z tytułem i opisem zgodnym z regułą SEO (53/54 i 150/149 znaków).
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass.
+
+**🚧 Odłożone (z przeglądu, drobne):** wybór wdrożeń w panelu (`relation`) niesprawdzony w działającym Sveltii; CV po angielsku (dziś EN linkuje do polskiego PDF); testy przewijania stron usług tylko na fiksturach.
+
+**🎯 Następny krok:** zgoda Roberta na scalenie z `main` i wdrożenie; po wdrożeniu `curl -I` na CV (X-Robots-Tag) i `klik_telefon` w GTM.
+
 ## 2026-11-13 19:15, Claude Code
 
 **✅ Zrobione (zadanie 7 krok 3: linki z wpisów do usług, zdania zaakceptowane przez Roberta 13.11; nie wdrożone):**

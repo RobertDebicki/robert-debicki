@@ -11,6 +11,6 @@ export async function getStaticPaths() {
 const maEn = await maUslugi('en');
 const przelacznik = maEn ? '/en/services/' : (await maStroneGlownaEn()) ? '/en/' : undefined;
 ---
-<Strona jezyk="pl" tytul="Usługi | Robert Dębicki" opis="Usługi Roberta Dębickiego: automatyzacja procesów, wdrożenia AI i aplikacje." odpowiednik={maEn ? '/en/services/' : undefined} przelacznik={przelacznik}>
+<Strona jezyk="pl" tytul="Usługi: AI, automatyzacja, voiceboty | Robert Dębicki" opis="Wdrożenie AI i automatyzacja procesów, strony i aplikacje na zamówienie z AI oraz voiceboty dla firm. Wrocław albo zdalnie, każda wycena indywidualna." odpowiednik={maEn ? '/en/services/' : undefined} przelacznik={przelacznik}>
   <Uslugi jezyk="pl" lista />
 </Strona>

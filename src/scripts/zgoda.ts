@@ -91,7 +91,7 @@ else if (zapisany === null) pokaz(false);
 baner?.querySelectorAll<HTMLButtonElement>('[data-zgoda]').forEach((b) => b.addEventListener('click', () => zdecyduj(b.dataset.zgoda === 'tak' ? 'tak' : 'nie')));
 document.querySelectorAll('[data-zgoda-otworz]').forEach((b) => b.addEventListener('click', () => pokaz(true)));
 
-// Zdarzenia kliknięć (e-mail, LinkedIn, kopiowanie adresu; atrybut data-zdarzenie) trafiają do dataLayer tylko, gdy analityka jest już włączona.
+// Zdarzenia kliknięć (e-mail, telefon, LinkedIn, kopiowanie adresu; atrybut data-zdarzenie) trafiają do dataLayer tylko, gdy analityka jest już włączona.
 // Przed decyzją albo po odmowie nic się nie zapisuje, więc po późniejszej zgodzie nic się nie odtwarza.
 // To zwykłe obiekty { event }: kontener GTM przekazuje je do GA4 wyzwalaczem „Zdarzenie niestandardowe” i tagiem zdarzenia GA4 (ustawia się w panelu GTM).
 function zdarzenieKlikniecia(e: Event): void {

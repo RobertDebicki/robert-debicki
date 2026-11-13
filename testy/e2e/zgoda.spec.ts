@@ -287,9 +287,9 @@ test('przed decyzją (baner otwarty) kliknięcia nie tworzą zdarzeń, a po pó�
   expect(await zdarzenia(page)).toEqual([]);
 });
 
-test('polityka wymienia kliknięcia w adres e-mail i LinkedIn jako zbierane po zgodzie (PL i EN)', async ({ page }) => {
+test('polityka wymienia kliknięcia w adres e-mail, numer telefonu i LinkedIn jako zbierane po zgodzie (PL i EN)', async ({ page }) => {
   await page.goto('/polityka-prywatnosci/');
-  await expect(page.locator('main')).toContainText(/kliknięcia w adres e-mail i link do LinkedIn/);
+  await expect(page.locator('main')).toContainText(/kliknięcia w adres e-mail, numer telefonu i link do LinkedIn/);
   await page.goto('/en/privacy-policy/');
-  await expect(page.locator('main')).toContainText(/clicks on the email address and the LinkedIn link/);
+  await expect(page.locator('main')).toContainText(/clicks on the email address, the phone number and the LinkedIn link/);
 });
