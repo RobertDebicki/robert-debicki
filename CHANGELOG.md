@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-13 12:00, Claude Code
+
+**✅ Zrobione (podgląd usług, runda 3 uwag Roberta, ryzyko niskie; nie wdrożone):**
+- Uwaga Roberta: „wdrażam AI i automatyzuję”, bo nie zawsze potrzebne jest AI; czasem wystarczy ułożyć proces i prosta automatyzacja.
+- `docs/makieta/uslugi.html`: wstęp strony usługi, krok 1 „Najpierw proces, potem narzędzie”, nowe pytanie FAQ „Czy moja firma w ogóle potrzebuje AI?”, tytuł kontaktu „Sprawdzę, co przejmie automatyzacja, a co AI.”, nagłówek sekcji usług „Wdrażam AI i automatyzuję procesy” z wyjaśnieniem pod spodem. Brak przewijania w bok przy 390 i 1440 px.
+
+**🎯 Następny krok:** akceptacja podglądu przez Roberta i brakujące fakty (przykład agenta AI, bezpieczeństwo danych, wycena).
+
 ## 2026-11-13 11:45, Claude Code
 
 **✅ Zrobione (podgląd usług, runda 2 uwag Roberta, ryzyko niskie; nie wdrożone):**
