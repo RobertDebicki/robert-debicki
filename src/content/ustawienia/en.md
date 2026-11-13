@@ -20,7 +20,7 @@ karta:
     - etykieta: "Code"
       wartosc: "Python, FastAPI, Next.js, TypeScript"
 wdrozenia:
-  tytul: "Six systems running at client companies"
+  tytul: "Systems running at client companies"
   wstep: "The numbers come from clients or from the systems I built."
 projekty:
   tytul: "Recent projects"
@@ -61,12 +61,12 @@ narzedzia:
     - nazwa: "Hosting and Git"
       wartosc: "Git, Docker, Coolify (apps), AWS (n8n)"
 kontakt:
-  tytul: "Looking for a full-time role as an Automation Developer or AI Engineer"
-  wstep: "Wrocław, Poland, or remote. Email is the fastest way to reach me."
+  tytul: "Tell me what you still do by hand. I'll check what can be automated."
+  wstep: "I build automations, voicebots, and apps for companies. I'm also open to a full-time Automation Developer or AI Engineer role. Wrocław, Poland, or remote. Call or message me."
   email: "robert.debicki7@gmail.com"
   telefon: "+48 665 780 129"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 tlumaczenie: ai
-zrodlo: f1dbc3f633932de51e961f812c23c08cbbffd4cdff15690dd9d1ded4ceba1933
+zrodlo: 8a8d445cf85c229f0b512428477da43189fe7565eeb285cd9fc4c75f7af1c678
 ---

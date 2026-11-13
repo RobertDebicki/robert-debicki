@@ -20,7 +20,7 @@ karta:
     - etykieta: "Kod"
       wartosc: "Python, FastAPI, Next.js, TypeScript"
 wdrozenia:
-  tytul: "Sześć systemów, które działają u klientów"
+  tytul: "Systemy, które działają u klientów"
   wstep: "Liczby pochodzą od klientów albo z systemów, które zbudowałem."
 projekty:
   tytul: "Ostatnie projekty"
@@ -61,8 +61,8 @@ narzedzia:
     - nazwa: "Hosting i Git"
       wartosc: "Git, Docker, Coolify (aplikacje), AWS (n8n)"
 kontakt:
-  tytul: "Szukam stałej pracy jako Automation Developer albo AI Engineer"
-  wstep: "Wrocław albo zdalnie. Najszybciej odpowiadam mailowo."
+  tytul: "Powiedz, co robicie ręcznie. Sprawdzę, co da się zautomatyzować."
+  wstep: "Firmom buduję automatyzacje, voiceboty i aplikacje. Jestem też otwarty na stałą rolę Automation Developer albo AI Engineer. Wrocław albo zdalnie. Zadzwoń albo napisz."
   email: "robert.debicki7@gmail.com"
   telefon: "+48 665 780 129"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"

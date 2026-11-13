@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-13 10:40, Claude Code
+
+**✅ Zrobione (zadanie 2 planu widoczności: przekaz dla klienta i rekrutera, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- `ustawienia/pl.md`: tytuł kontaktu „Powiedz, co robicie ręcznie. Sprawdzę, co da się zautomatyzować.”, wstęp kontaktu z ofertą dla firm i otwartością na rolę Automation Developer albo AI Engineer, tytuł wdrożeń „Systemy, które działają u klientów” (bez liczby). Wiersz karty „Szukam” bez zmian.
+- `ustawienia/en.md` przetłumaczone według `/tlumacz-strone`, `zrodlo` przeliczone; kontrola tłumaczeń bez błędów.
+- Testy: nagłówek wdrożeń w `jezyki-prawdziwa-tresc.spec.ts`; porównanie z makietą podmienia w kopii makiety trzy zmienione teksty (jak przy logo i kolorze), wzorce zrzutów bez zmian.
+
+**🎯 Następny krok:** zadanie 3 planu (wg planu w `docs/superpowers/plans/`); krok 6 wcześniejszego zadania czeka na `klik_telefon` w GTM po wdrożeniu.
+
 ## 2026-11-13 10:45, Claude Code
 
 **✅ Zrobione (zadanie 1, krok 6: numer telefonu na stronie, ryzyko średnie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**

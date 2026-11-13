@@ -52,8 +52,22 @@ function makietaZNowymLogo(html: string): string {
   return wynik;
 }
 
+/**
+ * Makieta ma stary przekaz (tytuł wdrożeń, tytuł i wstęp kontaktu). Treść zmieniono celowo (przekaz dla klienta i rekrutera),
+ * więc w kopii makiety podmieniamy tylko te trzy teksty na aktualne z `ustawienia/pl.md`.
+ */
+function makietaZNowymPrzekazem(html: string): string {
+  let wynik = podmien(html, /Sześć systemów, które działają u klientów/, 'Systemy, które działają u klientów');
+  wynik = podmien(wynik, /Szukam stałej pracy jako Automation Developer albo AI Engineer/, 'Powiedz, co robicie ręcznie. Sprawdzę, co da się zautomatyzować.');
+  return podmien(
+    wynik,
+    /Wrocław albo zdalnie\. Najszybciej odpowiadam mailowo\./,
+    'Firmom buduję automatyzacje, voiceboty i aplikacje. Jestem też otwarty na stałą rolę Automation Developer albo AI Engineer. Wrocław albo zdalnie. Zadzwoń albo napisz.',
+  );
+}
+
 async function podstawMakiete(page: Page) {
-  const html = makietaZNowymLogo(readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8'));
+  const html = makietaZNowymPrzekazem(makietaZNowymLogo(readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8')));
   await page.route(MAKIETA, (r) => r.fulfill({ contentType: 'text/html; charset=utf-8', body: html }));
   await page.route('https://fonts.googleapis.com/**', (r) => r.fulfill({ contentType: 'text/css', body: cssFontow() }));
   await page.route('https://fonts.gstatic.com/**', (r) => {
