@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/automatyczny-odczyt-dokumentow-en-miniatura.png"
   alt: "Stack of documents, an arrow, and a data table with one row flagged for review"
 tlumaczenie: ai
-zrodlo: 97a10884885f3e75860ce3eaa208e5e265f2fbf3ab16bd50925e39a0200c0472
+zrodlo: 64fe43453754063de967762e358f8af24a929fe189a0179069a17d737575d0a3
 ---
 **Automated document reading** saves time wherever someone retypes amounts and deadlines from PDFs into a spreadsheet. I describe a project where the system reads hundreds of applications every day and saves the data in one database. I also show what happens when a read is uncertain. Do you retype documents by hand? Email me.
 
@@ -57,7 +57,7 @@ When a read is uncertain, the system asks a person. When a read looks confident,
 Usually not. In the project described here, the system downloads documents from email and SharePoint and saves the data in Airtable.
 
 ### How much does a project like this cost?
-The price depends on the number of document types and where the data goes. Tell me which documents you retype, and I'll give you a quote.
+The price depends on the number of document types and where the data goes. Tell me which documents you retype, and I'll give you a quote. I build processes like this as part of my [AI automation](/en/services/ai-automation/) service.
 
 ### Is the data from the documents secure?
 That depends on the services you choose and your contracts with their providers. Before the project starts, we agree on where the data may go. With personal data, that matters because of the GDPR.

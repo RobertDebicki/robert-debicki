@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/ile-firm-uzywa-ai-en-miniatura.png"
   alt: "Large figure of 8.36 percent of companies in Poland using AI according to Eurostat, compared with the European Union"
 tlumaczenie: ai
-zrodlo: 8194447892791ee612c44db0acaec4680c4015b6dca77c16965b01c95fbd9d41
+zrodlo: 4bcbb3081c32e78617e400a12ac562888a7866326ba993d6a94013a42376c9bd
 ---
 **Business process automation** is still an advantage, not the norm. According to Statistics Poland (GUS), 8.7% of Polish companies used artificial intelligence in 2025. I explain how to pick your first process to automate and what results my clients saw. Want to check what to automate in your company? Email me.
 
@@ -57,4 +57,4 @@ No. I run the project from process analysis to handing it over to your team. The
 In the projects described here, decisions stay with people. For example, the owner approves every message to a customer before it goes out.
 
 ### How do I start the conversation?
-With one sentence: “What do we do by hand every week?” Email it to me.
+With one sentence: “What do we do by hand every week?” Email it to me. I describe what AI and automation can take over in a business on the [AI automation for business](/en/services/ai-automation/) page.

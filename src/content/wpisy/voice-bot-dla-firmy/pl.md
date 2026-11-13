@@ -52,4 +52,4 @@ Takie przypadki też trafiają do handlowca. Ma wtedy informację, że kontakt j
 W opisanym wdrożeniu w Pipedrive. Pracuję też z HubSpotem i integracjami przez API.
 
 ### Ile kosztuje voice bot dla firmy?
-Cena zależy od liczby pytań, CRM i godzin dzwonienia. Napisz, jakich zapytań dostajesz dziennie, a przygotuję wycenę.
+Cena zależy od liczby pytań, CRM i godzin dzwonienia. Napisz, jakich zapytań dostajesz dziennie, a przygotuję wycenę. Zakres usługi opisuję na stronie [voiceboty dla firm](/uslugi/voiceboty/).

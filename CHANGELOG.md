@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-13 19:15, Claude Code
+
+**✅ Zrobione (zadanie 7 krok 3: linki z wpisów do usług, zdania zaakceptowane przez Roberta 13.11; nie wdrożone):**
+- Po jednym zdaniu z linkiem (fraza usługi w kotwicy) na końcu FAQ: `n8n-make-czy-zapier`, `automatyczny-odczyt-dokumentow`, `ile-firm-uzywa-ai` → `/uslugi/ai-i-automatyzacja/`; `voice-bot-dla-firmy` → `/uslugi/voiceboty/`. EN z linkami do `/en/services/...`. `ai-act-dla-malej-firmy` bez linku (nie pasuje do usługi). `zrodlo` przeliczone, kontrola tłumaczeń bez błędów, linki obecne w zbudowanym HTML.
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass.
+
+**🎯 Następny krok:** przegląd całej gałęzi; potem scalenie z `main` i wdrożenie za zgodą Roberta; po wdrożeniu `klik_telefon` w GTM i sprawdzenie nagłówka noindex dla `/cv/`.
+
 ## 2026-11-13 18:50, Claude Code
 
 **✅ Zrobione (treść zaakceptowana przez Roberta 13.11; nie wdrożone):**
