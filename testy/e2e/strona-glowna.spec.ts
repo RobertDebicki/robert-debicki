@@ -83,8 +83,27 @@ function makietaZNowymMenu(html: string): string {
   );
 }
 
+/**
+ * Opis wdrożenia z kampaniami ujednolicono celowo z opisem na stronie usługi AI i automatyzacja (decyzja Roberta 13.11):
+ * branża zamiast nazwy usługi, trzech agentów, AdLoop w stosie. W kopii makiety podmieniamy tylko tę kartę.
+ */
+function makietaZNowymWdrozeniemKampanii(html: string): string {
+  let wynik = podmien(html, /<p class="sector mono">Kampanie Google Ads<\/p>/, '<p class="sector mono">Producent mebli dla branży HoReCa</p>');
+  wynik = podmien(wynik, /<h3>Claude Code do prowadzenia kampanii i analityki<\/h3>/, '<h3>Agenci AI do kampanii, SEO i bloga</h3>');
+  wynik = podmien(
+    wynik,
+    /Klient chciał prowadzić reklamy sam, bez agencji\. Skonfigurowałem Claude Code z dostępem do Google Ads, GA4 i Search Console, tak żeby mógł tworzyć kampanie, analizować wyniki i znajdować frazy, które sprzedają\. Po miesiącu prowadził kampanie samodzielnie i odnotował wzrost sprzedaży\./,
+    'Klient chciał prowadzić reklamy sam, bez agencji. Skonfigurowałem Claude Code z dostępem do Google Ads, GA4 i Search Console. Pierwszy agent sprawdza rentowność kampanii i ruch na stronie, a gdy w SEO coś się zmieni, proponuje zmiany. Drugi pisze wpisy na blog i opisy realizacji na stronę, trzeci je tłumaczy. Po miesiącu klient prowadził kampanie samodzielnie i odnotował wzrost sprzedaży.',
+  );
+  return podmien(
+    wynik,
+    /<p class="stack mono"><span>Claude Code<\/span><span>Google Ads<\/span><span>GA4<\/span><span>Search Console<\/span><\/p>/,
+    '<p class="stack mono"><span>Claude Code</span><span>AdLoop</span><span>Google Ads</span><span>GA4</span><span>Search Console</span></p>',
+  );
+}
+
 async function podstawMakiete(page: Page) {
-  const html = makietaZNowymMenu(makietaZNowymPrzekazem(makietaZNowymLogo(readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8'))));
+  const html = makietaZNowymWdrozeniemKampanii(makietaZNowymMenu(makietaZNowymPrzekazem(makietaZNowymLogo(readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8')))));
   await page.route(MAKIETA, (r) => r.fulfill({ contentType: 'text/html; charset=utf-8', body: html }));
   await page.route('https://fonts.googleapis.com/**', (r) => r.fulfill({ contentType: 'text/css', body: cssFontow() }));
   await page.route('https://fonts.gstatic.com/**', (r) => {

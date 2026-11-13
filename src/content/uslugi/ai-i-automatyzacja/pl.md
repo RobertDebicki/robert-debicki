@@ -71,7 +71,7 @@ przyklady:
         - "GA4"
         - "Search Console"
       link:
-        tekst: "To wdrożenie w sekcji wdrożeń: Claude Code do kampanii i analityki"
+        tekst: "To wdrożenie w sekcji wdrożeń: Agenci AI do kampanii, SEO i bloga"
         adres: "/#wdrozenia"
 faq:
   tytul: "O co pytają przed wdrożeniem AI w firmie"

@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-13 18:50, Claude Code
+
+**✅ Zrobione (treść zaakceptowana przez Roberta 13.11; nie wdrożone):**
+- Robert zaakceptował teksty strony dla rekrutera.
+- Wdrożenie `kampanie-google-ads` ujednolicone z przykładem na stronie AI i automatyzacja (propozycja zaakceptowana): tytuł „Agenci AI do kampanii, SEO i bloga”, branża „Producent mebli dla branży HoReCa” zamiast nazwy usługi, opis z trzema agentami i wynikiem po miesiącu, AdLoop w stosie. EN tak samo; tekst linku na stronie usługi PL i EN zaktualizowany; `zrodlo` przeliczone, kontrola tłumaczeń bez błędów.
+- Porównanie z makietą podmienia w kopii makiety także tę kartę (jak inne celowo zmienione teksty); wzorce zrzutów bez zmian.
+- `npm run sprawdz`: exit 0.
+
+**🎯 Następny krok:** linki z wpisów do usług (zdania do akceptacji Roberta), przegląd całej gałęzi, wdrożenie za zgodą Roberta.
+
 ## 2026-11-13 18:20, Claude Code
 
 **✅ Zrobione (CV na serwerze, za zgodą Roberta w wiadomości 13.11):**

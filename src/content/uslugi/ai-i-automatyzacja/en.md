@@ -71,7 +71,7 @@ przyklady:
         - "GA4"
         - "Search Console"
       link:
-        tekst: "This deployment in the deployments section: Claude Code for campaigns and analytics"
+        tekst: "This deployment in the deployments section: AI agents for ads, SEO, and the blog"
         adres: "/en/#wdrozenia"
 faq:
   tytul: "What people ask before bringing AI automation into a business"
@@ -91,5 +91,5 @@ faq:
 kolejnosc: 1
 adresEn: "ai-automation"
 tlumaczenie: ai
-zrodlo: c0da3c1e5de491ef7e89d12901c19b025f5bbc4b40e9b6299a70744673f0c5e1
+zrodlo: 58bd9f4762dd85ab4bbae770254d781d28c5b12a162c3d3868bd710e6374bb77
 ---
