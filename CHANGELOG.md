@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-11-13 20:00, Claude Code
+
+**✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 13.11):**
+- PR #10 (`widocznosc-klienci-rekruterzy`): CI „Kontrole, testy i Lighthouse” pass (3 min 46 s), scalony do `main` (`9c20428`).
+- `npm run wdroz -- --wgraj`: 119 plików, kopia zapasowa serwera `~/Backups/robert-debicki-ftp/2026-11-13T16-45-38-441Z`, odbiór: wszystkie pliki zgodne z lokalnymi, `.htaccess` działa.
+- `test:produkcja` 5 pass. Żywa strona: 200 na `/`, `/uslugi/` i trzech usługach, `/dla-rekruterow/`, czterech adresach EN, polityce; `tel:+48665780129` na stronie głównej; 10 nowych adresów w mapie strony; CV `X-Robots-Tag: noindex, nofollow`, strona główna bez tego nagłówka.
+
+**🚧 Nie zrobione:** `klik_telefon` w regexie wyzwalacza GTM i zdarzenia kluczowe w GA4 (zmiana w kontenerze do akceptacji Roberta); wybór wdrożeń na stronie rekrutera w działającym panelu `/admin/` do ręcznego sprawdzenia; zadania 9 (po serii 2) i 10 (po starcie sklepu).
+
+**🎯 Następny krok:** GTM: dopisać `klik_telefon` do wyzwalacza „Kliknięcia kontaktu” i opublikować kontener (za zgodą Roberta); GSC: zgłosić do indeksowania strony usług i `/dla-rekruterow/`.
+
 ## 2026-11-13 19:50, Claude Code
 
 **✅ Zrobione (poprawki po końcowym przeglądzie całej gałęzi; nie wdrożone):**
