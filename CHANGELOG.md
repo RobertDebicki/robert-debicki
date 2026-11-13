@@ -4,6 +4,7 @@
 
 **✅ Zrobione (zadanie 1 planu widoczności: telefon, ryzyko średnie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
 - Opcjonalne pole `kontakt.telefon` (schemat z komunikatem błędu, pole w panelu), `hrefTelefonu` w `src/lib/telefon.ts`, link `tel:` ze zdarzeniem `klik_telefon` nad e-mailem w kontakcie, `telephone` w JSON-LD i telefon w linii Kontakt w `llms.txt`. Bez numeru nic się nie wyświetla.
+- Poprawka po przeglądzie: schemat przyjmuje też pusty `telefon: ""` (czyszczenie pola w panelu nie psuje budowania); szablony i `llms.txt` traktują pusty tekst jak brak telefonu.
 - Testy: jednostkowe (`telefon.test.ts`, `llms.test.ts`) i e2e na fiksturach (`jezyki.spec.ts`: link, JSON-LD, zdarzenie po zgodzie); fikstura PL ma numer testowy. `npm run sprawdz` przechodzi. W `AGENTS.md` opis regexu GTM dopisany o `klik_telefon`.
 
 **🎯 Następny krok:** numer od Roberta do `src/content/ustawienia/pl.md` (i decyzja, czy też do `en.md`); po wdrożeniu dopisać `klik_telefon` do wyzwalacza w GTM i oznaczyć w GA4; polityka prywatności i `ciasteczkaGoogle` do sprawdzenia przy zmianie kontenera. Potem zadanie 2.

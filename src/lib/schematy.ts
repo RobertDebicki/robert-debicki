@@ -103,7 +103,7 @@ export const ustawienia = z.object({
     email: z.email({ error: 'Pole email musi być adresem e-mail.' }),
     linkedinUrl: z.url({ protocol: /^https$/, error: 'Pole linkedinUrl musi być adresem https.' }),
     linkedinTekst: z.string(),
-    telefon: z.string().regex(/^\+?[0-9][0-9 -]{7,17}$/, { error: 'Pole telefon musi być numerem, np. +48 600 100 200.' }).optional(),
+    telefon: z.string().regex(/^\+?[0-9][0-9 -]{7,17}$/, { error: 'Pole telefon musi być numerem, np. +48 600 100 200.' }).or(z.literal('')).optional(),
   }),
   ...tlumaczenie,
 });

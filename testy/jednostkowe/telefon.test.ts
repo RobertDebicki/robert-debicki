@@ -27,6 +27,9 @@ describe('pole kontakt.telefon', () => {
     expect(r.success).toBe(false);
     expect(r.error!.issues[0].message).toBe('Pole telefon musi być numerem, np. +48 600 100 200.');
   });
+  it('przyjmuje puste pole z panelu (czyszczenie numeru)', () => {
+    expect(kontakt.safeParse({ ...poprawny, telefon: '' }).success).toBe(true);
+  });
   it('jest opcjonalne', () => {
     expect(kontakt.safeParse(poprawny).success).toBe(true);
   });

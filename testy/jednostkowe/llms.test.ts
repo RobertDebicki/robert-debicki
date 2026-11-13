@@ -35,6 +35,7 @@ describe('llmsTxt', () => {
   it('dopisuje telefon do linii kontaktu tylko, gdy jest podany', () => {
     expect(llmsTxt({ ...dane, telefon: '+48 600 100 200' })).toContain('Kontakt: jan@example.com, telefon: +48 600 100 200, LinkedIn:');
     expect(tekst).not.toContain('telefon');
+    expect(llmsTxt({ ...dane, telefon: '' })).not.toContain('telefon');
   });
   it('wypisuje narzędzia po jednej linii na obszar', () => {
     expect(tekst).toContain('- Automatyzacja: n8n, Make.com');
