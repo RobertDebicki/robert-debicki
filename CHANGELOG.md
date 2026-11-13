@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-13 10:37, Claude Code
+
+**✅ Zrobione (zadanie 11 planu widoczności: lista działań z linkami zewnętrznymi, bez kodu, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Nowy plik `docs/seo/linki-zewnetrzne.md`: 10 pozycji w kolejności wartość do wysiłku (GitHub, LinkedIn, prośba do klientów, Make Solution Partner, n8n, Dev.to, spotkania we Wrocławiu, Bulldogjob, Useme, do sprawdzenia). Przy każdej adres, co wpisać, gotowy tekst, koszt i źródło sprawdzenia z datą. Rodzaj linku (`rel`) nigdzie niezmierzony, do sprawdzenia po rejestracji. Katalog ekspertów n8n pominięty (pilotaż zamknięty, Polska poza regionami).
+- Nic nie zostało zarejestrowane ani wysłane.
+
+**🎯 Następny krok:** Robert przegląda listę i rejestruje się (pozycje 1 i 2 od razu; linki do stron usług i `/dla-rekruterow/` po ich wdrożeniu).
+
 ## 2026-11-13 10:40, Claude Code
 
 **✅ Zrobione (zadanie 2 planu widoczności: przekaz dla klienta i rekrutera, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
