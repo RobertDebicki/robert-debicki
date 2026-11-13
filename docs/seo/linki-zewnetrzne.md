@@ -7,7 +7,7 @@ Stan na 2026-11-13. Lista dla Roberta: rejestracje i wysyłki robisz Ty, nic nie
 - Tekst do wklejenia nie zawiera nazw klientów ani liczb, których nie podałeś. Klienta opisuj branżą.
 - Pozycje 1 i 2 możesz zrobić od ręki. Linki do podstron usług (`/uslugi/...`, `/en/services/...`) i `/dla-rekruterow/` wstawiaj dopiero po wdrożeniu tych stron. Do tego czasu linkuj do `https://robert-debicki.pl/` i `https://robert-debicki.pl/wpisy/`.
 - Oznaczenia: ✅ sprawdzone (źródło w polu) · ⚠️ częściowo sprawdzone · 🔴 nie wiem, trzeba zajrzeć na miejscu.
-- Rodzaj linku (`dofollow` / `nofollow`): przy żadnej pozycji nie mierzyłem atrybutu `rel`, więc wszędzie "nie wiem". Po założeniu profilu sprawdź kod strony (inspekcja elementu na linku). Wartość pozycji liczymy też bez tego: wzmianka na stronie, którą cytują wyszukiwarki i asystenci AI, ma sens nawet bez linku.
+- Rodzaj linku (`dofollow` / `nofollow`): przy żadnej pozycji nie mierzyłem atrybutu `rel`, więc wszędzie "nie wiem". Po założeniu profilu sprawdź kod strony (inspekcja elementu na linku). Wartość pozycji liczymy też bez tego: wzmianka na zewnętrznej stronie może mieć sens nawet bez linku (⚠️ przesłanka, niezmierzona).
 - Płatnych miejsc nie polecam. Gdyby jakieś się pojawiło, tylko jako ogłoszenie z oznaczeniem `sponsored` albo `nofollow`.
 - Nie wchodzić w katalogi "dodaj stronę za darmo, 200 linków", sieci blogów, wymiany linków. Skill `directory-submissions` jest pisany pod produkty SaaS (Product Hunt, G2, katalogi AI); dla osoby prywatnej to w większości nietrafione, dlatego lista jest krótka i oparta o platformy, na których rekruter i klient faktycznie szukają ludzi.
 
@@ -15,11 +15,11 @@ Stan na 2026-11-13. Lista dla Roberta: rejestracje i wysyłki robisz Ty, nic nie
 
 | # | Miejsce | Wysiłek | Powód miejsca na liście |
 |---|---|---|---|
-| 1 | Profil GitHub (README, pole Website, przypięte repo) | 20 min | Rekruter techniczny zagląda tu pierwszy, a repo strony jest publiczne i świadczy o autorze |
-| 2 | LinkedIn: Website, Featured, nagłówek | 30 min | Główne miejsce, w którym rekruter i właściciel firmy sprawdzają osobę |
-| 3 | Prośba do klientów o wzmiankę z linkiem | 1 mail na klienta | Link od prawdziwego wdrożenia jest najmocniejszy tematycznie i najtańszy |
-| 4 | Make: program Solution Partner | 1 h + szkolenie | Oficjalna lista ekspertów "Hire an expert" (jeśli przyjmą), bezpośredni klienci |
-| 5 | n8n: szablony w portalu twórców i wątki na forum | 2 h na szablon | Wzmianka w miejscu, które cytują wyszukiwarki dla zapytań o n8n |
+| 1 | Profil GitHub (README, pole Website, przypięte repo) | 20 min | Miejsce, gdzie rekruter techniczny może sprawdzić kod (⚠️ przesłanka); repo strony jest publiczne i świadczy o autorze |
+| 2 | LinkedIn: Website, Featured, nagłówek | 30 min | Miejsce, w którym rekruter i właściciel firmy mogą sprawdzić osobę (⚠️ przesłanka) |
+| 3 | Prośba do klientów o wzmiankę z linkiem | 1 mail na klienta | Link od prawdziwego wdrożenia jest tematycznie trafny i tani (⚠️ przesłanka) |
+| 4 | Make: program Solution Partner | 1 h + szkolenie | Oficjalna lista ekspertów "Hire an expert" (jeśli przyjmą) |
+| 5 | n8n: szablony w portalu twórców i wątki na forum | 2 h na szablon | Wzmianka w miejscu tematycznie bliskim n8n (⚠️ wpływ niezmierzony) |
 | 6 | Dev.to: przedruk wpisów z `canonical` | 20 min na wpis | Darmowy zasięg wpisów, bezpieczny dla SEO dzięki `canonical` |
 | 7 | Wrocławskie spotkania (WAIT, meet.js) | zależy | Lokalne kontakty i link w opisie wystąpienia |
 | 8 | Bulldogjob Readme: artykuł autorski | 4 h na tekst | Polskie medium dla rekruterów IT, ale warunki do sprawdzenia |
@@ -33,7 +33,7 @@ Stan na 2026-11-13. Lista dla Roberta: rejestracje i wysyłki robisz Ty, nic nie
 - Źródło: ✅ docs.github.com, "Managing your profile README", 2026-11-13: repozytorium musi nazywać się dokładnie jak nazwa użytkownika, być publiczne i mieć `README.md` z treścią.
 - Co zrobić:
   1. Nowe publiczne repo `RobertDebicki` z `README.md` (tekst niżej).
-  2. W ustawieniach profilu: pole Website = `https://robert-debicki.pl`, Location = Wrocław, krótki Bio.
+  2. W ustawieniach profilu: pole Website = `https://robert-debicki.pl`, Location = Wrocław (albo zdalnie), krótki Bio.
   3. Przypiąć repo `robert-debicki` i dwa inne, które chcesz pokazać (wybierz sam, nie wiem, jakie masz).
   4. W opisie (About) repo `robert-debicki` wpisać adres strony i tematy (topics): `astro`, `portfolio`, `automation`, `n8n`.
 - Bio (do 160 znaków): `Automation Developer i AI Engineer. n8n, Make, Claude Code, voiceboty, WordPress, Next.js. Wrocław lub zdalnie.`
@@ -51,7 +51,7 @@ Wrocław lub zdalnie.
 - LinkedIn: https://www.linkedin.com/in/robert-d%C4%99bicki/
 - Kod strony (testy, historia zmian): https://github.com/RobertDebicki/robert-debicki
 
-Szukam roli Automation Developer albo AI Engineer oraz zleceń od firm, które chcą odciążyć zespół od ręcznej pracy.
+Szukam roli Automation Developer albo AI Engineer oraz zleceń od firm na automatyzację procesów.
 ```
 
 Po wdrożeniu stron usług dopisz trzy linki: automatyzacja procesów, voiceboty, strony i aplikacje.
@@ -59,17 +59,17 @@ Po wdrożeniu stron usług dopisz trzy linki: automatyzacja procesów, voiceboty
 ## 2. LinkedIn
 
 - Adres: https://www.linkedin.com/in/robert-d%C4%99bicki/ (profil istnieje).
-- Koszt: bezpłatnie. Link: LinkedIn zwykle oznacza linki wychodzące jako `nofollow` (⚠️ z ogólnej wiedzy, nie zmierzone). Wartość jest w ruchu od rekruterów i w tym, że asystenci AI często cytują profile.
+- Koszt: bezpłatnie. Link: LinkedIn zwykle oznacza linki wychodzące jako `nofollow` (⚠️ z ogólnej wiedzy, nie zmierzone). Wartość to ruch od rekruterów i klientów (⚠️ niezmierzone).
 - Co zrobić:
   1. Contact info: Website = `https://robert-debicki.pl`, etykieta "Portfolio".
   2. Featured: dodać link do strony, do wpisu "n8n, Make czy Zapier: jak wybrać do firmy" i do wpisu o voice botach; po wdrożeniu także do `/dla-rekruterow/` i strony usługi.
-  3. Nagłówek (headline), do 220 znaków: `Automation Developer | AI Engineer | n8n, Make, Claude Code, voiceboty | Automatyzuję procesy w firmach | Wrocław i zdalnie`
+  3. Nagłówek (headline), do 220 znaków: `Automation Developer | AI Engineer | n8n, Make, Claude Code, voiceboty | Automatyzuję procesy w firmach | Wrocław albo zdalnie`
   4. Sekcja "Informacje" (tekst niżej).
   5. Dodać umiejętności: n8n, Make, Claude Code, WordPress, WooCommerce, Next.js (tylko te, które faktycznie masz).
 - Informacje (do wklejenia):
 
 ```
-Dowożę działające systemy u klientów. Zaczynam od procesu, który zespół robi ręcznie, i kończę na rozwiązaniu, które pracuje samo: integracje i automatyzacje w n8n oraz Make, agenci AI, voiceboty, odczyt dokumentów, strony i sklepy na WordPressie i WooCommerce, aplikacje w Next.js.
+Dowożę działające systemy u klientów. Prowadzę wdrożenie od analizy procesu do uruchomienia i przekazania go zespołowi: automatyzacje w n8n i Make.com, agenci AI, voiceboty, strony i sklepy na WordPressie i WooCommerce, aplikacje w Next.js.
 
 Dla firm: opisz proces, który zabiera czas, a sprawdzę, co da się zautomatyzować. Dla rekruterów: szukam roli Automation Developer albo AI Engineer. Wrocław lub zdalnie.
 
@@ -90,7 +90,7 @@ Temat: Prośba o drobną rzecz po wdrożeniu
 
 Dzień dobry [imię],
 
-cieszę się, że automatyzacja działa u Państwa bez przestojów. Mam prośbę: jeśli uważa Pan/Pani, że warto, czy mógłbym dostać krótką rekomendację na LinkedIn albo jedno zdanie w stopce lub w zakładce "O nas" z odnośnikiem do mojej strony (https://robert-debicki.pl)? Sformułowanie zostawiam Państwu.
+cieszę się, że automatyzacja działa u Państwa. Mam prośbę: jeśli uważa Pan/Pani, że warto, czy mógłbym dostać krótką rekomendację na LinkedIn albo jedno zdanie w stopce lub w zakładce "O nas" z odnośnikiem do mojej strony (https://robert-debicki.pl)? Sformułowanie zostawiam Państwu.
 
 Jeśli wolicie nie, to oczywiście bez problemu.
 
@@ -108,7 +108,7 @@ Robert Dębicki
 - Co wpisać (EN, w formularzu):
 
 ```
-Independent Make and n8n automation developer based in Wroclaw, Poland, working remotely with small and mid-sized companies. I design and deliver process automation, AI agents and voice bots, document processing, and WordPress/WooCommerce and Next.js integrations. Website: https://robert-debicki.pl
+Independent Make and n8n automation developer in Wroclaw or remote, working with companies. I deliver process automation, AI agents and voice bots, plus WordPress/WooCommerce and Next.js work. Website: https://robert-debicki.pl
 ```
 
 - Po przyjęciu: wpisać w opisie profilu partnera adres strony i link do wpisu "n8n, Make czy Zapier".
@@ -135,7 +135,7 @@ Author: Robert Debicki, automation developer. More at https://robert-debicki.pl
 - Adres: https://dev.to (rejestracja bezpłatna). Koszt: bezpłatnie. Link: nie wiem.
 - Źródło: ✅ https://dev.to/help/writing-editing-scheduling, 2026-11-13: pole "Canonical URL" w ustawieniach wpisu (lub `canonical_url` w front matter) wskazuje oryginał; zachęcają do przedruku z własnego bloga; treść wspomagana AI trzeba oznaczać zgodnie z ich zasadami.
 - Co zrobić: przedrukuj wpisy po angielsku (angielska wersja `en.md` istnieje, jeśli już przetłumaczona), zawsze z `canonical` na adres wpisu w `/en/`. Najlepsze kandydatury: "n8n, Make czy Zapier" i "Voice bot dla firmy". Tagi: `n8n`, `automation`, `ai`.
-- Bio (EN): `Automation developer and AI engineer. n8n, Make, Claude Code, voice bots. Wroclaw, Poland. https://robert-debicki.pl`
+- Bio (EN): `Automation developer and AI engineer. n8n, Make, Claude Code, voice bots. Wroclaw or remote. https://robert-debicki.pl`
 - Na końcu przedruku: `Originally published at https://robert-debicki.pl/en/...` (adres konkretnego wpisu).
 
 ## 7. Wrocławskie spotkania
@@ -147,7 +147,7 @@ Author: Robert Debicki, automation developer. More at https://robert-debicki.pl
 ```
 Cześć,
 
-jestem Automation Developerem i AI Engineerem z Wrocławia, wdrażam automatyzacje w n8n i Make oraz voiceboty u małych i średnich firm. Mogę przygotować krótkie wystąpienie (do 15 minut) o tym, jak z ręcznego procesu zrobić działającą automatyzację z AI, razem z tym, co poszło nie tak i jak to naprawić. Jeśli taki temat pasuje do kolejnego spotkania, daj proszę znać.
+jestem Automation Developerem i AI Engineerem (Wrocław albo zdalnie), wdrażam automatyzacje w n8n i Make.com oraz agentów AI w firmach. Mogę przygotować krótkie wystąpienie o tym, jak z ręcznego procesu zrobić działającą automatyzację z AI [temat i długość do potwierdzenia przez Roberta]. Jeśli taki temat pasuje do kolejnego spotkania, daj proszę znać.
 
 Robert Dębicki, https://robert-debicki.pl
 ```
@@ -162,7 +162,7 @@ Robert Dębicki, https://robert-debicki.pl
 ```
 Dzień dobry,
 
-chciałbym zgłosić artykuł do Readme: "Jak zautomatyzować odczyt dokumentów w małej firmie z użyciem AI". Pisze Robert Dębicki, Automation Developer i AI Engineer z Wrocławia. Tekst techniczny, z diagramem przepływu i opisem błędów, które trzeba było naprawić. Czy są wytyczne dla autorów i czy publikacja jest bezpłatna?
+chciałbym zgłosić artykuł do Readme: "Automatyczny odczyt dokumentów przez AI" (rozwinięcie mojego wpisu o tym samym tytule). Pisze Robert Dębicki, Automation Developer i AI Engineer (Wrocław albo zdalnie). Zakres tekstu: [do potwierdzenia przez Roberta]. Czy są wytyczne dla autorów i czy publikacja jest bezpłatna?
 
 Robert Dębicki, https://robert-debicki.pl
 ```
@@ -175,7 +175,7 @@ Robert Dębicki, https://robert-debicki.pl
 - Opis (PL):
 
 ```
-Automatyzuję procesy w małych i średnich firmach: integracje w n8n i Make, odczyt dokumentów przez AI, boty głosowe, strony na WordPressie i WooCommerce. Zaczynam od opisu procesu, który zabiera Wam czas, i mówię, co da się zautomatyzować, zanim cokolwiek zaczniemy budować. Wrocław lub zdalnie. Więcej: https://robert-debicki.pl
+Automatyzuję procesy w firmach: scenariusze w n8n i Make.com, agenci AI, voiceboty, strony i sklepy na WordPressie i WooCommerce. Opiszcie proces, który zabiera Wam czas, a sprawdzę, co da się zautomatyzować. Wrocław lub zdalnie. Więcej: https://robert-debicki.pl
 ```
 
 ## 10. Do sprawdzenia, bez rekomendacji teraz
