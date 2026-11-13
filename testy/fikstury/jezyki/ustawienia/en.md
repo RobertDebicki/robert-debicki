@@ -11,6 +11,9 @@ karta:
   wiersze:
     - etykieta: "Looking for"
       wartosc: "Automation Developer"
+uslugi:
+  tytul: "I deploy AI and automate processes"
+  wstep: "Not every problem needs AI. Sometimes a well organized process and a simple automation are enough. Every service has an example that runs at a client."
 wdrozenia:
   tytul: "Fixture deployments"
   wstep: "Fixture intro."

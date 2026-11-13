@@ -1,6 +1,7 @@
 ---
 import Strona from '../layouts/Strona.astro';
 import Otwarcie from '../components/Otwarcie.astro';
+import Uslugi from '../components/Uslugi.astro';
 import Wdrozenia from '../components/Wdrozenia.astro';
 import Projekty from '../components/Projekty.astro';
 import Referencje from '../components/Referencje.astro';
@@ -16,6 +17,7 @@ const odpowiednik = (await maStroneGlownaEn()) ? '/en/' : undefined;
 ---
 <Strona jezyk="pl" odpowiednik={odpowiednik} tytul="Robert Dębicki | Automation Developer, automatyzacje n8n, AI" opis="Robert Dębicki, Automation Developer / AI. Automatyzacje procesów w n8n i Make.com, aplikacje i wdrożenia AI. Wrocław albo zdalnie. Napisz do mnie.">
   <Otwarcie jezyk="pl" />
+  <Uslugi jezyk="pl" />
   <Wdrozenia jezyk="pl" />
   <Projekty jezyk="pl" />
   <Referencje jezyk="pl" />

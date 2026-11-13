@@ -4,6 +4,7 @@ import type { Jezyk } from '../lib/jezyki';
 import { etykiety } from '../lib/jezyki';
 import { maListe } from '../lib/wpisy';
 import { maListeReferencji } from '../lib/referencje';
+import { maUslugi, prefiksUslug } from '../lib/uslugi';
 
 interface Props {
   jezyk: Jezyk;
@@ -21,6 +22,7 @@ const menu = [
 ];
 const maWpisy = await maListe(jezyk);
 const maReferencje = await maListeReferencji(jezyk);
+const saUslugi = await maUslugi(jezyk);
 const drugi = jezyk === 'pl' ? 'en' : 'pl';
 ---
 <header class="top">
@@ -31,6 +33,7 @@ const drugi = jezyk === 'pl' ? 'en' : 'pl';
       <span>Robert Dębicki</span>
     </a>
     <nav aria-label={e.menuSekcje}>
+      {saUslugi && <a href={prefiksUslug(jezyk)} style="--sw: var(--c)">{e.uslugi}</a>}
       {menu.map(([id, nazwa, barwa]) => (
         <a href={`${baza}#${id}`} style={`--sw: ${barwa}`}>{nazwa}</a>
       ))}

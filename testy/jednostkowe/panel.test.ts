@@ -133,12 +133,39 @@ describe('panel Sveltia: wpisy i zdjęcia', () => {
   });
 });
 
+describe('panel Sveltia: usługi', () => {
+  const pola = () => polaPanelu('uslugi');
+  it('adresEn jest opcjonalny, ma podpowiedź o angielskim adresie i wzorzec jak w schemacie', () => {
+    const p = pola().find((f) => f.name === 'adresEn')!;
+    expect(p.required).toBe(false);
+    expect(p.hint).toMatch(/angielski adres strony, małe litery i dywizy/);
+    const re = new RegExp(p.pattern[0]);
+    expect(re.test('ai-and-automation')).toBe(true);
+    expect(re.test('AI and automation')).toBe(false);
+  });
+  it('opis i tytulSeo pilnują w panelu długości ze schematu', () => {
+    const opis = new RegExp(pola().find((f) => f.name === 'opis')!.pattern[0]);
+    expect(opis.test('a'.repeat(119))).toBe(false);
+    expect(opis.test('a'.repeat(120))).toBe(true);
+    expect(opis.test('a'.repeat(155))).toBe(true);
+    expect(opis.test('a'.repeat(156))).toBe(false);
+    const seo = new RegExp(pola().find((f) => f.name === 'tytulSeo')!.pattern[0]);
+    expect(seo.test('a'.repeat(60))).toBe(true);
+    expect(seo.test('a'.repeat(61))).toBe(false);
+  });
+  it('ikona i kolejność są kopiowane z pl.md, teksty tłumaczone', () => {
+    expect(pola().find((f) => f.name === 'ikona')!.i18n).toBe('duplicate');
+    expect(pola().find((f) => f.name === 'kolejnosc')!.i18n).toBe('duplicate');
+    expect(pola().find((f) => f.name === 'tytul')!.i18n).toBe(true);
+  });
+});
+
 describe('panel Sveltia: języki', () => {
   it('struktura multiple_files, pl domyślny, en dodatkowy, nowa pozycja tylko po polsku', () => {
     expect(konfig.i18n).toMatchObject({ structure: 'multiple_files', locales: ['pl', 'en'], default_locale: 'pl', initial_locales: 'default' });
   });
   it('kolekcje folderowe zapisują folder na pozycję z pl.md i en.md, a ustawienia pliki {{locale}}.md', () => {
-    for (const nazwa of ['wdrozenia', 'projekty', 'referencje', 'wpisy']) {
+    for (const nazwa of ['wdrozenia', 'projekty', 'referencje', 'wpisy', 'uslugi']) {
       const k = kolekcje.find((c) => c.name === nazwa)!;
       expect(k.folder).toBe(`src/content/${nazwa}`);
       expect(k.path).toBe('{{slug}}/{{locale}}');

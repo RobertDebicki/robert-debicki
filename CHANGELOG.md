@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-13 12:55, Claude Code
+
+**✅ Zrobione (zadanie 6 planu widoczności, ryzyko średnie; nie wdrożone):**
+- Kolekcja `uslugi` (schemat w `src/lib/schematy.ts`, panel `/admin/` „Usługi”): tytuł H1, krótka nazwa, tytuł SEO do 60 znaków, opis 120-155 znaków, karta usługi, problemy, kroki, przykłady wdrożeń (co najmniej jeden), FAQ (co najmniej trzy pytania), `adresEn` tylko w en.md.
+- Strony `/uslugi/<adres>/` i `/en/services/<adresEn>/` według widoku 1 podglądu `docs/makieta/uslugi.html`, listy `/uslugi/` i `/en/services/`, sekcja usług na stronie głównej po otwarciu (widok 2), link „Usługi” w menu, JSON-LD `Service` i `FAQPage`, strony usług w `/llms.txt`. Wezwanie na końcu to sekcja kontaktu z ustawień.
+- Ustawienia: opcjonalny nagłówek sekcji usług (`uslugi.tytul`, `uslugi.wstep`); prawdziwe ustawienia bez zmian.
+- CSS: tylko trzy modyfikatory z podglądu (`.trzy`, `.dalej`, `.okruszki` z `.hero.podstrona`).
+- Bez prawdziwych usług nic się nie zmienia: brak sekcji, linku w menu i stron (test `uslugi-puste.spec.ts`). Testy na fiksturach `testy/fikstury/jezyki/uslugi/`.
+- Lighthouse mobile na fiksturowej stronie usługi: 98 / 100 / 100 / 100.
+
+**🎯 Następny krok:** zadanie 7 planu (prawdziwe treści usług w `src/content/uslugi/` i nagłówek sekcji w ustawieniach).
+
 ## 2026-11-13 13:20, Claude Code
 
 **✅ Zrobione (zadanie 5 planu widoczności zatwierdzone; dokumenty, bez kodu; nie wdrożone):**

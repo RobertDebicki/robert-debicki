@@ -16,7 +16,7 @@ test('/admin/config.yml to poprawny YAML z backendem GitHub i i18n multiple_file
   const konfig = parse(await odp.text());
   expect(konfig.backend).toMatchObject({ name: 'github', repo: 'RobertDebicki/robert-debicki', branch: 'main' });
   expect(konfig.i18n.structure).toBe('multiple_files');
-  expect(konfig.collections.map((k: { name: string }) => k.name)).toEqual(['wdrozenia', 'projekty', 'referencje', 'wpisy', 'ustawienia']);
+  expect(konfig.collections.map((k: { name: string }) => k.name)).toEqual(['wdrozenia', 'projekty', 'referencje', 'wpisy', 'uslugi', 'ustawienia']);
 });
 
 test('mapa witryny nie zawiera /admin/', async ({ request }) => {

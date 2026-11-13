@@ -6,7 +6,7 @@
  * Każda pozycja to folder `src/content/<kolekcja>/<adres>/` z `pl.md` i opcjonalnie `en.md` (i18n `multiple_files`).
  * Pola `tlumaczenie` i `zrodlo` są ukryte: ustawia je skill `/tlumacz-strone`, człowiek ich nie edytuje.
  */
-import { HOSTY_R2, wdrozenia, projekty } from './schematy';
+import { HOSTY_R2, wdrozenia, projekty, uslugi } from './schematy';
 
 export const WERSJA_SVELTII = '0.221.8';
 /** Suma kontrolna SRI pliku sveltia-cms.js 0.221.8 z jsDelivr. Przy zmianie wersji przelicz ją z pobranego pliku. */
@@ -163,6 +163,86 @@ const WPISY: Pole = {
   ),
 };
 
+/** Wzorzec długości dla panelu: te same granice co w schemacie usług (`.min` / `.max` w `schematy.ts`). */
+const dlugosc = (min: number, max: number, komunikat: string): Pole => ({ pattern: [`^.{${min},${max}}$`, komunikat] });
+const OPIS_USLUGI = uslugi.shape.opis;
+const SEO_USLUGI = uslugi.shape.tytulSeo;
+const ETYKIETY_IKON_USLUG = { ai: 'AI (robot)', aplikacje: 'aplikacje (kalendarz)', telefon: 'telefon', dokument: 'dokument' };
+const ikonaUslugi = (): Pole => ({ name: 'ikona', label: 'Ikona', widget: 'select', options: opcje(uslugi.shape.ikona.options, ETYKIETY_IKON_USLUG) });
+const pozycjeTekstu = (label: string, singular: string): Pole =>
+  lista('pozycje', label, { label_singular: singular, min: 1, summary: '{{fields.tytul}}', fields: [tekst('tytul', 'Tytuł'), dlugi('tekst', 'Tekst')] });
+
+const USLUGI: Pole = {
+  name: 'uslugi',
+  label: 'Usługi',
+  label_singular: 'usługa',
+  folder: 'src/content/uslugi',
+  identifier_field: 'nazwa',
+  summary: '{{kolejnosc}}. {{nazwa}}',
+  sortable_fields: ['kolejnosc', 'nazwa'],
+  fields: zJezykami(
+    [
+      tekst('tytul', 'Tytuł strony (H1)'),
+      tekst('nazwa', 'Krótka nazwa', { hint: 'Na karcie na stronie głównej, w okruszkach i w linku do strony usługi.' }),
+      tekst('tytulSeo', 'Tytuł w wyszukiwarce', {
+        hint: `Tytuł karty przeglądarki i wyniku w Google, najwyżej ${SEO_USLUGI.maxLength} znaków.`,
+        ...dlugosc(1, SEO_USLUGI.maxLength!, `Tytuł w wyszukiwarce ma najwyżej ${SEO_USLUGI.maxLength} znaków.`),
+      }),
+      dlugi('opis', 'Opis w wyszukiwarce', {
+        hint: `Opis pod tytułem w Google, od ${OPIS_USLUGI.minLength} do ${OPIS_USLUGI.maxLength} znaków, bez nowych linii.`,
+        ...dlugosc(OPIS_USLUGI.minLength!, OPIS_USLUGI.maxLength!, `Opis ma od ${OPIS_USLUGI.minLength} do ${OPIS_USLUGI.maxLength} znaków.`),
+      }),
+      dlugi('zajawka', 'Zajawka na karcie na stronie głównej'),
+      ikonaUslugi(),
+      tekst('sektor', 'Linia nad nazwą na karcie', { hint: 'Np. narzędzia: Agenci AI, n8n, Make.com.' }),
+      tekst('rola', 'Linia pod tytułem'),
+      tekst('rolaWyroznienie', 'Wyróżniony dopisek linii pod tytułem'),
+      dlugi('lead', 'Zdanie główne'),
+      dlugi('akapit', 'Akapit pod zdaniem głównym'),
+      lista('karta', 'Karta usługi', { label_singular: 'wiersz', min: 1, summary: '{{fields.etykieta}}', fields: [tekst('etykieta', 'Etykieta'), tekst('wartosc', 'Wartość')] }),
+      obiekt('problemy', 'Problem', [tekst('tytul', 'Tytuł sekcji'), dlugi('wstep', 'Wstęp'), pozycjeTekstu('Problemy', 'problem')]),
+      obiekt('kroki', 'Jak to robię', [tekst('tytul', 'Tytuł sekcji'), pozycjeTekstu('Kroki', 'krok')]),
+      obiekt('przyklady', 'Przykłady wdrożeń', [
+        tekst('tytul', 'Tytuł sekcji'),
+        lista('pozycje', 'Przykłady', {
+          label_singular: 'przykład',
+          min: 1,
+          hint: 'Co najmniej jeden przykład wdrożenia, inaczej strona się nie zbuduje.',
+          summary: '{{fields.tytul}}',
+          fields: [
+            ikonaUslugi(),
+            tekst('liczba', 'Liczba główna', { required: false, hint: 'Krótko, np. 3 albo setki. Bez liczby zostaje sama ikona.' }),
+            tekst('liczbaOpis', 'Podpis pod liczbą', { required: false }),
+            tekst('sektor', 'Branża klienta', { hint: 'Opisz branżę, nie nazwę klienta.' }),
+            tekst('tytul', 'Tytuł'),
+            dlugi('tekst', 'Opis: problem klienta, co zbudowałem, efekt'),
+            lista('stos', 'Narzędzia', { label_singular: 'narzędzie' }),
+            {
+              ...obiekt('link', 'Link pod opisem', [
+                tekst('tekst', 'Tekst linku'),
+                tekst('adres', 'Adres', { hint: 'Adres w serwisie, np. /#wdrozenia albo /wpisy/adres-wpisu/.', pattern: ['^/(en/)?[a-z0-9/#-]*$', 'Adres zaczyna się od / i ma małe litery, cyfry, dywizy, # albo /.'] }),
+              ]),
+              required: false,
+            },
+          ],
+        }),
+      ]),
+      obiekt('faq', 'Pytania i odpowiedzi', [
+        tekst('tytul', 'Tytuł sekcji'),
+        lista('pozycje', 'Pytania', { label_singular: 'pytanie', min: 3, hint: 'Co najmniej trzy pytania.', summary: '{{fields.pytanie}}', fields: [tekst('pytanie', 'Pytanie'), dlugi('odpowiedz', 'Odpowiedź')] }),
+      ]),
+      liczba('kolejnosc', 'Kolejność', { min: 1, hint: '1 = pierwsza na liście.' }),
+      tekst('adresEn', 'Adres po angielsku', {
+        required: false,
+        hint: 'Tylko w wersji angielskiej: angielski adres strony, małe litery i dywizy, np. ai-and-automation. W polskiej wersji zostaw puste.',
+        pattern: ['^[a-z0-9-]+$', 'Tylko małe litery, cyfry i dywizy.'],
+      }),
+      ...TLUMACZENIE,
+    ],
+    ['ikona', 'kolejnosc'],
+  ),
+};
+
 const sekcja = (tytul: string, wstep: string): Pole[] => [tekst('tytul', tytul), dlugi('wstep', wstep)];
 const USTAWIENIA: Pole = {
   name: 'ustawienia',
@@ -187,6 +267,7 @@ const USTAWIENIA: Pole = {
           tekst('okres', 'Okres'),
           lista('wiersze', 'Wiersze', { label_singular: 'wiersz', min: 1, summary: '{{fields.etykieta}}', fields: [tekst('etykieta', 'Etykieta'), tekst('wartosc', 'Wartość')] }),
         ]),
+        { ...obiekt('uslugi', 'Sekcja usług', sekcja('Tytuł sekcji', 'Wstęp')), required: false, hint: 'Sekcja na stronie głównej pokazuje się, gdy jest ten nagłówek i choć jedna usługa w tym języku.' },
         obiekt('wdrozenia', 'Sekcja wdrożeń', sekcja('Tytuł sekcji', 'Wstęp')),
         obiekt('projekty', 'Sekcja projektów', sekcja('Tytuł sekcji', 'Wstęp')),
         obiekt('doswiadczenie', 'Doświadczenie', [
@@ -216,7 +297,7 @@ export type Srodowisko = { galaz?: string; adresLogowania?: string; adresStrony?
 
 /** Pełna konfiguracja panelu. Bez `adresLogowania` pomijamy `base_url`, więc lokalnie konfiguracja i tak się buduje. */
 export function konfiguracjaPanelu(sr: Srodowisko = {}): Record<string, unknown> {
-  const kolekcje = [WDROZENIA, PROJEKTY, REFERENCJE, WPISY].map((k) => ({
+  const kolekcje = [WDROZENIA, PROJEKTY, REFERENCJE, WPISY, USLUGI].map((k) => ({
     ...k,
     path: '{{slug}}/{{locale}}',
     extension: 'md',

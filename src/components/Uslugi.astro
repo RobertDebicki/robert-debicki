@@ -1,0 +1,42 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+import { prefiksUslug, uslugiWJezyku } from '../lib/uslugi';
+import Ikona from './Ikona.astro';
+
+interface Props {
+  jezyk: Jezyk;
+  /** Strona listy /uslugi/: tytuł jako H1, karty z H2. Na stronie głównej sekcja z H2 i kartami z H3. */
+  lista?: boolean;
+}
+// Karty usług z podglądu docs/makieta/uslugi.html (widok 2). Na stronie głównej sekcja pokazuje się tylko wtedy,
+// gdy w tym języku jest choć jedna usługa i w ustawieniach jest nagłówek sekcji usług.
+const { jezyk, lista = false } = Astro.props;
+const { uslugi: naglowek } = await ustawienia(jezyk);
+const uslugi = await uslugiWJezyku(jezyk);
+const e = etykiety(jezyk);
+const prefiks = prefiksUslug(jezyk);
+const PLYTY = ['var(--c)', 'var(--m)', 'var(--y)'];
+const Tytul = lista ? 'h1' : 'h2';
+const TytulKarty = lista ? 'h2' : 'h3';
+const widoczna = uslugi.length > 0 && (lista || naglowek !== undefined);
+---
+{widoczna && (
+  <section id={lista ? undefined : 'uslugi'} style="--sw: var(--c)" aria-labelledby="uslugi-h">
+    <p class="label mono">{e.uslugi}</p>
+    <Tytul class="sec-title" id="uslugi-h">{naglowek?.tytul ?? e.uslugi}</Tytul>
+    {naglowek && <p class="sec-intro">{naglowek.wstep}</p>}
+    <div class="now trzy">
+      {uslugi.map(({ adres, entry }, i) => (
+        <article class="now-item" style={`--pl: ${PLYTY[i % PLYTY.length]}`}>
+          <Ikona nazwa={entry.data.ikona} />
+          <p class="sector mono">{entry.data.sektor}</p>
+          <TytulKarty>{entry.data.nazwa}</TytulKarty>
+          <p class="desc">{entry.data.zajawka}</p>
+          <a class="dalej" href={`${prefiks}${adres}/`}>{entry.data.nazwa}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+)}

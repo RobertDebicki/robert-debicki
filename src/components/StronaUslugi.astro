@@ -1,0 +1,107 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { prefiksUslug } from '../lib/uslugi';
+import Ikona from './Ikona.astro';
+
+interface Props {
+  jezyk: Jezyk;
+  entry: any;
+}
+// Strona usługi według podglądu docs/makieta/uslugi.html (widok 1). Wezwanie do kontaktu na końcu to Kontakt.astro w stronie.
+const { jezyk, entry } = Astro.props;
+const d = entry.data;
+const e = etykiety(jezyk);
+const plyty = ['p p-c', 'p p-m', 'p p-y'];
+const PLYTY_PRZYKLADOW = ['var(--m)', 'var(--c)', 'var(--y)'];
+---
+<article aria-labelledby="usluga-h">
+  <div class="hero podstrona">
+    <div>
+      <p class="okruszki mono"><a href={jezyk === 'pl' ? '/' : '/en/'}>{e.okruszkiStart}</a> / <a href={prefiksUslug(jezyk)}>{e.uslugi}</a> / {d.nazwa}</p>
+      <h1 class="plates" id="usluga-h">
+        {/* Kolorowe płyty biorą tekst z data-t przez CSS, więc w treści strony tytuł występuje raz. */}
+        {plyty.map((klasa) => <span class={klasa} aria-hidden="true" data-t={d.tytul} />)}
+        <span class="p-k">{d.tytul}</span>
+      </h1>
+      <p class="role">{d.rola} <b>{d.rolaWyroznienie}</b></p>
+      <p class="lead">{d.lead}</p>
+      <p>{d.akapit}</p>
+      <div class="cta">
+        <a class="btn solid" href="#przyklad">{e.zobaczPrzyklad}</a>
+      </div>
+    </div>
+    <aside class="ticket" aria-label={e.kartaUslugi}>
+      <header><span class="mono">{e.kartaUslugi}</span></header>
+      <dl>
+        {d.karta.map((w: { etykieta: string; wartosc: string }) => <div><dt>{w.etykieta}</dt><dd>{w.wartosc}</dd></div>)}
+      </dl>
+    </aside>
+  </div>
+
+  <section id="problem" style="--sw: var(--c)" aria-labelledby="problem-h">
+    <p class="label mono">{e.problem}</p>
+    <h2 class="sec-title" id="problem-h">{d.problemy.tytul}</h2>
+    <p class="sec-intro">{d.problemy.wstep}</p>
+    <div class="how">
+      {d.problemy.pozycje.map((p: { tytul: string; tekst: string }) => (
+        <div>
+          <h3>{p.tytul}</h3>
+          <p>{p.tekst}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="jak" style="--sw: var(--m)" aria-labelledby="jak-h">
+    <p class="label mono">{e.jakToRobie}</p>
+    <h2 class="sec-title" id="jak-h">{d.kroki.tytul}</h2>
+    <ol class="road trzy">
+      {d.kroki.pozycje.map((k: { tytul: string; tekst: string }, i: number) => (
+        <li>
+          <p class="when mono">{e.krok} {i + 1}</p>
+          <h3>{k.tytul}</h3>
+          <p>{k.tekst}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section id="przyklad" style="--sw: var(--y)" aria-labelledby="przyklad-h">
+    <p class="label mono">{e.przykladyWdrozen}</p>
+    <h2 class="sec-title" id="przyklad-h">{d.przyklady.tytul}</h2>
+    <ul class="jobs">
+      {d.przyklady.pozycje.map((p: any, i: number) => (
+        <li class="job" style={`--pl: ${PLYTY_PRZYKLADOW[i % PLYTY_PRZYKLADOW.length]}`}>
+          <div>
+            <Ikona nazwa={p.ikona} />
+            {p.liczba && (
+              <div class={`fig plates${[...p.liczba].length > 7 ? ' dluga' : ''}`}><span class="p" aria-hidden="true">{p.liczba}</span><span class="p-k">{p.liczba}</span></div>
+            )}
+            {p.liczbaOpis && <p class="fig-note">{p.liczbaOpis}</p>}
+          </div>
+          <div>
+            <p class="sector mono">{p.sektor}</p>
+            <h3>{p.tytul}</h3>
+            <p class="desc">{p.tekst}</p>
+            {p.stos.length > 0 && <p class="stack mono">{p.stos.map((s: string) => <span>{s}</span>)}</p>}
+            {p.link && <a class="dalej" href={p.link.adres}>{p.link.tekst}</a>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="faq" style="--sw: var(--ink)" aria-labelledby="faq-h">
+    <p class="label mono">{e.pytaniaIOdpowiedzi}</p>
+    <h2 class="sec-title" id="faq-h">{d.faq.tytul}</h2>
+    <ul class="jobs">
+      {d.faq.pozycje.map((q: { pytanie: string; odpowiedz: string }) => (
+        <li class="job">
+          <h3>{q.pytanie}</h3>
+          <p>{q.odpowiedz}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</article>

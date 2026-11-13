@@ -16,5 +16,6 @@ export const collections = {
   projekty: kolekcja('projekty'),
   referencje: kolekcja('referencje'),
   wpisy: kolekcja('wpisy'),
+  uslugi: kolekcja('uslugi'),
   ustawienia: kolekcja('ustawienia'),
 };
