@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-13 09:00, Claude Code
+
+**✅ Zrobione (projekt widoczności w Google i AI, gałąź `widocznosc-klienci-rekruterzy`, bez zmian w kodzie):**
+- GA4, GSC, GTM przejrzane: alarm GTM „0% zgód” to brak zgód reklamowych (żywa strona po zgodzie wysyła `gcs=G101`), zostaje bez zmian. Mapa witryny przesłana ponownie w GSC (16 adresów, wcześniej odczytane 4), GA4 połączone z GSC, przechowywanie danych 14 miesięcy (ustawił Robert).
+- Projekt `docs/superpowers/specs/2026-11-12-widocznosc-klienci-rekruterzy-design.md`: strony usług (pierwsza fala: automatyzacja, voiceboty, strony i aplikacje), telefon z `klik_telefon`, przekaz dla klienta i rekrutera, podstrona dla rekrutera z CV z R2, `BlogPosting`, angielskie adresy wpisów, linki z zewnątrz. Przegląd recenzenta: 7 pytań, odpowiedzi w dokumencie.
+
+**🎯 Następny krok:** Robert akceptuje projekt; potem plan (`writing-plans`) i krok 1 (telefon + nowy nagłówek kontaktu).
+
 ## 2026-11-12 10:30, Claude Code
 
 **✅ Zrobione (wygląd wpisów po uwagach Roberta ze zrzutu, ryzyko niskie; gałąź `wyglad-wpisow`, nie wdrożone):**
