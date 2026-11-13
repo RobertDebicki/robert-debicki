@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-13 09:40, Claude Code
+
+**✅ Zrobione (plan wdrożenia, bez zmian w kodzie):**
+- Robert zaakceptował projekt widoczności. Plan w `docs/superpowers/plans/2026-11-13-widocznosc-klienci-rekruterzy.md`: 11 zadań (telefon, przekaz, BlogPosting, frazy, podgląd, kolekcja usług, treść usług, podstrona rekrutera, angielskie adresy wpisów, wpis o sklepie po starcie, linki zewnętrzne).
+
+**🎯 Następny krok:** Robert przegląda plan i wybiera sposób wykonania; potem zadanie 1 (telefon: potrzebny numer od Roberta).
+
 ## 2026-11-13 09:00, Claude Code
 
 **✅ Zrobione (projekt widoczności w Google i AI, gałąź `widocznosc-klienci-rekruterzy`, bez zmian w kodzie):**
