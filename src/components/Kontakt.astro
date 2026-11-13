@@ -2,6 +2,7 @@
 import type { Jezyk } from '../lib/jezyki';
 import { etykiety } from '../lib/jezyki';
 import { ustawienia } from '../lib/pozycje';
+import { hrefTelefonu } from '../lib/telefon';
 
 interface Props {
   jezyk: Jezyk;
@@ -15,6 +16,11 @@ const e = etykiety(jezyk);
     <p class="label mono">{e.kontakt}</p>
     <h2 class="sec-title" id="kontakt-h">{k.tytul}</h2>
     <p class="sec-intro">{k.wstep}</p>
+    {k.telefon && (
+      <div class="mail">
+        <a href={hrefTelefonu(k.telefon)} data-zdarzenie="klik_telefon">{k.telefon}</a>
+      </div>
+    )}
     <div class="mail">
       <a href={`mailto:${k.email}`} id="email" data-zdarzenie="klik_email">{k.email}</a>
       <button type="button" class="copy" id="copy-email" data-zdarzenie="kopiuj_email" data-skopiowano={e.skopiowano} data-zaznaczony={e.adresZaznaczony}>{e.kopiujAdres}</button>

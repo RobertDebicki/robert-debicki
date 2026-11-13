@@ -22,6 +22,7 @@ const dane = {
       description: o.lead,
       url: strona,
       email: `mailto:${k.email}`,
+      ...(k.telefon ? { telephone: k.telefon } : {}),
       address: { '@type': 'PostalAddress', addressLocality: 'Wrocław', addressCountry: 'PL' },
       sameAs: [k.linkedinUrl],
       knowsAbout: n.wiersze.flatMap((w) => w.wartosc.split(', ')),

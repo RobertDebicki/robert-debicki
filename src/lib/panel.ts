@@ -201,6 +201,7 @@ const USTAWIENIA: Pole = {
         obiekt('kontakt', 'Kontakt', [
           tekst('tytul', 'Tytuł sekcji'),
           dlugi('wstep', 'Wstęp'),
+          tekst('telefon', 'Telefon', { required: false, hint: 'Z kierunkowym, np. +48 600 100 200. Puste pole ukrywa telefon.' }),
           tekst('email', 'Adres e-mail', { pattern: ['^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$', 'To nie wygląda na adres e-mail.'] }),
           tekst('linkedinUrl', 'Adres profilu LinkedIn', { pattern: ['^https://\\S+$', 'Adres zaczyna się od https://'] }),
           tekst('linkedinTekst', 'Napis przy linku do LinkedIna'),

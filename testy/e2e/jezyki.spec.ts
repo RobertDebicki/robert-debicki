@@ -95,3 +95,35 @@ test('menu i stopka /en/ są po angielsku', async ({ page }) => {
   await expect(page.locator('header nav')).toHaveAttribute('aria-label', 'Sections');
   await expect(page.locator('footer')).toContainText('sheet 1 of 1');
 });
+
+// Telefon: prawdziwa treść jeszcze nie ma numeru, więc testy idą na fikstury (numer testowy tylko w pl.md).
+test('telefon: / ma link tel: ze zdarzeniem klik_telefon, /en/ nie ma telefonu', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#kontakt a[href="tel:+48600100200"][data-zdarzenie="klik_telefon"]')).toHaveCount(1);
+  await page.goto('/en/');
+  await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
+});
+
+test('telefon: JSON-LD ma telephone na / i nie ma go na /en/', async ({ page }) => {
+  for (const [adres, oczekiwany] of [['/', '+48 600 100 200'], ['/en/', undefined]] as const) {
+    await page.goto(adres);
+    const dane = JSON.parse(await page.locator('script[type="application/ld+json"]').first().textContent() ?? '{}');
+    const osoba = dane['@graph'].find((w: { '@type': string }) => w['@type'] === 'Person');
+    expect(osoba.telephone).toBe(oczekiwany);
+  }
+});
+
+test.describe('zdarzenie klik_telefon', () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
+  test('po zgodzie kliknięcie w telefon wrzuca { event: klik_telefon } do dataLayer', async ({ page }) => {
+    await page.route('https://www.googletagmanager.com/**', (r) => r.fulfill({ contentType: 'application/javascript', body: '' }));
+    await page.goto('/');
+    await page.getByRole('dialog').getByRole('button', { name: 'Akceptuję' }).click();
+    await page.evaluate(() => document.querySelectorAll('#kontakt a').forEach((a) => a.addEventListener('click', (e) => e.preventDefault())));
+    await page.locator('#kontakt a[href^="tel:"]').click();
+    const zdarzenia = await page.evaluate(() =>
+      ((window as any).dataLayer as any[]).filter((e) => e && typeof e === 'object' && /^klik_/.test(e.event ?? '')).map((e) => e.event),
+    );
+    expect(zdarzenia).toEqual(['klik_telefon']);
+  });
+});

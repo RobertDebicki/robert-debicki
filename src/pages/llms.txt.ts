@@ -19,6 +19,7 @@ export const GET: APIRoute = async ({ site }) => {
     opis: o.opis,
     miejsce,
     email: k.email,
+    telefon: k.telefon,
     linkedinUrl: k.linkedinUrl,
     narzedzia: narzedzia.wiersze.map((w) => ({ nazwa: w.nazwa, wartosc: w.wartosc })),
     strony,
