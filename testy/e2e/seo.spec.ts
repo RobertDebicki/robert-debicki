@@ -41,6 +41,7 @@ for (const [adres, jezyk, tytul] of [
     expect(osoba.jobTitle).toBe('Automation Developer');
     expect(osoba.sameAs).toContain('https://www.linkedin.com/in/robert-d%C4%99bicki/');
     expect(osoba.knowsAbout).toEqual(expect.arrayContaining(['n8n', 'Make.com', 'Claude Code']));
+    expect(osoba.telephone).toBe('+48 665 780 129');
     expect(osoba.address).toMatchObject({ addressLocality: 'Wrocław', addressCountry: 'PL' });
     const strona = graf.find((w) => w['@type'] === 'WebSite')!;
     expect(strona.inLanguage).toBe(jezyk);

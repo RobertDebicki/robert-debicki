@@ -64,6 +64,7 @@ kontakt:
   tytul: "Looking for a full-time role as an Automation Developer or AI Engineer"
   wstep: "Wrocław, Poland, or remote. Email is the fastest way to reach me."
   email: "robert.debicki7@gmail.com"
+  telefon: "+48 665 780 129"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 tlumaczenie: ai

@@ -90,11 +90,18 @@ test.describe('zgodność z makietą', () => {
       writeFileSync(sciezka, wzor);
 
       await przygotuj(page, '/');
-      // Makieta nie ma sekcji wpisów ani linku do nich w menu: pojawiają się, gdy kolekcja ma wpisy. Porównujemy resztę.
-      await page.addStyleTag({ content: '#wpisy, header nav a[href="/wpisy/"] { display: none !important; }' });
+      // Makieta nie ma sekcji wpisów, linku do nich w menu ani telefonu w kontakcie: pojawiają się z treścią. Porównujemy resztę.
+      await page.addStyleTag({ content: '#wpisy, header nav a[href="/wpisy/"], #kontakt .mail:has(a[href^="tel:"]) { display: none !important; }' });
       const zrzut = await page.screenshot({ fullPage: true, animations: 'disabled' });
       expect(zrzut).toMatchSnapshot(nazwa, { maxDiffPixelRatio: 0.02 });
     });
+  }
+});
+
+test('telefon w kontakcie jest widocznym linkiem tel: ze zdarzeniem na / i /en/', async ({ page }) => {
+  for (const adres of ['/', '/en/']) {
+    await page.goto(adres);
+    await expect(page.locator('#kontakt a[href="tel:+48665780129"][data-zdarzenie="klik_telefon"]')).toBeVisible();
   }
 });
 

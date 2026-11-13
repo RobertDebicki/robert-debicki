@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-13 10:45, Claude Code
+
+**✅ Zrobione (zadanie 1, krok 6: numer telefonu na stronie, ryzyko średnie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Numer od Roberta w `src/content/ustawienia/pl.md` i `en.md`; telefon widoczny w kontakcie na `/` i `/en/`, w JSON-LD (`telephone`) i w `llms.txt`.
+- Testy na prawdziwej treści: link `tel:` ze zdarzeniem (`strona-glowna.spec.ts`), `telephone` w JSON-LD (`seo.spec.ts`). Porównanie z makietą ukrywa blok telefonu (makieta go nie ma), jak ukrywa wpisy; wzorce zrzutów bez zmian.
+
+**🎯 Następny krok:** po wdrożeniu dopisać `klik_telefon` do wyzwalacza w GTM i oznaczyć w GA4; potem zadanie 2.
+
 ## 2026-11-13 10:21, Claude Code
 
 **✅ Zrobione (zadanie 5 planu widoczności: podgląd wyglądu, bez kodu strony, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
