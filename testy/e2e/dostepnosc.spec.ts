@@ -12,7 +12,9 @@ const STRONY = [
 for (const s of STRONY) {
   for (const schemat of ['light', 'dark'] as const) {
     test(`kontrast tekstu: 0 naruszeń na ${s.nazwa} w trybie ${schemat === 'light' ? 'jasnym' : 'ciemnym'}`, async ({ page }) => {
-      await page.emulateMedia({ colorScheme: schemat });
+      // Ruch ograniczony: animowany raster (canvas w pętli) zajmuje procesor i przy pełnym przebiegu axe przekraczał 30 s.
+      // Kontrast nie zależy od animacji.
+      await page.emulateMedia({ colorScheme: schemat, reducedMotion: 'reduce' });
       await page.goto(s.url);
       await expect(page.locator('html')).toHaveClass(/ready/);
       await page.waitForFunction(() => [...document.querySelectorAll('h1 .p')].every((e) => getComputedStyle(e).opacity === '0'));

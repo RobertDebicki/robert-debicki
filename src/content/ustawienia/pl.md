@@ -19,6 +19,9 @@ karta:
       wartosc: "Claude Code, agenci AI, modele językowe w procesach"
     - etykieta: "Kod"
       wartosc: "Python, FastAPI, Next.js, TypeScript"
+uslugi:
+  tytul: "Wdrażam AI i automatyzuję procesy"
+  wstep: "Nie każdy problem potrzebuje AI. Czasem wystarczy dobrze ułożony proces i prosta automatyzacja. Każda usługa ma przykład, który działa u klienta."
 wdrozenia:
   tytul: "Systemy, które działają u klientów"
   wstep: "Liczby pochodzą od klientów albo z systemów, które zbudowałem."

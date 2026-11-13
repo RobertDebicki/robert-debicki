@@ -109,8 +109,12 @@ test.describe('zgodność z makietą', () => {
       writeFileSync(sciezka, wzor);
 
       await przygotuj(page, '/');
-      // Makieta nie ma sekcji wpisów, linku do nich w menu ani telefonu w kontakcie: pojawiają się z treścią. Porównujemy resztę.
-      await page.addStyleTag({ content: '#wpisy, header nav a[href="/wpisy/"], #kontakt .mail:has(a[href^="tel:"]) { display: none !important; }' });
+      // Makieta nie ma sekcji wpisów i usług, linków do nich w menu ani telefonu w kontakcie: pojawiają się z treścią
+      // (wygląd usług ma osobny, zatwierdzony podgląd `docs/makieta/uslugi.html`). Porównujemy resztę.
+      await page.addStyleTag({
+        content:
+          '#wpisy, #uslugi, header nav a[href="/wpisy/"], header nav a[href="/uslugi/"], #kontakt .mail:has(a[href^="tel:"]) { display: none !important; }',
+      });
       const zrzut = await page.screenshot({ fullPage: true, animations: 'disabled' });
       expect(zrzut).toMatchSnapshot(nazwa, { maxDiffPixelRatio: 0.02 });
     });

@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-11-13 15:30, Claude Code
+
+**✅ Zrobione (zadanie 7 planu widoczności, treść PL trzech usług; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- `src/content/uslugi/`: `ai-i-automatyzacja` (tekst z zatwierdzonego podglądu), `strony-i-aplikacje`, `voiceboty`; `ustawienia.uslugi` (tytuł „Wdrażam AI i automatyzuję procesy” i wstęp z podglądu). Teksty z faktów Roberta, źródło każdego zdania w raporcie zadania.
+- Odpowiedzi Roberta 13.11 wpisane: rozmowy voicebota nie są nagrywane (zostaje tylko notatka), ElevenLabs i Twilio na kontach klienta; każda wycena indywidualna; trzy zdania opisowe zostają; przykład agentów HoReCa to wdrożenie „Claude Code do prowadzenia kampanii i analityki” (link i Claude Code w stosie); obieg rozliczeń „w fazie testów”.
+- Kontrola SEO (reguły z bloga): tytuły 54 znaki, opisy 144-152, 4 H2, FAQ 6/6/7, fraza główna 3-6 razy i we wstępie, myślniki 0. Na stronie AI fraza nie stoi w H1 (zatwierdzony nagłówek).
+- Testy: porównanie z makietą ukrywa sekcję usług i link „Usługi” (makieta ich nie ma, wygląd usług ma osobny podgląd). Test kontrastu z ograniczonym ruchem: animowany raster zabierał procesor i w pełnym przebiegu axe przekraczał 30 s (osobno 3 s); sprawdzone, że celowo zły kontrast nadal daje 6 błędów.
+- `npm run sprawdz`: exit 0, vitest 177 pass/1 skipped, e2e 164 pass (`uslugi-puste` pomija się przy prawdziwej treści).
+
+**🚧 W toku / nie wdrożone:** wersje EN trzech usług (po angielskich frazach z `docs/seo/frazy-uslug.md`), linki z wpisów do usług (krok 3 zadania 7, zdania do akceptacji Roberta).
+
+**🎯 Następny krok:** EN usług przez `/tlumacz-strone` z adresami `ai-automation`, `websites-and-apps`, `ai-voice-agents`.
+
 ## 2026-11-13 14:10, Claude Code
 
 **✅ Zrobione (przekaz AI na stronie głównej i zasada SEO, ryzyko niskie; nie wdrożone):**
