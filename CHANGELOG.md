@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-13 13:00, Claude Code
+
+**✅ Zrobione (podgląd usług, ryzyko niskie; nie wdrożone):**
+- `docs/makieta/uslugi.html`: branża klienta z agentami AI: „Producent mebli dla branży HoReCa” (podana przez Roberta). W podglądzie nie ma już miejsc do uzupełnienia poza przykładowym numerem telefonu.
+
+**🎯 Następny krok:** akceptacja podglądu przez Roberta; potem spec, frazy i plan zadań 6-8.
+
 ## 2026-11-13 12:50, Claude Code
 
 **✅ Zrobione (podgląd usług, ryzyko niskie; nie wdrożone):**
