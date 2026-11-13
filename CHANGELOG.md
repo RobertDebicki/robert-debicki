@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-13 17:00, Claude Code
+
+**✅ Zrobione (usługa voiceboty, fakt od Roberta; nie wdrożone):**
+- Robert 13.11: bot na początku przedstawia się jako asystentka AI i pyta, czy może kontynuować. Krok 1 i odpowiedź FAQ „Czy klient pozna, że rozmawia z botem?” mówią to teraz jako fakt (wcześniej „powinien”). EN tak samo, `zrodlo` przeliczone, kontrola tłumaczeń bez błędów.
+
+**🎯 Następny krok:** przegląd zadania 8 (strona dla rekrutera), potem akceptacja tekstów rekrutera przez Roberta.
+
 ## 2026-11-13 16:35, Claude Code
 
 **✅ Zrobione (zadanie 8 planu widoczności, podstrona dla rekrutera; ryzyko średnie, nie wdrożone):**

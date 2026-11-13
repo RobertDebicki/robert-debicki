@@ -33,7 +33,7 @@ kroki:
   tytul: "From form to a note in the CRM"
   pozycje:
     - tytul: "Questions and call script"
-      tekst: "We decide what the bot should ask so that the sales rep gets the client's need and budget. The bot should introduce itself at the start of the call, because the client should know they're talking to an AI."
+      tekst: "We decide what the bot should ask so that the sales rep gets the client's need and budget. At the start of the call, the bot introduces itself as an AI assistant and asks if it may continue."
     - tytul: "The bot calls and takes notes"
       tekst: "After the form is sent, the bot calls the client, asks the questions, and turns the call into a note for the sales rep. The voice and the call run on ElevenLabs and Twilio."
     - tytul: "The note goes to the CRM"
@@ -67,7 +67,7 @@ faq:
     - pytanie: "Can an AI voice agent call someone who filled out a form and save a note in the CRM?"
       odpowiedz: "Yes, that's how the deployment described here works. The bot calls within 2 minutes, and n8n saves the note to the deal in Pipedrive. I also work with HubSpot and with integrations through an API."
     - pytanie: "Will the customer know they're talking to a bot?"
-      odpowiedz: "They should hear it at the start of the call. The AI Act's transparency rules require it when it isn't obvious."
+      odpowiedz: "Yes. At the start of the call, my bot introduces itself as an AI assistant and asks if it may continue. The AI Act's transparency rules require it when it isn't obvious."
     - pytanie: "What kind of business is this for?"
       odpowiedz: "A business that gets form inquiries every day, where the sales rep can't always call back right away. In the deployment described here, the bot makes 15 calls a day."
     - pytanie: "What happens to the call data?"
@@ -75,5 +75,5 @@ faq:
 kolejnosc: 3
 adresEn: "ai-voice-agents"
 tlumaczenie: ai
-zrodlo: a911bd856fcd527398781e45a224d2372e836be2bf557fd2286b424fb96b07c0
+zrodlo: 6caac2360afc758c749d2a407a6d82577656b071a288a9017659a98415d8a825
 ---

@@ -33,7 +33,7 @@ kroki:
   tytul: "Od formularza do notatki w CRM"
   pozycje:
     - tytul: "Pytania i scenariusz rozmowy"
-      tekst: "Ustalamy, o co bot ma pytać, żeby handlowiec dostał potrzebę i budżet klienta. Bot powinien przedstawić się na początku rozmowy, bo klient ma wiedzieć, że rozmawia z AI."
+      tekst: "Ustalamy, o co bot ma pytać, żeby handlowiec dostał potrzebę i budżet klienta. Na początku rozmowy bot przedstawia się jako asystentka AI i pyta, czy może kontynuować."
     - tytul: "Bot dzwoni i robi notatkę"
       tekst: "Po wysłaniu formularza bot dzwoni do klienta, zadaje pytania i z rozmowy robi notatkę dla handlowca. Głos i połączenie działają na ElevenLabs i Twilio."
     - tytul: "Notatka trafia do CRM"
@@ -67,7 +67,7 @@ faq:
     - pytanie: "Czy bot sam zadzwoni do osoby z formularza i zapisze notatkę w CRM?"
       odpowiedz: "Tak, tak działa opisane wdrożenie. Bot dzwoni w ciągu 2 minut, a n8n zapisuje notatkę przy szansie sprzedaży w Pipedrive. Pracuję też z HubSpotem i integracjami przez API."
     - pytanie: "Czy klient pozna, że rozmawia z botem?"
-      odpowiedz: "Powinien to usłyszeć na początku rozmowy. Wymagają tego przepisy przejrzystości AI Act, gdy nie jest to oczywiste."
+      odpowiedz: "Tak. Mój bot na początku rozmowy przedstawia się jako asystentka AI i pyta, czy może kontynuować. Wymagają tego przepisy przejrzystości AI Act, gdy nie jest to oczywiste."
     - pytanie: "Dla jakiej firmy to ma sens?"
       odpowiedz: "Dla firmy, do której zapytania z formularza przychodzą codziennie, a handlowiec nie zawsze może oddzwonić od razu. W opisanym wdrożeniu bot prowadzi 15 rozmów dziennie."
     - pytanie: "Co z danymi z rozmów?"
