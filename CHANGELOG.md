@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-13 13:20, Claude Code
+
+**✅ Zrobione (zadanie 5 planu widoczności zatwierdzone; dokumenty, bez kodu; nie wdrożone):**
+- Robert zatwierdził podgląd `docs/makieta/uslugi.html` (z menu bez „Doświadczenie” i zawijaniem nagłówka rekrutera przy 390 px).
+- Spec: usługi pierwszej fali to AI i automatyzacja (jedna strona), aplikacje strony i narzędzia z AI, voiceboty AI; fakty Roberta o wycenie i bezpieczeństwie danych.
+- `docs/seo/frazy-uslug.md`: sekcja 0 z frazami AI (podpowiedzi Google 13.11, bez wolumenów), adres `/uslugi/ai-i-automatyzacja/` i `/en/services/ai-automation/`, tytuły SEO 54 i 57 znaków.
+- Plan: zadanie 5 odhaczone, zadanie 7 z nowymi usługami.
+
+**🎯 Następny krok:** zadanie 6 planu (kolekcja `uslugi`, strony usług, dane strukturalne, sekcja na stronie głównej, menu).
+
 ## 2026-11-13 13:00, Claude Code
 
 **✅ Zrobione (podgląd usług, ryzyko niskie; nie wdrożone):**

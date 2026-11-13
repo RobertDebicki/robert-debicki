@@ -124,10 +124,12 @@ expect(wpis.mainEntityOfPage).toBe(page.url().replace(/^http:\/\/localhost:\d+/,
 **Files:**
 - Create: `docs/makieta/uslugi.html` (strona usługi, sekcja usług na stronie głównej, podstrona rekrutera; style i fonty z `docs/makieta/index.html`)
 
-- [ ] **Step 1:** Skill `ui-ux-pro-max` w granicach makiety: tylko istniejące style (płyty, etykiety mono, `sec-title`), żadnych elementów z listy zakazów w `AGENTS.md`.
-- [ ] **Step 2:** Zrzuty 1440 i 390 (jasny i ciemny), bez przewijania w bok. Pokazać Robertowi.
-- [ ] **Step 3:** Poprawki do akceptacji Roberta (pętla: po 3 rundach bez akceptacji zatrzymać się i omówić podejście).
-- [ ] **Step 4: Commit** z wpisem w CHANGELOG.
+- [x] **Step 1:** Skill `ui-ux-pro-max` w granicach makiety: tylko istniejące style (płyty, etykiety mono, `sec-title`), żadnych elementów z listy zakazów w `AGENTS.md`.
+- [x] **Step 2:** Zrzuty 1440 i 390 (jasny i ciemny), bez przewijania w bok. Pokazać Robertowi.
+- [x] **Step 3:** Poprawki do akceptacji Roberta (pętla: po 3 rundach bez akceptacji zatrzymać się i omówić podejście).
+- [x] **Step 4: Commit** z wpisem w CHANGELOG.
+
+> Zadanie 5 zatwierdzone przez Roberta 13.11 po 6 rundach uwag (kierunek: AI i automatyzacja jako jedna usługa).
 
 ### Task 6: Kolekcja `uslugi` i strony usług
 
@@ -174,9 +176,9 @@ z.object({
 **Files:**
 - Create: `src/content/uslugi/<adres>/pl.md` ×3 (adresy z zadania 4), `en.md` przez `/tlumacz-strone`
 
-- [ ] **Step 1:** Szkic każdej usługi z faktów Roberta: wdrożenia (`src/content/wdrozenia/*`), projekty, wpisy, rozmowa z 12-13.11. Przykład = istniejące wdrożenie opisane branżą (automatyzacja: obieg wniosków albo reaktywacja klientów albo monitoring temperatur; voiceboty: `voice-bot`; strony i aplikacje: projekt z `src/content/projekty`). FAQ z zadania 4. Przy każdym zdaniu z faktem: źródło w komentarzu roboczym dla Roberta (nie w pliku).
+- [ ] **Step 1:** Szkic każdej usługi z faktów Roberta: wdrożenia (`src/content/wdrozenia/*`), projekty, wpisy, rozmowa z 12-13.11. Usługi i kolejność według specu (zmiana 13.11): AI i automatyzacja (`/uslugi/ai-i-automatyzacja/`), aplikacje, strony i narzędzia z AI, voiceboty AI. Teksty strony AI i automatyzacja przenieść z zatwierdzonego podglądu `docs/makieta/uslugi.html` (widok 1); przykład = obieg wniosków (istniejące wdrożenie), agenci AI u producenta mebli HoReCa w treści strony (brak wpisu w `wdrozenia`, chyba że Robert zdecyduje go dodać). Voiceboty: `voice-bot`; aplikacje: projekt z `src/content/projekty`. FAQ z zadania 4 i z podglądu. Przy każdym zdaniu z faktem: źródło w komentarzu roboczym dla Roberta (nie w pliku).
 - [ ] **Step 2:** Robert akceptuje teksty. Brakujące fakty: pytać, nie zgadywać.
-- [ ] **Step 3:** W opublikowanych wpisach dopisać po jednym linku do pasującej usługi (np. `n8n-make-czy-zapier` → automatyzacja, `voice-bot-dla-firmy` → voiceboty, wpisy serii 2 po ich wydaniu), zdanie do akceptacji Roberta.
+- [ ] **Step 3:** W opublikowanych wpisach dopisać po jednym linku do pasującej usługi (np. `n8n-make-czy-zapier` → AI i automatyzacja, `voice-bot-dla-firmy` → voiceboty, wpisy serii 2 po ich wydaniu), zdanie do akceptacji Roberta.
 - [ ] **Step 4:** `npm run sprawdz:tresc` → 0; EN przez `/tlumacz-strone`; `npm run sprawdz` → PASS.
 - [ ] **Step 5: Commit** z wpisem w CHANGELOG.
 

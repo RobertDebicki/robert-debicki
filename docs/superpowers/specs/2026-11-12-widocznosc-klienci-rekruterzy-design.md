@@ -51,13 +51,14 @@ Fonty, paleta, makieta `docs/makieta/index.html`, treść z panelu `/admin/` (Sv
 
 ### 1. Strony usług
 
-- **Pięć rodzajów usług**, robocze nazwy (ostateczne brzmienie do akceptacji Roberta):
-  1. Automatyzacja procesów (n8n, Make.com, integracje: sklep, księgowość, CRM).
-  2. Agenci AI w firmie.
-  3. Voiceboty.
-  4. Strony i aplikacje z Claude Code.
-  5. Narzędzia na miarę (zamiast drogiego albo niepasującego gotowca).
-- **Pierwsza fala: usługi 1, 3 i 4**, bo mają działające przykłady (wdrożenia: obieg wniosków, reaktywacja klientów, monitoring temperatur, voice bot; projekty stron i aplikacji). **Usługi 2 i 5 wychodzą później**, gdy pierwsze takie wdrożenie zacznie działać. Na 13.11 Robert ma dla nich tylko plany: własny CRM do komunikacji z klientami i pokazywania wyników prac oraz rozmowy z klientem o przeniesieniu bazy zamówień z Airtable do osobnego systemu z wynikami kampanii, zgłoszeniami klientów, zarządzaniem kampaniami i analizatorem SEO strony. Do tego czasu temat agentów AI pokrywa wpis z serii 2. Schemat kolekcji ma wymagać przykładu, żeby strona bez przykładu nie przeszła walidacji.
+- **Zmiana 13.11 po podglądzie (decyzja Roberta):** AI jest teraz najważniejsze, automatyzacje n8n i Make.com schodzą na dalszy plan, ale nie znikają: „wdrażam AI i automatyzuję, bo nie zawsze potrzebne jest AI; czasem wystarczy dobrze ułożyć proces i zbudować prostą automatyzację”. Tytuł „Wdrożenia AI w firmie” Robert odrzucił jako zbyt jednokierunkowy.
+- **Usługi pierwszej fali (zatwierdzony podgląd `docs/makieta/uslugi.html`, kolejność na stronie głównej):**
+  1. **AI i automatyzacja** (agenci AI, n8n, Make.com, Claude Code w zespole). Jedna strona zamiast osobnych „Automatyzacja procesów” i „Agenci AI w firmie”. Przykłady: obieg wniosków o dofinansowanie (OCR z modelem językowym) oraz trzech agentów AI u producenta mebli dla branży HoReCa (Google Ads i SEO przez AdLoop, wpisy na blog i opisy realizacji, tłumaczenia).
+  2. **Aplikacje, strony i narzędzia z AI** (Claude Code; narzędzia na miarę, gdy gotowe nie spełniają oczekiwań albo są za drogie).
+  3. **Voiceboty AI.**
+- **Fakty od Roberta do FAQ (13.11):** wycena indywidualna, za projekt; duży i złożony projekt dzielony na etapy z kwotą w częściach. Bezpieczeństwo danych: umowa powierzenia przy danych osobowych, API na koncie firmowym zamiast darmowego czatu, do modelu tylko potrzebne pola, agent najpierw tylko do odczytu, zmiany zatwierdza człowiek, szkolenie zespołu z tego, czego nie wysyłać do modelu. Nie piszemy o warunkach dostawców modeli (niesprawdzone).
+- Adresy i tytuły SEO: `docs/seo/frazy-uslug.md` (sekcja 0 dla AI i automatyzacji).
+- Schemat kolekcji ma wymagać przykładu, żeby strona bez przykładu nie przeszła walidacji.
 - **Treść każdej strony:** problem klienta jego słowami, jak Robert go rozwiązuje, przykład wdrożenia opisany branżą (link do pozycji z sekcji wdrożeń albo do wpisu), pytania i odpowiedzi (FAQ), jedno wezwanie do kontaktu na końcu: telefon i e-mail.
 - **Edycja z panelu:** nowa kolekcja `uslugi` w Sveltia CMS, struktura jak pozostałe (`src/content/uslugi/<adres>/{pl,en}.md`, schemat w `src/lib/schematy.ts`, walidacja jak w innych kolekcjach).
 - **Adresy:** PL `/uslugi/<adres>/`, EN `/en/services/<adres-en>/`. Lista usług: `/uslugi/` i `/en/services/`.
@@ -105,7 +106,7 @@ Lista z kolejnością: profil GitHub i LinkedIn z linkiem do strony i stron usł
 
 1. Telefon + przekaz dla obu grup (szybki efekt dla kontaktu).
 2. `BlogPosting` we wpisach.
-3. Strony usług: badanie fraz, statyczny podgląd HTML jednej strony i sekcji na stronie głównej do akceptacji, potem kolekcja, treść trzech stron pierwszej fali, EN.
+3. Strony usług: badanie fraz, statyczny podgląd HTML jednej strony i sekcji na stronie głównej do akceptacji (zatwierdzony 13.11), potem kolekcja, treść trzech stron pierwszej fali (AI i automatyzacja, aplikacje i strony z AI, voiceboty), EN.
 3a. Podstrona dla rekrutera (podgląd HTML razem z krokiem 3).
 4. Wpis WooCommerce + MKR, gdy sklep zacznie działać u klienta.
 5. Angielskie adresy wpisów.

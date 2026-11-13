@@ -2,6 +2,52 @@
 
 Data badania: 2026-11-13. Zadanie 4 planu widoczności.
 
+> **Zmiana 13.11 po akceptacji podglądu (decyzja Roberta):** automatyzacja procesów i agenci AI to jedna usługa „AI i automatyzacja” (sekcja 0). Sekcja 1 zostaje jako frazy wspierające tej strony. Pierwsza fala: AI i automatyzacja, voiceboty, strony i aplikacje.
+
+## 0. AI i automatyzacja (agenci AI, n8n, Make.com)
+
+Źródło wszystkich fraz: podpowiedzi Google (`suggestqueries.google.com`, `client=firefox`), 2026-11-13, PL z `hl=pl&gl=pl`, EN z `hl=en`. Bez wolumenów (🔴, jak niżej).
+
+### Frazy PL
+
+| Fraza | Uwaga |
+|---|---|
+| wdrożenie ai w firmie, wdrożenie ai do firmy, wdrożenie ai w firmach, wdrożenie ai w organizacji | ✅ intencja klienta („wdrożenie ai act”, „w podmiotach publicznych”, „praca”: nie klient) |
+| automatyzacja ai, automatyzacja ai dla firm, automatyzacja ai w firmie, automatyzacje ai dla firm | ✅ („kurs”, „szkolenie”, „studia”, „praca”: nie klient) |
+| automatyzacja procesów z ai, automatyzacja procesów biznesowych ai | ✅ łączy obie części usługi |
+| agent ai dla firm, agent ai w firmie, agenci ai w firmie, agent ai dla twojej firmy | ✅ |
+| rozwiązania ai dla firm, asystent ai dla firm, claude ai dla firm | ⚠️ część szuka produktu, nie wykonawcy |
+| ai w firmie produkcyjnej / transportowej / handlowej | ⚠️ branże, materiał na wpisy, nie na osobne strony |
+| polityka ai w firmie (wzór) | ✅ temat FAQ o bezpieczeństwie; wpis z serii 2 |
+
+### Frazy EN
+
+| Fraza | Uwaga |
+|---|---|
+| ai automation for businesses, ai automation for small businesses, ai automation for business owners | ✅ („course”, „for sale”: nie klient) |
+| ai automation services for (small) businesses, ai consulting and automation services | ✅ |
+| ai implementation for (small) business, ai implementation for companies | ✅ |
+| ai agents for business automation, ai agents for business operations | ✅ („analyst”, „ut austin”: kursy i praca) |
+| ai automation consultant (for small businesses) | ⚠️ w większości rynek pracy (jobs, salary) |
+| ai automation agency | ⚠️ freelancer to nie agencja; fraza do treści, nie do tytułu |
+
+### Propozycja
+
+- **Adres PL:** `/uslugi/ai-i-automatyzacja/` (jak tytuł strony w zatwierdzonym podglądzie)
+- **Adres EN:** `/en/services/ai-automation/`
+- **Tytuł SEO PL (54 znaki):** `Wdrożenie AI i automatyzacja procesów | Robert Dębicki`
+- **Tytuł SEO EN (57 znaków):** `AI automation and AI agents for business | Robert Dębicki`
+- **FAQ (6, jak w zatwierdzonym podglądzie):**
+  1. Czy moja firma w ogóle potrzebuje AI? (podpowiedzi „ai w firmie”, „automatyzacja ai co to”)
+  2. Czym agent AI różni się od chatbota? (podpowiedzi „agent ai w firmie”, „asystent ai dla firm”)
+  3. Co, jeśli AI się pomyli? (temat z wdrożenia Roberta, brak formy pytania w podpowiedziach)
+  4. Z jakich modeli korzystasz? (podpowiedzi „claude ai dla firm”, „gemini ai dla firm”)
+  5. Czy dane firmy są bezpieczne? (podpowiedź „polityka ai w firmie”; odpowiedź z zasad, które Robert stosuje)
+  6. Ile kosztuje wdrożenie AI w firmie? (wycena od Roberta: za projekt, indywidualnie, etapy)
+- Pytanie „n8n czy Make” z sekcji 1 może wejść jako siódme, gdy strona będzie potrzebowała więcej treści o automatyzacji.
+
+---
+
 ## Metoda i ograniczenia
 
 - **Podpowiedzi Google** (autouzupełnianie): `suggestqueries.google.com`, `hl=pl` i `hl=en`, 2026-11-13. Pokazują, co ludzie wpisują, ale **bez liczby wyszukiwań**.
@@ -15,7 +61,7 @@ Oznaczenia pewności: ✅ zmierzone (źródło podane) · ⚠️ przesłanka · 
 
 ---
 
-## 1. Automatyzacja procesów (n8n, Make.com, integracje)
+## 1. Automatyzacja procesów (n8n, Make.com, integracje): frazy wspierające strony z sekcji 0
 
 ### Frazy PL
 
@@ -51,7 +97,7 @@ Zero podpowiedzi: „automatyzacja procesów w firmie”, „make.com integracje
 
 PL: strony usługowe firm wdrażających n8n/automatyzację (np. podstrona „n8n automatyzacja” z etapami: rozmowa, koncepcja z ofertą, wdrożenie, testy, utrzymanie), porównania narzędzi n8n vs Make, ogłoszenia zleceń na platformie freelancerskiej, poradniki o mapowaniu procesów. EN: katalogi freelancerów (Upwork, Fiverr), forum społeczności Make z zapytaniami o wykonawcę, strony wykonawców. Samodzielnych stron pojedynczych freelancerów z konkretnym przykładem wdrożenia w pierwszej dziesiątce nie widać, ale to tylko jedno zapytanie przez wyszukiwarkę z USA (⚠️).
 
-### Propozycja
+### Propozycja (zastąpiona sekcją 0, zostaje dla historii)
 
 - **Fraza główna:** automatyzacja procesów (wspierająco: automatyzacja procesów biznesowych, n8n, Make, integracja sklepu z księgowością).
 - **Adres PL:** `/uslugi/automatyzacja-procesow/`
@@ -165,7 +211,7 @@ PL: strony dużych firm software house z ogólnymi tekstami „oprogramowanie na
 
 | Usługa | PL | EN | Tytuł PL (znaki) | Tytuł EN (znaki) |
 |---|---|---|---|---|
-| Automatyzacja procesów | `/uslugi/automatyzacja-procesow/` | `/en/services/process-automation/` | 59 | 55 |
+| AI i automatyzacja | `/uslugi/ai-i-automatyzacja/` | `/en/services/ai-automation/` | 54 | 57 |
 | Voiceboty | `/uslugi/voiceboty/` | `/en/services/ai-voice-agents/` | 54 | 45 |
 | Strony i aplikacje | `/uslugi/strony-i-aplikacje/` | `/en/services/websites-and-apps/` | 49 | 58 |
 
