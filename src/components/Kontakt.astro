@@ -2,25 +2,37 @@
 import type { Jezyk } from '../lib/jezyki';
 import { etykiety } from '../lib/jezyki';
 import { ustawienia } from '../lib/pozycje';
+import { hrefTelefonu } from '../lib/telefon';
+import { adresRekrutera } from '../lib/rekruter';
 
 interface Props {
   jezyk: Jezyk;
+  /** Na podstronie rekrutera: tytuł i wstęp z `rekruter.kontakt`, link do CV zamiast linku do podstrony. */
+  naRekruterze?: boolean;
 }
-const { jezyk } = Astro.props;
-const { kontakt: k } = await ustawienia(jezyk);
+const { jezyk, naRekruterze = false } = Astro.props;
+const { kontakt: k, rekruter: r } = await ustawienia(jezyk);
 const e = etykiety(jezyk);
+const { tytul, wstep } = naRekruterze && r ? r.kontakt : k;
 ---
 <section id="kontakt" class="contact" style="--sw: var(--paper)" aria-labelledby="kontakt-h">
   <div class="contact-in">
     <p class="label mono">{e.kontakt}</p>
-    <h2 class="sec-title" id="kontakt-h">{k.tytul}</h2>
-    <p class="sec-intro">{k.wstep}</p>
+    <h2 class="sec-title" id="kontakt-h">{tytul}</h2>
+    <p class="sec-intro">{wstep}</p>
+    {k.telefon && (
+      <div class="mail">
+        <a href={hrefTelefonu(k.telefon)} data-zdarzenie="klik_telefon">{k.telefon}</a>
+      </div>
+    )}
     <div class="mail">
       <a href={`mailto:${k.email}`} id="email" data-zdarzenie="klik_email">{k.email}</a>
       <button type="button" class="copy" id="copy-email" data-zdarzenie="kopiuj_email" data-skopiowano={e.skopiowano} data-zaznaczony={e.adresZaznaczony}>{e.kopiujAdres}</button>
     </div>
     <div class="links">
       <a href={k.linkedinUrl} target="_blank" rel="noopener" data-zdarzenie="klik_linkedin">{k.linkedinTekst}</a>
+      {r && !naRekruterze && <a href={adresRekrutera(jezyk)}>{e.dlaRekruterow}</a>}
+      {naRekruterze && r?.cvUrl && <a href={r.cvUrl} target="_blank" rel="noopener">{e.pobierzCv}</a>}
     </div>
   </div>
 </section>

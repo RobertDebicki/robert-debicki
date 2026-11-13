@@ -1,0 +1,76 @@
+---
+tytul: "Voiceboty AI dla firm"
+nazwa: "Voiceboty AI"
+tytulSeo: "Voiceboty dla firm: telefon, CRM, n8n | Robert Dębicki"
+opis: "Voicebot dla firm dzwoni do osoby z formularza w 2 minuty, zadaje pytania kwalifikujące i zapisuje notatkę dla handlowca w CRM. ElevenLabs, Twilio, n8n."
+zajawka: "Bot dzwoni do osoby z formularza, zadaje pytania kwalifikujące i zostawia handlowcowi notatkę w CRM."
+ikona: "telefon"
+sektor: "ElevenLabs, Twilio, n8n"
+rola: "ElevenLabs, Twilio"
+rolaWyroznienie: "/ n8n"
+lead: "Voicebot dzwoni do osoby, która wypełniła formularz na Twojej stronie, zadaje pytania kwalifikujące i zostawia handlowcowi notatkę w CRM."
+akapit: "W moim wdrożeniu bot oddzwania w 2 minuty od wysłania formularza i prowadzi 15 rozmów dziennie. Nie sprzedaje i nie negocjuje: zbiera informacje, a rozmowę sprzedażową prowadzi handlowiec. Wrocław albo zdalnie."
+karta:
+  - etykieta: "Głos i telefon"
+    wartosc: "ElevenLabs, Twilio"
+  - etykieta: "Łączę z"
+    wartosc: "n8n, Pipedrive, HubSpot"
+  - etykieta: "Przykład"
+    wartosc: "Oddzwanianie do zapytań ze strony"
+  - etykieta: "Miejsce"
+    wartosc: "Wrocław albo zdalnie"
+problemy:
+  tytul: "Zapytanie ze strony czeka, aż handlowiec znajdzie czas"
+  wstep: "Osoba, która właśnie wysłała formularz, ma sprawę w głowie. Handlowiec nie zawsze może zadzwonić od razu."
+  pozycje:
+    - tytul: "Handlowiec oddzwania później"
+      tekst: "Prowadzi inne rozmowy, więc telefon do nowego zapytania musi poczekać."
+    - tytul: "Pierwsza rozmowa to te same pytania"
+      tekst: "Za każdym razem trzeba ustalić potrzebę i budżet, zanim rozmowa przejdzie do konkretów."
+    - tytul: "Przerwane rozmowy umykają"
+      tekst: "Nieodebrany telefon albo prośba o kontakt w innym terminie łatwo gubi się między innymi sprawami."
+kroki:
+  tytul: "Od formularza do notatki w CRM"
+  pozycje:
+    - tytul: "Pytania i scenariusz rozmowy"
+      tekst: "Ustalamy, o co bot ma pytać, żeby handlowiec dostał potrzebę i budżet klienta. Na początku rozmowy bot przedstawia się jako asystentka AI i pyta, czy może kontynuować."
+    - tytul: "Bot dzwoni i robi notatkę"
+      tekst: "Po wysłaniu formularza bot dzwoni do klienta, zadaje pytania i z rozmowy robi notatkę dla handlowca. Głos i połączenie działają na ElevenLabs i Twilio."
+    - tytul: "Notatka trafia do CRM"
+      tekst: "Scenariusz w n8n zapisuje notatkę przy właściwej szansie sprzedaży w CRM. Przerwane rozmowy i prośby o inny termin też trafiają do handlowca."
+przyklady:
+  tytul: "Bot, który oddzwania do zapytań ze strony"
+  pozycje:
+    - ikona: "telefon"
+      liczba: "2 min"
+      liczbaOpis: "od formularza do telefonu, 15 rozmów dziennie"
+      sektor: "Obsługa zapytań ze strony"
+      tytul: "Voice bot kwalifikujący leady"
+      tekst: "Bot dzwoni do osoby, która wypełniła formularz kontaktowy, i zadaje pytania kwalifikujące. Z rozmowy robi notatkę dla handlowca z potrzebą i budżetem, a n8n zapisuje ją przy właściwej szansie sprzedaży w Pipedrive. Przerwane rozmowy i prośby o kontakt w innym terminie też trafiają do handlowca."
+      stos:
+        - "ElevenLabs"
+        - "Twilio"
+        - "n8n"
+        - "Pipedrive"
+      link:
+        tekst: "Voice bot dla firmy: jak działa krok po kroku"
+        adres: "/wpisy/voice-bot-dla-firmy/"
+faq:
+  tytul: "O co pytają przed wdrożeniem bota"
+  pozycje:
+    - pytanie: "Co to jest voicebot?"
+      odpowiedz: "Program, który prowadzi rozmowę telefoniczną głosem. Mój bot dzwoni do osoby z formularza, zadaje pytania kwalifikujące i robi notatkę dla handlowca."
+    - pytanie: "Ile kosztuje voicebot dla firmy?"
+      odpowiedz: "Każdą wycenę robię indywidualnie, za projekt. Napisz, ile zapytań dostajesz dziennie i z jakiego CRM korzystasz, a przygotuję wycenę."
+    - pytanie: "Czym voicebot różni się od chatbota?"
+      odpowiedz: "Chatbot odpowiada na pytania na czacie. Bot głosowy rozmawia przez telefon: w moim wdrożeniu sam dzwoni do osoby z formularza, zbiera informacje i zostawia notatkę w CRM."
+    - pytanie: "Czy bot sam zadzwoni do osoby z formularza i zapisze notatkę w CRM?"
+      odpowiedz: "Tak, tak działa opisane wdrożenie. Bot dzwoni w ciągu 2 minut, a n8n zapisuje notatkę przy szansie sprzedaży w Pipedrive. Pracuję też z HubSpotem i integracjami przez API."
+    - pytanie: "Czy klient pozna, że rozmawia z botem?"
+      odpowiedz: "Tak. Mój bot na początku rozmowy przedstawia się jako asystentka AI i pyta, czy może kontynuować. Wymagają tego przepisy przejrzystości AI Act, gdy nie jest to oczywiste."
+    - pytanie: "Dla jakiej firmy to ma sens?"
+      odpowiedz: "Dla firmy, do której zapytania z formularza przychodzą codziennie, a handlowiec nie zawsze może oddzwonić od razu. W opisanym wdrożeniu bot prowadzi 15 rozmów dziennie."
+    - pytanie: "Co z danymi z rozmów?"
+      odpowiedz: "Rozmowa i notatka to dane osobowe, więc podpisuję umowę powierzenia przetwarzania. Rozmowy nie są nagrywane: z rozmowy zostaje tylko notatka dla handlowca. ElevenLabs i Twilio działają na kontach klienta, nie na moich."
+kolejnosc: 3
+---

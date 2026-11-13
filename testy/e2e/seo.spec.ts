@@ -41,6 +41,7 @@ for (const [adres, jezyk, tytul] of [
     expect(osoba.jobTitle).toBe('Automation Developer');
     expect(osoba.sameAs).toContain('https://www.linkedin.com/in/robert-d%C4%99bicki/');
     expect(osoba.knowsAbout).toEqual(expect.arrayContaining(['n8n', 'Make.com', 'Claude Code']));
+    expect(osoba.telephone).toBe('+48 665 780 129');
     expect(osoba.address).toMatchObject({ addressLocality: 'Wrocław', addressCountry: 'PL' });
     const strona = graf.find((w) => w['@type'] === 'WebSite')!;
     expect(strona.inLanguage).toBe(jezyk);
@@ -91,5 +92,7 @@ test('llms.txt opisuje autora dla asystentów AI: nazwa, rola, kontakt, narzędz
   expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/\)$/m);
   expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/en\/\)$/m);
   expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/polityka-prywatnosci\/\)$/m);
+  expect(tekst).toMatch(/^- \[Dla rekruterów\]\(https:\/\/robert-debicki\.pl\/dla-rekruterow\/\)$/m);
+  expect(tekst).toMatch(/^- \[For recruiters \(English\)\]\(https:\/\/robert-debicki\.pl\/en\/for-recruiters\/\)$/m);
   expect(tekst).not.toMatch(/[—–]/);
 });

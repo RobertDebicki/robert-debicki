@@ -55,4 +55,4 @@ Nie. Prowadzę wdrożenie od analizy procesu do przekazania go zespołowi. Scena
 W opisanych wdrożeniach decyzje zostają u ludzi. Przykład: właściciel akceptuje każdą wiadomość do klienta przed wysyłką.
 
 ### Od czego zacząć rozmowę?
-Od jednego zdania: „Co robimy ręcznie co tydzień?”. Napisz mi je w mailu.
+Od jednego zdania: „Co robimy ręcznie co tydzień?”. Napisz mi je w mailu. Co AI i automatyzacja mogą przejąć w firmie, opisuję na stronie [wdrożenie AI w firmie](/uslugi/ai-i-automatyzacja/).

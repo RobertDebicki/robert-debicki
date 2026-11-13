@@ -6,13 +6,17 @@ import AxeBuilder from '@axe-core/playwright';
 const STRONY = [
   { nazwa: '/', url: 'http://localhost:4399/' },
   { nazwa: '/en/', url: 'http://localhost:4399/en/' },
+  { nazwa: '/dla-rekruterow/', url: 'http://localhost:4399/dla-rekruterow/' },
+  { nazwa: '/en/for-recruiters/', url: 'http://localhost:4399/en/for-recruiters/' },
   { nazwa: '/en/ (fikstury)', url: 'http://localhost:4400/en/' },
 ];
 
 for (const s of STRONY) {
   for (const schemat of ['light', 'dark'] as const) {
     test(`kontrast tekstu: 0 naruszeń na ${s.nazwa} w trybie ${schemat === 'light' ? 'jasnym' : 'ciemnym'}`, async ({ page }) => {
-      await page.emulateMedia({ colorScheme: schemat });
+      // Ruch ograniczony: animowany raster (canvas w pętli) zajmuje procesor i przy pełnym przebiegu axe przekraczał 30 s.
+      // Kontrast nie zależy od animacji.
+      await page.emulateMedia({ colorScheme: schemat, reducedMotion: 'reduce' });
       await page.goto(s.url);
       await expect(page.locator('html')).toHaveClass(/ready/);
       await page.waitForFunction(() => [...document.querySelectorAll('h1 .p')].every((e) => getComputedStyle(e).opacity === '0'));

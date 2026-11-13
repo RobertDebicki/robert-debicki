@@ -1,0 +1,19 @@
+---
+import Strona from '../../../layouts/Strona.astro';
+import StronaRekrutera from '../../../components/StronaRekrutera.astro';
+import DaneRekrutera from '../../../components/DaneRekrutera.astro';
+import Kontakt from '../../../components/Kontakt.astro';
+import { rekruter } from '../../../lib/rekruter';
+
+// Podstrona EN powstaje tylko z blokiem `rekruter` w ustawieniach EN. Polska wymaga go osobno, więc sprawdzamy oba.
+export async function getStaticPaths() {
+  return (await rekruter('en')) ? [{ params: { rekruter: undefined } }] : [];
+}
+const r = (await rekruter('en'))!;
+const maPl = (await rekruter('pl')) !== undefined;
+---
+<Strona jezyk="en" tytul={r.tytulSeo} opis={r.opis} odpowiednik={maPl ? '/dla-rekruterow/' : undefined} przelacznik={maPl ? '/dla-rekruterow/' : '/'}>
+  <DaneRekrutera slot="glowa" jezyk="en" />
+  <StronaRekrutera jezyk="en" />
+  <Kontakt jezyk="en" naRekruterze slot="poza-arkuszem" />
+</Strona>

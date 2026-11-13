@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/n8n-make-czy-zapier-en-miniatura.png"
   alt: "Unit comparison: four tasks in Zapier, five operations in Make, one execution in n8n"
 tlumaczenie: ai
-zrodlo: 87e3d8c34ac0d793fa211ead616e9d3f8646dc472e9fab3ee3cbe037ef81feb3
+zrodlo: b3273e8ae6e53edf93c63a2e4752bd2c35e33a2bd97d2e4f454e6fabba415e3b
 ---
 **n8n, Make, or Zapier** is a question I hear from business owners before their first automation. All three connect apps and do tasks for you. They differ in how they charge and how much technical knowledge they need. I explain what to look at before you choose. Not sure which tool fits your business? Email me.
 
@@ -53,4 +53,4 @@ Yes, but you have to rebuild the workflows, because they don't transfer between 
 In Zapier and Make, in the vendor's cloud. In n8n, you can choose your own server. Always check the data processing agreement.
 
 ### n8n, Make, or Zapier: which should I choose for my business?
-Tell me what you want to automate and how many people will use it. I'll tell you which tool fits and why.
+Tell me what you want to automate and how many people will use it. I'll tell you which tool fits and why. I describe how I work on these projects on the [AI and process automation](/en/services/ai-automation/) page.

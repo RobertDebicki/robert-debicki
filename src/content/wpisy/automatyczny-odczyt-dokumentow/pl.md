@@ -55,7 +55,7 @@ Przy niepewnym odczycie system pyta człowieka. Gdy odczyt wygląda na pewny, kw
 Zwykle nie. W opisanym wdrożeniu system pobiera dokumenty z poczty i SharePointa, a dane zapisuje w Airtable.
 
 ### Ile kosztuje takie wdrożenie?
-Cena zależy od liczby typów dokumentów i miejsc zapisu. Napisz, jakie dokumenty przepisujesz, a podam wycenę.
+Cena zależy od liczby typów dokumentów i miejsc zapisu. Napisz, jakie dokumenty przepisujesz, a podam wycenę. Takie procesy buduję w ramach usługi [wdrożenie AI i automatyzacja procesów](/uslugi/ai-i-automatyzacja/).
 
 ### Czy dane z dokumentów są bezpieczne?
 To zależy od wybranych usług i umów z ich dostawcami. Przed wdrożeniem ustalam z Tobą, gdzie dane mogą trafiać. Przy danych osobowych to ważne ze względu na RODO.

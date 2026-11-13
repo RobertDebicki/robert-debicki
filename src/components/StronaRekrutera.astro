@@ -1,0 +1,75 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { etykiety } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+import { wybranePrace } from '../lib/rekruter';
+import Narzedzia from './Narzedzia.astro';
+import Doswiadczenie from './Doswiadczenie.astro';
+
+interface Props {
+  jezyk: Jezyk;
+}
+// Podstrona dla rekrutera według podglądu docs/makieta/uslugi.html (widok 3). Narzędzia, etapy doświadczenia, wdrożenia,
+// projekty i kontakt pochodzą z tych samych danych co strona główna; własne są tylko teksty z `rekruter` i wybór pozycji.
+const { jezyk } = Astro.props;
+const { rekruter: r, kontakt: k } = await ustawienia(jezyk);
+const d = r!;
+const e = etykiety(jezyk);
+const { wdrozenia, projekty } = await wybranePrace(jezyk);
+const plyty = ['p p-c', 'p p-m', 'p p-y'];
+const BARWY = ['var(--c)', 'var(--y)', 'var(--m)'];
+const karty = [
+  ...wdrozenia.map((w) => ({ branza: w.branza, tytul: w.tytul, opis: w.opis, stack: w.stack, etap: undefined })),
+  ...projekty.map((p) => ({ branza: p.branza, tytul: p.tytul, opis: p.opis, stack: p.stack, etap: p.etap })),
+];
+const baza = jezyk === 'pl' ? '/' : '/en/';
+---
+<article aria-labelledby="rekruter-h">
+  <div class="hero podstrona">
+    <div>
+      <p class="okruszki mono"><a href={baza}>{e.okruszkiStart}</a> / {e.dlaRekruterow}</p>
+      <h1 class="plates" id="rekruter-h">
+        {/* Kolorowe płyty biorą tekst z data-t przez CSS, więc w treści strony tytuł występuje raz. */}
+        {plyty.map((klasa) => <span class={klasa} aria-hidden="true" data-t={d.tytul} />)}
+        <span class="p-k">{d.tytul}</span>
+      </h1>
+      <p class="role">{d.rola} <b>{d.rolaWyroznienie}</b></p>
+      <p class="lead">{d.wstep}</p>
+      <p>{d.akapit}</p>
+      <div class="cta">
+        {d.cvUrl && <a class="btn solid" href={d.cvUrl} target="_blank" rel="noopener">{e.pobierzCv}</a>}
+        <a class="btn" href={k.linkedinUrl} target="_blank" rel="noopener" data-zdarzenie="klik_linkedin">LinkedIn</a>
+      </div>
+    </div>
+    <aside class="ticket" aria-label={e.kartaKandydata}>
+      <header><span class="mono">{e.kartaKandydata}</span><span class="mono">{d.karta.okres}</span></header>
+      <dl>
+        {d.karta.wiersze.map((w) => <div><dt>{w.etykieta}</dt><dd>{w.wartosc}</dd></div>)}
+        {k.telefon && <div><dt>{e.kontakt}</dt><dd>{k.telefon}</dd></div>}
+      </dl>
+    </aside>
+  </div>
+
+  <Narzedzia jezyk={jezyk} />
+
+  {karty.length > 0 && (
+    <section id="wybrane" style="--sw: var(--c)" aria-labelledby="wybrane-h">
+      <p class="label mono">{e.wybranePrace}</p>
+      <h2 class="sec-title" id="wybrane-h">{d.wybrane.tytul}</h2>
+      <p class="sec-intro">{d.wybrane.wstep}</p>
+      <div class="now trzy">
+        {karty.map((p, i) => (
+          <article class="now-item" style={`--pl: ${BARWY[i % BARWY.length]}`}>
+            <p class="sector mono">{p.branza}</p>
+            <h3>{p.tytul}</h3>
+            <p class="desc">{p.opis}</p>
+            <p class="stack mono">{p.stack.map((s) => <span>{s}</span>)}</p>
+            {p.etap ? <p class="stamp">{p.etap}</p> : <a class="dalej" href={`${baza}#wdrozenia`}>{e.szczegolyWdrozenia}</a>}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <Doswiadczenie jezyk={jezyk} bezZasad />
+</article>

@@ -63,7 +63,7 @@ export function wczytajFiksture(folder: string, adres: string, nadpisania: Parti
 }
 
 /** Cienka nakładka na kolekcje Astro. Id wpisu z loadera glob ma postać `adres/pl` lub `adres/en`. */
-export async function pobierzPary(kolekcja: 'wdrozenia' | 'projekty' | 'referencje' | 'wpisy'): Promise<Para[]> {
+export async function pobierzPary(kolekcja: 'wdrozenia' | 'projekty' | 'referencje' | 'wpisy' | 'uslugi'): Promise<Para[]> {
   const { getCollection } = await import('astro:content');
   const wpisy = await getCollection(kolekcja);
   return zbudujPary(

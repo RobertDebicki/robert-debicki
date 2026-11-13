@@ -1,0 +1,23 @@
+---
+import Strona from '../../layouts/Strona.astro';
+import DaneUslugi from '../../components/DaneUslugi.astro';
+import StronaUslugi from '../../components/StronaUslugi.astro';
+import Kontakt from '../../components/Kontakt.astro';
+import { uslugiWJezyku, maUslugi } from '../../lib/uslugi';
+import { adresOdpowiednika, widocznaWJezyku } from '../../lib/jezyki';
+import { maStroneGlownaEn } from '../../lib/pozycje';
+
+export async function getStaticPaths() {
+  return (await uslugiWJezyku('pl')).map(({ adres, entry, para }) => ({ params: { adres }, props: { entry, para } }));
+}
+const { adres } = Astro.params;
+const { entry, para } = Astro.props;
+// hreflang tylko przy dokładnym odpowiedniku. Bez tłumaczenia przełącznik prowadzi do listy usług EN, a bez niej do /en/.
+const maEn = widocznaWJezyku(para, 'en');
+const przelacznik = maEn || (await maUslugi('en')) ? adresOdpowiednika('pl', 'uslugi', para) : (await maStroneGlownaEn()) ? '/en/' : undefined;
+---
+<Strona jezyk="pl" tytul={entry.data.tytulSeo} opis={entry.data.opis} odpowiednik={maEn ? adresOdpowiednika('pl', 'uslugi', para) : undefined} przelacznik={przelacznik}>
+  <DaneUslugi slot="glowa" jezyk="pl" adres={adres!} entry={entry} />
+  <StronaUslugi jezyk="pl" entry={entry} />
+  <Kontakt jezyk="pl" slot="poza-arkuszem" />
+</Strona>

@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Podgląd: usługi i rekruter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,400..900&family=Onest:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap">
+<style>
+/* Podgląd trzech nowych widoków (zadanie 5 planu widoczności). Style skopiowane z docs/makieta/index.html,
+   paleta z src/styles/tokeny.css (pomarańcz #EF7F1A z logo). Nowe są tylko trzy modyfikatory oznaczone niżej
+   i pasek podglądu (.widok, .podglad), który nie trafia na stronę. */
+:root {
+  --paper: #f4f5f1;
+  --ink: #131412;
+  --muted: #555850;
+  --rule: #131412;
+  --c: #EF7F1A;
+  --m: #d0201a;
+  --y: #ffc400;
+  --spot: #ffc400;
+  --band-accent: #ffc400;
+  --raster-alpha: 0.17;
+  --blend: multiply;
+  --font-display: "Anybody", "Arial Black", Arial, sans-serif;
+  --font-body: "Onest", "Helvetica Neue", Arial, sans-serif;
+  --font-data: "Spline Sans Mono", ui-monospace, Menlo, monospace;
+  --s--1: 0.75rem;
+  --s-0: 1.0625rem;
+  --s-1: 1.3rem;
+  --s-2: clamp(1.7rem, 3.4vw, 2.6rem);
+  --s-3: clamp(2.6rem, 6vw, 4.6rem);
+  --s-4: clamp(3rem, 10vw, 7.6rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f100e; --ink: #f0f1ea; --muted: #a6a99d; --rule: #f0f1ea;
+    --c: #EF7F1A; --m: #ff5442; --y: #ffcf3a; --spot: #ffcf3a; --band-accent: #d0201a;
+    --raster-alpha: 0.2; --blend: screen;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f100e; --ink: #f0f1ea; --muted: #a6a99d; --rule: #f0f1ea;
+  --c: #EF7F1A; --m: #ff5442; --y: #ffcf3a; --spot: #ffcf3a; --band-accent: #d0201a;
+  --raster-alpha: 0.2; --blend: screen;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--s-0)/1.6 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+#raster { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--m); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.mono { font-family: var(--font-data); font-size: var(--s--1); letter-spacing: 0.02em; }
+
+/* Pasek kontrolny i nagłówek */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); background: var(--paper); border-bottom: 1.5px solid var(--rule); }
+.bar { display: grid; grid-template-columns: repeat(16, 1fr); height: 10px; }
+.bar i:nth-child(1) { background: var(--c); }
+.bar i:nth-child(2) { background: var(--m); }
+.bar i:nth-child(3) { background: var(--y); }
+.bar i:nth-child(4) { background: var(--ink); }
+.bar i:nth-child(5) { background: color-mix(in srgb, var(--c) 75%, var(--paper)); }
+.bar i:nth-child(6) { background: color-mix(in srgb, var(--m) 75%, var(--paper)); }
+.bar i:nth-child(7) { background: color-mix(in srgb, var(--y) 75%, var(--paper)); }
+.bar i:nth-child(8) { background: color-mix(in srgb, var(--ink) 75%, var(--paper)); }
+.bar i:nth-child(9) { background: color-mix(in srgb, var(--c) 40%, var(--paper)); }
+.bar i:nth-child(10) { background: color-mix(in srgb, var(--m) 40%, var(--paper)); }
+.bar i:nth-child(11) { background: color-mix(in srgb, var(--y) 40%, var(--paper)); }
+.bar i:nth-child(12) { background: color-mix(in srgb, var(--ink) 40%, var(--paper)); }
+.bar i:nth-child(13) { background: #7a2e0e; }
+.bar i:nth-child(14) { background: #b8860b; }
+.bar i:nth-child(15) { background: #c45a00; }
+.bar i:nth-child(16) { background: var(--spot); }
+.top-in { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 12px; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.logo { width: auto; height: 29px; color: var(--ink); }
+.logo .logo-pomarancz { fill: var(--c); }
+.brand:hover .logo .logo-pomarancz { fill: var(--y); }
+.icon { width: 52px; height: 52px; margin-bottom: 18px; color: var(--ink); fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.icon .acc { stroke: var(--pl); }
+.icon .accf { fill: var(--pl); stroke: none; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.top nav a { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; font-size: 0.92rem; padding-block: 6px; }
+.top nav a::before { content: ""; width: 10px; height: 10px; background: var(--sw); }
+.top nav a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+/* Arkusz ze znacznikami cięcia */
+.sheet { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
+.crop { position: absolute; width: 28px; height: 28px; color: var(--ink); display: none; }
+.crop.tl { top: 18px; left: -36px; } .crop.tr { top: 18px; right: -36px; transform: scaleX(-1); }
+@media (min-width: 1280px) { .crop { display: block; } }
+
+/* Płyty: warstwy C, M, Y pod czarną, lekko niespasowane */
+.plates { display: grid; }
+.plates > span { grid-area: 1 / 1; }
+.plates .p { mix-blend-mode: var(--blend); transition: transform 1.1s cubic-bezier(.2,.8,.2,1); }
+.plates .p-c { color: var(--c); transform: translate(-0.12em, 0.05em); }
+.plates .p-m { color: var(--m); transform: translate(0.1em, -0.06em); }
+.plates .p-y { color: var(--y); transform: translate(0.03em, 0.1em); }
+.plates .p-k { position: relative; color: var(--ink); }
+.ready .hero .plates .p { transform: none; opacity: 0; transition: transform 1.1s cubic-bezier(.2,.8,.2,1), opacity .4s ease 1.1s; }
+
+/* Otwarcie */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 25rem; gap: 48px 64px; align-items: end; padding-block: 72px 80px; }
+.hero h1 { font-size: var(--s-4); font-weight: 850; font-variation-settings: "wdth" 125; line-height: 0.9; letter-spacing: -0.02em; }
+.role { margin-top: 28px; font-family: var(--font-display); font-size: var(--s-1); font-weight: 500; }
+.role b { font-weight: 800; background: var(--y); color: #131412; padding: 0 6px; }
+.lead { margin-top: 20px; font-size: 1.3rem; line-height: 1.45; max-width: 31em; }
+.lead + p { margin-top: 14px; color: var(--muted); max-width: 36em; }
+.cta { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; font-weight: 600; text-decoration: none; border: 2px solid var(--ink); background: var(--paper); box-shadow: 5px 5px 0 var(--c); transition: transform .15s, box-shadow .15s; }
+.btn.solid { background: var(--ink); color: var(--paper); box-shadow: 5px 5px 0 var(--m); }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--y); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--y); }
+
+.ticket { border: 2px solid var(--ink); background: var(--paper); font-size: 0.95rem; }
+.ticket header { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: var(--ink); color: var(--paper); }
+.ticket dl { margin: 0; }
+.ticket dl div { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 12px; padding: 10px 14px; border-top: 1px solid color-mix(in srgb, var(--ink) 30%, transparent); }
+.ticket dl div:first-child { border-top: 0; }
+.ticket dt { color: var(--muted); }
+.ticket dd { margin: 0; font-weight: 600; }
+
+/* Sekcje */
+section { position: relative; padding-block: 88px; border-top: 1.5px solid var(--rule); }
+.label { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.label::before { content: ""; width: 14px; height: 14px; background: var(--sw); }
+.sec-title { font-size: var(--s-2); font-weight: 820; font-variation-settings: "wdth" 118; line-height: 1.05; letter-spacing: -0.02em; max-width: 18em; }
+.sec-intro { margin-top: 16px; color: var(--muted); max-width: 40em; }
+
+/* Wdrożenia */
+.jobs { list-style: none; margin: 56px 0 0; padding: 0; display: grid; gap: 0; }
+.job { display: grid; grid-template-columns: minmax(0, 23rem) minmax(0, 1fr); gap: 16px 56px; padding-block: 40px; border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); }
+.fig { font-family: var(--font-display); font-size: var(--s-3); font-weight: 850; font-variation-settings: "wdth" 115; line-height: 0.95; letter-spacing: -0.02em; white-space: nowrap; }
+.fig { justify-items: start; padding-bottom: 0.16em; background: linear-gradient(var(--pl), var(--pl)) left bottom / 1.4em 0.13em no-repeat; transition: background-size .5s cubic-bezier(.2,.8,.2,1); }
+.fig .p { display: none; }
+.ready .job.in .fig { background-size: 2.6em 0.13em; }
+.job:hover .fig { background-size: 3.4em 0.13em; }
+.fig-note { margin-top: 16px; max-width: 19rem; font-size: 1.02rem; font-weight: 500; line-height: 1.45; color: var(--ink); }
+.job h3 { font-size: 1.45rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+.job .sector { color: var(--muted); margin-bottom: 8px; }
+.job p.desc { margin-top: 10px; max-width: 40em; }
+.stack { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.stack span::before { content: "+ "; color: var(--pl); font-weight: 600; }
+
+/* Teraz */
+.now { margin-top: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); }
+.now-item { position: relative; padding: 32px 28px 30px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--paper); }
+.now-item .sector { color: var(--muted); }
+.now-item h3 { margin-top: 8px; font-size: 1.4rem; font-weight: 700; line-height: 1.2; padding-right: 0; }
+.now-item p.desc { margin-top: 10px; }
+.stamp { display: inline-block; margin-top: 20px; padding: 7px 12px; border: 2px solid var(--m); color: var(--m); font-family: var(--font-data); font-size: var(--s--1); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; transform: rotate(-1.6deg); max-width: 100%; }
+.now-item .stack { margin-top: 14px; }
+
+/* Droga */
+.road { margin-top: 48px; list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; max-width: 820px; }
+.road li { position: relative; padding: 34px 24px 0 0; }
+.road li::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 2px; background: var(--ink); }
+.road li::after { content: ""; position: absolute; top: 0; left: 0; width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--ink); background: var(--paper) radial-gradient(circle, var(--ink) 2px, transparent 2.5px); }
+.road li:last-child::after { background: var(--spot); border-color: var(--ink); }
+.road .when { color: var(--muted); }
+.road h3 { margin-top: 6px; font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
+.road p { margin-top: 8px; font-size: 0.97rem; color: var(--muted); }
+.how { margin-top: 72px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 40px; }
+.how h3 { font-size: 1.1rem; font-weight: 700; }
+.how p { margin-top: 8px; }
+
+/* Umiejętności */
+.skills { margin: 48px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; }
+.skills div { display: grid; grid-template-columns: 14px 11rem minmax(0, 1fr); gap: 14px; align-items: baseline; padding-block: 14px; border-top: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); }
+.skills div::before { content: ""; width: 14px; height: 14px; background: var(--sw); transform: translateY(2px); }
+.skills dt { font-weight: 650; }
+.skills dd { margin: 0; color: var(--muted); min-width: 0; }
+
+/* Kontakt: pełna płyta K */
+.contact { margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); background: var(--ink); color: var(--paper); border-top: 0; position: relative; z-index: 1; }
+.contact-in { max-width: 1180px; margin: 0 auto; }
+.contact .label::before { background: var(--band-accent); }
+.contact .sec-intro { color: color-mix(in srgb, var(--paper) 72%, var(--ink)); }
+.mail { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.mail a { font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 110; font-size: clamp(1.3rem, 4.6vw, 3.4rem); line-height: 1; letter-spacing: -0.02em; text-decoration: underline; text-decoration-color: var(--band-accent); text-decoration-thickness: 0.09em; text-underline-offset: 0.12em; overflow-wrap: anywhere; }
+.copy { font: 600 var(--s--1) var(--font-data); text-transform: uppercase; letter-spacing: 0.04em; color: var(--paper); background: transparent; border: 2px solid var(--paper); min-height: 44px; padding: 0 16px; cursor: pointer; }
+.copy:hover { background: var(--paper); color: var(--ink); }
+.links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 1.1rem; }
+.links a { text-decoration-color: var(--band-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+.slug { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-block: 18px 40px; color: var(--muted); }
+
+/* NOWE 1: trzy kolumny dla istniejących .now i .road (karty usług, kroki, wybrane prace) */
+.now.trzy { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.road.trzy { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
+/* NOWE 2: link „dalej” w karcie i pod wdrożeniem, w stylu .links z kontaktu */
+.dalej { display: inline-flex; align-items: center; min-height: 44px; margin-top: 14px; font-weight: 600; text-decoration-color: var(--pl, var(--c)); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+/* NOWE 3: okruszki nad tytułem podstrony (etykieta mono z makiety) */
+.okruszki { color: var(--muted); }
+.okruszki a { text-underline-offset: 3px; }
+.hero.podstrona h1 { font-size: var(--s-3); line-height: 0.95; font-variation-settings: "wdth" 118; }
+.hero.podstrona .okruszki { margin-bottom: 22px; }
+
+/* Pasek podglądu: tylko w tym pliku, nie trafia na stronę */
+.podglad { position: relative; z-index: 1; max-width: 1180px; margin: 24px auto 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; padding: 10px 14px; border: 2px dashed var(--ink); }
+.podglad a, .podglad button { font: inherit; color: inherit; background: none; border: 0; padding: 6px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; min-height: 32px; }
+.widok { position: relative; z-index: 1; margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); padding: 14px max(16px, env(safe-area-inset-left, 0px)); background: var(--y); color: #131412; border-block: 2px solid var(--ink); }
+.widok > div { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; }
+.uwaga { color: var(--m); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 48px 64px; }
+  .hero h1 { font-size: 15vw; }
+  .hero.podstrona h1 { font-size: 8.6vw; }
+  .job { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-block: 32px; }
+  .now, .now.trzy { grid-template-columns: minmax(0, 1fr); }
+  .road, .road.trzy { grid-template-columns: minmax(0, 1fr); }
+  .road li { padding: 0 0 30px 40px; }
+  .road li::before { top: 0; bottom: 0; left: 9px; right: auto; width: 2px; height: auto; }
+  .road li:last-child::before { display: none; }
+  .how { grid-template-columns: minmax(0, 1fr); }
+  .skills { grid-template-columns: minmax(0, 1fr); }
+  .skills div { grid-template-columns: 14px minmax(0, 1fr); }
+  .skills dd { grid-column: 2; }
+  section { padding-block: 64px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .plates .p, .btn { transition: none; }
+}
+
+html, body { margin: 0; }
+</style>
+</head>
+<body>
+
+<canvas id="raster" aria-hidden="true"></canvas>
+
+<header class="top">
+  <div class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="top-in">
+    <a class="brand" href="index.html">
+      <svg class="logo" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="195 0 25219 19786"><polygon class="logo-pomarancz" fill="#EF7F1A" points="195 17041 12512 17041 15233 19786 195 19786"/><polygon class="logo-czern" fill="currentColor" points="195 10976 15818 10976 17193 9602 15824 8232 195 8232 195 5488 16949 5488 19920 8448 19920 10756 16954 13721 19132 15899 22669 12363 22669 7317 18096 2744 195 2744 195 0 19233 0 25414 6181 25413 13502 19132 19780 13072 13721 195 13721"/></svg>
+      <span>Robert Dębicki</span>
+    </a>
+    <nav aria-label="Sekcje">
+      <a href="#sekcja-uslug" style="--sw: var(--c)">Usługi</a>
+      <a href="index.html#wdrozenia" style="--sw: var(--m)">Wdrożenia</a>
+      <a href="index.html#teraz" style="--sw: var(--y)">Projekty</a>
+      <a href="#rekruter" style="--sw: var(--ink)">Dla rekruterów</a>
+      <a href="#kontakt-usluga" style="--sw: var(--c)">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<div class="podglad mono">
+  <span>Podgląd do akceptacji, 13.11.2026. Widoki:</span>
+  <a href="#usluga">1. Strona usługi</a>
+  <a href="#sekcja-uslug">2. Usługi na stronie głównej</a>
+  <a href="#rekruter">3. Dla rekruterów</a>
+  <span>Tryb:</span>
+  <button type="button" data-tryb="light">jasny</button>
+  <button type="button" data-tryb="dark">ciemny</button>
+  <button type="button" data-tryb="">systemowy</button>
+</div>
+
+<!-- ============ WIDOK 1: STRONA USŁUGI ============ -->
+<div class="widok mono" id="usluga"><div><span>Widok 1 z 3 · strona usługi</span><span>/uslugi/ai-i-automatyzacja/ (adres roboczy, do badania fraz)</span></div></div>
+
+<div class="sheet">
+  <svg class="crop tl" viewBox="0 0 28 28" aria-hidden="true"><path d="M0 20h14M20 0v14" stroke="currentColor" stroke-width="1"/></svg>
+  <svg class="crop tr" viewBox="0 0 28 28" aria-hidden="true"><path d="M0 20h14M20 0v14" stroke="currentColor" stroke-width="1"/></svg>
+  <article aria-labelledby="usluga-h">
+    <div class="hero podstrona">
+      <div>
+        <p class="okruszki mono"><a href="index.html">Strona główna</a> / <a href="#sekcja-uslug">Usługi</a> / AI i automatyzacja</p>
+        <h1 class="plates" id="usluga-h" aria-label="AI i automatyzacja w Twojej firmie">
+          <span class="p p-c" aria-hidden="true">AI i automatyzacja w Twojej firmie</span>
+          <span class="p p-m" aria-hidden="true">AI i automatyzacja w Twojej firmie</span>
+          <span class="p p-y" aria-hidden="true">AI i automatyzacja w Twojej firmie</span>
+          <span class="p-k" aria-hidden="true">AI i automatyzacja w Twojej firmie</span>
+        </h1>
+        <p class="role">Agenci AI, n8n, Make.com <b>/ Claude Code</b></p>
+        <p class="lead">Wdrażam AI i automatyzuję procesy. Nie każdy problem potrzebuje AI: czasem wystarczy dobrze ułożyć proces i zbudować prostą automatyzację.</p>
+        <p>Tam, gdzie AI oszczędza pracę, wdrażam agentów, którzy przejmują kilka zadań naraz: czytają dokumenty, wyciągają dane i przekazują sprawy dalej. Gdy model może się pomylić, decyzja zostaje u człowieka. Wrocław albo zdalnie.</p>
+        <div class="cta">
+          <a class="btn solid" href="#przyklad">Zobacz przykład wdrożenia</a>
+        </div>
+      </div>
+      <aside class="ticket" aria-label="Karta usługi">
+        <header><span class="mono">Karta usługi</span><span class="mono">11.2026</span></header>
+        <dl>
+          <div><dt>Modele</dt><dd>Claude API, OpenAI API, Gemini</dd></div>
+          <div><dt>Wdrażam</dt><dd>Agenci AI, voiceboty, Claude Code w zespole</dd></div>
+          <div><dt>Łączę z</dt><dd>n8n, Make.com, Airtable, SharePoint, CRM</dd></div>
+          <div><dt>Przykłady</dt><dd>Wnioski o dofinansowanie, Google Ads i blog</dd></div>
+          <div><dt>Miejsce</dt><dd>Wrocław albo zdalnie</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <section id="problem" style="--sw: var(--c)" aria-labelledby="problem-h">
+      <p class="label mono">Problem</p>
+      <h2 class="sec-title" id="problem-h">Zespół robi pracę, którą może przejąć AI</h2>
+      <p class="sec-intro">Takie zadania przejęły u moich klientów automatyzacje i agenci AI.</p>
+      <div class="how">
+        <div>
+          <h3>Dokumenty czyta człowiek</h3>
+          <p>Kwoty, terminy i dane kontrahentów przepisywane z wniosków, bez wspólnej bazy dla całego zespołu.</p>
+        </div>
+        <div>
+          <h3>Kampanie i ruch sprawdzane ręcznie</h3>
+          <p>Rentowność kampanii Google Ads, ruch na stronie i zmiany w SEO trzeba co chwilę przeglądać w kilku panelach.</p>
+        </div>
+        <div>
+          <h3>Blog pisany i tłumaczony od zera</h3>
+          <p>Każdy wpis i opis realizacji na stronę trzeba napisać, a potem przetłumaczyć na inny język.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="jak" style="--sw: var(--m)" aria-labelledby="jak-h">
+      <p class="label mono">Jak to robię</p>
+      <h2 class="sec-title" id="jak-h">Od procesu do rozwiązania, które działa w zespole</h2>
+      <ol class="road trzy">
+        <li>
+          <p class="when mono">Krok 1</p>
+          <h3>Najpierw proces, potem narzędzie</h3>
+          <p>Sprawdzam, jak praca wygląda dziś. Często wystarczy ułożyć proces i prosta automatyzacja. AI dokładam tam, gdzie naprawdę oszczędza pracę.</p>
+        </li>
+        <li>
+          <p class="when mono">Krok 2</p>
+          <h3>Agent połączony z Twoimi systemami</h3>
+          <p>Agent dostaje dostęp do poczty, dokumentów i bazy przez n8n albo Make.com. Gdy model może się pomylić, prosi wskazaną osobę o potwierdzenie.</p>
+        </li>
+        <li>
+          <p class="when mono">Krok 3</p>
+          <h3>Uruchomienie i przekazanie</h3>
+          <p>Uruchamiam proces i przekazuję go Twojemu zespołowi.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="przyklad" style="--sw: var(--y)" aria-labelledby="przyklad-h">
+      <p class="label mono">Przykłady wdrożeń</p>
+      <h2 class="sec-title" id="przyklad-h">AI w dokumentach i w marketingu</h2>
+      <ul class="jobs">
+        <li class="job" style="--pl: var(--m)">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 4h18l8 8v32H12z"/><path d="M30 4v8h8M17 16h8M17 31h14M17 37h10"/><path class="acc" d="M6 24h36"/><path class="acc" d="M6 18v-3h3M42 18v-3h-3M6 30v3h3M42 30v3h-3"/></svg>
+            <div class="fig plates"><span class="p" aria-hidden="true">setki</span><span class="p-k">setki</span></div>
+            <p class="fig-note">wniosków, dokumenty pobierane codziennie</p>
+          </div>
+          <div>
+            <p class="sector mono">Dofinansowania dla gmin</p>
+            <h3>Automatyzacja obiegu wniosków o dofinansowanie</h3>
+            <p class="desc">Zespół wyciągał dane z wniosków ręcznie i nie miał wspólnej bazy. Proces pobiera dokumenty z poczty i SharePointa, odczytuje je przez OCR z modelem językowym, wyciąga kwoty, terminy i dane kontrahentów, zapisuje je w Airtable i przypisuje opiekuna. Gdy odczyt jest niepewny, system prosi wskazaną osobę o potwierdzenie.</p>
+            <p class="stack mono"><span>n8n</span><span>OCR</span><span>Gemini</span><span>Airtable</span><span>SharePoint</span></p>
+          </div>
+        </li>
+        <li class="job" style="--pl: var(--c)">
+          <div>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="12" width="28" height="26" rx="3"/><path d="M24 12V6M20 6h8M4 22v8M44 22v8"/><path class="acc" d="M18 22v4M30 22v4M18 32h12"/></svg>
+            <div class="fig plates"><span class="p" aria-hidden="true">3</span><span class="p-k">3</span></div>
+            <p class="fig-note">agentów AI: reklamy i SEO, blog, tłumaczenia</p>
+          </div>
+          <div>
+            <p class="sector mono">Producent mebli dla branży HoReCa</p>
+            <h3>Agenci AI do Google Ads, SEO i bloga</h3>
+            <p class="desc">Pierwszy agent sprawdza rentowność kampanii Google Ads i ruch na stronie, a gdy w SEO coś się zmieni, proponuje zmiany. Drugi pisze wpisy na blog i opisy realizacji na stronę. Trzeci je tłumaczy.</p>
+            <p class="stack mono"><span>AdLoop</span><span>Google Ads</span><span>GA4</span><span>Search Console</span></p>
+            <a class="dalej" href="index.html#wdrozenia">Wszystkie wdrożenia na stronie głównej</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="faq" style="--sw: var(--ink)" aria-labelledby="faq-h">
+      <p class="label mono">Pytania i odpowiedzi</p>
+      <h2 class="sec-title" id="faq-h">O co pytają przed wdrożeniem AI i automatyzacji</h2>
+      <ul class="jobs">
+        <li class="job">
+          <h3>Czy moja firma w ogóle potrzebuje AI?</h3>
+          <p>Nie zawsze. Czasem wystarczy poprawić proces i zbudować prostą automatyzację w n8n albo Make.com. AI proponuję tam, gdzie trzeba czytać dokumenty, rozumieć tekst albo rozmawiać z klientem.</p>
+        </li>
+        <li class="job">
+          <h3>Czym agent AI różni się od chatbota?</h3>
+          <p>Chatbot odpowiada na pytania. Agent AI wykonuje zadania: czyta dokument, wyciąga dane, zapisuje je w bazie i przekazuje sprawę właściwej osobie.</p>
+        </li>
+        <li class="job">
+          <h3>Co, jeśli AI się pomyli?</h3>
+          <p>Tam, gdzie odczyt może być niepewny, agent prosi człowieka o potwierdzenie. Tak działa obieg wniosków o dofinansowanie opisany wyżej.</p>
+        </li>
+        <li class="job">
+          <h3>Z jakich modeli korzystasz?</h3>
+          <p>Claude API, OpenAI API i Gemini. Model dobieram do zadania.</p>
+        </li>
+        <li class="job">
+          <h3>Czy dane firmy są bezpieczne?</h3>
+          <p>Gdy proces przetwarza dane osobowe, podpisuję umowę powierzenia przetwarzania. Dane wysyłam do modelu przez API na koncie firmowym, nie przez darmowy czat, i tylko te pola, których zadanie wymaga. Agent zaczyna od dostępu tylko do odczytu, a zmiany zatwierdza człowiek. Uczę też zespół, jak pracować z AI, żeby nie wysyłać do modelu danych wrażliwych.</p>
+        </li>
+        <li class="job">
+          <h3>Ile kosztuje wdrożenie AI w firmie?</h3>
+          <p>Wyceniam indywidualnie, za projekt. Duży i złożony projekt dzielę na mniejsze etapy, a kwotę rozkładam na części.</p>
+        </li>
+      </ul>
+    </section>
+  </article>
+</div>
+
+<section id="kontakt-usluga" class="contact" style="--sw: var(--paper)" aria-labelledby="kontakt-usluga-h">
+  <div class="contact-in">
+    <p class="label mono">Kontakt</p>
+    <h2 class="sec-title" id="kontakt-usluga-h">Powiedz, co robicie ręcznie. Sprawdzę, co przejmie automatyzacja, a co AI.</h2>
+    <p class="sec-intro">Wrocław albo zdalnie. Zadzwoń albo napisz.</p>
+    <div class="mail">
+      <a href="tel:+48600100200">+48 600 100 200</a>
+      <span class="mono">[numer przykładowy]</span>
+    </div>
+    <div class="mail">
+      <a href="mailto:robert.debicki7@gmail.com">robert.debicki7@gmail.com</a>
+      <button type="button" class="copy">Kopiuj adres</button>
+    </div>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/robert-d%C4%99bicki/" target="_blank" rel="noopener">LinkedIn: robert-dębicki</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WIDOK 2: SEKCJA USŁUG NA STRONIE GŁÓWNEJ ============ -->
+<div class="widok mono"><div><span>Widok 2 z 3 · sekcja na stronie głównej</span><span>po otwarciu, przed sekcją Wdrożenia</span></div></div>
+
+<div class="sheet">
+  <section id="sekcja-uslug" style="--sw: var(--c)" aria-labelledby="uslugi-h">
+    <p class="label mono">Usługi</p>
+    <h2 class="sec-title" id="uslugi-h">Wdrażam AI i automatyzuję procesy</h2>
+    <p class="sec-intro">Nie każdy problem potrzebuje AI. Czasem wystarczy dobrze ułożony proces i prosta automatyzacja. Każda usługa ma przykład, który działa u klienta.</p>
+    <div class="now trzy">
+      <article class="now-item" style="--pl: var(--c)">
+        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="12" width="28" height="26" rx="3"/><path d="M24 12V6M20 6h8M4 22v8M44 22v8"/><path class="acc" d="M18 22v4M30 22v4M18 32h12"/></svg>
+        <p class="sector mono">Agenci AI, n8n, Make.com</p>
+        <h3>AI i automatyzacja</h3>
+        <p class="desc">Najpierw porządkuję proces. Prostą automatyzację stawiam w n8n albo Make.com, a agentów AI wdrażam tam, gdzie oszczędzają pracę.</p>
+        <a class="dalej" href="#usluga">AI i automatyzacja</a>
+      </article>
+      <article class="now-item" style="--pl: var(--m)">
+        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="33" rx="2"/><path d="M5 18h38M15 5v8M33 5v8"/><path class="acc" d="M15 30l6 6 12-12"/></svg>
+        <p class="sector mono">Claude Code, Astro, Next.js, WordPress</p>
+        <h3>Aplikacje, strony i narzędzia z AI</h3>
+        <p class="desc">Gdy gotowy program nie spełnia oczekiwań albo jest za drogi, piszę narzędzie na miarę, z AI tam, gdzie oszczędza pracę.</p>
+        <a class="dalej" href="#usluga">Aplikacje i strony z AI</a>
+      </article>
+      <article class="now-item" style="--pl: var(--y)">
+        <svg class="icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8h6l3 8-4.5 3a21 21 0 0 0 10.5 10.5l3-4.5 8 3v6a4 4 0 0 1-4 4C19.5 38 10 28.5 10 12a4 4 0 0 1 4-4z"/><path class="acc" d="M30 7a11 11 0 0 1 11 11M30 13.5a4.5 4.5 0 0 1 4.5 4.5"/></svg>
+        <p class="sector mono">ElevenLabs, Twilio, n8n</p>
+        <h3>Voiceboty AI</h3>
+        <p class="desc">Bot dzwoni do osoby z formularza, zadaje pytania kwalifikujące i zostawia handlowcowi notatkę w CRM.</p>
+        <a class="dalej" href="#usluga">Voiceboty</a>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!-- ============ WIDOK 3: DLA REKRUTERÓW ============ -->
+<div class="widok mono" id="rekruter"><div><span>Widok 3 z 3 · podstrona dla rekrutera</span><span>/dla-rekruterow/</span></div></div>
+
+<div class="sheet">
+  <article aria-labelledby="rekruter-h">
+    <div class="hero podstrona">
+      <div>
+        <p class="okruszki mono"><a href="index.html">Strona główna</a> / Dla rekruterów</p>
+        <h1 class="plates" id="rekruter-h" aria-label="Szukam stałej roli Automation Developer albo AI Engineer">
+          <span class="p p-c" aria-hidden="true">Szukam stałej roli</span>
+          <span class="p p-m" aria-hidden="true">Szukam stałej roli</span>
+          <span class="p p-y" aria-hidden="true">Szukam stałej roli</span>
+          <span class="p-k" aria-hidden="true">Szukam stałej roli</span>
+        </h1>
+        <p class="role">Automation Developer <b>/ AI Engineer</b></p>
+        <p class="lead">Od 2024 automatyzuję procesy w firmach. Od 08.2026 prowadzę własne wdrożenia u klientów i dowożę je od analizy procesu do przekazania zespołowi.</p>
+        <p>Systemy poniżej działają u klientów na co dzień. Pokazują, jak pracuję: n8n i Make.com, aplikacje z Claude Code, modele językowe tam, gdzie decyzję nadal zatwierdza człowiek.</p>
+        <div class="cta">
+          <a class="btn solid" href="#">Pobierz CV (PDF)</a>
+          <a class="btn" href="https://www.linkedin.com/in/robert-d%C4%99bicki/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <aside class="ticket" aria-label="Karta kandydata">
+        <header><span class="mono">Karta kandydata</span><span class="mono">11.2026</span></header>
+        <dl>
+          <div><dt>Szukam</dt><dd>Automation Developer, AI Engineer</dd></div>
+          <div><dt>Forma</dt><dd>Stała praca</dd></div>
+          <div><dt>Miejsce</dt><dd>Wrocław albo zdalnie</dd></div>
+          <div><dt>Doświadczenie</dt><dd>od 2024 w automatyzacji procesów</dd></div>
+          <div><dt>Kontakt</dt><dd>+48 600 100 200 <span class="mono">[przykład]</span></dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <section id="stack" aria-labelledby="stack-h">
+      <p class="label mono" style="--sw: var(--spot)">Narzędzia</p>
+      <h2 class="sec-title" id="stack-h">Czym pracuję</h2>
+      <dl class="skills">
+        <div style="--sw: var(--c)"><dt>Automatyzacja</dt><dd>n8n, Make.com</dd></div>
+        <div style="--sw: var(--m)"><dt>AI i LLM</dt><dd>Claude Code, Claude API, OpenAI API, Gemini, prompt engineering</dd></div>
+        <div style="--sw: var(--y)"><dt>Rozwój aplikacji</dt><dd>Next.js, React, Node.js, TypeScript, Python (skrypty i API), HTML, CSS</dd></div>
+        <div style="--sw: var(--ink)"><dt>Strony i sklepy</dt><dd>WordPress, WooCommerce, Astro</dd></div>
+        <div style="--sw: var(--c)"><dt>Bazy danych</dt><dd>SQL, Supabase (PostgreSQL), Airtable</dd></div>
+        <div style="--sw: var(--m)"><dt>CRM i integracje</dt><dd>HubSpot, Pipedrive, SellAsist, REST API, Webhooks</dd></div>
+        <div style="--sw: var(--y)"><dt>Marketing i analityka</dt><dd>Google Ads, GA4, Google Search Console</dd></div>
+        <div style="--sw: var(--ink)"><dt>Hosting i Git</dt><dd>Git, Docker, Coolify (aplikacje), AWS (n8n)</dd></div>
+      </dl>
+    </section>
+
+    <section id="wybrane" style="--sw: var(--c)" aria-labelledby="wybrane-h">
+      <p class="label mono">Wybrane prace</p>
+      <h2 class="sec-title" id="wybrane-h">Systemy, które zbudowałem i przekazałem</h2>
+      <p class="sec-intro">Klientów opisuję branżą. Pełne opisy są w sekcjach Wdrożenia i Projekty.</p>
+      <div class="now trzy">
+        <article class="now-item" style="--pl: var(--c)">
+          <p class="sector mono">Transport chłodniczy</p>
+          <h3>Monitoring temperatur w transporcie</h3>
+          <p class="desc">Dashboard z odczytem temperatury w naczepach co minutę i powiadomieniem dla dyspozytora i kierowcy przy zbliżaniu się do granicy.</p>
+          <p class="stack mono"><span>n8n</span><span>AWS</span></p>
+          <a class="dalej" href="index.html#wdrozenia">Szczegóły wdrożenia</a>
+        </article>
+        <article class="now-item" style="--pl: var(--y)">
+          <p class="sector mono">Producent mebli dla gastronomii</p>
+          <h3>Reaktywacja uśpionych klientów B2B</h3>
+          <p class="desc">Segmentacja klientów według historii zamówień, model językowy tylko tam, gdzie jest potrzebny, a każdą wiadomość akceptuje właściciel.</p>
+          <p class="stack mono"><span>Python</span><span>SQL</span><span>Supabase</span></p>
+          <a class="dalej" href="index.html#wdrozenia">Szczegóły wdrożenia</a>
+        </article>
+        <article class="now-item" style="--pl: var(--m)">
+          <p class="sector mono">Biuro rachunkowe</p>
+          <h3>Aplikacja do obiegu rozliczeń</h3>
+          <p class="desc">Odbiera paczki XML z programu księgowego, sprawdza je i pokazuje księgowym statusy oraz wyjątki. Ponowiona paczka nie tworzy drugiego zlecenia.</p>
+          <p class="stack mono"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>React</span></p>
+          <p class="stamp">Demo na serwerze testowym</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="doswiadczenie" style="--sw: var(--y)" aria-labelledby="doswiadczenie-h">
+      <p class="label mono">Doświadczenie</p>
+      <h2 class="sec-title" id="doswiadczenie-h">Od 2024 automatyzuję procesy w firmach</h2>
+      <ol class="road">
+        <li>
+          <p class="when mono">2024-2026</p>
+          <h3>Automation Developer, NoCodeWork</h3>
+          <p>Wdrażałem Claude Code u klientów, budowałem automatyzacje w n8n i Make.com i pisałem aplikacje z AI.</p>
+        </li>
+        <li>
+          <p class="when mono">od 08.2026</p>
+          <h3>Własna działalność</h3>
+          <p>Automatyzacje, aplikacje i sklepy dla firm z księgowości, produkcji mebli, elektroniki i rzemiosła artystycznego.</p>
+        </li>
+      </ol>
+    </section>
+  </article>
+</div>
+
+<section id="kontakt-rekruter" class="contact" style="--sw: var(--paper)" aria-labelledby="kontakt-rekruter-h">
+  <div class="contact-in">
+    <p class="label mono">Kontakt</p>
+    <h2 class="sec-title" id="kontakt-rekruter-h">Porozmawiajmy o roli Automation Developer albo AI Engineer</h2>
+    <p class="sec-intro">Wrocław albo zdalnie. Najszybciej odpowiadam mailowo.</p>
+    <div class="mail">
+      <a href="mailto:robert.debicki7@gmail.com">robert.debicki7@gmail.com</a>
+      <button type="button" class="copy">Kopiuj adres</button>
+    </div>
+    <div class="mail">
+      <a href="tel:+48600100200">+48 600 100 200</a>
+      <span class="mono">[numer przykładowy]</span>
+    </div>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/robert-d%C4%99bicki/" target="_blank" rel="noopener">LinkedIn: robert-dębicki</a>
+      <a href="#">Pobierz CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer class="slug mono">
+  <span>robert-debicki · arkusz podglądu</span>
+  <span>czarny + 3 kolory dodatkowe · raster 15° / 75°</span>
+  <span>© 2026 Robert Dębicki</span>
+  <span>Polityka prywatności · Ustawienia cookies</span>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('ready'); }); });
+
+  var items = document.querySelectorAll('.job, .now-item');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -15% 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Przełącznik trybu w pasku podglądu
+  document.querySelectorAll('[data-tryb]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = b.getAttribute('data-tryb');
+      if (t) root.setAttribute('data-theme', t); else root.removeAttribute('data-theme');
+    });
+  });
+
+  // Kopiowanie adresu
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = btn.parentNode.querySelector('a');
+      try { navigator.clipboard.writeText(el.textContent).then(function () {
+        btn.textContent = 'Skopiowano'; setTimeout(function () { btn.textContent = 'Kopiuj adres'; }, 1800);
+      }); } catch (e) {}
+    });
+  });
+
+  // Raster w tle (jak w index.html)
+  var cv = document.getElementById('raster');
+  var ctx = cv.getContext('2d');
+  if (!ctx) return;
+  var W = 0, H = 0, dpr = 1, step = 16, colors = {}, alpha = 0.2, blend = 'multiply';
+  var mx = -9999, my = -9999, tmx = -9999, tmy = -9999;
+  var screens = [{ a: 15 * Math.PI / 180, key: '--c', ph: 0 }, { a: 75 * Math.PI / 180, key: '--y', ph: 2.1 }];
+  function readTheme() {
+    var cs = getComputedStyle(root);
+    colors['--c'] = cs.getPropertyValue('--c').trim();
+    colors['--y'] = cs.getPropertyValue('--y').trim();
+    alpha = parseFloat(cs.getPropertyValue('--raster-alpha')) || 0.2;
+    blend = cs.getPropertyValue('--blend').trim() || 'multiply';
+  }
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    step = W < 640 ? 13 : 16;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    readTheme();
+  }
+  function bias(x) {
+    if (W < 900) return 0.5;
+    var k = Math.min(Math.max((x / W - 0.38) / 0.4, 0), 1);
+    return 0.22 + 0.78 * k * k * (3 - 2 * k);
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = blend === 'screen' ? 'screen' : 'multiply';
+    var fade = Math.max(0.3, 1 - window.scrollY / (H * 0.9));
+    ctx.globalAlpha = (W < 640 ? alpha * 0.7 : alpha) * fade;
+    mx += (tmx - mx) * 0.08; my += (tmy - my) * 0.08;
+    var sy = window.scrollY * 0.12;
+    var diag = Math.ceil(Math.hypot(W, H) / 2) + step;
+    var cx = W / 2, cy = H / 2, R = 190, maxR = step * 0.52;
+    for (var s = 0; s < screens.length; s++) {
+      var sc = screens[s], ca = Math.cos(sc.a), sa = Math.sin(sc.a);
+      ctx.fillStyle = colors[sc.key];
+      ctx.beginPath();
+      for (var u = -diag; u <= diag; u += step) {
+        for (var v = -diag; v <= diag; v += step) {
+          var x = cx + u * ca - v * sa, y = cy + u * sa + v * ca;
+          if (x < -step || x > W + step || y < -step || y > H + step) continue;
+          var wy = y + sy;
+          var f = 0.5 + 0.5 * Math.sin(x * 0.0042 + t * 0.00022 + sc.ph + Math.cos(wy * 0.0031 - t * 0.00017) * 1.7);
+          f = f * f * 0.62 * bias(x);
+          var dx = x - mx, dy = y - my;
+          f += 0.75 * Math.exp(-(dx * dx + dy * dy) / (2 * R * R));
+          if (f < 0.04) continue;
+          var r = maxR * Math.sqrt(Math.min(f, 1));
+          ctx.moveTo(x + r, y);
+          ctx.arc(x, y, r, 0, 6.2832);
+        }
+      }
+      ctx.fill();
+    }
+  }
+  var last = 0, running = true;
+  function loop(t) {
+    if (!running) return;
+    if (t - last > 33) { last = t; draw(t); }
+    requestAnimationFrame(loop);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readTheme);
+  new MutationObserver(readTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  window.addEventListener('pointermove', function (e) { tmx = e.clientX; tmy = e.clientY; }, { passive: true });
+  if (reduce) { draw(0); window.addEventListener('scroll', function () { draw(0); }, { passive: true }); return; }
+  document.addEventListener('visibilitychange', function () {
+    running = !document.hidden;
+    if (running) requestAnimationFrame(loop);
+  });
+  requestAnimationFrame(loop);
+})();
+</script>
+
+</body>
+</html>

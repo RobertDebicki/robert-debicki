@@ -1,0 +1,13 @@
+---
+import Strona from '../../../layouts/Strona.astro';
+import Uslugi from '../../../components/Uslugi.astro';
+import { maUslugi } from '../../../lib/uslugi';
+
+// Lista EN powstaje tylko z usługami po angielsku. Każda z nich ma pl.md, więc lista PL też istnieje.
+export async function getStaticPaths() {
+  return (await maUslugi('en')) ? [{ params: { lista: undefined } }] : [];
+}
+---
+<Strona jezyk="en" tytul="AI automation, websites, voice agents | Robert Dębicki" opis="AI automation and AI agents, custom websites and apps built with AI, and AI voice agents for business. Wrocław, Poland, or remote. Individual quotes." odpowiednik="/uslugi/">
+  <Uslugi jezyk="en" lista />
+</Strona>

@@ -26,5 +26,5 @@ test('/en/ na prawdziwej treści: lang="en", przełącznik do /, Posts w menu ty
   const menu = page.locator('header nav');
   await expect(menu.getByRole('link', { name: 'Posts' })).toHaveCount(saWpisy ? 1 : 0);
   await expect(menu.locator('a[href^="/en/posts"]')).toHaveCount(saWpisy ? 1 : 0);
-  await expect(page.getByRole('heading', { name: 'Six systems running at client companies' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Systems running at client companies' })).toBeVisible();
 });

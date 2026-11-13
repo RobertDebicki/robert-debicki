@@ -19,6 +19,9 @@ karta:
       wartosc: "Claude Code, agenci AI, modele językowe w procesach"
     - etykieta: "Kod"
       wartosc: "Python, FastAPI, Next.js, TypeScript"
+uslugi:
+  tytul: "Wdrażam AI i automatyzuję procesy"
+  wstep: "Nie każdy problem potrzebuje AI. Czasem wystarczy dobrze ułożony proces i prosta automatyzacja. Każda usługa ma przykład, który działa u klienta."
 wdrozenia:
   tytul: "Sześć systemów, które działają u klientów"
   wstep: "Liczby pochodzą od klientów albo z systemów, które zbudowałem."
@@ -60,10 +63,38 @@ narzedzia:
       wartosc: "Google Ads, GA4, Google Search Console"
     - nazwa: "Hosting i Git"
       wartosc: "Git, Docker, Coolify (aplikacje), AWS (n8n)"
+rekruter:
+  tytul: "Szukam stałej roli"
+  tytulSeo: "Automation Developer i AI Engineer | Robert Dębicki"
+  opis: "Szukam stałej roli Automation Developer albo AI Engineer, Wrocław albo zdalnie. Fikstura opisu do testów podstrony rekrutera, ma od 120 do 155 znaków."
+  rola: "Automation Developer"
+  rolaWyroznienie: "/ AI Engineer"
+  wstep: "Od 2024 automatyzuję procesy w firmach jako Automation Developer."
+  akapit: "Systemy poniżej działają u klientów na co dzień."
+  karta:
+    okres: "11.2026"
+    wiersze:
+      - etykieta: "Szukam"
+        wartosc: "Automation Developer, AI Engineer"
+      - etykieta: "Forma"
+        wartosc: "Stała praca"
+  wybrane:
+    tytul: "Systemy, które zbudowałem i przekazałem"
+    wstep: "Klientów opisuję branżą."
+  kontakt:
+    tytul: "Porozmawiajmy o roli Automation Developer albo AI Engineer"
+    wstep: "Wrocław albo zdalnie. Najszybciej odpowiadam mailowo."
+  cvUrl: "https://robert-debicki.pl/cv/Robert-Debicki-CV.pdf"
+  wdrozenia:
+    - "tylko-pl"
+    - "oba"
+  projekty:
+    - "oba"
 kontakt:
   tytul: "Szukam stałej pracy jako Automation Developer albo AI Engineer"
   wstep: "Wrocław albo zdalnie. Najszybciej odpowiadam mailowo."
   email: "robert.debicki7@gmail.com"
+  telefon: "+48 600 100 200"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 ---

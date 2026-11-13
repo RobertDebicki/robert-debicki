@@ -1,5 +1,277 @@
 # CHANGELOG
 
+## 2026-11-13 19:50, Claude Code
+
+**✅ Zrobione (poprawki po końcowym przeglądzie całej gałęzi; nie wdrożone):**
+- Przegląd całej gałęzi (85d4a24..6ba0c1e): bez uwag krytycznych; sekrety 0, nazwy klientów 0, build z indeksowaniem bez metatagu robots na nowych stronach, mapa strony i `llms.txt` z nowymi stronami, canonical i hreflang poprawne, brak przewijania w bok na 10 nowych adresach, reguła `/cv/` w `<IfModule>`.
+- Uwaga ważna: polityka prywatności (`src/lib/polityka.ts`, PL i EN) wymienia teraz kliknięcia w numer telefonu obok e-maila i LinkedIn („bez treści wiadomości i rozmów”), bo strona wysyła `klik_telefon`. Test w `zgoda.spec.ts` najpierw czerwony. Komentarz w `src/scripts/zgoda.ts` zaktualizowany.
+- Drobna: listy `/uslugi/` i `/en/services/` z tytułem i opisem zgodnym z regułą SEO (53/54 i 150/149 znaków).
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass.
+
+**🚧 Odłożone (z przeglądu, drobne):** wybór wdrożeń w panelu (`relation`) niesprawdzony w działającym Sveltii; CV po angielsku (dziś EN linkuje do polskiego PDF); testy przewijania stron usług tylko na fiksturach.
+
+**🎯 Następny krok:** zgoda Roberta na scalenie z `main` i wdrożenie; po wdrożeniu `curl -I` na CV (X-Robots-Tag) i `klik_telefon` w GTM.
+
+## 2026-11-13 19:15, Claude Code
+
+**✅ Zrobione (zadanie 7 krok 3: linki z wpisów do usług, zdania zaakceptowane przez Roberta 13.11; nie wdrożone):**
+- Po jednym zdaniu z linkiem (fraza usługi w kotwicy) na końcu FAQ: `n8n-make-czy-zapier`, `automatyczny-odczyt-dokumentow`, `ile-firm-uzywa-ai` → `/uslugi/ai-i-automatyzacja/`; `voice-bot-dla-firmy` → `/uslugi/voiceboty/`. EN z linkami do `/en/services/...`. `ai-act-dla-malej-firmy` bez linku (nie pasuje do usługi). `zrodlo` przeliczone, kontrola tłumaczeń bez błędów, linki obecne w zbudowanym HTML.
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass.
+
+**🎯 Następny krok:** przegląd całej gałęzi; potem scalenie z `main` i wdrożenie za zgodą Roberta; po wdrożeniu `klik_telefon` w GTM i sprawdzenie nagłówka noindex dla `/cv/`.
+
+## 2026-11-13 18:50, Claude Code
+
+**✅ Zrobione (treść zaakceptowana przez Roberta 13.11; nie wdrożone):**
+- Robert zaakceptował teksty strony dla rekrutera.
+- Wdrożenie `kampanie-google-ads` ujednolicone z przykładem na stronie AI i automatyzacja (propozycja zaakceptowana): tytuł „Agenci AI do kampanii, SEO i bloga”, branża „Producent mebli dla branży HoReCa” zamiast nazwy usługi, opis z trzema agentami i wynikiem po miesiącu, AdLoop w stosie. EN tak samo; tekst linku na stronie usługi PL i EN zaktualizowany; `zrodlo` przeliczone, kontrola tłumaczeń bez błędów.
+- Porównanie z makietą podmienia w kopii makiety także tę kartę (jak inne celowo zmienione teksty); wzorce zrzutów bez zmian.
+- `npm run sprawdz`: exit 0.
+
+**🎯 Następny krok:** linki z wpisów do usług (zdania do akceptacji Roberta), przegląd całej gałęzi, wdrożenie za zgodą Roberta.
+
+## 2026-11-13 18:20, Claude Code
+
+**✅ Zrobione (CV na serwerze, za zgodą Roberta w wiadomości 13.11):**
+- `~/Robert_CV/Robert_Debicki_CV.pdf` (wersja z 16.10, identyczna z ATS; bez adresu i daty urodzenia) wgrane na home.pl jako `/cv/Robert-Debicki-CV.pdf` jednorazowym wywołaniem funkcji z `skrypty/wdroz.ts` (transfer przez `.part`, nic nie usunięte). Sprawdzone: `https://robert-debicki.pl/cv/Robert-Debicki-CV.pdf` daje 200 `application/pdf`, SHA-256 zgodny z plikiem lokalnym, listing `/cv` bez `.part`. CV nie jest w repozytorium.
+- `ustawienia.rekruter.cvUrl` w PL i EN: przycisk „Pobierz CV (PDF)” / „Download resume (PDF)” na stronie dla rekrutera. `zrodlo` przeliczone.
+- Nagłówek `X-Robots-Tag: noindex` dla `/cv/` zadziała dopiero po wdrożeniu nowego `.htaccess` (dziś na serwerze go nie ma, sprawdzone `curl -I`).
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass.
+
+**🎯 Następny krok:** Robert akceptuje teksty strony dla rekrutera; linki z wpisów do usług; przegląd całej gałęzi; wdrożenie za zgodą.
+
+## 2026-11-13 17:40, Claude Code
+
+**✅ Zrobione (zadanie 8, poprawki po przeglądzie; nie wdrożone):**
+- Przegląd strony dla rekrutera: zatwierdzone, walidacja `cvUrl` po nazwie hosta bez obejść, escape JSON-LD poprawny.
+- Uwaga ważna (treść): nagłówek „Systemy, które zbudowałem i przekazałem” i akapit „Wdrożenia poniżej działają u klientów na co dzień” obejmowały obieg rozliczeń w fazie testów. Teraz „Wybrane wdrożenia i projekty” i „Wybrane prace poniżej pokazują, jak pracuję: …”; EN „Selected deployments and projects”, `zrodlo` przeliczone, kontrola tłumaczeń bez błędów. Do akceptacji Roberta.
+- `hosting/htaccess`: noindex dla `/cv/` przez `SetEnvIf` + `Header … env=CV_NOINDEX` zamiast `<If>` (wymaga Apache 2.4; błąd składni dałby 500 na całej stronie). Sprawdzone lokalnie na Apache 2.4.67: `Syntax OK`, nagłówek `X-Robots-Tag: noindex, nofollow` tylko na `/cv/`. Wersji Apache na home.pl nie sprawdzono; po wgraniu: `curl -I` na plik CV.
+- Test: `cvUrl` z `https://robert-debicki.pl@evil.com/…` odrzucony; test reguły `/cv/` najpierw czerwony.
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass.
+
+**🎯 Następny krok:** Robert akceptuje teksty strony dla rekrutera i wgrywa CV na home.pl; potem krok 3 zadania 7 (linki z wpisów do usług) i przegląd całej gałęzi.
+
+## 2026-11-13 17:00, Claude Code
+
+**✅ Zrobione (usługa voiceboty, fakt od Roberta; nie wdrożone):**
+- Robert 13.11: bot na początku przedstawia się jako asystentka AI i pyta, czy może kontynuować. Krok 1 i odpowiedź FAQ „Czy klient pozna, że rozmawia z botem?” mówią to teraz jako fakt (wcześniej „powinien”). EN tak samo, `zrodlo` przeliczone, kontrola tłumaczeń bez błędów.
+
+**🎯 Następny krok:** przegląd zadania 8 (strona dla rekrutera), potem akceptacja tekstów rekrutera przez Roberta.
+
+## 2026-11-13 16:35, Claude Code
+
+**✅ Zrobione (zadanie 8 planu widoczności, podstrona dla rekrutera; ryzyko średnie, nie wdrożone):**
+- `/dla-rekruterow/` i `/en/for-recruiters/` według widoku 3 podglądu `docs/makieta/uslugi.html`: H1, rola, wstęp, przyciski CV i LinkedIn, karta kandydata (telefon z kontaktu dopisuje się sam), narzędzia z ustawień, wybrane wdrożenia i projekty z kolekcji, etapy doświadczenia (bez zasad pracy), kontakt z własnym tytułem i linkiem do CV. JSON-LD `ProfilePage` z `mainEntity` = osoba (`/#osoba`), strony w `/llms.txt`.
+- Schemat `ustawienia.rekruter` (opcjonalny; bez niego podstrony i linków nie ma): tytuł SEO do 60 znaków i opis 120-155 jak w usługach, `cvUrl` tylko https na `robert-debicki.pl` albo R2, najwyżej trzy wdrożenia i trzy projekty (nazwy folderów; literówka zatrzymuje build komunikatem `Podstrona rekrutera: nie ma wdrożenia "…".`). Panel: blok „Podstrona dla rekrutera”, wybór pozycji przez `relation` (⚠️ w działającym panelu niesprawdzone).
+- Menu jak w podglądzie: „Dla rekruterów” zamiast „Doświadczenie” (sekcja zostaje na stronie głównej), nowe barwy kwadracików. Kontakt na stronie głównej i na stronach usług linkuje do podstrony.
+- `hosting/htaccess`: pliki w `/cv/` dostają `X-Robots-Tag: noindex, nofollow`. CV nie trafia do repo; `cvUrl` w treści puste, więc przycisk się nie pokazuje.
+- Treść PL z podglądu, wybór: `monitoring-temperatur`, `reaktywacja-klientow`, `obieg-rozliczen`. Zmiany względem podglądu: wstęp „…w firmach jako Automation Developer.” (fraza we wstępie), akapit „Wdrożenia poniżej działają…” zamiast „Systemy…” (obieg rozliczeń jest w testach). EN przez zasady `/tlumacz-strone` (`tlumaczenie: ai`), `zrodlo` przeliczone, kontrola tłumaczeń bez błędów.
+- SEO (zbudowany HTML): tytuł 60/53 znaki, opis 147/152, 1 H1, 4 H2, „Automation Developer” 5 razy, myślniki 0. Lighthouse mobile (lhci ręcznie, 3 przebiegi): PL 99/100/100/100, EN 98-99/100/100/100.
+- Porównanie z makietą: kopia makiety dostaje nowe menu, link do podstrony ukryty. Test zgody klika LinkedIn po `data-zdarzenie` (w kontakcie są teraz dwa linki).
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass/1 skipped.
+
+**🚧 W toku / nie wdrożone:** teksty `rekruter` (PL i EN) do akceptacji Roberta; CV: Robert wgrywa PDF do `/cv/` na home.pl i podaje adres; korekta EN przez native speakera.
+
+**🎯 Następny krok:** przegląd zadania 8, akceptacja tekstów i adres CV od Roberta.
+
+## 2026-11-13 16:20, Claude Code
+
+**✅ Zrobione (zadanie 7, poprawki po przeglądzie treści PL i EN; nie wdrożone):**
+- Przegląd: fakty, liczby, twarde zasady i linki EN zgodne ze źródłami; jedna uwaga ważna. Voiceboty krok 1: „Bot powinien przedstawić się…” zamiast twierdzenia, że bot Roberta to robi (źródło mówi tylko o dobrym zwyczaju). Tak samo w EN.
+- Drobne: strony i aplikacje „Nowe strony i aplikacje piszę z Claude Code” (platforma szkoleń powstała wcześniej), czas teraźniejszy przy obiegu rozliczeń (projekt w testach), branża „Producent mebli dla branży HoReCa” jak na stronie AI (EN „Hospitality furniture manufacturer”). `zrodlo` w dwóch `en.md` przeliczone, kontrola tłumaczeń bez błędów.
+- `npm run sprawdz`: exit 0, vitest 177 pass/1 skipped, e2e 164 pass.
+
+**🎯 Następny krok:** zadanie 8 (strona dla rekrutera); CV Robert wgrywa na home.pl i podaje adres. Krok 3 zadania 7 (linki z wpisów do usług) do akceptacji Roberta.
+
+## 2026-11-13 15:55, Claude Code
+
+**✅ Zrobione (tłumaczenie EN trzech usług, zadanie 7 planu widoczności; `tlumaczenie: ai`, nie wdrożone):**
+- Nowe `en.md`: `uslugi/ai-i-automatyzacja` (`adresEn: ai-automation`), `uslugi/strony-i-aplikacje` (`websites-and-apps`), `uslugi/voiceboty` (`ai-voice-agents`). Teksty pod angielskie frazy z `docs/seo/frazy-uslug.md` (AI automation, custom websites and apps, AI voice agent), pytania FAQ w formie angielskich podpowiedzi Google; fakty i odpowiedzi jak w PL.
+- `ustawienia/en.md`: dodany blok `uslugi`, `zrodlo` przeliczone.
+- Linki w EN prowadzą do `/en/posts/...` i `/en/#wdrozenia`, `/en/#teraz`.
+- SEO EN (z zbudowanego HTML): tytuły 57/55/45 znaków, opisy 146/153/147, 6 H2, FAQ 6/6/7, brak myślników; fraza główna 5/3/7 razy.
+- Kontrola tłumaczeń: 4 pary bez błędów; `sprawdz:tresc` 0; `npm run sprawdz` bez błędów.
+
+**🚧 W toku / nie wdrożone:** korekta native speakera (stan `ai`, nie `sprawdzone`); linki z wpisów do usług (krok 3 zadania 7).
+
+**🎯 Następny krok:** przegląd zadania 7, potem linki z wpisów do usług i wdrożenie za zgodą Roberta.
+
+## 2026-11-13 15:30, Claude Code
+
+**✅ Zrobione (zadanie 7 planu widoczności, treść PL trzech usług; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- `src/content/uslugi/`: `ai-i-automatyzacja` (tekst z zatwierdzonego podglądu), `strony-i-aplikacje`, `voiceboty`; `ustawienia.uslugi` (tytuł „Wdrażam AI i automatyzuję procesy” i wstęp z podglądu). Teksty z faktów Roberta, źródło każdego zdania w raporcie zadania.
+- Odpowiedzi Roberta 13.11 wpisane: rozmowy voicebota nie są nagrywane (zostaje tylko notatka), ElevenLabs i Twilio na kontach klienta; każda wycena indywidualna; trzy zdania opisowe zostają; przykład agentów HoReCa to wdrożenie „Claude Code do prowadzenia kampanii i analityki” (link i Claude Code w stosie); obieg rozliczeń „w fazie testów”.
+- Kontrola SEO (reguły z bloga): tytuły 54 znaki, opisy 144-152, 4 H2, FAQ 6/6/7, fraza główna 3-6 razy i we wstępie, myślniki 0. Na stronie AI fraza nie stoi w H1 (zatwierdzony nagłówek).
+- Testy: porównanie z makietą ukrywa sekcję usług i link „Usługi” (makieta ich nie ma, wygląd usług ma osobny podgląd). Test kontrastu z ograniczonym ruchem: animowany raster zabierał procesor i w pełnym przebiegu axe przekraczał 30 s (osobno 3 s); sprawdzone, że celowo zły kontrast nadal daje 6 błędów.
+- `npm run sprawdz`: exit 0, vitest 177 pass/1 skipped, e2e 164 pass (`uslugi-puste` pomija się przy prawdziwej treści).
+
+**🚧 W toku / nie wdrożone:** wersje EN trzech usług (po angielskich frazach z `docs/seo/frazy-uslug.md`), linki z wpisów do usług (krok 3 zadania 7, zdania do akceptacji Roberta).
+
+**🎯 Następny krok:** EN usług przez `/tlumacz-strone` z adresami `ai-automation`, `websites-and-apps`, `ai-voice-agents`.
+
+## 2026-11-13 14:10, Claude Code
+
+**✅ Zrobione (przekaz AI na stronie głównej i zasada SEO, ryzyko niskie; nie wdrożone):**
+- `ustawienia/pl.md` (teksty zaakceptowane przez Roberta 13.11): opis otwarcia „Agentów AI wdrażam bezpośrednio w zespołach klientów. Aplikacje, strony i narzędzia z AI tworzę z Claude Code. Procesy automatyzuję w n8n i Make.com.”, tytuł kontaktu „Powiedz, co robicie ręcznie. Sprawdzę, co przejmie automatyzacja, a co AI.”, wstęp kontaktu zaczyna się od „Firmom wdrażam AI i automatyzuję procesy: agenci AI, voiceboty, aplikacje i strony.”
+- `ustawienia/en.md`: te same trzy teksty po angielsku, `zrodlo` przeliczone, kontrola tłumaczeń bez błędów.
+- Porównanie z makietą (`strona-glowna.spec.ts`) podmienia w kopii makiety cztery teksty zamiast trzech; wzorce zrzutów bez zmian.
+- `AGENTS.md`: zasada SEO dla każdego tekstu na stronę (reguły z bloga), decyzja Roberta. Plan: krok 1b w zadaniu 7.
+- Zadanie 6 (kolekcja usług, wpis 12:55 niżej) przeszło przegląd: zatwierdzone, bez uwag krytycznych i ważnych.
+- `npm run sprawdz`: exit 0, vitest 177 pass/1 skipped, e2e 165 pass.
+
+**🎯 Następny krok:** zadanie 7, treść trzech usług z kontrolą SEO, do akceptacji Roberta.
+
+## 2026-11-13 12:55, Claude Code
+
+**✅ Zrobione (zadanie 6 planu widoczności, ryzyko średnie; nie wdrożone):**
+- Kolekcja `uslugi` (schemat w `src/lib/schematy.ts`, panel `/admin/` „Usługi”): tytuł H1, krótka nazwa, tytuł SEO do 60 znaków, opis 120-155 znaków, karta usługi, problemy, kroki, przykłady wdrożeń (co najmniej jeden), FAQ (co najmniej trzy pytania), `adresEn` tylko w en.md.
+- Strony `/uslugi/<adres>/` i `/en/services/<adresEn>/` według widoku 1 podglądu `docs/makieta/uslugi.html`, listy `/uslugi/` i `/en/services/`, sekcja usług na stronie głównej po otwarciu (widok 2), link „Usługi” w menu, JSON-LD `Service` i `FAQPage`, strony usług w `/llms.txt`. Wezwanie na końcu to sekcja kontaktu z ustawień.
+- Ustawienia: opcjonalny nagłówek sekcji usług (`uslugi.tytul`, `uslugi.wstep`); prawdziwe ustawienia bez zmian.
+- CSS: tylko trzy modyfikatory z podglądu (`.trzy`, `.dalej`, `.okruszki` z `.hero.podstrona`).
+- Bez prawdziwych usług nic się nie zmienia: brak sekcji, linku w menu i stron (test `uslugi-puste.spec.ts`). Testy na fiksturach `testy/fikstury/jezyki/uslugi/`.
+- Lighthouse mobile na fiksturowej stronie usługi: 98 / 100 / 100 / 100.
+
+**🎯 Następny krok:** zadanie 7 planu (prawdziwe treści usług w `src/content/uslugi/` i nagłówek sekcji w ustawieniach).
+
+## 2026-11-13 13:20, Claude Code
+
+**✅ Zrobione (zadanie 5 planu widoczności zatwierdzone; dokumenty, bez kodu; nie wdrożone):**
+- Robert zatwierdził podgląd `docs/makieta/uslugi.html` (z menu bez „Doświadczenie” i zawijaniem nagłówka rekrutera przy 390 px).
+- Spec: usługi pierwszej fali to AI i automatyzacja (jedna strona), aplikacje strony i narzędzia z AI, voiceboty AI; fakty Roberta o wycenie i bezpieczeństwie danych.
+- `docs/seo/frazy-uslug.md`: sekcja 0 z frazami AI (podpowiedzi Google 13.11, bez wolumenów), adres `/uslugi/ai-i-automatyzacja/` i `/en/services/ai-automation/`, tytuły SEO 54 i 57 znaków.
+- Plan: zadanie 5 odhaczone, zadanie 7 z nowymi usługami.
+
+**🎯 Następny krok:** zadanie 6 planu (kolekcja `uslugi`, strony usług, dane strukturalne, sekcja na stronie głównej, menu).
+
+## 2026-11-13 13:00, Claude Code
+
+**✅ Zrobione (podgląd usług, ryzyko niskie; nie wdrożone):**
+- `docs/makieta/uslugi.html`: branża klienta z agentami AI: „Producent mebli dla branży HoReCa” (podana przez Roberta). W podglądzie nie ma już miejsc do uzupełnienia poza przykładowym numerem telefonu.
+
+**🎯 Następny krok:** akceptacja podglądu przez Roberta; potem spec, frazy i plan zadań 6-8.
+
+## 2026-11-13 12:50, Claude Code
+
+**✅ Zrobione (podgląd usług, ryzyko niskie; nie wdrożone):**
+- `docs/makieta/uslugi.html`: odpowiedź FAQ „Czy dane firmy są bezpieczne?” z zasad, które Robert potwierdził, że stosuje: umowa powierzenia, API na koncie firmowym i minimum danych, agent tylko do odczytu ze zmianami zatwierdzanymi przez człowieka, szkolenie zespołu. Bez twierdzeń o warunkach dostawców modeli.
+
+**🎯 Następny krok:** Robert podaje branżę klienta z agentami AI i akceptuje podgląd; potem spec, frazy i plan zadań 6-8.
+
+## 2026-11-13 12:35, Claude Code
+
+**✅ Zrobione (podgląd usług, fakty od Roberta, ryzyko niskie; nie wdrożone):**
+- `docs/makieta/uslugi.html`, strona usługi AI i automatyzacja: drugi przykład wdrożenia (3 agenci AI: Google Ads i SEO przez AdLoop, wpisy na blog i opisy realizacji, tłumaczenia), problemy 2 i 3 z tego wdrożenia, odpowiedź o wycenie (za projekt, indywidualnie, duży projekt na etapy z kwotą w częściach), początek odpowiedzi o bezpieczeństwie danych. Nazwa klienta pominięta, branża do potwierdzenia przez Roberta. Brak przewijania w bok przy 360-1440 px.
+
+**🎯 Następny krok:** Robert podaje branżę klienta i wybiera zasady bezpieczeństwa do FAQ; potem akceptacja podglądu.
+
+## 2026-11-13 12:15, Claude Code
+
+**✅ Zrobione (podgląd usług, runda 4 uwag Roberta, ryzyko niskie; nie wdrożone):**
+- Decyzja Roberta: AI i automatyzacja to jedna usługa i jedna strona (adres roboczy `/uslugi/ai-i-automatyzacja/`), bo tytuł „Wdrożenia AI w firmie” prowadził tylko w stronę AI.
+- `docs/makieta/uslugi.html`: tytuł strony usługi „AI i automatyzacja w Twojej firmie”, sekcja usług z powrotem 3 karty (AI i automatyzacja, Aplikacje strony i narzędzia z AI, Voiceboty AI). Brak przewijania w bok przy 360, 390, 1024 i 1440 px.
+
+**🎯 Następny krok:** akceptacja podglądu; potem spec, badanie fraz (strona AI i automatyzacja zamiast samej automatyzacji) i plan zadań 6-8.
+
+## 2026-11-13 12:00, Claude Code
+
+**✅ Zrobione (podgląd usług, runda 3 uwag Roberta, ryzyko niskie; nie wdrożone):**
+- Uwaga Roberta: „wdrażam AI i automatyzuję”, bo nie zawsze potrzebne jest AI; czasem wystarczy ułożyć proces i prosta automatyzacja.
+- `docs/makieta/uslugi.html`: wstęp strony usługi, krok 1 „Najpierw proces, potem narzędzie”, nowe pytanie FAQ „Czy moja firma w ogóle potrzebuje AI?”, tytuł kontaktu „Sprawdzę, co przejmie automatyzacja, a co AI.”, nagłówek sekcji usług „Wdrażam AI i automatyzuję procesy” z wyjaśnieniem pod spodem. Brak przewijania w bok przy 390 i 1440 px.
+
+**🎯 Następny krok:** akceptacja podglądu przez Roberta i brakujące fakty (przykład agenta AI, bezpieczeństwo danych, wycena).
+
+## 2026-11-13 11:45, Claude Code
+
+**✅ Zrobione (podgląd usług, runda 2 uwag Roberta, ryzyko niskie; nie wdrożone):**
+- `docs/makieta/uslugi.html`, widok 1: wzorem strony usługi jest teraz „Wdrożenia AI w firmie” (adres roboczy `/uslugi/wdrozenia-ai/`) zamiast automatyzacji. Treść tylko z faktów w `ustawienia/pl.md` i wdrożenia z wnioskami o dofinansowanie; brakujące problemy oraz odpowiedzi o bezpieczeństwie danych i cenie oznaczone do uzupełnienia przez Roberta. Tytuł kontaktu w podglądzie: „Powiedz, co robicie ręcznie. Sprawdzę, co może przejąć AI.” Brak przewijania w bok przy 390 i 1440 px.
+
+**🎯 Następny krok:** Robert ocenia podgląd i uzupełnia przykład wdrożenia agenta AI, bezpieczeństwo danych i wycenę; potem spec, frazy AI i plan.
+
+## 2026-11-13 11:20, Claude Code
+
+**✅ Zrobione (podgląd usług, runda 1 uwag Roberta, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Uwaga Roberta: najważniejsze jest teraz AI (wdrożenia AI, aplikacje i strony z AI), automatyzacje n8n i Make schodzą na dalszy plan.
+- `docs/makieta/uslugi.html`, sekcja usług na stronie głównej: cztery karty w siatce 2 x 2 (bez nowego CSS) w kolejności Wdrożenia AI w firmie, Aplikacje strony i narzędzia z AI, Voiceboty AI, Automatyzacja procesów. Nagłówek „AI, które pracuje w Twojej firmie”. Opisy tylko z faktów w `ustawienia/pl.md` i wypowiedzi Roberta. Brak przewijania w bok przy 390 i 1440 px.
+
+**🚧 W toku:** widok strony usługi nadal pokazuje automatyzację jako przykład; teksty kontaktu, opis na górze strony, spec i badanie fraz (brak fraz AI) czekają na decyzję Roberta.
+
+**🎯 Następny krok:** Robert ocenia nową sekcję i propozycje tekstów; potem aktualizacja specu, fraz i planu (nowa usługa „Wdrożenia AI” w pierwszej fali).
+
+## 2026-11-13 10:37, Claude Code
+
+**✅ Zrobione (zadanie 11 planu widoczności: lista działań z linkami zewnętrznymi, bez kodu, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Nowy plik `docs/seo/linki-zewnetrzne.md`: 10 pozycji w kolejności wartość do wysiłku (GitHub, LinkedIn, prośba do klientów, Make Solution Partner, n8n, Dev.to, spotkania we Wrocławiu, Bulldogjob, Useme, do sprawdzenia). Przy każdej adres, co wpisać, gotowy tekst, koszt i źródło sprawdzenia z datą. Rodzaj linku (`rel`) nigdzie niezmierzony, do sprawdzenia po rejestracji. Katalog ekspertów n8n pominięty (pilotaż zamknięty, Polska poza regionami).
+- Nic nie zostało zarejestrowane ani wysłane.
+- Poprawki po przeglądzie (2 rundy): z gotowych tekstów usunięto lub oznaczono jako przesłankę (⚠️) twierdzenia, których nie ma w `ustawienia/pl.md` i `wdrozenia/*/pl.md` albo w sprawdzonym źródle (grupa docelowa szablonu n8n, "bezpieczny dla SEO", opis Bulldogjob, korzyści ze spotkań, klienci Useme); lokalizacja zawsze "Wrocław albo zdalnie"; niepotwierdzone zakresy oznaczone "[do potwierdzenia przez Roberta]".
+
+**🎯 Następny krok:** Robert przegląda listę i rejestruje się (pozycje 1 i 2 od razu; linki do stron usług i `/dla-rekruterow/` po ich wdrożeniu).
+
+## 2026-11-13 10:40, Claude Code
+
+**✅ Zrobione (zadanie 2 planu widoczności: przekaz dla klienta i rekrutera, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- `ustawienia/pl.md`: tytuł kontaktu „Powiedz, co robicie ręcznie. Sprawdzę, co da się zautomatyzować.”, wstęp kontaktu z ofertą dla firm i otwartością na rolę Automation Developer albo AI Engineer, tytuł wdrożeń „Systemy, które działają u klientów” (bez liczby). Wiersz karty „Szukam” bez zmian.
+- `ustawienia/en.md` przetłumaczone według `/tlumacz-strone`, `zrodlo` przeliczone; kontrola tłumaczeń bez błędów.
+- Testy: nagłówek wdrożeń w `jezyki-prawdziwa-tresc.spec.ts`; porównanie z makietą podmienia w kopii makiety trzy zmienione teksty (jak przy logo i kolorze), wzorce zrzutów bez zmian.
+
+**🎯 Następny krok:** zadanie 3 planu (wg planu w `docs/superpowers/plans/`); krok 6 wcześniejszego zadania czeka na `klik_telefon` w GTM po wdrożeniu.
+
+## 2026-11-13 10:45, Claude Code
+
+**✅ Zrobione (zadanie 1, krok 6: numer telefonu na stronie, ryzyko średnie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Numer od Roberta w `src/content/ustawienia/pl.md` i `en.md`; telefon widoczny w kontakcie na `/` i `/en/`, w JSON-LD (`telephone`) i w `llms.txt`.
+- Testy na prawdziwej treści: link `tel:` ze zdarzeniem (`strona-glowna.spec.ts`), `telephone` w JSON-LD (`seo.spec.ts`). Porównanie z makietą ukrywa blok telefonu (makieta go nie ma), jak ukrywa wpisy; wzorce zrzutów bez zmian.
+
+**🎯 Następny krok:** po wdrożeniu dopisać `klik_telefon` do wyzwalacza w GTM i oznaczyć w GA4; potem zadanie 2.
+
+## 2026-11-13 10:21, Claude Code
+
+**✅ Zrobione (zadanie 5 planu widoczności: podgląd wyglądu, bez kodu strony, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Nowy plik `docs/makieta/uslugi.html`: trzy widoki jeden pod drugim (strona usługi „Automatyzacja procesów”, sekcja usług na stronie głównej z trzema kartami, podstrona `/dla-rekruterow/`), przełącznik trybu jasny/ciemny w pasku podglądu. Tylko style z makiety (płyty, etykiety mono, `sec-title`, karta, `.job`, `.now`, `.road`, `.skills`, płyta kontaktu), paleta z `src/styles/tokeny.css`; nowe są trzy modyfikatory (`.trzy`, `.dalej`, `.okruszki`).
+- Treść tylko z wdrożeń, projektów i ustawień; telefon `+48 600 100 200` to numer przykładowy, odpowiedź FAQ o koszcie zostawiona Robertowi.
+- Brak przewijania w bok przy 360, 390, 1024, 1440 px (scrollWidth = clientWidth); zrzuty 1440 i 390, jasny i ciemny.
+
+**🎯 Następny krok:** Robert akceptuje wygląd (pętla poprawek, najwyżej 3 rundy), potem zadanie 6.
+
+## 2026-11-13 12:00, Claude Code
+
+**✅ Zrobione (zadanie 4 planu widoczności: badanie fraz, bez kodu, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Nowy plik `docs/seo/frazy-uslug.md`: frazy PL i EN dla trzech usług pierwszej fali (podpowiedzi Google i WebSearch, 2026-11-13, każda ze źródłem), konkurencja w wynikach, propozycja frazy głównej, adresów PL/EN, tytułów SEO (z liczbą znaków) i 5 pytań FAQ na usługę.
+- Luki zapisane w pliku: brak wolumenów wyszukiwań i brak bloku „Ludzie pytają też” w użytych narzędziach.
+
+**🎯 Następny krok:** Robert akceptuje adresy (`/uslugi/automatyzacja-procesow/`, `/uslugi/voiceboty/`, `/uslugi/strony-i-aplikacje/` i odpowiedniki EN); po wdrożeniu ich zmiana wymaga 301. Potem zadanie 5.
+
+## 2026-11-13 11:15, Claude Code
+
+**✅ Zrobione (zadanie 3 planu widoczności: BlogPosting we wpisach, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Nowy komponent `src/components/DaneWpisu.astro`: JSON-LD `BlogPosting` na stronach wpisów PL i EN (tytuł, zajawka, data, język, autor z tym samym `@id` co Person na stronie głównej, bezwzględny adres wpisu, obraz z miniatury tylko gdy jest). Adres budowany z przekazanego `adres`.
+- Testy e2e na fiksturach (`wpisy.spec.ts`): wpis PL z miniaturą, PL bez miniatury, EN, brak bloku na liście.
+
+**🎯 Następny krok:** zadanie 4 planu.
+
+## 2026-11-13 10:30, Claude Code
+
+**✅ Zrobione (zadanie 1 planu widoczności: telefon, ryzyko średnie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Opcjonalne pole `kontakt.telefon` (schemat z komunikatem błędu, pole w panelu), `hrefTelefonu` w `src/lib/telefon.ts`, link `tel:` ze zdarzeniem `klik_telefon` nad e-mailem w kontakcie, `telephone` w JSON-LD i telefon w linii Kontakt w `llms.txt`. Bez numeru nic się nie wyświetla.
+- Poprawka po przeglądzie: schemat przyjmuje też pusty `telefon: ""` (czyszczenie pola w panelu nie psuje budowania); szablony i `llms.txt` traktują pusty tekst jak brak telefonu.
+- Testy: jednostkowe (`telefon.test.ts`, `llms.test.ts`) i e2e na fiksturach (`jezyki.spec.ts`: link, JSON-LD, zdarzenie po zgodzie); fikstura PL ma numer testowy. `npm run sprawdz` przechodzi. W `AGENTS.md` opis regexu GTM dopisany o `klik_telefon`.
+
+**🎯 Następny krok:** numer od Roberta do `src/content/ustawienia/pl.md` (i decyzja, czy też do `en.md`); po wdrożeniu dopisać `klik_telefon` do wyzwalacza w GTM i oznaczyć w GA4; polityka prywatności i `ciasteczkaGoogle` do sprawdzenia przy zmianie kontenera. Potem zadanie 2.
+
+## 2026-11-13 09:40, Claude Code
+
+**✅ Zrobione (plan wdrożenia, bez zmian w kodzie):**
+- Robert zaakceptował projekt widoczności. Plan w `docs/superpowers/plans/2026-11-13-widocznosc-klienci-rekruterzy.md`: 11 zadań (telefon, przekaz, BlogPosting, frazy, podgląd, kolekcja usług, treść usług, podstrona rekrutera, angielskie adresy wpisów, wpis o sklepie po starcie, linki zewnętrzne).
+
+**🎯 Następny krok:** Robert przegląda plan i wybiera sposób wykonania; potem zadanie 1 (telefon: potrzebny numer od Roberta).
+
+## 2026-11-13 09:00, Claude Code
+
+**✅ Zrobione (projekt widoczności w Google i AI, gałąź `widocznosc-klienci-rekruterzy`, bez zmian w kodzie):**
+- GA4, GSC, GTM przejrzane: alarm GTM „0% zgód” to brak zgód reklamowych (żywa strona po zgodzie wysyła `gcs=G101`), zostaje bez zmian. Mapa witryny przesłana ponownie w GSC (16 adresów, wcześniej odczytane 4), GA4 połączone z GSC, przechowywanie danych 14 miesięcy (ustawił Robert).
+- Projekt `docs/superpowers/specs/2026-11-12-widocznosc-klienci-rekruterzy-design.md`: strony usług (pierwsza fala: automatyzacja, voiceboty, strony i aplikacje), telefon z `klik_telefon`, przekaz dla klienta i rekrutera, podstrona dla rekrutera z CV z R2, `BlogPosting`, angielskie adresy wpisów, linki z zewnątrz. Przegląd recenzenta: 7 pytań, odpowiedzi w dokumencie.
+
+**🎯 Następny krok:** Robert akceptuje projekt; potem plan (`writing-plans`) i krok 1 (telefon + nowy nagłówek kontaktu).
+
 ## 2026-11-12 10:30, Claude Code
 
 **✅ Zrobione (wygląd wpisów po uwagach Roberta ze zrzutu, ryzyko niskie; gałąź `wyglad-wpisow`, nie wdrożone):**

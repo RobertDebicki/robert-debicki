@@ -39,7 +39,9 @@ function porownaj(js: Pole, pola: Pole[], sciezka: string, bledy: string[], pomi
       if (pole.widget !== 'object') bledy.push(`${gdzie}: obiekt, a widget ${pole.widget}`);
       else porownaj(podschemat, pole.fields, gdzie, bledy);
     } else if (podschemat.type === 'array') {
-      if (pole.widget !== 'list') bledy.push(`${gdzie}: tablica, a widget ${pole.widget}`);
+      // lista nazw folderów może być wyborem z innej kolekcji (relation z multiple)
+      const wybor = pole.widget === 'relation' && pole.multiple === true && podschemat.items?.type === 'string';
+      if (pole.widget !== 'list' && !wybor) bledy.push(`${gdzie}: tablica, a widget ${pole.widget}`);
       if (podschemat.minItems !== undefined && pole.min !== podschemat.minItems) bledy.push(`${gdzie}: min ${pole.min} zamiast ${podschemat.minItems}`);
       if (podschemat.maxItems !== undefined && pole.max !== podschemat.maxItems) bledy.push(`${gdzie}: max ${pole.max} zamiast ${podschemat.maxItems}`);
       if (podschemat.items?.type === 'object') porownaj(podschemat.items, pole.fields ?? [], gdzie, bledy);
@@ -133,12 +135,61 @@ describe('panel Sveltia: wpisy i zdjęcia', () => {
   });
 });
 
+describe('panel Sveltia: usługi', () => {
+  const pola = () => polaPanelu('uslugi');
+  it('adresEn jest opcjonalny, ma podpowiedź o angielskim adresie i wzorzec jak w schemacie', () => {
+    const p = pola().find((f) => f.name === 'adresEn')!;
+    expect(p.required).toBe(false);
+    expect(p.hint).toMatch(/angielski adres strony, małe litery i dywizy/);
+    const re = new RegExp(p.pattern[0]);
+    expect(re.test('ai-and-automation')).toBe(true);
+    expect(re.test('AI and automation')).toBe(false);
+  });
+  it('opis i tytulSeo pilnują w panelu długości ze schematu', () => {
+    const opis = new RegExp(pola().find((f) => f.name === 'opis')!.pattern[0]);
+    expect(opis.test('a'.repeat(119))).toBe(false);
+    expect(opis.test('a'.repeat(120))).toBe(true);
+    expect(opis.test('a'.repeat(155))).toBe(true);
+    expect(opis.test('a'.repeat(156))).toBe(false);
+    const seo = new RegExp(pola().find((f) => f.name === 'tytulSeo')!.pattern[0]);
+    expect(seo.test('a'.repeat(60))).toBe(true);
+    expect(seo.test('a'.repeat(61))).toBe(false);
+  });
+  it('ikona i kolejność są kopiowane z pl.md, teksty tłumaczone', () => {
+    expect(pola().find((f) => f.name === 'ikona')!.i18n).toBe('duplicate');
+    expect(pola().find((f) => f.name === 'kolejnosc')!.i18n).toBe('duplicate');
+    expect(pola().find((f) => f.name === 'tytul')!.i18n).toBe(true);
+  });
+});
+
+describe('panel Sveltia: podstrona rekrutera', () => {
+  const rekruter = () => polaPanelu('ustawienia').find((p) => p.name === 'rekruter')!;
+  const pole = (nazwa: string) => rekruter().fields.find((f: Pole) => f.name === nazwa)!;
+  it('blok jest opcjonalny, a cvUrl to opcjonalny adres https na robert-debicki.pl albo w R2', () => {
+    expect(rekruter().required).toBe(false);
+    const cv = pole('cvUrl');
+    expect(cv.required).toBe(false);
+    const re = new RegExp(cv.pattern[0]);
+    expect(re.test('https://robert-debicki.pl/cv/Robert-Debicki-CV.pdf')).toBe(true);
+    for (const h of HOSTY_R2) expect(re.test(`https://pub-abc${h}/cv.pdf`)).toBe(true);
+    expect(re.test('http://robert-debicki.pl/cv/cv.pdf')).toBe(false);
+    expect(re.test('https://example.com/cv.pdf')).toBe(false);
+    expect(re.test('https://zlyrobert-debicki.pl/cv.pdf')).toBe(false);
+    expect(re.test('https://example.com/.r2.dev')).toBe(false);
+  });
+  it('wdrożenia i projekty wybiera się z listy pozycji (nazwa folderu), najwyżej trzy', () => {
+    for (const [nazwa, kolekcja] of [['wdrozenia', 'wdrozenia'], ['projekty', 'projekty']]) {
+      expect(pole(nazwa)).toMatchObject({ widget: 'relation', collection: kolekcja, value_field: '{{slug}}', multiple: true, max: 3 });
+    }
+  });
+});
+
 describe('panel Sveltia: języki', () => {
   it('struktura multiple_files, pl domyślny, en dodatkowy, nowa pozycja tylko po polsku', () => {
     expect(konfig.i18n).toMatchObject({ structure: 'multiple_files', locales: ['pl', 'en'], default_locale: 'pl', initial_locales: 'default' });
   });
   it('kolekcje folderowe zapisują folder na pozycję z pl.md i en.md, a ustawienia pliki {{locale}}.md', () => {
-    for (const nazwa of ['wdrozenia', 'projekty', 'referencje', 'wpisy']) {
+    for (const nazwa of ['wdrozenia', 'projekty', 'referencje', 'wpisy', 'uslugi']) {
       const k = kolekcje.find((c) => c.name === nazwa)!;
       expect(k.folder).toBe(`src/content/${nazwa}`);
       expect(k.path).toBe('{{slug}}/{{locale}}');

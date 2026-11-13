@@ -1,0 +1,45 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+import { prefiksUslug } from '../lib/uslugi';
+
+interface Props {
+  jezyk: Jezyk;
+  adres: string;
+  entry: any;
+}
+// Schema.org Service i FAQPage dla strony usługi. Dostawca to ta sama osoba co na stronie głównej (wspólny @id),
+// pytania i odpowiedzi to pozycje FAQ ze strony, więc dane strukturalne nie rozjadą się z treścią.
+const { jezyk, adres, entry } = Astro.props;
+const { otwarcie: o } = await ustawienia(jezyk);
+const d = entry.data;
+const bezwzgledny = (sciezka: string) => new URL(sciezka, Astro.site).href;
+const strona = bezwzgledny(`${prefiksUslug(jezyk)}${adres}/`);
+const dane = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: d.tytul,
+      serviceType: d.tytul,
+      description: d.opis,
+      url: strona,
+      provider: { '@type': 'Person', '@id': bezwzgledny('/#osoba'), name: `${o.imie} ${o.nazwisko}` },
+      areaServed: { '@type': 'Country', name: jezyk === 'pl' ? 'Polska' : 'Poland' },
+    },
+    {
+      '@type': 'FAQPage',
+      url: strona,
+      inLanguage: jezyk,
+      mainEntity: d.faq.pozycje.map((q: { pytanie: string; odpowiedz: string }) => ({
+        '@type': 'Question',
+        name: q.pytanie,
+        acceptedAnswer: { '@type': 'Answer', text: q.odpowiedz },
+      })),
+    },
+  ],
+};
+// "<" zamienione, żeby tekst z treści nie zamknął znacznika <script>.
+const json = JSON.stringify(dane).replaceAll('<', '\\u003c');
+---
+<script type="application/ld+json" set:html={json} />

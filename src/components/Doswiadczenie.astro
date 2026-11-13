@@ -5,8 +5,10 @@ import { ustawienia } from '../lib/pozycje';
 
 interface Props {
   jezyk: Jezyk;
+  /** Podstrona rekrutera pokazuje same etapy (jak w podglądzie docs/makieta/uslugi.html), zasady pracy zostają na stronie głównej. */
+  bezZasad?: boolean;
 }
-const { jezyk } = Astro.props;
+const { jezyk, bezZasad = false } = Astro.props;
 const { doswiadczenie: d } = await ustawienia(jezyk);
 const e = etykiety(jezyk);
 ---
@@ -22,12 +24,14 @@ const e = etykiety(jezyk);
       </li>
     ))}
   </ol>
-  <div class="how">
-    {d.zasady.map((z) => (
-      <div>
-        <h3>{z.tytul}</h3>
-        <p>{z.opis}</p>
-      </div>
-    ))}
-  </div>
+  {!bezZasad && (
+    <div class="how">
+      {d.zasady.map((z) => (
+        <div>
+          <h3>{z.tytul}</h3>
+          <p>{z.opis}</p>
+        </div>
+      ))}
+    </div>
+  )}
 </section>

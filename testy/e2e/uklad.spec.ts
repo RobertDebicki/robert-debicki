@@ -3,7 +3,22 @@ import { test, expect } from '@playwright/test';
 const szerokosci = [360, 390, 1024, 1440];
 
 // /en/ na prawdziwej treści istnieje od zadania 10 (src/content/ustawienia/en.md); angielskie teksty są dłuższe.
-for (const [adres, w] of ['/', '/en/'].flatMap((a) => szerokosci.map((s) => [a, s] as const))) {
+// Strony usług i strona główna z sekcją usług i linkiem „Usługi” w menu: build z fiksturami (port 4400), dopóki nie ma prawdziwych usług.
+const F = 'http://localhost:4400';
+// Podstrona rekrutera na prawdziwej treści (z menu bez „Doświadczenie” i z linkiem „Dla rekruterów”) i na fiksturach (z przyciskiem CV).
+const ADRESY = [
+  '/',
+  '/en/',
+  '/dla-rekruterow/',
+  '/en/for-recruiters/',
+  `${F}/`,
+  `${F}/uslugi/`,
+  `${F}/uslugi/ai-i-automatyzacja/`,
+  `${F}/en/services/`,
+  `${F}/en/services/ai-and-automation/`,
+  `${F}/dla-rekruterow/`,
+];
+for (const [adres, w] of ADRESY.flatMap((a) => szerokosci.map((s) => [a, s] as const))) {
   test(`brak przewijania w bok na ${adres} przy ${w} px`, async ({ page }) => {
     await page.setViewportSize({ width: w, height: 800 });
     await page.goto(adres);
@@ -55,7 +70,7 @@ test('html lang to pl, jest noindex, a konsola jest czysta', async ({ page }) =>
 });
 
 // „hundreds” w EN jest dłuższe niż polskie liczby; przy nowrap nie może wejść na kolumnę z opisem.
-for (const [adres, w] of ['/', '/en/'].flatMap((a) => [360, 1024, 1440].map((s) => [a, s] as const))) {
+for (const [adres, w] of ['/', '/en/', `${F}/en/services/ai-and-automation/`].flatMap((a) => [360, 1024, 1440].map((s) => [a, s] as const))) {
   test(`liczba wdrożenia mieści się w swojej kolumnie na ${adres} przy ${w} px`, async ({ page }) => {
     await page.setViewportSize({ width: w, height: 800 });
     await page.goto(adres);

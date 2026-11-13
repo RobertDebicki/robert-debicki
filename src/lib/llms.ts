@@ -7,6 +7,7 @@ export interface DaneLlms {
   opis: string;
   miejsce: string;
   email: string;
+  telefon?: string;
   linkedinUrl: string;
   narzedzia: { nazwa: string; wartosc: string }[];
   strony: { nazwa: string; adres: string }[];
@@ -24,7 +25,7 @@ export function llmsTxt(d: DaneLlms): string {
     '',
     ...(d.opis.trim() ? [d.opis.trim(), ''] : []),
     ...(d.miejsce.trim() ? [`Miejsce: ${bezKropki(d.miejsce)}.`] : []),
-    `Kontakt: ${d.email}, LinkedIn: ${d.linkedinUrl}`,
+    `Kontakt: ${d.email}${d.telefon ? `, telefon: ${d.telefon}` : ''}, LinkedIn: ${d.linkedinUrl}`,
     '',
     '## Czym pracuję',
     '',

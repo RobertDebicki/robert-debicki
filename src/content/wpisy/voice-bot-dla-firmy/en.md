@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/voice-bot-dla-firmy-en-miniatura.png"
   alt: "Large 2:00 text and a phone handset, the bot calls the customer back within two minutes"
 tlumaczenie: ai
-zrodlo: d68928d62c15f676f2ea1b3e25d6a6a8c26520abe8a39afdd6e8d7d0e37d144e
+zrodlo: aa461d88a5c80a710e64976a1c924e88888e6ce9ab04c2d9227d01b20d35db6d
 ---
 **A voice bot for your business** can call the person who filled out the form on your website within 2 minutes of submission. I describe a project where the bot handles 15 calls a day and hands the sales rep a ready-made note. Want to call leads back faster? Email me.
 
@@ -54,4 +54,4 @@ Those cases go to the sales rep too. The rep then sees that the contact needs a 
 In the project described here, Pipedrive. I also work with HubSpot and API integrations.
 
 ### How much does a voice bot for your business cost?
-The price depends on the number of questions, the CRM, and calling hours. Tell me what kind of inquiries you get each day, and I'll prepare a quote.
+The price depends on the number of questions, the CRM, and calling hours. Tell me what kind of inquiries you get each day, and I'll prepare a quote. I describe the service on the [AI voice agents for business](/en/services/ai-voice-agents/) page.

@@ -1,0 +1,20 @@
+---
+import Strona from '../../../layouts/Strona.astro';
+import DaneUslugi from '../../../components/DaneUslugi.astro';
+import StronaUslugi from '../../../components/StronaUslugi.astro';
+import Kontakt from '../../../components/Kontakt.astro';
+import { uslugiWJezyku } from '../../../lib/uslugi';
+import { adresOdpowiednika } from '../../../lib/jezyki';
+
+// Adres strony z pola adresEn w en.md (uslugiWJezyku), odpowiednik to polska strona usługi.
+export async function getStaticPaths() {
+  return (await uslugiWJezyku('en')).map(({ adres, entry, para }) => ({ params: { adres }, props: { entry, para } }));
+}
+const { adres } = Astro.params;
+const { entry, para } = Astro.props;
+---
+<Strona jezyk="en" tytul={entry.data.tytulSeo} opis={entry.data.opis} odpowiednik={adresOdpowiednika('en', 'uslugi', para)}>
+  <DaneUslugi slot="glowa" jezyk="en" adres={adres!} entry={entry} />
+  <StronaUslugi jezyk="en" entry={entry} />
+  <Kontakt jezyk="en" slot="poza-arkuszem" />
+</Strona>

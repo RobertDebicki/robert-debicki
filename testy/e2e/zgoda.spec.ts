@@ -250,7 +250,7 @@ const klikniecia = async (page: Page) => {
   // Kliknięcie w mailto i w link zewnętrzny nie może nas wyprowadzić ze strony w teście.
   await page.evaluate(() => document.querySelectorAll('#kontakt a').forEach((a) => a.addEventListener('click', (e) => e.preventDefault())));
   await page.locator('#email').click();
-  await page.locator('#kontakt .links a').click();
+  await page.locator('#kontakt .links a[data-zdarzenie="klik_linkedin"]').click();
   await page.locator('#copy-email').click();
 };
 
@@ -267,7 +267,7 @@ test('środkowy przycisk myszy na LinkedIn też liczy się jako klik_linkedin', 
   await page.goto('/');
   await baner(page).getByRole('button', { name: 'Akceptuję' }).click();
   await page.evaluate(() => document.querySelectorAll('#kontakt a').forEach((a) => a.addEventListener('auxclick', (e) => e.preventDefault())));
-  await page.locator('#kontakt .links a').click({ button: 'middle' });
+  await page.locator('#kontakt .links a[data-zdarzenie="klik_linkedin"]').click({ button: 'middle' });
   expect(await zdarzenia(page)).toEqual(['klik_linkedin']);
 });
 
@@ -287,9 +287,9 @@ test('przed decyzją (baner otwarty) kliknięcia nie tworzą zdarzeń, a po pó�
   expect(await zdarzenia(page)).toEqual([]);
 });
 
-test('polityka wymienia kliknięcia w adres e-mail i LinkedIn jako zbierane po zgodzie (PL i EN)', async ({ page }) => {
+test('polityka wymienia kliknięcia w adres e-mail, numer telefonu i LinkedIn jako zbierane po zgodzie (PL i EN)', async ({ page }) => {
   await page.goto('/polityka-prywatnosci/');
-  await expect(page.locator('main')).toContainText(/kliknięcia w adres e-mail i link do LinkedIn/);
+  await expect(page.locator('main')).toContainText(/kliknięcia w adres e-mail, numer telefonu i link do LinkedIn/);
   await page.goto('/en/privacy-policy/');
-  await expect(page.locator('main')).toContainText(/clicks on the email address and the LinkedIn link/);
+  await expect(page.locator('main')).toContainText(/clicks on the email address, the phone number and the LinkedIn link/);
 });

@@ -112,3 +112,46 @@ test('menu ma link do listy wpisów w obu językach', async ({ page }) => {
   await page.goto('/en/');
   await expect(page.locator('header nav a[href="/en/posts/"]')).toHaveText('Posts');
 });
+
+async function wpisJsonLd(page: import('@playwright/test').Page) {
+  const bloki = await page.locator('script[type="application/ld+json"]').allTextContents();
+  const blok = bloki.find((b) => b.includes('BlogPosting'));
+  expect(blok, 'brak bloku BlogPosting').toBeTruthy();
+  return JSON.parse(blok!);
+}
+
+test('wpis PL ma BlogPosting z autorem, adresem i bezwzględnym obrazem z miniatury', async ({ page }) => {
+  await page.goto('/wpisy/najnowszy/');
+  const wpis = await wpisJsonLd(page);
+  expect(wpis['@type']).toBe('BlogPosting');
+  expect(wpis.headline).toBe('Automatyzacja obiegu wniosków o dofinansowanie dla jednostek samorządu terytorialnego');
+  expect(wpis.description).toBe('Najnowszy wpis testowy z długim tytułem.');
+  expect(wpis.datePublished).toBe('2026-10-20');
+  expect(wpis.inLanguage).toBe('pl');
+  expect(wpis.author).toMatchObject({ '@type': 'Person', '@id': `${SITE}/#osoba`, name: 'Robert Dębicki', url: `${SITE}/` });
+  expect(wpis.mainEntityOfPage).toBe(`${SITE}/wpisy/najnowszy/`);
+  expect(wpis.image).toMatch(new RegExp(`^${SITE}/_astro/.+`));
+});
+
+test('wpis PL bez miniatury nie ma pola image', async ({ page }) => {
+  await page.goto('/wpisy/srodkowy/');
+  const wpis = await wpisJsonLd(page);
+  expect(wpis.headline).toBe('Wpis środkowy');
+  expect(wpis).not.toHaveProperty('image');
+});
+
+test('wpis EN ma BlogPosting z inLanguage en, adresem EN i autorem z angielskiej strony głównej', async ({ page }) => {
+  await page.goto('/en/posts/najnowszy/');
+  const wpis = await wpisJsonLd(page);
+  expect(wpis.headline).toBe('Long English title of the newest test post about grant application automation');
+  expect(wpis.datePublished).toBe('2026-10-20');
+  expect(wpis.inLanguage).toBe('en');
+  expect(wpis.author).toMatchObject({ '@type': 'Person', '@id': `${SITE}/#osoba`, name: 'Robert Dębicki', url: `${SITE}/en/` });
+  expect(wpis.mainEntityOfPage).toBe(`${SITE}/en/posts/najnowszy/`);
+  expect(wpis).not.toHaveProperty('image');
+});
+
+test('lista wpisów nie ma BlogPosting', async ({ page }) => {
+  await page.goto('/wpisy/');
+  expect(await page.locator('script[type="application/ld+json"]', { hasText: 'BlogPosting' }).count()).toBe(0);
+});

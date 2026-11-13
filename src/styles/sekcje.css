@@ -63,7 +63,7 @@ section { position: relative; padding-block: 88px; border-top: 1.5px solid var(-
 .now { margin-top: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); }
 .now-item { position: relative; padding: 32px 28px 30px; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--paper); }
 .now-item .sector { color: var(--muted); }
-.now-item h3 { margin-top: 8px; font-size: 1.4rem; font-weight: 700; line-height: 1.2; padding-right: 0; }
+.now-item h3, .now-item h2 { margin-top: 8px; font-size: 1.4rem; font-weight: 700; line-height: 1.2; padding-right: 0; }
 .now-item p.desc { margin-top: 10px; }
 .stamp { display: inline-block; margin-top: 20px; padding: 7px 12px; border: 2px solid var(--m); color: var(--m); font-family: var(--font-data); font-size: var(--s--1); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; transform: rotate(-1.6deg); max-width: 100%; }
 .now-item:nth-child(2) .stamp { transform: rotate(1.2deg); }
@@ -105,10 +105,24 @@ section { position: relative; padding-block: 88px; border-top: 1.5px solid var(-
 .links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 1.1rem; }
 .links a { text-decoration-color: var(--band-accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
+/* Usługi: trzy modyfikatory z zatwierdzonego podglądu (docs/makieta/uslugi.html, 13.11). */
+/* Trzy kolumny dla .now i .road (karty usług, kroki) */
+.now.trzy { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.road.trzy { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
+/* Link „dalej” w karcie i pod przykładem, w stylu .links z kontaktu */
+.dalej { display: inline-flex; align-items: center; min-height: 44px; margin-top: 14px; font-weight: 600; text-decoration-color: var(--pl, var(--c)); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+/* Okruszki nad tytułem podstrony i mniejszy H1 podstrony */
+.okruszki { color: var(--muted); }
+.okruszki a { text-underline-offset: 3px; }
+.hero.podstrona h1 { font-size: var(--s-3); line-height: 0.95; font-variation-settings: "wdth" 118; }
+.hero.podstrona .okruszki { margin-bottom: 22px; }
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: minmax(0, 1fr); padding-block: 48px 64px; }
   .hero h1 { font-size: 15vw; }
+  .hero.podstrona h1 { font-size: 8.6vw; }
+  .now.trzy { grid-template-columns: minmax(0, 1fr); }
+  .road.trzy { grid-template-columns: minmax(0, 1fr); }
   .job { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-block: 32px; }
   .now { grid-template-columns: minmax(0, 1fr); }
   .road { grid-template-columns: minmax(0, 1fr); }

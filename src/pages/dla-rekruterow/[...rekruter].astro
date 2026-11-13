@@ -1,0 +1,22 @@
+---
+import Strona from '../../layouts/Strona.astro';
+import StronaRekrutera from '../../components/StronaRekrutera.astro';
+import DaneRekrutera from '../../components/DaneRekrutera.astro';
+import Kontakt from '../../components/Kontakt.astro';
+import { rekruter } from '../../lib/rekruter';
+import { maStroneGlownaEn } from '../../lib/pozycje';
+
+// Trasa rest: bez bloku `rekruter` w ustawieniach podstrona nie powstaje (getStaticPaths zwraca pustą tablicę).
+export async function getStaticPaths() {
+  return (await rekruter('pl')) ? [{ params: { rekruter: undefined } }] : [];
+}
+const r = (await rekruter('pl'))!;
+// hreflang tylko przy angielskiej podstronie; bez niej przełącznik prowadzi do /en/.
+const maEn = (await rekruter('en')) !== undefined;
+const przelacznik = maEn ? '/en/for-recruiters/' : (await maStroneGlownaEn()) ? '/en/' : undefined;
+---
+<Strona jezyk="pl" tytul={r.tytulSeo} opis={r.opis} odpowiednik={maEn ? '/en/for-recruiters/' : undefined} przelacznik={przelacznik}>
+  <DaneRekrutera slot="glowa" jezyk="pl" />
+  <StronaRekrutera jezyk="pl" />
+  <Kontakt jezyk="pl" naRekruterze slot="poza-arkuszem" />
+</Strona>

@@ -52,8 +52,58 @@ function makietaZNowymLogo(html: string): string {
   return wynik;
 }
 
+/**
+ * Makieta ma stary przekaz (opis otwarcia, tytuł wdrożeń, tytuł i wstęp kontaktu). Treść zmieniono celowo (przekaz dla klienta
+ * i rekrutera, potem AI na pierwszym miejscu), więc w kopii makiety podmieniamy tylko te cztery teksty na aktualne z `ustawienia/pl.md`.
+ */
+function makietaZNowymPrzekazem(html: string): string {
+  let wynik = podmien(
+    html,
+    /Scenariusze stawiam w n8n i Make\.com\. Strony i aplikacje tworzę z Claude Code, od WordPressa po aplikacje pisane od zera\. Agentów AI wdrażam bezpośrednio w zespołach klientów\./,
+    'Agentów AI wdrażam bezpośrednio w zespołach klientów. Aplikacje, strony i narzędzia z AI tworzę z Claude Code. Procesy automatyzuję w n8n i Make.com.',
+  );
+  wynik = podmien(wynik, /Sześć systemów, które działają u klientów/, 'Systemy, które działają u klientów');
+  wynik = podmien(wynik, /Szukam stałej pracy jako Automation Developer albo AI Engineer/, 'Powiedz, co robicie ręcznie. Sprawdzę, co przejmie automatyzacja, a co AI.');
+  return podmien(
+    wynik,
+    /Wrocław albo zdalnie\. Najszybciej odpowiadam mailowo\./,
+    'Firmom wdrażam AI i automatyzuję procesy: agenci AI, voiceboty, aplikacje i strony. Jestem też otwarty na stałą rolę Automation Developer albo AI Engineer. Wrocław albo zdalnie. Zadzwoń albo napisz.',
+  );
+}
+
+/**
+ * Menu zmieniono celowo według zatwierdzonego podglądu `docs/makieta/uslugi.html` (13.11): bez linku „Doświadczenie”
+ * (sekcja zostaje, rekruter ma własną podstronę) i z nowymi barwami kwadracików. W kopii makiety podmieniamy tylko menu.
+ */
+function makietaZNowymMenu(html: string): string {
+  return podmien(
+    html,
+    /<a href="#wdrozenia" style="--sw: var\(--c\)">Wdrożenia<\/a>\s*<a href="#teraz" style="--sw: var\(--m\)">Projekty<\/a>\s*<a href="#droga" style="--sw: var\(--y\)">Doświadczenie<\/a>\s*<a href="#kontakt" style="--sw: var\(--ink\)">Kontakt<\/a>/,
+    '<a href="#wdrozenia" style="--sw: var(--m)">Wdrożenia</a>\n      <a href="#teraz" style="--sw: var(--y)">Projekty</a>\n      <a href="#kontakt" style="--sw: var(--c)">Kontakt</a>',
+  );
+}
+
+/**
+ * Opis wdrożenia z kampaniami ujednolicono celowo z opisem na stronie usługi AI i automatyzacja (decyzja Roberta 13.11):
+ * branża zamiast nazwy usługi, trzech agentów, AdLoop w stosie. W kopii makiety podmieniamy tylko tę kartę.
+ */
+function makietaZNowymWdrozeniemKampanii(html: string): string {
+  let wynik = podmien(html, /<p class="sector mono">Kampanie Google Ads<\/p>/, '<p class="sector mono">Producent mebli dla branży HoReCa</p>');
+  wynik = podmien(wynik, /<h3>Claude Code do prowadzenia kampanii i analityki<\/h3>/, '<h3>Agenci AI do kampanii, SEO i bloga</h3>');
+  wynik = podmien(
+    wynik,
+    /Klient chciał prowadzić reklamy sam, bez agencji\. Skonfigurowałem Claude Code z dostępem do Google Ads, GA4 i Search Console, tak żeby mógł tworzyć kampanie, analizować wyniki i znajdować frazy, które sprzedają\. Po miesiącu prowadził kampanie samodzielnie i odnotował wzrost sprzedaży\./,
+    'Klient chciał prowadzić reklamy sam, bez agencji. Skonfigurowałem Claude Code z dostępem do Google Ads, GA4 i Search Console. Pierwszy agent sprawdza rentowność kampanii i ruch na stronie, a gdy w SEO coś się zmieni, proponuje zmiany. Drugi pisze wpisy na blog i opisy realizacji na stronę, trzeci je tłumaczy. Po miesiącu klient prowadził kampanie samodzielnie i odnotował wzrost sprzedaży.',
+  );
+  return podmien(
+    wynik,
+    /<p class="stack mono"><span>Claude Code<\/span><span>Google Ads<\/span><span>GA4<\/span><span>Search Console<\/span><\/p>/,
+    '<p class="stack mono"><span>Claude Code</span><span>AdLoop</span><span>Google Ads</span><span>GA4</span><span>Search Console</span></p>',
+  );
+}
+
 async function podstawMakiete(page: Page) {
-  const html = makietaZNowymLogo(readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8'));
+  const html = makietaZNowymWdrozeniemKampanii(makietaZNowymMenu(makietaZNowymPrzekazem(makietaZNowymLogo(readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8')))));
   await page.route(MAKIETA, (r) => r.fulfill({ contentType: 'text/html; charset=utf-8', body: html }));
   await page.route('https://fonts.googleapis.com/**', (r) => r.fulfill({ contentType: 'text/css', body: cssFontow() }));
   await page.route('https://fonts.gstatic.com/**', (r) => {
@@ -90,11 +140,23 @@ test.describe('zgodność z makietą', () => {
       writeFileSync(sciezka, wzor);
 
       await przygotuj(page, '/');
-      // Makieta nie ma sekcji wpisów ani linku do nich w menu: pojawiają się, gdy kolekcja ma wpisy. Porównujemy resztę.
-      await page.addStyleTag({ content: '#wpisy, header nav a[href="/wpisy/"] { display: none !important; }' });
+      // Makieta nie ma sekcji wpisów i usług, linków do nich i do podstrony rekrutera (w menu i w kontakcie) ani telefonu
+      // w kontakcie: pojawiają się z treścią (wygląd usług i podstrony rekrutera ma osobny, zatwierdzony podgląd
+      // `docs/makieta/uslugi.html`). Porównujemy resztę.
+      await page.addStyleTag({
+        content:
+          '#wpisy, #uslugi, header nav a[href="/wpisy/"], header nav a[href="/uslugi/"], a[href="/dla-rekruterow/"], #kontakt .mail:has(a[href^="tel:"]) { display: none !important; }',
+      });
       const zrzut = await page.screenshot({ fullPage: true, animations: 'disabled' });
       expect(zrzut).toMatchSnapshot(nazwa, { maxDiffPixelRatio: 0.02 });
     });
+  }
+});
+
+test('telefon w kontakcie jest widocznym linkiem tel: ze zdarzeniem na / i /en/', async ({ page }) => {
+  for (const adres of ['/', '/en/']) {
+    await page.goto(adres);
+    await expect(page.locator('#kontakt a[href="tel:+48665780129"][data-zdarzenie="klik_telefon"]')).toBeVisible();
   }
 });
 

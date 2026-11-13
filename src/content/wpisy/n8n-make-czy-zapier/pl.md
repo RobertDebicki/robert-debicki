@@ -51,4 +51,4 @@ Tak, ale scenariusze trzeba odbudować, bo nie przenoszą się między narzędzi
 W Zapierze i Make w chmurze dostawcy. W n8n możesz wybrać własny serwer. Zawsze sprawdź umowę powierzenia danych.
 
 ### n8n, Make czy Zapier: które wybrać dla mojej firmy?
-Napisz, co chcesz zautomatyzować i ile osób będzie z tego korzystać. Odpowiem, które narzędzie pasuje i dlaczego.
+Napisz, co chcesz zautomatyzować i ile osób będzie z tego korzystać. Odpowiem, które narzędzie pasuje i dlaczego. Jak pracuję przy takich wdrożeniach, opisuję na stronie [AI i automatyzacja procesów](/uslugi/ai-i-automatyzacja/).
