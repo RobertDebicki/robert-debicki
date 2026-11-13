@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-13 10:21, Claude Code
+
+**✅ Zrobione (zadanie 5 planu widoczności: podgląd wyglądu, bez kodu strony, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Nowy plik `docs/makieta/uslugi.html`: trzy widoki jeden pod drugim (strona usługi „Automatyzacja procesów”, sekcja usług na stronie głównej z trzema kartami, podstrona `/dla-rekruterow/`), przełącznik trybu jasny/ciemny w pasku podglądu. Tylko style z makiety (płyty, etykiety mono, `sec-title`, karta, `.job`, `.now`, `.road`, `.skills`, płyta kontaktu), paleta z `src/styles/tokeny.css`; nowe są trzy modyfikatory (`.trzy`, `.dalej`, `.okruszki`).
+- Treść tylko z wdrożeń, projektów i ustawień; telefon `+48 600 100 200` to numer przykładowy, odpowiedź FAQ o koszcie zostawiona Robertowi.
+- Brak przewijania w bok przy 360, 390, 1024, 1440 px (scrollWidth = clientWidth); zrzuty 1440 i 390, jasny i ciemny.
+
+**🎯 Następny krok:** Robert akceptuje wygląd (pętla poprawek, najwyżej 3 rundy), potem zadanie 6.
+
 ## 2026-11-13 12:00, Claude Code
 
 **✅ Zrobione (zadanie 4 planu widoczności: badanie fraz, bez kodu, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
