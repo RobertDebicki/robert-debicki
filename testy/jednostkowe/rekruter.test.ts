@@ -32,7 +32,7 @@ describe('schemat ustawienia.rekruter', () => {
   });
 
   it('cvUrl przez http albo na obcym hoście odrzucony z komunikatem po polsku', () => {
-    for (const adres of ['http://robert-debicki.pl/cv/cv.pdf', 'https://example.com/cv.pdf', 'https://robert-debicki.pl.example.com/cv.pdf', 'https://zlyrobert-debicki.pl/cv.pdf']) {
+    for (const adres of ['http://robert-debicki.pl/cv/cv.pdf', 'https://example.com/cv.pdf', 'https://robert-debicki.pl.example.com/cv.pdf', 'https://zlyrobert-debicki.pl/cv.pdf', 'https://robert-debicki.pl@evil.com/cv.pdf']) {
       const r = zCv(adres);
       expect(r.success, adres).toBe(false);
       expect(r.error!.issues.map((i) => i.message).join('\n'), adres).toContain(KOMUNIKAT_CV);
@@ -85,9 +85,12 @@ describe('wybierzPozycje', () => {
 });
 
 describe('hosting: CV bez indeksowania', () => {
-  it('pliki pod /cv/ dostają nagłówek X-Robots-Tag: noindex (mod_headers)', () => {
+  // SetEnvIf zamiast <If>: <If> wymaga Apache 2.4, a błąd składni w .htaccess daje 500 na całej stronie.
+  it('pliki pod /cv/ dostają nagłówek X-Robots-Tag: noindex (SetEnvIf + mod_headers, bez <If>)', () => {
     const h = readFileSync(resolve('hosting/htaccess'), 'utf8');
-    expect(h).toMatch(/<IfModule mod_headers\.c>\s*<If "%\{REQUEST_URI\} =~ m#\^\/cv\/#">\s*Header always set X-Robots-Tag "noindex(, nofollow)?"\s*<\/If>\s*<\/IfModule>/);
+    expect(h).toMatch(/SetEnvIf Request_URI "\^\/cv\/" CV_NOINDEX/);
+    expect(h).toMatch(/Header always set X-Robots-Tag "noindex, nofollow" env=CV_NOINDEX/);
+    expect(h).not.toMatch(/<If /);
   });
 });
 

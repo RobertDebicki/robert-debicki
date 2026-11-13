@@ -33,10 +33,12 @@ AddDefaultCharset UTF-8
 
 # CV Robert wgrywa ręcznie do /cv/ (poza repozytorium i poza dist/). Plik ma być do pobrania z podstrony rekrutera,
 # ale nie jako osobny wynik w Google. Meta tagu w PDF nie ma, więc noindex idzie nagłówkiem.
+# SetEnvIf zamiast <If>, bo <If> wymaga Apache 2.4 (błąd składni w .htaccess daje 500 na całej stronie).
+<IfModule mod_setenvif.c>
+  SetEnvIf Request_URI "^/cv/" CV_NOINDEX
+</IfModule>
 <IfModule mod_headers.c>
-  <If "%{REQUEST_URI} =~ m#^/cv/#">
-    Header always set X-Robots-Tag "noindex, nofollow"
-  </If>
+  Header always set X-Robots-Tag "noindex, nofollow" env=CV_NOINDEX
 </IfModule>
 
 <IfModule mod_deflate.c>

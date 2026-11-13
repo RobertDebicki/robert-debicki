@@ -70,7 +70,7 @@ rekruter:
   rola: "Automation Developer"
   rolaWyroznienie: "/ AI Engineer"
   wstep: "I've been automating business processes as an Automation Developer since 2024. Since August 2026, I've run my own client deployments and delivered them from process analysis to handover to the team."
-  akapit: "The deployments below run at client companies every day. They show how I work: n8n and Make.com, apps built with Claude Code, and language models where a person still approves the decision."
+  akapit: "The selected work below shows how I work: n8n and Make.com, apps built with Claude Code, and language models where a person still approves the decision."
   karta:
     okres: "11/2026"
     wiersze:
@@ -83,7 +83,7 @@ rekruter:
       - etykieta: "Experience"
         wartosc: "process automation since 2024"
   wybrane:
-    tytul: "Systems I built and handed over"
+    tytul: "Selected deployments and projects"
     wstep: "I describe clients by industry. Full write-ups are in the Deployments and Projects sections."
   kontakt:
     tytul: "Let's talk about an Automation Developer or AI Engineer role"
@@ -101,5 +101,5 @@ kontakt:
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 tlumaczenie: ai
-zrodlo: 0c97531fd983c1e01fc23b62fce9aa4317f808e7d01fc334664f4d77749603dc
+zrodlo: 0395ddb3b3f0b88ec6fd66a10e255acced9e5826807b78b485b01ed4e09b26be
 ---

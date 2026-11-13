@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-11-13 17:40, Claude Code
+
+**✅ Zrobione (zadanie 8, poprawki po przeglądzie; nie wdrożone):**
+- Przegląd strony dla rekrutera: zatwierdzone, walidacja `cvUrl` po nazwie hosta bez obejść, escape JSON-LD poprawny.
+- Uwaga ważna (treść): nagłówek „Systemy, które zbudowałem i przekazałem” i akapit „Wdrożenia poniżej działają u klientów na co dzień” obejmowały obieg rozliczeń w fazie testów. Teraz „Wybrane wdrożenia i projekty” i „Wybrane prace poniżej pokazują, jak pracuję: …”; EN „Selected deployments and projects”, `zrodlo` przeliczone, kontrola tłumaczeń bez błędów. Do akceptacji Roberta.
+- `hosting/htaccess`: noindex dla `/cv/` przez `SetEnvIf` + `Header … env=CV_NOINDEX` zamiast `<If>` (wymaga Apache 2.4; błąd składni dałby 500 na całej stronie). Sprawdzone lokalnie na Apache 2.4.67: `Syntax OK`, nagłówek `X-Robots-Tag: noindex, nofollow` tylko na `/cv/`. Wersji Apache na home.pl nie sprawdzono; po wgraniu: `curl -I` na plik CV.
+- Test: `cvUrl` z `https://robert-debicki.pl@evil.com/…` odrzucony; test reguły `/cv/` najpierw czerwony.
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass.
+
+**🎯 Następny krok:** Robert akceptuje teksty strony dla rekrutera i wgrywa CV na home.pl; potem krok 3 zadania 7 (linki z wpisów do usług) i przegląd całej gałęzi.
+
 ## 2026-11-13 17:00, Claude Code
 
 **✅ Zrobione (usługa voiceboty, fakt od Roberta; nie wdrożone):**

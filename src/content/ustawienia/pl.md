@@ -70,7 +70,7 @@ rekruter:
   rola: "Automation Developer"
   rolaWyroznienie: "/ AI Engineer"
   wstep: "Od 2024 automatyzuję procesy w firmach jako Automation Developer. Od 08.2026 prowadzę własne wdrożenia u klientów i dowożę je od analizy procesu do przekazania zespołowi."
-  akapit: "Wdrożenia poniżej działają u klientów na co dzień. Pokazują, jak pracuję: n8n i Make.com, aplikacje z Claude Code, modele językowe tam, gdzie decyzję nadal zatwierdza człowiek."
+  akapit: "Wybrane prace poniżej pokazują, jak pracuję: n8n i Make.com, aplikacje z Claude Code, modele językowe tam, gdzie decyzję nadal zatwierdza człowiek."
   karta:
     okres: "11.2026"
     wiersze:
@@ -83,7 +83,7 @@ rekruter:
       - etykieta: "Doświadczenie"
         wartosc: "od 2024 w automatyzacji procesów"
   wybrane:
-    tytul: "Systemy, które zbudowałem i przekazałem"
+    tytul: "Wybrane wdrożenia i projekty"
     wstep: "Klientów opisuję branżą. Pełne opisy są w sekcjach Wdrożenia i Projekty."
   kontakt:
     tytul: "Porozmawiajmy o roli Automation Developer albo AI Engineer"
