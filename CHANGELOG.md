@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-13 14:10, Claude Code
+
+**✅ Zrobione (przekaz AI na stronie głównej i zasada SEO, ryzyko niskie; nie wdrożone):**
+- `ustawienia/pl.md` (teksty zaakceptowane przez Roberta 13.11): opis otwarcia „Agentów AI wdrażam bezpośrednio w zespołach klientów. Aplikacje, strony i narzędzia z AI tworzę z Claude Code. Procesy automatyzuję w n8n i Make.com.”, tytuł kontaktu „Powiedz, co robicie ręcznie. Sprawdzę, co przejmie automatyzacja, a co AI.”, wstęp kontaktu zaczyna się od „Firmom wdrażam AI i automatyzuję procesy: agenci AI, voiceboty, aplikacje i strony.”
+- `ustawienia/en.md`: te same trzy teksty po angielsku, `zrodlo` przeliczone, kontrola tłumaczeń bez błędów.
+- Porównanie z makietą (`strona-glowna.spec.ts`) podmienia w kopii makiety cztery teksty zamiast trzech; wzorce zrzutów bez zmian.
+- `AGENTS.md`: zasada SEO dla każdego tekstu na stronę (reguły z bloga), decyzja Roberta. Plan: krok 1b w zadaniu 7.
+- Zadanie 6 (kolekcja usług, wpis 12:55 niżej) przeszło przegląd: zatwierdzone, bez uwag krytycznych i ważnych.
+- `npm run sprawdz`: exit 0, vitest 177 pass/1 skipped, e2e 165 pass.
+
+**🎯 Następny krok:** zadanie 7, treść trzech usług z kontrolą SEO, do akceptacji Roberta.
+
 ## 2026-11-13 12:55, Claude Code
 
 **✅ Zrobione (zadanie 6 planu widoczności, ryzyko średnie; nie wdrożone):**

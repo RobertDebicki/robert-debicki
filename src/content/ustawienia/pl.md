@@ -5,7 +5,7 @@ otwarcie:
   rola: "Automation Developer"
   rolaWyroznienie: "/ AI"
   lead: "Automatyzuję procesy w firmach i buduję aplikacje, z których na co dzień korzystają ich zespoły."
-  opis: "Scenariusze stawiam w n8n i Make.com. Strony i aplikacje tworzę z Claude Code, od WordPressa po aplikacje pisane od zera. Agentów AI wdrażam bezpośrednio w zespołach klientów."
+  opis: "Agentów AI wdrażam bezpośrednio w zespołach klientów. Aplikacje, strony i narzędzia z AI tworzę z Claude Code. Procesy automatyzuję w n8n i Make.com."
 karta:
   okres: "10.2026"
   wiersze:
@@ -61,8 +61,8 @@ narzedzia:
     - nazwa: "Hosting i Git"
       wartosc: "Git, Docker, Coolify (aplikacje), AWS (n8n)"
 kontakt:
-  tytul: "Powiedz, co robicie ręcznie. Sprawdzę, co da się zautomatyzować."
-  wstep: "Firmom buduję automatyzacje, voiceboty i aplikacje. Jestem też otwarty na stałą rolę Automation Developer albo AI Engineer. Wrocław albo zdalnie. Zadzwoń albo napisz."
+  tytul: "Powiedz, co robicie ręcznie. Sprawdzę, co przejmie automatyzacja, a co AI."
+  wstep: "Firmom wdrażam AI i automatyzuję procesy: agenci AI, voiceboty, aplikacje i strony. Jestem też otwarty na stałą rolę Automation Developer albo AI Engineer. Wrocław albo zdalnie. Zadzwoń albo napisz."
   email: "robert.debicki7@gmail.com"
   telefon: "+48 665 780 129"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"

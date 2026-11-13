@@ -53,16 +53,21 @@ function makietaZNowymLogo(html: string): string {
 }
 
 /**
- * Makieta ma stary przekaz (tytuł wdrożeń, tytuł i wstęp kontaktu). Treść zmieniono celowo (przekaz dla klienta i rekrutera),
- * więc w kopii makiety podmieniamy tylko te trzy teksty na aktualne z `ustawienia/pl.md`.
+ * Makieta ma stary przekaz (opis otwarcia, tytuł wdrożeń, tytuł i wstęp kontaktu). Treść zmieniono celowo (przekaz dla klienta
+ * i rekrutera, potem AI na pierwszym miejscu), więc w kopii makiety podmieniamy tylko te cztery teksty na aktualne z `ustawienia/pl.md`.
  */
 function makietaZNowymPrzekazem(html: string): string {
-  let wynik = podmien(html, /Sześć systemów, które działają u klientów/, 'Systemy, które działają u klientów');
-  wynik = podmien(wynik, /Szukam stałej pracy jako Automation Developer albo AI Engineer/, 'Powiedz, co robicie ręcznie. Sprawdzę, co da się zautomatyzować.');
+  let wynik = podmien(
+    html,
+    /Scenariusze stawiam w n8n i Make\.com\. Strony i aplikacje tworzę z Claude Code, od WordPressa po aplikacje pisane od zera\. Agentów AI wdrażam bezpośrednio w zespołach klientów\./,
+    'Agentów AI wdrażam bezpośrednio w zespołach klientów. Aplikacje, strony i narzędzia z AI tworzę z Claude Code. Procesy automatyzuję w n8n i Make.com.',
+  );
+  wynik = podmien(wynik, /Sześć systemów, które działają u klientów/, 'Systemy, które działają u klientów');
+  wynik = podmien(wynik, /Szukam stałej pracy jako Automation Developer albo AI Engineer/, 'Powiedz, co robicie ręcznie. Sprawdzę, co przejmie automatyzacja, a co AI.');
   return podmien(
     wynik,
     /Wrocław albo zdalnie\. Najszybciej odpowiadam mailowo\./,
-    'Firmom buduję automatyzacje, voiceboty i aplikacje. Jestem też otwarty na stałą rolę Automation Developer albo AI Engineer. Wrocław albo zdalnie. Zadzwoń albo napisz.',
+    'Firmom wdrażam AI i automatyzuję procesy: agenci AI, voiceboty, aplikacje i strony. Jestem też otwarty na stałą rolę Automation Developer albo AI Engineer. Wrocław albo zdalnie. Zadzwoń albo napisz.',
   );
 }
 

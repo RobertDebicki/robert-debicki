@@ -177,6 +177,7 @@ z.object({
 - Create: `src/content/uslugi/<adres>/pl.md` ×3 (adresy z zadania 4), `en.md` przez `/tlumacz-strone`
 
 - [ ] **Step 1:** Szkic każdej usługi z faktów Roberta: wdrożenia (`src/content/wdrozenia/*`), projekty, wpisy, rozmowa z 12-13.11. Usługi i kolejność według specu (zmiana 13.11): AI i automatyzacja (`/uslugi/ai-i-automatyzacja/`), aplikacje, strony i narzędzia z AI, voiceboty AI. Teksty strony AI i automatyzacja przenieść z zatwierdzonego podglądu `docs/makieta/uslugi.html` (widok 1); przykład = obieg wniosków (istniejące wdrożenie), agenci AI u producenta mebli HoReCa w treści strony (brak wpisu w `wdrozenia`, chyba że Robert zdecyduje go dodać). Voiceboty: `voice-bot`; aplikacje: projekt z `src/content/projekty`. FAQ z zadania 4 i z podglądu. Przy każdym zdaniu z faktem: źródło w komentarzu roboczym dla Roberta (nie w pliku).
+- [ ] **Step 1b:** Sprawdzić każdy tekst regułami SEO z `AGENTS.md` (fraza główna we wstępie i 3-6 razy, tytuł 30-60, opis 120-155, co najmniej 3 H2, FAQ z wyszukiwań, linki wewnętrzne z frazą); wynik pokazać Robertowi razem z tekstem.
 - [ ] **Step 2:** Robert akceptuje teksty. Brakujące fakty: pytać, nie zgadywać.
 - [ ] **Step 3:** W opublikowanych wpisach dopisać po jednym linku do pasującej usługi (np. `n8n-make-czy-zapier` → AI i automatyzacja, `voice-bot-dla-firmy` → voiceboty, wpisy serii 2 po ich wydaniu), zdanie do akceptacji Roberta.
 - [ ] **Step 4:** `npm run sprawdz:tresc` → 0; EN przez `/tlumacz-strone`; `npm run sprawdz` → PASS.

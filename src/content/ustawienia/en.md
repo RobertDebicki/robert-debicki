@@ -5,7 +5,7 @@ otwarcie:
   rola: "Automation Developer"
   rolaWyroznienie: "/ AI"
   lead: "I automate business processes and build the apps their teams use every day."
-  opis: "I build workflows in n8n and Make.com. I create websites and apps with Claude Code, from WordPress to apps written from scratch. I roll out AI agents directly within my clients' teams."
+  opis: "I roll out AI agents directly within my clients' teams. I build apps, websites, and AI-powered tools with Claude Code. I automate processes in n8n and Make.com."
 karta:
   okres: "10/2026"
   wiersze:
@@ -61,12 +61,12 @@ narzedzia:
     - nazwa: "Hosting and Git"
       wartosc: "Git, Docker, Coolify (apps), AWS (n8n)"
 kontakt:
-  tytul: "Tell me what you still do by hand. I'll check what can be automated."
-  wstep: "I build automations, voicebots, and apps for companies. I'm also open to a full-time Automation Developer or AI Engineer role. Wrocław, Poland, or remote. Call or message me."
+  tytul: "Tell me what you still do by hand. I'll check what automation can take over, and what AI can."
+  wstep: "I implement AI and automate processes for companies: AI agents, voicebots, apps, and websites. I'm also open to a full-time Automation Developer or AI Engineer role. Wrocław, Poland, or remote. Call or message me."
   email: "robert.debicki7@gmail.com"
   telefon: "+48 665 780 129"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 tlumaczenie: ai
-zrodlo: 8a8d445cf85c229f0b512428477da43189fe7565eeb285cd9fc4c75f7af1c678
+zrodlo: 292cfcb633a3aba40cf8e8217dd36a62ad488b1b9dee52c34187d613ee4ef377
 ---
