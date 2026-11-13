@@ -6,7 +6,7 @@
  * Każda pozycja to folder `src/content/<kolekcja>/<adres>/` z `pl.md` i opcjonalnie `en.md` (i18n `multiple_files`).
  * Pola `tlumaczenie` i `zrodlo` są ukryte: ustawia je skill `/tlumacz-strone`, człowiek ich nie edytuje.
  */
-import { HOSTY_R2, wdrozenia, projekty, uslugi } from './schematy';
+import { HOSTY_R2, HOST_STRONY, wdrozenia, projekty, uslugi } from './schematy';
 
 export const WERSJA_SVELTII = '0.221.8';
 /** Suma kontrolna SRI pliku sveltia-cms.js 0.221.8 z jsDelivr. Przy zmianie wersji przelicz ją z pobranego pliku. */
@@ -244,6 +244,46 @@ const USLUGI: Pole = {
 };
 
 const sekcja = (tytul: string, wstep: string): Pole[] => [tekst('tytul', tytul), dlugi('wstep', wstep)];
+const wierszeKarty = (): Pole => lista('wiersze', 'Wiersze', { label_singular: 'wiersz', min: 1, summary: '{{fields.etykieta}}', fields: [tekst('etykieta', 'Etykieta'), tekst('wartosc', 'Wartość')] });
+/** Wybór pozycji z kolekcji; zapisuje nazwę folderu (slug), bo po niej build szuka pozycji. */
+const wyborPozycji = (name: string, label: string, kolekcja: string): Pole => ({
+  name,
+  label,
+  widget: 'relation',
+  collection: kolekcja,
+  value_field: '{{slug}}',
+  search_fields: ['tytul'],
+  display_fields: ['tytul'],
+  multiple: true,
+  max: 3,
+  required: false,
+  hint: 'Najwyżej trzy. Kolejność wyboru to kolejność na podstronie.',
+});
+const POLA_REKRUTERA: Pole[] = [
+  tekst('tytul', 'Tytuł podstrony (H1)'),
+  tekst('tytulSeo', 'Tytuł w wyszukiwarce', {
+    hint: `Tytuł karty przeglądarki i wyniku w Google, najwyżej ${SEO_USLUGI.maxLength} znaków.`,
+    ...dlugosc(1, SEO_USLUGI.maxLength!, `Tytuł w wyszukiwarce ma najwyżej ${SEO_USLUGI.maxLength} znaków.`),
+  }),
+  dlugi('opis', 'Opis w wyszukiwarce', {
+    hint: `Opis pod tytułem w Google, od ${OPIS_USLUGI.minLength} do ${OPIS_USLUGI.maxLength} znaków, bez nowych linii.`,
+    ...dlugosc(OPIS_USLUGI.minLength!, OPIS_USLUGI.maxLength!, `Opis ma od ${OPIS_USLUGI.minLength} do ${OPIS_USLUGI.maxLength} znaków.`),
+  }),
+  tekst('rola', 'Linia pod tytułem'),
+  tekst('rolaWyroznienie', 'Wyróżniony dopisek linii pod tytułem'),
+  dlugi('wstep', 'Zdanie główne'),
+  dlugi('akapit', 'Akapit pod zdaniem głównym'),
+  obiekt('karta', 'Karta kandydata', [tekst('okres', 'Okres'), { ...wierszeKarty(), hint: 'Telefon z sekcji Kontakt dopisuje się na końcu karty sam.' }]),
+  obiekt('wybrane', 'Sekcja wybranych prac', sekcja('Tytuł sekcji', 'Wstęp')),
+  obiekt('kontakt', 'Kontakt na podstronie', sekcja('Tytuł sekcji', 'Wstęp')),
+  tekst('cvUrl', 'Adres pliku CV (PDF)', {
+    required: false,
+    hint: 'Pełny adres https pliku CV wgranego na hosting (np. https://robert-debicki.pl/cv/Robert-Debicki-CV.pdf) albo do R2. CV nie trafia do repozytorium. Puste pole ukrywa przycisk.',
+    pattern: [`^https://(${HOST_STRONY.replace(/\./g, '\\.')}|[^/:?#]+(${HOST_R2}))(/.*)?$`, 'Adres zaczyna się od https:// i wskazuje na robert-debicki.pl albo magazyn R2.'],
+  }),
+  wyborPozycji('wdrozenia', 'Wybrane wdrożenia', 'wdrozenia'),
+  wyborPozycji('projekty', 'Wybrane projekty', 'projekty'),
+];
 const USTAWIENIA: Pole = {
   name: 'ustawienia',
   label: 'Ustawienia strony głównej',
@@ -263,10 +303,7 @@ const USTAWIENIA: Pole = {
           dlugi('lead', 'Zdanie główne'),
           dlugi('opis', 'Opis'),
         ]),
-        obiekt('karta', 'Karta zlecenia', [
-          tekst('okres', 'Okres'),
-          lista('wiersze', 'Wiersze', { label_singular: 'wiersz', min: 1, summary: '{{fields.etykieta}}', fields: [tekst('etykieta', 'Etykieta'), tekst('wartosc', 'Wartość')] }),
-        ]),
+        obiekt('karta', 'Karta zlecenia', [tekst('okres', 'Okres'), wierszeKarty()]),
         { ...obiekt('uslugi', 'Sekcja usług', sekcja('Tytuł sekcji', 'Wstęp')), required: false, hint: 'Sekcja na stronie głównej pokazuje się, gdy jest ten nagłówek i choć jedna usługa w tym języku.' },
         obiekt('wdrozenia', 'Sekcja wdrożeń', sekcja('Tytuł sekcji', 'Wstęp')),
         obiekt('projekty', 'Sekcja projektów', sekcja('Tytuł sekcji', 'Wstęp')),
@@ -279,6 +316,7 @@ const USTAWIENIA: Pole = {
           tekst('tytul', 'Tytuł sekcji'),
           lista('wiersze', 'Wiersze', { label_singular: 'wiersz', min: 1, summary: '{{fields.nazwa}}', fields: [tekst('nazwa', 'Nazwa'), tekst('wartosc', 'Wartość')] }),
         ]),
+        { ...obiekt('rekruter', 'Podstrona dla rekrutera', POLA_REKRUTERA), required: false, hint: 'Podstrona /dla-rekruterow/ (w EN /en/for-recruiters/) i linki do niej w menu i w kontakcie pokazują się, gdy ten blok jest wypełniony.' },
         obiekt('kontakt', 'Kontakt', [
           tekst('tytul', 'Tytuł sekcji'),
           dlugi('wstep', 'Wstęp'),

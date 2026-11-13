@@ -63,6 +63,36 @@ narzedzia:
       wartosc: "Google Ads, GA4, Google Search Console"
     - nazwa: "Hosting i Git"
       wartosc: "Git, Docker, Coolify (aplikacje), AWS (n8n)"
+rekruter:
+  tytul: "Szukam stałej roli"
+  tytulSeo: "Automation Developer i AI Engineer, Wrocław | Robert Dębicki"
+  opis: "Szukam stałej roli Automation Developer albo AI Engineer, Wrocław albo zdalnie. Od 2024 automatyzuję procesy w firmach: n8n, Make.com, Claude Code."
+  rola: "Automation Developer"
+  rolaWyroznienie: "/ AI Engineer"
+  wstep: "Od 2024 automatyzuję procesy w firmach jako Automation Developer. Od 08.2026 prowadzę własne wdrożenia u klientów i dowożę je od analizy procesu do przekazania zespołowi."
+  akapit: "Wdrożenia poniżej działają u klientów na co dzień. Pokazują, jak pracuję: n8n i Make.com, aplikacje z Claude Code, modele językowe tam, gdzie decyzję nadal zatwierdza człowiek."
+  karta:
+    okres: "11.2026"
+    wiersze:
+      - etykieta: "Szukam"
+        wartosc: "Automation Developer, AI Engineer"
+      - etykieta: "Forma"
+        wartosc: "Stała praca"
+      - etykieta: "Miejsce"
+        wartosc: "Wrocław albo zdalnie"
+      - etykieta: "Doświadczenie"
+        wartosc: "od 2024 w automatyzacji procesów"
+  wybrane:
+    tytul: "Systemy, które zbudowałem i przekazałem"
+    wstep: "Klientów opisuję branżą. Pełne opisy są w sekcjach Wdrożenia i Projekty."
+  kontakt:
+    tytul: "Porozmawiajmy o roli Automation Developer albo AI Engineer"
+    wstep: "Wrocław albo zdalnie. Najszybciej odpowiadam mailowo."
+  wdrozenia:
+    - "monitoring-temperatur"
+    - "reaktywacja-klientow"
+  projekty:
+    - "obieg-rozliczen"
 kontakt:
   tytul: "Powiedz, co robicie ręcznie. Sprawdzę, co przejmie automatyzacja, a co AI."
   wstep: "Firmom wdrażam AI i automatyzuję procesy: agenci AI, voiceboty, aplikacje i strony. Jestem też otwarty na stałą rolę Automation Developer albo AI Engineer. Wrocław albo zdalnie. Zadzwoń albo napisz."

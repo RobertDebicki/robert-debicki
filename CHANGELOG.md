@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-11-13 16:35, Claude Code
+
+**✅ Zrobione (zadanie 8 planu widoczności, podstrona dla rekrutera; ryzyko średnie, nie wdrożone):**
+- `/dla-rekruterow/` i `/en/for-recruiters/` według widoku 3 podglądu `docs/makieta/uslugi.html`: H1, rola, wstęp, przyciski CV i LinkedIn, karta kandydata (telefon z kontaktu dopisuje się sam), narzędzia z ustawień, wybrane wdrożenia i projekty z kolekcji, etapy doświadczenia (bez zasad pracy), kontakt z własnym tytułem i linkiem do CV. JSON-LD `ProfilePage` z `mainEntity` = osoba (`/#osoba`), strony w `/llms.txt`.
+- Schemat `ustawienia.rekruter` (opcjonalny; bez niego podstrony i linków nie ma): tytuł SEO do 60 znaków i opis 120-155 jak w usługach, `cvUrl` tylko https na `robert-debicki.pl` albo R2, najwyżej trzy wdrożenia i trzy projekty (nazwy folderów; literówka zatrzymuje build komunikatem `Podstrona rekrutera: nie ma wdrożenia "…".`). Panel: blok „Podstrona dla rekrutera”, wybór pozycji przez `relation` (⚠️ w działającym panelu niesprawdzone).
+- Menu jak w podglądzie: „Dla rekruterów” zamiast „Doświadczenie” (sekcja zostaje na stronie głównej), nowe barwy kwadracików. Kontakt na stronie głównej i na stronach usług linkuje do podstrony.
+- `hosting/htaccess`: pliki w `/cv/` dostają `X-Robots-Tag: noindex, nofollow`. CV nie trafia do repo; `cvUrl` w treści puste, więc przycisk się nie pokazuje.
+- Treść PL z podglądu, wybór: `monitoring-temperatur`, `reaktywacja-klientow`, `obieg-rozliczen`. Zmiany względem podglądu: wstęp „…w firmach jako Automation Developer.” (fraza we wstępie), akapit „Wdrożenia poniżej działają…” zamiast „Systemy…” (obieg rozliczeń jest w testach). EN przez zasady `/tlumacz-strone` (`tlumaczenie: ai`), `zrodlo` przeliczone, kontrola tłumaczeń bez błędów.
+- SEO (zbudowany HTML): tytuł 60/53 znaki, opis 147/152, 1 H1, 4 H2, „Automation Developer” 5 razy, myślniki 0. Lighthouse mobile (lhci ręcznie, 3 przebiegi): PL 99/100/100/100, EN 98-99/100/100/100.
+- Porównanie z makietą: kopia makiety dostaje nowe menu, link do podstrony ukryty. Test zgody klika LinkedIn po `data-zdarzenie` (w kontakcie są teraz dwa linki).
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass/1 skipped.
+
+**🚧 W toku / nie wdrożone:** teksty `rekruter` (PL i EN) do akceptacji Roberta; CV: Robert wgrywa PDF do `/cv/` na home.pl i podaje adres; korekta EN przez native speakera.
+
+**🎯 Następny krok:** przegląd zadania 8, akceptacja tekstów i adres CV od Roberta.
+
 ## 2026-11-13 16:20, Claude Code
 
 **✅ Zrobione (zadanie 7, poprawki po przeglądzie treści PL i EN; nie wdrożone):**

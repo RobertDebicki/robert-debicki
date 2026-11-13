@@ -63,6 +63,36 @@ narzedzia:
       wartosc: "Google Ads, GA4, Google Search Console"
     - nazwa: "Hosting and Git"
       wartosc: "Git, Docker, Coolify (apps), AWS (n8n)"
+rekruter:
+  tytul: "Looking for a full-time role"
+  tytulSeo: "Automation Developer and AI Engineer | Robert Dębicki"
+  opis: "Seeking a full-time Automation Developer or AI Engineer role in Wrocław, Poland, or remote. Automating processes since 2024: n8n, Make.com, Claude Code."
+  rola: "Automation Developer"
+  rolaWyroznienie: "/ AI Engineer"
+  wstep: "I've been automating business processes as an Automation Developer since 2024. Since August 2026, I've run my own client deployments and delivered them from process analysis to handover to the team."
+  akapit: "The deployments below run at client companies every day. They show how I work: n8n and Make.com, apps built with Claude Code, and language models where a person still approves the decision."
+  karta:
+    okres: "11/2026"
+    wiersze:
+      - etykieta: "Looking for"
+        wartosc: "Automation Developer, AI Engineer"
+      - etykieta: "Employment"
+        wartosc: "Full-time"
+      - etykieta: "Location"
+        wartosc: "Wrocław, Poland, or remote"
+      - etykieta: "Experience"
+        wartosc: "process automation since 2024"
+  wybrane:
+    tytul: "Systems I built and handed over"
+    wstep: "I describe clients by industry. Full write-ups are in the Deployments and Projects sections."
+  kontakt:
+    tytul: "Let's talk about an Automation Developer or AI Engineer role"
+    wstep: "Wrocław, Poland, or remote. Email is the fastest way to reach me."
+  wdrozenia:
+    - "monitoring-temperatur"
+    - "reaktywacja-klientow"
+  projekty:
+    - "obieg-rozliczen"
 kontakt:
   tytul: "Tell me what you still do by hand. I'll check what automation can take over, and what AI can."
   wstep: "I implement AI and automate processes for companies: AI agents, voicebots, apps, and websites. I'm also open to a full-time Automation Developer or AI Engineer role. Wrocław, Poland, or remote. Call or message me."
@@ -71,5 +101,5 @@ kontakt:
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 tlumaczenie: ai
-zrodlo: 98780f1eb9f397e9f79b2241dfbe4ae1aae67cedb5f625b607181c1ae5e713c9
+zrodlo: 0c97531fd983c1e01fc23b62fce9aa4317f808e7d01fc334664f4d77749603dc
 ---

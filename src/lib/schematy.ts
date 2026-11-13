@@ -2,6 +2,8 @@ import { z } from 'astro/zod';
 
 /** Dozwolone końcówki hostów magazynu R2 dla skanów referencji. */
 export const HOSTY_R2 = ['.r2.dev', '.r2.cloudflarestorage.com'];
+/** Domena strony: CV Robert wgrywa ręcznie na hosting (np. /cv/), poza repozytorium. */
+export const HOST_STRONY = 'robert-debicki.pl';
 
 /** Pola wspólne pliku en.md. W pl.md są puste. */
 const tlumaczenie = {
@@ -77,17 +79,21 @@ const linkWewnetrzny = z.string().regex(/^\/(en\/)?[a-z0-9/#-]*$/, { error: 'Lin
 const ikonaUslugi = z.enum(['ai', 'aplikacje', 'telefon', 'dokument']);
 const pozycjaTekstu = z.object({ tytul: z.string(), tekst: z.string() });
 
+/** Tytuł i opis w wyszukiwarce: te same granice na stronach usług i na podstronie rekrutera. */
+const tytulSeo = z.string().max(60, { error: 'Tytuł w wyszukiwarce ma najwyżej 60 znaków.' });
+const opisSeo = z
+  .string()
+  .min(120, { error: 'Opis w wyszukiwarce ma od 120 do 155 znaków.' })
+  .max(155, { error: 'Opis w wyszukiwarce ma od 120 do 155 znaków.' });
+
 /** Strona usługi (`/uslugi/<adres>/`, w EN `/en/services/<adresEn>/`) i karta w sekcji usług na stronie głównej. */
 export const uslugi = z.object({
   /** H1 strony usługi. */
   tytul: z.string(),
   /** Krótka nazwa: karta na stronie głównej, okruszki, link do strony. */
   nazwa: z.string(),
-  tytulSeo: z.string().max(60, { error: 'Tytuł w wyszukiwarce ma najwyżej 60 znaków.' }),
-  opis: z
-    .string()
-    .min(120, { error: 'Opis w wyszukiwarce ma od 120 do 155 znaków.' })
-    .max(155, { error: 'Opis w wyszukiwarce ma od 120 do 155 znaków.' }),
+  tytulSeo,
+  opis: opisSeo,
   zajawka: z.string(),
   ikona: ikonaUslugi,
   sektor: z.string(),
@@ -126,7 +132,41 @@ export const uslugi = z.object({
   ...tlumaczenie,
 });
 
-/** Ustawienia strony głównej: teksty sekcji, które nie są pozycjami kolekcji. Wymagane wszystkie pola poza nagłówkiem usług. */
+const BLAD_CV = 'Pole cvUrl musi wskazywać na plik CV na robert-debicki.pl albo w magazynie R2 (CV nie trafia do repozytorium).';
+const wierszeKarty = z.array(z.object({ etykieta: z.string(), wartosc: z.string() })).min(1);
+
+/**
+ * Podstrona dla rekrutera (`/dla-rekruterow/`, w EN `/en/for-recruiters/`). Narzędzia, doświadczenie i kontakt bierze
+ * z reszty ustawień; tu są tylko jej własne teksty i wybór pozycji (nazwy folderów z src/content/wdrozenia i projekty).
+ */
+const rekruter = z.object({
+  /** H1 podstrony. */
+  tytul: z.string(),
+  tytulSeo,
+  opis: opisSeo,
+  rola: z.string(),
+  rolaWyroznienie: z.string(),
+  wstep: z.string(),
+  akapit: z.string(),
+  karta: z.object({ okres: z.string(), wiersze: wierszeKarty }),
+  wybrane: naglowekSekcji,
+  kontakt: naglowekSekcji,
+  /** Bez adresu przycisk „Pobierz CV” się nie pokazuje. */
+  cvUrl: z
+    .url({ protocol: /^https$/, error: BLAD_CV })
+    .refine(
+      (u) => {
+        const host = new URL(u).hostname;
+        return host === HOST_STRONY || HOSTY_R2.some((h) => host.endsWith(h));
+      },
+      { error: BLAD_CV },
+    )
+    .optional(),
+  wdrozenia: z.array(z.string()).max(3, { error: 'Podstrona rekrutera: najwyżej trzy wdrożenia.' }).default([]),
+  projekty: z.array(z.string()).max(3, { error: 'Podstrona rekrutera: najwyżej trzy projekty.' }).default([]),
+});
+
+/** Ustawienia strony głównej: teksty sekcji, które nie są pozycjami kolekcji. Wymagane wszystkie pola poza nagłówkiem usług i podstroną rekrutera. */
 export const ustawienia = z.object({
   otwarcie: z.object({
     imie: z.string(),
@@ -138,7 +178,7 @@ export const ustawienia = z.object({
   }),
   karta: z.object({
     okres: z.string(),
-    wiersze: z.array(z.object({ etykieta: z.string(), wartosc: z.string() })).min(1),
+    wiersze: wierszeKarty,
   }),
   /** Nagłówek sekcji usług na stronie głównej. Bez niego sekcja się nie pokazuje. */
   uslugi: naglowekSekcji.optional(),
@@ -153,6 +193,8 @@ export const ustawienia = z.object({
     tytul: z.string(),
     wiersze: z.array(z.object({ nazwa: z.string(), wartosc: z.string() })).min(1),
   }),
+  /** Bez tego bloku podstrona rekrutera i linki do niej nie powstają. */
+  rekruter: rekruter.optional(),
   kontakt: z.object({
     tytul: z.string(),
     wstep: z.string(),

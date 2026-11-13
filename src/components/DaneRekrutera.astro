@@ -1,0 +1,25 @@
+---
+import type { Jezyk } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+import { adresRekrutera } from '../lib/rekruter';
+
+interface Props {
+  jezyk: Jezyk;
+}
+// Schema.org ProfilePage: podstrona jest profilem tej samej osoby co na stronie głównej (wspólny @id z DaneStrukturalne).
+const { jezyk } = Astro.props;
+const { otwarcie: o, rekruter: r } = await ustawienia(jezyk);
+const bezwzgledny = (sciezka: string) => new URL(sciezka, Astro.site).href;
+const dane = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  url: bezwzgledny(adresRekrutera(jezyk)),
+  name: r!.tytulSeo,
+  description: r!.opis,
+  inLanguage: jezyk,
+  mainEntity: { '@type': 'Person', '@id': bezwzgledny('/#osoba'), name: `${o.imie} ${o.nazwisko}` },
+};
+// "<" zamienione, żeby tekst z treści nie zamknął znacznika <script>.
+const json = JSON.stringify(dane).replaceAll('<', '\\u003c');
+---
+<script type="application/ld+json" set:html={json} />

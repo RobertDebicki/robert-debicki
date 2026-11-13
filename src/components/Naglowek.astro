@@ -5,6 +5,7 @@ import { etykiety } from '../lib/jezyki';
 import { maListe } from '../lib/wpisy';
 import { maListeReferencji } from '../lib/referencje';
 import { maUslugi, prefiksUslug } from '../lib/uslugi';
+import { adresRekrutera, rekruter } from '../lib/rekruter';
 
 interface Props {
   jezyk: Jezyk;
@@ -14,15 +15,19 @@ const { jezyk, przelacznik } = Astro.props;
 
 const e = etykiety(jezyk);
 const baza = jezyk === 'pl' ? '/' : '/en/';
-const menu = [
-  ['wdrozenia', e.wdrozenia, 'var(--c)'],
-  ['teraz', e.projekty, 'var(--m)'],
-  ['droga', e.doswiadczenie, 'var(--y)'],
-  ['kontakt', e.kontakt, 'var(--ink)'],
-];
 const maWpisy = await maListe(jezyk);
 const maReferencje = await maListeReferencji(jezyk);
 const saUslugi = await maUslugi(jezyk);
+const maRekrutera = (await rekruter(jezyk)) !== undefined;
+// Kolejność i barwy jak w zatwierdzonym podglądzie docs/makieta/uslugi.html. Sekcja Doświadczenie zostaje na stronie
+// głównej, ale bez linku w menu: rekruter ma swoją podstronę.
+const menu: [string, string, string][] = [
+  ...(saUslugi ? [[prefiksUslug(jezyk), e.uslugi, 'var(--c)'] as [string, string, string]] : []),
+  [`${baza}#wdrozenia`, e.wdrozenia, 'var(--m)'],
+  [`${baza}#teraz`, e.projekty, 'var(--y)'],
+  ...(maRekrutera ? [[adresRekrutera(jezyk), e.dlaRekruterow, 'var(--ink)'] as [string, string, string]] : []),
+  [`${baza}#kontakt`, e.kontakt, 'var(--c)'],
+];
 const drugi = jezyk === 'pl' ? 'en' : 'pl';
 ---
 <header class="top">
@@ -33,9 +38,8 @@ const drugi = jezyk === 'pl' ? 'en' : 'pl';
       <span>Robert Dębicki</span>
     </a>
     <nav aria-label={e.menuSekcje}>
-      {saUslugi && <a href={prefiksUslug(jezyk)} style="--sw: var(--c)">{e.uslugi}</a>}
-      {menu.map(([id, nazwa, barwa]) => (
-        <a href={`${baza}#${id}`} style={`--sw: ${barwa}`}>{nazwa}</a>
+      {menu.map(([adres, nazwa, barwa]) => (
+        <a href={adres} style={`--sw: ${barwa}`}>{nazwa}</a>
       ))}
       {maWpisy && <a href={jezyk === 'pl' ? '/wpisy/' : '/en/posts/'} style="--sw: var(--y)">{e.wpisy}</a>}
       {maReferencje && <a href={jezyk === 'pl' ? '/referencje/' : '/en/references/'} style="--sw: var(--m)">{e.referencje}</a>}

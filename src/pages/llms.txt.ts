@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { llmsTxt } from '../lib/llms';
 import { maStroneGlownaEn, ustawienia } from '../lib/pozycje';
 import { prefiksUslug, uslugiWJezyku } from '../lib/uslugi';
+import { adresRekrutera, rekruter } from '../lib/rekruter';
 
 export const GET: APIRoute = async ({ site }) => {
   const { otwarcie: o, karta, narzedzia, kontakt: k } = await ustawienia('pl');
@@ -18,6 +19,8 @@ export const GET: APIRoute = async ({ site }) => {
     ...((await maStroneGlownaEn()) ? [{ nazwa: 'Home page (English)', adres: adres('/en/') }] : []),
     ...(await stronyUslug('pl', 'Usługi', 'Usługa')),
     ...(await stronyUslug('en', 'Services (English)', 'Service')),
+    ...((await rekruter('pl')) ? [{ nazwa: 'Dla rekruterów', adres: adres(adresRekrutera('pl')) }] : []),
+    ...((await rekruter('en')) ? [{ nazwa: 'For recruiters (English)', adres: adres(adresRekrutera('en')) }] : []),
     { nazwa: 'Polityka prywatności', adres: adres('/polityka-prywatnosci/') },
   ];
   const miejsce = karta.wiersze.find((w) => w.etykieta === 'Miejsce')?.wartosc ?? '';

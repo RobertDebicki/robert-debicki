@@ -5,7 +5,19 @@ const szerokosci = [360, 390, 1024, 1440];
 // /en/ na prawdziwej treści istnieje od zadania 10 (src/content/ustawienia/en.md); angielskie teksty są dłuższe.
 // Strony usług i strona główna z sekcją usług i linkiem „Usługi” w menu: build z fiksturami (port 4400), dopóki nie ma prawdziwych usług.
 const F = 'http://localhost:4400';
-const ADRESY = ['/', '/en/', `${F}/`, `${F}/uslugi/`, `${F}/uslugi/ai-i-automatyzacja/`, `${F}/en/services/`, `${F}/en/services/ai-and-automation/`];
+// Podstrona rekrutera na prawdziwej treści (z menu bez „Doświadczenie” i z linkiem „Dla rekruterów”) i na fiksturach (z przyciskiem CV).
+const ADRESY = [
+  '/',
+  '/en/',
+  '/dla-rekruterow/',
+  '/en/for-recruiters/',
+  `${F}/`,
+  `${F}/uslugi/`,
+  `${F}/uslugi/ai-i-automatyzacja/`,
+  `${F}/en/services/`,
+  `${F}/en/services/ai-and-automation/`,
+  `${F}/dla-rekruterow/`,
+];
 for (const [adres, w] of ADRESY.flatMap((a) => szerokosci.map((s) => [a, s] as const))) {
   test(`brak przewijania w bok na ${adres} przy ${w} px`, async ({ page }) => {
     await page.setViewportSize({ width: w, height: 800 });

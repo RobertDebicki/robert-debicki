@@ -92,5 +92,7 @@ test('llms.txt opisuje autora dla asystentów AI: nazwa, rola, kontakt, narzędz
   expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/\)$/m);
   expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/en\/\)$/m);
   expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/polityka-prywatnosci\/\)$/m);
+  expect(tekst).toMatch(/^- \[Dla rekruterów\]\(https:\/\/robert-debicki\.pl\/dla-rekruterow\/\)$/m);
+  expect(tekst).toMatch(/^- \[For recruiters \(English\)\]\(https:\/\/robert-debicki\.pl\/en\/for-recruiters\/\)$/m);
   expect(tekst).not.toMatch(/[—–]/);
 });

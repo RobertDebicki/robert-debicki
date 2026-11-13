@@ -51,6 +51,12 @@ export interface Etykiety {
   przykladyWdrozen: string;
   pytaniaIOdpowiedzi: string;
   zobaczPrzyklad: string;
+  /** Podstrona dla rekrutera. */
+  dlaRekruterow: string;
+  kartaKandydata: string;
+  wybranePrace: string;
+  szczegolyWdrozenia: string;
+  pobierzCv: string;
 }
 
 // Typ Record<Jezyk, Etykiety> sprawia, że brak klucza w którymkolwiek języku jest błędem kompilacji.
@@ -97,6 +103,11 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     przykladyWdrozen: 'Przykłady wdrożeń',
     pytaniaIOdpowiedzi: 'Pytania i odpowiedzi',
     zobaczPrzyklad: 'Zobacz przykład wdrożenia',
+    dlaRekruterow: 'Dla rekruterów',
+    kartaKandydata: 'Karta kandydata',
+    wybranePrace: 'Wybrane prace',
+    szczegolyWdrozenia: 'Szczegóły wdrożenia',
+    pobierzCv: 'Pobierz CV (PDF)',
   },
   en: {
     wdrozenia: 'Deployments',
@@ -140,6 +151,11 @@ const ETYKIETY: Record<Jezyk, Etykiety> = {
     przykladyWdrozen: 'Example deployments',
     pytaniaIOdpowiedzi: 'Questions and answers',
     zobaczPrzyklad: 'See an example deployment',
+    dlaRekruterow: 'For recruiters',
+    kartaKandydata: 'Candidate card',
+    wybranePrace: 'Selected work',
+    szczegolyWdrozenia: 'Deployment details',
+    pobierzCv: 'Download resume (PDF)',
   },
 };
 

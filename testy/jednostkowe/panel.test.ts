@@ -39,7 +39,9 @@ function porownaj(js: Pole, pola: Pole[], sciezka: string, bledy: string[], pomi
       if (pole.widget !== 'object') bledy.push(`${gdzie}: obiekt, a widget ${pole.widget}`);
       else porownaj(podschemat, pole.fields, gdzie, bledy);
     } else if (podschemat.type === 'array') {
-      if (pole.widget !== 'list') bledy.push(`${gdzie}: tablica, a widget ${pole.widget}`);
+      // lista nazw folderów może być wyborem z innej kolekcji (relation z multiple)
+      const wybor = pole.widget === 'relation' && pole.multiple === true && podschemat.items?.type === 'string';
+      if (pole.widget !== 'list' && !wybor) bledy.push(`${gdzie}: tablica, a widget ${pole.widget}`);
       if (podschemat.minItems !== undefined && pole.min !== podschemat.minItems) bledy.push(`${gdzie}: min ${pole.min} zamiast ${podschemat.minItems}`);
       if (podschemat.maxItems !== undefined && pole.max !== podschemat.maxItems) bledy.push(`${gdzie}: max ${pole.max} zamiast ${podschemat.maxItems}`);
       if (podschemat.items?.type === 'object') porownaj(podschemat.items, pole.fields ?? [], gdzie, bledy);
@@ -157,6 +159,28 @@ describe('panel Sveltia: usługi', () => {
     expect(pola().find((f) => f.name === 'ikona')!.i18n).toBe('duplicate');
     expect(pola().find((f) => f.name === 'kolejnosc')!.i18n).toBe('duplicate');
     expect(pola().find((f) => f.name === 'tytul')!.i18n).toBe(true);
+  });
+});
+
+describe('panel Sveltia: podstrona rekrutera', () => {
+  const rekruter = () => polaPanelu('ustawienia').find((p) => p.name === 'rekruter')!;
+  const pole = (nazwa: string) => rekruter().fields.find((f: Pole) => f.name === nazwa)!;
+  it('blok jest opcjonalny, a cvUrl to opcjonalny adres https na robert-debicki.pl albo w R2', () => {
+    expect(rekruter().required).toBe(false);
+    const cv = pole('cvUrl');
+    expect(cv.required).toBe(false);
+    const re = new RegExp(cv.pattern[0]);
+    expect(re.test('https://robert-debicki.pl/cv/Robert-Debicki-CV.pdf')).toBe(true);
+    for (const h of HOSTY_R2) expect(re.test(`https://pub-abc${h}/cv.pdf`)).toBe(true);
+    expect(re.test('http://robert-debicki.pl/cv/cv.pdf')).toBe(false);
+    expect(re.test('https://example.com/cv.pdf')).toBe(false);
+    expect(re.test('https://zlyrobert-debicki.pl/cv.pdf')).toBe(false);
+    expect(re.test('https://example.com/.r2.dev')).toBe(false);
+  });
+  it('wdrożenia i projekty wybiera się z listy pozycji (nazwa folderu), najwyżej trzy', () => {
+    for (const [nazwa, kolekcja] of [['wdrozenia', 'wdrozenia'], ['projekty', 'projekty']]) {
+      expect(pole(nazwa)).toMatchObject({ widget: 'relation', collection: kolekcja, value_field: '{{slug}}', multiple: true, max: 3 });
+    }
   });
 });
 

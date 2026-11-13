@@ -38,6 +38,30 @@ narzedzia:
   wiersze:
     - nazwa: "Automation"
       wartosc: "n8n"
+rekruter:
+  tytul: "Looking for a full-time role"
+  tytulSeo: "Automation Developer and AI Engineer | Robert Dębicki"
+  opis: "Looking for a full-time Automation Developer or AI Engineer role in Wrocław, Poland, or remote. Fixture description for the recruiter page tests."
+  rola: "Automation Developer"
+  rolaWyroznienie: "/ AI Engineer"
+  wstep: "Fixture recruiter intro."
+  akapit: "Fixture paragraph."
+  karta:
+    okres: "11/2026"
+    wiersze:
+      - etykieta: "Looking for"
+        wartosc: "Automation Developer, AI Engineer"
+  wybrane:
+    tytul: "Fixture selected work"
+    wstep: "Fixture intro."
+  kontakt:
+    tytul: "Fixture recruiter contact"
+    wstep: "Fixture intro."
+  wdrozenia:
+    - "tylko-pl"
+    - "oba"
+  projekty:
+    - "oba"
 kontakt:
   tytul: "Fixture contact"
   wstep: "Fixture intro."

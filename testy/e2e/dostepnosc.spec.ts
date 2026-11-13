@@ -6,6 +6,8 @@ import AxeBuilder from '@axe-core/playwright';
 const STRONY = [
   { nazwa: '/', url: 'http://localhost:4399/' },
   { nazwa: '/en/', url: 'http://localhost:4399/en/' },
+  { nazwa: '/dla-rekruterow/', url: 'http://localhost:4399/dla-rekruterow/' },
+  { nazwa: '/en/for-recruiters/', url: 'http://localhost:4399/en/for-recruiters/' },
   { nazwa: '/en/ (fikstury)', url: 'http://localhost:4400/en/' },
 ];
 

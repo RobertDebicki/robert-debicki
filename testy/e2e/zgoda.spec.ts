@@ -250,7 +250,7 @@ const klikniecia = async (page: Page) => {
   // Kliknięcie w mailto i w link zewnętrzny nie może nas wyprowadzić ze strony w teście.
   await page.evaluate(() => document.querySelectorAll('#kontakt a').forEach((a) => a.addEventListener('click', (e) => e.preventDefault())));
   await page.locator('#email').click();
-  await page.locator('#kontakt .links a').click();
+  await page.locator('#kontakt .links a[data-zdarzenie="klik_linkedin"]').click();
   await page.locator('#copy-email').click();
 };
 
@@ -267,7 +267,7 @@ test('środkowy przycisk myszy na LinkedIn też liczy się jako klik_linkedin', 
   await page.goto('/');
   await baner(page).getByRole('button', { name: 'Akceptuję' }).click();
   await page.evaluate(() => document.querySelectorAll('#kontakt a').forEach((a) => a.addEventListener('auxclick', (e) => e.preventDefault())));
-  await page.locator('#kontakt .links a').click({ button: 'middle' });
+  await page.locator('#kontakt .links a[data-zdarzenie="klik_linkedin"]').click({ button: 'middle' });
   expect(await zdarzenia(page)).toEqual(['klik_linkedin']);
 });
 

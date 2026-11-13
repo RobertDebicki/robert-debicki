@@ -71,8 +71,20 @@ function makietaZNowymPrzekazem(html: string): string {
   );
 }
 
+/**
+ * Menu zmieniono celowo według zatwierdzonego podglądu `docs/makieta/uslugi.html` (13.11): bez linku „Doświadczenie”
+ * (sekcja zostaje, rekruter ma własną podstronę) i z nowymi barwami kwadracików. W kopii makiety podmieniamy tylko menu.
+ */
+function makietaZNowymMenu(html: string): string {
+  return podmien(
+    html,
+    /<a href="#wdrozenia" style="--sw: var\(--c\)">Wdrożenia<\/a>\s*<a href="#teraz" style="--sw: var\(--m\)">Projekty<\/a>\s*<a href="#droga" style="--sw: var\(--y\)">Doświadczenie<\/a>\s*<a href="#kontakt" style="--sw: var\(--ink\)">Kontakt<\/a>/,
+    '<a href="#wdrozenia" style="--sw: var(--m)">Wdrożenia</a>\n      <a href="#teraz" style="--sw: var(--y)">Projekty</a>\n      <a href="#kontakt" style="--sw: var(--c)">Kontakt</a>',
+  );
+}
+
 async function podstawMakiete(page: Page) {
-  const html = makietaZNowymPrzekazem(makietaZNowymLogo(readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8')));
+  const html = makietaZNowymMenu(makietaZNowymPrzekazem(makietaZNowymLogo(readFileSync(join(KORZEN, 'docs/makieta/index.html'), 'utf8'))));
   await page.route(MAKIETA, (r) => r.fulfill({ contentType: 'text/html; charset=utf-8', body: html }));
   await page.route('https://fonts.googleapis.com/**', (r) => r.fulfill({ contentType: 'text/css', body: cssFontow() }));
   await page.route('https://fonts.gstatic.com/**', (r) => {
@@ -109,11 +121,12 @@ test.describe('zgodność z makietą', () => {
       writeFileSync(sciezka, wzor);
 
       await przygotuj(page, '/');
-      // Makieta nie ma sekcji wpisów i usług, linków do nich w menu ani telefonu w kontakcie: pojawiają się z treścią
-      // (wygląd usług ma osobny, zatwierdzony podgląd `docs/makieta/uslugi.html`). Porównujemy resztę.
+      // Makieta nie ma sekcji wpisów i usług, linków do nich i do podstrony rekrutera (w menu i w kontakcie) ani telefonu
+      // w kontakcie: pojawiają się z treścią (wygląd usług i podstrony rekrutera ma osobny, zatwierdzony podgląd
+      // `docs/makieta/uslugi.html`). Porównujemy resztę.
       await page.addStyleTag({
         content:
-          '#wpisy, #uslugi, header nav a[href="/wpisy/"], header nav a[href="/uslugi/"], #kontakt .mail:has(a[href^="tel:"]) { display: none !important; }',
+          '#wpisy, #uslugi, header nav a[href="/wpisy/"], header nav a[href="/uslugi/"], a[href="/dla-rekruterow/"], #kontakt .mail:has(a[href^="tel:"]) { display: none !important; }',
       });
       const zrzut = await page.screenshot({ fullPage: true, animations: 'disabled' });
       expect(zrzut).toMatchSnapshot(nazwa, { maxDiffPixelRatio: 0.02 });
