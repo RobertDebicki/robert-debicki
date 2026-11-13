@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-13 12:00, Claude Code
+
+**✅ Zrobione (zadanie 4 planu widoczności: badanie fraz, bez kodu, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Nowy plik `docs/seo/frazy-uslug.md`: frazy PL i EN dla trzech usług pierwszej fali (podpowiedzi Google i WebSearch, 2026-11-13, każda ze źródłem), konkurencja w wynikach, propozycja frazy głównej, adresów PL/EN, tytułów SEO (z liczbą znaków) i 5 pytań FAQ na usługę.
+- Luki zapisane w pliku: brak wolumenów wyszukiwań i brak bloku „Ludzie pytają też” w użytych narzędziach.
+
+**🎯 Następny krok:** Robert akceptuje adresy (`/uslugi/automatyzacja-procesow/`, `/uslugi/voiceboty/`, `/uslugi/strony-i-aplikacje/` i odpowiedniki EN); po wdrożeniu ich zmiana wymaga 301. Potem zadanie 5.
+
 ## 2026-11-13 11:15, Claude Code
 
 **✅ Zrobione (zadanie 3 planu widoczności: BlogPosting we wpisach, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
