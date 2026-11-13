@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-13 12:15, Claude Code
+
+**✅ Zrobione (podgląd usług, runda 4 uwag Roberta, ryzyko niskie; nie wdrożone):**
+- Decyzja Roberta: AI i automatyzacja to jedna usługa i jedna strona (adres roboczy `/uslugi/ai-i-automatyzacja/`), bo tytuł „Wdrożenia AI w firmie” prowadził tylko w stronę AI.
+- `docs/makieta/uslugi.html`: tytuł strony usługi „AI i automatyzacja w Twojej firmie”, sekcja usług z powrotem 3 karty (AI i automatyzacja, Aplikacje strony i narzędzia z AI, Voiceboty AI). Brak przewijania w bok przy 360, 390, 1024 i 1440 px.
+
+**🎯 Następny krok:** akceptacja podglądu; potem spec, badanie fraz (strona AI i automatyzacja zamiast samej automatyzacji) i plan zadań 6-8.
+
 ## 2026-11-13 12:00, Claude Code
 
 **✅ Zrobione (podgląd usług, runda 3 uwag Roberta, ryzyko niskie; nie wdrożone):**
