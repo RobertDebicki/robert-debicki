@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-13 12:35, Claude Code
+
+**✅ Zrobione (podgląd usług, fakty od Roberta, ryzyko niskie; nie wdrożone):**
+- `docs/makieta/uslugi.html`, strona usługi AI i automatyzacja: drugi przykład wdrożenia (3 agenci AI: Google Ads i SEO przez AdLoop, wpisy na blog i opisy realizacji, tłumaczenia), problemy 2 i 3 z tego wdrożenia, odpowiedź o wycenie (za projekt, indywidualnie, duży projekt na etapy z kwotą w częściach), początek odpowiedzi o bezpieczeństwie danych. Nazwa klienta pominięta, branża do potwierdzenia przez Roberta. Brak przewijania w bok przy 360-1440 px.
+
+**🎯 Następny krok:** Robert podaje branżę klienta i wybiera zasady bezpieczeństwa do FAQ; potem akceptacja podglądu.
+
 ## 2026-11-13 12:15, Claude Code
 
 **✅ Zrobione (podgląd usług, runda 4 uwag Roberta, ryzyko niskie; nie wdrożone):**
