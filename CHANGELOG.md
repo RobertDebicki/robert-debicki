@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-13 12:50, Claude Code
+
+**✅ Zrobione (podgląd usług, ryzyko niskie; nie wdrożone):**
+- `docs/makieta/uslugi.html`: odpowiedź FAQ „Czy dane firmy są bezpieczne?” z zasad, które Robert potwierdził, że stosuje: umowa powierzenia, API na koncie firmowym i minimum danych, agent tylko do odczytu ze zmianami zatwierdzanymi przez człowieka, szkolenie zespołu. Bez twierdzeń o warunkach dostawców modeli.
+
+**🎯 Następny krok:** Robert podaje branżę klienta z agentami AI i akceptuje podgląd; potem spec, frazy i plan zadań 6-8.
+
 ## 2026-11-13 12:35, Claude Code
 
 **✅ Zrobione (podgląd usług, fakty od Roberta, ryzyko niskie; nie wdrożone):**
