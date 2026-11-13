@@ -9,7 +9,7 @@ Stan na 2026-11-13. Lista dla Roberta: rejestracje i wysyłki robisz Ty, nic nie
 - Oznaczenia: ✅ sprawdzone (źródło w polu) · ⚠️ częściowo sprawdzone · 🔴 nie wiem, trzeba zajrzeć na miejscu.
 - Rodzaj linku (`dofollow` / `nofollow`): przy żadnej pozycji nie mierzyłem atrybutu `rel`, więc wszędzie "nie wiem". Po założeniu profilu sprawdź kod strony (inspekcja elementu na linku). Wartość pozycji liczymy też bez tego: wzmianka na zewnętrznej stronie może mieć sens nawet bez linku (⚠️ przesłanka, niezmierzona).
 - Płatnych miejsc nie polecam. Gdyby jakieś się pojawiło, tylko jako ogłoszenie z oznaczeniem `sponsored` albo `nofollow`.
-- Nie wchodzić w katalogi "dodaj stronę za darmo, 200 linków", sieci blogów, wymiany linków. Skill `directory-submissions` jest pisany pod produkty SaaS (Product Hunt, G2, katalogi AI); dla osoby prywatnej to w większości nietrafione, dlatego lista jest krótka i oparta o platformy, na których rekruter i klient faktycznie szukają ludzi.
+- Nie wchodzić w katalogi "dodaj stronę za darmo, 200 linków", sieci blogów, wymiany linków. Skill `directory-submissions` jest pisany pod produkty SaaS (Product Hunt, G2, katalogi AI); dla osoby prywatnej to w większości nietrafione, dlatego lista jest krótka i oparta o platformy związane z automatyzacją, kodem i szukaniem specjalistów (⚠️ przesłanka, że tam trafią rekruterzy i klienci; niezmierzone).
 
 ## Kolejność: wartość do wysiłku
 
@@ -20,9 +20,9 @@ Stan na 2026-11-13. Lista dla Roberta: rejestracje i wysyłki robisz Ty, nic nie
 | 3 | Prośba do klientów o wzmiankę z linkiem | 1 mail na klienta | Link od prawdziwego wdrożenia jest tematycznie trafny i tani (⚠️ przesłanka) |
 | 4 | Make: program Solution Partner | 1 h + szkolenie | Oficjalna lista ekspertów "Hire an expert" (jeśli przyjmą) |
 | 5 | n8n: szablony w portalu twórców i wątki na forum | 2 h na szablon | Wzmianka w miejscu tematycznie bliskim n8n (⚠️ wpływ niezmierzony) |
-| 6 | Dev.to: przedruk wpisów z `canonical` | 20 min na wpis | Darmowy zasięg wpisów, bezpieczny dla SEO dzięki `canonical` |
-| 7 | Wrocławskie spotkania (WAIT, meet.js) | zależy | Lokalne kontakty i link w opisie wystąpienia |
-| 8 | Bulldogjob Readme: artykuł autorski | 4 h na tekst | Polskie medium dla rekruterów IT, ale warunki do sprawdzenia |
+| 6 | Dev.to: przedruk wpisów z `canonical` | 20 min na wpis | Darmowa rejestracja; pole `canonical` wskazuje oryginał wpisu (źródło: pomoc dev.to, 2026-11-13) |
+| 7 | Wrocławskie spotkania (WAIT, meet.js) | zależy | Możliwe lokalne kontakty (⚠️ przesłanka), warunki wystąpień do sprawdzenia u organizatora |
+| 8 | Bulldogjob Readme: artykuł autorski | 4 h na tekst | Polski serwis o pracy w IT (⚠️ strona zwróciła 403, warunki niezweryfikowane) |
 | 9 | Useme: profil wykonawcy | 30 min | Polska platforma zleceń, ale prowizja od zleceń |
 | 10 | Just Join IT, No Fluff Jobs, Freelanceria | do sprawdzenia | Nie potwierdziłem, że istnieje profil kandydata z linkiem do strony |
 
@@ -125,7 +125,7 @@ Independent Make and n8n automation developer in Wroclaw or remote, working with
 - Opis szablonu (EN, szkic do dopasowania do konkretnego przepływu):
 
 ```
-Short description: Automatically [what the workflow does] and notify the team. Built for small businesses that do this step by hand today.
+Short description: Automatically [what the workflow does] and notify the team. For teams that do this step by hand today.
 Setup: connect [service], add credentials, run once to test.
 Author: Robert Debicki, automation developer. More at https://robert-debicki.pl
 ```
@@ -140,7 +140,7 @@ Author: Robert Debicki, automation developer. More at https://robert-debicki.pl
 
 ## 7. Wrocławskie spotkania
 
-- WAIT, Wrocław AI Team: https://www.meetup.com/wait-wroclaw-ai-team ✅ istnieje, około 3,7 tys. członków, 61 minionych wydarzeń, ostatnie z października, brak zapowiedzianych (odczyt 2026-11-13). Organizatorzy odpowiadają przez wiadomość na stronie grupy. Pozycja daje kontakty i wzmiankę w opisie wydarzenia; 🔴 czy przyjmują krótkie wystąpienia, wie tylko organizator.
+- WAIT, Wrocław AI Team: https://www.meetup.com/wait-wroclaw-ai-team ✅ istnieje, około 3,7 tys. członków, 61 minionych wydarzeń, ostatnie z października, brak zapowiedzianych (odczyt 2026-11-13). Organizatorzy odpowiadają przez wiadomość na stronie grupy. Strona grupy opisuje spotkania dla praktyków (odczyt 2026-11-13); 🔴 czy udział daje jakąkolwiek wzmiankę lub kontakt, nie wiem; 🔴 czy przyjmują krótkie wystąpienia, wie tylko organizator.
 - meet.js Wrocław: https://meetup.com/pl-PL/meet-js-wroclaw (✅ istnieje według wyników wyszukiwania, strony nie otwierałem).
 - Wiadomość do organizatora WAIT (po Twojej akceptacji):
 
@@ -171,7 +171,7 @@ Robert Dębicki, https://robert-debicki.pl
 
 - Adres: https://useme.com/pl/ ✅ platforma istnieje i ma publiczne profile wykonawców (np. adresy w postaci `useme.com/pl/roles/contractor/...` w wynikach wyszukiwania); sama strona zwróciła mi błąd 403, więc cennika i pola na stronę nie sprawdziłem.
 - Koszt: 🔴 nie wiem; wyszukiwanie wskazuje prowizję od rozliczanych zleceń i płatny plan Useme Plus. Link: nie wiem.
-- Wartość: kontakt z małymi firmami szukającymi prostych automatyzacji w narzędziach no-code (raport platformy wymienia takie zlecenia). Wymaga uwagi: zlecenia przez platformę oznaczają prowizję, więc nie jest to czysty kanał linkowy. Rób tylko, jeśli chcesz tego kanału zleceń.
+- Wartość: kanał zleceń (raport platformy wymienia m.in. proste automatyzacje w narzędziach no-code; ⚠️ nie wiem, jakie firmy zlecają). Wymaga uwagi: zlecenia przez platformę oznaczają prowizję, więc nie jest to czysty kanał linkowy. Rób tylko, jeśli chcesz tego kanału zleceń.
 - Opis (PL):
 
 ```

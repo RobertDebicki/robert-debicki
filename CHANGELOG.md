@@ -5,8 +5,7 @@
 **✅ Zrobione (zadanie 11 planu widoczności: lista działań z linkami zewnętrznymi, bez kodu, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
 - Nowy plik `docs/seo/linki-zewnetrzne.md`: 10 pozycji w kolejności wartość do wysiłku (GitHub, LinkedIn, prośba do klientów, Make Solution Partner, n8n, Dev.to, spotkania we Wrocławiu, Bulldogjob, Useme, do sprawdzenia). Przy każdej adres, co wpisać, gotowy tekst, koszt i źródło sprawdzenia z datą. Rodzaj linku (`rel`) nigdzie niezmierzony, do sprawdzenia po rejestracji. Katalog ekspertów n8n pominięty (pilotaż zamknięty, Polska poza regionami).
 - Nic nie zostało zarejestrowane ani wysłane.
-- Poprawka po przeglądzie: z gotowych tekstów usunięte twierdzenia spoza `ustawienia/pl.md` i `wdrozenia/*/pl.md` (małe i średnie firmy, "bez przestojów", diagram i błędy do naprawienia, lokalizacja tylko Wrocław, niezmierzone twierdzenia o cytowaniu); niepotwierdzone zakresy oznaczone "[do potwierdzenia przez Roberta]".
-
+- Poprawki po przeglądzie (2 rundy): z gotowych tekstów usunięto lub oznaczono jako przesłankę (⚠️) twierdzenia, których nie ma w `ustawienia/pl.md` i `wdrozenia/*/pl.md` albo w sprawdzonym źródle (grupa docelowa szablonu n8n, "bezpieczny dla SEO", opis Bulldogjob, korzyści ze spotkań, klienci Useme); lokalizacja zawsze "Wrocław albo zdalnie"; niepotwierdzone zakresy oznaczone "[do potwierdzenia przez Roberta]".
 
 **🎯 Następny krok:** Robert przegląda listę i rejestruje się (pozycje 1 i 2 od razu; linki do stron usług i `/dla-rekruterow/` po ich wdrożeniu).
 
