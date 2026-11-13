@@ -19,6 +19,9 @@ karta:
       wartosc: "Claude Code, AI agents, language models in business processes"
     - etykieta: "Code"
       wartosc: "Python, FastAPI, Next.js, TypeScript"
+uslugi:
+  tytul: "I roll out AI and automate processes"
+  wstep: "Not every problem needs AI. Sometimes a well-laid-out process and a simple automation are enough. Every service has an example that runs at a client."
 wdrozenia:
   tytul: "Systems running at client companies"
   wstep: "The numbers come from clients or from the systems I built."
@@ -68,5 +71,5 @@ kontakt:
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 tlumaczenie: ai
-zrodlo: 292cfcb633a3aba40cf8e8217dd36a62ad488b1b9dee52c34187d613ee4ef377
+zrodlo: 98780f1eb9f397e9f79b2241dfbe4ae1aae67cedb5f625b607181c1ae5e713c9
 ---

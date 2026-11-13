@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-11-13 15:55, Claude Code
+
+**✅ Zrobione (tłumaczenie EN trzech usług, zadanie 7 planu widoczności; `tlumaczenie: ai`, nie wdrożone):**
+- Nowe `en.md`: `uslugi/ai-i-automatyzacja` (`adresEn: ai-automation`), `uslugi/strony-i-aplikacje` (`websites-and-apps`), `uslugi/voiceboty` (`ai-voice-agents`). Teksty pod angielskie frazy z `docs/seo/frazy-uslug.md` (AI automation, custom websites and apps, AI voice agent), pytania FAQ w formie angielskich podpowiedzi Google; fakty i odpowiedzi jak w PL.
+- `ustawienia/en.md`: dodany blok `uslugi`, `zrodlo` przeliczone.
+- Linki w EN prowadzą do `/en/posts/...` i `/en/#wdrozenia`, `/en/#teraz`.
+- SEO EN (z zbudowanego HTML): tytuły 57/55/45 znaków, opisy 146/153/147, 6 H2, FAQ 6/6/7, brak myślników; fraza główna 5/3/7 razy.
+- Kontrola tłumaczeń: 4 pary bez błędów; `sprawdz:tresc` 0; `npm run sprawdz` bez błędów.
+
+**🚧 W toku / nie wdrożone:** korekta native speakera (stan `ai`, nie `sprawdzone`); linki z wpisów do usług (krok 3 zadania 7).
+
+**🎯 Następny krok:** przegląd zadania 7, potem linki z wpisów do usług i wdrożenie za zgodą Roberta.
+
 ## 2026-11-13 15:30, Claude Code
 
 **✅ Zrobione (zadanie 7 planu widoczności, treść PL trzech usług; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
