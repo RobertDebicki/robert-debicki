@@ -9,7 +9,7 @@ sektor: "Claude Code, Astro, Next.js, WordPress"
 rola: "Astro, Next.js, WordPress"
 rolaWyroznienie: "/ Claude Code"
 lead: "Buduję strony i aplikacje na zamówienie, gdy gotowy program nie spełnia oczekiwań albo jest za drogi."
-akapit: "Piszę je z Claude Code. Strony stawiam na WordPressie, w Astro albo w Next.js, aplikacje w Pythonie i React. AI dokładam tam, gdzie oszczędza pracę, na przykład w narzędziu do tłumaczenia wpisów. Wrocław albo zdalnie."
+akapit: "Nowe strony i aplikacje piszę z Claude Code. Strony stawiam na WordPressie, w Astro albo w Next.js, aplikacje w Pythonie i React. AI dokładam tam, gdzie oszczędza pracę, na przykład w narzędziu do tłumaczenia wpisów. Wrocław albo zdalnie."
 karta:
   - etykieta: "Piszę z"
     wartosc: "Claude Code"
@@ -28,7 +28,7 @@ problemy:
     - tytul: "Jedna zmiana, poprawki w kilku miejscach"
       tekst: "Zapisy i grafiki szkoleń w arkuszu, a każda zmiana terminu oznaczała poprawki w kilku miejscach."
     - tytul: "To samo zatwierdzane dwa razy"
-      tekst: "Rozliczenie zamknięte w programie księgowym trzeba było jeszcze raz zatwierdzać, zanim poszło dalej."
+      tekst: "Rozliczenie zamknięte w programie księgowym trzeba jeszcze raz zatwierdzać, zanim pójdzie dalej."
     - tytul: "Treści nie da się dodać samemu"
       tekst: "Właścicielka chciała sama dodawać prace i wpisy na stronę."
 kroki:
@@ -46,7 +46,7 @@ przyklady:
     - ikona: "aplikacje"
       liczba: "89"
       liczbaOpis: "adresów zachowanych po przeniesieniu z WordPressa do Astro"
-      sektor: "Producent mebli dla gastronomii"
+      sektor: "Producent mebli dla branży HoReCa"
       tytul: "Strony i narzędzie do tłumaczeń"
       tekst: "Norweską stronę zbudowałem od zera, bo poprzednia celowała w słowo „losje”, które po norwesku oznacza lożę wolnomularską. Polską stronę przeniosłem z WordPressa do Astro z tym samym wyglądem i 89 adresami. Do tłumaczenia wpisów na pięć języków zbudowałem w Claude Code narzędzie, które sprawdza typografię każdego języka."
       stos:

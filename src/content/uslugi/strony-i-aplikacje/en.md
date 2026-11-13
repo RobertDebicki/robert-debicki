@@ -9,7 +9,7 @@ sektor: "Claude Code, Astro, Next.js, WordPress"
 rola: "Astro, Next.js, WordPress"
 rolaWyroznienie: "/ Claude Code"
 lead: "I build custom websites and apps when off-the-shelf software falls short or costs too much."
-akapit: "I write them with Claude Code. I build websites on WordPress, in Astro, or in Next.js, and apps in Python and React. I add AI where it saves work, for example in a tool that translates posts. Wrocław, Poland, or remote."
+akapit: "I write new websites and apps with Claude Code. I build websites on WordPress, in Astro, or in Next.js, and apps in Python and React. I add AI where it saves work, for example in a tool that translates posts. Wrocław, Poland, or remote."
 karta:
   - etykieta: "I write with"
     wartosc: "Claude Code"
@@ -28,7 +28,7 @@ problemy:
     - tytul: "One change, edits in several places"
       tekst: "Sign-ups and training schedules lived in a spreadsheet, and every change of date meant edits in several places."
     - tytul: "The same thing approved twice"
-      tekst: "A month closed in the accounting software still had to be approved a second time before it moved on."
+      tekst: "A month closed in the accounting software still has to be approved a second time before it moves on."
     - tytul: "Content you can't add yourself"
       tekst: "The owner wanted to add her works and posts to the site herself."
 kroki:
@@ -46,7 +46,7 @@ przyklady:
     - ikona: "aplikacje"
       liczba: "89"
       liczbaOpis: "URLs kept after moving from WordPress to Astro"
-      sektor: "Furniture manufacturer for the food service industry"
+      sektor: "Hospitality furniture manufacturer"
       tytul: "Websites and a translation tool"
       tekst: "I built the Norwegian site from scratch, because the old one targeted the word “losje,” which in Norwegian means a Masonic lodge. I moved the Polish site from WordPress to Astro with the same design and 89 URLs. To translate posts into five languages, I built a tool in Claude Code that checks each language's typography."
       stos:
@@ -95,5 +95,5 @@ faq:
 kolejnosc: 2
 adresEn: "websites-and-apps"
 tlumaczenie: ai
-zrodlo: 39d4bbe8ceb22bad44c25d2c4cf4f119f8944fec33f6799df3677d668b59c95f
+zrodlo: e7c5e6fe3f9dd8e4787ed082c5d2d4decb838f87543879816847fbca1029972d
 ---

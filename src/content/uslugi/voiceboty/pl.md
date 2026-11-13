@@ -33,7 +33,7 @@ kroki:
   tytul: "Od formularza do notatki w CRM"
   pozycje:
     - tytul: "Pytania i scenariusz rozmowy"
-      tekst: "Ustalamy, o co bot ma pytać, żeby handlowiec dostał potrzebę i budżet klienta. Bot przedstawia się na początku rozmowy, bo klient ma wiedzieć, że rozmawia z AI."
+      tekst: "Ustalamy, o co bot ma pytać, żeby handlowiec dostał potrzebę i budżet klienta. Bot powinien przedstawić się na początku rozmowy, bo klient ma wiedzieć, że rozmawia z AI."
     - tytul: "Bot dzwoni i robi notatkę"
       tekst: "Po wysłaniu formularza bot dzwoni do klienta, zadaje pytania i z rozmowy robi notatkę dla handlowca. Głos i połączenie działają na ElevenLabs i Twilio."
     - tytul: "Notatka trafia do CRM"

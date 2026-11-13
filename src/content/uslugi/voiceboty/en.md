@@ -33,7 +33,7 @@ kroki:
   tytul: "From form to a note in the CRM"
   pozycje:
     - tytul: "Questions and call script"
-      tekst: "We decide what the bot should ask so that the sales rep gets the client's need and budget. The bot introduces itself at the start of the call, because the client should know they're talking to an AI."
+      tekst: "We decide what the bot should ask so that the sales rep gets the client's need and budget. The bot should introduce itself at the start of the call, because the client should know they're talking to an AI."
     - tytul: "The bot calls and takes notes"
       tekst: "After the form is sent, the bot calls the client, asks the questions, and turns the call into a note for the sales rep. The voice and the call run on ElevenLabs and Twilio."
     - tytul: "The note goes to the CRM"
@@ -75,5 +75,5 @@ faq:
 kolejnosc: 3
 adresEn: "ai-voice-agents"
 tlumaczenie: ai
-zrodlo: b0a21c03aabf0559b95fb7f8d08b9af18f288ad877b21b341ac44caa677e0404
+zrodlo: a911bd856fcd527398781e45a224d2372e836be2bf557fd2286b424fb96b07c0
 ---

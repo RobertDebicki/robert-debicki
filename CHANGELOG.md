@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-13 16:20, Claude Code
+
+**✅ Zrobione (zadanie 7, poprawki po przeglądzie treści PL i EN; nie wdrożone):**
+- Przegląd: fakty, liczby, twarde zasady i linki EN zgodne ze źródłami; jedna uwaga ważna. Voiceboty krok 1: „Bot powinien przedstawić się…” zamiast twierdzenia, że bot Roberta to robi (źródło mówi tylko o dobrym zwyczaju). Tak samo w EN.
+- Drobne: strony i aplikacje „Nowe strony i aplikacje piszę z Claude Code” (platforma szkoleń powstała wcześniej), czas teraźniejszy przy obiegu rozliczeń (projekt w testach), branża „Producent mebli dla branży HoReCa” jak na stronie AI (EN „Hospitality furniture manufacturer”). `zrodlo` w dwóch `en.md` przeliczone, kontrola tłumaczeń bez błędów.
+- `npm run sprawdz`: exit 0, vitest 177 pass/1 skipped, e2e 164 pass.
+
+**🎯 Następny krok:** zadanie 8 (strona dla rekrutera); CV Robert wgrywa na home.pl i podaje adres. Krok 3 zadania 7 (linki z wpisów do usług) do akceptacji Roberta.
+
 ## 2026-11-13 15:55, Claude Code
 
 **✅ Zrobione (tłumaczenie EN trzech usług, zadanie 7 planu widoczności; `tlumaczenie: ai`, nie wdrożone):**
