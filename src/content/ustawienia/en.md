@@ -88,6 +88,7 @@ rekruter:
   kontakt:
     tytul: "Let's talk about an Automation Developer or AI Engineer role"
     wstep: "Wrocław, Poland, or remote. Email is the fastest way to reach me."
+  cvUrl: "https://robert-debicki.pl/cv/Robert-Debicki-CV.pdf"
   wdrozenia:
     - "monitoring-temperatur"
     - "reaktywacja-klientow"
@@ -101,5 +102,5 @@ kontakt:
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 tlumaczenie: ai
-zrodlo: 0395ddb3b3f0b88ec6fd66a10e255acced9e5826807b78b485b01ed4e09b26be
+zrodlo: a020300a9a061d85fcb45db59fa3b1f15e64432469742750eda12a54b36fd8ed
 ---

@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-13 18:20, Claude Code
+
+**✅ Zrobione (CV na serwerze, za zgodą Roberta w wiadomości 13.11):**
+- `~/Robert_CV/Robert_Debicki_CV.pdf` (wersja z 16.10, identyczna z ATS; bez adresu i daty urodzenia) wgrane na home.pl jako `/cv/Robert-Debicki-CV.pdf` jednorazowym wywołaniem funkcji z `skrypty/wdroz.ts` (transfer przez `.part`, nic nie usunięte). Sprawdzone: `https://robert-debicki.pl/cv/Robert-Debicki-CV.pdf` daje 200 `application/pdf`, SHA-256 zgodny z plikiem lokalnym, listing `/cv` bez `.part`. CV nie jest w repozytorium.
+- `ustawienia.rekruter.cvUrl` w PL i EN: przycisk „Pobierz CV (PDF)” / „Download resume (PDF)” na stronie dla rekrutera. `zrodlo` przeliczone.
+- Nagłówek `X-Robots-Tag: noindex` dla `/cv/` zadziała dopiero po wdrożeniu nowego `.htaccess` (dziś na serwerze go nie ma, sprawdzone `curl -I`).
+- `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 188 pass.
+
+**🎯 Następny krok:** Robert akceptuje teksty strony dla rekrutera; linki z wpisów do usług; przegląd całej gałęzi; wdrożenie za zgodą.
+
 ## 2026-11-13 17:40, Claude Code
 
 **✅ Zrobione (zadanie 8, poprawki po przeglądzie; nie wdrożone):**

@@ -88,6 +88,7 @@ rekruter:
   kontakt:
     tytul: "Porozmawiajmy o roli Automation Developer albo AI Engineer"
     wstep: "Wrocław albo zdalnie. Najszybciej odpowiadam mailowo."
+  cvUrl: "https://robert-debicki.pl/cv/Robert-Debicki-CV.pdf"
   wdrozenia:
     - "monitoring-temperatur"
     - "reaktywacja-klientow"
