@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-11-13 11:20, Claude Code
+
+**✅ Zrobione (podgląd usług, runda 1 uwag Roberta, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Uwaga Roberta: najważniejsze jest teraz AI (wdrożenia AI, aplikacje i strony z AI), automatyzacje n8n i Make schodzą na dalszy plan.
+- `docs/makieta/uslugi.html`, sekcja usług na stronie głównej: cztery karty w siatce 2 x 2 (bez nowego CSS) w kolejności Wdrożenia AI w firmie, Aplikacje strony i narzędzia z AI, Voiceboty AI, Automatyzacja procesów. Nagłówek „AI, które pracuje w Twojej firmie”. Opisy tylko z faktów w `ustawienia/pl.md` i wypowiedzi Roberta. Brak przewijania w bok przy 390 i 1440 px.
+
+**🚧 W toku:** widok strony usługi nadal pokazuje automatyzację jako przykład; teksty kontaktu, opis na górze strony, spec i badanie fraz (brak fraz AI) czekają na decyzję Roberta.
+
+**🎯 Następny krok:** Robert ocenia nową sekcję i propozycje tekstów; potem aktualizacja specu, fraz i planu (nowa usługa „Wdrożenia AI” w pierwszej fali).
+
 ## 2026-11-13 10:37, Claude Code
 
 **✅ Zrobione (zadanie 11 planu widoczności: lista działań z linkami zewnętrznymi, bez kodu, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
