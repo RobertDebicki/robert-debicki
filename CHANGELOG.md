@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-13 11:15, Claude Code
+
+**✅ Zrobione (zadanie 3 planu widoczności: BlogPosting we wpisach, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
+- Nowy komponent `src/components/DaneWpisu.astro`: JSON-LD `BlogPosting` na stronach wpisów PL i EN (tytuł, zajawka, data, język, autor z tym samym `@id` co Person na stronie głównej, bezwzględny adres wpisu, obraz z miniatury tylko gdy jest). Adres budowany z przekazanego `adres`.
+- Testy e2e na fiksturach (`wpisy.spec.ts`): wpis PL z miniaturą, PL bez miniatury, EN, brak bloku na liście.
+
+**🎯 Następny krok:** zadanie 4 planu.
+
 ## 2026-11-13 10:30, Claude Code
 
 **✅ Zrobione (zadanie 1 planu widoczności: telefon, ryzyko średnie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**

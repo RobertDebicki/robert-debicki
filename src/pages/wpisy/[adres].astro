@@ -1,5 +1,6 @@
 ---
 import Strona from '../../layouts/Strona.astro';
+import DaneWpisu from '../../components/DaneWpisu.astro';
 import StronaWpisu from '../../components/StronaWpisu.astro';
 import { wpisyWJezyku, maListe } from '../../lib/wpisy';
 import { adresOdpowiednika, widocznaWJezyku } from '../../lib/jezyki';
@@ -14,5 +15,6 @@ const maEn = widocznaWJezyku(para, 'en');
 const przelacznik = maEn || (await maListe('en')) ? adresOdpowiednika('pl', 'wpisy', para) : undefined;
 ---
 <Strona jezyk="pl" tytul={`${entry.data.tytul} | Robert Dębicki`} opis={entry.data.zajawka} odpowiednik={maEn ? `/en/posts/${adres}/` : undefined} przelacznik={przelacznik}>
+  <DaneWpisu slot="glowa" jezyk="pl" adres={adres!} entry={entry} />
   <StronaWpisu jezyk="pl" adres={adres!} entry={entry} />
 </Strona>

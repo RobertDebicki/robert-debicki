@@ -1,0 +1,38 @@
+---
+import { getImage } from 'astro:assets';
+import type { Jezyk } from '../lib/jezyki';
+import { ustawienia } from '../lib/pozycje';
+import { dataIso, obraz } from '../lib/wpisy';
+
+interface Props {
+  jezyk: Jezyk;
+  adres: string;
+  entry: any;
+}
+// Schema.org BlogPosting dla wpisu. Autor to ta sama osoba co na stronie głównej (wspólny @id),
+// adres wpisu budowany z przekazanego `adres`, a miniatura (jeśli jest) jako bezwzględny adres obrazu.
+const { jezyk, adres, entry } = Astro.props;
+const { otwarcie: o } = await ustawienia(jezyk);
+const d = entry.data;
+const bezwzgledny = (sciezka: string) => new URL(sciezka, Astro.site).href;
+const miniatura = d.miniatura ? await getImage({ src: await obraz(d.miniatura.plik, `${adres}/${jezyk}`) }) : undefined;
+const dane = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: d.tytul,
+  description: d.zajawka,
+  datePublished: dataIso(d.data),
+  inLanguage: jezyk,
+  author: {
+    '@type': 'Person',
+    '@id': bezwzgledny('/#osoba'),
+    name: `${o.imie} ${o.nazwisko}`,
+    url: bezwzgledny(jezyk === 'pl' ? '/' : '/en/'),
+  },
+  mainEntityOfPage: bezwzgledny(`${jezyk === 'pl' ? '/wpisy/' : '/en/posts/'}${adres}/`),
+  ...(miniatura ? { image: bezwzgledny(miniatura.src) } : {}),
+};
+// "<" zamienione, żeby tekst z treści nie zamknął znacznika <script>.
+const json = JSON.stringify(dane).replaceAll('<', '\\u003c');
+---
+<script type="application/ld+json" set:html={json} />

@@ -1,5 +1,6 @@
 ---
 import Strona from '../../../layouts/Strona.astro';
+import DaneWpisu from '../../../components/DaneWpisu.astro';
 import StronaWpisu from '../../../components/StronaWpisu.astro';
 import { wpisyWJezyku } from '../../../lib/wpisy';
 import { adresOdpowiednika } from '../../../lib/jezyki';
@@ -11,5 +12,6 @@ const { adres } = Astro.params;
 const { entry, para } = Astro.props;
 ---
 <Strona jezyk="en" tytul={`${entry.data.tytul} | Robert Dębicki`} opis={entry.data.zajawka} odpowiednik={adresOdpowiednika('en', 'wpisy', para)}>
+  <DaneWpisu slot="glowa" jezyk="en" adres={adres!} entry={entry} />
   <StronaWpisu jezyk="en" adres={adres!} entry={entry} />
 </Strona>
