@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2026-11-13 11:45, Claude Code
+
+**✅ Zrobione (podgląd usług, runda 2 uwag Roberta, ryzyko niskie; nie wdrożone):**
+- `docs/makieta/uslugi.html`, widok 1: wzorem strony usługi jest teraz „Wdrożenia AI w firmie” (adres roboczy `/uslugi/wdrozenia-ai/`) zamiast automatyzacji. Treść tylko z faktów w `ustawienia/pl.md` i wdrożenia z wnioskami o dofinansowanie; brakujące problemy oraz odpowiedzi o bezpieczeństwie danych i cenie oznaczone do uzupełnienia przez Roberta. Tytuł kontaktu w podglądzie: „Powiedz, co robicie ręcznie. Sprawdzę, co może przejąć AI.” Brak przewijania w bok przy 390 i 1440 px.
+
+**🎯 Następny krok:** Robert ocenia podgląd i uzupełnia przykład wdrożenia agenta AI, bezpieczeństwo danych i wycenę; potem spec, frazy AI i plan.
+
 ## 2026-11-13 11:20, Claude Code
 
 **✅ Zrobione (podgląd usług, runda 1 uwag Roberta, ryzyko niskie; gałąź `widocznosc-klienci-rekruterzy`, nie wdrożone):**
