@@ -43,6 +43,17 @@ test.describe('ruch ograniczony', () => {
   });
 });
 
+test('na wolnym procesorze raster przestaje się animować (PageSpeed: TBT)', async ({ page }) => {
+  const cdp = await page.context().newCDPSession(page);
+  await cdp.send('Emulation.setCPUThrottlingRate', { rate: 6 });
+  await page.goto('/');
+  const obraz = () => page.evaluate(() => (document.getElementById('raster') as HTMLCanvasElement).toDataURL());
+  await page.waitForTimeout(3000);
+  const a = await obraz();
+  await page.waitForTimeout(1500);
+  expect(await obraz()).toBe(a);
+});
+
 test('skrypt rastra nie blokuje renderowania (type="module")', async ({ page }) => {
   await page.goto('/');
   const skrypty = await page.evaluate(() =>
