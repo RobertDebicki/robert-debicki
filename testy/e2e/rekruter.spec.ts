@@ -47,7 +47,7 @@ test('podstrona rekrutera: kontakt z własnym tytułem, tel:, mailto:, LinkedIn 
   await expect(kontakt.locator('h2')).toHaveText('Porozmawiajmy o roli Automation Developer albo AI Engineer');
   await expect(kontakt.locator('.sec-intro')).toHaveText('Wrocław albo zdalnie. Najszybciej odpowiadam mailowo.');
   await expect(kontakt.locator('a[href="tel:+48600100200"][data-zdarzenie="klik_telefon"]')).toBeVisible();
-  await expect(kontakt.locator('a[href="mailto:robert.debicki7@gmail.com"][data-zdarzenie="klik_email"]')).toBeVisible();
+  await expect(kontakt.locator('a[href="mailto:office@robert-debicki.pl"][data-zdarzenie="klik_email"]')).toBeVisible();
   await expect(kontakt.locator('a[href^="https://www.linkedin.com/"]')).toBeVisible();
   await expect(page.locator('.hero a.btn[href^="https://www.linkedin.com/"]')).toHaveText('LinkedIn');
   await expect(page.locator('.hero a.btn.solid')).toHaveAttribute('href', CV);

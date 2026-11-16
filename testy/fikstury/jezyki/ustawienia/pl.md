@@ -93,7 +93,7 @@ rekruter:
 kontakt:
   tytul: "Szukam stałej pracy jako Automation Developer albo AI Engineer"
   wstep: "Wrocław albo zdalnie. Najszybciej odpowiadam mailowo."
-  email: "robert.debicki7@gmail.com"
+  email: "office@robert-debicki.pl"
   telefon: "+48 600 100 200"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"

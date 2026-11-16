@@ -185,7 +185,7 @@ for (const [adres, administrator, jezyk] of [
     expect(odp!.status()).toBe(200);
     const tekst = await page.locator('main').innerText();
     expect(tekst).toContain(administrator);
-    expect(tekst).toContain('robert.debicki7@gmail.com');
+    expect(tekst).toContain('office@robert-debicki.pl');
     expect(tekst).toContain('Google Analytics');
     expect(tekst).toMatch(jezyk === 'pl' ? /UODO/ : /supervisory authority/i);
     expect(tekst).not.toMatch(/[–—]/);

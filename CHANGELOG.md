@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 2026-11-16 11:30, Claude Code
+
+**✅ Zrobione (gałąź `email-office`; nie wdrożone):**
+- Adres kontaktowy zmieniony na `office@robert-debicki.pl` (nowa skrzynka Roberta) w `ustawienia/pl.md` i `en.md`; `zrodlo` w `en.md` przeliczone. Adres trafia stąd do kontaktu, polityki prywatności PL i EN, JSON-LD i `llms.txt`. Fikstury i 4 testy e2e zaktualizowane; w `src` i `testy` nie ma już starego adresu (zostaje w `docs/makieta` i historii).
+- Zamianę uruchomił Robert w terminalu, bo wtyczka prywatności blokuje polecenia czytające pliki z jego prywatnym adresem.
+- `npm run sprawdz`: exit 0 (vitest 190 pass/1 skipped, e2e 189 pass). W `dist` 0 plików ze starym adresem. `/code-review` bez błędów.
+
+**🚧 Nie zrobione:** próbny mail na `office@` (Robert); jeśli skrzynka przekierowuje do zewnętrznej poczty, dopisać tego dostawcę do polityki prywatności; PR i wdrożenie za zgodą Roberta.
+
+**🎯 Następny krok:** Robert potwierdza, że próbny mail doszedł i gdzie poczta jest odbierana; potem PR, scalenie i `npm run wdroz -- --wgraj`.
+
+## 2026-11-16 10:55, Claude Code
+
+**✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 16.11):**
+- PR #11 (`pagespeed-desktop-raster`): CI „Kontrole, testy i Lighthouse” pass (3 min 25 s), scalony do `main` (`2ef2af1`).
+- `npm run wdroz -- --wgraj`: 119 plików, kopia zapasowa serwera `~/Backups/robert-debicki-ftp/2026-11-16T09-46-23-161Z`, odbiór: wszystkie pliki zgodne z lokalnymi, `.htaccess` działa. `test:produkcja` 5 pass.
+- PageSpeed po wdrożeniu (16.11, 10:52, Lighthouse 13.6): desktop 100/100/100/100 (TBT 0 ms, było 69 i 2800 ms), mobile 100/100/100/100.
+
+**🚧 Nie zrobione:** bez zmian z wpisu 13.11 (`klik_telefon` w GTM, zadania 9 i 10).
+
+**🎯 Następny krok:** GTM: dopisać `klik_telefon` do wyzwalacza „Kliknięcia kontaktu” i opublikować kontener (za zgodą Roberta); GSC: zgłosić do indeksowania strony usług i `/dla-rekruterow/`.
+
 ## 2026-11-16 10:30, Claude Code
 
 **✅ Zrobione (PageSpeed desktop; nie wdrożone):**

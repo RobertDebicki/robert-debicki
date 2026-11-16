@@ -46,7 +46,7 @@ test('wezwanie na końcu strony usługi: tytuł kontaktu, tel: i mailto: z tymi 
   const kontakt = page.locator('#kontakt');
   await expect(kontakt.locator('h2')).toHaveText('Szukam stałej pracy jako Automation Developer albo AI Engineer');
   await expect(kontakt.locator('a[href="tel:+48600100200"][data-zdarzenie="klik_telefon"]')).toBeVisible();
-  await expect(kontakt.locator('a[href="mailto:robert.debicki7@gmail.com"][data-zdarzenie="klik_email"]')).toBeVisible();
+  await expect(kontakt.locator('a[href="mailto:office@robert-debicki.pl"][data-zdarzenie="klik_email"]')).toBeVisible();
 });
 
 test('JSON-LD: Service z dostawcą, obszarem i typem oraz FAQPage z każdym pytaniem', async ({ page }) => {

@@ -65,7 +65,7 @@ rekruter:
 kontakt:
   tytul: "Fixture contact"
   wstep: "Fixture intro."
-  email: "robert.debicki7@gmail.com"
+  email: "office@robert-debicki.pl"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn"
 ---
