@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 2026-11-16 10:30, Claude Code
+
+**✅ Zrobione (PageSpeed desktop; nie wdrożone):**
+- Raport PageSpeed desktop z 15.11 (Lighthouse 13.6): wydajność 69, reszta 100. Przyczyna: Total Blocking Time 2800 ms, 20 długich zadań po ~70 ms przez cały pomiar, 26 s czasu procesora w „Other”. Animowany raster tła (`Raster.astro`, ok. 10 tys. kółek 30 razy na sekundę) na serwerze bez GPU rysuje każdą klatkę dłużej niż 50 ms.
+- Odtworzone lokalnie: Lighthouse desktop z `--disable-gpu` i spowolnieniem CPU x4 dał 70 (TBT 4460 ms). Bez spowolnienia 100, stąd różnica z pomiarem na Macu.
+- Poprawka: raster sam mierzy odstępy między klatkami; po 5 odstępach powyżej 40 ms z rzędu zostaje nieruchomy na ostatniej klatce (jak przy `prefers-reduced-motion`), bez przerysowania przy przewijaniu, z przerysowaniem przy zmianie rozmiaru i motywu. Na sprawnym sprzęcie animacja bez zmian (sprawdzone w przeglądarce z GPU).
+- Pomiar po poprawce (lokalny build, rzeczywiste spowolnienie, bez GPU): x2 5/5 przebiegów 100, TBT 20 ms; x4 87 (przed: 70, produkcja w tym trybie nie skończyła pomiaru).
+- Test e2e `animacje.spec.ts`: przy spowolnieniu CPU x6 raster przestaje się zmieniać (czerwony na starym kodzie). `npm run sprawdz`: exit 0, vitest 190 pass/1 skipped, e2e 189 pass. Dwie rundy `/code-review`, uwagi naniesione.
+
+**🚧 Nie zrobione:** zgoda Roberta na zmianę zachowania wyglądu (raster nieruchomy na słabym sprzęcie); scalenie i wdrożenie; ponowny pomiar w PageSpeed po wdrożeniu.
+
+**🎯 Następny krok:** po zgodzie Roberta scalić `pagespeed-desktop-raster` z `main`, `npm run wdroz -- --wgraj`, potem „Analizuj ponownie” w PageSpeed (desktop i mobile).
+
 ## 2026-11-13 20:00, Claude Code
 
 **✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 13.11):**

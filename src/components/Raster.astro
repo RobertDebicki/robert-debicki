@@ -69,22 +69,39 @@
       cv.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       readTheme();
-      if (reduce) draw(0);
+      if (still()) draw(last);
     };
-    let last = 0, running = true;
+    // Słaby sprzęt (np. bez GPU): rysowanie zajmuje 50 ms i więcej, blokuje wątek.
+    // Odstępy między klatkami są wielokrotnością 16,7 ms (50, 67), na sprawnym 17-33.
+    // Po pięciu odstępach powyżej 40 ms z rzędu raster zostaje nieruchomy na tej klatce
+    // i nie przerysowuje się przy przewijaniu (każde przerysowanie znów blokowałoby wątek).
+    let last = 0, prev = 0, slow = 0, frame = 0, running = true, frozen = false;
+    const still = () => reduce || frozen;
+    const theme = () => {
+      readTheme();
+      if (still()) draw(last);
+    };
     const loop = (t: number) => {
       if (!running) return;
+      if (prev && t - prev > 40) {
+        if (++slow >= 5) {
+          frozen = true;
+          running = false;
+          return;
+        }
+      } else slow = 0;
+      prev = t;
       if (t - last > 33) {
         last = t;
         draw(t);
       }
-      requestAnimationFrame(loop);
+      frame = requestAnimationFrame(loop);
     };
     const start = () => {
       resize();
       window.addEventListener('resize', resize);
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readTheme);
-      new MutationObserver(readTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', theme);
+      new MutationObserver(theme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
       window.addEventListener('pointermove', (e) => { tmx = e.clientX; tmy = e.clientY; }, { passive: true });
       if (reduce) {
         draw(0);
@@ -92,10 +109,14 @@
         return;
       }
       document.addEventListener('visibilitychange', () => {
+        if (frozen) return;
+        cancelAnimationFrame(frame);
         running = !document.hidden;
-        if (running) requestAnimationFrame(loop);
+        prev = 0;
+        slow = 0;
+        if (running) frame = requestAnimationFrame(loop);
       });
-      requestAnimationFrame(loop);
+      frame = requestAnimationFrame(loop);
     };
     if (document.readyState === 'complete') requestAnimationFrame(start);
     else window.addEventListener('load', () => requestAnimationFrame(start), { once: true });
