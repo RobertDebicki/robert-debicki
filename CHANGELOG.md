@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-11-16 10:55, Claude Code
+
+**✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 16.11):**
+- PR #11 (`pagespeed-desktop-raster`): CI „Kontrole, testy i Lighthouse” pass (3 min 25 s), scalony do `main` (`2ef2af1`).
+- `npm run wdroz -- --wgraj`: 119 plików, kopia zapasowa serwera `~/Backups/robert-debicki-ftp/2026-11-16T09-46-23-161Z`, odbiór: wszystkie pliki zgodne z lokalnymi, `.htaccess` działa. `test:produkcja` 5 pass.
+- PageSpeed po wdrożeniu (16.11, 10:52, Lighthouse 13.6): desktop 100/100/100/100 (TBT 0 ms, było 69 i 2800 ms), mobile 100/100/100/100.
+
+**🚧 Nie zrobione:** bez zmian z wpisu 13.11 (`klik_telefon` w GTM, zadania 9 i 10).
+
+**🎯 Następny krok:** GTM: dopisać `klik_telefon` do wyzwalacza „Kliknięcia kontaktu” i opublikować kontener (za zgodą Roberta); GSC: zgłosić do indeksowania strony usług i `/dla-rekruterow/`.
+
 ## 2026-11-16 10:30, Claude Code
 
 **✅ Zrobione (PageSpeed desktop; nie wdrożone):**
