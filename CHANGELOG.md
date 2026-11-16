@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2026-11-16 21:40, Claude Code
+
+**✅ Zrobione (gałąź `skill-wpis-rd`; nie wypchnięte):**
+- Skill `/wpis-rd` w `.claude/skills/wpis-rd/` (decyzje Roberta 16.11: tylko ten projekt; wpisy, usługi, karty wdrożeń i projektów; wezwanie z e-mailem; na koniec EN przez `/tlumacz-strone`, build i commit, bez pusha). Plan: `docs/superpowers/plans/2026-11-16-skill-wpis-rd.md`.
+- `skrypty/dnk.ts`: kontrola wpisu i usługi według progów z master promptu DNK (cel 100 pkt): tytuł strony 40 do 58 z marką, opis 125 do 150 z liczbą i wezwaniem, 4 do 6 H2, wstęp 2 do 4 zdań z pogrubioną frazą, fraza 4 do 6, dodatkowe 1 do 3, 1 albo 2 linki do stron serwisu, 2 do 4 zdjęć z podpisem, alt 30 do 110, FAQ „Najczęstsze pytania o …” 5 do 7, wezwanie z e-mailem do 200 znaków, zdania, średnik, myślniki, zakazane ciągi także w środku słów, słowa i długość z panelu. Usługa: to, co pozwala szablon, reszta jako uwagi.
+- `skrypty/analizator.ts`: podpisane okienka formularza z tekstem Markdown w kolejności strony (wpis i usługa).
+- `AGENTS.md`: progi DNK zamiast dawnych reguł DNK, skill i skrypty w tabeli plików.
+- Testy: 37 nowych (Vitest), najpierw czerwone. Dwie rundy przeglądu przez osobnego agenta (8 + 3 usterki, poprawione z testami).
+- `npm run sprawdz`: kod 0 (sekrety 0, zakazane wzorce 0, nazwy klientów 0, tłumaczenia 19 par, Vitest 227 pass / 1 skipped, build, e2e 189 pass).
+
+**🚧 Nie zrobione:** teksty sprzed 16.11 nie spełniają nowych progów (np. odczyt dokumentów: 10 błędów); granice kontroli: „w 2026 r. Robert” liczy się jako dwa zdania, odmiana z wymianą spółgłoski („ręka”, „ręce”) nie jest łapana; analizator DNK może liczyć frazę w innych polach usługi niż kontrola (do sprawdzenia jednym wklejeniem).
+
+**✅ Decyzja Roberta 16.11:** w publicznym repo tylko inicjały DNK (bez imienia i nazwiska), także w historii gałęzi.
+
+**🎯 Następny krok:** PR do `main` za zgodą Roberta; pierwszy tekst skillem `/wpis-rd`.
+
 ## 2026-11-16 11:20, Claude Code
 
 **✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 16.11):**
