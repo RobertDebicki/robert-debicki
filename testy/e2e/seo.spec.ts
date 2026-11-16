@@ -86,7 +86,7 @@ test('llms.txt opisuje autora dla asystentów AI: nazwa, rola, kontakt, narzędz
   const tekst = await odp.text();
   expect(tekst.split('\n')[0]).toBe('# Robert Dębicki');
   expect(tekst).toMatch(/^> Automation Developer\./m);
-  expect(tekst).toContain('robert.debicki7@gmail.com');
+  expect(tekst).toContain('office@robert-debicki.pl');
   expect(tekst).toContain('https://www.linkedin.com/in/robert-d%C4%99bicki/');
   expect(tekst).toMatch(/^- Automatyzacja: n8n, Make\.com$/m);
   expect(tekst).toMatch(/^- \[.+\]\(https:\/\/robert-debicki\.pl\/\)$/m);

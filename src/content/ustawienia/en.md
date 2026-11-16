@@ -97,10 +97,10 @@ rekruter:
 kontakt:
   tytul: "Tell me what you still do by hand. I'll check what automation can take over, and what AI can."
   wstep: "I implement AI and automate processes for companies: AI agents, voicebots, apps, and websites. I'm also open to a full-time Automation Developer or AI Engineer role. Wrocław, Poland, or remote. Call or message me."
-  email: "robert.debicki7@gmail.com"
+  email: "office@robert-debicki.pl"
   telefon: "+48 665 780 129"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
 tlumaczenie: ai
-zrodlo: a020300a9a061d85fcb45db59fa3b1f15e64432469742750eda12a54b36fd8ed
+zrodlo: 83b97b8cc6f6ea2f8d5334d78d7fcee2bee32ed6db37fc54de07d82eae3c206c
 ---

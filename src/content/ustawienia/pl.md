@@ -97,7 +97,7 @@ rekruter:
 kontakt:
   tytul: "Powiedz, co robicie ręcznie. Sprawdzę, co przejmie automatyzacja, a co AI."
   wstep: "Firmom wdrażam AI i automatyzuję procesy: agenci AI, voiceboty, aplikacje i strony. Jestem też otwarty na stałą rolę Automation Developer albo AI Engineer. Wrocław albo zdalnie. Zadzwoń albo napisz."
-  email: "robert.debicki7@gmail.com"
+  email: "office@robert-debicki.pl"
   telefon: "+48 665 780 129"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
