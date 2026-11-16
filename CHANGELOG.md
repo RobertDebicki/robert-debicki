@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 2026-11-16 11:20, Claude Code
+
+**✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 16.11):**
+- PR #12 (`email-office`): CI pass (4 min), scalony do `main` (`6e6a2a5`).
+- `npm run wdroz -- --wgraj`: 119 plików, kopia zapasowa `~/Backups/robert-debicki-ftp/2026-11-16T10-13-27-675Z`, odbiór zgodny, `.htaccess` działa. `test:produkcja` 5 pass.
+- Żywa strona: `office@robert-debicki.pl` na `/`, `/en/`, w polityce PL i EN, na `/dla-rekruterow/` i w `llms.txt`; starego adresu 0 trafień.
+
+**🚧 Nie zrobione:** próbny mail na `office@` (Robert); jeśli poczta jest przekierowana do zewnętrznego dostawcy, dopisać go do polityki prywatności. Dalej otwarte: `klik_telefon` w GTM.
+
+**🎯 Następny krok:** Robert potwierdza próbny mail i miejsce odbioru poczty; GTM: `klik_telefon` w wyzwalaczu (za zgodą Roberta).
+
 ## 2026-11-16 11:30, Claude Code
 
 **✅ Zrobione (gałąź `email-office`; nie wdrożone):**
