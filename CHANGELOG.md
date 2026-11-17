@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 09:45, Claude Code
+
+**✅ Zrobione:** skrypt wdrożenia wypisuje każdą porcję wgrywania i wynik curl (diagnostyka). Test wgrywania bez zmian w logice.
+
+**🚧 Nie zrobione:** wgranie na żywą stronę: po ostatniej próbie na serwerze nie ma katalogu `wpisy/ksef-faktury-kosztowe`, mimo że etap HTML przeszedł; przyczyna do ustalenia z wypisu porcji.
+
+**🎯 Następny krok:** ponowić `npm run wdroz -- --wgraj` i przeczytać wypis porcji.
+
 ## 2026-11-17 09:30, Claude Code
 
 **✅ Zrobione (poprawka skryptu wdrożenia):** `skrypty/wdroz.ts` wgrywa etap w porcjach po 5 plików, każda we własnej sesji curl, i ponawia porcję do 3 razy po błędzie sieci. Powód: cztery próby `--wgraj` padły w losowym miejscu (błąd 56, errno 36) na jednej długiej sesji. Test `podzielNaPorcje` (najpierw czerwony). `npm test`: wszystkie zaliczone.
