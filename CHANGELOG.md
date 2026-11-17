@@ -2,7 +2,7 @@
 
 ## 2026-11-17 09:30, Claude Code
 
-**✅ Zrobione (poprawka skryptu wdrożenia):** `skrypty/wdroz.ts` wgrywa etap w porcjach po 15 plików, każda we własnej sesji curl, i ponawia porcję raz po błędzie sieci. Powód: cztery próby `--wgraj` padły w losowym miejscu (błąd 56, errno 36) na jednej długiej sesji. Test `podzielNaPorcje` (najpierw czerwony). `npm test`: wszystkie zaliczone.
+**✅ Zrobione (poprawka skryptu wdrożenia):** `skrypty/wdroz.ts` wgrywa etap w porcjach po 5 plików, każda we własnej sesji curl, i ponawia porcję do 3 razy po błędzie sieci. Powód: cztery próby `--wgraj` padły w losowym miejscu (błąd 56, errno 36) na jednej długiej sesji. Test `podzielNaPorcje` (najpierw czerwony). `npm test`: wszystkie zaliczone.
 
 **🚧 Nie zrobione:** wgranie na żywą stronę (ponowna próba po tej poprawce); pliki `.part` po przerwanych próbach mogą zostać na serwerze.
 
