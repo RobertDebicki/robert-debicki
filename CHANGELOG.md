@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 13:30, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`):** wpis o automatyzacji procesów w firmie: rozwinięty opis procesu w trzech krokach (tylko z tego, co już jest w tekście i w odpowiedziach Roberta), 499 słów, PL i EN. `dnk.ts`: 0 błędów.
+
+**🚧 Nie zrobione:** długość pozostałych wpisów (AI Act, odczyt dokumentów, voice bot, n8n) czeka na fakty Roberta.
+
+**🎯 Następny krok:** odpowiedzi Roberta do pozostałych wpisów.
+
 ## 2026-11-17 13:10, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`):** usługa „strony i aplikacje”: opis w Google z liczbą od Roberta (prosty landing page około 1000 zł plus VAT), wezwanie do wyceny, PL i EN; frazę „aplikacja zamiast Excela” usunięto z listy (Robert: Excel już mało kto używa). `dnk.ts`: 0 błędów.

@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/ile-firm-uzywa-ai-en-miniatura.png"
   alt: "Large figure of 8.36 percent of companies in Poland using AI according to Eurostat, compared with the European Union"
 tlumaczenie: ai
-zrodlo: 343e1882bf6d97366e184f45c50be0392c7e0b679384dd4ad44ef25b601e8746
+zrodlo: 7a61fb72a05b2fc945a3b49ea53c32e7f1d2de363bfaf211d3b5e36fb8c4f193
 ---
 **Business process automation** is still an advantage, not the norm. According to Statistics Poland (GUS), 8.7% of Polish companies used artificial intelligence in 2025. I explain how to pick your first process to automate and what results my clients saw, and if you want to check what to automate in your company, email me.
 
@@ -29,6 +29,8 @@ Start with one task that someone in your company repeats every week by the same 
 3. What happens when the system makes a mistake, and who will notice?
 
 The third question matters most. Where a mistake is costly, I leave the decision to a person.
+
+Once you know the answers, I build the automation in three steps. I check how the task looks today. I add a simple automation in n8n or Make.com. I add AI where documents have to be read or text understood. A mistake that costs money stays with a person.
 
 ![Three questions before automating: hours the task takes, where the data comes from, what if the system errs](/src/assets/wpisy/ile-firm-uzywa-ai-en-2.png)
 

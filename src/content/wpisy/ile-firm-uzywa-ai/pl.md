@@ -28,6 +28,8 @@ Zacznij od jednego zadania, które ktoś w Twojej firmie powtarza co tydzień we
 
 Trzecie pytanie jest najważniejsze. Tam, gdzie pomyłka kosztuje, zostawiam decyzję człowiekowi.
 
+Gdy znasz odpowiedzi, buduję automatyzację w trzech krokach. Sprawdzam, jak zadanie wygląda dziś. Dokładam prosty automat w n8n albo Make.com. AI dodaję tam, gdzie trzeba czytać dokumenty albo rozumieć tekst. Pomyłka, która kosztuje, zostaje w rękach człowieka.
+
 ![Trzy pytania przed automatyzacją: ile godzin zajmuje zadanie, skąd są dane, co jeśli system się pomyli](/src/assets/wpisy/ile-firm-uzywa-ai-2.png)
 
 *Trzy pytania do zadania przed pierwszą automatyzacją.*
