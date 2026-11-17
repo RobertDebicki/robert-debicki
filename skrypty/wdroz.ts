@@ -303,10 +303,12 @@ async function wgraj(k: Konfiguracja, indeksuj: boolean): Promise<void> {
   const lokalnie = new Map(lista.map((p) => [p.zdalny, p.lokalny]));
   try {
     for (const etap of podzielNaEtapy(lista.map((p) => p.zdalny))) {
-      for (const porcja of podzielNaPorcje(etap, 15)) {
+      for (const porcja of podzielNaPorcje(etap, 5)) {
         const transfery = porcja.map((z) => transferWgrania(k.host, k.katalog, z, lokalnie.get(z) as string));
-        // Błąd sieci przy porcji ponawiamy raz (plik .part jest nadpisywany, a RNTO zamienia go na właściwy).
-        try { curl(k, transfery); } catch { curl(k, transfery); }
+        // Błąd sieci przy porcji ponawiamy do 3 razy (plik .part jest nadpisywany, a RNTO zamienia go na właściwy).
+        for (let proba = 1; ; proba++) {
+          try { curl(k, transfery); break; } catch (e) { if (proba >= 3) throw e; }
+        }
       }
     }
   } catch (e) {
