@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 11:10, Claude Code
+
+**✅ Zrobione (publikacja za zgodą Roberta w wiadomości 17.11):** wpis „Faktury kosztowe z KSeF: jak je pobierać” w wersji PL i EN (`src/content/wpisy/ksef-faktury-kosztowe/`), grafiki z makiety. Kontrola DNK: 0 błędów. Kontrola tłumaczeń: 0 błędów. Pozostałe wpisy (polityka AI, oszustwo na prezesa, agent AI) nie są na stronie.
+
+**🚧 Nie zrobione:** ocena z analizatora DNK (Robert jeszcze nie wkleił); korekta native speakera dla EN; wersje EN pozostałych wpisów.
+
+**🎯 Następny krok:** Robert wkleja okienka z analizatora dla KSeF i pozostałych wpisów; potem kolejne wpisy na `main`.
+
 ## 2026-11-16 21:40, Claude Code
 
 **✅ Zrobione (gałąź `skill-wpis-rd`; nie wypchnięte):**
