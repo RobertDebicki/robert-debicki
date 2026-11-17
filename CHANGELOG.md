@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-17 16:00, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`):** powitanie bota w tekstach mówi wprost, że to asystentka AI, czyli sztuczna inteligencja (zamiast „wirtualna asystentka”); etapy AI Act poprawione na „są stosowane etapami”; wyjątek KSeF (do 10 000 zł miesięcznie do 31.12.2026) dopisany do odczytu, PL i EN; daty odczytu usunięte z nawiasów w n8n. Pełna kontrola `npm run sprawdz`: exit 0, 229 testów, 189 e2e.
+
+**🚧 Nie zrobione:** wypchnięcie na `main` i wdrożenie w toku.
+
 ## 2026-11-17 14:30, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`):** pięć wpisów rozbudowanych do 840 do 982 słów (ile-firm 899, AI Act 982, odczyt 981, voice bot ok. 840, n8n 981), prostym językiem, z faktami ze źródeł (GUS, Eurostat, PIE, art. 4, 28, 32, 50 AI Act i RODO, dokumentacja n8n, Prawo.pl, KSeF 2.0). Fakty Roberta użyte bez nowych liczb. PL i EN, `dnk.ts`: 0 błędów i 0 uwag, kontrola tłumaczeń 0 błędów, `sprawdz:tresc` 0 i 0.

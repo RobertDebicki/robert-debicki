@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/ai-act-dla-malej-firmy-en-miniatura.png"
   alt: "Chat window with a bot that says I'm an AI assistant, next to an AI Act compliance check mark"
 tlumaczenie: ai
-zrodlo: a6cee6d6a95cab0c1d018d5a44c7c0b930d51bf2444098719c0c92302e7adae5
+zrodlo: ef5003dbfcebd78257bf9b1b1fddf92cb1d8f4b1627c68bd371e9fe9a426041a
 ---
 **The AI Act for small businesses** already applies to you if your website runs a chat or a bot answers your phone. The transparency rules have applied since Aug. 2, 2026. They say what customers must know when they talk to AI. I explain in plain language what they mean in practice and what you can check in your business in one evening. If you have a bot and aren't sure it meets the requirements, send me an email.
 
@@ -20,7 +20,7 @@ The AI Act is the EU law on artificial intelligence, and it takes effect in stag
 
 On July 20, 2026, the European Commission published guidelines on Article 50 and stated on its website that the transparency obligations apply from Aug. 2, 2026. The core rule is simple: customers must know they're talking to artificial intelligence, unless it's obvious to them. Under Article 50(5), this information must be clear and given at the first contact with the system at the latest.
 
-One example from my own work is a voice bot for lead qualification, meaning the first call with a person interested in an offer. Two minutes after someone fills in the form, the bot calls them, and the assistant introduces herself as a virtual assistant right away. If the customer asks for a person, the agent transfers the call to a person.
+One example from my own work is a voice bot for lead qualification, meaning the first call with a person interested in an offer. Two minutes after someone fills in the form, the bot calls them, and the assistant introduces herself as an AI assistant, meaning artificial intelligence, right away. If the customer asks for a person, the agent transfers the call to a person.
 
 ![AI Act timeline from February 2025 to August 2028 with Aug. 2, 2026 marked as in force now](/src/assets/wpisy/ai-act-dla-malej-firmy-en-2.png)
 

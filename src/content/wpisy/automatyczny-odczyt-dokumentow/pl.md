@@ -39,7 +39,7 @@ Całość stoi na n8n, czyli narzędziu, w którym automatyzację składa się z
 
 ### A co z fakturami z KSeF
 
-Przy odczycie faktur sytuacja wygląda inaczej, gdy faktura pochodzi z Krajowego Systemu e-Faktur, czyli KSeF. Według Ministerstwa Finansów obowiązek wystawiania faktur w KSeF działa od 1 lutego 2026 dla firm, które w 2024 miały sprzedaż powyżej 200 mln zł z VAT. Pozostałe firmy wystawiają faktury w KSeF od 1 kwietnia 2026. Ministerstwo wyjaśnia na stronie KSeF 2.0, że faktura w tym systemie musi mieć format pliku XML. To plik zgodny z urzędowym wzorem, w którym każda dana ma swoje stałe miejsce, więc do jego odczytu OCR nie jest potrzebny. Automatyczne pobieranie takich faktur opisuję we wpisie [faktury kosztowe z KSeF](/wpisy/ksef-faktury-kosztowe/).
+Przy odczycie faktur sytuacja wygląda inaczej, gdy faktura pochodzi z Krajowego Systemu e-Faktur, czyli KSeF. Według Ministerstwa Finansów obowiązek wystawiania faktur w KSeF działa od 1 lutego 2026 dla firm, które w 2024 miały sprzedaż powyżej 200 mln zł z VAT. Pozostałe firmy wystawiają faktury w KSeF od 1 kwietnia 2026. Firmy z fakturami do 10 000 zł brutto miesięcznie mogą wystawiać faktury poza KSeF tylko do 31 grudnia 2026. Ministerstwo wyjaśnia na stronie KSeF 2.0, że faktura w tym systemie musi mieć format pliku XML. To plik zgodny z urzędowym wzorem, w którym każda dana ma swoje stałe miejsce, więc do jego odczytu OCR nie jest potrzebny. Automatyczne pobieranie takich faktur opisuję we wpisie [faktury kosztowe z KSeF](/wpisy/ksef-faktury-kosztowe/).
 
 ## Co z odczytem, którego system nie jest pewny
 

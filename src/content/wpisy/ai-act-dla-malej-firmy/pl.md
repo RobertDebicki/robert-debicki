@@ -14,11 +14,11 @@ miniatura:
 
 ## AI Act 2026: co obowiązuje od 2 sierpnia
 
-AI Act to unijne przepisy o sztucznej inteligencji, które wchodzą w życie etapami w kolejnych latach. System AI to w nich program, który działa z pewną samodzielnością i na podstawie danych tworzy odpowiedzi, treści albo rekomendacje, jak opisuje to artykuł 3 AI Act.
+AI Act to unijne przepisy o sztucznej inteligencji, które są stosowane etapami w kolejnych latach. System AI to w nich program, który działa z pewną samodzielnością i na podstawie danych tworzy odpowiedzi, treści albo rekomendacje, jak opisuje to artykuł 3 AI Act.
 
 Komisja Europejska opublikowała 20 lipca 2026 wytyczne do artykułu 50 i podała na swojej stronie, że obowiązki przejrzystości stosuje się od 2 sierpnia 2026. Najważniejsza zasada jest prosta: klient ma wiedzieć, że rozmawia ze sztuczną inteligencją, chyba że jest to dla niego oczywiste. Według artykułu 50 ust. 5 ta informacja ma być jasna i paść najpóźniej przy pierwszym kontakcie z systemem.
 
-Przykład z mojego wdrożenia to voice bot do kwalifikacji leadów, czyli pierwszej rozmowy z osobą zainteresowaną ofertą. Dwie minuty po wypełnieniu formularza bot dzwoni do tej osoby, a asystentka od razu przedstawia się jako wirtualna asystentka. Gdy klient poprosi o człowieka, agent przekierowuje połączenie do człowieka.
+Przykład z mojego wdrożenia to voice bot do kwalifikacji leadów, czyli pierwszej rozmowy z osobą zainteresowaną ofertą. Dwie minuty po wypełnieniu formularza bot dzwoni do tej osoby, a asystentka od razu przedstawia się jako asystentka AI, czyli sztuczna inteligencja. Gdy klient poprosi o człowieka, agent przekierowuje połączenie do człowieka.
 
 ![Oś czasu AI Act od lutego 2025 do sierpnia 2028 z zaznaczonym 2 sierpnia 2026 jako obowiązującym teraz](/src/assets/wpisy/ai-act-dla-malej-firmy-2.png)
 

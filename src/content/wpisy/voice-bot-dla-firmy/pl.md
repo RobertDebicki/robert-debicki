@@ -21,7 +21,7 @@ Lead to osoba, która zostawiła firmie swoje dane i zapytanie, na przykład prz
 ## Jak działa ten voice bot krok po kroku
 
 1. Klient wypełnia formularz kontaktowy na stronie firmy i zostawia w nim swój numer telefonu.
-2. Bot dzwoni pod ten numer w ciągu 2 minut, przedstawia się jako wirtualna asystentka i zadaje pytania kwalifikujące.
+2. Bot dzwoni pod ten numer w ciągu 2 minut, przedstawia się jako asystentka AI, czyli sztuczna inteligencja, i zadaje pytania kwalifikujące.
 3. Pytania kwalifikujące sprawdzają, czego klient potrzebuje i jaki ma budżet, a z odpowiedzi powstaje notatka dla handlowca.
 4. Scenariusz w n8n, czyli narzędziu, które łączy ze sobą różne aplikacje, zapisuje notatkę przy właściwej szansie sprzedaży w Pipedrive.
 
@@ -43,7 +43,7 @@ Zakres pracy bota ustalam z firmą na początku wdrożenia: jakie pytania zadaje
 
 ## Voice bot a przepisy: AI Act, RODO i zgoda na kontakt
 
-AI Act to unijne rozporządzenie o sztucznej inteligencji, a jego art. 50 obowiązuje od 2 sierpnia 2026. Według art. 50 ust. 1 system AI, który rozmawia z człowiekiem, ma go poinformować, że jest AI, chyba że to oczywiste. Ust. 5 tego artykułu mówi, że informacja ma paść jasno, najpóźniej przy pierwszym kontakcie z rozmówcą. W moim wdrożeniu asystentka zaczyna więc rozmowę od przedstawienia się jako wirtualna asystentka.
+AI Act to unijne rozporządzenie o sztucznej inteligencji, a jego art. 50 obowiązuje od 2 sierpnia 2026. Według art. 50 ust. 1 system AI, który rozmawia z człowiekiem, ma go poinformować, że jest AI, chyba że to oczywiste. Ust. 5 tego artykułu mówi, że informacja ma paść jasno, najpóźniej przy pierwszym kontakcie z rozmówcą. W moim wdrożeniu asystentka zaczyna więc rozmowę od przedstawienia się jako asystentka AI, czyli sztuczna inteligencja.
 
 RODO to unijne rozporządzenie o ochronie danych osobowych, czyli między innymi imienia i numeru telefonu. Art. 6 RODO wymienia podstawy, na których firma może używać takich danych, na przykład zgodę albo działania na prośbę osoby przed zawarciem umowy. Którą podstawę przyjąć dla formularza, najlepiej ustalić z prawnikiem przed startem bota.
 
@@ -52,7 +52,7 @@ Zgoda na kontakt to zgoda osoby na to, żeby firma dzwoniła do niej z informacj
 ## Najczęstsze pytania o voice bota dla firmy
 
 ### Czy klient pozna, że rozmawia z botem?
-Tak, gdy rozmowa z AI nie jest dla rozmówcy oczywista. W moim wdrożeniu asystentka przedstawia się na początku rozmowy jako wirtualna asystentka. Wytyczne Komisji Europejskiej do art. 50 mówią, że samo słowo „asystent” może nie wystarczyć, więc lepiej mówić wprost, że to sztuczna inteligencja.
+Tak, gdy rozmowa z AI nie jest dla rozmówcy oczywista. W moim wdrożeniu asystentka przedstawia się na początku rozmowy jako asystentka AI, czyli sztuczna inteligencja. Wytyczne Komisji Europejskiej do art. 50 mówią, że samo słowo „asystent” może nie wystarczyć, więc lepiej mówić wprost, że to sztuczna inteligencja.
 
 ### Czy klient może poprosić o rozmowę z człowiekiem?
 Tak. Wystarczy, że poprosi o to w trakcie rozmowy, a agent przekierowuje połączenie do pracownika firmy.

@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/n8n-make-czy-zapier-en-miniatura.png"
   alt: "Unit comparison: four tasks in Zapier, five operations in Make, one execution in n8n"
 tlumaczenie: ai
-zrodlo: e048da2575c79e4daf9174a517407ceb8eeed721c7cef6e96271db026b0a6182
+zrodlo: 3ed3afa867a71f01a8120ae58ac77d2c79bcaf272267f4cd31fe743b96d0fca1
 ---
 **n8n, Make, or Zapier** is a question I hear from business owners right before their first automation. All three tools connect apps and handle repetitive tasks for you, but they charge differently and need different levels of technical knowledge. I explain in plain language what to look at when you choose, and if you're still not sure what fits your business, email me.
 
@@ -30,9 +30,9 @@ A subscription is a recurring fee for using a tool in the vendor's cloud, paid o
 
 Comparisons describe Zapier as the easiest to use, and it also has the most integrations. Its site lists more than 10,000 apps, and Make's site lists more than 3,500. Zapier fits when nobody in the company is technical and you need a quick start.
 
-Make has a visual workflow editor where you can see what flows where. On make.com, the vendor says you build automations visually, including by drag-and-drop, and that no coding is required (make.com, accessed Nov. 17, 2026). It's a middle ground for people with moderate technical knowledge.
+Make has a visual workflow editor where you can see what flows where. On make.com, the vendor says you build automations visually, including by drag-and-drop, and that no coding is required (make.com). It's a middle ground for people with moderate technical knowledge.
 
-n8n needs the most knowledge but gives you the most control over how and where an automation runs. The n8n documentation describes it as a tool where you can do a lot without code and add code when you need it (docs.n8n.io, accessed Nov. 17, 2026).
+n8n needs the most knowledge but gives you the most control over how and where an automation runs. The n8n documentation describes it as a tool where you can do a lot without code and add code when you need it (docs.n8n.io).
 
 ![Comparison table of n8n, Make, and Zapier: ease of use, technical knowledge, where the data lives](/src/assets/wpisy/n8n-make-czy-zapier-en-2.png)
 
@@ -40,7 +40,7 @@ n8n needs the most knowledge but gives you the most control over how and where a
 
 ## Self-hosting: pros and cons
 
-Self-hosting means the software runs on a machine you rent or keep on-site, not in the vendor's cloud. The n8n documentation says you can run it on your own infrastructure, on-premises, or in a private cloud (docs.n8n.io, accessed Nov. 17, 2026). n8n then saves its execution history in its own database, meaning on your server and not with the vendor. This matters for client documents and the GDPR.
+Self-hosting means the software runs on a machine you rent or keep on-site, not in the vendor's cloud. The n8n documentation says you can run it on your own infrastructure, on-premises, or in a private cloud (docs.n8n.io). n8n then saves its execution history in its own database, meaning on your server and not with the vendor. This matters for client documents and the GDPR.
 
 According to the same documentation, a self-hosted n8n instance sends diagnostic data and requests for updates and templates to the vendor by default. You can turn sending off with environment variables. The documentation is direct about the downsides: self-hosting takes knowledge of server setup, scaling, and security, and n8n recommends it for expert users. Mistakes can lead to data loss, security issues, and downtime. For people without server experience, n8n recommends its cloud version, and on your own server, maintenance is up to you.
 

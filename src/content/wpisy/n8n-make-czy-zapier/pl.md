@@ -28,9 +28,9 @@ Subskrypcja to stała opłata za korzystanie z narzędzia w chmurze dostawcy, p�
 
 Porównania opisują Zapiera jako najprostszy w obsłudze, a do tego ma on najwięcej integracji. Na swojej stronie podaje ponad 10 000 aplikacji, a Make na swojej ponad 3500. Zapier pasuje, gdy nikt w firmie nie zna się na technice i potrzebujesz szybkiego startu.
 
-Make ma graficzny edytor scenariuszy, w którym widać, co dokąd płynie. Na stronie make.com producent pisze, że automatyzacje buduje się wizualnie, także metodą przeciągnij i upuść, a programowanie nie jest wymagane (make.com, odczyt 17.11.2026). To kompromis dla osób z umiarkowaną wiedzą techniczną.
+Make ma graficzny edytor scenariuszy, w którym widać, co dokąd płynie. Na stronie make.com producent pisze, że automatyzacje buduje się wizualnie, także metodą przeciągnij i upuść, a programowanie nie jest wymagane (make.com). To kompromis dla osób z umiarkowaną wiedzą techniczną.
 
-n8n wymaga najwięcej wiedzy, ale daje największą kontrolę nad tym, jak i gdzie działa automatyzacja. Dokumentacja n8n opisuje go jako narzędzie, w którym dużo zrobisz bez kodu, a kod dodajesz wtedy, gdy jest potrzebny (docs.n8n.io, odczyt 17.11.2026).
+n8n wymaga najwięcej wiedzy, ale daje największą kontrolę nad tym, jak i gdzie działa automatyzacja. Dokumentacja n8n opisuje go jako narzędzie, w którym dużo zrobisz bez kodu, a kod dodajesz wtedy, gdy jest potrzebny (docs.n8n.io).
 
 ![Tabela porównania n8n, Make i Zapier: prostota obsługi, wiedza techniczna, miejsce danych](/src/assets/wpisy/n8n-make-czy-zapier-2.png)
 
@@ -38,7 +38,7 @@ n8n wymaga najwięcej wiedzy, ale daje największą kontrolę nad tym, jak i gdz
 
 ## Hosting na własnym serwerze: plusy i minusy
 
-Hosting na własnym serwerze oznacza, że program działa na komputerze, który wynajmujesz albo masz u siebie, a nie w chmurze producenta. Dokumentacja n8n podaje, że możesz go uruchomić na własnej infrastrukturze, w swojej firmie albo w prywatnej chmurze (docs.n8n.io, odczyt 17.11.2026). Historię uruchomień n8n zapisuje wtedy w swojej bazie danych, czyli na Twoim serwerze, a nie u producenta. To ma znaczenie przy dokumentach klientów i RODO.
+Hosting na własnym serwerze oznacza, że program działa na komputerze, który wynajmujesz albo masz u siebie, a nie w chmurze producenta. Dokumentacja n8n podaje, że możesz go uruchomić na własnej infrastrukturze, w swojej firmie albo w prywatnej chmurze (docs.n8n.io). Historię uruchomień n8n zapisuje wtedy w swojej bazie danych, czyli na Twoim serwerze, a nie u producenta. To ma znaczenie przy dokumentach klientów i RODO.
 
 Według tej samej dokumentacji samodzielnie postawiony n8n domyślnie wysyła do producenta dane diagnostyczne oraz zapytania o aktualizacje i szablony. Wysyłanie można wyłączyć zmiennymi środowiskowymi. Minusy dokumentacja opisuje wprost: własny hosting wymaga wiedzy o konfiguracji serwerów, skalowaniu i zabezpieczeniach, a producent poleca go doświadczonym użytkownikom. Błędy mogą skończyć się utratą danych, problemami z bezpieczeństwem i przerwami w działaniu. Osobom bez doświadczenia z serwerami n8n poleca swoją wersję w chmurze, a przy własnym serwerze utrzymanie spada na Ciebie.
 

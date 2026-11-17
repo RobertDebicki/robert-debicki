@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/voice-bot-dla-firmy-en-miniatura.png"
   alt: "Large 2:00 text and a phone handset, the bot calls the customer back within two minutes"
 tlumaczenie: ai
-zrodlo: a1956ee098d2b9c0f262b0072f25ca889d43cb17a0335b000a2408b58b1eb95a
+zrodlo: 92dbf6d7bac1aae2a3a332818592a8e8a0f74adb2d478351b56213c059fd7f1d
 ---
 **A voice bot for your business** can call the person who filled out the form on your website within 2 minutes of submission. I describe a project where the bot handles 15 calls a day and hands the sales rep a note from the call. Want to call back people who reach out through your website faster? Email me and tell me how many inquiries you get.
 
@@ -23,7 +23,7 @@ A lead is a person who left their details and an inquiry with a business, for ex
 ## How this voice bot works, step by step
 
 1. The customer fills out the contact form on the company website and leaves their phone number.
-2. Within 2 minutes, the bot calls that number, introduces herself as a virtual assistant, and asks qualifying questions.
+2. Within 2 minutes, the bot calls that number, introduces herself as an AI assistant, meaning artificial intelligence, and asks qualifying questions.
 3. The qualifying questions check what the customer needs and what budget they have, and the answers become a note for the sales rep.
 4. An n8n workflow, n8n being a tool that connects different apps, saves the note to the right deal in Pipedrive.
 
@@ -45,7 +45,7 @@ I set the bot's scope with the business at the start of the project: what questi
 
 ## A voice bot and the law: the AI Act, GDPR, and consent to contact
 
-The AI Act is the EU regulation on artificial intelligence, and its Article 50 applies from Aug. 2, 2026. Under Article 50(1), an AI system that talks with a person must tell them it's AI, unless that's obvious. Paragraph 5 of that article says the information must be clear and given at the latest at the first interaction. So in my deployment, the assistant opens the call by introducing herself as a virtual assistant.
+The AI Act is the EU regulation on artificial intelligence, and its Article 50 applies from Aug. 2, 2026. Under Article 50(1), an AI system that talks with a person must tell them it's AI, unless that's obvious. Paragraph 5 of that article says the information must be clear and given at the latest at the first interaction. So in my deployment, the assistant opens the call by introducing herself as an AI assistant, meaning artificial intelligence.
 
 GDPR (RODO in Polish) is the EU regulation on personal data protection, which covers things like a name and a phone number. Article 6 of the GDPR lists the legal grounds on which a business can use such data, for example consent or steps taken at the person's request before a contract. It's best to settle which ground applies to your form with a lawyer before the bot goes live.
 
@@ -54,7 +54,7 @@ Consent to contact is a person's permission for a business to call them with com
 ## Frequently asked questions about a voice bot for your business
 
 ### Will the customer know they're talking to a bot?
-Yes, when talking to AI isn't obvious to the caller. In my deployment, the assistant introduces herself as a virtual assistant at the start of the call. The European Commission's guidelines on Article 50 say the word "assistant" alone may not be enough, so it's better to say plainly that this is artificial intelligence.
+Yes, when talking to AI isn't obvious to the caller. In my deployment, the assistant introduces herself as an AI assistant, meaning artificial intelligence, at the start of the call. The European Commission's guidelines on Article 50 say the word "assistant" alone may not be enough, so it's better to say plainly that this is artificial intelligence.
 
 ### Can the customer ask to talk to a person?
 Yes. They just ask during the call, and the agent transfers the call to a company employee.
