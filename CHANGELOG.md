@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 09:35, Claude Code
+
+**✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 17.11):** wpis o KSeF (PL i EN) jest na żywej stronie. `npm run wdroz -- --wgraj`: 126 plików, odbiór zgodny z lokalnymi, `.htaccess` działa. `test:produkcja`: 5 z 5. Strony `/wpisy/ksef-faktury-kosztowe/` i `/en/posts/ksef-faktury-kosztowe/` zwracają 200. Poprawki skryptu: porcje po 5 plików, do 3 prób na porcję, wypis porcji.
+
+**🚧 Nie zrobione:** poprawki skryptu wdrożenia są lokalnie na `main`, nie wypchnięte; wpisy polityka AI, oszustwo i agent AI nie są na stronie; ocena z analizatora.
+
+**🎯 Następny krok:** Robert decyduje o wypchnięciu poprawek skryptu i o kolejnych wpisach.
+
 ## 2026-11-17 09:45, Claude Code
 
 **✅ Zrobione:** skrypt wdrożenia wypisuje każdą porcję wgrywania i wynik curl (diagnostyka). Test wgrywania bez zmian w logice.
