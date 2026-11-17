@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-11-17 14:30, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`):** pięć wpisów rozbudowanych do 840 do 982 słów (ile-firm 899, AI Act 982, odczyt 981, voice bot ok. 840, n8n 981), prostym językiem, z faktami ze źródeł (GUS, Eurostat, PIE, art. 4, 28, 32, 50 AI Act i RODO, dokumentacja n8n, Prawo.pl, KSeF 2.0). Fakty Roberta użyte bez nowych liczb. PL i EN, `dnk.ts`: 0 błędów i 0 uwag, kontrola tłumaczeń 0 błędów, `sprawdz:tresc` 0 i 0.
+- Poprawka po przeglądzie: zdanie o danych w n8n zgodne z dokumentacją (dane diagnostyczne idą do producenta domyślnie); „wirtualna asystentka” nie jest już przedstawiane jako spełnienie art. 50, bo wytyczne Komisji mówią, że samo „asystent” może nie wystarczyć.
+
+**🚧 Nie zrobione:** decyzja Roberta, czy zmienić powitanie bota tak, żeby mówiło wprost o AI; drobne uwagi recenzenta (wyjątek 31.12.2026 dla KSeF w odczycie, „wejście w życie etapami”, przypisy z datą odczytu w tekście n8n, pseudonimizacja uproszczona); wypchnięcie i wdrożenie za zgodą.
+
+**🎯 Następny krok:** odpowiedź Roberta w sprawie powitania bota.
+
 ## 2026-11-17 17:00, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`):** dopisane fakty ze źródeł, prostym językiem, z linkami: AI Act (art. 4: obowiązek zadbania o wiedzę ludzi o AI, od 2 lutego 2025; źródło artificialintelligenceact.eu, otwarte 17.11.2026); odczyt dokumentów (art. 5 RODO: minimalizacja danych; źródło gdpr-info.eu, otwarte 17.11.2026). PL i EN. `dnk.ts`: 0 błędów; kontrola tłumaczeń: 0 błędów.
