@@ -4,6 +4,8 @@
 
 **✅ Zrobione (gałąź `seo-audyt-en`, bez wdrożenia):** uwagi niskiej wagi z audytu. BreadcrumbList (schema.org) na wszystkich podstronach w PL i EN (`src/lib/okruszki.ts`, wstawiany w `Strona.astro`; strony główne i 404 bez niego; test `okruszki.test.ts`). Nowe tytuły i opisy list wpisów: PL „Wpisy o automatyzacji i AI w firmie | Robert Dębicki” (52 znaki, opis 141), EN „Posts on automation and AI for business | Robert Dębicki” (56, opis 148). `npm test` 235, e2e bez błędów, `sprawdz:tresc` 0, `sprawdz:sekrety` 0.
 
+Raport Lighthouse z 17.11 zapisany w `docs/lighthouse/2026-11-17.md`.
+
 **🚧 Nie zrobione:** strony `/uslugi/` i `/en/services/` zostają krótkie (to strony-spisy z trzema kartami); dłuższy wstęp wymaga faktów od Roberta, więc bez zgadywania. Wdrożenie czeka na zgodę.
 
 **🎯 Następny krok:** wdrożenie `seo-audyt-en` za zgodą Roberta, potem ręczne sprawdzenie przekierowań 301 starych adresów `/en/posts/` i odczyt Search Console (jutro).
