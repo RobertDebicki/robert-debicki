@@ -15,6 +15,7 @@ import Naglowek from '../components/Naglowek.astro';
 import Stopka from '../components/Stopka.astro';
 import Raster from '../components/Raster.astro';
 import Zgoda from '../components/Zgoda.astro';
+import { okruszki } from '../lib/okruszki';
 
 interface Props {
   jezyk: 'pl' | 'en';
@@ -37,6 +38,8 @@ const indeksuj = import.meta.env.PUBLIC_INDEKSUJ === 'true' && !noindex;
 // Podgląd linku (LinkedIn, Slack, mail): public/og.png, generowany przez skrypty/obraz-og.mjs.
 const obrazOg = adres('/og.png');
 const lokalizacja = { pl: 'pl_PL', en: 'en_US' } as const;
+// Okruszki dla wyszukiwarki (BreadcrumbList); strona 404 nie ma ścieżki w mapie strony, więc bez nich.
+const okruszkiJson = noindex ? null : okruszki(jezyk, Astro.url.pathname, tytul, Astro.site!);
 ---
 <!doctype html>
 <html lang={jezyk}>
@@ -71,6 +74,7 @@ const lokalizacja = { pl: 'pl_PL', en: 'en_US' } as const;
     <meta property="og:image:alt" content="Robert Dębicki, Automation Developer / AI" />
     <meta name="twitter:card" content="summary_large_image" />
     <slot name="glowa" />
+    {okruszkiJson && <script type="application/ld+json" set:html={JSON.stringify(okruszkiJson).replaceAll('<', '\\u003c')} />}
     <meta name="generator" content={Astro.generator} />
     {fontyKrytyczne.map((f) => <link rel="preload" as="font" type="font/woff2" href={f} crossorigin />)}
     <title>{tytul}</title>

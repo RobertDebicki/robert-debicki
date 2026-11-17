@@ -11,6 +11,6 @@ export async function getStaticPaths() {
 const maEn = await maListe('en');
 const maWpisyEn = (await wpisyWJezyku('en')).length > 0;
 ---
-<Strona jezyk="pl" tytul="Wpisy | Robert Dębicki" opis="Wpisy Roberta Dębickiego o automatyzacji, aplikacjach i wdrożeniach AI." odpowiednik={maWpisyEn ? '/en/posts/' : undefined} przelacznik={maEn ? '/en/posts/' : undefined}>
+<Strona jezyk="pl" tytul="Wpisy o automatyzacji i AI w firmie | Robert Dębicki" opis="Wpisy Roberta Dębickiego o automatyzacji procesów w n8n i Make, AI Act, KSeF i voicebotach. Zobacz, co możesz zautomatyzować w swojej firmie." odpowiednik={maWpisyEn ? '/en/posts/' : undefined} przelacznik={maEn ? '/en/posts/' : undefined}>
   <ListaWpisow jezyk="pl" />
 </Strona>
