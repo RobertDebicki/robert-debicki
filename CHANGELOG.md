@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 19:00, Claude Code
+
+**✅ Zrobione (`main`, lokalnie, bez wdrożenia i bez pusha):** sprawdzenie linkowania wpisów do usług (punkt 3 z listy działań SEO): wszystkie 6 wpisów PL i EN już linkuje do pasującej usługi, więc nic nie dopisywano. Znaleziony i poprawiony błąd: angielski wpis o KSeF linkował do polskiej strony `/wpisy/automatyczny-odczyt-dokumentow/` zamiast do `/en/posts/automated-document-reading/`. Nowy test `linki-en.test.ts` pilnuje, żeby żaden `en.md` nie prowadził do polskiej strony (czerwony przed poprawką, zielony po). `npm test` 236, kontrola tłumaczeń 0 błędów.
+
+**🚧 Nie zrobione:** wdrożenie tej poprawki (jedna linia w jednym wpisie EN). Usługa „strony i aplikacje” nie ma żadnego linku z wpisu, bo nie ma wpisu o tym temacie.
+
+**🎯 Następny krok:** za zgodą Roberta wdrożenie poprawki; jutro Search Console po podpięciu AdLoopa.
+
 ## 2026-11-17 18:00, Claude Code
 
 **✅ Zrobione (gałąź `seo-audyt-en`, bez wdrożenia):** uwagi niskiej wagi z audytu. BreadcrumbList (schema.org) na wszystkich podstronach w PL i EN (`src/lib/okruszki.ts`, wstawiany w `Strona.astro`; strony główne i 404 bez niego; test `okruszki.test.ts`). Nowe tytuły i opisy list wpisów: PL „Wpisy o automatyzacji i AI w firmie | Robert Dębicki” (52 znaki, opis 141), EN „Posts on automation and AI for business | Robert Dębicki” (56, opis 148). `npm test` 235, e2e bez błędów, `sprawdz:tresc` 0, `sprawdz:sekrety` 0.

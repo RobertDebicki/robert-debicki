@@ -47,7 +47,7 @@ I set up an automation that connects to KSeF through the API in about a week fro
 4. It sends the accountant a summary and reminds about payment deadlines.
 5. An invoice from a new supplier or with an unusual amount goes to a person for review.
 
-An invoice in KSeF has a fixed structure, FA(3), so the data does not have to be read from a scan. Scans and PDFs are a different case, which I describe in the post on how [automatic document reading](/wpisy/automatyczny-odczyt-dokumentow/) works.
+An invoice in KSeF has a fixed structure, FA(3), so the data does not have to be read from a scan. Scans and PDFs are a different case, which I describe in the post on how [automatic document reading](/en/posts/automated-document-reading/) works.
 
 ![Automation diagram: KSeF through the API, data from the XML, cost category, invoice to the accountant or to review](/src/assets/wpisy/ksef-faktury-kosztowe-3.png)
 
