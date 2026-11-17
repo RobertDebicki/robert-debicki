@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 16:30, Claude Code
+
+**✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 17.11):** pięć rozbudowanych wpisów PL i EN na `main` (`c539a41`) i na żywej stronie. `npm run wdroz -- --wgraj`: 126 plików, odbiór zgodny z lokalnymi, `.htaccess` działa. `test:produkcja`: 5 z 5. Wgrywanie padło dwa razy na błędzie sieci (errno 36) i przeszło za trzecim razem.
+
+**🚧 Nie zrobione:** wpisy polityka AI, oszustwo na prezesa i agent AI (gałąź `poprawki-dnk`, zaplanowane na 20.11 i 23.11); decyzja Roberta o treści powitania bota w rzeczywistym wdrożeniu.
+
+**🎯 Następny krok:** Robert potwierdza, że powitanie jego bota mówi wprost o AI; trzy zaplanowane wpisy w piątek i poniedziałek.
+
 ## 2026-11-17 16:00, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`):** powitanie bota w tekstach mówi wprost, że to asystentka AI, czyli sztuczna inteligencja (zamiast „wirtualna asystentka”); etapy AI Act poprawione na „są stosowane etapami”; wyjątek KSeF (do 10 000 zł miesięcznie do 31.12.2026) dopisany do odczytu, PL i EN; daty odczytu usunięte z nawiasów w n8n. Pełna kontrola `npm run sprawdz`: exit 0, 229 testów, 189 e2e.
