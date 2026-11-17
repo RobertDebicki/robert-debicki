@@ -14,7 +14,7 @@ miniatura:
 
 ## AI Act 2026: co obowiązuje od 2 sierpnia
 
-Komisja Europejska potwierdziła w wytycznych z 20 lipca 2026, że obowiązki z artykułu 50 stosuje się od 2 sierpnia 2026. Najważniejsza zasada jest prosta. Klient ma wiedzieć, że rozmawia ze sztuczną inteligencją, chyba że jest to oczywiste. Informacja ma paść najpóźniej przy pierwszym kontakcie.
+Komisja Europejska potwierdziła w wytycznych z 20 lipca 2026, że obowiązki z artykułu 50 stosuje się od 2 sierpnia 2026. Najważniejsza zasada jest prosta. Klient ma wiedzieć, że rozmawia ze sztuczną inteligencją, chyba że jest to oczywiste. Informacja ma paść najpóźniej przy pierwszym kontakcie. Jeśli rozmawiasz z botem przez telefon albo czat, bot ma powiedzieć, że jest sztuczną inteligencją. Nie trzeba tego mówić, gdy jest to dla człowieka oczywiste. Tekst przepisu opisuje [artykuł 50 AI Act](https://artificialintelligenceact.eu/article/50/).
 
 Dobrze to opisuje artykuł [obowiązki AI Act na Prawo.pl](https://www.prawo.pl/biznes/ai-act-jakie-obowiazki-maja-firmy-od-sierpnia-2026,1550271.html).
 

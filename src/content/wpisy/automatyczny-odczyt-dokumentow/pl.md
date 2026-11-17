@@ -45,6 +45,10 @@ Dzięki temu automatyzacja nie udaje nieomylnej. Pewne odczyty idą same, niepew
 
 System zdejmuje z zespołu przepisywanie. Zespół ma jedną bazę zamiast folderów z plikami. System przypisuje opiekuna do każdego wniosku. Nie podaję tu liczby zaoszczędzonych godzin, bo tej liczby nie mam zmierzonej. Wiem natomiast, że proces obsługuje setki wniosków i działa codziennie. Mierzę to tak: sprawdzam, ile trwa człowiekowi jedna czynność, mnożę przez liczbę takich czynności w tygodniu albo w miesiącu, a potem liczę tak samo dla automatyzacji.
 
+## Dane osobowe w dokumentach
+
+Jeśli dostawca przetwarza dane osobowe w imieniu Twojej firmy, RODO wymaga umowy powierzenia. Umowa mówi, jakie dane są przetwarzane i w jakim celu. Dostawca działa tylko na polecenie firmy i ma chronić dane. Po zakończeniu usługi dane są usuwane albo oddawane, według wyboru firmy. Tekst przepisu opisuje [artykuł 28 RODO](https://gdpr-info.eu/art-28-gdpr/).
+
 ## Najczęstsze pytania o automatyczny odczyt dokumentów
 
 ### Czy automatyczny odczyt dokumentów obejmuje każdy typ?

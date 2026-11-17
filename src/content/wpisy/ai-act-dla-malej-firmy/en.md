@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/ai-act-dla-malej-firmy-en-miniatura.png"
   alt: "Chat window with a bot that says I'm an AI assistant, next to an AI Act compliance check mark"
 tlumaczenie: ai
-zrodlo: 477cecc96a3dc9eab00b4343dea059f52084f483cb8cc239ac83d4aa9d976f76
+zrodlo: b31f68ec1ccb5147909a94eb8b476fe67f2e57443998746f9d15e398546a02e6
 ---
 **The AI Act for small businesses** already applies to you if your website runs a chat or a bot answers your phone. The transparency rules have applied since Aug. 2, 2026. I explain what they mean in practice and what you can check in one evening. If you have a bot and aren't sure it meets the requirements, send me an email.
 
@@ -16,7 +16,7 @@ zrodlo: 477cecc96a3dc9eab00b4343dea059f52084f483cb8cc239ac83d4aa9d976f76
 
 ## AI Act 2026: what applies since Aug. 2
 
-In its guidelines of July 20, 2026, the European Commission confirmed that the obligations in Article 50 apply from Aug. 2, 2026. The core rule is simple. Customers must know they're talking to artificial intelligence, unless it's obvious. They must be told at the first contact at the latest.
+In its guidelines of July 20, 2026, the European Commission confirmed that the obligations in Article 50 apply from Aug. 2, 2026. The core rule is simple. Customers must know they're talking to artificial intelligence, unless it's obvious. They must be told at the first contact at the latest. In plain terms: if you talk to a bot by phone or chat, the bot has to say it is artificial intelligence. You don't have to say it when this is obvious to a reasonably informed person. The text of the law is in [Article 50 of the AI Act](https://artificialintelligenceact.eu/article/50/).
 
 The article [AI Act obligations on Prawo.pl](https://www.prawo.pl/biznes/ai-act-jakie-obowiazki-maja-firmy-od-sierpnia-2026,1550271.html) describes them well.
 

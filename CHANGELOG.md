@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 16:30, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`):** fakty ze źródeł, prostym językiem, z linkami: wpis o AI Act (art. 50: bot ma powiedzieć, że jest AI, chyba że to oczywiste; źródło artificialintelligenceact.eu, otwarte 17.11.2026), wpis o odczycie dokumentów (nowa sekcja „Dane osobowe w dokumentach”: umowa powierzenia wg art. 28 RODO; źródło gdpr-info.eu, otwarte 17.11.2026). Wpis o n8n: „oznacza zamówienie jako opłacone”. PL i EN. `dnk.ts`: 0 błędów; kontrola tłumaczeń: 0 błędów.
+
+**🚧 Nie zrobione:** długości: AI Act 547, odczyt 526, n8n 612, automatyzacja 499, voice bot 482 słów; cel 700 do 1000 nieosiągnięty. Potrzebne kolejne źródła i fakty.
+
+**🎯 Następny krok:** decyzja Roberta, czy publikujemy przy długości poniżej celu (z uwagą), czy dopisujemy kolejne fakty.
+
 ## 2026-11-17 15:30, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`):** wpis o n8n, Make i Zapier: nowa sekcja „Przykład: faktura zaliczkowa z zamówienia” (Airtable, Fakturownia, Fintable porównuje przelewy z numerem zamówienia i kwotą, status i powiadomienie klienta), PL i EN. `dnk.ts`: 0 błędów. Długość 612 słów.

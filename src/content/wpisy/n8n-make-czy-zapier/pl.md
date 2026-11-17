@@ -44,7 +44,7 @@ To nie jest reguła dla każdego. Przy prostej automatyzacji dla małego zespoł
 
 Zamówienie wpada do Airtable. Klient uzupełnia dane potrzebne do produkcji, a potem klikam przycisk. Wtedy n8n wystawia fakturę zaliczkową w Fakturowni i tworzy szkic maila do klienta z tą fakturą.
 
-Po opłaceniu faktury Fintable łączy się z moim bankiem i porównuje przychodzące przelewy. Sprawdza tytuł z numerem zamówienia i kwotę. Gdy wszystko się zgadza, oznacza ją jako opłaconą.
+Po opłaceniu faktury Fintable łączy się z moim bankiem i porównuje przychodzące przelewy. Sprawdza tytuł z numerem zamówienia i kwotę. Gdy wszystko się zgadza, oznacza zamówienie jako opłacone.
 
 Wtedy automatyzacja w n8n zmienia status zamówienia, a zamówienie trafia na produkcję. Klient dostaje powiadomienie, że jego zamówienie trafiło do produkcji.
 

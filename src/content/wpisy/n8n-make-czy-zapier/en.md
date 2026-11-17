@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/n8n-make-czy-zapier-en-miniatura.png"
   alt: "Unit comparison: four tasks in Zapier, five operations in Make, one execution in n8n"
 tlumaczenie: ai
-zrodlo: 08627e3ad36bf892eca4fe84792fd2dcc28e1d9da942e59096ff4de6871ba4ee
+zrodlo: cd6288ced1f33079af8adac86e5f808adf5f4ee7026e26b9b623e8d4933bfd8e
 ---
 **n8n, Make, or Zapier** is a question I hear from business owners before their first automation. All three connect apps and do tasks for you, but they differ in how they charge and how much technical knowledge they need. I explain what to look at before you choose. If you're not sure which tool fits your business, email me.
 
@@ -46,7 +46,7 @@ That's not a rule for everyone. For a simple automation for a small team, Zapier
 
 The order lands in Airtable. The client fills in the details needed for production, and then I click a button. n8n issues the advance invoice in Fakturownia and prepares a draft email to the client with that invoice.
 
-After the invoice is paid, Fintable connects to my bank and compares the incoming transfers. It checks the transfer title with the order number and the amount. When everything matches, it marks the invoice as paid.
+After the invoice is paid, Fintable connects to my bank and compares the incoming transfers. It checks the transfer title with the order number and the amount. When everything matches, it marks the order as paid.
 
 Then the n8n automation changes the order status, and the order goes to production. The client gets a notification that their order has gone to production.
 
