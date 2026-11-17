@@ -102,6 +102,14 @@ export function zgodnoscRobots(html: string, indeksuj: boolean): string | null {
 
 // Etapy wgrywania: zasoby, potem strony HTML, na końcu .htaccess. Błąd wcześniejszego etapu zatrzymuje kolejne,
 // więc strona nie wskazuje na brakujące pliki, a przekierowania nie włączają się przy niepełnym wgraniu.
+// Jedna sesja curl na kilkadziesiąt plików zostaje przez home.pl zerwana w losowym miejscu (błąd 56, errno 36),
+// więc etap idzie w porcjach, każda we własnej sesji.
+export function podzielNaPorcje<T>(lista: T[], n: number): T[][] {
+  const wynik: T[][] = [];
+  for (let i = 0; i < lista.length; i += n) wynik.push(lista.slice(i, i + n));
+  return wynik;
+}
+
 export function podzielNaEtapy(zdalne: string[]): string[][] {
   const zasoby = zdalne.filter((z) => !z.endsWith('.html') && z !== '.htaccess');
   const html = zdalne.filter((z) => z.endsWith('.html'));
@@ -295,7 +303,11 @@ async function wgraj(k: Konfiguracja, indeksuj: boolean): Promise<void> {
   const lokalnie = new Map(lista.map((p) => [p.zdalny, p.lokalny]));
   try {
     for (const etap of podzielNaEtapy(lista.map((p) => p.zdalny))) {
-      curl(k, etap.map((z) => transferWgrania(k.host, k.katalog, z, lokalnie.get(z) as string)));
+      for (const porcja of podzielNaPorcje(etap, 15)) {
+        const transfery = porcja.map((z) => transferWgrania(k.host, k.katalog, z, lokalnie.get(z) as string));
+        // Błąd sieci przy porcji ponawiamy raz (plik .part jest nadpisywany, a RNTO zamienia go na właściwy).
+        try { curl(k, transfery); } catch { curl(k, transfery); }
+      }
     }
   } catch (e) {
     let osierocone = '';

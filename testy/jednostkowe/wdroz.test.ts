@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { adresPliku, cytujDlaCurl, konfiguracjaTransferow, parsujListing, plikiDoWgrania, podzielNaEtapy, sprawdzZgodnosc, srodowiskoBuildu, transferWgrania, wczytajKonfiguracje, zgodnoscRobots } from '../../skrypty/wdroz';
+import { adresPliku, cytujDlaCurl, konfiguracjaTransferow, parsujListing, plikiDoWgrania, podzielNaEtapy, podzielNaPorcje, sprawdzZgodnosc, srodowiskoBuildu, transferWgrania, wczytajKonfiguracje, zgodnoscRobots } from '../../skrypty/wdroz';
 
 describe('wczytajKonfiguracje', () => {
   it('czyta HOST, USER, PASSWORD i KATALOG, ignoruje komentarze i puste linie', () => {
@@ -124,6 +124,15 @@ describe('podzielNaEtapy', () => {
   });
   it('pomija puste etapy', () => {
     expect(podzielNaEtapy(['index.html', '.htaccess'])).toEqual([['index.html'], ['.htaccess']]);
+  });
+});
+
+describe('podzielNaPorcje', () => {
+  it('tnie listę na kawałki po najwyżej n elementów, zachowując kolejność', () => {
+    expect(podzielNaPorcje(['a', 'b', 'c', 'd', 'e'], 2)).toEqual([['a', 'b'], ['c', 'd'], ['e']]);
+  });
+  it('pusta lista daje brak porcji', () => {
+    expect(podzielNaPorcje([], 15)).toEqual([]);
   });
 });
 

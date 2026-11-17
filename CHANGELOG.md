@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 09:30, Claude Code
+
+**✅ Zrobione (poprawka skryptu wdrożenia):** `skrypty/wdroz.ts` wgrywa etap w porcjach po 15 plików, każda we własnej sesji curl, i ponawia porcję raz po błędzie sieci. Powód: cztery próby `--wgraj` padły w losowym miejscu (błąd 56, errno 36) na jednej długiej sesji. Test `podzielNaPorcje` (najpierw czerwony). `npm test`: wszystkie zaliczone.
+
+**🚧 Nie zrobione:** wgranie na żywą stronę (ponowna próba po tej poprawce); pliki `.part` po przerwanych próbach mogą zostać na serwerze.
+
+**🎯 Następny krok:** wynik ponownego wgrania; przy błędzie sprawdzić `.part` na serwerze.
+
 ## 2026-11-17 11:10, Claude Code
 
 **✅ Zrobione (publikacja za zgodą Roberta w wiadomości 17.11):** wpis „Faktury kosztowe z KSeF: jak je pobierać” w wersji PL i EN (`src/content/wpisy/ksef-faktury-kosztowe/`), grafiki z makiety. Kontrola DNK: 0 błędów. Kontrola tłumaczeń: 0 błędów. Pozostałe wpisy (polityka AI, oszustwo na prezesa, agent AI) nie są na stronie.
