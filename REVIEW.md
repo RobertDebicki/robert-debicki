@@ -26,3 +26,4 @@ Każde znalezisko: plik:linia · typ błędu · ryzyko (wysokie/średnie/niskie)
 
 ## Reguły nauczone
 <!-- Jedna linia na regułę: data, co przegląd przepuścił albo fałszywie zgłosił, czego pilnować. Dopisywane po zgodzie Roberta. -->
+- 17.11.2026: przegląd przepuścił link w `en.md` do polskiej strony (`/wpisy/...`). Linki w `en.md` prowadzą do `/en/...`; pilnuje tego `testy/jednostkowe/linki-en.test.ts`.

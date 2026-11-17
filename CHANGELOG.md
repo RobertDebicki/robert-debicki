@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-11-17 19:30, Claude Code
+
+**✅ Zrobione (za zgodą Roberta):** poprawka linku w angielskim wpisie o KSeF wdrożona na żywą stronę; dopisana reguła o linkach w `en.md` do „Reguł nauczonych” w `REVIEW.md`.
+
+**🎯 Następny krok:** jutro Search Console po podpięciu AdLoopa (indeksacja nowych adresów EN, przyjęcie przekierowań 301).
+
 ## 2026-11-17 19:00, Claude Code
 
 **✅ Zrobione (`main`, lokalnie, bez wdrożenia i bez pusha):** sprawdzenie linkowania wpisów do usług (punkt 3 z listy działań SEO): wszystkie 6 wpisów PL i EN już linkuje do pasującej usługi, więc nic nie dopisywano. Znaleziony i poprawiony błąd: angielski wpis o KSeF linkował do polskiej strony `/wpisy/automatyczny-odczyt-dokumentow/` zamiast do `/en/posts/automated-document-reading/`. Nowy test `linki-en.test.ts` pilnuje, żeby żaden `en.md` nie prowadził do polskiej strony (czerwony przed poprawką, zielony po). `npm test` 236, kontrola tłumaczeń 0 błędów.
