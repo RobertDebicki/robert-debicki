@@ -32,6 +32,8 @@ Ty odpowiadasz za to, jak narzędzie działa u Twoich klientów. Sprawdź, czy b
 
 *Podział obowiązków AI Act między dostawcę narzędzia i firmę.*
 
+Od 2 lutego 2025 AI Act wymaga, żeby firmy, które używają AI, zadbały o wiedzę swoich ludzi o tych narzędziach. Nie ma jednego poziomu, który trzeba osiągnąć. Przepis opisuje [artykuł 4 AI Act](https://artificialintelligenceact.eu/article/4/).
+
 ## Co AI Act dla małej firmy przesuwa na później
 
 Obowiązki dla systemów wysokiego ryzyka, na przykład w rekrutacji czy ocenie dostępu do usług, zaczną obowiązywać 2 grudnia 2027. Dla systemów wbudowanych w regulowane produkty termin to 2 sierpnia 2028. Typowy czat w małym sklepie zwykle nie jest takim systemem.

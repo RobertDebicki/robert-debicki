@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 17:00, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`):** dopisane fakty ze źródeł, prostym językiem, z linkami: AI Act (art. 4: obowiązek zadbania o wiedzę ludzi o AI, od 2 lutego 2025; źródło artificialintelligenceact.eu, otwarte 17.11.2026); odczyt dokumentów (art. 5 RODO: minimalizacja danych; źródło gdpr-info.eu, otwarte 17.11.2026). PL i EN. `dnk.ts`: 0 błędów; kontrola tłumaczeń: 0 błędów.
+
+**🚧 Nie zrobione:** długości: AI Act 580, odczyt 549, n8n 612, automatyzacja 499, voice bot 482 słów. Cel 700 do 1000 nieosiągnięty.
+
+**🎯 Następny krok:** decyzja Roberta: publikacja z uwagą o długości albo kolejne fakty.
+
 ## 2026-11-17 16:30, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`):** fakty ze źródeł, prostym językiem, z linkami: wpis o AI Act (art. 50: bot ma powiedzieć, że jest AI, chyba że to oczywiste; źródło artificialintelligenceact.eu, otwarte 17.11.2026), wpis o odczycie dokumentów (nowa sekcja „Dane osobowe w dokumentach”: umowa powierzenia wg art. 28 RODO; źródło gdpr-info.eu, otwarte 17.11.2026). Wpis o n8n: „oznacza zamówienie jako opłacone”. PL i EN. `dnk.ts`: 0 błędów; kontrola tłumaczeń: 0 błędów.

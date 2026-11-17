@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/automatyczny-odczyt-dokumentow-en-miniatura.png"
   alt: "Stack of documents, an arrow, and a data table with one row flagged for review"
 tlumaczenie: ai
-zrodlo: d3a852eaefa9872858872436f9ffb863009cc9121de510aaeff8f2d551735d38
+zrodlo: fcdc37bdc647bdfcdbc77eb6688b877d546952d884d764c4af4fef97775d07fb
 ---
 **Automated document reading** saves time wherever someone retypes amounts and deadlines from PDFs into a spreadsheet. I describe a project where the system reads hundreds of applications every day and saves the data in one database. I also show what happens when a read is uncertain. If you retype documents by hand, email me.
 
@@ -50,6 +50,8 @@ The system takes retyping off the team's plate. The team has one database instea
 ## Personal data in documents
 
 If a provider processes personal data on behalf of your company, the GDPR requires a data processing agreement. The agreement says what data is processed and for what purpose. The provider acts only on the company's instructions and must protect the data. When the service ends, the data is deleted or returned, at the company's choice. The text of the rule is in [Article 28 of the GDPR](https://gdpr-info.eu/art-28-gdpr/).
+
+The data minimization principle says personal data must be limited to what is necessary for the purpose it is processed for. The text of the rule is in [Article 5 of the GDPR](https://gdpr-info.eu/art-5-gdpr/).
 
 ## Frequently asked questions about automated document reading
 

@@ -49,6 +49,8 @@ System zdejmuje z zespołu przepisywanie. Zespół ma jedną bazę zamiast folde
 
 Jeśli dostawca przetwarza dane osobowe w imieniu Twojej firmy, RODO wymaga umowy powierzenia. Umowa mówi, jakie dane są przetwarzane i w jakim celu. Dostawca działa tylko na polecenie firmy i ma chronić dane. Po zakończeniu usługi dane są usuwane albo oddawane, według wyboru firmy. Tekst przepisu opisuje [artykuł 28 RODO](https://gdpr-info.eu/art-28-gdpr/).
 
+Zasada minimalizacji mówi, że dane mają być ograniczone do tego, co konieczne do celu, dla którego są przetwarzane. Przepis opisuje [artykuł 5 RODO](https://gdpr-info.eu/art-5-gdpr/).
+
 ## Najczęstsze pytania o automatyczny odczyt dokumentów
 
 ### Czy automatyczny odczyt dokumentów obejmuje każdy typ?

@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/ai-act-dla-malej-firmy-en-miniatura.png"
   alt: "Chat window with a bot that says I'm an AI assistant, next to an AI Act compliance check mark"
 tlumaczenie: ai
-zrodlo: b31f68ec1ccb5147909a94eb8b476fe67f2e57443998746f9d15e398546a02e6
+zrodlo: 2ee923422a23b91ff6ec4f183c4ba44336f87376307e2c799301179bf2f08a09
 ---
 **The AI Act for small businesses** already applies to you if your website runs a chat or a bot answers your phone. The transparency rules have applied since Aug. 2, 2026. I explain what they mean in practice and what you can check in one evening. If you have a bot and aren't sure it meets the requirements, send me an email.
 
@@ -33,6 +33,8 @@ You're responsible for how the tool works with your customers. Check that the bo
 ![Comparison of AI Act duties: what belongs to the tool vendor and what belongs to the business using it](/src/assets/wpisy/ai-act-dla-malej-firmy-en-3.png)
 
 *How AI Act duties split between the tool vendor and the business.*
+
+Since Feb. 2, 2025, the AI Act requires companies that use AI to make sure their people understand those tools. There is no single level that has to be reached. The text of the rule is in [Article 4 of the AI Act](https://artificialintelligenceact.eu/article/4/).
 
 ## What the AI Act for small businesses pushes back
 
