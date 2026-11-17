@@ -2,7 +2,7 @@
 tytul: "AI voice agents for your business"
 nazwa: "AI voice agents"
 tytulSeo: "AI voice agents for business | Robert Dębicki"
-opis: "An AI voice agent for business calls the person who filled out your form within 2 minutes, asks qualifying questions, and saves a note in your CRM."
+opis: "An AI voice agent calls the person who filled out your form within 2 minutes, asks qualifying questions, and saves a note in your CRM. Ask for a quote."
 zajawka: "The bot calls the person who filled out the form, asks qualifying questions, and leaves the sales rep a note in the CRM."
 ikona: "telefon"
 sektor: "ElevenLabs, Twilio, n8n"
@@ -53,10 +53,10 @@ przyklady:
         - "n8n"
         - "Pipedrive"
       link:
-        tekst: "Voice bot for your business: how it works step by step"
+        tekst: "Post about the voice bot"
         adres: "/en/posts/voice-bot-dla-firmy/"
 faq:
-  tytul: "What people ask before bringing in a voice bot"
+  tytul: "Common questions about AI voice agents"
   pozycje:
     - pytanie: "What is an AI voice agent?"
       odpowiedz: "A program that holds a phone conversation by voice. My bot calls the person who filled out the form, asks qualifying questions, and writes a note for the sales rep."
@@ -75,5 +75,5 @@ faq:
 kolejnosc: 3
 adresEn: "ai-voice-agents"
 tlumaczenie: ai
-zrodlo: 6caac2360afc758c749d2a407a6d82577656b071a288a9017659a98415d8a825
+zrodlo: c8ef3bd8eda889980475d2d8fb8145fc3da4604570cd4763a19ec83aead066d0
 ---

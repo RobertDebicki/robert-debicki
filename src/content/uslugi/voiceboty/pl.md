@@ -2,7 +2,7 @@
 tytul: "Voiceboty AI dla firm"
 nazwa: "Voiceboty AI"
 tytulSeo: "Voiceboty dla firm: telefon, CRM, n8n | Robert Dębicki"
-opis: "Voicebot dla firm dzwoni do osoby z formularza w 2 minuty, zadaje pytania kwalifikujące i zapisuje notatkę dla handlowca w CRM. ElevenLabs, Twilio, n8n."
+opis: "Voicebot dla firm dzwoni do osoby z formularza w 2 minuty, zadaje pytania kwalifikujące i zapisuje notatkę dla handlowca w CRM. Zapytaj o wycenę."
 zajawka: "Bot dzwoni do osoby z formularza, zadaje pytania kwalifikujące i zostawia handlowcowi notatkę w CRM."
 ikona: "telefon"
 sektor: "ElevenLabs, Twilio, n8n"
@@ -53,10 +53,10 @@ przyklady:
         - "n8n"
         - "Pipedrive"
       link:
-        tekst: "Voice bot dla firmy: jak działa krok po kroku"
+        tekst: "Wpis o bocie głosowym"
         adres: "/wpisy/voice-bot-dla-firmy/"
 faq:
-  tytul: "O co pytają przed wdrożeniem bota"
+  tytul: "Najczęstsze pytania o voiceboty"
   pozycje:
     - pytanie: "Co to jest voicebot?"
       odpowiedz: "Program, który prowadzi rozmowę telefoniczną głosem. Mój bot dzwoni do osoby z formularza, zadaje pytania kwalifikujące i robi notatkę dla handlowca."

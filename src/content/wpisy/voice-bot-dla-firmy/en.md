@@ -6,11 +6,13 @@ miniatura:
   plik: "/src/assets/wpisy/voice-bot-dla-firmy-en-miniatura.png"
   alt: "Large 2:00 text and a phone handset, the bot calls the customer back within two minutes"
 tlumaczenie: ai
-zrodlo: aa461d88a5c80a710e64976a1c924e88888e6ce9ab04c2d9227d01b20d35db6d
+zrodlo: 6b88b3463461f01807ed6e2d81ffe8ea5cab741d14b8ab98f945442cfd320d57
 ---
-**A voice bot for your business** can call the person who filled out the form on your website within 2 minutes of submission. I describe a project where the bot handles 15 calls a day and hands the sales rep a ready-made note. Want to call leads back faster? Email me.
+**A voice bot for your business** can call the person who filled out the form on your website within 2 minutes of submission. I describe a project where the bot handles 15 calls a day and hands the sales rep a note from the call. Want to call leads back faster? Email me.
 
 ![Voice bot timeline: form at 0:00, bot call at 2:00, a note with need and budget goes to Pipedrive](/src/assets/wpisy/voice-bot-dla-firmy-en-1.png)
+
+*The bot calls within 2 minutes of the form being sent.*
 
 ## Why call a lead back right away
 
@@ -35,11 +37,13 @@ The bot doesn't sell or negotiate. It gathers information and saves the sales re
 
 ![Division of work: the voice bot gathers information and writes the note, the sales rep runs the sales conversation](/src/assets/wpisy/voice-bot-dla-firmy-en-3.png)
 
-## A voice bot for your business and the AI Act
+*The bot gathers information, the sales rep sells.*
+
+## A voice bot and the AI Act
 
 Since Aug. 2, 2026, customers must know they're talking to AI if it isn't obvious. When a bot calls, it's good practice for it to introduce itself in the first sentence. I cover the details in the post [AI Act for small businesses](/en/posts/ai-act-dla-malej-firmy/).
 
-## Questions and answers
+## Frequently asked questions about a voice bot for your business
 
 ### Will the customer know they're talking to a bot?
 They should hear it at the start of the call. The AI Act transparency rules require it when it isn't obvious.
@@ -54,4 +58,6 @@ Those cases go to the sales rep too. The rep then sees that the contact needs a 
 In the project described here, Pipedrive. I also work with HubSpot and API integrations.
 
 ### How much does a voice bot for your business cost?
-The price depends on the number of questions, the CRM, and calling hours. Tell me what kind of inquiries you get each day, and I'll prepare a quote. I describe the service on the [AI voice agents for business](/en/services/ai-voice-agents/) page.
+The price depends on the number of questions, the CRM, and calling hours. I describe the service on the [AI voice agents for business](/en/services/ai-voice-agents/) page.
+
+**Email me: office@robert-debicki.pl** and tell me how many inquiries you get each day, and I'll prepare a quote.

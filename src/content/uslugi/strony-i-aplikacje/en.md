@@ -2,14 +2,14 @@
 tytul: "Custom websites and apps"
 nazwa: "Apps, websites, and tools with AI"
 tytulSeo: "Custom websites and apps built with AI | Robert Dębicki"
-opis: "Custom websites and apps written with Claude Code: WordPress, WooCommerce, Astro, Next.js. For when off-the-shelf software doesn't fit or costs too much."
+opis: "Custom websites and apps built with Claude Code: WordPress, WooCommerce, Astro, Next.js. Off-the-shelf software doesn't fit or costs too much? Ask me."
 zajawka: "When off-the-shelf software falls short or costs too much, I write a tool to fit, with AI where it saves work."
 ikona: "aplikacje"
 sektor: "Claude Code, Astro, Next.js, WordPress"
 rola: "Astro, Next.js, WordPress"
 rolaWyroznienie: "/ Claude Code"
 lead: "I build custom websites and apps when off-the-shelf software falls short or costs too much."
-akapit: "I write new websites and apps with Claude Code. I build websites on WordPress, in Astro, or in Next.js, and apps in Python and React. I add AI where it saves work, for example in a tool that translates posts. Wrocław, Poland, or remote."
+akapit: "I write new websites and apps with Claude Code: I build websites on WordPress, in Astro, or in Next.js, and apps in Python and React. I add AI where it saves work, for example in a tool that translates posts. Wrocław, Poland, or remote."
 karta:
   - etykieta: "I write with"
     wartosc: "Claude Code"
@@ -78,9 +78,9 @@ przyklady:
         - "PostgreSQL"
         - "React"
 faq:
-  tytul: "What people ask before ordering a website or an app"
+  tytul: "Common questions about custom websites and apps"
   pozycje:
-    - pytanie: "When does a custom app make more sense than off-the-shelf software?"
+    - pytanie: "When does an app instead of off-the-shelf software make sense?"
       odpowiedz: "When off-the-shelf software falls short or costs too much. A training company handled sign-ups and schedules in Airtable, and every change meant edits in several places. Now each trainer sees her calendar in one app."
     - pytanie: "How much does a WordPress website cost?"
       odpowiedz: "I quote each project individually. I split a large, complex project into smaller stages and spread the amount across them."
@@ -89,11 +89,11 @@ faq:
     - pytanie: "Can AI build a website for my business?"
       odpowiedz: "I write websites and apps together with Claude Code. We settle what has to work, and I check the result before handover. Before publishing a B2B store, for example, I tested 121 redirects from the old URLs."
     - pytanie: "WordPress, Astro, or Next.js: which should I choose?"
-      odpowiedz: "It depends on what the site has to do. I build a store with prices for businesses on WooCommerce. I moved a furniture maker's site from WordPress to Astro. I moved an artist's site, where she wanted to add works herself, to Next.js with the Payload CMS panel."
+      odpowiedz: "It depends on what the site has to do: I build a store with prices for businesses on WooCommerce. I moved a furniture maker's site from WordPress to Astro. I moved an artist's site, where she wanted to add works herself, to Next.js with the Payload CMS panel."
     - pytanie: "Will the old URLs still work after a site is moved?"
       odpowiedz: "Yes. On the furniture maker's site I kept 89 URLs, and on the artist's site the design and the working URLs."
 kolejnosc: 2
 adresEn: "websites-and-apps"
 tlumaczenie: ai
-zrodlo: e7c5e6fe3f9dd8e4787ed082c5d2d4decb838f87543879816847fbca1029972d
+zrodlo: 5ba90cb59a2b45057cafadf5dda2f5b03e715672c21433797c149ecce1632969
 ---

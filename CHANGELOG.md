@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2026-11-17 12:30, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`, nie wypchnięte, nie wdrożone):** poprawki DNK w 5 opublikowanych wpisach (ile-firm-uzywa-ai, ai-act-dla-malej-firmy, automatyczny-odczyt-dokumentow, voice-bot-dla-firmy, n8n-make-czy-zapier) i 3 usługach (ai-i-automatyzacja, voiceboty, strony-i-aplikacje), PL i EN. `dnk.ts`: 0 błędów w 7 z 8; build przechodzi (naprawiono `tytulSeo` EN usługi AI do 49 znaków i `opis` EN voicebota do 151). Przegląd świeżym agentem: bez Critical, Important naprawiony (pytanie FAQ z Excelem). Bez nowych faktów.
+
+**🚧 Nie zrobione / do decyzji Roberta:**
+- strony-i-aplikacje, opis: brak liczby (potrzebna prawdziwa cena albo termin);
+- strony-i-aplikacje: fraza „aplikacja zamiast Excela” nie występuje w tekście, bo pytanie z Excelem usunięto (nie ma faktu, który by o Excelu mówił);
+- długość wpisów 392-504 słów (cel 700 do 1000) wymaga nowych faktów od Roberta;
+- frazy dodatkowe we wpisach są propozycjami do akceptacji.
+
+**🎯 Następny krok:** Robert decyduje o frazach i o liczbie w opisie usługi „strony i aplikacje”; potem commit i wypchnięcie na `main` oraz wdrożenie za zgodą w wiadomości.
+
 ## 2026-11-17 09:35, Claude Code
 
 **✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 17.11):** wpis o KSeF (PL i EN) jest na żywej stronie. `npm run wdroz -- --wgraj`: 126 plików, odbiór zgodny z lokalnymi, `.htaccess` działa. `test:produkcja`: 5 z 5. Strony `/wpisy/ksef-faktury-kosztowe/` i `/en/posts/ksef-faktury-kosztowe/` zwracają 200. Poprawki skryptu: porcje po 5 plików, do 3 prób na porcję, wypis porcji.

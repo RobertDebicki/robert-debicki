@@ -1,14 +1,14 @@
 ---
-tytul: "AI and automation for your business"
+tytul: "AI implementation for business and process automation"
 nazwa: "AI and automation"
-tytulSeo: "AI automation and AI agents for business | Robert Dębicki"
-opis: "AI automation for business: AI agents, n8n, and Make.com. I map the process first and add AI only where it saves work. Wrocław, Poland, or remote."
+tytulSeo: "AI implementation and automation | Robert Dębicki"
+opis: "AI implementation for business: AI agents, n8n, and Make.com. I map the process first and add AI where it saves work. Ask for a quote."
 zajawka: "I map the process first. I build simple automation in n8n or Make.com, and I roll out AI agents where they save work."
 ikona: "ai"
 sektor: "AI agents, n8n, Make.com"
 rola: "AI agents, n8n, Make.com"
 rolaWyroznienie: "/ Claude Code"
-lead: "I do AI automation for business: I roll out AI agents and automate processes. AI implementation isn't always needed: sometimes it's enough to lay out the process properly and build a simple automation."
+lead: "I start AI implementation for a business with the process, because AI isn't always needed: sometimes it's enough to lay out the process properly and build a simple automation."
 akapit: "Where AI saves work, I roll out AI agents that take over several tasks at once: they read documents, extract data, and pass cases on. When a model could get it wrong, the decision stays with a person. Wrocław, Poland, or remote."
 karta:
   - etykieta: "Models"
@@ -32,7 +32,7 @@ problemy:
     - tytul: "A blog written and translated from scratch"
       tekst: "Every post and project description for the site has to be written and then translated into another language."
 kroki:
-  tytul: "From process to AI automation that works in your team"
+  tytul: "AI implementation for business, step by step"
   pozycje:
     - tytul: "Process first, then the tool"
       tekst: "I check how the work looks today. Often it's enough to lay out the process and add a simple automation. I add AI where it really saves work."
@@ -56,7 +56,7 @@ przyklady:
         - "Airtable"
         - "SharePoint"
       link:
-        tekst: "Automated document reading with AI: the deployment write-up"
+        tekst: "Post: reading documents with AI"
         adres: "/en/posts/automatyczny-odczyt-dokumentow/"
     - ikona: "ai"
       liczba: "3"
@@ -71,25 +71,25 @@ przyklady:
         - "GA4"
         - "Search Console"
       link:
-        tekst: "This deployment in the deployments section: AI agents for ads, SEO, and the blog"
+        tekst: "AI agents in the deployments section"
         adres: "/en/#wdrozenia"
 faq:
-  tytul: "What people ask before bringing AI automation into a business"
+  tytul: "Common questions about AI implementation for business"
   pozycje:
     - pytanie: "Does my business need AI?"
       odpowiedz: "Not always. Sometimes it's enough to fix the process and build a simple automation in n8n or Make.com. I suggest AI automation where documents need to be read, text needs to be understood, or a customer needs to be talked to."
-    - pytanie: "What is the difference between an AI agent and a chatbot?"
+    - pytanie: "How is an AI agent in a business different from a chatbot?"
       odpowiedz: "A chatbot answers questions. An AI agent does tasks: it reads a document, extracts data, saves it in a database, and passes the case to the right person."
     - pytanie: "What if the AI makes a mistake?"
       odpowiedz: "Where a reading could be uncertain, the agent asks a person to confirm. That's how the grant application workflow described above works."
     - pytanie: "Which AI models do you use?"
       odpowiedz: "Claude API, OpenAI API, and Gemini. I pick the model for the task."
     - pytanie: "Is my company data safe with AI?"
-      odpowiedz: "When a process handles personal data, I sign a data processing agreement. I send data to the model through the API on the company's account, not through a free chat, and only the fields the task needs. The agent starts with read-only access, and a person approves changes. I also teach the team how to work with AI so that sensitive data doesn't end up in the model."
+      odpowiedz: "When a process handles personal data, I sign a data processing agreement. I send data to the model through the API on the company's account, not through a free chat, and only the fields the task needs. The agent starts with read-only access and a person approves changes, and I also teach the team how to work with AI so that sensitive data doesn't end up in the model."
     - pytanie: "How much does AI implementation cost for a business?"
       odpowiedz: "I quote each project individually. I split a large, complex project into smaller stages and spread the amount across them."
 kolejnosc: 1
 adresEn: "ai-automation"
 tlumaczenie: ai
-zrodlo: 58bd9f4762dd85ab4bbae770254d781d28c5b12a162c3d3868bd710e6374bb77
+zrodlo: 6d5f48302a188719ff6105d2e812b058cf0526b0157098acd5417aa68fdbd28c
 ---

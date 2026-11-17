@@ -6,9 +6,9 @@ miniatura:
   plik: "/src/assets/wpisy/n8n-make-czy-zapier-en-miniatura.png"
   alt: "Unit comparison: four tasks in Zapier, five operations in Make, one execution in n8n"
 tlumaczenie: ai
-zrodlo: b3273e8ae6e53edf93c63a2e4752bd2c35e33a2bd97d2e4f454e6fabba415e3b
+zrodlo: f84b9c6b21942766dc3bc900d599858165548c8a832970bc1cb3139ab8e0194d
 ---
-**n8n, Make, or Zapier** is a question I hear from business owners before their first automation. All three connect apps and do tasks for you. They differ in how they charge and how much technical knowledge they need. I explain what to look at before you choose. Not sure which tool fits your business? Email me.
+**n8n, Make, or Zapier** is a question I hear from business owners before their first automation. All three connect apps and do tasks for you, but they differ in how they charge and how much technical knowledge they need. I explain what to look at before you choose. If you're not sure which tool fits your business, email me.
 
 ## How n8n, Make, and Zapier differ
 
@@ -22,13 +22,15 @@ Prices change often, so check the current pricing on the vendor's site before yo
 
 ## n8n, Make, or Zapier: which fits which business
 
-Comparisons describe Zapier as the easiest to use. It also has the most ready-made connections: its site lists more than 10,000 apps, and Make's lists more than 3,500. It fits when nobody in the company is technical and you need a quick start.
+Comparisons describe Zapier as the easiest to use. It also has the most integrations: its site lists more than 10,000 apps, and Make's lists more than 3,500. It fits when nobody in the company is technical and you need a quick start.
 
 Make has a visual workflow editor where you can see what flows where. It's a middle ground for people with moderate technical knowledge.
 
 n8n needs the most knowledge but gives you the most control. You can run it on your own server, so the data stays with you. That matters for client documents and the GDPR. Self-hosting does take setup and maintenance, though.
 
 ![Comparison table of n8n, Make, and Zapier: ease of use, technical knowledge, where the data lives](/src/assets/wpisy/n8n-make-czy-zapier-en-2.png)
+
+*Ease of use, required knowledge, and where the data lives in the three tools.*
 
 ## Why I often choose n8n in my projects
 
@@ -38,7 +40,9 @@ That's not a rule for everyone. For a simple automation for a small team, Zapier
 
 ![n8n on AWS in refrigerated transportation: more than 150 vehicles, 20 dispatchers, readings every minute](/src/assets/wpisy/n8n-make-czy-zapier-en-3.png)
 
-## Questions and answers
+*The transportation project described in this section.*
+
+## Frequently asked questions about n8n, Make, or Zapier
 
 ### Which tool is the cheapest?
 It depends on the number of steps, records, and executions. Price one of your workflows using the current pricing of all three tools.
@@ -52,5 +56,10 @@ Yes, but you have to rebuild the workflows, because they don't transfer between 
 ### Where is my data stored?
 In Zapier and Make, in the vendor's cloud. In n8n, you can choose your own server. Always check the data processing agreement.
 
+### n8n or Make: which needs less technical knowledge?
+Make. It has a visual workflow editor, while n8n needs the most knowledge, especially on your own server.
+
 ### n8n, Make, or Zapier: which should I choose for my business?
-Tell me what you want to automate and how many people will use it. I'll tell you which tool fits and why. I describe how I work on these projects on the [AI and process automation](/en/services/ai-automation/) page.
+It depends on what you want to automate and how many people will use it. I describe how I work on these projects on the [AI and process automation](/en/services/ai-automation/) page.
+
+**Email me: office@robert-debicki.pl** and describe what you want to automate. I'll tell you which tool fits and why.

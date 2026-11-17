@@ -6,9 +6,11 @@ miniatura:
   plik: "/src/assets/wpisy/voice-bot-dla-firmy-miniatura.png"
   alt: "Duży napis 2:00 i słuchawka telefonu, bot oddzwania do klienta w dwie minuty"
 ---
-**Voice bot dla firmy** może zadzwonić do osoby, która wypełniła formularz na Twojej stronie, w 2 minuty od wysłania. Opisuję wdrożenie, w którym bot obsługuje 15 rozmów dziennie i przekazuje handlowcowi gotową notatkę. Chcesz oddzwaniać szybciej do zapytań? Napisz do mnie.
+**Voice bot dla firmy** może zadzwonić do osoby, która wypełniła formularz na Twojej stronie, w 2 minuty od wysłania. Opisuję wdrożenie, w którym bot obsługuje 15 rozmów dziennie i przekazuje handlowcowi notatkę z rozmowy. Chcesz oddzwaniać szybciej do zapytań? Napisz do mnie.
 
 ![Oś czasu voice bota: formularz o 0:00, telefon bota o 2:00, notatka z potrzebą i budżetem trafia do Pipedrive](/src/assets/wpisy/voice-bot-dla-firmy-1.png)
+
+*Bot dzwoni w ciągu 2 minut po wysłaniu formularza.*
 
 ## Po co oddzwaniać do leada od razu
 
@@ -33,11 +35,13 @@ Bot nie sprzedaje i nie negocjuje. Zbiera informacje i oszczędza handlowcowi pi
 
 ![Podział pracy: voice bot zbiera informacje i robi notatkę, handlowiec prowadzi rozmowę sprzedażową](/src/assets/wpisy/voice-bot-dla-firmy-3.png)
 
-## Voice bot dla firmy a przepisy AI Act
+*Bot zbiera informacje, sprzedaje handlowiec.*
+
+## Voice bot a przepisy AI Act
 
 Od 2 sierpnia 2026 klient ma wiedzieć, że rozmawia z AI, jeśli nie jest to oczywiste. Przy telefonie od bota dobrym zwyczajem jest przedstawienie się w pierwszym zdaniu rozmowy. Szczegóły opisuję we wpisie [AI Act dla małej firmy](/wpisy/ai-act-dla-malej-firmy/).
 
-## Pytania i odpowiedzi
+## Najczęstsze pytania o voice bota dla firmy
 
 ### Czy klient pozna, że rozmawia z botem?
 Powinien to usłyszeć na początku rozmowy. Wymagają tego przepisy przejrzystości AI Act, gdy nie jest to oczywiste.
@@ -52,4 +56,6 @@ Takie przypadki też trafiają do handlowca. Ma wtedy informację, że kontakt j
 W opisanym wdrożeniu w Pipedrive. Pracuję też z HubSpotem i integracjami przez API.
 
 ### Ile kosztuje voice bot dla firmy?
-Cena zależy od liczby pytań, CRM i godzin dzwonienia. Napisz, jakich zapytań dostajesz dziennie, a przygotuję wycenę. Zakres usługi opisuję na stronie [voiceboty dla firm](/uslugi/voiceboty/).
+Cena zależy od liczby pytań, CRM i godzin dzwonienia. Zakres usługi opisuję na stronie [voiceboty dla firm](/uslugi/voiceboty/).
+
+**Napisz do mnie: office@robert-debicki.pl** i podaj, ile zapytań dostajesz dziennie, a przygotuję wycenę.

@@ -1,14 +1,14 @@
 ---
-tytul: "AI i automatyzacja w Twojej firmie"
+tytul: "Wdrożenie AI w firmie i automatyzacja procesów"
 nazwa: "AI i automatyzacja"
-tytulSeo: "Wdrożenie AI i automatyzacja procesów | Robert Dębicki"
-opis: "Wdrożenie AI w firmie i automatyzacja procesów: agenci AI, n8n i Make.com. Najpierw porządkuję proces, a AI dokładam tam, gdzie oszczędza pracę."
+tytulSeo: "Wdrożenie AI w firmie i automatyzacja | Robert Dębicki"
+opis: "Wdrożenie AI w firmie: agenci AI, n8n i Make.com. Najpierw porządkuję proces, a AI dokładam tam, gdzie oszczędza pracę. Zapytaj o wycenę."
 zajawka: "Najpierw porządkuję proces. Prostą automatyzację stawiam w n8n albo Make.com, a agentów AI wdrażam tam, gdzie oszczędzają pracę."
 ikona: "ai"
 sektor: "Agenci AI, n8n, Make.com"
 rola: "Agenci AI, n8n, Make.com"
 rolaWyroznienie: "/ Claude Code"
-lead: "Wdrażam AI i automatyzuję procesy. Wdrożenie AI w firmie nie zawsze jest potrzebne: czasem wystarczy dobrze ułożyć proces i zbudować prostą automatyzację."
+lead: "Wdrożenie AI w firmie zaczynam od procesu, bo AI nie zawsze jest potrzebne: czasem wystarczy dobrze ułożyć proces i zbudować prostą automatyzację."
 akapit: "Tam, gdzie AI oszczędza pracę, wdrażam agentów, którzy przejmują kilka zadań naraz: czytają dokumenty, wyciągają dane i przekazują sprawy dalej. Gdy model może się pomylić, decyzja zostaje u człowieka. Wrocław albo zdalnie."
 karta:
   - etykieta: "Modele"
@@ -32,7 +32,7 @@ problemy:
     - tytul: "Blog pisany i tłumaczony od zera"
       tekst: "Każdy wpis i opis realizacji na stronę trzeba napisać, a potem przetłumaczyć na inny język."
 kroki:
-  tytul: "Od procesu do rozwiązania, które działa w zespole"
+  tytul: "Wdrożenie AI w firmie krok po kroku"
   pozycje:
     - tytul: "Najpierw proces, potem narzędzie"
       tekst: "Sprawdzam, jak praca wygląda dziś. Często wystarczy ułożyć proces i prosta automatyzacja. AI dokładam tam, gdzie naprawdę oszczędza pracę."
@@ -56,7 +56,7 @@ przyklady:
         - "Airtable"
         - "SharePoint"
       link:
-        tekst: "Automatyczny odczyt dokumentów przez AI: opis wdrożenia"
+        tekst: "Wpis: odczyt dokumentów przez AI"
         adres: "/wpisy/automatyczny-odczyt-dokumentow/"
     - ikona: "ai"
       liczba: "3"
@@ -71,21 +71,21 @@ przyklady:
         - "GA4"
         - "Search Console"
       link:
-        tekst: "To wdrożenie w sekcji wdrożeń: Agenci AI do kampanii, SEO i bloga"
+        tekst: "Agenci AI w sekcji wdrożeń"
         adres: "/#wdrozenia"
 faq:
-  tytul: "O co pytają przed wdrożeniem AI w firmie"
+  tytul: "Najczęstsze pytania o wdrożenie AI w firmie"
   pozycje:
     - pytanie: "Czy moja firma w ogóle potrzebuje AI?"
       odpowiedz: "Nie zawsze. Czasem wystarczy poprawić proces i zbudować prostą automatyzację w n8n albo Make.com. AI proponuję tam, gdzie trzeba czytać dokumenty, rozumieć tekst albo rozmawiać z klientem."
-    - pytanie: "Czym agent AI różni się od chatbota?"
+    - pytanie: "Czym agent AI w firmie różni się od chatbota?"
       odpowiedz: "Chatbot odpowiada na pytania. Agent AI wykonuje zadania: czyta dokument, wyciąga dane, zapisuje je w bazie i przekazuje sprawę właściwej osobie."
     - pytanie: "Co, jeśli AI się pomyli?"
       odpowiedz: "Tam, gdzie odczyt może być niepewny, agent prosi człowieka o potwierdzenie. Tak działa obieg wniosków o dofinansowanie opisany wyżej."
     - pytanie: "Z jakich modeli korzystasz?"
       odpowiedz: "Claude API, OpenAI API i Gemini. Model dobieram do zadania."
     - pytanie: "Czy dane firmy są bezpieczne?"
-      odpowiedz: "Gdy proces przetwarza dane osobowe, podpisuję umowę powierzenia przetwarzania. Dane wysyłam do modelu przez API na koncie firmowym, nie przez darmowy czat, i tylko te pola, których zadanie wymaga. Agent zaczyna od dostępu tylko do odczytu, a zmiany zatwierdza człowiek. Uczę też zespół, jak pracować z AI, żeby nie wysyłać do modelu danych wrażliwych."
+      odpowiedz: "Gdy proces przetwarza dane osobowe, podpisuję umowę powierzenia przetwarzania. Dane wysyłam do modelu przez API na koncie firmowym, nie przez darmowy czat, i tylko te pola, których zadanie wymaga. Agent zaczyna od dostępu tylko do odczytu, a zmiany zatwierdza człowiek, i uczę też zespół, jak pracować z AI, żeby nie wysyłać do modelu danych wrażliwych."
     - pytanie: "Ile kosztuje wdrożenie AI w firmie?"
       odpowiedz: "Wyceniam indywidualnie, za projekt. Duży i złożony projekt dzielę na mniejsze etapy, a kwotę rozkładam na części."
 kolejnosc: 1
