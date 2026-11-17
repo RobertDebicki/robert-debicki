@@ -179,7 +179,7 @@ export function adresOdpowiednika(jezyk: Jezyk, kolekcja: Kolekcja, para: Para):
   if (jezyk === 'pl') {
     switch (kolekcja) {
       case 'wpisy':
-        return widocznaWJezyku(para, 'en') ? `/en/posts/${para.adres}/` : '/en/posts/';
+        return widocznaWJezyku(para, 'en') ? `/en/posts/${para.en!.data.adresEn ?? para.adres}/` : '/en/posts/';
       case 'referencje':
         return '/en/references/';
       case 'uslugi':

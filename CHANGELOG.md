@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 17:00, Claude Code
+
+**✅ Zrobione (gałąź `seo-audyt-en`, bez wdrożenia):** audyt strony skillem `seo-audit` (wtyczka `marketing` Anthropic, osiem skilli w `.claude/skills/`, bez `.mcp.json`; nieskomitowane do decyzji Roberta) i porównanie z zasadami DNK. Poprawki: skrócone tytuły EN czterech wpisów do najwyżej 58 znaków z marką, opis EN wpisu o KSeF z 194 do 143 znaków; angielskie adresy wpisów w `/en/posts/` (pole `adresEn` w `en.md`, jak w usługach; pole w panelu; `hreflang` i mapa strony z nowymi adresami; linki wewnętrzne w treści zaktualizowane); przekierowania 301 ze starych polskich slugów w `hosting/htaccess` i `public/_redirects`. Lighthouse mobile (`sprawdz:lighthouse`, mediana z 3 przebiegów): `/` 98, 100, 100, 100 i `/en/` 98, 100, 100, 100. `npm test`: 230 testów, e2e: 189, `sprawdz:tresc` 0, `sprawdz:sekrety` 0, `sprawdz:tlumaczenia` 0 błędów.
+
+**🚧 Nie zrobione:** wdrożenie (po nim sprawdzić ręcznie, czy `Redirect 301` ze starych adresów działa, bo Apache nie był testowany lokalnie); odczyt Search Console przez AdLoop (Robert: jutro); niskie uwagi audytu: krótki tytuł i opis list `/wpisy/` i `/en/posts/`, cienkie strony `/uslugi/` i `/en/services/`, brak BreadcrumbList.
+
+**🎯 Następny krok:** decyzja Roberta o wdrożeniu `seo-audyt-en`; jutro GSC (indeksacja nowych adresów po wdrożeniu).
+
 ## 2026-11-17 16:30, Claude Code
 
 **✅ Zrobione (wdrożenie za zgodą Roberta w wiadomości 17.11):** pięć rozbudowanych wpisów PL i EN na `main` (`c539a41`) i na żywej stronie. `npm run wdroz -- --wgraj`: 126 plików, odbiór zgodny z lokalnymi, `.htaccess` działa. `test:produkcja`: 5 z 5. Wgrywanie padło dwa razy na błędzie sieci (errno 36) i przeszło za trzecim razem.

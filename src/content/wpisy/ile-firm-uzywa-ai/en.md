@@ -7,6 +7,7 @@ miniatura:
   alt: "Large figure of 8.36 percent of companies in Poland using AI according to Eurostat, compared with the European Union"
 tlumaczenie: ai
 zrodlo: 54dc2c50a0ea7f16f3b9309417532e982573cb4cf3fc08d0a602716db27c6756
+adresEn: "business-process-automation-ai"
 ---
 **Business process automation** is still an advantage in Poland, not the norm. According to Statistics Poland (GUS), 8.7% of Polish companies used artificial intelligence, or AI, in 2025. I explain how to pick your first process to automate and what results my clients saw, and if you want to check what to automate in your company, email me.
 
@@ -54,7 +55,7 @@ I calculate the gain from automation with simple math based on working time. I c
 
 For a training company, I built an app for sign-ups and schedules for 12 trainers. According to the owner, the company now does 60 hours less manual work a month.
 
-For a company that collected data from municipal grant applications, a process downloads documents every day and saves the data in one database. I describe it in the post on [automated document reading with AI](/en/posts/automatyczny-odczyt-dokumentow/).
+For a company that collected data from municipal grant applications, a process downloads documents every day and saves the data in one database. I describe it in the post on [automated document reading with AI](/en/posts/automated-document-reading/).
 
 A maker of furniture for restaurants got a process that segments 230 customers by time since their last order. The language model, an AI that reads and writes text, kicks in for only 29 of them. The segmentation found 28 customers beyond the owner's manual list, with an order history worth PLN 174,717.
 

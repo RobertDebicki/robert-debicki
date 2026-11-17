@@ -57,7 +57,7 @@ przyklady:
         - "SharePoint"
       link:
         tekst: "Post: reading documents with AI"
-        adres: "/en/posts/automatyczny-odczyt-dokumentow/"
+        adres: "/en/posts/automated-document-reading/"
     - ikona: "ai"
       liczba: "3"
       liczbaOpis: "AI agents: ads and SEO, blog, translations"

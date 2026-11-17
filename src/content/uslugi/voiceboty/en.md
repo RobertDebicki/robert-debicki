@@ -54,7 +54,7 @@ przyklady:
         - "Pipedrive"
       link:
         tekst: "Post about the voice bot"
-        adres: "/en/posts/voice-bot-dla-firmy/"
+        adres: "/en/posts/voice-bot-for-business/"
 faq:
   tytul: "Common questions about AI voice agents"
   pozycje:

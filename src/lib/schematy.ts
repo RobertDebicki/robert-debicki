@@ -69,6 +69,8 @@ export const wpisy = z.object({
   /** Obraz przy wpisie na liście /wpisy/. Bez miniatury karta ma sam tekst. */
   miniatura: zdjecie.optional(),
   zdjecia: z.array(zdjecie).default([]),
+  /** Tylko w en.md: angielski adres wpisu (`/en/posts/<adresEn>/`). Bez pola EN dostaje adres folderu, jak PL. */
+  adresEn: z.string().regex(/^[a-z0-9-]+$/, { error: 'Pole adresEn: małe litery, cyfry i dywizy.' }).optional(),
   ...tlumaczenie,
 });
 

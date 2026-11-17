@@ -1,10 +1,21 @@
 import { describe, expect, it } from 'vitest';
 import { join } from 'node:path';
+import { cpSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { etykiety, adresOdpowiednika, widocznaWJezyku } from '../../src/lib/jezyki';
 import { zbudujPary, wczytajFiksture } from '../../src/lib/tresc';
 
 const F = join(import.meta.dirname, '../fikstury/jezyki');
 const para = (kolekcja: string, adres: string) => zbudujPary(wczytajFiksture(join(F, kolekcja, adres), adres))[0];
+
+/** Kopia fikstury `oba` z dopisanym adresEn w en.md, bez dokładania wpisu do wspólnych fikstur (e2e liczy wpisy). */
+function mkdtemp_oba() {
+  const dir = mkdtempSync(join(tmpdir(), 'adresen-'));
+  cpSync(join(F, 'wpisy/oba'), dir, { recursive: true });
+  const en = join(dir, 'en.md');
+  writeFileSync(en, readFileSync(en, 'utf8').replace('tlumaczenie: ai', 'adresEn: "with-address"\ntlumaczenie: ai'));
+  return dir;
+}
 
 describe('widocznaWJezyku', () => {
   it('PL widzi wszystko, EN nie widzi pozycji bez en.md, widzi do-aktualizacji', () => {
@@ -22,6 +33,12 @@ describe('adresOdpowiednika', () => {
     const p = para('wpisy', 'oba');
     expect(adresOdpowiednika('pl', 'wpisy', p)).toBe('/en/posts/oba/');
     expect(adresOdpowiednika('en', 'wpisy', p)).toBe('/wpisy/oba/');
+  });
+  it('wpis z adresEn: PL prowadzi pod angielski adres, EN wraca pod adres folderu', () => {
+    const dir = mkdtemp_oba();
+    const p = zbudujPary(wczytajFiksture(dir, 'z-adresem'))[0];
+    expect(adresOdpowiednika('pl', 'wpisy', p)).toBe('/en/posts/with-address/');
+    expect(adresOdpowiednika('en', 'wpisy', p)).toBe('/wpisy/z-adresem/');
   });
   it('wpis bez en.md: przełącznik z PL prowadzi do listy EN', () => {
     expect(adresOdpowiednika('pl', 'wpisy', para('wpisy', 'tylko-pl'))).toBe('/en/posts/');

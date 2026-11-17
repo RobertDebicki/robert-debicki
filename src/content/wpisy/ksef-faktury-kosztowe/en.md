@@ -1,12 +1,13 @@
 ---
-tytul: "Purchase invoices from KSeF: how to download them"
+tytul: "Purchase invoices from KSeF: download them"
 data: 2026-11-17
-zajawka: "Purchase invoices from KSeF: since Feb. 1, 2026, the system does not notify you about them. An automation pulls them through the API on its own, and setup takes about a week. Ask me for a quote."
+zajawka: "Purchase invoices from KSeF: since Feb. 1, 2026, the system sends no notices. An API automation pulls them in about a week. Ask me for a quote."
 miniatura:
   plik: "/src/assets/wpisy/ksef-faktury-kosztowe-miniatura.png"
   alt: "An invoice in an XML file, an arrow, and a crossed-out bell, because KSeF does not send notifications about invoices"
 tlumaczenie: ai
 zrodlo: c1dcd574976fcd1f654fe916f64c153ed8a9310e28a34869d69f82dcd7d0e67c
+adresEn: "purchase-invoices-from-ksef"
 ---
 **Purchase invoices from KSeF** have been arriving since Feb. 1, 2026, and the system will not notify you when one comes in. I show my automation, which pulls purchase invoices on its own, and a design for companies that want to pull them straight from KSeF. Write to me if you want this set up in your company.
 

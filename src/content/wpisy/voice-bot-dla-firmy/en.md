@@ -1,5 +1,5 @@
 ---
-tytul: "Voice bot for your business: callback in 2 min"
+tytul: "Voice bot for business: 2-minute callback"
 data: 2026-11-04
 zajawka: "A voice bot for your business calls a form lead within 2 minutes and writes a note for the sales rep. See how it works and what the AI Act says. Email me."
 miniatura:
@@ -7,6 +7,7 @@ miniatura:
   alt: "Large 2:00 text and a phone handset, the bot calls the customer back within two minutes"
 tlumaczenie: ai
 zrodlo: 92dbf6d7bac1aae2a3a332818592a8e8a0f74adb2d478351b56213c059fd7f1d
+adresEn: "voice-bot-for-business"
 ---
 **A voice bot for your business** can call the person who filled out the form on your website within 2 minutes of submission. I describe a project where the bot handles 15 calls a day and hands the sales rep a note from the call. Want to call back people who reach out through your website faster? Email me and tell me how many inquiries you get.
 
@@ -49,7 +50,7 @@ The AI Act is the EU regulation on artificial intelligence, and its Article 50 a
 
 GDPR (RODO in Polish) is the EU regulation on personal data protection, which covers things like a name and a phone number. Article 6 of the GDPR lists the legal grounds on which a business can use such data, for example consent or steps taken at the person's request before a contract. It's best to settle which ground applies to your form with a lawyer before the bot goes live.
 
-Consent to contact is a person's permission for a business to call them with commercial information. Article 398 of the Polish Electronic Communications Law of July 12, 2024 bans using automated calling systems for direct marketing without the recipient's prior consent. I cover the AI rules in more detail in the post [AI Act for small businesses](/en/posts/ai-act-dla-malej-firmy/).
+Consent to contact is a person's permission for a business to call them with commercial information. Article 398 of the Polish Electronic Communications Law of July 12, 2024 bans using automated calling systems for direct marketing without the recipient's prior consent. I cover the AI rules in more detail in the post [AI Act for small businesses](/en/posts/ai-act-for-small-business/).
 
 ## Frequently asked questions about a voice bot for your business
 

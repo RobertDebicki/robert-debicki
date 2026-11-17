@@ -1,5 +1,5 @@
 ---
-tytul: "AI Act for small businesses: a 2026 checklist"
+tytul: "AI Act for small business: 2026 checklist"
 data: 2026-10-14
 zajawka: "AI Act for small businesses: since Aug. 2, 2026, customers must know they're talking to a bot. Check what to do in three steps. Email me, I'll help."
 miniatura:
@@ -7,6 +7,7 @@ miniatura:
   alt: "Chat window with a bot that says I'm an AI assistant, next to an AI Act compliance check mark"
 tlumaczenie: ai
 zrodlo: ef5003dbfcebd78257bf9b1b1fddf92cb1d8f4b1627c68bd371e9fe9a426041a
+adresEn: "ai-act-for-small-business"
 ---
 **The AI Act for small businesses** already applies to you if your website runs a chat or a bot answers your phone. The transparency rules have applied since Aug. 2, 2026. They say what customers must know when they talk to AI. I explain in plain language what they mean in practice and what you can check in your business in one evening. If you have a bot and aren't sure it meets the requirements, send me an email.
 
@@ -52,7 +53,7 @@ Obligations for high-risk systems, for example in hiring or in assessing access 
 
 Prawo.pl advises starting by working out which AI systems your business uses, in which processes, and in what role. To begin, three simple steps for one evening are enough:
 
-1. List the places where customers talk to AI: website chat, [phone bot](/en/posts/voice-bot-dla-firmy/), automatic email replies.
+1. List the places where customers talk to AI: website chat, [phone bot](/en/posts/voice-bot-for-business/), automatic email replies.
 2. Add one sentence at the start of the conversation, for example “I'm an AI assistant.”
 3. Review your graphics, recordings, and videos, because images and audio that imitate real people must be disclosed.
 

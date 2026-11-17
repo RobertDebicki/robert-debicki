@@ -7,6 +7,7 @@ miniatura:
   alt: "Stack of documents, an arrow, and a data table with one row flagged for review"
 tlumaczenie: ai
 zrodlo: c7f67eda24b5c201a0c04d472f8aa65236cc385c65c652993075eeefcd093f2e
+adresEn: "automated-document-reading"
 ---
 **Automated document reading** saves time wherever someone retypes amounts and deadlines from PDF files into a spreadsheet by hand. I describe a project where the system reads hundreds of grant applications every day and saves the data in one database. I also show what happens when a read is uncertain and how to protect personal data from documents. If someone at your company retypes documents by hand, email me and tell me what they cover.
 
@@ -41,7 +42,7 @@ The whole thing runs on n8n, a tool where you build an automation from connected
 
 ### What about invoices from KSeF
 
-Reading invoices works differently when the invoice comes from KSeF, the Polish National e-Invoicing System. According to the Polish Ministry of Finance, companies with sales above PLN 200 million including VAT in 2024 have had to issue invoices in KSeF since Feb. 1, 2026. All other companies have issued invoices in KSeF since April 1, 2026. Companies with invoices up to PLN 10,000 gross per month may issue invoices outside KSeF only until Dec. 31, 2026. The ministry explains on its KSeF 2.0 page that an invoice in this system must be an XML file. It's a file that follows an official template, where every piece of data has a fixed place, so reading it doesn't require OCR. I describe downloading these invoices automatically in my post about [cost invoices from KSeF](/en/posts/ksef-faktury-kosztowe/).
+Reading invoices works differently when the invoice comes from KSeF, the Polish National e-Invoicing System. According to the Polish Ministry of Finance, companies with sales above PLN 200 million including VAT in 2024 have had to issue invoices in KSeF since Feb. 1, 2026. All other companies have issued invoices in KSeF since April 1, 2026. Companies with invoices up to PLN 10,000 gross per month may issue invoices outside KSeF only until Dec. 31, 2026. The ministry explains on its KSeF 2.0 page that an invoice in this system must be an XML file. It's a file that follows an official template, where every piece of data has a fixed place, so reading it doesn't require OCR. I describe downloading these invoices automatically in my post about [cost invoices from KSeF](/en/posts/purchase-invoices-from-ksef/).
 
 ## What about a read the system isn't sure of
 

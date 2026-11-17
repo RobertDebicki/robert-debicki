@@ -14,7 +14,7 @@ const { entry, para } = Astro.props;
 const maEn = widocznaWJezyku(para, 'en');
 const przelacznik = maEn || (await maListe('en')) ? adresOdpowiednika('pl', 'wpisy', para) : undefined;
 ---
-<Strona jezyk="pl" tytul={`${entry.data.tytul} | Robert Dębicki`} opis={entry.data.zajawka} odpowiednik={maEn ? `/en/posts/${adres}/` : undefined} przelacznik={przelacznik}>
+<Strona jezyk="pl" tytul={`${entry.data.tytul} | Robert Dębicki`} opis={entry.data.zajawka} odpowiednik={maEn ? adresOdpowiednika('pl', 'wpisy', para) : undefined} przelacznik={przelacznik}>
   <DaneWpisu slot="glowa" jezyk="pl" adres={adres!} entry={entry} />
   <StronaWpisu jezyk="pl" adres={adres!} entry={entry} />
 </Strona>

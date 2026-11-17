@@ -156,6 +156,11 @@ const WPISY: Pole = {
         summary: '{{fields.alt}}',
         fields: POLA_ZDJECIA,
       }),
+      tekst('adresEn', 'Adres po angielsku', {
+        required: false,
+        hint: 'Tylko w wersji angielskiej: angielski adres wpisu, małe litery i dywizy, np. ai-act-for-small-business. W polskiej wersji zostaw puste.',
+        pattern: ['^[a-z0-9-]+$', 'Tylko małe litery, cyfry i dywizy.'],
+      }),
       ...TLUMACZENIE,
       body('Treść wpisu'),
     ],

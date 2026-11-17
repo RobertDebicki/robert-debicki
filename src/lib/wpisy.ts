@@ -27,7 +27,7 @@ export async function wpisyWJezyku(jezyk: Jezyk) {
   const [pary, wpisy] = await Promise.all([pobierzPary('wpisy'), getCollection('wpisy')]);
   return pary
     .filter((p) => widocznaWJezyku(p, jezyk))
-    .map((para) => ({ para, adres: para.adres, entry: wpisy.find((w) => w.id === `${para.adres}/${jezyk}`)! }))
+    .map((para) => ({ para, adres: jezyk === 'en' ? (para.en?.data.adresEn ?? para.adres) : para.adres, entry: wpisy.find((w) => w.id === `${para.adres}/${jezyk}`)! }))
     .sort((a, b) => b.entry.data.data.getTime() - a.entry.data.data.getTime());
 }
 
