@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/ai-act-dla-malej-firmy-en-miniatura.png"
   alt: "Chat window with a bot that says I'm an AI assistant, next to an AI Act compliance check mark"
 tlumaczenie: ai
-zrodlo: fd18689a9c846443c99928f8d33153af32a35e4aa3e0afa2639f6e0f91d8e78b
+zrodlo: 477cecc96a3dc9eab00b4343dea059f52084f483cb8cc239ac83d4aa9d976f76
 ---
 **The AI Act for small businesses** already applies to you if your website runs a chat or a bot answers your phone. The transparency rules have applied since Aug. 2, 2026. I explain what they mean in practice and what you can check in one evening. If you have a bot and aren't sure it meets the requirements, send me an email.
 
@@ -53,7 +53,7 @@ Breaking the transparency rules can mean a fine of up to EUR 15 million or up to
 ## Frequently asked questions about the AI Act for small businesses
 
 ### Do I have to tell customers they're talking to a bot?
-Yes, if it isn't obvious. It's best to do it in the first message.
+Yes, if it isn't obvious. It's best to do it in the first message. If the customer asks for a person, the agent transfers the call to one.
 
 ### Does the AI Act also cover tools I just buy?
 Yes. The vendor must design the disclosure, but checking the setup and the contract is up to you.

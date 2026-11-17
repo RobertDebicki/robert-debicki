@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 15:00, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`):** fakty od Roberta do trzech wpisów, PL i EN: AI Act (przekierowanie do człowieka na prośbę klienta), odczyt dokumentów (sposób liczenia zysku czasu, dwa pytania do FAQ: czas wdrożenia i zmiany u klienta, wycena z liczb zakresu), n8n, Make i Zapier (wybór narzędzia: Make dla prostych automatyzacji, n8n na własnym serwerze dla rozbudowanych, taniej niż subskrypcja Make). `dnk.ts`: 0 błędów w trzech wpisach; kontrola tłumaczeń: 0 błędów.
+
+**🚧 Nie zrobione:** długości 515, 472 i 528 słów (cel 700 do 1000) wymagają kolejnych faktów; przykład wdrożenia n8n z fakturami zaliczkowymi czeka na wyjaśnienie nazwy „fintable” od Roberta.
+
+**🎯 Następny krok:** wyjaśnienie „fintable” i kolejne fakty do długości.
+
 ## 2026-11-17 14:00, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`):** wpis o voice bocie: fakt z wdrożenia (asystentka przedstawia się jako wirtualna asystentka), dwa pytania do FAQ z odpowiedziami od Roberta (czas: średnio od 2 do 3 tygodni do pierwszego działającego agenta; zmiany w automatyzacjach: klient nie zmienia, robi je Robert na prośbę klienta), wycena indywidualna. PL i EN, 7 pytań FAQ. `dnk.ts`: 0 błędów.

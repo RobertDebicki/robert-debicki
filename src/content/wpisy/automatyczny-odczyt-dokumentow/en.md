@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/automatyczny-odczyt-dokumentow-en-miniatura.png"
   alt: "Stack of documents, an arrow, and a data table with one row flagged for review"
 tlumaczenie: ai
-zrodlo: 3022ab65ae9c6beb4c8486f3d16bc75a6b9ce9fd37d76e22a98acea87dc8983a
+zrodlo: e964ea0b60f7e290381680bd80efef9151f6f0d51fbd7c72594601803d3ee2a2
 ---
 **Automated document reading** saves time wherever someone retypes amounts and deadlines from PDFs into a spreadsheet. I describe a project where the system reads hundreds of applications every day and saves the data in one database. I also show what happens when a read is uncertain. If you retype documents by hand, email me.
 
@@ -45,7 +45,7 @@ That way the automation doesn't pretend to be infallible. Confident reads go thr
 
 ## What changes for the team
 
-The system takes retyping off the team's plate. The team has one database instead of folders of files. The system assigns an owner to each application. I don't give a number of hours saved here, because I haven't measured that number. What I do know is that the process handles hundreds of applications and runs every day.
+The system takes retyping off the team's plate. The team has one database instead of folders of files. The system assigns an owner to each application. I don't give a number of hours saved here, because I haven't measured that number. What I do know is that the process handles hundreds of applications and runs every day. I measure it this way: I check how long one task takes a person, multiply it by the number of such tasks in a week or a month, and then count the same way for the automation.
 
 ## Frequently asked questions about automated document reading
 
@@ -59,7 +59,13 @@ When a read is uncertain, the system asks a person. When a read looks confident,
 Usually not. In the project described here, the system downloads documents from email and SharePoint and saves the data in Airtable.
 
 ### How much does a project like this cost?
-The price depends on the number of document types and where the data goes. Tell me which documents you retype, and I'll give you a quote. I build processes like this as part of my [AI automation](/en/services/ai-automation/) service.
+I work out the price from the numbers in the scope: the number of document types and where the data goes. Tell me which documents you retype, and I'll give you a quote. I build processes like this as part of my [AI automation](/en/services/ai-automation/) service.
+
+### How long does a deployment take?
+I answer based on the scope of the deployment, which we set before we start.
+
+### Does the client have to change the automation?
+No. The client never touches the automation, because everything happens automatically. I make changes after consulting with the client.
 
 ### Is the data from the documents secure?
 That depends on the services you choose and your contracts with their providers. Before the project starts, we agree on where the data may go. With personal data, that matters because of the GDPR.

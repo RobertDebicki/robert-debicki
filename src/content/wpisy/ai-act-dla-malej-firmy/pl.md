@@ -51,7 +51,7 @@ Za naruszenie przepisów o przejrzystości grozi kara do 15 mln euro albo do 3 p
 ## Najczęstsze pytania o AI Act dla małej firmy
 
 ### Czy muszę informować klientów, że rozmawiają z botem?
-Tak, jeśli nie jest to oczywiste. Najlepiej zrobić to w pierwszej wiadomości.
+Tak, jeśli nie jest to oczywiste. Najlepiej zrobić to w pierwszej wiadomości. Gdy klient poprosi o człowieka, agent przekierowuje do niego połączenie.
 
 ### Czy AI Act obejmuje też narzędzia, które tylko kupuję?
 Tak. Obowiązek zaprojektowania informacji ma dostawca, ale sprawdzenie wdrożenia i umowy zostaje po Twojej stronie.

@@ -58,6 +58,6 @@ W Zapierze i Make w chmurze dostawcy. W n8n możesz wybrać własny serwer. Zaws
 Make. Ma graficzny edytor scenariuszy, a n8n wymaga najwięcej wiedzy, zwłaszcza przy własnym serwerze.
 
 ### n8n, Make czy Zapier: które wybrać dla mojej firmy?
-To zależy od tego, co chcesz zautomatyzować i ile osób będzie z tego korzystać. Jak pracuję przy takich wdrożeniach, opisuję na stronie [AI i automatyzacja procesów](/uslugi/ai-i-automatyzacja/).
+Zależy od tego, co automatyzuję, ale do prostych automatyzacji, które nie uruchamiają się kilka razy dziennie, wybieram Make. Gdy automatyzacja jest rozbudowana i musi działać cały czas, stawiam n8n na własnym serwerze, bo wychodzi taniej niż subskrypcja Make. Jak pracuję przy takich wdrożeniach, opisuję na stronie [AI i automatyzacja procesów](/uslugi/ai-i-automatyzacja/).
 
 **Napisz do mnie: office@robert-debicki.pl** i opisz, co chcesz zautomatyzować. Odpowiem, które narzędzie pasuje i dlaczego.

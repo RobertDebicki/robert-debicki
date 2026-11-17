@@ -43,7 +43,7 @@ Dzięki temu automatyzacja nie udaje nieomylnej. Pewne odczyty idą same, niepew
 
 ## Co zmienia się dla zespołu
 
-System zdejmuje z zespołu przepisywanie. Zespół ma jedną bazę zamiast folderów z plikami. System przypisuje opiekuna do każdego wniosku. Nie podaję tu liczby zaoszczędzonych godzin, bo tej liczby nie mam zmierzonej. Wiem natomiast, że proces obsługuje setki wniosków i działa codziennie.
+System zdejmuje z zespołu przepisywanie. Zespół ma jedną bazę zamiast folderów z plikami. System przypisuje opiekuna do każdego wniosku. Nie podaję tu liczby zaoszczędzonych godzin, bo tej liczby nie mam zmierzonej. Wiem natomiast, że proces obsługuje setki wniosków i działa codziennie. Mierzę to tak: sprawdzam, ile trwa człowiekowi jedna czynność, mnożę przez liczbę takich czynności w tygodniu albo w miesiącu, a potem liczę tak samo dla automatyzacji.
 
 ## Najczęstsze pytania o automatyczny odczyt dokumentów
 
@@ -57,7 +57,13 @@ Przy niepewnym odczycie system pyta człowieka. Gdy odczyt wygląda na pewny, kw
 Zwykle nie. W opisanym wdrożeniu system pobiera dokumenty z poczty i SharePointa, a dane zapisuje w Airtable.
 
 ### Ile kosztuje takie wdrożenie?
-Cena zależy od liczby typów dokumentów i miejsc zapisu. Napisz, jakie dokumenty przepisujesz, a podam wycenę. Takie procesy buduję w ramach usługi [wdrożenie AI i automatyzacja procesów](/uslugi/ai-i-automatyzacja/).
+Cenę wyliczam na podstawie liczb z zakresu, czyli typów dokumentów i miejsc zapisu. Napisz, jakie dokumenty przepisujesz, a podam wycenę. Takie procesy buduję w ramach usługi [wdrożenie AI i automatyzacja procesów](/uslugi/ai-i-automatyzacja/).
+
+### Ile trwa wdrożenie?
+Odpowiadam na podstawie zakresu wdrożenia, który ustalamy przed startem.
+
+### Czy klient musi zmieniać automatyzację?
+Nie. Klient nie rusza automatyzacji, bo wszystko dzieje się automatycznie. Zmiany wprowadzam ja, po konsultacji z klientem.
 
 ### Czy dane z dokumentów są bezpieczne?
 To zależy od wybranych usług i umów z ich dostawcami. Przed wdrożeniem ustalam z Tobą, gdzie dane mogą trafiać. Przy danych osobowych to ważne ze względu na RODO.
