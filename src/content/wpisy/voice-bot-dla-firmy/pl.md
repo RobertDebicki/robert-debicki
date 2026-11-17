@@ -39,7 +39,7 @@ Bot nie sprzedaje i nie negocjuje. Zbiera informacje i oszczędza handlowcowi pi
 
 ## Voice bot a przepisy AI Act
 
-Od 2 sierpnia 2026 klient ma wiedzieć, że rozmawia z AI, jeśli nie jest to oczywiste. Przy telefonie od bota dobrym zwyczajem jest przedstawienie się w pierwszym zdaniu rozmowy. Szczegóły opisuję we wpisie [AI Act dla małej firmy](/wpisy/ai-act-dla-malej-firmy/).
+Od 2 sierpnia 2026 klient ma wiedzieć, że rozmawia z AI, jeśli nie jest to oczywiste. Przy telefonie od bota dobrym zwyczajem jest przedstawienie się w pierwszym zdaniu rozmowy. W moim wdrożeniu asystentka zaczyna rozmowę od przedstawienia się jako wirtualna asystentka. Szczegóły opisuję we wpisie [AI Act dla małej firmy](/wpisy/ai-act-dla-malej-firmy/).
 
 ## Najczęstsze pytania o voice bota dla firmy
 
@@ -55,7 +55,13 @@ Takie przypadki też trafiają do handlowca. Ma wtedy informację, że kontakt j
 ### W jakim CRM to działa?
 W opisanym wdrożeniu w Pipedrive. Pracuję też z HubSpotem i integracjami przez API.
 
+### Ile trwa wdrożenie voice bota?
+Średnio od 2 do 3 tygodni, żeby oddać pierwszego działającego agenta do testów przez klienta. Czas zależy od specyfiki agenta i tego, co ma robić poza rozmowami.
+
+### Czy klient musi coś zmieniać w automatyzacjach?
+Nie. Zakres, czyli rozmowę i zadania agenta, ustalam na początku, a klient dostaje działającego agenta i go nie zmienia. Zmiany robię tylko na jego prośbę.
+
 ### Ile kosztuje voice bot dla firmy?
-Cena zależy od liczby pytań, CRM i godzin dzwonienia. Zakres usługi opisuję na stronie [voiceboty dla firm](/uslugi/voiceboty/).
+Cena zależy od liczby pytań, CRM i godzin dzwonienia. Każdą wycenę ustalam indywidualnie, po rozmowie z klientem i poznaniu zadań agenta. Zakres usługi opisuję na stronie [voiceboty dla firm](/uslugi/voiceboty/).
 
 **Napisz do mnie: office@robert-debicki.pl** i podaj, ile zapytań dostajesz dziennie, a przygotuję wycenę.

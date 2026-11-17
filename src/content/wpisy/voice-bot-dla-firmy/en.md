@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/voice-bot-dla-firmy-en-miniatura.png"
   alt: "Large 2:00 text and a phone handset, the bot calls the customer back within two minutes"
 tlumaczenie: ai
-zrodlo: 6b88b3463461f01807ed6e2d81ffe8ea5cab741d14b8ab98f945442cfd320d57
+zrodlo: ae876d6cd250ccfcfd5b359abf74893c256df2d1e7d5ffe482863b8800408490
 ---
 **A voice bot for your business** can call the person who filled out the form on your website within 2 minutes of submission. I describe a project where the bot handles 15 calls a day and hands the sales rep a note from the call. Want to call leads back faster? Email me.
 
@@ -41,7 +41,7 @@ The bot doesn't sell or negotiate. It gathers information and saves the sales re
 
 ## A voice bot and the AI Act
 
-Since Aug. 2, 2026, customers must know they're talking to AI if it isn't obvious. When a bot calls, it's good practice for it to introduce itself in the first sentence. I cover the details in the post [AI Act for small businesses](/en/posts/ai-act-dla-malej-firmy/).
+Since Aug. 2, 2026, customers must know they're talking to AI if it isn't obvious. When a bot calls, it's good practice for it to introduce itself in the first sentence. In my deployment, the assistant opens the call by introducing herself as a virtual assistant. I cover the details in the post [AI Act for small businesses](/en/posts/ai-act-dla-malej-firmy/).
 
 ## Frequently asked questions about a voice bot for your business
 
@@ -57,7 +57,13 @@ Those cases go to the sales rep too. The rep then sees that the contact needs a 
 ### Which CRM does it work with?
 In the project described here, Pipedrive. I also work with HubSpot and API integrations.
 
+### How long does a voice bot deployment take?
+On average 2 to 3 weeks until the client gets the first working agent to test. The time depends on the specifics of the agent and what else it has to do beyond the calls.
+
+### Does the client have to change anything in the automations?
+No. I set the scope, meaning the call and the agent's tasks, at the start. The client gets a working agent and doesn't change it. I make changes only at their request.
+
 ### How much does a voice bot for your business cost?
-The price depends on the number of questions, the CRM, and calling hours. I describe the service on the [AI voice agents for business](/en/services/ai-voice-agents/) page.
+The price depends on the number of questions, the CRM, and calling hours. Each quote is set individually, after talking with the client and learning what the agent has to do. I describe the service on the [AI voice agents for business](/en/services/ai-voice-agents/) page.
 
 **Email me: office@robert-debicki.pl** and tell me how many inquiries you get each day, and I'll prepare a quote.

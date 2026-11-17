@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 14:00, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`):** wpis o voice bocie: fakt z wdrożenia (asystentka przedstawia się jako wirtualna asystentka), dwa pytania do FAQ z odpowiedziami od Roberta (czas: średnio od 2 do 3 tygodni do pierwszego działającego agenta; zmiany w automatyzacjach: klient nie zmienia, robi je Robert na prośbę klienta), wycena indywidualna. PL i EN, 7 pytań FAQ. `dnk.ts`: 0 błędów.
+
+**🚧 Nie zrobione:** wpisy AI Act, odczyt dokumentów i n8n czekają na fakty od Roberta; wypchnięcie i wdrożenie za zgodą.
+
+**🎯 Następny krok:** odpowiedzi Roberta do pozostałych wpisów.
+
 ## 2026-11-17 13:30, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`):** wpis o automatyzacji procesów w firmie: rozwinięty opis procesu w trzech krokach (tylko z tego, co już jest w tekście i w odpowiedziach Roberta), 499 słów, PL i EN. `dnk.ts`: 0 błędów.
