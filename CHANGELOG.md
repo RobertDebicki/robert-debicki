@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 15:30, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`):** wpis o n8n, Make i Zapier: nowa sekcja „Przykład: faktura zaliczkowa z zamówienia” (Airtable, Fakturownia, Fintable porównuje przelewy z numerem zamówienia i kwotą, status i powiadomienie klienta), PL i EN. `dnk.ts`: 0 błędów. Długość 612 słów.
+
+**🚧 Nie zrobione:** długość pozostałych wpisów poniżej 700 słów; wypchnięcie i wdrożenie za zgodą.
+
+**🎯 Następny krok:** Robert wybiera tematy ze źródeł do długości.
+
 ## 2026-11-17 15:00, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`):** fakty od Roberta do trzech wpisów, PL i EN: AI Act (przekierowanie do człowieka na prośbę klienta), odczyt dokumentów (sposób liczenia zysku czasu, dwa pytania do FAQ: czas wdrożenia i zmiany u klienta, wycena z liczb zakresu), n8n, Make i Zapier (wybór narzędzia: Make dla prostych automatyzacji, n8n na własnym serwerze dla rozbudowanych, taniej niż subskrypcja Make). `dnk.ts`: 0 błędów w trzech wpisach; kontrola tłumaczeń: 0 błędów.

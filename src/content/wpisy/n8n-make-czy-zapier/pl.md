@@ -40,6 +40,14 @@ To nie jest reguła dla każdego. Przy prostej automatyzacji dla małego zespoł
 
 *Wdrożenie w transporcie opisane w tej sekcji.*
 
+## Przykład: faktura zaliczkowa z zamówienia
+
+Zamówienie wpada do Airtable. Klient uzupełnia dane potrzebne do produkcji, a potem klikam przycisk. Wtedy n8n wystawia fakturę zaliczkową w Fakturowni i tworzy szkic maila do klienta z tą fakturą.
+
+Po opłaceniu faktury Fintable łączy się z moim bankiem i porównuje przychodzące przelewy. Sprawdza tytuł z numerem zamówienia i kwotę. Gdy wszystko się zgadza, oznacza ją jako opłaconą.
+
+Wtedy automatyzacja w n8n zmienia status zamówienia, a zamówienie trafia na produkcję. Klient dostaje powiadomienie, że jego zamówienie trafiło do produkcji.
+
 ## Najczęstsze pytania o n8n, Make czy Zapier
 
 ### Które narzędzie jest najtańsze?
