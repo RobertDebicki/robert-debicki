@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-11-17 13:10, Claude Code
+
+**✅ Zrobione (gałąź `poprawki-opublikowane`):** usługa „strony i aplikacje”: opis w Google z liczbą od Roberta (prosty landing page około 1000 zł plus VAT), wezwanie do wyceny, PL i EN; frazę „aplikacja zamiast Excela” usunięto z listy (Robert: Excel już mało kto używa). `dnk.ts`: 0 błędów.
+
+**🚧 Nie zrobione:** długość wpisów (392 do 504 słów, cel 700 do 1000) czeka na odpowiedzi Roberta na pytania; wypchnięcie na `main` i wdrożenie za zgodą.
+
+**🎯 Następny krok:** odpowiedzi Roberta na pytania do wpisów.
+
 ## 2026-11-17 12:30, Claude Code
 
 **✅ Zrobione (gałąź `poprawki-opublikowane`, nie wypchnięte, nie wdrożone):** poprawki DNK w 5 opublikowanych wpisach (ile-firm-uzywa-ai, ai-act-dla-malej-firmy, automatyczny-odczyt-dokumentow, voice-bot-dla-firmy, n8n-make-czy-zapier) i 3 usługach (ai-i-automatyzacja, voiceboty, strony-i-aplikacje), PL i EN. `dnk.ts`: 0 błędów w 7 z 8; build przechodzi (naprawiono `tytulSeo` EN usługi AI do 49 znaków i `opis` EN voicebota do 151). Przegląd świeżym agentem: bez Critical, Important naprawiony (pytanie FAQ z Excelem). Bez nowych faktów.
