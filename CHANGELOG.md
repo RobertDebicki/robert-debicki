@@ -1,3 +1,11 @@
+## 2026-11-18 18:30, Claude Code
+
+**✅ Zrobione (gałąź `blog-polityka-grafiki-en`, lokalnie, bez pusha i wdrożenia):** grafiki wpisu „Polityka AI w firmie” w wersji EN: 3 grafiki i miniatura po angielsku (`src/assets/wpisy/polityka-ai-w-firmie-en-*.png`), źródło w `docs/blog-szkice/podglad/grafiki_en.py` (`POLITYKA`, `MINIATURY_EN`), zrzut przez `zrzuty.mjs en`. `en.md` wskazuje nowe pliki, ALT i podpisy zgodne z grafikami. Kontrola tłumaczeń: 0 błędów dla polityki, `sprawdz:tresc` 0 i 0, `npm run build` exit 0.
+
+**🚧 Nie zrobione:** push i wdrożenie tej poprawki na żywą stronę (czeka na zgodę Roberta). Na żywej stronie EN wpis nadal pokazuje grafiki po polsku. Wpisy KSeF EN (`ksef-faktury-kosztowe-1..3.png`, miniatura) też używają polskich grafik; do zrobienia tym samym sposobem. Frazy EN dla wpisu nadal brak.
+
+**🎯 Następny krok:** Robert potwierdza push i wdrożenie tej poprawki; potem grafiki EN dla wpisu KSeF.
+
 ## 2026-11-18 12:00, Claude Code
 
 **✅ Zrobione (publikacja za zgodą Roberta w wiadomości 18.11, gałąź `blog-polityka-ai`):** wpis „Polityka AI w firmie na jedną stronę” w wersji PL (`src/content/wpisy/polityka-ai-w-firmie/pl.md`, z `poprawki-dnk`, data 2026-11-20) i nowa wersja EN (`en.md`, `tlumaczenie: ai`, `zrodlo` przeliczone), 3 grafiki i miniatura. Kontrola DNK PL: `dnk.ts` 0 błędów (frazy: „polityka AI w firmie”, dodatkowa „wdrożenie AI w firmie”). Kontrola tłumaczeń: 0 błędów, jedna uwaga o cudzysłowie poprawiona. `npm run sprawdz` exit 0.
