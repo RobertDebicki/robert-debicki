@@ -1,3 +1,11 @@
+## 2026-11-18 12:00, Claude Code
+
+**✅ Zrobione (publikacja za zgodą Roberta w wiadomości 18.11, gałąź `blog-polityka-ai`):** wpis „Polityka AI w firmie na jedną stronę” w wersji PL (`src/content/wpisy/polityka-ai-w-firmie/pl.md`, z `poprawki-dnk`, data 2026-11-20) i nowa wersja EN (`en.md`, `tlumaczenie: ai`, `zrodlo` przeliczone), 3 grafiki i miniatura. Kontrola DNK PL: `dnk.ts` 0 błędów (frazy: „polityka AI w firmie”, dodatkowa „wdrożenie AI w firmie”). Kontrola tłumaczeń: 0 błędów, jedna uwaga o cudzysłowie poprawiona. `npm run sprawdz` exit 0.
+
+**🚧 Nie zrobione:** ocena z analizatora DNK (okienka wygenerowane, ocenę wkleja Robert); brak frazy EN dla tego wpisu w `docs/seo/frazy-uslug.md`; data 20.11 przy publikacji 18.11 (Robert zaplanował piątek); grafiki PL z tekstem polskim, wersja EN używa tych samych plików; korekta native speakera. Wpisy „oszustwo na prezesa” i „agent AI w firmie” nadal tylko na `poprawki-dnk`.
+
+**🎯 Następny krok:** Robert wkleja ocenę analizatora dla polityki AI; decyzja o frazie EN i grafikach EN; następny z listy: „oszustwo na prezesa” (data 20.11).
+
 # CHANGELOG
 
 ## 2026-11-17 19:30, Claude Code
