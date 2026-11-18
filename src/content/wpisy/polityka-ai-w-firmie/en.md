@@ -6,6 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/polityka-ai-w-firmie-en-miniatura.png"
   alt: "Large number 62 percent of employees use AI, 27 percent of companies have rules, and a card with five rules"
 tlumaczenie: ai
+adresEn: "ai-policy-for-your-company"
 zrodlo: 467da041b643b38a472f2efe4657925d5f882d9aec47ded78ad4cb47b7573b12
 ---
 **An AI policy for your company** is a short set of rules that tells your team what data may go into AI tools and what to do after a leak. I show what UODO, Poland's data protection authority, says such rules should cover, and what the GDPR and OWASP say about protecting data if you run a small or medium business. If your company doesn't have rules like these yet, write to me, and I'll help you draft them and train your team.
@@ -36,7 +37,7 @@ According to UODO, the rules should set out what information may be entered into
 4. What we do when we suspect a data leak.
 5. The client knows they're talking to AI when a bot answers them.
 
-The fifth rule follows from the transparency rules that I describe in the post [AI Act for a small business](/en/posts/ai-act-dla-malej-firmy/). From Feb. 2, 2025, the AI Act also requires companies to take steps that support the AI skills of the people who use AI on their behalf. UODO adds that training users reduces the risk of improper use of the tool.
+The fifth rule follows from the transparency rules that I describe in the post [AI Act for a small business](/en/posts/ai-act-for-small-business/). From Feb. 2, 2025, the AI Act also requires companies to take steps that support the AI skills of the people who use AI on their behalf. UODO adds that training users reduces the risk of improper use of the tool.
 
 ![A sample AI policy on one card: allowed uses, information, a wrong answer, a leak, and the client](/src/assets/wpisy/polityka-ai-w-firmie-en-3.png)
 
