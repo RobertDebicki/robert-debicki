@@ -1,6 +1,8 @@
 """Angielskie wersje grafik i miniaturek wpisów (grafiki-en.html do zrzutów).
 ALT każdej grafiki jest ten sam co w src/content/wpisy/<adres>/en.md.
 Uruchom: python3 docs/blog-szkice/podglad/grafiki_en.py, potem node docs/blog-szkice/podglad/zrzuty.mjs en"""
+import sys
+
 from generuj import (KATALOG, KOLEJNOSC, PLYTY, K, P, M, Y, C, NAG, MONO, figura, svg, kwadraty)
 
 AI_ACT = [
@@ -125,12 +127,36 @@ NARZEDZIA = [
 </div>'''),
 ]
 
+
+POLITYKA = [
+    figura('ESET and DAGMA report: 62% of employees use AI, 27% of companies have rules, 10% share sensitive data', '''<div class="liczby">
+  <div><span class="duza">62%</span><span>of employees use AI tools at work</span></div>
+  <div><span class="duza">27%</span><span>of companies have a written AI use policy</span></div>
+  <div><span class="duza">10%</span><span>of employees share sensitive company data with open AI models</span></div>
+</div>''', 'Source: ESET and DAGMA, “Cyberportret polskiego biznesu 2026”, a survey of 1,026 people, March 2026.'),
+    figura('A ban and rules side by side: 35% would try to get around the block, UODO recommends written rules', '''<div class="dwie">
+  <div class="kol"><p class="mono">Ban, according to the study</p><ul><li>35% of AI users would try to get around the block</li><li>26% would generate content on a private device and send it to a work email</li></ul></div>
+  <div class="kol ty"><p class="mono">Rules, according to UODO</p><ul><li>What information may be entered</li><li>Which uses are allowed</li><li>What to do after a wrong answer or a leak</li></ul></div>
+</div>''', 'Sources: ESET and DAGMA, “Cyberportret polskiego biznesu 2026”, and the UODO guide as reported by Bankier.pl, Aug. 17, 2026.'),
+    figura('A sample AI policy on one card: allowed uses, information, a wrong answer, a leak, and the client', '''<div class="kartka">
+  <header><b>AI use rules</b><span class="mono">1 page</span></header>
+  <ol>
+    <li><b>Uses.</b> What we allow and who has access to the account.</li>
+    <li><b>Information.</b> What may be entered. Careful with client and sensitive data.</li>
+    <li><b>Wrong answer.</b> What we do when AI gets it wrong.</li>
+    <li><b>Leak.</b> What we do when we suspect a data leak.</li>
+    <li><b>Client.</b> The bot introduces itself as AI.</li>
+  </ol>
+</div>''', 'An example, not a client\'s document: points 1 to 4 follow the UODO guide, point 5 follows the AI Act.'),
+]
+
 GRAFIKI_EN = {
     'ai-act-dla-malej-firmy': AI_ACT,
     'ile-firm-uzywa-ai': AUTOMATYZACJA,
     'automatyczny-odczyt-dokumentow': DOKUMENTY,
     'voice-bot-dla-firmy': VOICE_BOT,
     'n8n-make-czy-zapier': NARZEDZIA,
+    'polityka-ai-w-firmie': POLITYKA,
 }
 
 MINIATURY_EN = {
@@ -182,16 +208,28 @@ MINIATURY_EN = {
 <rect x="130" y="194" width="300" height="40" fill="{Y}" stroke="{K}" stroke-width="3"/>
 <text x="146" y="221" {MONO} font-size="16" fill="{K}">1 execution</text>''',
         'Unit comparison: four tasks in Zapier, five operations in Make, one execution in n8n'),
+    'polityka-ai-w-firmie': svg(C, f'''
+<text x="28" y="44" {MONO} font-size="14" fill="{K}">AI AT WORK · 2026</text>
+<text x="24" y="148" {NAG} font-size="92" fill="{K}">62%</text>
+<text x="30" y="178" {MONO} font-size="14" fill="{K}">OF EMPLOYEES USE AI</text>
+<rect x="28" y="204" width="210" height="34" fill="{K}"/><text x="40" y="227" {MONO} font-size="14" fill="{Y}">27% HAVE AI RULES</text>
+<rect x="320" y="60" width="128" height="176" fill="{P}" stroke="{K}" stroke-width="4"/>
+{"".join(f'<rect x="336" y="{86 + i * 28}" width="12" height="12" fill="{C}"/><rect x="356" y="{88 + i * 28}" width="{76 - (i % 2) * 20}" height="7" fill="{K}"/>' for i in range(5))}''',
+        'Large number 62 percent of employees use AI, 27 percent of companies have rules, and a card with five rules'),
 }
 
 
+PLYTY_EN = PLYTY + ['var(--c)'] * 5
+
+
 def main():
+    wybrane = sys.argv[1:] or list(GRAFIKI_EN)
     styl = (KATALOG / 'styl.css').read_text()
     artykuly = ''.join(
-        f'<section><article id="{n}" class="wpis" style="--pl:{PLYTY[i]}"><div class="wpis-tresc">{"".join(GRAFIKI_EN[n])}</div></article></section>'
-        for i, n in enumerate(KOLEJNOSC))
-    karty = ''.join(f'<article class="karta" style="--pl:{PLYTY[i]}"><a class="mini" href="#{n}">{MINIATURY_EN[n]}</a></article>'
-                    for i, n in enumerate(KOLEJNOSC))
+        f'<section><article id="{n}" class="wpis" style="--pl:{PLYTY_EN[i]}"><div class="wpis-tresc">{"".join(GRAFIKI_EN[n])}</div></article></section>'
+        for i, n in enumerate(wybrane))
+    karty = ''.join(f'<article class="karta" style="--pl:{PLYTY_EN[i]}"><a class="mini" href="#{n}">{MINIATURY_EN[n]}</a></article>'
+                    for i, n in enumerate(wybrane))
     strona = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>English graphics</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,400..900&family=Onest:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap">
