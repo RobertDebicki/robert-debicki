@@ -1,3 +1,11 @@
+## 2026-11-18 19:10, Claude Code
+
+**✅ Zrobione (PR #14 scalony, za zgodą Roberta):** angielskie grafiki wpisu „Polityka AI w firmie” i angielski adres `/en/posts/ai-policy-for-your-company/` wdrożone na home.pl (140 plików, odbiór zgodny, `test:produkcja` 5 z 5). Stary adres EN `/en/posts/polityka-ai-w-firmie/` przekierowuje 301. Pierwsze wgranie przerwało się na błędzie DNS (curl 6), ponowienie przeszło. Po przerwaniu zostały osierocone pliki `.part` w `_astro/`, sprawdzić i usunąć ręcznie, jeśli są.
+
+**🚧 Nie zrobione:** wpis KSeF EN nadal z polskimi grafikami; frazy EN dla wpisu brak.
+
+**🎯 Następny krok:** grafiki EN dla wpisu KSeF (wymaga zgody na kolejną publikację); wpisy „oszustwo na prezesa” i „agent AI” nadal na `poprawki-dnk`.
+
 ## 2026-11-18 19:00, Claude Code
 
 **✅ Zrobione (gałąź `blog-polityka-grafiki-en`, lokalnie, bez pusha i wdrożenia):** adres angielskiej wersji wpisu „Polityka AI w firmie” był polski (`/en/posts/polityka-ai-w-firmie/`), bo brakowało pola `adresEn`. Ustawione `adresEn: "ai-policy-for-your-company"`, adres `/en/posts/ai-policy-for-your-company/`. Link w `en.md` do wpisu o AI Act wskazuje teraz na `/en/posts/ai-act-for-small-business/` zamiast starego polskiego adresu. Przekierowania 301 ze starego adresu EN dopisane w `hosting/htaccess` i `public/_redirects`. `npm run sprawdz` exit 0, build zawiera nowy adres.
