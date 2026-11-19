@@ -1,3 +1,11 @@
+## 2026-11-19 19:00, Claude Code
+
+**✅ Zrobione (PR #15 scalony, za zgodą Roberta):** menu pod przyciskiem na wąskim ekranie wdrożone na home.pl (140 plików, odbiór zgodny, kopia serwera w `~/Backups/robert-debicki-ftp/2026-11-19T17-57-44-395Z`). `test:produkcja` 5 z 5, przycisk menu obecny na `/` i `/en/`, zrzut żywej strony przy 390 px z otwartym menu poprawny.
+
+**🚧 Nie zrobione:** Lighthouse mobile po zmianie nie mierzony. Wpis KSeF EN nadal z polskimi grafikami.
+
+**🎯 Następny krok:** pomiar Lighthouse mobile na żywej stronie; grafiki EN dla wpisu KSeF.
+
 ## 2026-11-19, Claude Code
 
 **✅ Zrobione (gałąź `menu-hamburger`, lokalnie, bez pusha i wdrożenia):** menu na wąskim ekranie (poniżej 900 px) chowa się pod przyciskiem z trzema kreskami, obok zostaje przełącznik języka. Po otwarciu lista linków w dużych wierszach z kwadracikami, zamyka się po kliknięciu linku, klawiszem Esc i ponownym kliknięciem. Bez JavaScriptu menu zostaje rozwinięte jak wcześniej. Od 900 px menu bez zmian, przełącznik EN wyszedł z `<nav>` (ramka węższa o niewidoczny kwadracik). Zmiana wyglądu względem makiety decyzją Roberta 19.11; test zgodności z makietą przy 390 px porównuje nagłówek bez menu. Nowy test `testy/e2e/menu.spec.ts`. `npm run sprawdz` przeszedł (e2e 192 passed, 1 skipped).
