@@ -1,3 +1,11 @@
+## 2026-11-19, Claude Code
+
+**✅ Zrobione (gałąź `menu-hamburger`, lokalnie, bez pusha i wdrożenia):** menu na wąskim ekranie (poniżej 900 px) chowa się pod przyciskiem z trzema kreskami, obok zostaje przełącznik języka. Po otwarciu lista linków w dużych wierszach z kwadracikami, zamyka się po kliknięciu linku, klawiszem Esc i ponownym kliknięciem. Bez JavaScriptu menu zostaje rozwinięte jak wcześniej. Od 900 px menu bez zmian, przełącznik EN wyszedł z `<nav>` (ramka węższa o niewidoczny kwadracik). Zmiana wyglądu względem makiety decyzją Roberta 19.11; test zgodności z makietą przy 390 px porównuje nagłówek bez menu. Nowy test `testy/e2e/menu.spec.ts`. `npm run sprawdz` przeszedł (e2e 192 passed, 1 skipped).
+
+**🚧 Nie zrobione:** Lighthouse mobile po zmianie nie mierzony; push i wdrożenie czekają na zgodę Roberta.
+
+**🎯 Następny krok:** Robert ogląda menu na telefonie (np. `npm run dev -- --host`), potem decyzja o pushu i wdrożeniu.
+
 ## 2026-11-18 19:10, Claude Code
 
 **✅ Zrobione (PR #14 scalony, za zgodą Roberta):** angielskie grafiki wpisu „Polityka AI w firmie” i angielski adres `/en/posts/ai-policy-for-your-company/` wdrożone na home.pl (140 plików, odbiór zgodny, `test:produkcja` 5 z 5). Stary adres EN `/en/posts/polityka-ai-w-firmie/` przekierowuje 301. Pierwsze wgranie przerwało się na błędzie DNS (curl 6), ponowienie przeszło. Po przerwaniu zostały osierocone pliki `.part` w `_astro/`, sprawdzić i usunąć ręcznie, jeśli są.
