@@ -1,3 +1,11 @@
+## 2026-11-19 22:30, Claude Code
+
+**✅ Zrobione (gałąź `wpis-gus-2026`, lokalnie, bez pusha i wdrożenia):** wpis „Automatyzacja procesów w firmie z AI” (`ile-firm-uzywa-ai`) z danymi GUS za 2026 rok (informacja sygnalna „Społeczeństwo informacyjne w Polsce w 2026 r.”, 21.10.2026, s. 4): AI stosuje 17,8% firm (o 9,1 p.proc. więcej niż 8,7% w 2025), obraz, dźwięk lub wideo 9,9%, tekst lub głos 9,7%, marketing i sprzedaż 11,1%, praca biurowa i decyzje 9,6%. Podział według wielkości firmy i finanse zostają z tablic 2025 (z rokiem w zdaniu), Eurostat bez zmian (dane za 2025). Zmienione: zajawka, wstęp, dwa akapity sekcji o danych, odpowiedź w FAQ; PL i EN. Kontrola DNK (fraza „automatyzacja procesów w firmie”, dodatkowa „wdrożenie AI w firmie”) bez błędów, `sprawdz:tresc` 0, kontrola tłumaczenia bez błędów, `npm run sprawdz` przeszedł (e2e 192 passed, 1 skipped). Powód: rolka na TikTok o danych GUS 2026 odsyła do tego wpisu.
+
+**🚧 Nie zrobione:** analizator DNK po zmianie liczb nie uruchomiony ponownie (struktura tekstu bez zmian). Push i wdrożenie czekają na zgodę Roberta. Wpis „n8n, Make czy Zapier” nadal opisuje operacje w Make (od 27 sierpnia Make liczy kredyty).
+
+**🎯 Następny krok:** zgoda Roberta na wdrożenie przed 23.11 (rolka); potem poprawka wpisu `n8n-make-czy-zapier` (kredyty w Make) przed 25.11.
+
 ## 2026-11-19 19:00, Claude Code
 
 **✅ Zrobione (PR #15 scalony, za zgodą Roberta):** menu pod przyciskiem na wąskim ekranie wdrożone na home.pl (140 plików, odbiór zgodny, kopia serwera w `~/Backups/robert-debicki-ftp/2026-11-19T17-57-44-395Z`). `test:produkcja` 5 z 5, przycisk menu obecny na `/` i `/en/`, zrzut żywej strony przy 390 px z otwartym menu poprawny.

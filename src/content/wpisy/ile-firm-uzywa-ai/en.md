@@ -1,21 +1,21 @@
 ---
 tytul: "Business process automation with AI"
 data: 2026-10-21
-zajawka: "Business process automation: 8.7% of Polish companies use AI. See how to pick your first process and what it gave my clients. Email me."
+zajawka: "Business process automation: 17.8% of Polish companies already use AI. See how to pick your first process and what it gave my clients. Email me."
 miniatura:
   plik: "/src/assets/wpisy/ile-firm-uzywa-ai-en-miniatura.png"
   alt: "Large figure of 8.36 percent of companies in Poland using AI according to Eurostat, compared with the European Union"
 tlumaczenie: ai
-zrodlo: 54dc2c50a0ea7f16f3b9309417532e982573cb4cf3fc08d0a602716db27c6756
+zrodlo: 643ac3ed84a6d2791b926e4a02d2e6145e4f86a696b339a892b74200a4bd2eba
 adresEn: "business-process-automation-ai"
 ---
-**Business process automation** is still an advantage in Poland, not the norm. According to Statistics Poland (GUS), 8.7% of Polish companies used artificial intelligence, or AI, in 2025. I explain how to pick your first process to automate and what results my clients saw, and if you want to check what to automate in your company, email me.
+**Business process automation** is still an advantage in Poland, not the norm. According to Statistics Poland (GUS), 17.8% of Polish companies use artificial intelligence, or AI, in 2026, twice as many as a year earlier. I explain how to pick your first process to automate and what results my clients saw, and if you want to check what to automate in your company, email me.
 
 ## How many companies use AI, and for what
 
-GUS published its 2025 data on Dec. 8, 2025, and it covers companies with at least 10 employees. Of those, 8.7% use AI, most often to generate text or speech (5.3% of companies) and to analyze text (2.1%). The bigger the company, the more often it uses AI: according to the same GUS tables, 6.1% of small companies do. Among medium-sized companies the share is 15.6%, and among large ones, with 250 or more employees, it reaches 42%.
+GUS published its 2026 data on Oct. 21, 2026, and it covers companies with at least 10 employees. Of those, 17.8% use AI, 9.1 percentage points more than in 2025, when the figure was 8.7%. Technologies that generate images, sound, or video are used by 9.9% of companies, and those that generate text or speech by 9.7%. The bigger the company, the more often it uses AI. In the GUS tables for 2025, 6.1% of small companies did, 15.6% of medium-sized ones, and as many as 42% of large ones, with 250 or more employees.
 
-GUS also asks what companies use AI for. In the 2025 tables, 5% of all companies use it in marketing or sales, and 3.7% in office work, HR, and company management. AI helps 2.6% of companies in finance and accounting.
+GUS also asks what companies use AI for. In 2026, it works most often in marketing and sales (11.1% of companies), and 9.6% of companies use it in office work and for management decisions. A year earlier, those figures were 5% and 3.7%. In finance and accounting, AI helped 2.6% of companies in 2025.
 
 Eurostat, the statistical office of the European Union, reports 8.36% for Poland and 19.95% for the whole EU for 2025. Both figures cover companies with at least 10 employees. In this comparison, Poland has one of the three lowest results in the EU, along with Romania and Bulgaria.
 
@@ -78,7 +78,7 @@ No. I run the project from process analysis to handing it over to your team, and
 No. I add AI where documents have to be read or text understood, while n8n or Make.com handle simple data transfers.
 
 ### How many companies in Poland use AI?
-According to GUS, it was 8.7% of companies with at least 10 employees in 2025. Eurostat reports 8.36% for Poland compared with 19.95% for the whole EU.
+According to GUS, it is 17.8% of companies with at least 10 employees in 2026, twice as many as a year earlier (8.7%). For 2025, Eurostat reports 8.36% for Poland compared with 19.95% for the whole EU.
 
 ### Will AI replace my employees?
 In the projects described here, decisions stay with people. For example, the owner approves every message to a customer before it goes out.

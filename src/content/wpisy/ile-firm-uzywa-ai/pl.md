@@ -1,18 +1,18 @@
 ---
 tytul: "Automatyzacja procesów w firmie z AI"
 data: 2026-10-21
-zajawka: "Automatyzacja procesów w firmie: AI stosuje 8,7% polskich firm. Zobacz, jak wybrać pierwszy proces i co dało to moim klientom. Napisz do mnie."
+zajawka: "Automatyzacja procesów w firmie: AI stosuje już 17,8% polskich firm. Zobacz, jak wybrać pierwszy proces i co dało to moim klientom. Napisz do mnie."
 miniatura:
   plik: "/src/assets/wpisy/ile-firm-uzywa-ai-miniatura.png"
   alt: "Duża liczba 8,36 procent firm z AI w Polsce według Eurostatu i porównanie z Unią Europejską"
 ---
-**Automatyzacja procesów w firmie** to w Polsce nadal przewaga, nie standard. Według Głównego Urzędu Statystycznego (GUS) w 2025 roku sztuczną inteligencję, czyli AI, stosowało 8,7 procent polskich firm. Opisuję, jak wybrać pierwszy proces do zautomatyzowania i jakie efekty widzieli moi klienci, a jeśli chcesz sprawdzić, co zautomatyzować u siebie, napisz do mnie.
+**Automatyzacja procesów w firmie** to w Polsce nadal przewaga, nie standard. Według Głównego Urzędu Statystycznego (GUS) w 2026 roku sztuczną inteligencję, czyli AI, stosuje 17,8 procent polskich firm, dwa razy więcej niż rok wcześniej. Opisuję, jak wybrać pierwszy proces do zautomatyzowania i jakie efekty widzieli moi klienci, a jeśli chcesz sprawdzić, co zautomatyzować u siebie, napisz do mnie.
 
 ## Ile firm używa AI i do czego
 
-GUS opublikował dane za 2025 rok 8 grudnia 2025 roku i liczy w nich firmy, które zatrudniają co najmniej 10 osób. AI stosuje 8,7 procent z nich, najczęściej do tworzenia tekstu lub głosu (5,3 procent firm) i do analizy tekstu (2,1 procent). Im większa firma, tym częściej sięga po AI, bo według tych samych tablic GUS robi to 6,1 procent małych firm. W firmach średnich ten odsetek wynosi 15,6 procent, a w dużych, czyli od 250 pracowników, aż 42 procent.
+GUS opublikował dane za 2026 rok 21 października 2026 roku i liczy w nich firmy, które zatrudniają co najmniej 10 osób. AI stosuje 17,8 procent z nich, o 9,1 punktu procentowego więcej niż w 2025 roku, gdy było to 8,7 procent. Technologie, które tworzą obraz, dźwięk lub wideo, stosuje 9,9 procent firm, a te, które tworzą tekst lub głos, 9,7 procent. Im większa firma, tym częściej sięga po AI. W tablicach GUS za 2025 rok robiło to 6,1 procent małych firm, 15,6 procent średnich i aż 42 procent dużych, czyli od 250 pracowników.
 
-GUS pyta też, do czego firmy używają AI. W tablicach z 2025 roku 5 procent wszystkich firm używa jej w marketingu lub sprzedaży, a 3,7 procent w pracy biurowej, kadrach i zarządzaniu firmą. W finansach i księgowości AI pomaga 2,6 procent firm.
+GUS pyta też, do czego firmy używają AI. W 2026 roku najczęściej pracuje w marketingu i sprzedaży (11,1 procent firm), a 9,6 procent firm używa jej w pracy biurowej i przy decyzjach w zarządzaniu. Rok wcześniej było to 5 i 3,7 procent. W finansach i księgowości AI pomagała w 2025 roku 2,6 procent firm.
 
 Eurostat, czyli urząd statystyczny Unii Europejskiej, podaje za 2025 rok 8,36 procent dla Polski i 19,95 procent dla całej Unii. Obie liczby dotyczą firm, które zatrudniają co najmniej 10 osób. W tym zestawieniu Polska ma jeden z trzech najniższych wyników w Unii, obok Rumunii i Bułgarii.
 
@@ -75,7 +75,7 @@ Nie. Prowadzę wdrożenie od analizy procesu do przekazania go zespołowi, a sce
 Nie. AI dodaję tam, gdzie trzeba czytać dokumenty albo rozumieć tekst, a proste przekazywanie danych robią n8n albo Make.com.
 
 ### Ile firm w Polsce stosuje AI?
-Według GUS w 2025 roku było to 8,7 procent firm zatrudniających co najmniej 10 osób. Eurostat podaje dla Polski 8,36 procent wobec 19,95 procent w całej Unii.
+Według GUS w 2026 roku jest to 17,8 procent firm zatrudniających co najmniej 10 osób, dwa razy więcej niż rok wcześniej (8,7 procent). Eurostat podaje za 2025 rok 8,36 procent dla Polski wobec 19,95 procent w całej Unii.
 
 ### Czy AI zastąpi moich pracowników?
 W opisanych wdrożeniach decyzje zostają u ludzi. Przykład: właściciel akceptuje każdą wiadomość do klienta przed wysyłką.
