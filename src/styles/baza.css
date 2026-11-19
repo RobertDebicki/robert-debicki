@@ -55,6 +55,27 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 html, body { margin: 0; }
 :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
-.top nav a.przelacznik { font-family: var(--font-data); font-size: var(--s--1); text-decoration: none; border: 1.5px solid var(--ink); padding: 4px 8px; }
+.top a.przelacznik { font-family: var(--font-data); font-size: var(--s--1); text-decoration: none; border: 1.5px solid var(--ink); padding: 4px 8px; }
 .przelacznik:hover { background: var(--ink); color: var(--paper); }
+
+/* Menu pod przyciskiem na wąskim ekranie (zmiana makiety decyzją Roberta 19.11). Bez JavaScriptu menu zostaje rozwinięte. */
+.top-prawa { display: flex; align-items: center; gap: 8px 18px; }
+.menu-przycisk { display: none; }
+@media (max-width: 899px) {
+  .top[data-menu] .top-in { flex-wrap: nowrap; }
+  .top[data-menu] .menu-przycisk { display: inline-grid; place-content: center; gap: 5px; width: 44px; height: 44px; padding: 0; background: none; color: var(--ink); border: 1.5px solid var(--ink); cursor: pointer; }
+  .menu-przycisk i { display: block; width: 20px; height: 2px; background: currentColor; }
+  .top[data-menu="otwarte"] .menu-przycisk { background: var(--ink); color: var(--paper); }
+  .top[data-menu="otwarte"] .menu-przycisk i:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .top[data-menu="otwarte"] .menu-przycisk i:nth-child(2) { opacity: 0; }
+  .top[data-menu="otwarte"] .menu-przycisk i:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .top[data-menu] a.przelacznik { display: inline-grid; place-content: center; height: 44px; min-width: 44px; }
+  .top[data-menu] nav { position: absolute; top: calc(100% + 1.5px); left: 0; right: 0; flex-direction: column; flex-wrap: nowrap; gap: 0; max-height: calc(100dvh - 100%); overflow-y: auto; background: var(--paper); border-bottom: 1.5px solid var(--rule); padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+  .top[data-menu="zamkniete"] nav { display: none; }
+  .top[data-menu] nav a { gap: 12px; font-size: 1.15rem; padding-block: 15px; border-top: 1.5px solid var(--rule); }
+  .top[data-menu] nav a::before { width: 12px; height: 12px; }
+}
+@media (max-width: 899px) and (prefers-reduced-motion: no-preference) {
+  .menu-przycisk i { transition: transform 0.15s, opacity 0.15s; }
+}
 #raster { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }

@@ -132,6 +132,10 @@ test.describe('zgodność z makietą', () => {
       await page.setViewportSize({ width: w, height: 900 });
       await podstawMakiete(page);
       await przygotuj(page, MAKIETA);
+      // Przy 390 px menu schowano celowo pod przyciskiem (decyzja Roberta 19.11, sprawdza menu.spec.ts). Porównujemy nagłówek
+      // bez menu: w makiecie bez zawiniętej listy linków, na stronie bez przycisku i przełącznika języka.
+      const bezMenu = w < 900;
+      if (bezMenu) await page.addStyleTag({ content: 'header nav { display: none !important; }' });
       const wzor = await page.screenshot({ fullPage: true, animations: 'disabled' });
       // Wzorzec to zrzut makiety z tego samego przebiegu, zapisany jako snapshot do porównania.
       const nazwa = `makieta-${w}.png`;
@@ -147,6 +151,7 @@ test.describe('zgodność z makietą', () => {
         content:
           '#wpisy, #uslugi, header nav a[href="/wpisy/"], header nav a[href="/uslugi/"], a[href="/dla-rekruterow/"], #kontakt .mail:has(a[href^="tel:"]) { display: none !important; }',
       });
+      if (bezMenu) await page.addStyleTag({ content: '.top-prawa { display: none !important; }' });
       const zrzut = await page.screenshot({ fullPage: true, animations: 'disabled' });
       expect(zrzut).toMatchSnapshot(nazwa, { maxDiffPixelRatio: 0.02 });
     });

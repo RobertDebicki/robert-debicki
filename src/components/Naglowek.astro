@@ -37,15 +37,40 @@ const drugi = jezyk === 'pl' ? 'en' : 'pl';
       <Logo />
       <span>Robert Dębicki</span>
     </a>
-    <nav aria-label={e.menuSekcje}>
-      {menu.map(([adres, nazwa, barwa]) => (
-        <a href={adres} style={`--sw: ${barwa}`}>{nazwa}</a>
-      ))}
-      {maWpisy && <a href={jezyk === 'pl' ? '/wpisy/' : '/en/posts/'} style="--sw: var(--y)">{e.wpisy}</a>}
-      {maReferencje && <a href={jezyk === 'pl' ? '/referencje/' : '/en/references/'} style="--sw: var(--m)">{e.referencje}</a>}
+    <div class="top-prawa">
+      <nav id="menu" aria-label={e.menuSekcje}>
+        {menu.map(([adres, nazwa, barwa]) => (
+          <a href={adres} style={`--sw: ${barwa}`}>{nazwa}</a>
+        ))}
+        {maWpisy && <a href={jezyk === 'pl' ? '/wpisy/' : '/en/posts/'} style="--sw: var(--y)">{e.wpisy}</a>}
+        {maReferencje && <a href={jezyk === 'pl' ? '/referencje/' : '/en/references/'} style="--sw: var(--m)">{e.referencje}</a>}
+      </nav>
       {przelacznik && (
         <a class="przelacznik" href={przelacznik} hreflang={drugi} lang={drugi} aria-label={etykiety(drugi).wersjaJezyka}>{drugi.toUpperCase()}</a>
       )}
-    </nav>
+      <button class="menu-przycisk" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menu"><i></i><i></i><i></i></button>
+    </div>
   </div>
 </header>
+<script>
+  // Na wąskim ekranie menu chowa się pod przyciskiem. Bez JavaScriptu atrybut data-menu nie powstaje i menu zostaje rozwinięte.
+  const naglowek = document.querySelector<HTMLElement>('header.top');
+  const przycisk = naglowek?.querySelector<HTMLButtonElement>('.menu-przycisk');
+  if (naglowek && przycisk) {
+    const ustaw = (otwarte: boolean) => {
+      naglowek.dataset.menu = otwarte ? 'otwarte' : 'zamkniete';
+      przycisk.setAttribute('aria-expanded', String(otwarte));
+    };
+    ustaw(false);
+    przycisk.addEventListener('click', () => ustaw(naglowek.dataset.menu !== 'otwarte'));
+    naglowek.querySelector('nav')?.addEventListener('click', (z) => {
+      if ((z.target as Element).closest('a')) ustaw(false);
+    });
+    document.addEventListener('keydown', (z) => {
+      if (z.key === 'Escape' && naglowek.dataset.menu === 'otwarte') {
+        ustaw(false);
+        przycisk.focus();
+      }
+    });
+  }
+</script>
