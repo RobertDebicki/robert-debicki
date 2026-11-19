@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/n8n-make-czy-zapier-en-miniatura.png"
   alt: "Unit comparison: four tasks in Zapier, five operations in Make, one execution in n8n"
 tlumaczenie: ai
-zrodlo: 3ed3afa867a71f01a8120ae58ac77d2c79bcaf272267f4cd31fe743b96d0fca1
+zrodlo: 1c72d331dbb150b2d2f253e6840292003b0447a78fc8ca9f33038cd2cb20b63d
 adresEn: "n8n-make-or-zapier"
 ---
 **n8n, Make, or Zapier** is a question I hear from business owners right before their first automation. All three tools connect apps and handle repetitive tasks for you, but they charge differently and need different levels of technical knowledge. I explain in plain language what to look at when you choose, and if you're still not sure what fits your business, email me.
@@ -19,7 +19,7 @@ An integration is a built-in connection to a specific app, such as a spreadsheet
 
 ## How n8n, Make, and Zapier differ
 
-The biggest difference is how they bill: Zapier counts tasks, Make counts operations, and n8n counts workflow executions. Take a workflow with a trigger and four actions that handles one record, meaning one item of data, such as one order. In Zapier, that's four tasks, because the trigger doesn't use tasks, and in Make, that's five operations, because the trigger counts too. In n8n, the same workflow is one execution. With a few automations, the difference is small, but with many automations, it grows.
+The biggest difference is how they bill: Zapier counts tasks, Make counts credits, and n8n counts workflow executions. Since Aug. 27, 2025, one operation in Make has been one credit, except for built-in AI features. Take a workflow with a trigger and four actions that handles one record, meaning one item of data, such as one order. In Zapier, that's four tasks, because the trigger doesn't use tasks, and in Make, that's five operations, or five credits, because the trigger counts too. In n8n, the same workflow is one execution. With a few automations, the difference is small, but with many automations, it grows.
 
 A subscription is a recurring fee for using a tool in the vendor's cloud, paid on a regular schedule. Prices change often, so check the current pricing on the vendor's site before you decide.
 

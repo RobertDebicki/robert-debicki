@@ -1,3 +1,11 @@
+## 2026-11-19 23:00, Claude Code
+
+**✅ Zrobione (gałąź `wpis-gus-2026`, lokalnie, bez pusha i wdrożenia):** wpis „n8n, Make czy Zapier” (PL i EN): Make liczy kredyty, nie operacje. Dopisane, że od 27 sierpnia 2025 roku jedna operacja w Make to jeden kredyt, poza wbudowanymi funkcjami AI (help.make.com, notatka „Introducing credits: new billing unit live in Make”, sekcja 2025: „1 operation still uses 1 credit”), w przykładzie „5 operacji, czyli 5 kredytów”. Grafiki z „5 operacjami” bez zmian (nadal zgodne). Kontrola DNK (fraza „n8n, Make czy Zapier”, dodatkowa „n8n czy Make”) bez błędów, kontrola tłumaczenia bez błędów, `npm run sprawdz` przeszedł (e2e 192 passed, 1 skipped).
+
+**🚧 Nie zrobione:** push i wdrożenie obu wpisów (GUS 2026 i Make) czekają na poniedziałek 23.11, decyzja Roberta.
+
+**🎯 Następny krok:** wdrożenie gałęzi `wpis-gus-2026` w poniedziałek 23.11 za zgodą Roberta.
+
 ## 2026-11-19 22:30, Claude Code
 
 **✅ Zrobione (gałąź `wpis-gus-2026`, lokalnie, bez pusha i wdrożenia):** wpis „Automatyzacja procesów w firmie z AI” (`ile-firm-uzywa-ai`) z danymi GUS za 2026 rok (informacja sygnalna „Społeczeństwo informacyjne w Polsce w 2026 r.”, 21.10.2026, s. 4): AI stosuje 17,8% firm (o 9,1 p.proc. więcej niż 8,7% w 2025), obraz, dźwięk lub wideo 9,9%, tekst lub głos 9,7%, marketing i sprzedaż 11,1%, praca biurowa i decyzje 9,6%. Podział według wielkości firmy i finanse zostają z tablic 2025 (z rokiem w zdaniu), Eurostat bez zmian (dane za 2025). Zmienione: zajawka, wstęp, dwa akapity sekcji o danych, odpowiedź w FAQ; PL i EN. Kontrola DNK (fraza „automatyzacja procesów w firmie”, dodatkowa „wdrożenie AI w firmie”) bez błędów, `sprawdz:tresc` 0, kontrola tłumaczenia bez błędów, `npm run sprawdz` przeszedł (e2e 192 passed, 1 skipped). Powód: rolka na TikTok o danych GUS 2026 odsyła do tego wpisu.
