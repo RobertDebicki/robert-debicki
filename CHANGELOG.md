@@ -1,3 +1,11 @@
+## 2026-11-22 22:35, Claude Code
+
+**✅ Zrobione (PR #16 i #17 scalone, wdrożenie za zgodą Roberta w wiadomości 22.11):** na home.pl wgrano 154 pliki (`npm run wdroz -- --wgraj`, kopia serwera w `~/Backups/robert-debicki-ftp/2026-11-22T21-22-18-097Z`), odbiór zgodny z lokalnymi, `.htaccess` działa, `test:produkcja` 5 z 5. Na żywo: nowy wpis `/wpisy/wizytowka-firmy-w-chatgpt/` (200, tytuł „Wizytówka firmy w ChatGPT: co daje | Robert Dębicki”) i `/en/posts/chatgpt-business-profile/` (200); wpis GUS ma 17,8 procent, wpis n8n/Make ma „Make liczy kredyty”. Wdrożenie przeszło dzięki przypiętemu kluczowi certyfikatu FTPS (wpis z 22:30).
+
+**🚧 Nie zrobione:** analizator DNK nowego wpisu czeka na wklejenie przez Roberta (okienka w `~/Desktop/rolki-tiktok/analizator-wizytowka-chatgpt.md`). EN nowego wpisu ma stan `ai`. Klucz FTPS do podmiany przy odnowieniu certyfikatu (wygasa 14.12.2026).
+
+**🎯 Następny krok:** ocena z analizatora DNK i poprawki; podmiana `PIN_KLUCZA_HOME` przed 14.12.2026.
+
 ## 2026-11-22 22:30, Claude Code
 
 **✅ Zrobione (za zgodą Roberta w tej wiadomości):** `npm run wdroz` przestał przechodzić: serwer FTPS `serwer2643459.hosting-home.pl` oddaje certyfikat `*.home.pl`, więc curl kończył się błędem 60 (nazwa się nie zgadza). Zmierzone: certyfikat ważny od 29.05 do 14.12.2026 i ten sam we wszystkich próbach, `curl`, skrypt i plik z danymi bez zmian od ostatniego udanego wdrożenia (19.11), przyczyna zmiany nieznana (podejrzewana zmiana po stronie home.pl). Próba z nazwą `*.home.pl` nie działa: serwer zrywa połączenie (curl 35). Rozwiązanie: dla hosta `*.hosting-home.pl` skrypt przypina klucz publiczny serwera (`pinnedpubkey`) i wyłącza sprawdzanie nazwy (`insecure`); inny klucz kończy połączenie błędem 90 (sprawdzone na żywo: zły klucz odrzucony, właściwy przechodzi do logowania). Testy: `testy/jednostkowe/wdroz.test.ts` (39), `npm test` 239 passed, skan sekretów 0.
