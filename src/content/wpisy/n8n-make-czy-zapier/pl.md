@@ -16,7 +16,7 @@ Integracja to wbudowane połączenie z konkretnym programem, na przykład z arku
 
 ## Czym różni się n8n, Make i Zapier
 
-Najważniejsza różnica to sposób naliczania opłat: Zapier liczy zadania, Make liczy operacje, a n8n liczy uruchomienia scenariusza. Weź scenariusz z wyzwalaczem i czterema akcjami, który obsługuje jeden rekord, czyli jedną pozycję danych, na przykład jedno zamówienie. W Zapierze to 4 zadania, bo wyzwalacz nie zużywa zadań, a w Make to 5 operacji, bo wyzwalacz też się liczy. W n8n ten sam scenariusz to jedno uruchomienie. Przy kilku automatyzacjach różnica jest mała, ale przy wielu automatyzacjach rośnie.
+Najważniejsza różnica to sposób naliczania opłat: Zapier liczy zadania, Make liczy kredyty, a n8n liczy uruchomienia scenariusza. Od 27 sierpnia 2025 roku jedna operacja w Make to jeden kredyt, poza wbudowanymi funkcjami AI. Weź scenariusz z wyzwalaczem i czterema akcjami, który obsługuje jeden rekord, czyli jedną pozycję danych, na przykład jedno zamówienie. W Zapierze to 4 zadania, bo wyzwalacz nie zużywa zadań, a w Make to 5 operacji, czyli 5 kredytów, bo wyzwalacz też się liczy. W n8n ten sam scenariusz to jedno uruchomienie. Przy kilku automatyzacjach różnica jest mała, ale przy wielu automatyzacjach rośnie.
 
 Subskrypcja to stała opłata za korzystanie z narzędzia w chmurze dostawcy, płacona co jakiś czas. Ceny zmieniają się często, więc przed decyzją sprawdź aktualny cennik na stronie producenta.
 
