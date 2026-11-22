@@ -136,14 +136,26 @@ export async function sprawdzZgodnosc(pliki: { zdalny: string; tresc: Buffer }[]
   return rozne;
 }
 
+// Serwer FTPS na hostingu home.pl (host *.hosting-home.pl) oddaje certyfikat *.home.pl, którego nazwa nie pasuje do hosta
+// (curl 60, zmierzone 22.11.2026; wcześniej wdrożenia przechodziły). curl nie umie sprawdzić samej nazwy inaczej niż
+// przez `insecure`, więc dla tego hosta tożsamość serwera potwierdza przypięty klucz publiczny: `insecure` wyłącza
+// sprawdzanie łańcucha i nazwy, a `pinnedpubkey` przerywa połączenie z każdym innym kluczem.
+// Klucz zmienia się przy odnowieniu certyfikatu (obecny wygasa 14.12.2026). Wtedy curl kończy się błędem 90:
+// wylicz nowy skrót i podmień stałą:
+// echo | openssl s_client -connect HOST:21 -starttls ftp -servername HOST 2>/dev/null | openssl x509 -noout -pubkey | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl base64
+export const PIN_KLUCZA_HOME = 'sha256//3/UmmiQ+c86H1IkeSwEf55yTbP2oN/2WcW8VrThZ8C8=';
+const hostZPrzypieciem = (host: string) => /\.hosting-home\.pl$/.test(host);
+
 // Jeden proces curl na wiele transferów (jedna sesja zamiast setek logowań). Hasło tylko w konfiguracji podanej przez stdin.
 export function konfiguracjaTransferow(k: Konfiguracja, transfery: Transfer[]): string {
+  const przypiecie = hostZPrzypieciem(k.host) ? ['insecure', `pinnedpubkey = "${PIN_KLUCZA_HOME}"`] : [];
   return transfery
     .map((t) =>
       [
         `user = "${cytujDlaCurl(`${k.user}:${k.password}`)}"`,
         `url = "${cytujDlaCurl(t.adres)}"`,
         'ssl-reqd',
+        ...przypiecie,
         // Z TLS 1.3 serwer home.pl zrywa większe transfery błędem 451 i zostawia pusty plik (zmierzone 11.11:
         // 24 KB przechodzi, 48 KB nie; próg leży między nimi). Z TLS 1.2 przechodzi 600 KB.
         'tls-max = 1.2',
