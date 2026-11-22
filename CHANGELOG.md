@@ -1,3 +1,11 @@
+## 2026-11-22 22:15, Claude Code
+
+**✅ Zrobione (gałąź `wpis-wizytowka-chatgpt`, lokalnie, bez pusha i wdrożenia):** nowy wpis „Wizytówka firmy w ChatGPT: co daje” (PL i EN, adres EN `chatgpt-business-profile`), do którego odsyła rolka TikTok z 22.11. Fakty z artykułu „Setting up your business on ChatGPT” w centrum pomocy OpenAI (stan 22.11.2026): przejęcie w Business Hub, weryfikacja w Personie, statystyki z 28 dni, przejęcie nie zmienia widoczności, agent tylko dla firm z USA. Artykuł nie podaje listy krajów, więc wpis tego nie rozstrzyga. Fraza główna „wizytówka firmy w ChatGPT” (Google nie podpowiada jej wcale, bez konkurencji), dodatkowa „widoczność firmy w ChatGPT”. `skrypty/dnk.ts`: OK, 813 słów. Trzy grafiki i miniatura w PL i EN (`docs/blog-szkice/podglad/wizytowka-chatgpt*.html`, `zrzut-wizytowka.mjs [en]`). `npm run sprawdz` przeszedł (e2e 192 passed, 1 skipped).
+
+**🚧 Nie zrobione:** analizator DNK (ocena w punktach) czeka na wklejenie przez Roberta. Tłumaczenie EN ma stan `ai`, bez korekty native speakera. Wpis nie wdrożony.
+
+**🎯 Następny krok:** Robert wkleja okienka do analizatora i odsyła ocenę; potem zgoda na push i wdrożenie razem z poprawkami z gałęzi `wpis-gus-2026`.
+
 ## 2026-11-19 19:00, Claude Code
 
 **✅ Zrobione (PR #15 scalony, za zgodą Roberta):** menu pod przyciskiem na wąskim ekranie wdrożone na home.pl (140 plików, odbiór zgodny, kopia serwera w `~/Backups/robert-debicki-ftp/2026-11-19T17-57-44-395Z`). `test:produkcja` 5 z 5, przycisk menu obecny na `/` i `/en/`, zrzut żywej strony przy 390 px z otwartym menu poprawny.
