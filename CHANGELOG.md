@@ -1,3 +1,11 @@
+## 2026-11-22 22:30, Claude Code
+
+**✅ Zrobione (za zgodą Roberta w tej wiadomości):** `npm run wdroz` przestał przechodzić: serwer FTPS `serwer2643459.hosting-home.pl` oddaje certyfikat `*.home.pl`, więc curl kończył się błędem 60 (nazwa się nie zgadza). Zmierzone: certyfikat ważny od 29.05 do 14.12.2026 i ten sam we wszystkich próbach, `curl`, skrypt i plik z danymi bez zmian od ostatniego udanego wdrożenia (19.11), przyczyna zmiany nieznana (podejrzewana zmiana po stronie home.pl). Próba z nazwą `*.home.pl` nie działa: serwer zrywa połączenie (curl 35). Rozwiązanie: dla hosta `*.hosting-home.pl` skrypt przypina klucz publiczny serwera (`pinnedpubkey`) i wyłącza sprawdzanie nazwy (`insecure`); inny klucz kończy połączenie błędem 90 (sprawdzone na żywo: zły klucz odrzucony, właściwy przechodzi do logowania). Testy: `testy/jednostkowe/wdroz.test.ts` (39), `npm test` 239 passed, skan sekretów 0.
+
+**🚧 Nie zrobione:** klucz zmieni się przy odnowieniu certyfikatu (wygasa 14.12.2026), wtedy wdrożenie da błąd 90 i trzeba podmienić `PIN_KLUCZA_HOME` w `skrypty/wdroz.ts` (polecenie w komentarzu). Przyczyny zmiany po stronie home.pl nie ustalono.
+
+**🎯 Następny krok:** wdrożenie wpisów (PR #16) i sprawdzenie żywych adresów; do tego czasu nowy wpis nie jest na stronie.
+
 ## 2026-11-22 22:15, Claude Code
 
 **✅ Zrobione (gałąź `wpis-wizytowka-chatgpt`, lokalnie, bez pusha i wdrożenia):** nowy wpis „Wizytówka firmy w ChatGPT: co daje” (PL i EN, adres EN `chatgpt-business-profile`), do którego odsyła rolka TikTok z 22.11. Fakty z artykułu „Setting up your business on ChatGPT” w centrum pomocy OpenAI (stan 22.11.2026): przejęcie w Business Hub, weryfikacja w Personie, statystyki z 28 dni, przejęcie nie zmienia widoczności, agent tylko dla firm z USA. Artykuł nie podaje listy krajów, więc wpis tego nie rozstrzyga. Fraza główna „wizytówka firmy w ChatGPT” (Google nie podpowiada jej wcale, bez konkurencji), dodatkowa „widoczność firmy w ChatGPT”. `skrypty/dnk.ts`: OK, 813 słów. Trzy grafiki i miniatura w PL i EN (`docs/blog-szkice/podglad/wizytowka-chatgpt*.html`, `zrzut-wizytowka.mjs [en]`). `npm run sprawdz` przeszedł (e2e 192 passed, 1 skipped).

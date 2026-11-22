@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { adresPliku, cytujDlaCurl, konfiguracjaTransferow, parsujListing, plikiDoWgrania, podzielNaEtapy, podzielNaPorcje, sprawdzZgodnosc, srodowiskoBuildu, transferWgrania, wczytajKonfiguracje, zgodnoscRobots } from '../../skrypty/wdroz';
+import { adresPliku, cytujDlaCurl, konfiguracjaTransferow, PIN_KLUCZA_HOME, parsujListing, plikiDoWgrania, podzielNaEtapy, podzielNaPorcje, sprawdzZgodnosc, srodowiskoBuildu, transferWgrania, wczytajKonfiguracje, zgodnoscRobots } from '../../skrypty/wdroz';
 
 describe('wczytajKonfiguracje', () => {
   it('czyta HOST, USER, PASSWORD i KATALOG, ignoruje komentarze i puste linie', () => {
@@ -219,5 +219,27 @@ describe('adresPliku', () => {
   });
   it('dla katalogu głównego nie podwaja ukośnika', () => {
     expect(adresPliku('h.pl', '/', 'index.html')).toBe('ftp://h.pl/index.html');
+  });
+});
+
+describe('przypięcie klucza certyfikatu home.pl', () => {
+  // Serwer *.hosting-home.pl oddaje certyfikat *.home.pl: nazwa się nie zgadza (curl 60), więc tożsamość serwera
+  // sprawdzamy po kluczu publicznym zamiast po nazwie.
+  const transfer = [{ adres: 'x', opcje: [] }];
+
+  it('dla hosta *.hosting-home.pl przypina klucz i wyłącza tylko sprawdzanie nazwy', () => {
+    const w = konfiguracjaTransferow({ host: 'serwer1.hosting-home.pl', user: 'u', password: 'p', katalog: '/' }, transfer);
+    expect(w).toContain(`pinnedpubkey = "${PIN_KLUCZA_HOME}"`);
+    expect(w).toContain('insecure');
+  });
+
+  it('dla innego hosta zostaje zwykła weryfikacja certyfikatu, bez przypięcia', () => {
+    const w = konfiguracjaTransferow({ host: 'ftp.example.pl', user: 'u', password: 'p', katalog: '/' }, transfer);
+    expect(w).not.toContain('pinnedpubkey');
+    expect(w).not.toContain('insecure');
+  });
+
+  it('przypięcie ma format curl: sha256// i skrót base64 (44 znaki)', () => {
+    expect(PIN_KLUCZA_HOME).toMatch(/^sha256\/\/[A-Za-z0-9+/]{43}=$/);
   });
 });
