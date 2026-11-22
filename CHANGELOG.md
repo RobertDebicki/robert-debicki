@@ -1,3 +1,11 @@
+## 2026-11-22 22:15, Claude Code
+
+**✅ Zrobione (gałąź `wpis-wizytowka-chatgpt`, lokalnie, bez pusha i wdrożenia):** nowy wpis „Wizytówka firmy w ChatGPT: co daje” (PL i EN, adres EN `chatgpt-business-profile`), do którego odsyła rolka TikTok z 22.11. Fakty z artykułu „Setting up your business on ChatGPT” w centrum pomocy OpenAI (stan 22.11.2026): przejęcie w Business Hub, weryfikacja w Personie, statystyki z 28 dni, przejęcie nie zmienia widoczności, agent tylko dla firm z USA. Artykuł nie podaje listy krajów, więc wpis tego nie rozstrzyga. Fraza główna „wizytówka firmy w ChatGPT” (Google nie podpowiada jej wcale, bez konkurencji), dodatkowa „widoczność firmy w ChatGPT”. `skrypty/dnk.ts`: OK, 813 słów. Trzy grafiki i miniatura w PL i EN (`docs/blog-szkice/podglad/wizytowka-chatgpt*.html`, `zrzut-wizytowka.mjs [en]`). `npm run sprawdz` przeszedł (e2e 192 passed, 1 skipped).
+
+**🚧 Nie zrobione:** analizator DNK (ocena w punktach) czeka na wklejenie przez Roberta. Tłumaczenie EN ma stan `ai`, bez korekty native speakera. Wpis nie wdrożony.
+
+**🎯 Następny krok:** Robert wkleja okienka do analizatora i odsyła ocenę; potem zgoda na push i wdrożenie razem z poprawkami z gałęzi `wpis-gus-2026`.
+
 ## 2026-11-19 23:00, Claude Code
 
 **✅ Zrobione (gałąź `wpis-gus-2026`, lokalnie, bez pusha i wdrożenia):** wpis „n8n, Make czy Zapier” (PL i EN): Make liczy kredyty, nie operacje. Dopisane, że od 27 sierpnia 2025 roku jedna operacja w Make to jeden kredyt, poza wbudowanymi funkcjami AI (help.make.com, notatka „Introducing credits: new billing unit live in Make”, sekcja 2025: „1 operation still uses 1 credit”), w przykładzie „5 operacji, czyli 5 kredytów”. Grafiki z „5 operacjami” bez zmian (nadal zgodne). Kontrola DNK (fraza „n8n, Make czy Zapier”, dodatkowa „n8n czy Make”) bez błędów, kontrola tłumaczenia bez błędów, `npm run sprawdz` przeszedł (e2e 192 passed, 1 skipped).
