@@ -1,3 +1,11 @@
+## 2026-11-23 20:00, Claude Code
+
+**✅ Zrobione (wgranie za zgodą Roberta „wgraj” w wiadomości z 23.11):** `npm run wdroz -- --wgraj` z `main` (eaae1d9): 203 pliki, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-23T18-45-56-549Z`, odbiór zgodny, .htaccess działa. `npm run test:produkcja`: 5 passed. Na żywo (curl, 200): ceny na 3 stronach usług PL i EN, grafiki usług, wpis `/wpisy/ile-kosztuje-wdrozenie-ai/` i `/en/posts/ai-implementation-cost/` z grafikami; oba w sitemap.
+
+**🚧 W toku / nie wdrożone:** Robert zgłasza 2 adresy nowego wpisu w GSC („Poproś o zindeksowanie”).
+
+**🎯 Następny krok:** pomiar AI co tydzień według `docs/seo/pomiar-ai.md` (następny 30.11.2026); kontrola GSC 21.12.2026; linki zewnętrzne z `linki-zewnetrzne.md` (prośby do klientów, Make Partner, szablony n8n).
+
 ## 2026-11-23 19:55, Claude Code
 
 **✅ Zrobione:** PR #18 scalony przez Roberta (`main` = eaae1d9). Na `main`: `npm run sprawdz` exit 0 (248 testów, 192 e2e, 23 pary tłumaczeń, 0 sekretów); `npm run wdroz -- --na-sucho`: 203 pliki, w tym nowy wpis `wpisy/ile-kosztuje-wdrozenie-ai/`, bez usuwania na serwerze.
