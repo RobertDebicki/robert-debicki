@@ -1,3 +1,11 @@
+## 2026-11-23 12:30, Claude Code
+
+**✅ Zrobione:** audyt SEO i widoczności w AI: `docs/seo/audyt-2026-11-23.md` (GSC przez AdLoop, wyniki Google i AI Overview z cloro, liczby wyszukiwań z DataForSEO, linki z SE Ranking; Treg ~$0.32). Technika bez usterek na 32 adresach. GSC 90 dni: 0 kliknięć, 37 wyświetleń. 0 domen linkujących (konkurenci 9 do 187). Strony usług bez cen i terminów, a AI Overview cytuje ceny konkurencji.
+
+**🚧 Nie zrobione:** żadnych zmian na stronie; frazy „agenci ai”, „voicebot”, „ksef faktury kosztowe” bez sprawdzenia pozycji.
+
+**🎯 Następny krok:** Robert podaje widełki cen i czasu wdrożenia dla 3 usług; potem zmiana stron usług według zasad DNK i GitHub/LinkedIn z `linki-zewnetrzne.md`.
+
 ## 2026-11-23 11:10, Claude Code
 
 **✅ Zrobione:** skill `seo-audit` (`.claude/skills/seo-audit/`, wyłączony z gita w `.git/info/exclude`, identyczna kopia w `Klienci/sigma-net`) uzupełniony po filmie o SEO 2027 (transkrypt 127 min): grupowanie fraz po wspólnych wynikach Google (heurystyka: 3+ wspólne adresy w top 10) z kolumną „Cluster / Owning Page”, sekcja 6 „AI Search Visibility” (dostęp botów i ustawienia Cloudflare, treść w surowym HTML, odpowiedź na początku sekcji, fakty w jednej wersji, wzmianki zewnętrzne, pytania wyjściowe), typ audytu „AI search visibility check”, tabela w raporcie, FID zamienione na INP, zastrzeżenie przy FAQ/HowTo. Przegląd świeżego agenta: 10 uwag, wprowadzone.
