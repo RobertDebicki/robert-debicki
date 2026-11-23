@@ -1,3 +1,12 @@
+## 2026-11-23 14:55, Claude Code
+
+**✅ Zrobione:** Task 1 planu `2026-11-23-braki-po-audycie-seo.md`, część voiceboty PL: w karcie „Koszt: od 2000 zł netto” i „Czas wdrożenia: 2 tygodnie do pierwszych testów”, odpowiedź FAQ „Ile kosztuje voicebot dla firmy?” zaczyna się od kwoty. Liczby od Roberta, zapisane w `docs/seo/ceny-uslug.md`. Kontrola DNK: zmiana nie dodaje błędów (6 błędów frazowych było już wcześniej, wynik przed i po porównany). Build OK, kwota w karcie i w JSON-LD FAQPage. Usunięta nazwa klienta z wpisu 11:08 (sprawdz:tresc: 0).
+
+**🚧 W toku:** ceny i czas dla „AI i automatyzacja” oraz „Strony i aplikacje” czekają na Roberta. Koszt miesięczny voicebota (minuty) niepodany, na stronie go nie ma.
+
+**🎯 Następny krok:** Robert podaje liczby dla 2 pozostałych usług, potem Task 1 dla nich i Task 2 (EN).
+
+
 ## 2026-11-23 12:45, Claude Code
 
 **✅ Zrobione:** plan uzupełnień po audycie: `docs/superpowers/plans/2026-11-23-braki-po-audycie-seo.md` (9 zadań: ceny i czas na stronach usług PL i EN, link do „strony i aplikacje”, wpis o kosztach AI, indeksacja EN, pomiar AI, linki zewnętrzne, wydanie).
@@ -14,7 +23,7 @@
 
 ## 2026-11-23 11:10, Claude Code
 
-**✅ Zrobione:** skill `seo-audit` (`.claude/skills/seo-audit/`, wyłączony z gita w `.git/info/exclude`, identyczna kopia w `Klienci/sigma-net`) uzupełniony po filmie o SEO 2027 (transkrypt 127 min): grupowanie fraz po wspólnych wynikach Google (heurystyka: 3+ wspólne adresy w top 10) z kolumną „Cluster / Owning Page”, sekcja 6 „AI Search Visibility” (dostęp botów i ustawienia Cloudflare, treść w surowym HTML, odpowiedź na początku sekcji, fakty w jednej wersji, wzmianki zewnętrzne, pytania wyjściowe), typ audytu „AI search visibility check”, tabela w raporcie, FID zamienione na INP, zastrzeżenie przy FAQ/HowTo. Przegląd świeżego agenta: 10 uwag, wprowadzone.
+**✅ Zrobione:** skill `seo-audit` (`.claude/skills/seo-audit/`, wyłączony z gita w `.git/info/exclude`, identyczna kopia w projekcie innego klienta) uzupełniony po filmie o SEO 2027 (transkrypt 127 min): grupowanie fraz po wspólnych wynikach Google (heurystyka: 3+ wspólne adresy w top 10) z kolumną „Cluster / Owning Page”, sekcja 6 „AI Search Visibility” (dostęp botów i ustawienia Cloudflare, treść w surowym HTML, odpowiedź na początku sekcji, fakty w jednej wersji, wzmianki zewnętrzne, pytania wyjściowe), typ audytu „AI search visibility check”, tabela w raporcie, FID zamienione na INP, zastrzeżenie przy FAQ/HowTo. Przegląd świeżego agenta: 10 uwag, wprowadzone.
 
 **🚧 Nie zrobione:** twierdzenia z filmu (llms.txt, badania cytowań) niezweryfikowane u źródła.
 
