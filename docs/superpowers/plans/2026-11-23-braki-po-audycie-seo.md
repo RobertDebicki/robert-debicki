@@ -87,10 +87,10 @@ Expected: każda kwota z `ceny-uslug.md` pojawia się w karcie i w JSON-LD `FAQP
 
 Powód: `/uslugi/strony-i-aplikacje/` ma 2 linki wewnętrzne (strona główna, `/uslugi/`), żaden z wpisu. Wpis o n8n ma dziś 1 link (limit DNK: 2).
 
-- [ ] **Step 1: Dopisać jedno zdanie z linkiem** w miejscu, gdzie wpis mówi o granicach gotowych narzędzi: anchor 2 do 5 słów, np. `[aplikacje pisane na zamówienie](/uslugi/strony-i-aplikacje/)`. Fakt w zdaniu tylko taki, który jest już na stronie usługi (np. że piszesz aplikacje w Pythonie i React).
-- [ ] **Step 2: Run** `npx tsx skrypty/dnk.ts src/content/wpisy/n8n-make-czy-zapier/pl.md --fraza "n8n, Make czy Zapier" --dodatkowe "n8n czy Make"` → Expected: bez BŁĘDÓW, 2 linki.
-- [ ] **Step 3: EN przez `/tlumacz-strone`**, link na `/en/services/websites-and-apps/`; `npm run sprawdz:tlumaczenia` bez błędów.
-- [ ] **Step 4: Commit** z wpisem w `CHANGELOG.md`, `feat(wpisy): link do usługi strony i aplikacje`.
+- [x] **Step 1: Dopisać jedno zdanie z linkiem** w miejscu, gdzie wpis mówi o granicach gotowych narzędzi: anchor 2 do 5 słów, np. `[aplikacje pisane na zamówienie](/uslugi/strony-i-aplikacje/)`. Fakt w zdaniu tylko taki, który jest już na stronie usługi (np. że piszesz aplikacje w Pythonie i React).
+- [x] **Step 2: Run** `npx tsx skrypty/dnk.ts src/content/wpisy/n8n-make-czy-zapier/pl.md --fraza "n8n, Make czy Zapier" --dodatkowe "n8n czy Make"` → Expected: bez BŁĘDÓW, 2 linki.
+- [x] **Step 3: EN przez `/tlumacz-strone`**, link na `/en/services/websites-and-apps/`; `npm run sprawdz:tlumaczenia` bez błędów.
+- [x] **Step 4: Commit** z wpisem w `CHANGELOG.md`, `feat(wpisy): link do usługi strony i aplikacje`.
 
 ### Task 4: Wpis „Ile kosztuje wdrożenie AI w firmie” (po Task 0, za zgodą Roberta)
 
@@ -108,9 +108,9 @@ Powód: AI Overview na „wdrożenie ai w firmie” i „automatyzacja ai dla fi
 
 **Files:** Modify: `docs/seo/audyt-2026-11-23.md` (dopisek z wynikiem)
 
-- [ ] **Step 1: Sprawdzić stan indeksu** 16 adresów `/en/` z mapy witryny inspekcją URL w GSC (AdLoop, odczyt). Po `/mcp` → adloop → Reconnect narzędziem AdLoop; bez tego przez pakiet AdLoop z `ADLOOP_CONFIG=~/.adloop-robert/config.yaml`, jak w audycie.
-- [ ] **Step 2: Listę niezaindeksowanych** wpisać do audytu i dać Robertowi; Robert w GSC klika „Poproś o zindeksowanie” (do 10 dziennie).
-- [ ] **Step 3: Commit** z wpisem w `CHANGELOG.md`.
+- [x] **Step 1: Sprawdzić stan indeksu** 16 adresów `/en/` z mapy witryny inspekcją URL w GSC (AdLoop, odczyt). Po `/mcp` → adloop → Reconnect narzędziem AdLoop; bez tego przez pakiet AdLoop z `ADLOOP_CONFIG=~/.adloop-robert/config.yaml`, jak w audycie.
+- [x] **Step 2: Listę niezaindeksowanych** wpisać do audytu i dać Robertowi; Robert w GSC klika „Poproś o zindeksowanie” (do 10 dziennie).
+- [x] **Step 3: Commit** z wpisem w `CHANGELOG.md`.
 
 ### Task 6: Pomiar widoczności (stały)
 

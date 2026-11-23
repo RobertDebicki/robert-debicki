@@ -1,3 +1,11 @@
+## 2026-11-23 17:15, Claude Code
+
+**✅ Zrobione:** Task 5: URL Inspection API (AdLoop, odczyt) dla 32 adresów z `sitemap-0.xml` żywej strony: 30 „Submitted and indexed”, 2 „URL is unknown to Google”: `/en/posts/business-process-automation-ai/` i `/en/services/`. Obie zwracają 200, canonical na siebie, bez noindex. Linki przekazane Robertowi do „Poproś o zindeksowanie”.
+
+**🚧 W toku / nie wdrożone:** Robert zgłasza 2 adresy w GSC. Zmiany z Task 1, 2, 3 i 9 lokalnie, bez pusha i wgrania.
+
+**🎯 Następny krok:** Task 8: `/code-review`, PR, wgranie po zgodzie Roberta.
+
 ## 2026-11-23 17:05, Claude Code
 
 **✅ Zrobione:** Task 3: wpis „n8n, Make czy Zapier” (PL i EN) ma drugi link, do `/uslugi/strony-i-aplikacje/` (anchor „aplikacje na zamówienie”, EN „custom apps”). Żeby nie przekroczyć 1000 słów (DNK 10), zdanie „przy prostej automatyzacji dla małego zespołu Zapier albo Make wystarczą” zastąpione zdaniem z linkiem; podobna myśl zostaje wyżej we wpisie. DNK: OK bez uwag, kontrola tłumaczeń OK, sprawdz:tresc 0.
