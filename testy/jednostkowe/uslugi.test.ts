@@ -5,7 +5,7 @@ import { uslugi, ustawienia } from '../../src/lib/schematy';
 import { rozdziel } from '../../src/lib/frontmatter';
 import { zbudujPary, wczytajFiksture } from '../../src/lib/tresc';
 import { adresOdpowiednika } from '../../src/lib/jezyki';
-import { adresUslugi, bezPogrubienia, czesciPogrubienia, ulozUslugi } from '../../src/lib/uslugi';
+import { adresUslugi, czesciPogrubienia, ulozUslugi } from '../../src/lib/uslugi';
 
 const F = join(import.meta.dirname, '../fikstury/jezyki');
 const dane = (sciezka: string) => rozdziel(readFileSync(join(F, sciezka), 'utf8')).dane as Record<string, any>;
@@ -72,10 +72,6 @@ describe('pogrubienie **…** w polach usługi', () => {
       { tekst: ' i opisz', pogrubione: false },
     ]);
     expect(czesciPogrubienia('bez pogrubienia')).toEqual([{ tekst: 'bez pogrubienia', pogrubione: false }]);
-  });
-  it('usuwa gwiazdki do meta, JSON-LD i kart', () => {
-    expect(bezPogrubienia('**Wdrożenie AI w firmie** zaczynam od procesu')).toBe('Wdrożenie AI w firmie zaczynam od procesu');
-    expect(bezPogrubienia('a * b')).toBe('a * b');
   });
 });
 

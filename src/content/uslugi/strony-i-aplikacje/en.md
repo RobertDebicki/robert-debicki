@@ -91,7 +91,7 @@ faq:
   pozycje:
     - pytanie: "When does an app instead of off-the-shelf software make sense?"
       odpowiedz: "When off-the-shelf software falls short or costs too much. A training company handled sign-ups and schedules in Airtable, and every change meant edits in several places. Now each trainer sees her calendar in one app."
-    - pytanie: "How much does a WordPress website cost?"
+    - pytanie: "How much does a brochure website cost?"
       odpowiedz: "From PLN 800 plus VAT for a brochure website with 4 to 5 subpages, built in about 4 days, without graphic design or SEO setup. More subpages and a more complex build raise the price. If you don't have your own content or design, I'll prepare SEO content and a graphic design as part of the quote."
     - pytanie: "How much does a WooCommerce store cost?"
       odpowiedz: "I quote that individually too. The scope depends on what the store has to do: for example discounted prices for businesses, an account with order history, or pulling orders into the accounting software."
@@ -104,6 +104,6 @@ faq:
 wezwanie: "**Email me: office@robert-debicki.pl** with the website or app you need, and I'll prepare a quote."
 kolejnosc: 2
 adresEn: "websites-and-apps"
-tlumaczenie: sprawdzone
-zrodlo: 136e773b730e99d06dc2a1781c301e0ed0490478f640c3a213184a3a86542252
+tlumaczenie: ai
+zrodlo: 10ef89e40ec5ef06761a47af940a805a192bdd331d79c7e1d772df148450548e
 ---

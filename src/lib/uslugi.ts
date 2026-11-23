@@ -6,9 +6,6 @@ export function czesciPogrubienia(t: string): { tekst: string; pogrubione: boole
   return t.split(/\*\*(.+?)\*\*/).map((tekst, i) => ({ tekst, pogrubione: i % 2 === 1 })).filter((c) => c.tekst !== '');
 }
 
-/** Tekst bez `**` do meta, JSON-LD i kart. */
-export const bezPogrubienia = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '$1');
-
 /** Początek adresu stron usług w danym języku. */
 export const prefiksUslug = (jezyk: Jezyk) => (jezyk === 'pl' ? '/uslugi/' : '/en/services/');
 

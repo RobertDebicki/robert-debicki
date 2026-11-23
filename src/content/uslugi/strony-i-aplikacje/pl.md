@@ -91,7 +91,7 @@ faq:
   pozycje:
     - pytanie: "Kiedy aplikacja zamiast programu z półki ma sens?"
       odpowiedz: "Gdy program z półki nie spełnia oczekiwań albo jest za drogi. Firma szkoleniowa prowadziła zapisy i grafiki w Airtable, a każda zmiana oznaczała poprawki w kilku miejscach. Teraz każda trenerka widzi swój kalendarz w jednej aplikacji."
-    - pytanie: "Ile kosztuje strona WordPress?"
+    - pytanie: "Ile kosztuje strona wizytówka?"
       odpowiedz: "Od 800 zł netto za stronę wizytówkę z 4 do 5 podstron, wykonaną w około 4 dni, bez projektu graficznego i ustawień SEO. Więcej podstron i bardziej złożona budowa podnoszą cenę. Gdy nie masz własnych treści albo projektu, przygotuję treści pod SEO i projekt graficzny w ramach wyceny."
     - pytanie: "Ile kosztuje sklep WooCommerce?"
       odpowiedz: "Też wyceniam indywidualnie. Zakres zależy od tego, co sklep ma robić: na przykład ceny po rabacie dla firm, konto z historią zamówień albo pobieranie zamówień do programu księgowego."

@@ -4,7 +4,7 @@ data: 2026-11-23
 zajawka: "Ile kosztuje wdrożenie AI: prosta automatyzacja od 500 zł netto, voicebot od 2000 zł netto. Sprawdź, co podnosi cenę i co płacisz co miesiąc."
 miniatura:
   plik: "/src/assets/wpisy/ile-kosztuje-wdrozenie-ai-miniatura.png"
-  alt: "Napis od 500 zł netto za prostą automatyzację i voicebot od 2000 zł na pomarańczowym tle"
+  alt: "Napis od 500 zł netto za prostą automatyzację i voicebot od 2000 zł netto na pomarańczowym tle"
 ---
 **Ile kosztuje wdrożenie AI** to pytanie, które słyszę od właścicieli małych firm jeszcze przed pierwszą rozmową o procesie. Odpowiadam kwotami z moich wdrożeń: prosta automatyzacja zaczyna się od 500 zł netto, a voicebot od 2000 zł netto. Sprawdź, od czego zależy cena i jakie koszty zostają po uruchomieniu, a potem napisz do mnie, co chcesz zautomatyzować.
 
@@ -30,7 +30,7 @@ Zanim dobiorę narzędzie, sprawdzam, jak praca wygląda dziś. Często wystarcz
 
 ## Koszty, które zostają po uruchomieniu
 
-Część narzędzi kosztuje co miesiąc, a te opłaty idą na konta klienta, nie na moje. Przy voicebocie to około 20 dolarów miesięcznie za ElevenLabs, zależnie od liczby rozmów. Konto z numerem telefonu klient doładowuje sam, gdy dostanie powiadomienie o końcu środków. Więcej o samym bocie piszę na stronie [voiceboty dla firm](/uslugi/voiceboty/).
+Część narzędzi kosztuje co miesiąc. Przy voicebocie to około 20 dolarów miesięcznie za ElevenLabs, zależnie od liczby rozmów, a ElevenLabs i Twilio działają na kontach klienta, nie na moich. Konto z numerem telefonu klient doładowuje sam, gdy dostanie powiadomienie o końcu środków. Więcej o samym bocie piszę na stronie [voiceboty dla firm](/uslugi/voiceboty/).
 
 Rozbudowane automatyzacje, które muszą działać cały czas, stawiam w n8n na własnym serwerze. Wychodzi to taniej niż subskrypcja Make, w której płacisz za każdą operację w scenariuszu.
 
@@ -40,7 +40,7 @@ Rozbudowane automatyzacje, które muszą działać cały czas, stawiam w n8n na 
 
 ## Moje ceny na tle cenników rynku
 
-Sprawdziłem 23 listopada 2026 cenniki, które Google pokazuje w odpowiedziach AI na pytania o koszt. Firmy wdrożeniowe podają za pojedynczą automatyzację zwykle od 5 do 15 tys. zł netto, a za wdrożenie AI z integracjami od 8000 zł wzwyż. Za voicebota pakiety startowe kosztują około 2500 do 3000 zł za wdrożenie, a do tego od 299 do 1500 zł miesięcznie za utrzymanie. Szkolenie z Claude Code dla jednej osoby zaczyna się w cennikach od 1800 zł netto.
+Sprawdziłem 23 listopada 2026 cenniki, które Google pokazuje w odpowiedziach AI na pytania o koszt. Firmy wdrożeniowe podają za prostego chatbota albo pojedynczą automatyzację zwykle od 3 do 15 tys. zł netto, a za wdrożenie AI z integracjami od 8000 zł wzwyż. Za voicebota pakiety startowe kosztują około 2500 do 3000 zł za wdrożenie, a do tego od 299 do 1500 zł miesięcznie za utrzymanie. Szkolenie z Claude Code dla jednej osoby zaczyna się w cennikach od około 1750 zł netto.
 
 Porównuj zakres, a nie samą kwotę. Ja podaję cenę najprostszej wersji, a większy projekt wyceniam osobno, po rozmowie o Twoim procesie i programach, z których korzystasz.
 
@@ -56,7 +56,7 @@ Netto. Do każdej kwoty z tego wpisu dochodzi VAT.
 Prosta automatyzacja działa po około 3 dniach. Voicebot przechodzi pierwsze testy u klienta po 2 tygodniach.
 
 ### Czy po wdrożeniu płacę co miesiąc?
-Zależy od narzędzia. Przy voicebocie płacisz około 20 dolarów za ElevenLabs i doładowania numeru, a n8n na własnym serwerze kosztuje tyle, co ten serwer.
+Zależy od narzędzia. Przy voicebocie płacisz około 20 dolarów za ElevenLabs i doładowania numeru. Rozbudowane automatyzacje w n8n na własnym serwerze wychodzą taniej niż subskrypcja Make.
 
 ### Ile kosztuje szkolenie z Claude Code?
 Około 2000 zł netto razem z wdrożeniem u klienta. Wdrażam narzędzie i szkolę zespół z pracy z nim.

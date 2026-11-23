@@ -1,3 +1,11 @@
+## 2026-11-23 19:20, Claude Code
+
+**✅ Zrobione:** poprawki po `/code-review` (medium, 8 uwag): ceny rynku we wpisie zgodne ze źródłami (chatbot lub automatyzacja 3 do 15 tys. zł, szkolenie od około 1750 zł; grafika 2 PL i EN); opłaty na kontach klienta i koszt n8n tylko tam, gdzie są potwierdzone; „netto”/„plus VAT” przy voicebocie w zajawce i alt; FAQ strony usług „Ile kosztuje strona wizytówka?” zamiast „strona WordPress” (fraza dodatkowa do kontroli: „sklep WooCommerce”, EN `ai`); `ceny-uslug.md` bez nieaktualnego punktu o 1000 zł (sprawa zamknięta decyzją Roberta); komunikat `obraz()` „Strona …” zamiast „Wpis …”; usunięta nieużywana `bezPogrubienia`. `npm run sprawdz`: 248 testów, 192 e2e, 23 pary tłumaczeń OK.
+
+**🚧 W toku / nie wdrożone:** uwaga 2 z przeglądu czeka na Roberta: czy cena rośnie z liczbą scenariuszy rozmów i integracji (voicebot) oraz kroków i systemów (automatyzacja).
+
+**🎯 Następny krok:** odpowiedź Roberta na uwagę 2, przegląd poprawek, PR.
+
 ## 2026-11-23 19:00, Claude Code
 
 **✅ Zrobione:** wpis o kosztach AI (PL, EN, grafika 2 w obu językach): bez nazw firm konkurencji (decyzja Roberta); ceny rynku opisane ogólnie jako cenniki firm wdrożeniowych, zakresy zgodne ze źródłami w `docs/seo/pomiar-ai.md` (utrzymanie voicebota 299 do 1500 zł/mies., wdrożenie z integracjami od 8000 zł). DNK OK bez uwag, kontrola tłumaczenia OK, build OK.

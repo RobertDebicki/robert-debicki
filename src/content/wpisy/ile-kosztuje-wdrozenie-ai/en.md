@@ -1,12 +1,12 @@
 ---
 tytul: "AI implementation cost for small business"
 data: 2026-11-23
-zajawka: "AI implementation cost: a simple automation from PLN 500 plus VAT, a voice agent from PLN 2,000. See what raises the price and what you pay monthly."
+zajawka: "AI implementation cost: a simple automation from PLN 500 plus VAT, a voice agent from PLN 2,000 plus VAT. See what raises the price and monthly costs."
 miniatura:
   plik: "/src/assets/wpisy/ile-kosztuje-wdrozenie-ai-en-miniatura.png"
-  alt: "From PLN 500 plus VAT for a simple automation and a voice agent from PLN 2,000 on an orange background"
+  alt: "From PLN 500 plus VAT for a simple automation and a voice agent from PLN 2,000 plus VAT on an orange background"
 tlumaczenie: ai
-zrodlo: 74dbecf320ac7d9764081902b32303e2d3085b8fe3ecfb66be9575e26cc3903a
+zrodlo: d849cd1e7050b7ce67fb98ca0f822cdcdd20062574d14fb95cacabb181138097
 adresEn: "ai-implementation-cost"
 ---
 **How much AI implementation costs** is the question I hear from small business owners before we even talk about their process. I answer with numbers from my own projects: a simple automation starts at PLN 500 plus VAT, and a voice agent starts at PLN 2,000 plus VAT. See what the price depends on and which costs remain after launch, then email me about what you want to automate.
@@ -33,7 +33,7 @@ Before I pick a tool, I check how the work looks today. Often it's enough to lay
 
 ## Costs that remain after launch
 
-Some tools cost money every month, and those fees go to the client's accounts, not mine. For a voice agent, that's about USD 20 a month for ElevenLabs, depending on the number of calls. The client tops up the phone number account themselves when they get a low-balance notification. I write more about the bot itself on the [AI voice agents](/en/services/ai-voice-agents/) page.
+Some tools cost money every month. For a voice agent, that's about USD 20 a month for ElevenLabs, depending on the number of calls, and ElevenLabs and Twilio run on the client's accounts, not mine. The client tops up the phone number account themselves when they get a low-balance notification. I write more about the bot itself on the [AI voice agents](/en/services/ai-voice-agents/) page.
 
 I run complex automations that have to work all the time in n8n on a self-hosted server. It comes out cheaper than a Make subscription, where you pay for every operation in a scenario.
 
@@ -43,7 +43,7 @@ I run complex automations that have to work all the time in n8n on a self-hosted
 
 ## My prices compared with the market
 
-On Nov. 23, 2026, I checked the price lists that Google shows in AI answers to questions about cost. Implementation firms usually list a single automation at PLN 5 to 15 thousand plus VAT, and AI implementation with integrations from PLN 8,000 up. For a voice agent, starter packages cost about PLN 2,500 to 3,000 for setup, plus PLN 299 to 1,500 a month for maintenance. Claude Code training for one person starts at PLN 1,800 plus VAT in these price lists.
+On Nov. 23, 2026, I checked the price lists that Google shows in AI answers to questions about cost. Implementation firms usually list a simple chatbot or a single automation at PLN 3 to 15 thousand plus VAT, and AI implementation with integrations from PLN 8,000 up. For a voice agent, starter packages cost about PLN 2,500 to 3,000 for setup, plus PLN 299 to 1,500 a month for maintenance. Claude Code training for one person starts at about PLN 1,750 plus VAT in these price lists.
 
 Compare the scope, not just the amount. I give the price of the simplest version, and I quote a larger project separately, after we talk about your process and the software you use.
 
@@ -59,7 +59,7 @@ Net. VAT is added to every amount in this post.
 A simple automation runs after about 3 days. A voice agent goes through its first tests at the client's company after 2 weeks.
 
 ### Do I pay every month after implementation?
-It depends on the tool. For a voice agent, you pay about USD 20 for ElevenLabs plus phone number top-ups, and n8n on a self-hosted server costs as much as that server.
+It depends on the tool. For a voice agent, you pay about USD 20 for ElevenLabs plus phone number top-ups. Complex automations in self-hosted n8n come out cheaper than a Make subscription.
 
 ### How much does Claude Code training cost?
 About PLN 2,000 plus VAT, together with setup at the client's company. I set up the tool and train the team to work with it.
