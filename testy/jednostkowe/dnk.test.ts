@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { podzielZdania, sprawdzUsluge, sprawdzWpis, wzorFrazy, type Opcje } from '../../skrypty/dnk';
+import { podzielZdania, sprawdzUsluge, sprawdzWpis, tekstUslugi, wzorFrazy, type Opcje } from '../../skrypty/dnk';
 
 // Wpis zgodny z zasadami DNK (master prompt, 16.11.2026). Treść zmyślona, tylko do testu.
 const WPIS = `---
@@ -144,7 +144,7 @@ const USLUGA = {
   sektor: 'Faktury, n8n',
   rola: 'Odczyt dokumentów',
   rolaWyroznienie: '/ n8n',
-  lead: 'Automatyzacja faktur zdejmuje z biura przepisywanie kwot z plików PDF do arkusza. Buduję takie procesy w n8n dla małych firm usługowych.',
+  lead: '**Automatyzacja faktur** zdejmuje z biura przepisywanie kwot z plików PDF do arkusza. Buduję takie procesy w n8n dla małych firm usługowych.',
   akapit: 'Model językowy czyta kwotę, termin i konto, a niepewne odczyty czekają na człowieka. Wrocław albo zdalnie, w zależności od tego, jak wolisz pracować.',
   karta: [{ etykieta: 'Narzędzia', wartosc: 'n8n, Airtable, arkusz Google' }],
   problemy: {
@@ -174,6 +174,11 @@ const USLUGA = {
       { pytanie: 'Kto widzi dane z moich faktur?', odpowiedz: 'Tylko usługi, które razem wskażemy przed startem prac. Ustalamy to na piśmie.' },
     ],
   },
+  zdjecia: [
+    { plik: '/src/assets/uslugi/faktury-1.png', alt: 'Cztery kroki odczytu faktur od poczty do arkusza w n8n' },
+    { plik: '/src/assets/uslugi/faktury-2.png', alt: 'Porównanie pracy biura przed i po automatyzacji faktur' },
+  ],
+  wezwanie: '**Napisz do mnie: office@robert-debicki.pl** i podaj, ile faktur przepisujesz co miesiąc.',
   kolejnosc: 9,
 };
 const OPCJE_USLUGI: Opcje = { fraza: 'automatyzacja faktur', dodatkowe: ['odczyt faktur'] };
@@ -184,10 +189,10 @@ const usluga = (zmiana: (d: typeof USLUGA) => void = () => {}) => {
 };
 
 describe('sprawdzUsluge', () => {
-  it('usługa wzorcowa przechodzi bez błędów, a braki szablonu są uwagami', () => {
+  it('usługa wzorcowa przechodzi bez błędów i bez uwag o pogrubieniu, zdjęciach i wezwaniu', () => {
     const w = usluga();
     expect(w.bledy).toEqual([]);
-    expect(w.uwagi.join('\n')).toContain('zdjęć');
+    expect(w.uwagi.join('\n')).not.toMatch(/szablon|zdjęć|wezwani|pogrub/);
   });
   it('tytuł w wyszukiwarce, opis i H1', () => {
     blad(usluga((d) => { d.tytulSeo = 'Odczyt PDF i automatyzacja faktur | Robert Dębicki'; }), 'zaczynać się od frazy');
@@ -201,6 +206,35 @@ describe('sprawdzUsluge', () => {
   it('fraza w pierwszym zdaniu leadu i wata', () => {
     blad(usluga((d) => { d.lead = 'Buduję procesy w n8n dla małych firm. Automatyzacja faktur zdejmuje przepisywanie.'; }), 'pierwsze zdanie');
     blad(usluga((d) => { d.akapit = d.akapit.replace('Wrocław', 'Gotowe procesy, Wrocław'); }), 'oto');
+  });
+});
+
+describe('sprawdzUsluge: pogrubienie, zdjęcia i wezwanie (Task 9, 23.11)', () => {
+  it('fraza główna w leadzie bez pogrubienia to błąd DNK 4', () => {
+    blad(usluga((d) => { d.lead = d.lead.replace('**Automatyzacja faktur**', 'Automatyzacja faktur'); }), 'pogrubion');
+  });
+  it('pogrubione inne słowa niż fraza główna to błąd DNK 4', () => {
+    blad(usluga((d) => { d.lead = d.lead.replace('**Automatyzacja faktur** zdejmuje', 'Automatyzacja faktur **zdejmuje**'); }), 'pogrubion');
+  });
+  it('brak wezwania to błąd DNK 8', () => {
+    blad(usluga((d) => { delete (d as Partial<typeof d>).wezwanie; }), 'DNK 8');
+  });
+  it('wezwanie bez e-maila w pogrubieniu na początku i dłuższe niż 200 znaków to błędy DNK 8', () => {
+    blad(usluga((d) => { d.wezwanie = '**Napisz do mnie** na office@robert-debicki.pl i podaj liczbę faktur.'; }), 'pogrubieniu na początku');
+    blad(usluga((d) => { d.wezwanie = d.wezwanie + ' a'.repeat(60); }), 'do 200');
+  });
+  it('zdjęcia poza 2 do 4 to uwaga DNK 7, zły alt to błąd', () => {
+    const w = usluga((d) => { d.zdjecia = d.zdjecia.slice(0, 1); });
+    expect(w.bledy).toEqual([]);
+    expect(w.uwagi.join('\n')).toContain('DNK 7: 1 zdjęć');
+    blad(usluga((d) => { d.zdjecia[0].alt = 'Krótki alt'; }), 'alt ma');
+    blad(usluga((d) => { d.zdjecia[1].alt = d.zdjecia[0].alt; }), 'ten sam alt');
+  });
+  it('tekst strony nie ma gwiazdek, a wezwanie liczy się do frazy', () => {
+    const t = tekstUslugi({ ...structuredClone(USLUGA) });
+    expect(t).not.toContain('**');
+    expect(t).toContain('Napisz do mnie: office@robert-debicki.pl i podaj');
+    blad(usluga((d) => { d.wezwanie = '**Napisz do mnie: office@robert-debicki.pl** automatyzacja faktur, automatyzacja faktur, automatyzacja faktur, automatyzacja faktur.'; }), 'fraza główna');
   });
 });
 

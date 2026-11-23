@@ -2,13 +2,13 @@
 tytul: "Strony i aplikacje na zamówienie"
 nazwa: "Aplikacje, strony i narzędzia z AI"
 tytulSeo: "Strony i aplikacje na zamówienie z AI | Robert Dębicki"
-opis: "Strony i aplikacje na zamówienie z Claude Code: WordPress, WooCommerce, Astro. Prosty landing page to około 1000 zł plus VAT. Zapytaj o wycenę."
+opis: "Strony i aplikacje na zamówienie z Claude Code: WordPress, WooCommerce, Astro. Strona wizytówka od 800 zł plus VAT. Zapytaj o wycenę."
 zajawka: "Gdy program z półki nie spełnia oczekiwań albo jest za drogi, piszę narzędzie na miarę, z AI tam, gdzie oszczędza pracę."
 ikona: "aplikacje"
 sektor: "Claude Code, Astro, Next.js, WordPress"
 rola: "Astro, Next.js, WordPress"
 rolaWyroznienie: "/ Claude Code"
-lead: "Buduję strony i aplikacje na zamówienie, gdy program z półki nie spełnia oczekiwań albo jest za drogi."
+lead: "Buduję **strony i aplikacje na zamówienie**, gdy program z półki nie spełnia oczekiwań albo jest za drogi."
 akapit: "Nowe strony i aplikacje piszę z Claude Code: strony stawiam na WordPressie, w Astro albo w Next.js, aplikacje w Pythonie i React. AI dokładam tam, gdzie oszczędza pracę, na przykład w narzędziu do tłumaczenia wpisów. Wrocław albo zdalnie."
 karta:
   - etykieta: "Piszę z"
@@ -19,8 +19,17 @@ karta:
     wartosc: "Python, FastAPI, React, PostgreSQL"
   - etykieta: "Przykłady"
     wartosc: "Strony producenta mebli, platforma szkoleń, obieg rozliczeń"
+  - etykieta: "Koszt"
+    wartosc: "strona wizytówka od 800 zł netto"
+  - etykieta: "Czas wdrożenia"
+    wartosc: "strona wizytówka około 4 dni"
   - etykieta: "Miejsce"
     wartosc: "Wrocław albo zdalnie"
+zdjecia:
+  - plik: "/src/assets/uslugi/strony-i-aplikacje-1.png"
+    alt: "Trzy kroki: narzędzia z półki, kod z Claude Code, przeniesienie z zachowaniem adresów"
+  - plik: "/src/assets/uslugi/strony-i-aplikacje-2.png"
+    alt: "Liczby z wdrożeń: 89 zachowanych adresów, 12 trenerek i 60 godzin mniej pracy miesięcznie"
 problemy:
   tytul: "Program z półki nie pasuje do tego, jak pracujesz"
   wstep: "Z takimi sprawami przychodzili do mnie klienci."
@@ -82,8 +91,8 @@ faq:
   pozycje:
     - pytanie: "Kiedy aplikacja zamiast programu z półki ma sens?"
       odpowiedz: "Gdy program z półki nie spełnia oczekiwań albo jest za drogi. Firma szkoleniowa prowadziła zapisy i grafiki w Airtable, a każda zmiana oznaczała poprawki w kilku miejscach. Teraz każda trenerka widzi swój kalendarz w jednej aplikacji."
-    - pytanie: "Ile kosztuje strona WordPress?"
-      odpowiedz: "Każdą wycenę robię indywidualnie, za projekt. Duży i złożony projekt dzielę na mniejsze etapy, a kwotę rozkładam na części."
+    - pytanie: "Ile kosztuje strona wizytówka?"
+      odpowiedz: "Od 800 zł netto za stronę wizytówkę z 4 do 5 podstron, wykonaną w około 4 dni, bez projektu graficznego i ustawień SEO. Więcej podstron i bardziej złożona budowa podnoszą cenę. Gdy nie masz własnych treści albo projektu, przygotuję treści pod SEO i projekt graficzny w ramach wyceny."
     - pytanie: "Ile kosztuje sklep WooCommerce?"
       odpowiedz: "Też wyceniam indywidualnie. Zakres zależy od tego, co sklep ma robić: na przykład ceny po rabacie dla firm, konto z historią zamówień albo pobieranie zamówień do programu księgowego."
     - pytanie: "Czy AI może zbudować stronę dla firmy?"
@@ -92,5 +101,6 @@ faq:
       odpowiedz: "To zależy od tego, co strona ma robić: sklep z cenami dla firm buduję na WooCommerce. Stronę producenta mebli przeniosłem z WordPressa do Astro. Stronę artystki, która chciała sama dodawać prace, przeniosłem na Next.js z panelem Payload CMS."
     - pytanie: "Czy po przeniesieniu strony stare adresy będą działać?"
       odpowiedz: "Tak. Przy stronie producenta mebli zachowałem 89 adresów, a przy stronie artystki wygląd i działające adresy."
+wezwanie: "**Napisz do mnie: office@robert-debicki.pl** i opisz, jakiej strony albo aplikacji potrzebujesz, a przygotuję wycenę."
 kolejnosc: 2
 ---

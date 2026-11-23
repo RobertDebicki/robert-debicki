@@ -1,7 +1,7 @@
 // Kontrola tekstu według zasad DNK (master prompt jego analizatora, 16.11.2026: progi, za które panel daje
 // 100 punktów). Przybliżenie analizatora: sprawdza to, co da się zmierzyć w pliku. Ocenę wystawia analizator.
 // Pełne zasady: wpis (`src/content/wpisy/<adres>/pl.md`). Usługa (`src/content/uslugi/<adres>/pl.md`): to, co pozwala
-// szablon strony usługi; reszta (pogrubienie, zdjęcia, wezwanie po FAQ) jako uwagi.
+// szablon strony usługi: pogrubienie w polu lead, zdjęcia w polu zdjecia, wezwanie po FAQ w polu wezwanie.
 // Użycie: npx tsx skrypty/dnk.ts <pl.md> --fraza "<fraza>" --dodatkowe "<fraza 1>" ["<fraza 2>"] [--slowa słowo=1-3 …] [--dlugosc 700-1000]
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -20,6 +20,7 @@ export interface Wynik { bledy: string[]; uwagi: string[] }
 
 export const MARKA = ' | Robert Dębicki';
 export const EMAIL = 'office@robert-debicki.pl';
+const bezGwiazdek = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '$1');
 // Panel szuka tych ciągów liter w całym tekście, także w środku słów („gotowe” zawiera „oto”).
 const WATA = ['warto', 'kluczow', 'w dzisiejszych czasach', 'podsumow', 'reasumując', 'oto', 'poniżej', 'dla jasności',
   'po ludzku', 'co ważne', 'co ciekawe', 'nie tylko', 'kompleksow', 'szeroki wybór', 'najwyższej jakości',
@@ -137,6 +138,14 @@ function slowaIDlugosc(w: Wynik, o: Opcje, widoczny: string, domyslna?: [number,
   else if (!o.dlugosc && domyslna && (liczba < domyslna[0] || liczba > domyslna[1])) w.uwagi.push(`DNK 10: tekst ma około ${liczba} słów; bez danych z panelu DNK chce ${domyslna[0]} do ${domyslna[1]}`);
 }
 
+/** DNK 8: akapit po FAQ zaczyna się pogrubieniem z adresem e-mail i ma do 200 znaków (wpis i usługa). */
+function wezwanieKoncowe(w: Wynik, koniec: string) {
+  if (!koniec.startsWith('**')) w.bledy.push(`DNK 8: ostatni akapit (po FAQ) to wezwanie z pogrubieniem, np. „**Napisz do mnie: ${EMAIL}** …”`);
+  if (!koniec.includes(EMAIL)) w.bledy.push(`DNK 8: w wezwaniu na końcu brak adresu e-mail ${EMAIL}`);
+  else if (!(koniec.match(/^\*\*(.+?)\*\*/)?.[1] ?? '').includes(EMAIL)) w.bledy.push(`DNK 8: adres e-mail ma stać w pogrubieniu na początku wezwania: „**Napisz do mnie: ${EMAIL}** …”`);
+  if (koniec.length > 200) w.bledy.push(`DNK 8: wezwanie na końcu ma ${koniec.length} znaków, ma mieć do 200`);
+}
+
 function alty(w: Wynik, lista: string[]) {
   for (const a of lista) {
     if (a.length < 30 || a.length > 110) w.bledy.push(`DNK 7: alt ma ${a.length} znaków, ma mieć 30 do 110: „${a.slice(0, 50)}”`);
@@ -223,10 +232,7 @@ export function sprawdzWpis(plik: string, o: Opcje): Wynik {
     });
     faqPozycje(w, pozycje);
   }
-  if (!koniec.startsWith('**')) w.bledy.push(`DNK 8: ostatni akapit (po FAQ) to wezwanie z pogrubieniem, np. „**Napisz do mnie: ${EMAIL}** …”`);
-  if (!koniec.includes(EMAIL)) w.bledy.push(`DNK 8: w wezwaniu na końcu brak adresu e-mail ${EMAIL}`);
-  else if (!(koniec.match(/^\*\*(.+?)\*\*/)?.[1] ?? '').includes(EMAIL)) w.bledy.push(`DNK 8: adres e-mail ma stać w pogrubieniu na początku wezwania: „**Napisz do mnie: ${EMAIL}** …”`);
-  if (koniec.length > 200) w.bledy.push(`DNK 8: wezwanie na końcu ma ${koniec.length} znaków, ma mieć do 200`);
+  wezwanieKoncowe(w, koniec);
 
   // Linki, frazy, język
   linki(w, [...tresc.matchAll(LINK)].map((m) => [m[1], m[2]] as [string, string]), true);
@@ -248,13 +254,15 @@ export interface DaneUslugi {
   kroki: { tytul: string; pozycje: Pozycja[] };
   przyklady: { tytul: string; pozycje: (Pozycja & { sektor?: string; liczba?: string; liczbaOpis?: string; stos?: string[]; link?: { tekst: string; adres: string } })[] };
   faq: { tytul: string; pozycje: { pytanie: string; odpowiedz: string }[] };
+  zdjecia?: { plik: string; alt: string }[];
+  wezwanie?: string;
 }
 
 const DOMYSLNE: string[] = [];
 
 /** Tekst strony usługi w kolejności z `src/components/StronaUslugi.astro` (bez okruszków i pola sektor: strona ich nie pokazuje w treści). */
 export function tekstUslugi(d: Partial<DaneUslugi> & Pick<DaneUslugi, 'tytul' | 'lead' | 'akapit' | 'problemy' | 'kroki' | 'przyklady' | 'faq'>): string {
-  const c: string[] = [`# ${d.tytul}`, [d.rola, d.rolaWyroznienie].filter(Boolean).join(' '), d.lead, d.akapit];
+  const c: string[] = [`# ${d.tytul}`, [d.rola, d.rolaWyroznienie].filter(Boolean).join(' '), bezGwiazdek(d.lead), d.akapit];
   if (d.karta?.length) c.push(d.karta.map((k) => `- ${k.etykieta}: ${k.wartosc}`).join('\n'));
   c.push(`## ${d.problemy.tytul}`, d.problemy.wstep, ...d.problemy.pozycje.flatMap((p) => [`### ${p.tytul}`, p.tekst]));
   c.push(`## ${d.kroki.tytul}`, ...d.kroki.pozycje.flatMap((p) => [`### ${p.tytul}`, p.tekst]));
@@ -262,6 +270,7 @@ export function tekstUslugi(d: Partial<DaneUslugi> & Pick<DaneUslugi, 'tytul' | 
     [p.liczba, p.liczbaOpis].filter(Boolean).join(' '), p.sektor ?? '', `### ${p.tytul}`, p.tekst, (p.stos ?? DOMYSLNE).join(', '),
     ...(p.link ? [`[${p.link.tekst}](${p.link.adres})`] : [])]));
   c.push(`## ${d.faq.tytul}`, ...d.faq.pozycje.flatMap((p) => [`### ${p.pytanie}`, p.odpowiedz]));
+  if (d.wezwanie) c.push(bezGwiazdek(d.wezwanie));
   return c.filter(Boolean).join('\n\n') + '\n';
 }
 
@@ -276,15 +285,18 @@ export function sprawdzUsluge(d: DaneUslugi, o: Opcje): Wynik {
   for (const t of h2) if (/^wstęp\b|podsumow/i.test(t)) w.bledy.push(`DNK 3: sekcja „${t}”: bez nagłówków Wstęp i Podsumowanie`);
 
   const pierwsze = podzielZdania(d.lead)[0] ?? '';
-  if (!ma(glowna, pierwsze)) w.bledy.push('DNK 4: pierwsze zdanie leadu (pod H1) ma zawierać frazę główną');
-  w.uwagi.push('DNK 4: szablon usługi nie pogrubia frazy we wstępie (pole lead to zwykły tekst)');
-  const zdaniaWstepu = podzielZdania(`${d.lead} ${d.akapit}`).length;
+  if (!ma(glowna, bezGwiazdek(pierwsze))) w.bledy.push('DNK 4: pierwsze zdanie leadu (pod H1) ma zawierać frazę główną');
+  else if (![...pierwsze.matchAll(/\*\*(.+?)\*\*/g)].some((m) => ma(glowna, m[1]))) w.bledy.push('DNK 4: fraza główna w pierwszym zdaniu leadu ma być pogrubiona (**fraza**)');
+  const zdaniaWstepu = podzielZdania(`${bezGwiazdek(d.lead)} ${d.akapit}`).length;
   if (zdaniaWstepu < 2 || zdaniaWstepu > 4) w.bledy.push(`DNK 4: wstęp (lead i akapit) ma ${zdaniaWstepu} zdań, ma mieć 2 do 4`);
 
   naglowekFaq(w, o, d.faq.tytul);
   faqPozycje(w, d.faq.pozycje);
-  w.uwagi.push('DNK 7: szablon usługi nie ma zdjęć (DNK chce 2 do 4)');
-  w.uwagi.push('DNK 8: szablon usługi nie ma wezwania pod FAQ (DNK chce pogrubionego wezwania po FAQ)');
+  const altyZdjec = (d.zdjecia ?? []).map((z) => String(z.alt ?? ''));
+  if (altyZdjec.length < 2 || altyZdjec.length > 4) w.uwagi.push(`DNK 7: ${altyZdjec.length} zdjęć w polu zdjecia, DNK chce 2 do 4`);
+  alty(w, altyZdjec);
+  if (!d.wezwanie) w.bledy.push(`DNK 8: brak pola wezwanie (akapit pod FAQ), np. „**Napisz do mnie: ${EMAIL}** …”`);
+  else wezwanieKoncowe(w, d.wezwanie.trim());
 
   const linkiPrzykladow = d.przyklady.pozycje.flatMap((p) => (p.link ? [[p.link.tekst, p.link.adres] as [string, string]] : []));
   linki(w, linkiPrzykladow, false);
@@ -293,9 +305,9 @@ export function sprawdzUsluge(d: DaneUslugi, o: Opcje): Wynik {
   // Fraza liczona w tym, co dostaje analizator i co widać na stronie (bez linii z adresem linku).
   const widoczny = tekstUslugi(d).replace(/^#+\s+/gm, '').replace(LINK, '$1');
   frazyWTekscie(w, o, widoczny);
-  const zdania = [d.lead, d.akapit, d.problemy.wstep, ...d.problemy.pozycje.map((p) => p.tekst), ...d.kroki.pozycje.map((p) => p.tekst),
-    ...d.przyklady.pozycje.map((p) => p.tekst), ...d.faq.pozycje.map((p) => p.odpowiedz)].flatMap(podzielZdania);
-  jezyk(w, zdania, [d.tytulSeo, d.opis, widoczny].join('\n'));
+  const zdania = [bezGwiazdek(d.lead), d.akapit, d.problemy.wstep, ...d.problemy.pozycje.map((p) => p.tekst), ...d.kroki.pozycje.map((p) => p.tekst),
+    ...d.przyklady.pozycje.map((p) => p.tekst), ...d.faq.pozycje.map((p) => p.odpowiedz), ...(d.wezwanie ? [bezGwiazdek(d.wezwanie)] : [])].flatMap(podzielZdania);
+  jezyk(w, zdania, [d.tytulSeo, d.opis, widoczny, ...altyZdjec].join('\n'));
   slowaIDlugosc(w, o, widoczny);
   return w;
 }

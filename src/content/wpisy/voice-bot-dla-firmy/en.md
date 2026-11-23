@@ -5,7 +5,7 @@ zajawka: "A voice bot for your business calls a form lead within 2 minutes and w
 miniatura:
   plik: "/src/assets/wpisy/voice-bot-dla-firmy-en-miniatura.png"
   alt: "Large 2:00 text and a phone handset, the bot calls the customer back within two minutes"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 92dbf6d7bac1aae2a3a332818592a8e8a0f74adb2d478351b56213c059fd7f1d
 adresEn: "voice-bot-for-business"
 ---

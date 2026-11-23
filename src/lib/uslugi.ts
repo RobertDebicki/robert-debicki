@@ -1,6 +1,11 @@
 import { pobierzPary, type Para } from './tresc';
 import { widocznaWJezyku, type Jezyk } from './jezyki';
 
+/** Pola `lead` i `wezwanie` mogą mieć pogrubienie `**…**`; tylko ten znacznik, bez reszty Markdown. */
+export function czesciPogrubienia(t: string): { tekst: string; pogrubione: boolean }[] {
+  return t.split(/\*\*(.+?)\*\*/).map((tekst, i) => ({ tekst, pogrubione: i % 2 === 1 })).filter((c) => c.tekst !== '');
+}
+
 /** Początek adresu stron usług w danym języku. */
 export const prefiksUslug = (jezyk: Jezyk) => (jezyk === 'pl' ? '/uslugi/' : '/en/services/');
 

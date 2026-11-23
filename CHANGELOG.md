@@ -1,3 +1,154 @@
+## 2026-11-23 19:40, Claude Code
+
+**✅ Zrobione:** przegląd runda 2 (low) bez błędów w kodzie; kwoty we wpisie sprawdzone ręcznie z `pomiar-ai.md`. Gałąź `wpis-koszt-wdrozenia-ai` wypchnięta, PR #18 do `main`: https://github.com/RobertDebicki/robert-debicki/pull/18
+
+**🚧 W toku / nie wdrożone:** merge PR i wgranie na serwer czekają na zgodę Roberta.
+
+**🎯 Następny krok:** po „wgraj”: merge, `npm run wdroz -- --wgraj`, `npm run test:produkcja`, sprawdzenie cen na żywych adresach; kontrola GSC 21.12.2026.
+
+## 2026-11-23 19:30, Claude Code
+
+**✅ Zrobione:** uwaga 2 z przeglądu zamknięta: Robert potwierdził, że cena voicebota rośnie z liczbą scenariuszy i integracji, a automatyzacji z liczbą kroków i systemów; zapisane w `ceny-uslug.md`, zdania na stronie zostają.
+
+**🎯 Następny krok:** przegląd poprawek (runda 2), PR do `main`.
+
+## 2026-11-23 19:20, Claude Code
+
+**✅ Zrobione:** poprawki po `/code-review` (medium, 8 uwag): ceny rynku we wpisie zgodne ze źródłami (chatbot lub automatyzacja 3 do 15 tys. zł, szkolenie od około 1750 zł; grafika 2 PL i EN); opłaty na kontach klienta i koszt n8n tylko tam, gdzie są potwierdzone; „netto”/„plus VAT” przy voicebocie w zajawce i alt; FAQ strony usług „Ile kosztuje strona wizytówka?” zamiast „strona WordPress” (fraza dodatkowa do kontroli: „sklep WooCommerce”, EN `ai`); `ceny-uslug.md` bez nieaktualnego punktu o 1000 zł (sprawa zamknięta decyzją Roberta); komunikat `obraz()` „Strona …” zamiast „Wpis …”; usunięta nieużywana `bezPogrubienia`. `npm run sprawdz`: 248 testów, 192 e2e, 23 pary tłumaczeń OK.
+
+**🚧 W toku / nie wdrożone:** uwaga 2 z przeglądu czeka na Roberta: czy cena rośnie z liczbą scenariuszy rozmów i integracji (voicebot) oraz kroków i systemów (automatyzacja).
+
+**🎯 Następny krok:** odpowiedź Roberta na uwagę 2, przegląd poprawek, PR.
+
+## 2026-11-23 19:00, Claude Code
+
+**✅ Zrobione:** wpis o kosztach AI (PL, EN, grafika 2 w obu językach): bez nazw firm konkurencji (decyzja Roberta); ceny rynku opisane ogólnie jako cenniki firm wdrożeniowych, zakresy zgodne ze źródłami w `docs/seo/pomiar-ai.md` (utrzymanie voicebota 299 do 1500 zł/mies., wdrożenie z integracjami od 8000 zł). DNK OK bez uwag, kontrola tłumaczenia OK, build OK.
+
+**🎯 Następny krok:** akceptacja tekstu przez Roberta, potem Task 8 (`/code-review`, PR, wgranie po zgodzie).
+
+## 2026-11-23 18:45, Claude Code
+
+**✅ Zrobione (gałąź `wpis-koszt-wdrozenia-ai`):** Task 4: wpis „Ile kosztuje wdrożenie AI w firmie” PL i EN (`/en/posts/ai-implementation-cost/`), fraza główna „ile kosztuje wdrożenie AI”, dodatkowa „ile kosztuje agent AI” (wolumeny w `frazy-uslug.md`). Tylko ceny Roberta z `ceny-uslug.md` i fakty ze stron usług; ceny rynku z podanym źródłem (Herens, AutomAIze, odbierze.ai, SimpleFast, SoftSolid, 23.11). 2 grafiki i miniatura PL i EN (`docs/blog-szkice/podglad/koszt-wdrozenia-ai*.html`, `zrzut-koszt-ai.mjs [en]`). DNK: OK bez uwag. Kontrola tłumaczeń 23 pary OK. `npm run sprawdz`: 249 testów, 192 e2e.
+
+**🚧 W toku / nie wdrożone:** ocena z analizatora DNK: Robert wkleja okienka z `skrypty/analizator.ts`. Akceptacja tekstu przez Roberta. EN w stanie `ai`.
+
+**🎯 Następny krok:** Task 8: `/code-review` całej pracy z 23.11, PR, wgranie po zgodzie Roberta.
+
+## 2026-11-23 18:10, Claude Code
+
+**✅ Zrobione:** AI i automatyzacja PL i EN: karta „Claude Code w zespole: wdrożenie ze szkoleniem około 2000 zł netto” i 7. pytanie FAQ „Ile kosztuje wdrożenie Claude Code w firmie?” (decyzja Roberta). DNK OK, kontrola tłumaczenia OK; EN tej strony z powrotem `tlumaczenie: ai` (nowy tekst po akceptacji).
+
+**🎯 Następny krok:** wpis „Ile kosztuje wdrożenie AI w firmie” przez /wpis-rd (zgoda Roberta), potem Task 8.
+
+## 2026-11-23 18:00, Claude Code
+
+**✅ Zrobione:** `linki-zewnetrzne.md`: LinkedIn (opis i adres strony) oznaczony jako zrobiony; Robert zrobił to wcześniej. GitHub pominięty z decyzji Roberta (nie ma czego pokazać).
+
+**🎯 Następny krok:** decyzja o cenie wdrożenia Claude Code na stronie, zgoda na wpis o kosztach, Task 8.
+
+## 2026-11-23 17:50, Claude Code
+
+**✅ Zrobione:** Task 6: `docs/seo/pomiar-ai.md`: 10 pytań klientów, pomiar wyjściowy Google AI Overview (Treg cloro, $0.028): robert-debicki.pl nie jest cytowany w żadnym z 10 (zmiany z 23.11 jeszcze niewgrane). Tabela cen konkurencji z tych wyników, w tym wdrożenia Claude Code (SoftSolid od 1800 zł szkolenie indywidualne, wdrożenie w zespole od 6900 zł netto; szkolenia otwarte 1750 do 2450 zł netto). Kontrola GSC 21.12.2026.
+
+**🎯 Następny krok:** decyzja Roberta: cena wdrożenia Claude Code (około 2000 zł netto) na stronie usług; LinkedIn; Task 8 (code-review, PR, wgranie po zgodzie).
+
+## 2026-11-23 17:30, Claude Code
+
+**✅ Zrobione:** voiceboty PL i EN: koszt miesięczny (karta „Co miesiąc: około 20 USD ElevenLabs i numer telefonu”, w FAQ o cenie zamiast zdania z prośbą o dane, bo wezwanie jest pod FAQ), dane w `docs/seo/ceny-uslug.md`. Robert zaakceptował teksty EN bez poprawek: 22 pozycje `tlumaczenie: sprawdzone`. DNK voiceboty OK, sprawdz:tlumaczenia OK, testy OK.
+
+**🎯 Następny krok:** Task 6 pomiar AI, konkurencja dla wdrożeń Claude Code, LinkedIn.
+
+## 2026-11-23 17:15, Claude Code
+
+**✅ Zrobione:** Task 5: URL Inspection API (AdLoop, odczyt) dla 32 adresów z `sitemap-0.xml` żywej strony: 30 „Submitted and indexed”, 2 „URL is unknown to Google”: `/en/posts/business-process-automation-ai/` i `/en/services/`. Obie zwracają 200, canonical na siebie, bez noindex. Linki przekazane Robertowi do „Poproś o zindeksowanie”.
+
+**🚧 W toku / nie wdrożone:** Robert zgłasza 2 adresy w GSC. Zmiany z Task 1, 2, 3 i 9 lokalnie, bez pusha i wgrania.
+
+**🎯 Następny krok:** Task 8: `/code-review`, PR, wgranie po zgodzie Roberta.
+
+## 2026-11-23 17:05, Claude Code
+
+**✅ Zrobione:** Task 3: wpis „n8n, Make czy Zapier” (PL i EN) ma drugi link, do `/uslugi/strony-i-aplikacje/` (anchor „aplikacje na zamówienie”, EN „custom apps”). Żeby nie przekroczyć 1000 słów (DNK 10), zdanie „przy prostej automatyzacji dla małego zespołu Zapier albo Make wystarczą” zastąpione zdaniem z linkiem; podobna myśl zostaje wyżej we wpisie. DNK: OK bez uwag, kontrola tłumaczeń OK, sprawdz:tresc 0.
+
+**🎯 Następny krok:** Task 5: indeksacja adresów EN w Search Console.
+
+## 2026-11-23 16:50, Claude Code
+
+**✅ Zrobione:** Task 9 (akceptacja Roberta 23.11): szablon usługi ma pogrubioną frazę w `lead` (`**…**`), grafiki pod krokami (pole `zdjecia`, `src/assets/uslugi/`, PL i EN) i wezwanie pod FAQ (pole `wezwanie`). Schemat, panel (pola z podpowiedziami), `src/lib/uslugi.ts` (`czesciPogrubienia`, `bezPogrubienia`), `skrypty/dnk.ts`: zamiast stałych uwag „szablon nie…” sprawdza prawdziwe pola (DNK 4 pogrubienie, DNK 7 liczba i alt grafik, DNK 8 wezwanie wspólne z wpisami). 11 nowych testów. DNK 3 usług PL: 0 błędów. Kontrola tłumaczeń 22 pary OK. `npm run sprawdz`: 249 testów jednostkowych, 192 e2e. Zrzuty voiceboty (komputer, telefon) sprawdzone. Uwaga: build z fiksturami wymagał usunięcia starego cache `node_modules/.astro-distfikstury` (stary schemat bez `zdjecia`).
+
+**🚧 W toku / nie wdrożone:** nic nie wypchnięte ani wgrane. EN w stanie `ai` (korekta osoby z USA).
+
+**🎯 Następny krok:** Task 3 (link z wpisu o n8n), Task 5 (indeksacja EN), potem Task 8: `/code-review`, PR i wgranie po zgodzie Roberta.
+
+## 2026-11-23 16:20, Claude Code
+
+**✅ Zrobione:** Task 9, przygotowanie do akceptacji: 6 grafik stron usług (po 2 na usługę, tylko fakty ze stron) w `src/assets/uslugi/`, źródło `docs/blog-szkice/podglad/uslugi-grafiki.html`, zrzut `node docs/blog-szkice/podglad/zrzut-uslugi.mjs`. W tym samym pliku propozycje wezwań pod FAQ (wzór DNK „**Napisz do mnie: office@robert-debicki.pl** i …”, 117 do 176 znaków) i pogrubienia frazy we wstępie. sprawdz:tresc 0, sprawdz:zdjecia 0.
+
+**🚧 W toku / nie wdrożone:** strony jeszcze nie używają grafik ani wezwań (szablon bez zmian). Czeka na akceptację Roberta.
+
+**🎯 Następny krok:** po akceptacji Task 9 kroki 1 do 7 (schemat, szablon, dnk.ts, treść, EN z grafikami po angielsku).
+
+## 2026-11-23 16:00, Claude Code
+
+**✅ Zrobione:** Task 2 planu: ceny i czas w EN trzech usług (karta „Cost” i „Setup time”, FAQ „How much…”), „netto” jako „plus VAT” jak w opisie, wizytówka jako „brochure website” (opis EN też). kontrola_tlumaczenia: 3 pary OK, stan `ai`. `npm run sprawdz`: 22 pary tłumaczeń OK, 239 testów jednostkowych, 192 e2e, wszystko zielone.
+
+**🚧 W toku / nie wdrożone:** tekst EN czeka na korektę osoby z USA (stan `ai`). Nic nie wypchnięte ani wgrane.
+
+**🎯 Następny krok:** Task 3: link do „strony i aplikacje” z wpisu o n8n. Task 9 czeka na wybór zdjęć przez Roberta.
+
+## 2026-11-23 15:40, Claude Code
+
+**✅ Zrobione:** opis strony „strony i aplikacje” (PL i EN): „Strona wizytówka od 800 zł plus VAT” zamiast „landing page około 1000 zł” (decyzja Roberta). Długość 133 i 142 znaki, DNK OK. W planie nowe Task 9: szablon usługi z pogrubioną frazą we wstępie, zdjęciami i wezwaniem pod FAQ, skrypt DNK sprawdza prawdziwe pola.
+
+**🎯 Następny krok:** Task 2: wersje EN cen trzech usług przez /tlumacz-strone. Task 9 czeka na wybór zdjęć przez Roberta (bez nich robimy pogrubienie i wezwanie).
+
+## 2026-11-23 15:20, Claude Code
+
+**✅ Zrobione:** Task 1 planu, wszystkie 3 usługi PL: AI i automatyzacja (od 500 zł netto, około 3 dni), strony i aplikacje (wizytówka od 800 zł netto, około 4 dni), voiceboty (poprawka: fraza „voicebot” wróciła do 6 wystąpień). Kontrola DNK wszystkich stron PL z frazami z `docs/seo/frazy-uslug.md` i `docs/blog-szkice/README.md`: 3 usługi i wpis n8n bez błędów. Build OK, kwota w karcie i w JSON-LD FAQPage każdej usługi. sprawdz:tresc 0.
+
+**🚧 W toku:** Robert decyduje, czy „landing page około 1000 zł” w opisie strony usług zgadza się z wizytówką od 800 zł.
+
+**🎯 Następny krok:** Task 2: wersje EN trzech usług przez /tlumacz-strone.
+
+## 2026-11-23 14:55, Claude Code
+
+**✅ Zrobione:** Task 1 planu `2026-11-23-braki-po-audycie-seo.md`, część voiceboty PL: w karcie „Koszt: od 2000 zł netto” i „Czas wdrożenia: 2 tygodnie do pierwszych testów”, odpowiedź FAQ „Ile kosztuje voicebot dla firmy?” zaczyna się od kwoty. Liczby od Roberta, zapisane w `docs/seo/ceny-uslug.md`. Kontrola DNK: zmiana nie dodaje błędów (6 błędów frazowych było już wcześniej, wynik przed i po porównany). Build OK, kwota w karcie i w JSON-LD FAQPage. Usunięta nazwa klienta z wpisu 11:08 (sprawdz:tresc: 0).
+
+**🚧 W toku:** ceny i czas dla „AI i automatyzacja” oraz „Strony i aplikacje” czekają na Roberta. Koszt miesięczny voicebota (minuty) niepodany, na stronie go nie ma.
+
+**🎯 Następny krok:** Robert podaje liczby dla 2 pozostałych usług, potem Task 1 dla nich i Task 2 (EN).
+
+
+## 2026-11-23 12:45, Claude Code
+
+**✅ Zrobione:** plan uzupełnień po audycie: `docs/superpowers/plans/2026-11-23-braki-po-audycie-seo.md` (9 zadań: ceny i czas na stronach usług PL i EN, link do „strony i aplikacje”, wpis o kosztach AI, indeksacja EN, pomiar AI, linki zewnętrzne, wydanie).
+
+**🎯 Następny krok:** Task 0: Robert podaje ceny i czas wdrożenia dla 3 usług.
+
+## 2026-11-23 12:30, Claude Code
+
+**✅ Zrobione:** audyt SEO i widoczności w AI: `docs/seo/audyt-2026-11-23.md` (GSC przez AdLoop, wyniki Google i AI Overview z cloro, liczby wyszukiwań z DataForSEO, linki z SE Ranking; Treg ~$0.32). Technika bez usterek na 32 adresach. GSC 90 dni: 0 kliknięć, 37 wyświetleń. 0 domen linkujących (konkurenci 9 do 187). Strony usług bez cen i terminów, a AI Overview cytuje ceny konkurencji.
+
+**🚧 Nie zrobione:** żadnych zmian na stronie; frazy „agenci ai”, „voicebot”, „ksef faktury kosztowe” bez sprawdzenia pozycji.
+
+**🎯 Następny krok:** Robert podaje widełki cen i czasu wdrożenia dla 3 usług; potem zmiana stron usług według zasad DNK i GitHub/LinkedIn z `linki-zewnetrzne.md`.
+
+## 2026-11-23 11:10, Claude Code
+
+**✅ Zrobione:** skill `seo-audit` (`.claude/skills/seo-audit/`, wyłączony z gita w `.git/info/exclude`, identyczna kopia w projekcie innego klienta) uzupełniony po filmie o SEO 2027 (transkrypt 127 min): grupowanie fraz po wspólnych wynikach Google (heurystyka: 3+ wspólne adresy w top 10) z kolumną „Cluster / Owning Page”, sekcja 6 „AI Search Visibility” (dostęp botów i ustawienia Cloudflare, treść w surowym HTML, odpowiedź na początku sekcji, fakty w jednej wersji, wzmianki zewnętrzne, pytania wyjściowe), typ audytu „AI search visibility check”, tabela w raporcie, FID zamienione na INP, zastrzeżenie przy FAQ/HowTo. Przegląd świeżego agenta: 10 uwag, wprowadzone.
+
+**🚧 Nie zrobione:** twierdzenia z filmu (llms.txt, badania cytowań) niezweryfikowane u źródła.
+
+**🎯 Następny krok:** pierwszy audyt z nową sekcją 6 na robertdebicki.pl.
+
+## 2026-11-22 22:35, Claude Code
+
+**✅ Zrobione (PR #16 i #17 scalone, wdrożenie za zgodą Roberta w wiadomości 22.11):** na home.pl wgrano 154 pliki (`npm run wdroz -- --wgraj`, kopia serwera w `~/Backups/robert-debicki-ftp/2026-11-22T21-22-18-097Z`), odbiór zgodny z lokalnymi, `.htaccess` działa, `test:produkcja` 5 z 5. Na żywo: nowy wpis `/wpisy/wizytowka-firmy-w-chatgpt/` (200, tytuł „Wizytówka firmy w ChatGPT: co daje | Robert Dębicki”) i `/en/posts/chatgpt-business-profile/` (200); wpis GUS ma 17,8 procent, wpis n8n/Make ma „Make liczy kredyty”. Wdrożenie przeszło dzięki przypiętemu kluczowi certyfikatu FTPS (wpis z 22:30).
+
+**🚧 Nie zrobione:** analizator DNK nowego wpisu czeka na wklejenie przez Roberta (okienka w `~/Desktop/rolki-tiktok/analizator-wizytowka-chatgpt.md`). EN nowego wpisu ma stan `ai`. Klucz FTPS do podmiany przy odnowieniu certyfikatu (wygasa 14.12.2026).
+
+**🎯 Następny krok:** ocena z analizatora DNK i poprawki; podmiana `PIN_KLUCZA_HOME` przed 14.12.2026.
+
 ## 2026-11-22 22:30, Claude Code
 
 **✅ Zrobione (za zgodą Roberta w tej wiadomości):** `npm run wdroz` przestał przechodzić: serwer FTPS `serwer2643459.hosting-home.pl` oddaje certyfikat `*.home.pl`, więc curl kończył się błędem 60 (nazwa się nie zgadza). Zmierzone: certyfikat ważny od 29.05 do 14.12.2026 i ten sam we wszystkich próbach, `curl`, skrypt i plik z danymi bez zmian od ostatniego udanego wdrożenia (19.11), przyczyna zmiany nieznana (podejrzewana zmiana po stronie home.pl). Próba z nazwą `*.home.pl` nie działa: serwer zrywa połączenie (curl 35). Rozwiązanie: dla hosta `*.hosting-home.pl` skrypt przypina klucz publiczny serwera (`pinnedpubkey`) i wyłącza sprawdzanie nazwy (`insecure`); inny klucz kończy połączenie błędem 90 (sprawdzone na żywo: zły klucz odrzucony, właściwy przechodzi do logowania). Testy: `testy/jednostkowe/wdroz.test.ts` (39), `npm test` 239 passed, skan sekretów 0.

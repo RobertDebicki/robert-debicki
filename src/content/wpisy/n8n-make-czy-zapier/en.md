@@ -5,8 +5,8 @@ zajawka: "n8n, Make, or Zapier: each one bills differently. See with one workflo
 miniatura:
   plik: "/src/assets/wpisy/n8n-make-czy-zapier-en-miniatura.png"
   alt: "Unit comparison: four tasks in Zapier, five operations in Make, one execution in n8n"
-tlumaczenie: ai
-zrodlo: 1c72d331dbb150b2d2f253e6840292003b0447a78fc8ca9f33038cd2cb20b63d
+tlumaczenie: sprawdzone
+zrodlo: 93849b2d339b2336467d72c4e078d09e96b8dbb0847120674b49c23c4efd0c55
 adresEn: "n8n-make-or-zapier"
 ---
 **n8n, Make, or Zapier** is a question I hear from business owners right before their first automation. All three tools connect apps and handle repetitive tasks for you, but they charge differently and need different levels of technical knowledge. I explain in plain language what to look at when you choose, and if you're still not sure what fits your business, email me.
@@ -49,7 +49,7 @@ According to the same documentation, a self-hosted n8n instance sends diagnostic
 
 The choice of tool depends on what a given client needs and how complex the automation is. I build simple automations that don't run several times a day in Make. I set up complex automations that run all the time in n8n on my own server, because it's cheaper than a Make subscription.
 
-For temperature monitoring in transportation, I moved the app logic to n8n on AWS so it wouldn't exceed workflow limits. The system watches more than 150 vehicles, and 20 dispatchers see readings that refresh every minute. I also use n8n for document reading and voice bots, but for a simple automation for a small team, Zapier or Make is enough.
+For temperature monitoring in transportation, I moved the app logic to n8n on AWS so it wouldn't exceed workflow limits. The system watches more than 150 vehicles, and 20 dispatchers see readings that refresh every minute. I also use n8n for document reading and voice bots, and when automation isn't enough, I build [custom apps](/en/services/websites-and-apps/).
 
 ![n8n on AWS in refrigerated transportation: more than 150 vehicles, 20 dispatchers, readings every minute](/src/assets/wpisy/n8n-make-czy-zapier-en-3.png)
 

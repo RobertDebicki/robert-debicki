@@ -222,3 +222,8 @@ Długość tytułów policzona skryptem (Python `len`), razem z końcówką ` | 
 - Brak wolumenów wyszukiwań dla wszystkich fraz (🔴, rozstrzyga Planer słów kluczowych albo GSC po wdrożeniu).
 - Brak bloku „Ludzie pytają też” (🔴, sprawdzić ręcznie w przeglądarce dla fraz głównych przed finalizacją FAQ).
 - Wyniki WebSearch pochodzą z wyszukiwarki dla USA i pojedynczych zapytań, kolejność w Polsce może się różnić.
+
+## Wpis „Ile kosztuje wdrożenie AI w firmie” (23.11.2026)
+
+Liczba wyszukiwań: DataForSEO (dane Google Ads, Polska 2616, pl), 23.11.2026, $0.09. „ile kosztuje agent ai” 50/mies., „voicebot cena” 40, „claude code szkolenie” 30, „szkolenie claude code” 20, „ile kosztuje chatbot” 10; bez danych: „ile kosztuje wdrożenie ai”, „ile kosztuje wdrożenie ai w firmie”, „ile kosztuje automatyzacja ai”, „koszt wdrożenia ai”, „ile kosztuje voicebot”, „cena voicebota”, „wdrożenie claude code”, „claude code dla firm”.
+Wybór: fraza główna „ile kosztuje wdrożenie AI” (pytanie z wyników Google, plan Task 4), dodatkowa „ile kosztuje agent AI” (najwięcej wyszukiwań; Robert nie ma ceny agenta, więc wpis odpowiada „wyceniam po zakresie”). EN: „AI implementation cost”.

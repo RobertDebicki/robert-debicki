@@ -5,7 +5,7 @@ zajawka: "Automated document reading with AI in 4 steps: hundreds of application
 miniatura:
   plik: "/src/assets/wpisy/automatyczny-odczyt-dokumentow-en-miniatura.png"
   alt: "Stack of documents, an arrow, and a data table with one row flagged for review"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: c7f67eda24b5c201a0c04d472f8aa65236cc385c65c652993075eeefcd093f2e
 adresEn: "automated-document-reading"
 ---

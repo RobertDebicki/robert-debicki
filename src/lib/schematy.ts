@@ -101,9 +101,14 @@ export const uslugi = z.object({
   sektor: z.string(),
   rola: z.string(),
   rolaWyroznienie: z.string(),
+  /** Zdanie pod H1; fraza w `**…**` jest pogrubiona na stronie (inne znaczniki Markdown nie działają). */
   lead: z.string(),
   akapit: z.string(),
   karta: z.array(z.object({ etykieta: z.string(), wartosc: z.string() })).min(1),
+  /** Grafiki w sekcji „Jak to robię”, pod krokami. */
+  zdjecia: z.array(zdjecie).default([]),
+  /** Akapit pod pytaniami, pogrubiony początek w `**…**`. Bez pola strona nie ma tego akapitu. */
+  wezwanie: z.string().optional(),
   problemy: z.object({ tytul: z.string(), wstep: z.string(), pozycje: z.array(pozycjaTekstu).min(1) }),
   kroki: z.object({ tytul: z.string(), pozycje: z.array(pozycjaTekstu).min(1) }),
   /** Co najmniej jeden przykład wdrożenia: usługa bez przykładu nie przechodzi buildu. */

@@ -2,13 +2,13 @@
 tytul: "Custom websites and apps"
 nazwa: "Apps, websites, and tools with AI"
 tytulSeo: "Custom websites and apps built with AI | Robert Dębicki"
-opis: "Custom websites and apps with Claude Code: WordPress, WooCommerce, Astro. A simple landing page is about PLN 1,000 plus VAT. Ask for a quote."
+opis: "Custom websites and apps with Claude Code: WordPress, WooCommerce, Astro. A brochure website starts at PLN 800 plus VAT. Ask for a quote."
 zajawka: "When off-the-shelf software falls short or costs too much, I write a tool to fit, with AI where it saves work."
 ikona: "aplikacje"
 sektor: "Claude Code, Astro, Next.js, WordPress"
 rola: "Astro, Next.js, WordPress"
 rolaWyroznienie: "/ Claude Code"
-lead: "I build custom websites and apps when off-the-shelf software falls short or costs too much."
+lead: "I build **custom websites and apps** when off-the-shelf software falls short or costs too much."
 akapit: "I write new websites and apps with Claude Code: I build websites on WordPress, in Astro, or in Next.js, and apps in Python and React. I add AI where it saves work, for example in a tool that translates posts. Wrocław, Poland, or remote."
 karta:
   - etykieta: "I write with"
@@ -19,8 +19,17 @@ karta:
     wartosc: "Python, FastAPI, React, PostgreSQL"
   - etykieta: "Examples"
     wartosc: "Furniture maker websites, a training platform, a month-end close workflow"
+  - etykieta: "Cost"
+    wartosc: "a brochure website from PLN 800 plus VAT"
+  - etykieta: "Setup time"
+    wartosc: "a brochure website in about 4 days"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
+zdjecia:
+  - plik: "/src/assets/uslugi/strony-i-aplikacje-en-1.png"
+    alt: "Three steps: off-the-shelf tools, code with Claude Code, migration that keeps the URLs"
+  - plik: "/src/assets/uslugi/strony-i-aplikacje-en-2.png"
+    alt: "Numbers from projects: 89 URLs kept, 12 trainers, and 60 hours less work per month"
 problemy:
   tytul: "Off-the-shelf software doesn't fit how you work"
   wstep: "Clients came to me with problems like these."
@@ -82,8 +91,8 @@ faq:
   pozycje:
     - pytanie: "When does an app instead of off-the-shelf software make sense?"
       odpowiedz: "When off-the-shelf software falls short or costs too much. A training company handled sign-ups and schedules in Airtable, and every change meant edits in several places. Now each trainer sees her calendar in one app."
-    - pytanie: "How much does a WordPress website cost?"
-      odpowiedz: "I quote each project individually. I split a large, complex project into smaller stages and spread the amount across them."
+    - pytanie: "How much does a brochure website cost?"
+      odpowiedz: "From PLN 800 plus VAT for a brochure website with 4 to 5 subpages, built in about 4 days, without graphic design or SEO setup. More subpages and a more complex build raise the price. If you don't have your own content or design, I'll prepare SEO content and a graphic design as part of the quote."
     - pytanie: "How much does a WooCommerce store cost?"
       odpowiedz: "I quote that individually too. The scope depends on what the store has to do: for example discounted prices for businesses, an account with order history, or pulling orders into the accounting software."
     - pytanie: "Can AI build a website for my business?"
@@ -92,8 +101,9 @@ faq:
       odpowiedz: "It depends on what the site has to do: I build a store with prices for businesses on WooCommerce. I moved a furniture maker's site from WordPress to Astro. I moved an artist's site, where she wanted to add works herself, to Next.js with the Payload CMS panel."
     - pytanie: "Will the old URLs still work after a site is moved?"
       odpowiedz: "Yes. On the furniture maker's site I kept 89 URLs, and on the artist's site the design and the working URLs."
+wezwanie: "**Email me: office@robert-debicki.pl** with the website or app you need, and I'll prepare a quote."
 kolejnosc: 2
 adresEn: "websites-and-apps"
 tlumaczenie: ai
-zrodlo: a5ea3bbbe3c96091bc62163da22785d93a0b18990a2ab6457490f5811dc6477d
+zrodlo: 10ef89e40ec5ef06761a47af940a805a192bdd331d79c7e1d772df148450548e
 ---

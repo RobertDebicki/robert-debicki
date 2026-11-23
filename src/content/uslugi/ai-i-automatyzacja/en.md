@@ -8,7 +8,7 @@ ikona: "ai"
 sektor: "AI agents, n8n, Make.com"
 rola: "AI agents, n8n, Make.com"
 rolaWyroznienie: "/ Claude Code"
-lead: "I start AI implementation for a business with the process, because AI isn't always needed: sometimes it's enough to lay out the process properly and build a simple automation."
+lead: "I start **AI implementation for a business** with the process, because AI isn't always needed: sometimes it's enough to lay out the process properly and build a simple automation."
 akapit: "Where AI saves work, I roll out AI agents that take over several tasks at once: they read documents, extract data, and pass cases on. When a model could get it wrong, the decision stays with a person. Wrocław, Poland, or remote."
 karta:
   - etykieta: "Models"
@@ -19,8 +19,19 @@ karta:
     wartosc: "n8n, Make.com, Airtable, SharePoint, CRM"
   - etykieta: "Examples"
     wartosc: "Grant applications, Google Ads and a blog"
+  - etykieta: "Cost"
+    wartosc: "a simple automation from PLN 500 plus VAT"
+  - etykieta: "Setup time"
+    wartosc: "a simple automation in about 3 days"
+  - etykieta: "Claude Code for your team"
+    wartosc: "setup with training for about PLN 2,000 plus VAT"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
+zdjecia:
+  - plik: "/src/assets/uslugi/ai-i-automatyzacja-en-1.png"
+    alt: "Four steps of AI implementation: process, simple automation, AI agent, and a person's decision"
+  - plik: "/src/assets/uslugi/ai-i-automatyzacja-en-2.png"
+    alt: "Application workflow: email and SharePoint, OCR with a language model, data in Airtable"
 problemy:
   tytul: "Your team does work that AI can take over"
   wstep: "At my clients, automation and AI agents took over tasks like these."
@@ -87,9 +98,12 @@ faq:
     - pytanie: "Is my company data safe with AI?"
       odpowiedz: "When a process handles personal data, I sign a data processing agreement. I send data to the model through the API on the company's account, not through a free chat, and only the fields the task needs. The agent starts with read-only access and a person approves changes, and I also teach the team how to work with AI so that sensitive data doesn't end up in the model."
     - pytanie: "How much does AI implementation cost for a business?"
-      odpowiedz: "I quote each project individually. I split a large, complex project into smaller stages and spread the amount across them."
+      odpowiedz: "From PLN 500 plus VAT for a simple automation, for example a reminder to a client about an unpaid invoice or a morning list of today's tasks. I set up an automation like this in about 3 days. I split a large, complex project into smaller stages and spread the amount across them."
+    - pytanie: "How much does it cost to roll out Claude Code in a company?"
+      odpowiedz: "About PLN 2,000 plus VAT. For that price, I set up Claude Code at the client's company and train the team to work with it."
+wezwanie: "**Email me: office@robert-debicki.pl** and describe the process that takes your team the most time. I'll tell you whether a simple automation is enough or you need an AI agent."
 kolejnosc: 1
 adresEn: "ai-automation"
 tlumaczenie: ai
-zrodlo: 6d5f48302a188719ff6105d2e812b058cf0526b0157098acd5417aa68fdbd28c
+zrodlo: e5085d2a04f3024c488d4c032e889cb67b64807c917c283e78cb2f0ef2cc1bc9
 ---

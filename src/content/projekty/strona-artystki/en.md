@@ -6,6 +6,6 @@ stack: ["Next.js", "Payload CMS", "GA4"]
 etap: "Live in production"
 stan: produkcja
 kolejnosc: 2
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: cd0182ee9944138c607cd6e9c682d714b4ab900aed9c044e11b1300bfd151698
 ---

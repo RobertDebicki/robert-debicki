@@ -8,7 +8,7 @@ ikona: "telefon"
 sektor: "ElevenLabs, Twilio, n8n"
 rola: "ElevenLabs, Twilio"
 rolaWyroznienie: "/ n8n"
-lead: "An AI voice agent for business (a voice bot) calls the person who filled out the form on your site, asks qualifying questions, and leaves the sales rep a note in the CRM."
+lead: "**An AI voice agent for business** (a voice bot) calls the person who filled out the form on your site, asks qualifying questions, and leaves the sales rep a note in the CRM."
 akapit: "In my deployment, the bot calls back within 2 minutes of the form being sent and makes 15 calls a day. It doesn't sell or negotiate: it collects information, and the sales rep handles the sales conversation. Wrocław, Poland, or remote."
 karta:
   - etykieta: "Voice and phone"
@@ -17,8 +17,19 @@ karta:
     wartosc: "n8n, Pipedrive, HubSpot"
   - etykieta: "Example"
     wartosc: "Calling back website inquiries"
+  - etykieta: "Cost"
+    wartosc: "from PLN 2,000 plus VAT"
+  - etykieta: "Setup time"
+    wartosc: "2 weeks to first tests"
+  - etykieta: "Monthly"
+    wartosc: "about USD 20 for ElevenLabs plus a phone number"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
+zdjecia:
+  - plik: "/src/assets/uslugi/voiceboty-en-1.png"
+    alt: "Four steps of an AI voice agent, from the form on your site to a note in Pipedrive"
+  - plik: "/src/assets/uslugi/voiceboty-en-2.png"
+    alt: "What the AI voice agent does and doesn't do: the sales rep runs the sales call"
 problemy:
   tytul: "A website inquiry waits until a sales rep has time"
   wstep: "Someone who has just sent a form has their request fresh in mind. The sales rep can't always call right away."
@@ -61,7 +72,7 @@ faq:
     - pytanie: "What is an AI voice agent?"
       odpowiedz: "A program that holds a phone conversation by voice. My bot calls the person who filled out the form, asks qualifying questions, and writes a note for the sales rep."
     - pytanie: "How much does an AI voice agent cost for a business?"
-      odpowiedz: "I quote each project individually. Tell me how many inquiries you get per day and which CRM you use, and I'll prepare a quote."
+      odpowiedz: "From PLN 2,000 plus VAT for the simplest setup: the bot calls the person who filled out the form, asks questions, and saves a note in the CRM. The price goes up with the number of call scenarios and integrations. Each month there's about USD 20 for ElevenLabs, depending on the number of calls, and the client tops up the phone number account themselves when they get a low-balance notification."
     - pytanie: "How is an AI voice agent different from a chatbot?"
       odpowiedz: "A chatbot answers questions in a chat. A voice bot talks over the phone: in my deployment, it calls the person who filled out the form itself, collects information, and leaves a note in the CRM."
     - pytanie: "Can an AI voice agent call someone who filled out a form and save a note in the CRM?"
@@ -72,8 +83,9 @@ faq:
       odpowiedz: "A business that gets form inquiries every day, where the sales rep can't always call back right away. In the deployment described here, the bot makes 15 calls a day."
     - pytanie: "What happens to the call data?"
       odpowiedz: "The conversation and the note are personal data, so I sign a data processing agreement. Calls aren't recorded: only the note for the sales rep remains from the call. ElevenLabs and Twilio run on the client's accounts, not mine."
+wezwanie: "**Email me: office@robert-debicki.pl** with how you handle website inquiries today, and I'll prepare a quote for an AI voice agent."
 kolejnosc: 3
 adresEn: "ai-voice-agents"
-tlumaczenie: ai
-zrodlo: c8ef3bd8eda889980475d2d8fb8145fc3da4604570cd4763a19ec83aead066d0
+tlumaczenie: sprawdzone
+zrodlo: be1b7bc5a628595a573e8319083ffd103b023edfa480f949a2aacfcf7807643b
 ---

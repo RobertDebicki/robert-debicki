@@ -5,7 +5,7 @@ zajawka: "Business process automation: 17.8% of Polish companies already use AI.
 miniatura:
   plik: "/src/assets/wpisy/ile-firm-uzywa-ai-en-miniatura.png"
   alt: "Large figure of 8.36 percent of companies in Poland using AI according to Eurostat, compared with the European Union"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 643ac3ed84a6d2791b926e4a02d2e6145e4f86a696b339a892b74200a4bd2eba
 adresEn: "business-process-automation-ai"
 ---

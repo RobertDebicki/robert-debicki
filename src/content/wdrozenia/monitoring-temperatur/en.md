@@ -8,6 +8,6 @@ stack: ["n8n", "AWS"]
 ikona: naczepa
 plyta: pomarancz
 kolejnosc: 1
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 1c8eefbc8533b7d92f4b2a095443ac9514853a585eb745cbddce29f1b134a354
 ---

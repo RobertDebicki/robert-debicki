@@ -5,7 +5,7 @@ zajawka: "A ChatGPT business profile shows 28 days of stats but doesn't change v
 miniatura:
   plik: "/src/assets/wpisy/wizytowka-firmy-w-chatgpt-en-miniatura.png"
   alt: "Business Hub label, 28 days of insights, and a note that claiming a profile leaves visibility unchanged"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 308a17d3540869d71d6d92dc99f67d735e5fc554522df5050b365fe288a64199
 adresEn: "chatgpt-business-profile"
 ---
