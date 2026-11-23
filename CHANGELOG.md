@@ -1,3 +1,9 @@
+## 2026-11-23 12:45, Claude Code
+
+**✅ Zrobione:** plan uzupełnień po audycie: `docs/superpowers/plans/2026-11-23-braki-po-audycie-seo.md` (9 zadań: ceny i czas na stronach usług PL i EN, link do „strony i aplikacje”, wpis o kosztach AI, indeksacja EN, pomiar AI, linki zewnętrzne, wydanie).
+
+**🎯 Następny krok:** Task 0: Robert podaje ceny i czas wdrożenia dla 3 usług.
+
 ## 2026-11-23 12:30, Claude Code
 
 **✅ Zrobione:** audyt SEO i widoczności w AI: `docs/seo/audyt-2026-11-23.md` (GSC przez AdLoop, wyniki Google i AI Overview z cloro, liczby wyszukiwań z DataForSEO, linki z SE Ranking; Treg ~$0.32). Technika bez usterek na 32 adresach. GSC 90 dni: 0 kliknięć, 37 wyświetleń. 0 domen linkujących (konkurenci 9 do 187). Strony usług bez cen i terminów, a AI Overview cytuje ceny konkurencji.
