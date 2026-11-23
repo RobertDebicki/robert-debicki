@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><title>Grafiki i wezwania: strony usług (do akceptacji)</title>
+<style>
+@font-face{font-family:Anybody;src:url(../../../node_modules/@fontsource-variable/anybody/files/anybody-latin-ext-wdth-normal.woff2);font-weight:100 900;font-stretch:50% 150%}
+@font-face{font-family:Anybody;src:url(../../../node_modules/@fontsource-variable/anybody/files/anybody-latin-wdth-normal.woff2);font-weight:100 900;font-stretch:50% 150%;unicode-range:U+0000-00FF}
+@font-face{font-family:Onest;src:url(../../../node_modules/@fontsource-variable/onest/files/onest-latin-ext-wght-normal.woff2);font-weight:100 900}
+@font-face{font-family:Onest;src:url(../../../node_modules/@fontsource-variable/onest/files/onest-latin-wght-normal.woff2);font-weight:100 900;unicode-range:U+0000-00FF}
+@font-face{font-family:"Spline Sans Mono";src:url(../../../node_modules/@fontsource-variable/spline-sans-mono/files/spline-sans-mono-latin-ext-wght-normal.woff2);font-weight:300 700}
+@font-face{font-family:"Spline Sans Mono";src:url(../../../node_modules/@fontsource-variable/spline-sans-mono/files/spline-sans-mono-latin-wght-normal.woff2);font-weight:300 700;unicode-range:U+0000-00FF}
+:root{--paper:#f4f5f1;--ink:#131412;--c:#EF7F1A;--y:#ffc400;--m:#d0201a}
+*{box-sizing:border-box}body{margin:0;background:#fff;font:400 17px/1.4 Onest}
+.graf{width:568px;margin:0 0 24px;padding:24px;border:2px solid var(--ink);background:var(--paper);display:grid;gap:14px}
+.et{font:600 12px "Spline Sans Mono";letter-spacing:.04em;text-transform:uppercase}
+.kr{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:12px 0;border-top:2px solid var(--ink)}
+.kr:first-of-type{border-top:0}
+.n{font:850 34px/1 Anybody;font-stretch:120%;background:var(--c);color:var(--ink);text-align:center;padding:6px 0}
+.kr b{font:800 20px/1.2 Anybody;font-stretch:112%;display:block;margin-bottom:3px}
+.kr span{font-size:16px}
+.licz{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.licz div{border-top:6px solid var(--c);padding-top:10px}
+.licz strong{font:850 24px/1.1 Anybody;font-stretch:115%;display:block;margin-bottom:6px}
+.licz span{font-size:16px}
+.duze{font:850 64px/1 Anybody;font-stretch:122%}
+.kol{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.kol section{border:2px solid var(--ink);padding:14px}
+.kol h3{margin:0 0 8px;font:800 20px/1.2 Anybody;font-stretch:112%}
+.kol .tak h3{background:var(--c);margin:-14px -14px 10px;padding:10px 14px}
+.kol .nie h3{background:var(--ink);color:var(--paper);margin:-14px -14px 10px;padding:10px 14px}
+.kol ul{margin:0;padding-left:18px;font-size:16px}.kol li{margin:4px 0}
+.mini{width:1128px;height:636px;transform-origin:0 0}
+.flow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.flow div{border:2px solid var(--ink);background:#fff;padding:12px}
+.flow div.ak{background:var(--c)}
+.flow b{font:800 18px/1.2 Anybody;font-stretch:112%;display:block;margin-bottom:4px}
+.flow span{font-size:15px}
+.akc{max-width:900px;font-size:16px}.akc h2{font:800 24px Anybody;margin:32px 0 8px}
+.akc table{border-collapse:collapse;width:100%}.akc td,.akc th{border:1px solid #999;padding:8px;vertical-align:top;text-align:left}
+</style></head><body>
+
+<!-- VOICEBOTY -->
+<figure class="graf" id="voiceboty-1" style="margin-top:0"><div class="et">Voicebot · od formularza do CRM</div>
+<div class="kr"><div class="n">1</div><div><b>Formularz na stronie</b><span>Osoba wypełnia formularz kontaktowy na Twojej stronie.</span></div></div>
+<div class="kr"><div class="n">2</div><div><b>Bot dzwoni w 2 minuty</b><span>Przedstawia się jako asystentka AI i pyta, czy może kontynuować.</span></div></div>
+<div class="kr"><div class="n">3</div><div><b>Pytania kwalifikujące</b><span>Bot ustala potrzebę i budżet klienta.</span></div></div>
+<div class="kr"><div class="n">4</div><div><b>Notatka w CRM</b><span>n8n zapisuje notatkę przy szansie sprzedaży w Pipedrive.</span></div></div></figure>
+
+<figure class="graf" id="voiceboty-2"><div class="et">Voicebot zbiera informacje, handlowiec sprzedaje</div>
+<div class="kol"><section class="tak"><h3>Bot robi</h3><ul><li>oddzwania do zapytań ze strony</li><li>zadaje pytania kwalifikujące</li><li>robi notatkę dla handlowca</li><li>przekazuje przerwane rozmowy i prośby o inny termin</li></ul></section>
+<section class="nie"><h3>Bot nie robi</h3><ul><li>nie sprzedaje</li><li>nie negocjuje</li><li>rozmowę sprzedażową prowadzi handlowiec</li></ul></section></div></figure>
+
+<!-- AI I AUTOMATYZACJA -->
+<figure class="graf" id="ai-i-automatyzacja-1"><div class="et">Wdrożenie AI · najpierw proces</div>
+<div class="kr"><div class="n">1</div><div><b>Sprawdzam, jak praca wygląda dziś</b><span>Często wystarczy dobrze ułożyć proces.</span></div></div>
+<div class="kr"><div class="n">2</div><div><b>Prosta automatyzacja</b><span>n8n albo Make.com, od 500 zł netto, około 3 dni.</span></div></div>
+<div class="kr"><div class="n">3</div><div><b>Agent AI tam, gdzie oszczędza pracę</b><span>Czyta dokumenty, wyciąga dane i przekazuje sprawy dalej.</span></div></div>
+<div class="kr"><div class="n">4</div><div><b>Decyzja zostaje u człowieka</b><span>Gdy model może się pomylić, wskazana osoba potwierdza.</span></div></div></figure>
+
+<figure class="graf" id="ai-i-automatyzacja-2"><div class="et">Obieg wniosków o dofinansowanie</div>
+<div class="flow"><div><b>Poczta i SharePoint</b><span>Dokumenty pobierane codziennie</span></div><div><b>OCR i model językowy</b><span>Odczyt wniosku</span></div>
+<div><b>Airtable</b><span>Kwoty, terminy, dane kontrahentów i opiekun sprawy</span></div><div class="ak"><b>Odczyt niepewny?</b><span>System prosi wskazaną osobę o potwierdzenie</span></div></div></figure>
+
+<!-- STRONY I APLIKACJE -->
+<figure class="graf" id="strony-i-aplikacje-1"><div class="et">Strona albo aplikacja na zamówienie</div>
+<div class="kr"><div class="n">1</div><div><b>Najpierw narzędzia z półki</b><span>Na zamówienie piszę, gdy program z półki nie wystarcza albo jest za drogi.</span></div></div>
+<div class="kr"><div class="n">2</div><div><b>Kod z Claude Code</b><span>WordPress, Astro, Next.js, a aplikacje w Pythonie i React.</span></div></div>
+<div class="kr"><div class="n">3</div><div><b>Przeniesienie i przekazanie</b><span>Zachowuję wygląd i działające adresy starej strony.</span></div></div></figure>
+
+<figure class="graf" id="strony-i-aplikacje-2"><div class="et">Z wdrożeń u klientów</div>
+<div class="licz"><div><strong>89 adresów</strong><span>zachowanych po przeniesieniu z WordPressa do Astro</span></div><div><strong>12 trenerek</strong><span>każda ze swoim kalendarzem w aplikacji szkoleń</span></div><div><strong>60 godzin</strong><span>mniej ręcznej pracy miesięcznie, według właściciela</span></div></div></figure>
+
+<div class="akc" id="akceptacja">
+<h2>Do akceptacji: wezwania pod FAQ (pogrubiony początek jak w zasadach DNK)</h2>
+<table><tr><th>Usługa</th><th>Wezwanie</th></tr>
+<tr><td>Voiceboty</td><td><b>Napisz do mnie: office@robert-debicki.pl</b> i opisz, jak dziś obsługujesz zapytania ze strony, a przygotuję wycenę bota głosowego.</td></tr>
+<tr><td>AI i automatyzacja</td><td><b>Napisz do mnie: office@robert-debicki.pl</b> i opisz proces, który zabiera zespołowi najwięcej czasu. Odpowiem, czy wystarczy prosta automatyzacja, czy potrzebny jest agent AI.</td></tr>
+<tr><td>Strony i aplikacje</td><td><b>Napisz do mnie: office@robert-debicki.pl</b> i opisz, jakiej strony albo aplikacji potrzebujesz, a przygotuję wycenę.</td></tr></table>
+<h2>Do akceptacji: pogrubiona fraza we wstępie</h2>
+<table><tr><td>Voiceboty</td><td><b>Voicebot</b> dzwoni do osoby, która wypełniła formularz na Twojej stronie, …</td></tr>
+<tr><td>AI i automatyzacja</td><td><b>Wdrożenie AI w firmie</b> zaczynam od procesu, …</td></tr>
+<tr><td>Strony i aplikacje</td><td>Buduję <b>strony i aplikacje na zamówienie</b>, gdy program z półki …</td></tr></table>
+</div>
+</body></html>

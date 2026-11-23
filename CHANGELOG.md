@@ -1,3 +1,11 @@
+## 2026-11-23 16:20, Claude Code
+
+**✅ Zrobione:** Task 9, przygotowanie do akceptacji: 6 grafik stron usług (po 2 na usługę, tylko fakty ze stron) w `src/assets/uslugi/`, źródło `docs/blog-szkice/podglad/uslugi-grafiki.html`, zrzut `node docs/blog-szkice/podglad/zrzut-uslugi.mjs`. W tym samym pliku propozycje wezwań pod FAQ (wzór DNK „**Napisz do mnie: office@robert-debicki.pl** i …”, 117 do 176 znaków) i pogrubienia frazy we wstępie. sprawdz:tresc 0, sprawdz:zdjecia 0.
+
+**🚧 W toku / nie wdrożone:** strony jeszcze nie używają grafik ani wezwań (szablon bez zmian). Czeka na akceptację Roberta.
+
+**🎯 Następny krok:** po akceptacji Task 9 kroki 1 do 7 (schemat, szablon, dnk.ts, treść, EN z grafikami po angielsku).
+
 ## 2026-11-23 16:00, Claude Code
 
 **✅ Zrobione:** Task 2 planu: ceny i czas w EN trzech usług (karta „Cost” i „Setup time”, FAQ „How much…”), „netto” jako „plus VAT” jak w opisie, wizytówka jako „brochure website” (opis EN też). kontrola_tlumaczenia: 3 pary OK, stan `ai`. `npm run sprawdz`: 22 pary tłumaczeń OK, 239 testów jednostkowych, 192 e2e, wszystko zielone.
