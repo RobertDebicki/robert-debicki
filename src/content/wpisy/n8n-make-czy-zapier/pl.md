@@ -46,7 +46,7 @@ Według tej samej dokumentacji samodzielnie postawiony n8n domyślnie wysyła do
 
 Wybór narzędzia zależy od tego, co u danego klienta trzeba zrobić i jak bardzo skomplikowana jest automatyzacja. Proste automatyzacje, które nie uruchamiają się kilka razy dziennie, buduję w Make. Rozbudowane automatyzacje, które działają cały czas, stawiam w n8n na własnym serwerze, bo wychodzi to taniej niż subskrypcja Make.
 
-Przy monitoringu temperatur w transporcie przeniosłem logikę aplikacji do n8n na AWS, żeby nie przekraczać limitów workflow. System pilnuje ponad 150 pojazdów, a 20 dyspozytorów widzi odczyty odświeżane co minutę. Przy odczycie dokumentów i voice botach też używam n8n, ale przy prostej automatyzacji dla małego zespołu Zapier albo Make wystarczą.
+Przy monitoringu temperatur w transporcie przeniosłem logikę aplikacji do n8n na AWS, żeby nie przekraczać limitów workflow. System pilnuje ponad 150 pojazdów, a 20 dyspozytorów widzi odczyty odświeżane co minutę. Przy odczycie dokumentów i voice botach też używam n8n, a gdy automatyzacja nie wystarcza, piszę [aplikacje na zamówienie](/uslugi/strony-i-aplikacje/).
 
 ![Wdrożenie n8n na AWS w transporcie chłodniczym: ponad 150 pojazdów, 20 dyspozytorów, odczyt co minutę](/src/assets/wpisy/n8n-make-czy-zapier-3.png)
 

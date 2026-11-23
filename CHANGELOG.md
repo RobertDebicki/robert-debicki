@@ -1,3 +1,9 @@
+## 2026-11-23 17:05, Claude Code
+
+**✅ Zrobione:** Task 3: wpis „n8n, Make czy Zapier” (PL i EN) ma drugi link, do `/uslugi/strony-i-aplikacje/` (anchor „aplikacje na zamówienie”, EN „custom apps”). Żeby nie przekroczyć 1000 słów (DNK 10), zdanie „przy prostej automatyzacji dla małego zespołu Zapier albo Make wystarczą” zastąpione zdaniem z linkiem; podobna myśl zostaje wyżej we wpisie. DNK: OK bez uwag, kontrola tłumaczeń OK, sprawdz:tresc 0.
+
+**🎯 Następny krok:** Task 5: indeksacja adresów EN w Search Console.
+
 ## 2026-11-23 16:50, Claude Code
 
 **✅ Zrobione:** Task 9 (akceptacja Roberta 23.11): szablon usługi ma pogrubioną frazę w `lead` (`**…**`), grafiki pod krokami (pole `zdjecia`, `src/assets/uslugi/`, PL i EN) i wezwanie pod FAQ (pole `wezwanie`). Schemat, panel (pola z podpowiedziami), `src/lib/uslugi.ts` (`czesciPogrubienia`, `bezPogrubienia`), `skrypty/dnk.ts`: zamiast stałych uwag „szablon nie…” sprawdza prawdziwe pola (DNK 4 pogrubienie, DNK 7 liczba i alt grafik, DNK 8 wezwanie wspólne z wpisami). 11 nowych testów. DNK 3 usług PL: 0 błędów. Kontrola tłumaczeń 22 pary OK. `npm run sprawdz`: 249 testów jednostkowych, 192 e2e. Zrzuty voiceboty (komputer, telefon) sprawdzone. Uwaga: build z fiksturami wymagał usunięcia starego cache `node_modules/.astro-distfikstury` (stary schemat bez `zdjecia`).
