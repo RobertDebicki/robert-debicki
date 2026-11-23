@@ -1,3 +1,11 @@
+## 2026-11-23 19:55, Claude Code
+
+**✅ Zrobione:** PR #18 scalony przez Roberta (`main` = eaae1d9). Na `main`: `npm run sprawdz` exit 0 (248 testów, 192 e2e, 23 pary tłumaczeń, 0 sekretów); `npm run wdroz -- --na-sucho`: 203 pliki, w tym nowy wpis `wpisy/ile-kosztuje-wdrozenie-ai/`, bez usuwania na serwerze.
+
+**🚧 W toku / nie wdrożone:** wgranie na serwer czeka na „wgraj” od Roberta.
+
+**🎯 Następny krok:** po „wgraj”: `npm run wdroz -- --wgraj`, `npm run test:produkcja`, sprawdzenie cen na żywych adresach, link GSC do zindeksowania nowego wpisu (PL i EN); kontrola GSC 21.12.2026.
+
 ## 2026-11-23 19:40, Claude Code
 
 **✅ Zrobione:** przegląd runda 2 (low) bez błędów w kodzie; kwoty we wpisie sprawdzone ręcznie z `pomiar-ai.md`. Gałąź `wpis-koszt-wdrozenia-ai` wypchnięta, PR #18 do `main`: https://github.com/RobertDebicki/robert-debicki/pull/18
