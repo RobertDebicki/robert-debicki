@@ -1,3 +1,9 @@
+## 2026-11-23 19:30, Claude Code
+
+**✅ Zrobione:** uwaga 2 z przeglądu zamknięta: Robert potwierdził, że cena voicebota rośnie z liczbą scenariuszy i integracji, a automatyzacji z liczbą kroków i systemów; zapisane w `ceny-uslug.md`, zdania na stronie zostają.
+
+**🎯 Następny krok:** przegląd poprawek (runda 2), PR do `main`.
+
 ## 2026-11-23 19:20, Claude Code
 
 **✅ Zrobione:** poprawki po `/code-review` (medium, 8 uwag): ceny rynku we wpisie zgodne ze źródłami (chatbot lub automatyzacja 3 do 15 tys. zł, szkolenie od około 1750 zł; grafika 2 PL i EN); opłaty na kontach klienta i koszt n8n tylko tam, gdzie są potwierdzone; „netto”/„plus VAT” przy voicebocie w zajawce i alt; FAQ strony usług „Ile kosztuje strona wizytówka?” zamiast „strona WordPress” (fraza dodatkowa do kontroli: „sklep WooCommerce”, EN `ai`); `ceny-uslug.md` bez nieaktualnego punktu o 1000 zł (sprawa zamknięta decyzją Roberta); komunikat `obraz()` „Strona …” zamiast „Wpis …”; usunięta nieużywana `bezPogrubienia`. `npm run sprawdz`: 248 testów, 192 e2e, 23 pary tłumaczeń OK.

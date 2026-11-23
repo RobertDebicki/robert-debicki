@@ -15,3 +15,5 @@ Sklep WooCommerce i aplikacje: bez kwoty, wycena według zakresu (Robert, 23.11.
 Opis strony „strony i aplikacje”: „Strona wizytówka od 800 zł plus VAT” zamiast dawnego „landing page około 1000 zł” (decyzja Roberta 23.11.2026).
 
 Wdrożenie Claude Code u klienta ze szkoleniem zespołu: około 2000 zł netto (Robert, 23.11.2026). Na stronie AI i automatyzacja: karta i FAQ.
+
+Od czego zależy cena (Robert potwierdził 23.11.2026): voicebot drożeje z liczbą scenariuszy rozmów i integracji (np. CRM, kalendarz); automatyzacja drożeje z liczbą kroków w procesie i liczbą systemów do połączenia.
