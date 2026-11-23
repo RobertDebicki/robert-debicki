@@ -1,3 +1,11 @@
+## 2026-11-23 11:10, Claude Code
+
+**✅ Zrobione:** skill `seo-audit` (`.claude/skills/seo-audit/`, wyłączony z gita w `.git/info/exclude`, identyczna kopia w `Klienci/sigma-net`) uzupełniony po filmie o SEO 2027 (transkrypt 127 min): grupowanie fraz po wspólnych wynikach Google (heurystyka: 3+ wspólne adresy w top 10) z kolumną „Cluster / Owning Page”, sekcja 6 „AI Search Visibility” (dostęp botów i ustawienia Cloudflare, treść w surowym HTML, odpowiedź na początku sekcji, fakty w jednej wersji, wzmianki zewnętrzne, pytania wyjściowe), typ audytu „AI search visibility check”, tabela w raporcie, FID zamienione na INP, zastrzeżenie przy FAQ/HowTo. Przegląd świeżego agenta: 10 uwag, wprowadzone.
+
+**🚧 Nie zrobione:** twierdzenia z filmu (llms.txt, badania cytowań) niezweryfikowane u źródła.
+
+**🎯 Następny krok:** pierwszy audyt z nową sekcją 6 na robertdebicki.pl.
+
 ## 2026-11-22 22:35, Claude Code
 
 **✅ Zrobione (PR #16 i #17 scalone, wdrożenie za zgodą Roberta w wiadomości 22.11):** na home.pl wgrano 154 pliki (`npm run wdroz -- --wgraj`, kopia serwera w `~/Backups/robert-debicki-ftp/2026-11-22T21-22-18-097Z`), odbiór zgodny z lokalnymi, `.htaccess` działa, `test:produkcja` 5 z 5. Na żywo: nowy wpis `/wpisy/wizytowka-firmy-w-chatgpt/` (200, tytuł „Wizytówka firmy w ChatGPT: co daje | Robert Dębicki”) i `/en/posts/chatgpt-business-profile/` (200); wpis GUS ma 17,8 procent, wpis n8n/Make ma „Make liczy kredyty”. Wdrożenie przeszło dzięki przypiętemu kluczowi certyfikatu FTPS (wpis z 22:30).
