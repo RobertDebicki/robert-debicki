@@ -65,7 +65,7 @@ faq:
     - pytanie: "Co to jest voicebot?"
       odpowiedz: "Program, który prowadzi rozmowę telefoniczną głosem. Mój bot dzwoni do osoby z formularza, zadaje pytania kwalifikujące i robi notatkę dla handlowca."
     - pytanie: "Ile kosztuje voicebot dla firmy?"
-      odpowiedz: "Od 2000 zł netto za najprostszy voicebot: dzwoni do osoby z formularza, zadaje pytania i zapisuje notatkę w CRM. Cena rośnie z liczbą scenariuszy rozmów i integracji. Napisz, ile zapytań dostajesz dziennie i z jakiego CRM korzystasz, a przygotuję wycenę."
+      odpowiedz: "Od 2000 zł netto za najprostsze wdrożenie: bot dzwoni do osoby z formularza, zadaje pytania i zapisuje notatkę w CRM. Cena rośnie z liczbą scenariuszy rozmów i integracji. Napisz, ile zapytań dostajesz dziennie i z jakiego CRM korzystasz, a przygotuję wycenę."
     - pytanie: "Czym voicebot różni się od chatbota?"
       odpowiedz: "Chatbot odpowiada na pytania na czacie. Bot głosowy rozmawia przez telefon: w moim wdrożeniu sam dzwoni do osoby z formularza, zbiera informacje i zostawia notatkę w CRM."
     - pytanie: "Czy bot sam zadzwoni do osoby z formularza i zapisze notatkę w CRM?"

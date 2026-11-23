@@ -19,6 +19,10 @@ karta:
     wartosc: "n8n, Make.com, Airtable, SharePoint, CRM"
   - etykieta: "Przykłady"
     wartosc: "Wnioski o dofinansowanie, Google Ads i blog"
+  - etykieta: "Koszt"
+    wartosc: "prosta automatyzacja od 500 zł netto"
+  - etykieta: "Czas wdrożenia"
+    wartosc: "prosta automatyzacja około 3 dni"
   - etykieta: "Miejsce"
     wartosc: "Wrocław albo zdalnie"
 problemy:
@@ -87,6 +91,6 @@ faq:
     - pytanie: "Czy dane firmy są bezpieczne?"
       odpowiedz: "Gdy proces przetwarza dane osobowe, podpisuję umowę powierzenia przetwarzania. Dane wysyłam do modelu przez API na koncie firmowym, nie przez darmowy czat, i tylko te pola, których zadanie wymaga. Agent zaczyna od dostępu tylko do odczytu, a zmiany zatwierdza człowiek, i uczę też zespół, jak pracować z AI, żeby nie wysyłać do modelu danych wrażliwych."
     - pytanie: "Ile kosztuje wdrożenie AI w firmie?"
-      odpowiedz: "Wyceniam indywidualnie, za projekt. Duży i złożony projekt dzielę na mniejsze etapy, a kwotę rozkładam na części."
+      odpowiedz: "Od 500 zł netto za prostą automatyzację, na przykład przypomnienie klientowi o niezapłaconej fakturze albo poranną listę zadań na dziś. Taką automatyzację uruchamiam w około 3 dni. Duży i złożony projekt dzielę na mniejsze etapy, a kwotę rozkładam na części."
 kolejnosc: 1
 ---

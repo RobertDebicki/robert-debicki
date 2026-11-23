@@ -1,3 +1,11 @@
+## 2026-11-23 15:20, Claude Code
+
+**✅ Zrobione:** Task 1 planu, wszystkie 3 usługi PL: AI i automatyzacja (od 500 zł netto, około 3 dni), strony i aplikacje (wizytówka od 800 zł netto, około 4 dni), voiceboty (poprawka: fraza „voicebot” wróciła do 6 wystąpień). Kontrola DNK wszystkich stron PL z frazami z `docs/seo/frazy-uslug.md` i `docs/blog-szkice/README.md`: 3 usługi i wpis n8n bez błędów. Build OK, kwota w karcie i w JSON-LD FAQPage każdej usługi. sprawdz:tresc 0.
+
+**🚧 W toku:** Robert decyduje, czy „landing page około 1000 zł” w opisie strony usług zgadza się z wizytówką od 800 zł.
+
+**🎯 Następny krok:** Task 2: wersje EN trzech usług przez /tlumacz-strone.
+
 ## 2026-11-23 14:55, Claude Code
 
 **✅ Zrobione:** Task 1 planu `2026-11-23-braki-po-audycie-seo.md`, część voiceboty PL: w karcie „Koszt: od 2000 zł netto” i „Czas wdrożenia: 2 tygodnie do pierwszych testów”, odpowiedź FAQ „Ile kosztuje voicebot dla firmy?” zaczyna się od kwoty. Liczby od Roberta, zapisane w `docs/seo/ceny-uslug.md`. Kontrola DNK: zmiana nie dodaje błędów (6 błędów frazowych było już wcześniej, wynik przed i po porównany). Build OK, kwota w karcie i w JSON-LD FAQPage. Usunięta nazwa klienta z wpisu 11:08 (sprawdz:tresc: 0).
