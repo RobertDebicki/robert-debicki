@@ -1,3 +1,9 @@
+## 2026-11-23 18:00, Claude Code
+
+**✅ Zrobione:** `linki-zewnetrzne.md`: LinkedIn (opis i adres strony) oznaczony jako zrobiony; Robert zrobił to wcześniej. GitHub pominięty z decyzji Roberta (nie ma czego pokazać).
+
+**🎯 Następny krok:** decyzja o cenie wdrożenia Claude Code na stronie, zgoda na wpis o kosztach, Task 8.
+
 ## 2026-11-23 17:50, Claude Code
 
 **✅ Zrobione:** Task 6: `docs/seo/pomiar-ai.md`: 10 pytań klientów, pomiar wyjściowy Google AI Overview (Treg cloro, $0.028): robert-debicki.pl nie jest cytowany w żadnym z 10 (zmiany z 23.11 jeszcze niewgrane). Tabela cen konkurencji z tych wyników, w tym wdrożenia Claude Code (SoftSolid od 1800 zł szkolenie indywidualne, wdrożenie w zespole od 6900 zł netto; szkolenia otwarte 1750 do 2450 zł netto). Kontrola GSC 21.12.2026.

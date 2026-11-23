@@ -16,7 +16,7 @@ Stan na 2026-11-13. Lista dla Roberta: rejestracje i wysyłki robisz Ty, nic nie
 | # | Miejsce | Wysiłek | Powód miejsca na liście |
 |---|---|---|---|
 | 1 | Profil GitHub (README, pole Website, przypięte repo) | 20 min | Miejsce, gdzie rekruter techniczny może sprawdzić kod (⚠️ przesłanka); repo strony jest publiczne i świadczy o autorze |
-| 2 | LinkedIn: Website, Featured, nagłówek | 30 min | Miejsce, w którym rekruter i właściciel firmy mogą sprawdzić osobę (⚠️ przesłanka) |
+| 2 | LinkedIn: Website, Featured, nagłówek (✅ zrobione wcześniej, według Roberta 23.11) | 30 min | Miejsce, w którym rekruter i właściciel firmy mogą sprawdzić osobę (⚠️ przesłanka) |
 | 3 | Prośba do klientów o wzmiankę z linkiem | 1 mail na klienta | Link od prawdziwego wdrożenia jest tematycznie trafny i tani (⚠️ przesłanka) |
 | 4 | Make: program Solution Partner | 1 h + szkolenie | Oficjalna lista ekspertów "Hire an expert" (jeśli przyjmą) |
 | 5 | n8n: szablony w portalu twórców i wątki na forum | 2 h na szablon | Wzmianka w miejscu tematycznie bliskim n8n (⚠️ wpływ niezmierzony) |
