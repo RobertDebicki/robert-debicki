@@ -98,11 +98,11 @@ Powód: `/uslugi/strony-i-aplikacje/` ma 2 linki wewnętrzne (strona główna, `
 
 Powód: AI Overview na „wdrożenie ai w firmie” i „automatyzacja ai dla firm” odpowiada na koszt liczbami MKM Labs, AutomAIze i SimpleFast (audyt, punkt 3).
 
-- [ ] **Step 1: Wybrać frazę.** Sprawdzić liczbę wyszukiwań (Treg `dataforseo.google.keywords.volume`, Polska 2616, `pl`, $0.09): „ile kosztuje wdrożenie ai”, „ile kosztuje automatyzacja ai”, „koszt wdrożenia ai”, „ile kosztuje voicebot”, „cena voicebota”. Wybrać frazę z największą liczbą; przy braku danych wszędzie „ile kosztuje wdrożenie AI” (pytanie z PAA w audycie). Wynik zapisać w `docs/seo/frazy-uslug.md`.
-- [ ] **Step 2: `/wpis-rd`** z faktami z `ceny-uslug.md`: odpowiedź z kwotą w pierwszym zdaniu, tabela „co wpływa na cenę”, 1 link do `/uslugi/ai-i-automatyzacja/`, drugi do `/uslugi/voiceboty/`.
-- [ ] **Step 3: Kontrola DNK** (`dnk.ts` z frazą z kroku 1) bez BŁĘDÓW; analizator DNK: okienka dla Roberta przez `skrypty/analizator.ts`, ocena wpisana do CHANGELOG.
-- [ ] **Step 4: EN** przez `/tlumacz-strone` (fraza EN z fraz angielskich, nie z tłumaczenia); `sprawdz:tlumaczenia` bez błędów.
-- [ ] **Step 5: Commit** z wpisem w `CHANGELOG.md`.
+- [x] **Step 1: Wybrać frazę.** Sprawdzić liczbę wyszukiwań (Treg `dataforseo.google.keywords.volume`, Polska 2616, `pl`, $0.09): „ile kosztuje wdrożenie ai”, „ile kosztuje automatyzacja ai”, „koszt wdrożenia ai”, „ile kosztuje voicebot”, „cena voicebota”. Wybrać frazę z największą liczbą; przy braku danych wszędzie „ile kosztuje wdrożenie AI” (pytanie z PAA w audycie). Wynik zapisać w `docs/seo/frazy-uslug.md`.
+- [x] **Step 2: `/wpis-rd`** z faktami z `ceny-uslug.md`: odpowiedź z kwotą w pierwszym zdaniu, tabela „co wpływa na cenę”, 1 link do `/uslugi/ai-i-automatyzacja/`, drugi do `/uslugi/voiceboty/`.
+- [x] **Step 3: Kontrola DNK** (`dnk.ts` z frazą z kroku 1) bez BŁĘDÓW; analizator DNK: okienka dla Roberta przez `skrypty/analizator.ts`, ocena wpisana do CHANGELOG.
+- [x] **Step 4: EN** przez `/tlumacz-strone` (fraza EN z fraz angielskich, nie z tłumaczenia); `sprawdz:tlumaczenia` bez błędów.
+- [x] **Step 5: Commit** z wpisem w `CHANGELOG.md`.
 
 ### Task 5: Indeksacja wersji EN
 

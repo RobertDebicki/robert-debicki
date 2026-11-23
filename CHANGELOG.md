@@ -1,3 +1,11 @@
+## 2026-11-23 18:45, Claude Code
+
+**✅ Zrobione (gałąź `wpis-koszt-wdrozenia-ai`):** Task 4: wpis „Ile kosztuje wdrożenie AI w firmie” PL i EN (`/en/posts/ai-implementation-cost/`), fraza główna „ile kosztuje wdrożenie AI”, dodatkowa „ile kosztuje agent AI” (wolumeny w `frazy-uslug.md`). Tylko ceny Roberta z `ceny-uslug.md` i fakty ze stron usług; ceny rynku z podanym źródłem (Herens, AutomAIze, odbierze.ai, SimpleFast, SoftSolid, 23.11). 2 grafiki i miniatura PL i EN (`docs/blog-szkice/podglad/koszt-wdrozenia-ai*.html`, `zrzut-koszt-ai.mjs [en]`). DNK: OK bez uwag. Kontrola tłumaczeń 23 pary OK. `npm run sprawdz`: 249 testów, 192 e2e.
+
+**🚧 W toku / nie wdrożone:** ocena z analizatora DNK: Robert wkleja okienka z `skrypty/analizator.ts`. Akceptacja tekstu przez Roberta. EN w stanie `ai`.
+
+**🎯 Następny krok:** Task 8: `/code-review` całej pracy z 23.11, PR, wgranie po zgodzie Roberta.
+
 ## 2026-11-23 18:10, Claude Code
 
 **✅ Zrobione:** AI i automatyzacja PL i EN: karta „Claude Code w zespole: wdrożenie ze szkoleniem około 2000 zł netto” i 7. pytanie FAQ „Ile kosztuje wdrożenie Claude Code w firmie?” (decyzja Roberta). DNK OK, kontrola tłumaczenia OK; EN tej strony z powrotem `tlumaczenie: ai` (nowy tekst po akceptacji).
