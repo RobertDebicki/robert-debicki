@@ -15,6 +15,8 @@ export const REPO = 'RobertDebicki/robert-debicki';
 /** Folder zdjęć wpisów w repozytorium i ścieżka zapisywana w polu `plik` (od korzenia repozytorium, jak w `wpisy.ts`). */
 export const FOLDER_ZDJEC = 'src/assets/wpisy';
 export const SCIEZKA_ZDJEC = `/${FOLDER_ZDJEC}`;
+/** Folder grafik stron usług (pole `zdjecia` usługi). */
+export const FOLDER_GRAFIK_USLUG = 'src/assets/uslugi';
 
 type Pole = Record<string, unknown>;
 
@@ -202,9 +204,16 @@ const USLUGI: Pole = {
       tekst('sektor', 'Linia nad nazwą na karcie', { hint: 'Np. narzędzia: Agenci AI, n8n, Make.com.' }),
       tekst('rola', 'Linia pod tytułem'),
       tekst('rolaWyroznienie', 'Wyróżniony dopisek linii pod tytułem'),
-      dlugi('lead', 'Zdanie główne'),
+      dlugi('lead', 'Zdanie główne', { hint: 'Frazę główną otocz dwiema gwiazdkami, np. **Voicebot** dzwoni…, wtedy jest pogrubiona.' }),
       dlugi('akapit', 'Akapit pod zdaniem głównym'),
       lista('karta', 'Karta usługi', { label_singular: 'wiersz', min: 1, summary: '{{fields.etykieta}}', fields: [tekst('etykieta', 'Etykieta'), tekst('wartosc', 'Wartość')] }),
+      lista('zdjecia', 'Grafiki pod krokami', {
+        label_singular: 'grafika',
+        required: false,
+        summary: '{{fields.alt}}',
+        hint: 'Od 2 do 4 grafik w sekcji „Jak to robię”.',
+        fields: POLA_ZDJECIA.map((p) => (p.name === 'plik' ? { ...p, media_folder: FOLDER_GRAFIK_USLUG, public_folder: `/${FOLDER_GRAFIK_USLUG}` } : p)),
+      }),
       obiekt('problemy', 'Problem', [tekst('tytul', 'Tytuł sekcji'), dlugi('wstep', 'Wstęp'), pozycjeTekstu('Problemy', 'problem')]),
       obiekt('kroki', 'Jak to robię', [tekst('tytul', 'Tytuł sekcji'), pozycjeTekstu('Kroki', 'krok')]),
       obiekt('przyklady', 'Przykłady wdrożeń', [
@@ -236,6 +245,7 @@ const USLUGI: Pole = {
         tekst('tytul', 'Tytuł sekcji'),
         lista('pozycje', 'Pytania', { label_singular: 'pytanie', min: 3, hint: 'Co najmniej trzy pytania.', summary: '{{fields.pytanie}}', fields: [tekst('pytanie', 'Pytanie'), dlugi('odpowiedz', 'Odpowiedź')] }),
       ]),
+      dlugi('wezwanie', 'Wezwanie pod pytaniami', { required: false, hint: 'Do 200 znaków. Początek w gwiazdkach jest pogrubiony, np. **Napisz do mnie: office@robert-debicki.pl** i opisz…' }),
       liczba('kolejnosc', 'Kolejność', { min: 1, hint: '1 = pierwsza na liście.' }),
       tekst('adresEn', 'Adres po angielsku', {
         required: false,

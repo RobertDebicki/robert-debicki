@@ -57,29 +57,29 @@ Done: każda komórka ma odpowiedź Roberta albo „nie podaję” (wtedy dana k
 
 **Interfaces:** Consumes: `docs/seo/ceny-uslug.md` z Task 0.
 
-- [ ] **Step 1: W każdej `karta` dodać 2 wiersze przed „Miejsce”:** `etykieta: "Koszt"` (np. „od X zł netto”) i `etykieta: "Czas wdrożenia"` (np. „X tygodni”). Tylko wartości z `ceny-uslug.md`.
-- [ ] **Step 2: Przepisać odpowiedzi FAQ „Ile kosztuje…”:** pierwsze zdanie to kwota z Task 0 („Od X zł netto za …”), drugie: od czego zależy cena, trzecie (opcjonalne): co przysłać do wyceny. Najwyżej 3 zdania.
-- [ ] **Step 3: Kontrola DNK każdej usługi**
+- [x] **Step 1: W każdej `karta` dodać 2 wiersze przed „Miejsce”:** `etykieta: "Koszt"` (np. „od X zł netto”) i `etykieta: "Czas wdrożenia"` (np. „X tygodni”). Tylko wartości z `ceny-uslug.md`.
+- [x] **Step 2: Przepisać odpowiedzi FAQ „Ile kosztuje…”:** pierwsze zdanie to kwota z Task 0 („Od X zł netto za …”), drugie: od czego zależy cena, trzecie (opcjonalne): co przysłać do wyceny. Najwyżej 3 zdania.
+- [x] **Step 3: Kontrola DNK każdej usługi**
 
 Run: `npx tsx skrypty/dnk.ts src/content/uslugi/<adres>/pl.md --fraza "<fraza usługi>"` (frazy z `docs/seo/frazy-uslug.md`; dla voiceboty i strony i aplikacje te same co przy wdrożeniu 13.11, CHANGELOG)
 Expected: bez BŁĘDÓW; uwagi o braku zdjęć i wezwania po FAQ są znane (szablon).
 
-- [ ] **Step 4: Build i sprawdzenie liczb w HTML**
+- [x] **Step 4: Build i sprawdzenie liczb w HTML**
 
 Run: `npm run build && grep -o "od [0-9 ]*zł[^<\"]*" dist/uslugi/*/index.html | sort | uniq -c`
 Expected: każda kwota z `ceny-uslug.md` pojawia się w karcie i w JSON-LD `FAQPage` tej samej strony, ta sama liczba.
 
-- [ ] **Step 5: `npm run sprawdz:tresc`**: Expected: 0 trafień.
-- [ ] **Step 6: Commit** z wpisem w `CHANGELOG.md`, komunikat `feat(uslugi): ceny i czas wdrożenia na stronach usług`.
+- [x] **Step 5: `npm run sprawdz:tresc`**: Expected: 0 trafień.
+- [x] **Step 6: Commit** z wpisem w `CHANGELOG.md`, komunikat `feat(uslugi): ceny i czas wdrożenia na stronach usług`.
 
 ### Task 2: Wersje EN usług
 
 **Files:** Modify: `src/content/uslugi/{voiceboty,ai-i-automatyzacja,strony-i-aplikacje}/en.md`
 
-- [ ] **Step 1: Uruchomić `/tlumacz-strone` dla 3 usług** (skill aktualizuje `en.md` po zmianie `pl.md`).
-- [ ] **Step 2: Run** `npm run sprawdz:tlumaczenia` → Expected: bez błędów.
-- [ ] **Step 3: Run** `npm run build && grep -o "from PLN[^<\"]*\|PLN [0-9][^<\"]*" dist/en/services/*/index.html | sort | uniq -c` → Expected: te same liczby co w PL, z „net” albo „gross” jak w Task 0.
-- [ ] **Step 4: Commit** z wpisem w `CHANGELOG.md`, `feat(uslugi): ceny w wersji EN`.
+- [x] **Step 1: Uruchomić `/tlumacz-strone` dla 3 usług** (skill aktualizuje `en.md` po zmianie `pl.md`).
+- [x] **Step 2: Run** `npm run sprawdz:tlumaczenia` → Expected: bez błędów.
+- [x] **Step 3: Run** `npm run build && grep -o "from PLN[^<\"]*\|PLN [0-9][^<\"]*" dist/en/services/*/index.html | sort | uniq -c` → Expected: te same liczby co w PL, z „net” albo „gross” jak w Task 0.
+- [x] **Step 4: Commit** z wpisem w `CHANGELOG.md`, `feat(uslugi): ceny w wersji EN`.
 
 ### Task 3: Link do „strony i aplikacje” z wpisu o n8n
 
@@ -140,13 +140,13 @@ Dziś `skrypty/dnk.ts:280,286,287` zawsze dopisuje 3 uwagi „szablon usługi ni
 - Modify: `src/content/uslugi/*/pl.md` i `en.md` (pogrubienie frazy w lead, `wezwanie`, `zdjecia`)
 - Test: `testy/jednostkowe/dnk.test.ts`, `testy/jednostkowe/uslugi.test.ts`
 
-- [ ] **Step 1: Testy (czerwone):** w `dnk.test.ts` 3 przypadki usługi: lead bez `**frazy**` → błąd DNK 4; bez `wezwanie` → błąd DNK 8; 1 zdjęcie → uwaga DNK 7; pełna usługa → brak tych komunikatów. W `uslugi.test.ts`: lead `"Tekst **voicebot** dalej"` renderuje `<strong>voicebot</strong>`, a w JSON-LD (`Service`, opis) zostaje bez gwiazdek.
-- [ ] **Step 2: `npm test`** → Expected: nowe testy FAIL.
-- [ ] **Step 3: Schemat, szablon, skrypt** według listy plików. Pogrubienie: tylko `**…**`, bez innych znaczników Markdown; wszędzie, gdzie lead trafia do `<meta>`, JSON-LD albo karty na stronie głównej, gwiazdki usunięte.
-- [ ] **Step 4: Treść 3 usług PL:** fraza główna w lead w `**…**`; `wezwanie` 1 zdanie, z frazą albo nazwą usługi, np. „**Napisz, co ma robić Twój voicebot, a odpowiem z wyceną.**” (dokładne zdania do akceptacji Roberta). `zdjecia`: 2 do 4 prawdziwe obrazy z wdrożeń (zrzuty scenariuszy n8n, CRM, stron klientów bez nazw klientów, `sprawdz:zdjecia` i `sprawdz:tresc`). 🔴 Jakie obrazy: decyzja Roberta; bez nich pole zostaje puste i uwaga DNK 7 zostaje.
-- [ ] **Step 5: EN** przez `/tlumacz-strone` (to samo pole, angielski tekst) → `npm run sprawdz:tlumaczenia` bez błędów.
-- [ ] **Step 6: Kontrola:** `npx tsx skrypty/dnk.ts src/content/uslugi/<adres>/pl.md --fraza … --dodatkowe …` dla 3 usług (frazy jak w Task 1) → Expected: „OK: brak błędów”; `npm test` PASS; `npm run build`; zrzut ekranu strony voiceboty (komputer i telefon) do porównania z obecnym wyglądem.
-- [ ] **Step 7: Commit** z wpisem w `CHANGELOG.md`, komunikat `feat(uslugi): pogrubiona fraza, zdjęcia i wezwanie w szablonie usługi`.
+- [x] **Step 1: Testy (czerwone):** w `dnk.test.ts` 3 przypadki usługi: lead bez `**frazy**` → błąd DNK 4; bez `wezwanie` → błąd DNK 8; 1 zdjęcie → uwaga DNK 7; pełna usługa → brak tych komunikatów. W `uslugi.test.ts`: lead `"Tekst **voicebot** dalej"` renderuje `<strong>voicebot</strong>`, a w JSON-LD (`Service`, opis) zostaje bez gwiazdek.
+- [x] **Step 2: `npm test`** → Expected: nowe testy FAIL.
+- [x] **Step 3: Schemat, szablon, skrypt** według listy plików. Pogrubienie: tylko `**…**`, bez innych znaczników Markdown; wszędzie, gdzie lead trafia do `<meta>`, JSON-LD albo karty na stronie głównej, gwiazdki usunięte.
+- [x] **Step 4: Treść 3 usług PL:** fraza główna w lead w `**…**`; `wezwanie` 1 zdanie, z frazą albo nazwą usługi, np. „**Napisz, co ma robić Twój voicebot, a odpowiem z wyceną.**” (dokładne zdania do akceptacji Roberta). `zdjecia`: 2 do 4 prawdziwe obrazy z wdrożeń (zrzuty scenariuszy n8n, CRM, stron klientów bez nazw klientów, `sprawdz:zdjecia` i `sprawdz:tresc`). 🔴 Jakie obrazy: decyzja Roberta; bez nich pole zostaje puste i uwaga DNK 7 zostaje.
+- [x] **Step 5: EN** przez `/tlumacz-strone` (to samo pole, angielski tekst) → `npm run sprawdz:tlumaczenia` bez błędów.
+- [x] **Step 6: Kontrola:** `npx tsx skrypty/dnk.ts src/content/uslugi/<adres>/pl.md --fraza … --dodatkowe …` dla 3 usług (frazy jak w Task 1) → Expected: „OK: brak błędów”; `npm test` PASS; `npm run build`; zrzut ekranu strony voiceboty (komputer i telefon) do porównania z obecnym wyglądem.
+- [x] **Step 7: Commit** z wpisem w `CHANGELOG.md`, komunikat `feat(uslugi): pogrubiona fraza, zdjęcia i wezwanie w szablonie usługi`.
 
 Ryzyko: średnie (zmiana szablonu 3 stron i skryptu kontroli; nikt nic nie traci, ale wygląd się zmienia, więc zrzut przed wydaniem).
 

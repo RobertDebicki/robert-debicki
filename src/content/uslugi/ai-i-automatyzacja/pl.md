@@ -8,7 +8,7 @@ ikona: "ai"
 sektor: "Agenci AI, n8n, Make.com"
 rola: "Agenci AI, n8n, Make.com"
 rolaWyroznienie: "/ Claude Code"
-lead: "Wdrożenie AI w firmie zaczynam od procesu, bo AI nie zawsze jest potrzebne: czasem wystarczy dobrze ułożyć proces i zbudować prostą automatyzację."
+lead: "**Wdrożenie AI w firmie** zaczynam od procesu, bo AI nie zawsze jest potrzebne: czasem wystarczy dobrze ułożyć proces i zbudować prostą automatyzację."
 akapit: "Tam, gdzie AI oszczędza pracę, wdrażam agentów, którzy przejmują kilka zadań naraz: czytają dokumenty, wyciągają dane i przekazują sprawy dalej. Gdy model może się pomylić, decyzja zostaje u człowieka. Wrocław albo zdalnie."
 karta:
   - etykieta: "Modele"
@@ -25,6 +25,11 @@ karta:
     wartosc: "prosta automatyzacja około 3 dni"
   - etykieta: "Miejsce"
     wartosc: "Wrocław albo zdalnie"
+zdjecia:
+  - plik: "/src/assets/uslugi/ai-i-automatyzacja-1.png"
+    alt: "Cztery kroki wdrożenia AI: proces, prosta automatyzacja, agent AI i decyzja człowieka"
+  - plik: "/src/assets/uslugi/ai-i-automatyzacja-2.png"
+    alt: "Obieg wniosków: poczta i SharePoint, odczyt OCR z modelem językowym, dane w Airtable"
 problemy:
   tytul: "Zespół robi pracę, którą może przejąć AI"
   wstep: "Takie zadania przejęły u moich klientów automatyzacje i agenci AI."
@@ -92,5 +97,6 @@ faq:
       odpowiedz: "Gdy proces przetwarza dane osobowe, podpisuję umowę powierzenia przetwarzania. Dane wysyłam do modelu przez API na koncie firmowym, nie przez darmowy czat, i tylko te pola, których zadanie wymaga. Agent zaczyna od dostępu tylko do odczytu, a zmiany zatwierdza człowiek, i uczę też zespół, jak pracować z AI, żeby nie wysyłać do modelu danych wrażliwych."
     - pytanie: "Ile kosztuje wdrożenie AI w firmie?"
       odpowiedz: "Od 500 zł netto za prostą automatyzację, na przykład przypomnienie klientowi o niezapłaconej fakturze albo poranną listę zadań na dziś. Taką automatyzację uruchamiam w około 3 dni. Duży i złożony projekt dzielę na mniejsze etapy, a kwotę rozkładam na części."
+wezwanie: "**Napisz do mnie: office@robert-debicki.pl** i opisz proces, który zabiera zespołowi najwięcej czasu. Odpowiem, czy wystarczy prosta automatyzacja, czy potrzebny jest agent AI."
 kolejnosc: 1
 ---

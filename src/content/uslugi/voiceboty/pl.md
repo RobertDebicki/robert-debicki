@@ -8,7 +8,7 @@ ikona: "telefon"
 sektor: "ElevenLabs, Twilio, n8n"
 rola: "ElevenLabs, Twilio"
 rolaWyroznienie: "/ n8n"
-lead: "Voicebot dzwoni do osoby, która wypełniła formularz na Twojej stronie, zadaje pytania kwalifikujące i zostawia handlowcowi notatkę w CRM."
+lead: "**Voicebot** dzwoni do osoby, która wypełniła formularz na Twojej stronie, zadaje pytania kwalifikujące i zostawia handlowcowi notatkę w CRM."
 akapit: "W moim wdrożeniu bot oddzwania w 2 minuty od wysłania formularza i prowadzi 15 rozmów dziennie. Nie sprzedaje i nie negocjuje: zbiera informacje, a rozmowę sprzedażową prowadzi handlowiec. Wrocław albo zdalnie."
 karta:
   - etykieta: "Głos i telefon"
@@ -23,6 +23,11 @@ karta:
     wartosc: "2 tygodnie do pierwszych testów"
   - etykieta: "Miejsce"
     wartosc: "Wrocław albo zdalnie"
+zdjecia:
+  - plik: "/src/assets/uslugi/voiceboty-1.png"
+    alt: "Cztery kroki voicebota od formularza na stronie do notatki w Pipedrive"
+  - plik: "/src/assets/uslugi/voiceboty-2.png"
+    alt: "Co robi voicebot, a czego nie robi: rozmowę sprzedażową prowadzi handlowiec"
 problemy:
   tytul: "Zapytanie ze strony czeka, aż handlowiec znajdzie czas"
   wstep: "Osoba, która właśnie wysłała formularz, ma sprawę w głowie. Handlowiec nie zawsze może zadzwonić od razu."
@@ -76,5 +81,6 @@ faq:
       odpowiedz: "Dla firmy, do której zapytania z formularza przychodzą codziennie, a handlowiec nie zawsze może oddzwonić od razu. W opisanym wdrożeniu bot prowadzi 15 rozmów dziennie."
     - pytanie: "Co z danymi z rozmów?"
       odpowiedz: "Rozmowa i notatka to dane osobowe, więc podpisuję umowę powierzenia przetwarzania. Rozmowy nie są nagrywane: z rozmowy zostaje tylko notatka dla handlowca. ElevenLabs i Twilio działają na kontach klienta, nie na moich."
+wezwanie: "**Napisz do mnie: office@robert-debicki.pl** i opisz, jak dziś obsługujesz zapytania ze strony, a przygotuję wycenę bota głosowego."
 kolejnosc: 3
 ---

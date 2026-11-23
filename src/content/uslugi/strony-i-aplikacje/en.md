@@ -8,7 +8,7 @@ ikona: "aplikacje"
 sektor: "Claude Code, Astro, Next.js, WordPress"
 rola: "Astro, Next.js, WordPress"
 rolaWyroznienie: "/ Claude Code"
-lead: "I build custom websites and apps when off-the-shelf software falls short or costs too much."
+lead: "I build **custom websites and apps** when off-the-shelf software falls short or costs too much."
 akapit: "I write new websites and apps with Claude Code: I build websites on WordPress, in Astro, or in Next.js, and apps in Python and React. I add AI where it saves work, for example in a tool that translates posts. Wrocław, Poland, or remote."
 karta:
   - etykieta: "I write with"
@@ -25,6 +25,11 @@ karta:
     wartosc: "a brochure website in about 4 days"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
+zdjecia:
+  - plik: "/src/assets/uslugi/strony-i-aplikacje-en-1.png"
+    alt: "Three steps: off-the-shelf tools, code with Claude Code, migration that keeps the URLs"
+  - plik: "/src/assets/uslugi/strony-i-aplikacje-en-2.png"
+    alt: "Numbers from projects: 89 URLs kept, 12 trainers, and 60 hours less work per month"
 problemy:
   tytul: "Off-the-shelf software doesn't fit how you work"
   wstep: "Clients came to me with problems like these."
@@ -96,8 +101,9 @@ faq:
       odpowiedz: "It depends on what the site has to do: I build a store with prices for businesses on WooCommerce. I moved a furniture maker's site from WordPress to Astro. I moved an artist's site, where she wanted to add works herself, to Next.js with the Payload CMS panel."
     - pytanie: "Will the old URLs still work after a site is moved?"
       odpowiedz: "Yes. On the furniture maker's site I kept 89 URLs, and on the artist's site the design and the working URLs."
+wezwanie: "**Email me: office@robert-debicki.pl** with the website or app you need, and I'll prepare a quote."
 kolejnosc: 2
 adresEn: "websites-and-apps"
 tlumaczenie: ai
-zrodlo: 221a90554edea3de29af73594818751a4c17f47b0095f9fe714d35cbbb9338c7
+zrodlo: 136e773b730e99d06dc2a1781c301e0ed0490478f640c3a213184a3a86542252
 ---

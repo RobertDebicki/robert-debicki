@@ -1,3 +1,11 @@
+## 2026-11-23 16:50, Claude Code
+
+**✅ Zrobione:** Task 9 (akceptacja Roberta 23.11): szablon usługi ma pogrubioną frazę w `lead` (`**…**`), grafiki pod krokami (pole `zdjecia`, `src/assets/uslugi/`, PL i EN) i wezwanie pod FAQ (pole `wezwanie`). Schemat, panel (pola z podpowiedziami), `src/lib/uslugi.ts` (`czesciPogrubienia`, `bezPogrubienia`), `skrypty/dnk.ts`: zamiast stałych uwag „szablon nie…” sprawdza prawdziwe pola (DNK 4 pogrubienie, DNK 7 liczba i alt grafik, DNK 8 wezwanie wspólne z wpisami). 11 nowych testów. DNK 3 usług PL: 0 błędów. Kontrola tłumaczeń 22 pary OK. `npm run sprawdz`: 249 testów jednostkowych, 192 e2e. Zrzuty voiceboty (komputer, telefon) sprawdzone. Uwaga: build z fiksturami wymagał usunięcia starego cache `node_modules/.astro-distfikstury` (stary schemat bez `zdjecia`).
+
+**🚧 W toku / nie wdrożone:** nic nie wypchnięte ani wgrane. EN w stanie `ai` (korekta osoby z USA).
+
+**🎯 Następny krok:** Task 3 (link z wpisu o n8n), Task 5 (indeksacja EN), potem Task 8: `/code-review`, PR i wgranie po zgodzie Roberta.
+
 ## 2026-11-23 16:20, Claude Code
 
 **✅ Zrobione:** Task 9, przygotowanie do akceptacji: 6 grafik stron usług (po 2 na usługę, tylko fakty ze stron) w `src/assets/uslugi/`, źródło `docs/blog-szkice/podglad/uslugi-grafiki.html`, zrzut `node docs/blog-szkice/podglad/zrzut-uslugi.mjs`. W tym samym pliku propozycje wezwań pod FAQ (wzór DNK „**Napisz do mnie: office@robert-debicki.pl** i …”, 117 do 176 znaków) i pogrubienia frazy we wstępie. sprawdz:tresc 0, sprawdz:zdjecia 0.

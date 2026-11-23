@@ -8,7 +8,7 @@ ikona: "aplikacje"
 sektor: "Claude Code, Astro, Next.js, WordPress"
 rola: "Astro, Next.js, WordPress"
 rolaWyroznienie: "/ Claude Code"
-lead: "Buduję strony i aplikacje na zamówienie, gdy program z półki nie spełnia oczekiwań albo jest za drogi."
+lead: "Buduję **strony i aplikacje na zamówienie**, gdy program z półki nie spełnia oczekiwań albo jest za drogi."
 akapit: "Nowe strony i aplikacje piszę z Claude Code: strony stawiam na WordPressie, w Astro albo w Next.js, aplikacje w Pythonie i React. AI dokładam tam, gdzie oszczędza pracę, na przykład w narzędziu do tłumaczenia wpisów. Wrocław albo zdalnie."
 karta:
   - etykieta: "Piszę z"
@@ -25,6 +25,11 @@ karta:
     wartosc: "strona wizytówka około 4 dni"
   - etykieta: "Miejsce"
     wartosc: "Wrocław albo zdalnie"
+zdjecia:
+  - plik: "/src/assets/uslugi/strony-i-aplikacje-1.png"
+    alt: "Trzy kroki: narzędzia z półki, kod z Claude Code, przeniesienie z zachowaniem adresów"
+  - plik: "/src/assets/uslugi/strony-i-aplikacje-2.png"
+    alt: "Liczby z wdrożeń: 89 zachowanych adresów, 12 trenerek i 60 godzin mniej pracy miesięcznie"
 problemy:
   tytul: "Program z półki nie pasuje do tego, jak pracujesz"
   wstep: "Z takimi sprawami przychodzili do mnie klienci."
@@ -96,5 +101,6 @@ faq:
       odpowiedz: "To zależy od tego, co strona ma robić: sklep z cenami dla firm buduję na WooCommerce. Stronę producenta mebli przeniosłem z WordPressa do Astro. Stronę artystki, która chciała sama dodawać prace, przeniosłem na Next.js z panelem Payload CMS."
     - pytanie: "Czy po przeniesieniu strony stare adresy będą działać?"
       odpowiedz: "Tak. Przy stronie producenta mebli zachowałem 89 adresów, a przy stronie artystki wygląd i działające adresy."
+wezwanie: "**Napisz do mnie: office@robert-debicki.pl** i opisz, jakiej strony albo aplikacji potrzebujesz, a przygotuję wycenę."
 kolejnosc: 2
 ---

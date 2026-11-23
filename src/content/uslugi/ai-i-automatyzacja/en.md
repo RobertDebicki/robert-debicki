@@ -8,7 +8,7 @@ ikona: "ai"
 sektor: "AI agents, n8n, Make.com"
 rola: "AI agents, n8n, Make.com"
 rolaWyroznienie: "/ Claude Code"
-lead: "I start AI implementation for a business with the process, because AI isn't always needed: sometimes it's enough to lay out the process properly and build a simple automation."
+lead: "I start **AI implementation for a business** with the process, because AI isn't always needed: sometimes it's enough to lay out the process properly and build a simple automation."
 akapit: "Where AI saves work, I roll out AI agents that take over several tasks at once: they read documents, extract data, and pass cases on. When a model could get it wrong, the decision stays with a person. Wrocław, Poland, or remote."
 karta:
   - etykieta: "Models"
@@ -25,6 +25,11 @@ karta:
     wartosc: "a simple automation in about 3 days"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
+zdjecia:
+  - plik: "/src/assets/uslugi/ai-i-automatyzacja-en-1.png"
+    alt: "Four steps of AI implementation: process, simple automation, AI agent, and a person's decision"
+  - plik: "/src/assets/uslugi/ai-i-automatyzacja-en-2.png"
+    alt: "Application workflow: email and SharePoint, OCR with a language model, data in Airtable"
 problemy:
   tytul: "Your team does work that AI can take over"
   wstep: "At my clients, automation and AI agents took over tasks like these."
@@ -92,8 +97,9 @@ faq:
       odpowiedz: "When a process handles personal data, I sign a data processing agreement. I send data to the model through the API on the company's account, not through a free chat, and only the fields the task needs. The agent starts with read-only access and a person approves changes, and I also teach the team how to work with AI so that sensitive data doesn't end up in the model."
     - pytanie: "How much does AI implementation cost for a business?"
       odpowiedz: "From PLN 500 plus VAT for a simple automation, for example a reminder to a client about an unpaid invoice or a morning list of today's tasks. I set up an automation like this in about 3 days. I split a large, complex project into smaller stages and spread the amount across them."
+wezwanie: "**Email me: office@robert-debicki.pl** and describe the process that takes your team the most time. I'll tell you whether a simple automation is enough or you need an AI agent."
 kolejnosc: 1
 adresEn: "ai-automation"
 tlumaczenie: ai
-zrodlo: b161a62e7c55a241452ddd5bdd0a0dfb93acf609cb4ec5dba6fa1859ae84f462
+zrodlo: 98cfaaab2dfce69a61358bba15cc7375a7d5ba7471838d32bf5875ec4f907387
 ---

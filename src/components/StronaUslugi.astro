@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import type { Jezyk } from '../lib/jezyki';
 import { etykiety } from '../lib/jezyki';
-import { prefiksUslug } from '../lib/uslugi';
+import { czesciPogrubienia, prefiksUslug } from '../lib/uslugi';
+import { obraz } from '../lib/wpisy';
 import Ikona from './Ikona.astro';
 
 interface Props {
@@ -14,6 +16,7 @@ const d = entry.data;
 const e = etykiety(jezyk);
 const plyty = ['p p-c', 'p p-m', 'p p-y'];
 const PLYTY_PRZYKLADOW = ['var(--m)', 'var(--c)', 'var(--y)'];
+const zdjecia = await Promise.all(d.zdjecia.map(async (z: { plik: string; alt: string }) => ({ src: await obraz(z.plik, `usługa ${entry.id}`), alt: z.alt })));
 ---
 <article aria-labelledby="usluga-h">
   <div class="hero podstrona">
@@ -25,7 +28,7 @@ const PLYTY_PRZYKLADOW = ['var(--m)', 'var(--c)', 'var(--y)'];
         <span class="p-k">{d.tytul}</span>
       </h1>
       <p class="role">{d.rola} <b>{d.rolaWyroznienie}</b></p>
-      <p class="lead">{d.lead}</p>
+      <p class="lead">{czesciPogrubienia(d.lead).map((c) => (c.pogrubione ? <strong>{c.tekst}</strong> : c.tekst))}</p>
       <p>{d.akapit}</p>
       <div class="cta">
         <a class="btn solid" href="#przyklad">{e.zobaczPrzyklad}</a>
@@ -65,6 +68,15 @@ const PLYTY_PRZYKLADOW = ['var(--m)', 'var(--c)', 'var(--y)'];
         </li>
       ))}
     </ol>
+    {zdjecia.length > 0 && (
+      <div class="uslugi-grafiki">
+        {zdjecia.map((z) => (
+          <figure>
+            <Image src={z.src} alt={z.alt} widths={[480, 800, 1136]} sizes="(min-width: 1000px) 560px, 100vw" loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    )}
   </section>
 
   <section id="przyklad" style="--sw: var(--y)" aria-labelledby="przyklad-h">
@@ -103,5 +115,6 @@ const PLYTY_PRZYKLADOW = ['var(--m)', 'var(--c)', 'var(--y)'];
         </li>
       ))}
     </ul>
+    {d.wezwanie && <p class="wezwanie">{czesciPogrubienia(d.wezwanie).map((c) => (c.pogrubione ? <strong>{c.tekst}</strong> : c.tekst))}</p>}
   </section>
 </article>

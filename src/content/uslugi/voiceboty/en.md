@@ -8,7 +8,7 @@ ikona: "telefon"
 sektor: "ElevenLabs, Twilio, n8n"
 rola: "ElevenLabs, Twilio"
 rolaWyroznienie: "/ n8n"
-lead: "An AI voice agent for business (a voice bot) calls the person who filled out the form on your site, asks qualifying questions, and leaves the sales rep a note in the CRM."
+lead: "**An AI voice agent for business** (a voice bot) calls the person who filled out the form on your site, asks qualifying questions, and leaves the sales rep a note in the CRM."
 akapit: "In my deployment, the bot calls back within 2 minutes of the form being sent and makes 15 calls a day. It doesn't sell or negotiate: it collects information, and the sales rep handles the sales conversation. Wrocław, Poland, or remote."
 karta:
   - etykieta: "Voice and phone"
@@ -23,6 +23,11 @@ karta:
     wartosc: "2 weeks to first tests"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
+zdjecia:
+  - plik: "/src/assets/uslugi/voiceboty-en-1.png"
+    alt: "Four steps of an AI voice agent, from the form on your site to a note in Pipedrive"
+  - plik: "/src/assets/uslugi/voiceboty-en-2.png"
+    alt: "What the AI voice agent does and doesn't do: the sales rep runs the sales call"
 problemy:
   tytul: "A website inquiry waits until a sales rep has time"
   wstep: "Someone who has just sent a form has their request fresh in mind. The sales rep can't always call right away."
@@ -76,8 +81,9 @@ faq:
       odpowiedz: "A business that gets form inquiries every day, where the sales rep can't always call back right away. In the deployment described here, the bot makes 15 calls a day."
     - pytanie: "What happens to the call data?"
       odpowiedz: "The conversation and the note are personal data, so I sign a data processing agreement. Calls aren't recorded: only the note for the sales rep remains from the call. ElevenLabs and Twilio run on the client's accounts, not mine."
+wezwanie: "**Email me: office@robert-debicki.pl** with how you handle website inquiries today, and I'll prepare a quote for an AI voice agent."
 kolejnosc: 3
 adresEn: "ai-voice-agents"
 tlumaczenie: ai
-zrodlo: 3edfd90745e528c4bb026183a49a92fd4f214adb628124cb719f5976894acee4
+zrodlo: 887d61ccff53f0896b2a0959f5ef29859501c064e71b8411eb4a07dbed82916e
 ---
