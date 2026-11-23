@@ -13,3 +13,5 @@ Koszt miesięczny voicebota (Robert, 23.11.2026): około 20 USD za ElevenLabs, z
 Sklep WooCommerce i aplikacje: bez kwoty, wycena według zakresu (Robert, 23.11.2026).
 
 Do wyjaśnienia: opis strony „strony i aplikacje” mówi „Prosty landing page to około 1000 zł plus VAT”. Wizytówka od 800 zł jest tańsza od landing page. Robert decyduje, czy to się zgadza.
+
+Wdrożenie Claude Code u klienta ze szkoleniem zespołu: około 2000 zł netto (Robert, 23.11.2026). Na stronie AI i automatyzacja: karta i FAQ.

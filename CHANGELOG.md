@@ -1,3 +1,9 @@
+## 2026-11-23 18:10, Claude Code
+
+**✅ Zrobione:** AI i automatyzacja PL i EN: karta „Claude Code w zespole: wdrożenie ze szkoleniem około 2000 zł netto” i 7. pytanie FAQ „Ile kosztuje wdrożenie Claude Code w firmie?” (decyzja Roberta). DNK OK, kontrola tłumaczenia OK; EN tej strony z powrotem `tlumaczenie: ai` (nowy tekst po akceptacji).
+
+**🎯 Następny krok:** wpis „Ile kosztuje wdrożenie AI w firmie” przez /wpis-rd (zgoda Roberta), potem Task 8.
+
 ## 2026-11-23 18:00, Claude Code
 
 **✅ Zrobione:** `linki-zewnetrzne.md`: LinkedIn (opis i adres strony) oznaczony jako zrobiony; Robert zrobił to wcześniej. GitHub pominięty z decyzji Roberta (nie ma czego pokazać).

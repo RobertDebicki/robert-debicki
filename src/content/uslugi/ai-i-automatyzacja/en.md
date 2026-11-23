@@ -23,6 +23,8 @@ karta:
     wartosc: "a simple automation from PLN 500 plus VAT"
   - etykieta: "Setup time"
     wartosc: "a simple automation in about 3 days"
+  - etykieta: "Claude Code for your team"
+    wartosc: "setup with training for about PLN 2,000 plus VAT"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
 zdjecia:
@@ -97,9 +99,11 @@ faq:
       odpowiedz: "When a process handles personal data, I sign a data processing agreement. I send data to the model through the API on the company's account, not through a free chat, and only the fields the task needs. The agent starts with read-only access and a person approves changes, and I also teach the team how to work with AI so that sensitive data doesn't end up in the model."
     - pytanie: "How much does AI implementation cost for a business?"
       odpowiedz: "From PLN 500 plus VAT for a simple automation, for example a reminder to a client about an unpaid invoice or a morning list of today's tasks. I set up an automation like this in about 3 days. I split a large, complex project into smaller stages and spread the amount across them."
+    - pytanie: "How much does it cost to roll out Claude Code in a company?"
+      odpowiedz: "About PLN 2,000 plus VAT. For that price, I set up Claude Code at the client's company and train the team to work with it."
 wezwanie: "**Email me: office@robert-debicki.pl** and describe the process that takes your team the most time. I'll tell you whether a simple automation is enough or you need an AI agent."
 kolejnosc: 1
 adresEn: "ai-automation"
-tlumaczenie: sprawdzone
-zrodlo: 98cfaaab2dfce69a61358bba15cc7375a7d5ba7471838d32bf5875ec4f907387
+tlumaczenie: ai
+zrodlo: e5085d2a04f3024c488d4c032e889cb67b64807c917c283e78cb2f0ef2cc1bc9
 ---
