@@ -6,6 +6,6 @@ stack: ["WordPress", "WooCommerce", "PHP", "REST API"]
 etap: "Pre-launch"
 stan: w-toku
 kolejnosc: 4
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: d189e2832f2092066bb46f84ac8268146915b9f15759389271c5beb0fda017f8
 ---

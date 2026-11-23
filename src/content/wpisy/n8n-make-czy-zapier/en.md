@@ -5,7 +5,7 @@ zajawka: "n8n, Make, or Zapier: each one bills differently. See with one workflo
 miniatura:
   plik: "/src/assets/wpisy/n8n-make-czy-zapier-en-miniatura.png"
   alt: "Unit comparison: four tasks in Zapier, five operations in Make, one execution in n8n"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 93849b2d339b2336467d72c4e078d09e96b8dbb0847120674b49c23c4efd0c55
 adresEn: "n8n-make-or-zapier"
 ---

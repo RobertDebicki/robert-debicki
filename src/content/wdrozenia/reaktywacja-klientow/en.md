@@ -8,6 +8,6 @@ stack: ["Python", "SQL", "Supabase", "language model"]
 ikona: powrot
 plyta: zolty
 kolejnosc: 3
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 7035d9d126eae148d7a4f479026d2444d3a3cc0c3a10bb02e220604f0a8dd2fc
 ---

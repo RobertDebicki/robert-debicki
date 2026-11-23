@@ -5,7 +5,7 @@ zajawka: "Purchase invoices from KSeF: since Feb. 1, 2026, the system sends no n
 miniatura:
   plik: "/src/assets/wpisy/ksef-faktury-kosztowe-miniatura.png"
   alt: "An invoice in an XML file, an arrow, and a crossed-out bell, because KSeF does not send notifications about invoices"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: c1dcd574976fcd1f654fe916f64c153ed8a9310e28a34869d69f82dcd7d0e67c
 adresEn: "purchase-invoices-from-ksef"
 ---

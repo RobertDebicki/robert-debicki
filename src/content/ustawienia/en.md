@@ -101,6 +101,6 @@ kontakt:
   telefon: "+48 665 780 129"
   linkedinUrl: "https://www.linkedin.com/in/robert-d%C4%99bicki/"
   linkedinTekst: "LinkedIn: robert-dębicki"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 83b97b8cc6f6ea2f8d5334d78d7fcee2bee32ed6db37fc54de07d82eae3c206c
 ---

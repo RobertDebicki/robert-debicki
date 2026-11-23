@@ -8,6 +8,6 @@ stack: ["Claude Code", "AdLoop", "Google Ads", "GA4", "Search Console"]
 ikona: wykres
 plyta: zolty
 kolejnosc: 6
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: ba36fdcc6881bec55c16c7db226e45d2596f860fbc78fdb1e52f4e4817954375
 ---

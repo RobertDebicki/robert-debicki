@@ -5,7 +5,7 @@ zajawka: "AI Act for small businesses: since Aug. 2, 2026, customers must know t
 miniatura:
   plik: "/src/assets/wpisy/ai-act-dla-malej-firmy-en-miniatura.png"
   alt: "Chat window with a bot that says I'm an AI assistant, next to an AI Act compliance check mark"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: ef5003dbfcebd78257bf9b1b1fddf92cb1d8f4b1627c68bd371e9fe9a426041a
 adresEn: "ai-act-for-small-business"
 ---

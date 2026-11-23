@@ -104,6 +104,6 @@ faq:
 wezwanie: "**Email me: office@robert-debicki.pl** with the website or app you need, and I'll prepare a quote."
 kolejnosc: 2
 adresEn: "websites-and-apps"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 136e773b730e99d06dc2a1781c301e0ed0490478f640c3a213184a3a86542252
 ---

@@ -5,7 +5,7 @@ zajawka: "62% of employees use AI at work. See what UODO says an AI policy shoul
 miniatura:
   plik: "/src/assets/wpisy/polityka-ai-w-firmie-en-miniatura.png"
   alt: "Large number 62 percent of employees use AI, 27 percent of companies have rules, and a card with five rules"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 adresEn: "ai-policy-for-your-company"
 zrodlo: 467da041b643b38a472f2efe4657925d5f882d9aec47ded78ad4cb47b7573b12
 ---

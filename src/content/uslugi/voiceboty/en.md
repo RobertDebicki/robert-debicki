@@ -21,6 +21,8 @@ karta:
     wartosc: "from PLN 2,000 plus VAT"
   - etykieta: "Setup time"
     wartosc: "2 weeks to first tests"
+  - etykieta: "Monthly"
+    wartosc: "about USD 20 for ElevenLabs plus a phone number"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
 zdjecia:
@@ -70,7 +72,7 @@ faq:
     - pytanie: "What is an AI voice agent?"
       odpowiedz: "A program that holds a phone conversation by voice. My bot calls the person who filled out the form, asks qualifying questions, and writes a note for the sales rep."
     - pytanie: "How much does an AI voice agent cost for a business?"
-      odpowiedz: "From PLN 2,000 plus VAT for the simplest setup: the bot calls the person who filled out the form, asks questions, and saves a note in the CRM. The price goes up with the number of call scenarios and integrations. Tell me how many inquiries you get per day and which CRM you use, and I'll prepare a quote."
+      odpowiedz: "From PLN 2,000 plus VAT for the simplest setup: the bot calls the person who filled out the form, asks questions, and saves a note in the CRM. The price goes up with the number of call scenarios and integrations. Each month there's about USD 20 for ElevenLabs, depending on the number of calls, and the client tops up the phone number account themselves when they get a low-balance notification."
     - pytanie: "How is an AI voice agent different from a chatbot?"
       odpowiedz: "A chatbot answers questions in a chat. A voice bot talks over the phone: in my deployment, it calls the person who filled out the form itself, collects information, and leaves a note in the CRM."
     - pytanie: "Can an AI voice agent call someone who filled out a form and save a note in the CRM?"
@@ -84,6 +86,6 @@ faq:
 wezwanie: "**Email me: office@robert-debicki.pl** with how you handle website inquiries today, and I'll prepare a quote for an AI voice agent."
 kolejnosc: 3
 adresEn: "ai-voice-agents"
-tlumaczenie: ai
-zrodlo: 887d61ccff53f0896b2a0959f5ef29859501c064e71b8411eb4a07dbed82916e
+tlumaczenie: sprawdzone
+zrodlo: be1b7bc5a628595a573e8319083ffd103b023edfa480f949a2aacfcf7807643b
 ---

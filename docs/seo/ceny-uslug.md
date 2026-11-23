@@ -8,7 +8,7 @@
 | AI i automatyzacja | od 500 zł netto | około 3 dni | prosta automatyzacja: przypomnienie klientowi o niezapłaconej fakturze, poranna lista zadań na dziś |
 | Strony i aplikacje | strona wizytówka od 800 zł netto | około 4 dni | 4 do 5 podstron, bez projektu graficznego i ustawień SEO; więcej podstron i złożona budowa podnoszą cenę; treści pod SEO i projekt graficzny Robert przygotowuje w ramach wyceny |
 
-Koszt miesięczny voicebota (minuty Twilio, ElevenLabs): nie podany, na stronie go nie ma.
+Koszt miesięczny voicebota (Robert, 23.11.2026): około 20 USD za ElevenLabs, zależnie od liczby rozmów; konto z numerem telefonu klient doładowuje sam po powiadomieniu o końcu środków.
 
 Sklep WooCommerce i aplikacje: bez kwoty, wycena według zakresu (Robert, 23.11.2026).
 

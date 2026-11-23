@@ -1,3 +1,9 @@
+## 2026-11-23 17:30, Claude Code
+
+**✅ Zrobione:** voiceboty PL i EN: koszt miesięczny (karta „Co miesiąc: około 20 USD ElevenLabs i numer telefonu”, w FAQ o cenie zamiast zdania z prośbą o dane, bo wezwanie jest pod FAQ), dane w `docs/seo/ceny-uslug.md`. Robert zaakceptował teksty EN bez poprawek: 22 pozycje `tlumaczenie: sprawdzone`. DNK voiceboty OK, sprawdz:tlumaczenia OK, testy OK.
+
+**🎯 Następny krok:** Task 6 pomiar AI, konkurencja dla wdrożeń Claude Code, LinkedIn.
+
 ## 2026-11-23 17:15, Claude Code
 
 **✅ Zrobione:** Task 5: URL Inspection API (AdLoop, odczyt) dla 32 adresów z `sitemap-0.xml` żywej strony: 30 „Submitted and indexed”, 2 „URL is unknown to Google”: `/en/posts/business-process-automation-ai/` i `/en/services/`. Obie zwracają 200, canonical na siebie, bez noindex. Linki przekazane Robertowi do „Poproś o zindeksowanie”.

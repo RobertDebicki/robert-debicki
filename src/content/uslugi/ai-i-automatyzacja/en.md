@@ -100,6 +100,6 @@ faq:
 wezwanie: "**Email me: office@robert-debicki.pl** and describe the process that takes your team the most time. I'll tell you whether a simple automation is enough or you need an AI agent."
 kolejnosc: 1
 adresEn: "ai-automation"
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 98cfaaab2dfce69a61358bba15cc7375a7d5ba7471838d32bf5875ec4f907387
 ---

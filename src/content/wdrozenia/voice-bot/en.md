@@ -8,6 +8,6 @@ stack: ["ElevenLabs", "Twilio", "n8n", "Pipedrive"]
 ikona: sluchawka
 plyta: pomarancz
 kolejnosc: 4
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: ac30359c6c6e23f61837c91b6d30292df6d86b478e138d700c265babe64239ab
 ---

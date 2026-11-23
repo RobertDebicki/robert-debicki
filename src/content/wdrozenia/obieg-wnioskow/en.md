@@ -8,6 +8,6 @@ stack: ["n8n", "OCR", "Gemini", "Airtable", "SharePoint"]
 ikona: dokument
 plyta: czerwien
 kolejnosc: 5
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: b7efa2c9bfc67dc45916a8d8524de67888a515532f7f114c9804194c298be9be
 ---

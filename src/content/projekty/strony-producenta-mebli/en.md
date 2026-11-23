@@ -6,6 +6,6 @@ stack: ["Astro", "TypeScript", "Claude Code", "Google Ads"]
 etap: "Sites live in production"
 stan: produkcja
 kolejnosc: 1
-tlumaczenie: ai
+tlumaczenie: sprawdzone
 zrodlo: 5aa73525e52261154f0456011f8898dafb74ff19afbadc5084df4de314d357d8
 ---
