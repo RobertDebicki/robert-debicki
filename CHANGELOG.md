@@ -1,3 +1,11 @@
+## 2026-11-23 16:00, Claude Code
+
+**✅ Zrobione:** Task 2 planu: ceny i czas w EN trzech usług (karta „Cost” i „Setup time”, FAQ „How much…”), „netto” jako „plus VAT” jak w opisie, wizytówka jako „brochure website” (opis EN też). kontrola_tlumaczenia: 3 pary OK, stan `ai`. `npm run sprawdz`: 22 pary tłumaczeń OK, 239 testów jednostkowych, 192 e2e, wszystko zielone.
+
+**🚧 W toku / nie wdrożone:** tekst EN czeka na korektę osoby z USA (stan `ai`). Nic nie wypchnięte ani wgrane.
+
+**🎯 Następny krok:** Task 3: link do „strony i aplikacje” z wpisu o n8n. Task 9 czeka na wybór zdjęć przez Roberta.
+
 ## 2026-11-23 15:40, Claude Code
 
 **✅ Zrobione:** opis strony „strony i aplikacje” (PL i EN): „Strona wizytówka od 800 zł plus VAT” zamiast „landing page około 1000 zł” (decyzja Roberta). Długość 133 i 142 znaki, DNK OK. W planie nowe Task 9: szablon usługi z pogrubioną frazą we wstępie, zdjęciami i wezwaniem pod FAQ, skrypt DNK sprawdza prawdziwe pola.

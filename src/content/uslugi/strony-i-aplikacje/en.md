@@ -2,7 +2,7 @@
 tytul: "Custom websites and apps"
 nazwa: "Apps, websites, and tools with AI"
 tytulSeo: "Custom websites and apps built with AI | Robert Dębicki"
-opis: "Custom websites and apps with Claude Code: WordPress, WooCommerce, Astro. A business card website starts at PLN 800 plus VAT. Ask for a quote."
+opis: "Custom websites and apps with Claude Code: WordPress, WooCommerce, Astro. A brochure website starts at PLN 800 plus VAT. Ask for a quote."
 zajawka: "When off-the-shelf software falls short or costs too much, I write a tool to fit, with AI where it saves work."
 ikona: "aplikacje"
 sektor: "Claude Code, Astro, Next.js, WordPress"
@@ -19,6 +19,10 @@ karta:
     wartosc: "Python, FastAPI, React, PostgreSQL"
   - etykieta: "Examples"
     wartosc: "Furniture maker websites, a training platform, a month-end close workflow"
+  - etykieta: "Cost"
+    wartosc: "a brochure website from PLN 800 plus VAT"
+  - etykieta: "Setup time"
+    wartosc: "a brochure website in about 4 days"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
 problemy:
@@ -83,7 +87,7 @@ faq:
     - pytanie: "When does an app instead of off-the-shelf software make sense?"
       odpowiedz: "When off-the-shelf software falls short or costs too much. A training company handled sign-ups and schedules in Airtable, and every change meant edits in several places. Now each trainer sees her calendar in one app."
     - pytanie: "How much does a WordPress website cost?"
-      odpowiedz: "I quote each project individually. I split a large, complex project into smaller stages and spread the amount across them."
+      odpowiedz: "From PLN 800 plus VAT for a brochure website with 4 to 5 subpages, built in about 4 days, without graphic design or SEO setup. More subpages and a more complex build raise the price. If you don't have your own content or design, I'll prepare SEO content and a graphic design as part of the quote."
     - pytanie: "How much does a WooCommerce store cost?"
       odpowiedz: "I quote that individually too. The scope depends on what the store has to do: for example discounted prices for businesses, an account with order history, or pulling orders into the accounting software."
     - pytanie: "Can AI build a website for my business?"
@@ -95,5 +99,5 @@ faq:
 kolejnosc: 2
 adresEn: "websites-and-apps"
 tlumaczenie: ai
-zrodlo: a5ea3bbbe3c96091bc62163da22785d93a0b18990a2ab6457490f5811dc6477d
+zrodlo: 221a90554edea3de29af73594818751a4c17f47b0095f9fe714d35cbbb9338c7
 ---

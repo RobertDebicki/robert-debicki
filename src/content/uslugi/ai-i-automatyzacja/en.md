@@ -19,6 +19,10 @@ karta:
     wartosc: "n8n, Make.com, Airtable, SharePoint, CRM"
   - etykieta: "Examples"
     wartosc: "Grant applications, Google Ads and a blog"
+  - etykieta: "Cost"
+    wartosc: "a simple automation from PLN 500 plus VAT"
+  - etykieta: "Setup time"
+    wartosc: "a simple automation in about 3 days"
   - etykieta: "Location"
     wartosc: "Wrocław, Poland, or remote"
 problemy:
@@ -87,9 +91,9 @@ faq:
     - pytanie: "Is my company data safe with AI?"
       odpowiedz: "When a process handles personal data, I sign a data processing agreement. I send data to the model through the API on the company's account, not through a free chat, and only the fields the task needs. The agent starts with read-only access and a person approves changes, and I also teach the team how to work with AI so that sensitive data doesn't end up in the model."
     - pytanie: "How much does AI implementation cost for a business?"
-      odpowiedz: "I quote each project individually. I split a large, complex project into smaller stages and spread the amount across them."
+      odpowiedz: "From PLN 500 plus VAT for a simple automation, for example a reminder to a client about an unpaid invoice or a morning list of today's tasks. I set up an automation like this in about 3 days. I split a large, complex project into smaller stages and spread the amount across them."
 kolejnosc: 1
 adresEn: "ai-automation"
 tlumaczenie: ai
-zrodlo: 6d5f48302a188719ff6105d2e812b058cf0526b0157098acd5417aa68fdbd28c
+zrodlo: b161a62e7c55a241452ddd5bdd0a0dfb93acf609cb4ec5dba6fa1859ae84f462
 ---
