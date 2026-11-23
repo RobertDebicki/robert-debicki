@@ -2,7 +2,7 @@
 tytul: "Custom websites and apps"
 nazwa: "Apps, websites, and tools with AI"
 tytulSeo: "Custom websites and apps built with AI | Robert Dębicki"
-opis: "Custom websites and apps with Claude Code: WordPress, WooCommerce, Astro. A simple landing page is about PLN 1,000 plus VAT. Ask for a quote."
+opis: "Custom websites and apps with Claude Code: WordPress, WooCommerce, Astro. A business card website starts at PLN 800 plus VAT. Ask for a quote."
 zajawka: "When off-the-shelf software falls short or costs too much, I write a tool to fit, with AI where it saves work."
 ikona: "aplikacje"
 sektor: "Claude Code, Astro, Next.js, WordPress"

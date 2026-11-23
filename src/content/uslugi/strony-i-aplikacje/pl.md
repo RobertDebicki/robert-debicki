@@ -2,7 +2,7 @@
 tytul: "Strony i aplikacje na zamówienie"
 nazwa: "Aplikacje, strony i narzędzia z AI"
 tytulSeo: "Strony i aplikacje na zamówienie z AI | Robert Dębicki"
-opis: "Strony i aplikacje na zamówienie z Claude Code: WordPress, WooCommerce, Astro. Prosty landing page to około 1000 zł plus VAT. Zapytaj o wycenę."
+opis: "Strony i aplikacje na zamówienie z Claude Code: WordPress, WooCommerce, Astro. Strona wizytówka od 800 zł plus VAT. Zapytaj o wycenę."
 zajawka: "Gdy program z półki nie spełnia oczekiwań albo jest za drogi, piszę narzędzie na miarę, z AI tam, gdzie oszczędza pracę."
 ikona: "aplikacje"
 sektor: "Claude Code, Astro, Next.js, WordPress"

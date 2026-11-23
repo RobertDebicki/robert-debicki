@@ -1,3 +1,9 @@
+## 2026-11-23 15:40, Claude Code
+
+**✅ Zrobione:** opis strony „strony i aplikacje” (PL i EN): „Strona wizytówka od 800 zł plus VAT” zamiast „landing page około 1000 zł” (decyzja Roberta). Długość 133 i 142 znaki, DNK OK. W planie nowe Task 9: szablon usługi z pogrubioną frazą we wstępie, zdjęciami i wezwaniem pod FAQ, skrypt DNK sprawdza prawdziwe pola.
+
+**🎯 Następny krok:** Task 2: wersje EN cen trzech usług przez /tlumacz-strone. Task 9 czeka na wybór zdjęć przez Roberta (bez nich robimy pogrubienie i wezwanie).
+
 ## 2026-11-23 15:20, Claude Code
 
 **✅ Zrobione:** Task 1 planu, wszystkie 3 usługi PL: AI i automatyzacja (od 500 zł netto, około 3 dni), strony i aplikacje (wizytówka od 800 zł netto, około 4 dni), voiceboty (poprawka: fraza „voicebot” wróciła do 6 wystąpień). Kontrola DNK wszystkich stron PL z frazami z `docs/seo/frazy-uslug.md` i `docs/blog-szkice/README.md`: 3 usługi i wpis n8n bez błędów. Build OK, kwota w karcie i w JSON-LD FAQPage każdej usługi. sprawdz:tresc 0.

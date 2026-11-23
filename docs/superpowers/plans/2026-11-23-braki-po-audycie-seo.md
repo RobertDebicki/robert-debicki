@@ -129,6 +129,27 @@ Powód: AI Overview na „wdrożenie ai w firmie” i „automatyzacja ai dla fi
 - [ ] **Step 2: Sprawdzenie:** `curl -s https://github.com/RobertDebicki | grep -c "robert-debicki.pl"` → Expected: co najmniej 1.
 - [ ] **Step 3: Odznaczyć** pozycje 1 i 2 w `linki-zewnetrzne.md`, commit z wpisem w `CHANGELOG.md`.
 
+### Task 9: Szablon usługi spełnia DNK 4, 7 i 8 (decyzja Roberta 23.11)
+
+Dziś `skrypty/dnk.ts:280,286,287` zawsze dopisuje 3 uwagi „szablon usługi nie…”. Po tym zadaniu skrypt sprawdza prawdziwe pola i uwagi znikają, gdy strona je spełnia. Zasad DNK (`zasady.md`, `seo-dnk.md`) nie zmieniamy.
+
+**Files:**
+- Modify: `src/lib/schematy.ts` (`uslugi`: pola `zdjecia: z.array(zdjecie).default([])` jak we `wpisy`, `wezwanie: z.string().optional()`)
+- Modify: `src/components/StronaUslugi.astro` (lead z pogrubieniem `**…**`, galeria `zdjecia` przez `astro:assets` `Image` jak `StronaWpisu.astro`, akapit `wezwanie` pogrubiony bezpośrednio po sekcji `#faq`, przed `Kontakt.astro`)
+- Modify: `skrypty/dnk.ts:280-287` (zamiast stałych uwag: DNK 4 błąd, gdy lead nie ma `**frazy głównej**`; DNK 7 uwaga, gdy `zdjecia` poza 2 do 4; DNK 8 błąd, gdy brak `wezwanie` albo nie jest pogrubione)
+- Modify: `src/content/uslugi/*/pl.md` i `en.md` (pogrubienie frazy w lead, `wezwanie`, `zdjecia`)
+- Test: `testy/jednostkowe/dnk.test.ts`, `testy/jednostkowe/uslugi.test.ts`
+
+- [ ] **Step 1: Testy (czerwone):** w `dnk.test.ts` 3 przypadki usługi: lead bez `**frazy**` → błąd DNK 4; bez `wezwanie` → błąd DNK 8; 1 zdjęcie → uwaga DNK 7; pełna usługa → brak tych komunikatów. W `uslugi.test.ts`: lead `"Tekst **voicebot** dalej"` renderuje `<strong>voicebot</strong>`, a w JSON-LD (`Service`, opis) zostaje bez gwiazdek.
+- [ ] **Step 2: `npm test`** → Expected: nowe testy FAIL.
+- [ ] **Step 3: Schemat, szablon, skrypt** według listy plików. Pogrubienie: tylko `**…**`, bez innych znaczników Markdown; wszędzie, gdzie lead trafia do `<meta>`, JSON-LD albo karty na stronie głównej, gwiazdki usunięte.
+- [ ] **Step 4: Treść 3 usług PL:** fraza główna w lead w `**…**`; `wezwanie` 1 zdanie, z frazą albo nazwą usługi, np. „**Napisz, co ma robić Twój voicebot, a odpowiem z wyceną.**” (dokładne zdania do akceptacji Roberta). `zdjecia`: 2 do 4 prawdziwe obrazy z wdrożeń (zrzuty scenariuszy n8n, CRM, stron klientów bez nazw klientów, `sprawdz:zdjecia` i `sprawdz:tresc`). 🔴 Jakie obrazy: decyzja Roberta; bez nich pole zostaje puste i uwaga DNK 7 zostaje.
+- [ ] **Step 5: EN** przez `/tlumacz-strone` (to samo pole, angielski tekst) → `npm run sprawdz:tlumaczenia` bez błędów.
+- [ ] **Step 6: Kontrola:** `npx tsx skrypty/dnk.ts src/content/uslugi/<adres>/pl.md --fraza … --dodatkowe …` dla 3 usług (frazy jak w Task 1) → Expected: „OK: brak błędów”; `npm test` PASS; `npm run build`; zrzut ekranu strony voiceboty (komputer i telefon) do porównania z obecnym wyglądem.
+- [ ] **Step 7: Commit** z wpisem w `CHANGELOG.md`, komunikat `feat(uslugi): pogrubiona fraza, zdjęcia i wezwanie w szablonie usługi`.
+
+Ryzyko: średnie (zmiana szablonu 3 stron i skryptu kontroli; nikt nic nie traci, ale wygląd się zmienia, więc zrzut przed wydaniem).
+
 ### Task 8: Wydanie
 
 - [ ] **Step 1: Run** `npm run sprawdz` → Expected: wszystkie kroki zielone (jak 22.11: e2e passed, 0 błędów treści).
