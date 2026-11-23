@@ -1,3 +1,9 @@
+## 2026-11-23 19:00, Claude Code
+
+**✅ Zrobione:** wpis o kosztach AI (PL, EN, grafika 2 w obu językach): bez nazw firm konkurencji (decyzja Roberta); ceny rynku opisane ogólnie jako cenniki firm wdrożeniowych, zakresy zgodne ze źródłami w `docs/seo/pomiar-ai.md` (utrzymanie voicebota 299 do 1500 zł/mies., wdrożenie z integracjami od 8000 zł). DNK OK bez uwag, kontrola tłumaczenia OK, build OK.
+
+**🎯 Następny krok:** akceptacja tekstu przez Roberta, potem Task 8 (`/code-review`, PR, wgranie po zgodzie).
+
 ## 2026-11-23 18:45, Claude Code
 
 **✅ Zrobione (gałąź `wpis-koszt-wdrozenia-ai`):** Task 4: wpis „Ile kosztuje wdrożenie AI w firmie” PL i EN (`/en/posts/ai-implementation-cost/`), fraza główna „ile kosztuje wdrożenie AI”, dodatkowa „ile kosztuje agent AI” (wolumeny w `frazy-uslug.md`). Tylko ceny Roberta z `ceny-uslug.md` i fakty ze stron usług; ceny rynku z podanym źródłem (Herens, AutomAIze, odbierze.ai, SimpleFast, SoftSolid, 23.11). 2 grafiki i miniatura PL i EN (`docs/blog-szkice/podglad/koszt-wdrozenia-ai*.html`, `zrzut-koszt-ai.mjs [en]`). DNK: OK bez uwag. Kontrola tłumaczeń 23 pary OK. `npm run sprawdz`: 249 testów, 192 e2e.

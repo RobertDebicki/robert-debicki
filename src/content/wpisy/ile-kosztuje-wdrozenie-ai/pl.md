@@ -36,13 +36,13 @@ Rozbudowane automatyzacje, które muszą działać cały czas, stawiam w n8n na 
 
 ![Porównanie moich cen z cennikami rynku: automatyzacja, voicebot i szkolenie z Claude Code, kwoty netto](/src/assets/wpisy/ile-kosztuje-wdrozenie-ai-2.png)
 
-*Cenniki rynku według stron firm, sprawdzone 23 listopada 2026.*
+*Cenniki rynku według stron firm wdrożeniowych, sprawdzone 23 listopada 2026.*
 
 ## Moje ceny na tle cenników rynku
 
-Sprawdziłem 23 listopada 2026 cenniki, które Google pokazuje w odpowiedziach AI na pytania o koszt. Herens podaje za pojedynczą automatyzację zwykle od 5 do 15 tys. zł netto, a AutomAIze za wdrożenie AI od 8000 do 16 000 zł. Za voicebota odbierze.ai bierze w pakiecie startowym 2990 zł za wdrożenie i 990 zł miesięcznie. SimpleFast podaje od 2500 zł netto za stworzenie bota i od 299 do 1500 zł netto miesięcznie za utrzymanie. Szkolenie z Claude Code dla jednej osoby kosztuje w SoftSolid od 1800 zł netto.
+Sprawdziłem 23 listopada 2026 cenniki, które Google pokazuje w odpowiedziach AI na pytania o koszt. Firmy wdrożeniowe podają za pojedynczą automatyzację zwykle od 5 do 15 tys. zł netto, a za wdrożenie AI z integracjami od 8000 zł wzwyż. Za voicebota pakiety startowe kosztują około 2500 do 3000 zł za wdrożenie, a do tego od 299 do 1500 zł miesięcznie za utrzymanie. Szkolenie z Claude Code dla jednej osoby zaczyna się w cennikach od 1800 zł netto.
 
-Porównuj zakres, a nie samą kwotę. Ja podaję cenę najprostszej wersji, a większy projekt wyceniam osobno, po rozmowie.
+Porównuj zakres, a nie samą kwotę. Ja podaję cenę najprostszej wersji, a większy projekt wyceniam osobno, po rozmowie o Twoim procesie i programach, z których korzystasz.
 
 ## Najczęstsze pytania o to, ile kosztuje wdrożenie AI
 

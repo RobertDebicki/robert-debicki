@@ -6,7 +6,7 @@ miniatura:
   plik: "/src/assets/wpisy/ile-kosztuje-wdrozenie-ai-en-miniatura.png"
   alt: "From PLN 500 plus VAT for a simple automation and a voice agent from PLN 2,000 on an orange background"
 tlumaczenie: ai
-zrodlo: 64256401cb52a1da0540a6be7bc0f4fa96b4334d5252db1980628d40aa498600
+zrodlo: 74dbecf320ac7d9764081902b32303e2d3085b8fe3ecfb66be9575e26cc3903a
 adresEn: "ai-implementation-cost"
 ---
 **How much AI implementation costs** is the question I hear from small business owners before we even talk about their process. I answer with numbers from my own projects: a simple automation starts at PLN 500 plus VAT, and a voice agent starts at PLN 2,000 plus VAT. See what the price depends on and which costs remain after launch, then email me about what you want to automate.
@@ -39,13 +39,13 @@ I run complex automations that have to work all the time in n8n on a self-hosted
 
 ![My prices compared with market price lists: automation, voice agent, and Claude Code training, amounts plus VAT](/src/assets/wpisy/ile-kosztuje-wdrozenie-ai-en-2.png)
 
-*Market price lists from company websites, checked on Nov. 23, 2026.*
+*Market price lists from implementation firms' websites, checked on Nov. 23, 2026.*
 
 ## My prices compared with the market
 
-On Nov. 23, 2026, I checked the price lists that Google shows in AI answers to questions about cost. Herens lists a single automation at usually PLN 5 to 15 thousand plus VAT, and AutomAIze lists AI implementation at PLN 8,000 to 16,000. For a voice agent, odbierze.ai charges PLN 2,990 for setup and PLN 990 a month in its starter package. SimpleFast lists from PLN 2,500 plus VAT to build the bot and PLN 299 to 1,500 plus VAT a month for maintenance. Claude Code training for one person costs from PLN 1,800 plus VAT at SoftSolid.
+On Nov. 23, 2026, I checked the price lists that Google shows in AI answers to questions about cost. Implementation firms usually list a single automation at PLN 5 to 15 thousand plus VAT, and AI implementation with integrations from PLN 8,000 up. For a voice agent, starter packages cost about PLN 2,500 to 3,000 for setup, plus PLN 299 to 1,500 a month for maintenance. Claude Code training for one person starts at PLN 1,800 plus VAT in these price lists.
 
-Compare the scope, not just the amount. I give the price of the simplest version, and I quote a larger project separately, after we talk.
+Compare the scope, not just the amount. I give the price of the simplest version, and I quote a larger project separately, after we talk about your process and the software you use.
 
 ## Frequently asked questions about AI implementation cost
 
