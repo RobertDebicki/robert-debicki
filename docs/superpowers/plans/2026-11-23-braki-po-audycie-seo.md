@@ -116,10 +116,10 @@ Powód: AI Overview na „wdrożenie ai w firmie” i „automatyzacja ai dla fi
 
 **Files:** Create: `docs/seo/pomiar-ai.md`
 
-- [ ] **Step 1: Utworzyć `docs/seo/pomiar-ai.md`** z 10 pytaniami klientów (z FAQ usług i z PAA w audycie, np. „Ile kosztuje voicebot dla firmy?”, „Jak wdrożyć AI w firmie?”, „n8n czy Make?”) i tabelą: data, silnik (Google AI Overview, ChatGPT, Perplexity), pytanie, wynik (z nazwy / link / brak).
-- [ ] **Step 2: Pomiar wyjściowy Google AI Overview** przez Treg `cloro.google.serp.organic` z `include.aioverview: true` (10 × $0.0028); ChatGPT i Perplexity wpisuje Robert ręcznie.
-- [ ] **Step 3: Dopisać termin** kontroli GSC: 21.12.2026 (28 dni po zmianach), wyświetlenia stron usług i fraz z audytu, punkt 2.
-- [ ] **Step 4: Commit** z wpisem w `CHANGELOG.md`.
+- [x] **Step 1: Utworzyć `docs/seo/pomiar-ai.md`** z 10 pytaniami klientów (z FAQ usług i z PAA w audycie, np. „Ile kosztuje voicebot dla firmy?”, „Jak wdrożyć AI w firmie?”, „n8n czy Make?”) i tabelą: data, silnik (Google AI Overview, ChatGPT, Perplexity), pytanie, wynik (z nazwy / link / brak).
+- [x] **Step 2: Pomiar wyjściowy Google AI Overview** przez Treg `cloro.google.serp.organic` z `include.aioverview: true` (10 × $0.0028); ChatGPT i Perplexity wpisuje Robert ręcznie.
+- [x] **Step 3: Dopisać termin** kontroli GSC: 21.12.2026 (28 dni po zmianach), wyświetlenia stron usług i fraz z audytu, punkt 2.
+- [x] **Step 4: Commit** z wpisem w `CHANGELOG.md`.
 
 ### Task 7: Linki zewnętrzne (robi Robert)
 

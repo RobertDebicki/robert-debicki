@@ -1,3 +1,9 @@
+## 2026-11-23 17:50, Claude Code
+
+**✅ Zrobione:** Task 6: `docs/seo/pomiar-ai.md`: 10 pytań klientów, pomiar wyjściowy Google AI Overview (Treg cloro, $0.028): robert-debicki.pl nie jest cytowany w żadnym z 10 (zmiany z 23.11 jeszcze niewgrane). Tabela cen konkurencji z tych wyników, w tym wdrożenia Claude Code (SoftSolid od 1800 zł szkolenie indywidualne, wdrożenie w zespole od 6900 zł netto; szkolenia otwarte 1750 do 2450 zł netto). Kontrola GSC 21.12.2026.
+
+**🎯 Następny krok:** decyzja Roberta: cena wdrożenia Claude Code (około 2000 zł netto) na stronie usług; LinkedIn; Task 8 (code-review, PR, wgranie po zgodzie).
+
 ## 2026-11-23 17:30, Claude Code
 
 **✅ Zrobione:** voiceboty PL i EN: koszt miesięczny (karta „Co miesiąc: około 20 USD ElevenLabs i numer telefonu”, w FAQ o cenie zamiast zdania z prośbą o dane, bo wezwanie jest pod FAQ), dane w `docs/seo/ceny-uslug.md`. Robert zaakceptował teksty EN bez poprawek: 22 pozycje `tlumaczenie: sprawdzone`. DNK voiceboty OK, sprawdz:tlumaczenia OK, testy OK.
