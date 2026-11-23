@@ -1,3 +1,11 @@
+## 2026-11-23 19:40, Claude Code
+
+**✅ Zrobione:** przegląd runda 2 (low) bez błędów w kodzie; kwoty we wpisie sprawdzone ręcznie z `pomiar-ai.md`. Gałąź `wpis-koszt-wdrozenia-ai` wypchnięta, PR #18 do `main`: https://github.com/RobertDebicki/robert-debicki/pull/18
+
+**🚧 W toku / nie wdrożone:** merge PR i wgranie na serwer czekają na zgodę Roberta.
+
+**🎯 Następny krok:** po „wgraj”: merge, `npm run wdroz -- --wgraj`, `npm run test:produkcja`, sprawdzenie cen na żywych adresach; kontrola GSC 21.12.2026.
+
 ## 2026-11-23 19:30, Claude Code
 
 **✅ Zrobione:** uwaga 2 z przeglądu zamknięta: Robert potwierdził, że cena voicebota rośnie z liczbą scenariuszy i integracji, a automatyzacji z liczbą kroków i systemów; zapisane w `ceny-uslug.md`, zdania na stronie zostają.
