@@ -227,3 +227,8 @@ Długość tytułów policzona skryptem (Python `len`), razem z końcówką ` | 
 
 Liczba wyszukiwań: DataForSEO (dane Google Ads, Polska 2616, pl), 23.11.2026, $0.09. „ile kosztuje agent ai” 50/mies., „voicebot cena” 40, „claude code szkolenie” 30, „szkolenie claude code” 20, „ile kosztuje chatbot” 10; bez danych: „ile kosztuje wdrożenie ai”, „ile kosztuje wdrożenie ai w firmie”, „ile kosztuje automatyzacja ai”, „koszt wdrożenia ai”, „ile kosztuje voicebot”, „cena voicebota”, „wdrożenie claude code”, „claude code dla firm”.
 Wybór: fraza główna „ile kosztuje wdrożenie AI” (pytanie z wyników Google, plan Task 4), dodatkowa „ile kosztuje agent AI” (najwięcej wyszukiwań; Robert nie ma ceny agenta, więc wpis odpowiada „wyceniam po zakresie”). EN: „AI implementation cost”.
+
+## 5. Szkolenie Claude Code (25.11.2026)
+
+- **PL:** fraza główna „szkolenie Claude Code” („claude code szkolenie” 30/mies., „szkolenie claude code” 20/mies., DataForSEO 23.11), dodatkowe „wdrożenie Claude Code”, „Claude Code dla firm”. Adres `/uslugi/szkolenie-claude-code/`.
+- **Frazy EN** (podpowiedzi Google hl=en gl=us, 2026-11-25, bez wolumenów): „claude code training” (też „claude code training for developers”), „claude code for business” (też „for business owners”, „for business users”), „claude code for teams” (też „for small teams”, „for teams pricing”). Fraza główna EN: claude code training; dodatkowe: claude code for business, claude code for teams. Adres EN: `/en/services/claude-code-training/`.

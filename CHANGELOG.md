@@ -1,3 +1,11 @@
+## 2026-11-25 18:40, Claude Code
+
+**✅ Zrobione:** Robert zaakceptował tekst strony „Szkolenie Claude Code” (bez oceny z analizatora DNK). EN `/en/services/claude-code-training/` (fraza „claude code training”, dodatkowe „claude code for business”, „claude code for teams”, podpowiedzi Google hl=en zapisane w `frazy-uslug.md` sekcja 5) z 2 grafikami EN. Voiceboty PL i EN: karta „od 2000 zł netto, rozbudowany bot do 5000 zł”, FAQ z zakresem ceny 2000 zł (scenariusz, testy, poprawki, oddanie z jednym scenariuszem) i widełkami 2000 do 5000 zł netto (Robert, 25.11; `ceny-uslug.md`). DNK OK dla obu stron, kontrola tłumaczeń 24 pary OK, `npm run sprawdz` exit 0 (248 testów, 192 e2e, 0 sekretów).
+
+**🚧 W toku / nie wdrożone:** `/code-review`; EN w stanie `ai` (korekta native speakera); push, PR i wgranie czekają na zgodę Roberta.
+
+**🎯 Następny krok:** przegląd, poprawki, PR do `main` po zgodzie; po wgraniu zgłoszenie 2 nowych adresów w GSC.
+
 ## 2026-11-25 18:15, Claude Code
 
 **✅ Zrobione:** 2 grafiki strony „Szkolenie Claude Code” (`szkolenie-claude-code-1.png`: 3 kroki wdrożenia, `-2.png`: co wrzucać do Claude Code, a czego nie) w `docs/blog-szkice/podglad/uslugi-grafiki.html`, zrzut `zrzut-uslugi.mjs` (pozostałe PNG bez zmian). DNK OK bez uwag, build OK. GitHub: tematy repo i profilowe README `RobertDebicki/RobertDebicki` opublikowane za zgodą Roberta („publikuj”).
