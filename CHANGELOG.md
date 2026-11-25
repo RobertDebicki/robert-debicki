@@ -1,3 +1,11 @@
+## 2026-11-25 19:00, Claude Code
+
+**✅ Zrobione:** poprawki po `/code-review` (medium, 8 uwag): voicebot PL i EN: notatka w CRM wraca do najprostszego wdrożenia (zgodnie z `ceny-uslug.md` z 23.11), rozbudowany bot „do 5000 zł netto” zamiast nakładających się widełek, „netto”/„plus VAT” przy 5000 w karcie; ikona karty Claude Code `dokument` zamiast powtórzonej `ai`. Fałszywy alarm: „fakty spoza listy” na stronie Claude Code (Desktop, Gmail, kalendarz, AdLoop, konsultant SEO, tokeny, instrukcja konta) Robert podał w rozmowie 25.11. DNK i kontrola tłumaczeń OK.
+
+**🚧 W toku / nie wdrożone:** układ sekcji usług przy 4 kartach (siatka 3 kolumn zostawia jedną kartę samą w drugim rzędzie; zrzut 1440 px) czeka na decyzję Roberta, bo to zmiana wyglądu; ocena analizatora DNK; brak linku z FAQ AI do nowej strony (FAQ w szablonie nie ma linków).
+
+**🎯 Następny krok:** decyzja o układzie kart, poprawka, przegląd runda 2 (tylko zmiany), PR po zgodzie.
+
 ## 2026-11-25 18:40, Claude Code
 
 **✅ Zrobione:** Robert zaakceptował tekst strony „Szkolenie Claude Code” (bez oceny z analizatora DNK). EN `/en/services/claude-code-training/` (fraza „claude code training”, dodatkowe „claude code for business”, „claude code for teams”, podpowiedzi Google hl=en zapisane w `frazy-uslug.md` sekcja 5) z 2 grafikami EN. Voiceboty PL i EN: karta „od 2000 zł netto, rozbudowany bot do 5000 zł”, FAQ z zakresem ceny 2000 zł (scenariusz, testy, poprawki, oddanie z jednym scenariuszem) i widełkami 2000 do 5000 zł netto (Robert, 25.11; `ceny-uslug.md`). DNK OK dla obu stron, kontrola tłumaczeń 24 pary OK, `npm run sprawdz` exit 0 (248 testów, 192 e2e, 0 sekretów).

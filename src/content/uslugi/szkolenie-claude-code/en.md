@@ -4,7 +4,7 @@ nazwa: "Claude Code for business"
 tytulSeo: "Claude Code training for teams | Robert Dębicki"
 opis: "Claude Code training for business: setup, a knowledge base about your company, and four skills for about PLN 2,000 plus VAT. Remote or on-site."
 zajawka: "I set up Claude Code for your company, build a knowledge base about the business and four skills, then train your team remotely or at your office."
-ikona: "ai"
+ikona: "dokument"
 sektor: "Claude Code, Claude Desktop, skills"
 rola: "Claude Code"
 rolaWyroznienie: "/ training"
@@ -86,5 +86,5 @@ wezwanie: "**Email me: office@robert-debicki.pl** and describe what your team wa
 kolejnosc: 4
 adresEn: "claude-code-training"
 tlumaczenie: ai
-zrodlo: 17cc7d4db694824130a5852084aba8ecf65dd3815b67807725361170f85260c8
+zrodlo: c74d507e2b63f39d85e1bade24802bf22281fc4ba4e9eb9a01524d90f5fee4d5
 ---

@@ -18,7 +18,7 @@ karta:
   - etykieta: "Example"
     wartosc: "Calling back website inquiries"
   - etykieta: "Cost"
-    wartosc: "from PLN 2,000 plus VAT, an advanced bot up to PLN 5,000"
+    wartosc: "from PLN 2,000 plus VAT, an advanced bot up to PLN 5,000 plus VAT"
   - etykieta: "Setup time"
     wartosc: "2 weeks to first tests"
   - etykieta: "Monthly"
@@ -72,7 +72,7 @@ faq:
     - pytanie: "What is an AI voice agent?"
       odpowiedz: "A program that holds a phone conversation by voice. My bot calls the person who filled out the form, asks qualifying questions, and writes a note for the sales rep."
     - pytanie: "How much does an AI voice agent cost for a business?"
-      odpowiedz: "From PLN 2,000 plus VAT for the simplest setup: I write the script, test the bot, make revisions, and hand it over ready to work with one call scenario. An advanced bot with several scenarios and integrations costs PLN 2,000 to 5,000 plus VAT. Each month there's about USD 20 for ElevenLabs, depending on the number of calls, and the client tops up the phone number account themselves when they get a low-balance notification."
+      odpowiedz: "From PLN 2,000 plus VAT for a bot with one call scenario that calls the person who filled out the form and saves a note in the CRM, including the script, testing, and revisions. An advanced bot with several scenarios and extra integrations, such as a calendar, costs up to PLN 5,000 plus VAT. Each month there's about USD 20 for ElevenLabs, depending on the number of calls, and the client tops up the phone number account themselves when they get a low-balance notification."
     - pytanie: "How is an AI voice agent different from a chatbot?"
       odpowiedz: "A chatbot answers questions in a chat. A voice bot talks over the phone: in my deployment, it calls the person who filled out the form itself, collects information, and leaves a note in the CRM."
     - pytanie: "Can an AI voice agent call someone who filled out a form and save a note in the CRM?"
@@ -87,5 +87,5 @@ wezwanie: "**Email me: office@robert-debicki.pl** with how you handle website in
 kolejnosc: 3
 adresEn: "ai-voice-agents"
 tlumaczenie: ai
-zrodlo: ebe042765d80d50cc129b8dbd23f7b033bf0a6c9501252a1e5d25794ec60566c
+zrodlo: ef7fc9c3f31f4bd39a2327b78d4f599acef4ed13ad9ba781f0a8965c456c2800
 ---
