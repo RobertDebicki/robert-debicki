@@ -1,3 +1,59 @@
+## 2026-11-25 19:20, Claude Code
+
+**✅ Zrobione:** układ sekcji usług przy parzystej liczbie kart: dwie kolumny (bazowe `.now`), przy nieparzystej trzy jak w makiecie (`src/components/Uslugi.astro`, decyzja Roberta 25.11: siatka 2 x 2 przy 4 kartach; zmiana wyglądu poza makietą `docs/makieta/uslugi.html`). Nowy test e2e (czerwony przed zmianą: 3 kolumny). Zrzuty 1440 i 390 px; 2 kolumny przy 1440 i 1024, 1 przy 390 i 360, bez przewijania w bok na `/`, `/uslugi/`, `/en/services/`. `npm run sprawdz` exit 0 (248 testów, 193 e2e, 24 pary tłumaczeń).
+
+**🚧 W toku / nie wdrożone:** przegląd runda 2; ocena analizatora DNK; push, PR i wgranie czekają na zgodę Roberta.
+
+**🎯 Następny krok:** przegląd zmian z rundy poprawek, potem PR do `main` po zgodzie Roberta.
+
+## 2026-11-25 19:00, Claude Code
+
+**✅ Zrobione:** poprawki po `/code-review` (medium, 8 uwag): voicebot PL i EN: notatka w CRM wraca do najprostszego wdrożenia (zgodnie z `ceny-uslug.md` z 23.11), rozbudowany bot „do 5000 zł netto” zamiast nakładających się widełek, „netto”/„plus VAT” przy 5000 w karcie; ikona karty Claude Code `dokument` zamiast powtórzonej `ai`. Fałszywy alarm: „fakty spoza listy” na stronie Claude Code (Desktop, Gmail, kalendarz, AdLoop, konsultant SEO, tokeny, instrukcja konta) Robert podał w rozmowie 25.11. DNK i kontrola tłumaczeń OK.
+
+**🚧 W toku / nie wdrożone:** układ sekcji usług przy 4 kartach (siatka 3 kolumn zostawia jedną kartę samą w drugim rzędzie; zrzut 1440 px) czeka na decyzję Roberta, bo to zmiana wyglądu; ocena analizatora DNK; brak linku z FAQ AI do nowej strony (FAQ w szablonie nie ma linków).
+
+**🎯 Następny krok:** decyzja o układzie kart, poprawka, przegląd runda 2 (tylko zmiany), PR po zgodzie.
+
+## 2026-11-25 18:40, Claude Code
+
+**✅ Zrobione:** Robert zaakceptował tekst strony „Szkolenie Claude Code” (bez oceny z analizatora DNK). EN `/en/services/claude-code-training/` (fraza „claude code training”, dodatkowe „claude code for business”, „claude code for teams”, podpowiedzi Google hl=en zapisane w `frazy-uslug.md` sekcja 5) z 2 grafikami EN. Voiceboty PL i EN: karta „od 2000 zł netto, rozbudowany bot do 5000 zł”, FAQ z zakresem ceny 2000 zł (scenariusz, testy, poprawki, oddanie z jednym scenariuszem) i widełkami 2000 do 5000 zł netto (Robert, 25.11; `ceny-uslug.md`). DNK OK dla obu stron, kontrola tłumaczeń 24 pary OK, `npm run sprawdz` exit 0 (248 testów, 192 e2e, 0 sekretów).
+
+**🚧 W toku / nie wdrożone:** `/code-review`; EN w stanie `ai` (korekta native speakera); push, PR i wgranie czekają na zgodę Roberta.
+
+**🎯 Następny krok:** przegląd, poprawki, PR do `main` po zgodzie; po wgraniu zgłoszenie 2 nowych adresów w GSC.
+
+## 2026-11-25 18:15, Claude Code
+
+**✅ Zrobione:** 2 grafiki strony „Szkolenie Claude Code” (`szkolenie-claude-code-1.png`: 3 kroki wdrożenia, `-2.png`: co wrzucać do Claude Code, a czego nie) w `docs/blog-szkice/podglad/uslugi-grafiki.html`, zrzut `zrzut-uslugi.mjs` (pozostałe PNG bez zmian). DNK OK bez uwag, build OK. GitHub: tematy repo i profilowe README `RobertDebicki/RobertDebicki` opublikowane za zgodą Roberta („publikuj”).
+
+**🚧 W toku / nie wdrożone:** akceptacja tekstu i ocena z analizatora DNK; wersja EN (z grafikami EN); e2e; pole Website i Bio w profilu GitHub (Robert).
+
+**🎯 Następny krok:** poprawki po analizatorze, `/tlumacz-strone`, `npm run sprawdz`, `/code-review`.
+
+## 2026-11-25 18:10, Claude Code
+
+**✅ Zrobione (gałąź `uslugi-szkolenie-claude-code`):** szkic nowej strony usługi `/uslugi/szkolenie-claude-code/` (fraza „szkolenie Claude Code”, dodatkowe „wdrożenie Claude Code”, „Claude Code dla firm”; fakty od Roberta 25.11: około 2000 zł netto, konfiguracja, baza wiedzy o firmie, 4 skille, szkolenie zdalnie albo w siedzibie, przykład producenta mebli: miesiąc wdrożenia, 5 h szkolenia, subskrypcja klienta około 400 zł/mies.). DNK OK (uwaga: 0 zdjęć), `sprawdz:tresc` 0, testy 248, build OK, zrzut 1280 px bez przewijania w bok. Analityka: filtr ruchu wewnętrznego GA4 włączony przez Roberta (IP domowe), test kliknięć: `klik_email` i `klik_telefon` dochodzą, `klik_linkedin` z telefonu nie doszedł (z komputera i emulacji tak). GitHub: repo `robert-debicki` ma adres strony; tematy i profilowe README czekają na koniec awarii GitHuba.
+
+**🚧 W toku / nie wdrożone:** akceptacja tekstu i ocena z analizatora DNK (Robert); 2 grafiki; wersja EN; e2e.
+
+**🎯 Następny krok:** poprawki po ocenie analizatora, grafiki, `/tlumacz-strone`, `npm run sprawdz`; voicebot: nowe fakty (rozbudowany 2000 do 5000 zł, zakres ceny 2000 zł) do FAQ strony usługi po decyzji Roberta.
+
+## 2026-11-23 20:00, Claude Code
+
+**✅ Zrobione (wgranie za zgodą Roberta „wgraj” w wiadomości z 23.11):** `npm run wdroz -- --wgraj` z `main` (eaae1d9): 203 pliki, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-23T18-45-56-549Z`, odbiór zgodny, .htaccess działa. `npm run test:produkcja`: 5 passed. Na żywo (curl, 200): ceny na 3 stronach usług PL i EN, grafiki usług, wpis `/wpisy/ile-kosztuje-wdrozenie-ai/` i `/en/posts/ai-implementation-cost/` z grafikami; oba w sitemap.
+
+**🚧 W toku / nie wdrożone:** Robert zgłasza 2 adresy nowego wpisu w GSC („Poproś o zindeksowanie”).
+
+**🎯 Następny krok:** pomiar AI co tydzień według `docs/seo/pomiar-ai.md` (następny 30.11.2026); kontrola GSC 21.12.2026; linki zewnętrzne z `linki-zewnetrzne.md` (prośby do klientów, Make Partner, szablony n8n).
+
+## 2026-11-23 19:55, Claude Code
+
+**✅ Zrobione:** PR #18 scalony przez Roberta (`main` = eaae1d9). Na `main`: `npm run sprawdz` exit 0 (248 testów, 192 e2e, 23 pary tłumaczeń, 0 sekretów); `npm run wdroz -- --na-sucho`: 203 pliki, w tym nowy wpis `wpisy/ile-kosztuje-wdrozenie-ai/`, bez usuwania na serwerze.
+
+**🚧 W toku / nie wdrożone:** wgranie na serwer czeka na „wgraj” od Roberta.
+
+**🎯 Następny krok:** po „wgraj”: `npm run wdroz -- --wgraj`, `npm run test:produkcja`, sprawdzenie cen na żywych adresach, link GSC do zindeksowania nowego wpisu (PL i EN); kontrola GSC 21.12.2026.
+
 ## 2026-11-23 19:40, Claude Code
 
 **✅ Zrobione:** przegląd runda 2 (low) bez błędów w kodzie; kwoty we wpisie sprawdzone ręcznie z `pomiar-ai.md`. Gałąź `wpis-koszt-wdrozenia-ai` wypchnięta, PR #18 do `main`: https://github.com/RobertDebicki/robert-debicki/pull/18

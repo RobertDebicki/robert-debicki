@@ -1,0 +1,90 @@
+---
+tytul: "Claude Code training and setup for your business"
+nazwa: "Claude Code for business"
+tytulSeo: "Claude Code training for teams | Robert Dębicki"
+opis: "Claude Code training for business: setup, a knowledge base about your company, and four skills for about PLN 2,000 plus VAT. Remote or on-site."
+zajawka: "I set up Claude Code for your company, build a knowledge base about the business and four skills, then train your team remotely or at your office."
+ikona: "dokument"
+sektor: "Claude Code, Claude Desktop, skills"
+rola: "Claude Code"
+rolaWyroznienie: "/ training"
+lead: "I combine **Claude Code training** with setup: I configure Claude Code for your company, build a knowledge base about your business and four skills, then teach your team to use them."
+akapit: "I train remotely or at your office. Your team doesn't need to know how to code, and I show less technical people how to work in Claude Desktop. Wrocław, Poland, or remote."
+karta:
+  - etykieta: "I set up"
+    wartosc: "Claude Code, a company knowledge base, four skills"
+  - etykieta: "I connect to"
+    wartosc: "your company's tools, e.g. Gmail, calendar, AdLoop"
+  - etykieta: "Training"
+    wartosc: "remote or at your office"
+  - etykieta: "Cost"
+    wartosc: "about PLN 2,000 plus VAT"
+  - etykieta: "Claude subscription"
+    wartosc: "you pay for it yourself, on the company account"
+  - etykieta: "Location"
+    wartosc: "Wrocław, Poland, or remote"
+zdjecia:
+  - plik: "/src/assets/uslugi/szkolenie-claude-code-en-1.png"
+    alt: "Three steps of a Claude Code setup: setup and knowledge base, four skills, team training"
+  - plik: "/src/assets/uslugi/szkolenie-claude-code-en-2.png"
+    alt: "What goes into Claude Code and what doesn't: client data, passwords, and contracts stay out"
+problemy:
+  tytul: "AI at work with no company knowledge and no rules"
+  wstep: "This is what a furniture manufacturer came to me with before we rolled out Claude Code."
+  pozycje:
+    - tytul: "Ads without results"
+      tekst: "The ad agencies weren't delivering results, so the client decided to run Google Ads campaigns in-house, with help from an AI agent."
+    - tytul: "Weak blog posts"
+      tekst: "Posts were written without the phrases people type into Google, and each one was needed in several languages."
+    - tytul: "Burned tokens"
+      tekst: "The agents used too many tokens because the right AI model wasn't matched to each task."
+kroki:
+  tytul: "Claude Code setup for your team, step by step"
+  pozycje:
+    - tytul: "Setup and knowledge base"
+      tekst: "I set up Claude Code for your company, and together we build a knowledge base about the business: how you work and how you write to clients."
+    - tytul: "Skills and tool connections"
+      tekst: "I build four skills for your tasks and set each one to a model that fits the work, so you don't burn tokens. I connect Claude to the tools your team needs, such as Gmail and the calendar."
+    - tytul: "Team training"
+      tekst: "I show how to work with Claude Code and the skills, and which model to pick for which task. I also teach what not to put in: client data, passwords, contracts, and documents with sensitive data that hasn't been anonymized."
+przyklady:
+  tytul: "Claude Code at a furniture manufacturer"
+  pozycje:
+    - ikona: "ai"
+      liczba: "5 h"
+      liczbaOpis: "of training, setup with skills in a month"
+      sektor: "Hospitality furniture manufacturer"
+      tytul: "Agents for ads, the blog, and translations"
+      tekst: "The client took over Google Ads campaigns with help from an agent that reads data through AdLoop. A skill writes posts for chosen phrases following rules I set with an SEO consultant and translates them into several languages. Each agent runs on a model matched to its task, so the client uses fewer tokens."
+      stos:
+        - "Claude Code"
+        - "AdLoop"
+        - "Google Ads"
+        - "Gmail"
+        - "Google Calendar"
+      link:
+        tekst: "AI implementation and automation"
+        adres: "/en/services/ai-automation/"
+faq:
+  tytul: "Common questions about Claude Code training"
+  pozycje:
+    - pytanie: "How much does Claude Code training with setup cost?"
+      odpowiedz: "About PLN 2,000 plus VAT. For that price, I set up Claude Code for your company, build a knowledge base about the business and four skills, and train your team."
+    - pytanie: "How long does a Claude Code setup take?"
+      odpowiedz: "At the furniture manufacturer, the setup took a month, including building the skills and revisions. The training itself took 5 hours."
+    - pytanie: "Is the training remote?"
+      odpowiedz: "Remote or at your office, whichever works better for your team."
+    - pytanie: "Does my team need to know how to code?"
+      odpowiedz: "No. For less technical people, I run the training in Claude Desktop, an app with a chat window, with no terminal work."
+    - pytanie: "How much does Claude Code for business cost per month?"
+      odpowiedz: "You pay for the Claude subscription yourself, on the company account, and I show you how to set up the account. The client in the example pays about PLN 400 a month."
+    - pytanie: "What shouldn't you put into Claude Code?"
+      odpowiedz: "Client data, passwords, contracts, and documents with sensitive data that hasn't been anonymized. I cover this in the training."
+    - pytanie: "Which tools can you connect to Claude?"
+      odpowiedz: "The ones your team needs for work. At the furniture manufacturer, we connected Claude to Google Ads through AdLoop, to Gmail, and to the calendar."
+wezwanie: "**Email me: office@robert-debicki.pl** and describe what your team wants to use AI for. I'll suggest skills and a training date."
+kolejnosc: 4
+adresEn: "claude-code-training"
+tlumaczenie: ai
+zrodlo: c74d507e2b63f39d85e1bade24802bf22281fc4ba4e9eb9a01524d90f5fee4d5
+---

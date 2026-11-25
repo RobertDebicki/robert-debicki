@@ -27,7 +27,8 @@ const widoczna = uslugi.length > 0 && (lista || naglowek !== undefined);
     <p class="label mono">{e.uslugi}</p>
     <Tytul class="sec-title" id="uslugi-h">{naglowek?.tytul ?? e.uslugi}</Tytul>
     {naglowek && <p class="sec-intro">{naglowek.wstep}</p>}
-    <div class="now trzy">
+    {/* Parzysta liczba kart: dwie kolumny (bazowe .now), żeby w rzędzie nie zostało puste pole (decyzja Roberta 25.11). */}
+    <div class:list={['now', { trzy: uslugi.length % 2 === 1 }]}>
       {uslugi.map(({ adres, entry }, i) => (
         <article class="now-item" style={`--pl: ${PLYTY[i % PLYTY.length]}`}>
           <Ikona nazwa={entry.data.ikona} />

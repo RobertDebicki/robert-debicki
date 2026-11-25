@@ -16,4 +16,6 @@ Opis strony „strony i aplikacje”: „Strona wizytówka od 800 zł plus VAT�
 
 Wdrożenie Claude Code u klienta ze szkoleniem zespołu: około 2000 zł netto (Robert, 23.11.2026). Na stronie AI i automatyzacja: karta i FAQ.
 
+Voicebot, zakres i widełki (Robert, 25.11.2026): za 2000 zł netto scenariusz, testy, poprawki i oddanie bota do pracy z jednym scenariuszem (w tym notatka w CRM, jak w tabeli); rozbudowany bot do 5000 zł netto (Robert: „między 2000 a 5000”).
+
 Od czego zależy cena (Robert potwierdził 23.11.2026): voicebot drożeje z liczbą scenariuszy rozmów i integracji (np. CRM, kalendarz); automatyzacja drożeje z liczbą kroków w procesie i liczbą systemów do połączenia.

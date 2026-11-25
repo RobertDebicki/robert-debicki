@@ -133,3 +133,10 @@ test('/llms.txt wymienia strony usług', async ({ request }) => {
   expect(tekst).toContain(`${SITE}/uslugi/voiceboty/`);
   expect(tekst).toContain(`${SITE}/en/services/ai-and-automation/`);
 });
+
+test('parzysta liczba usług układa karty w dwie kolumny, bez pustych pól w rzędzie', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const kolumny = await page.locator('#uslugi .now').evaluate((el) => getComputedStyle(el).gridTemplateColumns.split(' ').length);
+  expect(kolumny).toBe(2);
+});
