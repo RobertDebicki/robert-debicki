@@ -23,6 +23,11 @@ karta:
     wartosc: "opłacasz sam, na koncie firmy"
   - etykieta: "Miejsce"
     wartosc: "Wrocław albo zdalnie"
+zdjecia:
+  - plik: "/src/assets/uslugi/szkolenie-claude-code-1.png"
+    alt: "Trzy kroki wdrożenia Claude Code: konfiguracja i baza wiedzy, 4 skille, szkolenie zespołu"
+  - plik: "/src/assets/uslugi/szkolenie-claude-code-2.png"
+    alt: "Co wrzucać do Claude Code, a czego nie: dane klientów, hasła i umowy zostają poza nim"
 problemy:
   tytul: "AI w firmie bez wiedzy o firmie i bez zasad"
   wstep: "Z tym przyszedł do mnie producent mebli, zanim wdrożyliśmy Claude Code."

@@ -1,3 +1,11 @@
+## 2026-11-25 18:15, Claude Code
+
+**✅ Zrobione:** 2 grafiki strony „Szkolenie Claude Code” (`szkolenie-claude-code-1.png`: 3 kroki wdrożenia, `-2.png`: co wrzucać do Claude Code, a czego nie) w `docs/blog-szkice/podglad/uslugi-grafiki.html`, zrzut `zrzut-uslugi.mjs` (pozostałe PNG bez zmian). DNK OK bez uwag, build OK. GitHub: tematy repo i profilowe README `RobertDebicki/RobertDebicki` opublikowane za zgodą Roberta („publikuj”).
+
+**🚧 W toku / nie wdrożone:** akceptacja tekstu i ocena z analizatora DNK; wersja EN (z grafikami EN); e2e; pole Website i Bio w profilu GitHub (Robert).
+
+**🎯 Następny krok:** poprawki po analizatorze, `/tlumacz-strone`, `npm run sprawdz`, `/code-review`.
+
 ## 2026-11-25 18:10, Claude Code
 
 **✅ Zrobione (gałąź `uslugi-szkolenie-claude-code`):** szkic nowej strony usługi `/uslugi/szkolenie-claude-code/` (fraza „szkolenie Claude Code”, dodatkowe „wdrożenie Claude Code”, „Claude Code dla firm”; fakty od Roberta 25.11: około 2000 zł netto, konfiguracja, baza wiedzy o firmie, 4 skille, szkolenie zdalnie albo w siedzibie, przykład producenta mebli: miesiąc wdrożenia, 5 h szkolenia, subskrypcja klienta około 400 zł/mies.). DNK OK (uwaga: 0 zdjęć), `sprawdz:tresc` 0, testy 248, build OK, zrzut 1280 px bez przewijania w bok. Analityka: filtr ruchu wewnętrznego GA4 włączony przez Roberta (IP domowe), test kliknięć: `klik_email` i `klik_telefon` dochodzą, `klik_linkedin` z telefonu nie doszedł (z komputera i emulacji tak). GitHub: repo `robert-debicki` ma adres strony; tematy i profilowe README czekają na koniec awarii GitHuba.
