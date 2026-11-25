@@ -1,3 +1,11 @@
+## 2026-11-25 19:20, Claude Code
+
+**✅ Zrobione:** układ sekcji usług przy parzystej liczbie kart: dwie kolumny (bazowe `.now`), przy nieparzystej trzy jak w makiecie (`src/components/Uslugi.astro`, decyzja Roberta 25.11: siatka 2 x 2 przy 4 kartach; zmiana wyglądu poza makietą `docs/makieta/uslugi.html`). Nowy test e2e (czerwony przed zmianą: 3 kolumny). Zrzuty 1440 i 390 px; 2 kolumny przy 1440 i 1024, 1 przy 390 i 360, bez przewijania w bok na `/`, `/uslugi/`, `/en/services/`. `npm run sprawdz` exit 0 (248 testów, 193 e2e, 24 pary tłumaczeń).
+
+**🚧 W toku / nie wdrożone:** przegląd runda 2; ocena analizatora DNK; push, PR i wgranie czekają na zgodę Roberta.
+
+**🎯 Następny krok:** przegląd zmian z rundy poprawek, potem PR do `main` po zgodzie Roberta.
+
 ## 2026-11-25 19:00, Claude Code
 
 **✅ Zrobione:** poprawki po `/code-review` (medium, 8 uwag): voicebot PL i EN: notatka w CRM wraca do najprostszego wdrożenia (zgodnie z `ceny-uslug.md` z 23.11), rozbudowany bot „do 5000 zł netto” zamiast nakładających się widełek, „netto”/„plus VAT” przy 5000 w karcie; ikona karty Claude Code `dokument` zamiast powtórzonej `ai`. Fałszywy alarm: „fakty spoza listy” na stronie Claude Code (Desktop, Gmail, kalendarz, AdLoop, konsultant SEO, tokeny, instrukcja konta) Robert podał w rozmowie 25.11. DNK i kontrola tłumaczeń OK.
