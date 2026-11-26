@@ -1,3 +1,11 @@
+## 2026-11-26 10:45, Claude Code
+
+**✅ Zrobione:** wpis „Agenci AI w firmie: kiedy mają sens” (`/wpisy/agenci-ai-w-firmie/`, Robert zaakceptował tekst 26.11) i EN `/en/posts/ai-agents-for-business/`. Fraza PL „agenci AI” (1300/mies., DataForSEO 23.11, `audyt-2026-11-23.md`), dodatkowa „agent AI dla firm”; EN „AI agents for business” (podpowiedzi hl=en, `frazy-uslug.md`). „Ile kosztuje agent AI” zostaje przy wpisie o kosztach, nowy wpis do niego linkuje. Fakty z internetu za zgodą Roberta: Gartner 25.06.2025 (przez SD Times 30.06.2025, strona Gartnera daje 403), AI Readiness Index dla Salesforce (SW Research, ITBC, 200 firm, AI Obserwator 01.06.2026; badanie zamówione przez dostawcę AI, zaznaczone w tekście). Przykłady tylko z kart na stronie (meble HoReCa, reaktywacja, obieg wniosków). 3 grafiki i miniatura PL i EN (`docs/blog-szkice/podglad/agenci-ai*.html`, `zrzut-agenci-ai.mjs`). `dnk.ts` OK, `npm run sprawdz` exit 0 (248 testów, 193 e2e, 25 par tłumaczeń, 0 sekretów).
+
+**🚧 W toku / nie wdrożone:** ocena z analizatora DNK (okienka wygenerowane, czekają na Roberta); EN w stanie `ai`; push, PR i wgranie czekają na zgodę Roberta.
+
+**🎯 Następny krok:** poprawki po analizatorze, potem PR do `main` i wgranie po zgodzie; po wgraniu zgłoszenie 2 adresów w GSC.
+
 ## 2026-11-25 19:45, Claude Code
 
 **✅ Zrobione (wgranie za zgodą Roberta „PR i wgraj”):** PR #19 (CI: kontrole, testy i Lighthouse pass) scalony przez Roberta (`main` = 8fb7024). `npm run wdroz -- --wgraj`: 217 plików, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-25T17-44-14-709Z`, odbiór zgodny, .htaccess działa. `npm run test:produkcja`: 5 passed. Na żywo (curl, 200): `/uslugi/szkolenie-claude-code/`, `/en/services/claude-code-training/`, voiceboty z „5000 zł netto”; oba nowe adresy w sitemap.
