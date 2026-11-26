@@ -1,3 +1,19 @@
+## 2026-11-26 10:45, Claude Code
+
+**✅ Zrobione:** wpis „Agenci AI w firmie: kiedy mają sens” (`/wpisy/agenci-ai-w-firmie/`, Robert zaakceptował tekst 26.11) i EN `/en/posts/ai-agents-for-business/`. Fraza PL „agenci AI” (1300/mies., DataForSEO 23.11, `audyt-2026-11-23.md`), dodatkowa „agent AI dla firm”; EN „AI agents for business” (podpowiedzi hl=en, `frazy-uslug.md`). „Ile kosztuje agent AI” zostaje przy wpisie o kosztach, nowy wpis do niego linkuje. Fakty z internetu za zgodą Roberta: Gartner 25.06.2025 (przez SD Times 30.06.2025, strona Gartnera daje 403), AI Readiness Index dla Salesforce (SW Research, ITBC, 200 firm, AI Obserwator 01.06.2026; badanie zamówione przez dostawcę AI, zaznaczone w tekście). Przykłady tylko z kart na stronie (meble HoReCa, reaktywacja, obieg wniosków). 3 grafiki i miniatura PL i EN (`docs/blog-szkice/podglad/agenci-ai*.html`, `zrzut-agenci-ai.mjs`). `dnk.ts` OK, `npm run sprawdz` exit 0 (248 testów, 193 e2e, 25 par tłumaczeń, 0 sekretów).
+
+**🚧 W toku / nie wdrożone:** ocena z analizatora DNK (okienka wygenerowane, czekają na Roberta); EN w stanie `ai`; push, PR i wgranie czekają na zgodę Roberta.
+
+**🎯 Następny krok:** poprawki po analizatorze, potem PR do `main` i wgranie po zgodzie; po wgraniu zgłoszenie 2 adresów w GSC.
+
+## 2026-11-25 19:45, Claude Code
+
+**✅ Zrobione (wgranie za zgodą Roberta „PR i wgraj”):** PR #19 (CI: kontrole, testy i Lighthouse pass) scalony przez Roberta (`main` = 8fb7024). `npm run wdroz -- --wgraj`: 217 plików, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-25T17-44-14-709Z`, odbiór zgodny, .htaccess działa. `npm run test:produkcja`: 5 passed. Na żywo (curl, 200): `/uslugi/szkolenie-claude-code/`, `/en/services/claude-code-training/`, voiceboty z „5000 zł netto”; oba nowe adresy w sitemap.
+
+**🚧 W toku / nie wdrożone:** Robert zgłasza 2 nowe adresy w GSC („Poproś o zindeksowanie”); ocena analizatora DNK dla strony Claude Code; pola Website i Bio w profilu GitHub (Robert); referencja od klienta (Robert prosi).
+
+**🎯 Następny krok:** 26.11: czy filtr ruchu wewnętrznego GA4 działa (Wrocław desktop w raporcie za 25-26.11); pomiar AI 30.11 według `docs/seo/pomiar-ai.md` (dodać pytania 9 i 10 ze stroną Claude Code); kontrola GSC 21.12.2026.
+
 ## 2026-11-25 19:20, Claude Code
 
 **✅ Zrobione:** układ sekcji usług przy parzystej liczbie kart: dwie kolumny (bazowe `.now`), przy nieparzystej trzy jak w makiecie (`src/components/Uslugi.astro`, decyzja Roberta 25.11: siatka 2 x 2 przy 4 kartach; zmiana wyglądu poza makietą `docs/makieta/uslugi.html`). Nowy test e2e (czerwony przed zmianą: 3 kolumny). Zrzuty 1440 i 390 px; 2 kolumny przy 1440 i 1024, 1 przy 390 i 360, bez przewijania w bok na `/`, `/uslugi/`, `/en/services/`. `npm run sprawdz` exit 0 (248 testów, 193 e2e, 24 pary tłumaczeń).
