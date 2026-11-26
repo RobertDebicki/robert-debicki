@@ -1,3 +1,11 @@
+## 2026-11-26 10:50, Claude Code
+
+**✅ Zrobione (wgranie za zgodą Roberta „zrób PR i wdróż na produkcji”):** PR #20 (CI: kontrole, testy i Lighthouse pass) scalony (`main` = 0e594f8). `npm run wdroz -- --wgraj`: 231 plików, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-26T09-47-28-214Z`, odbiór zgodny, .htaccess działa. `npm run test:produkcja`: 5 passed. Na żywo (curl, 200, bez noindex): `/wpisy/agenci-ai-w-firmie/`, `/en/posts/ai-agents-for-business/`; oba w sitemap.
+
+**🚧 W toku / nie wdrożone:** ocena z analizatora DNK dla wpisu; zgłoszenie 2 nowych adresów w GSC (Robert); EN w stanie `ai`.
+
+**🎯 Następny krok:** poprawki po analizatorze; pomiar AI 30.11 według `docs/seo/pomiar-ai.md`; kontrola GSC 21.12.2026.
+
 ## 2026-11-26 10:45, Claude Code
 
 **✅ Zrobione:** wpis „Agenci AI w firmie: kiedy mają sens” (`/wpisy/agenci-ai-w-firmie/`, Robert zaakceptował tekst 26.11) i EN `/en/posts/ai-agents-for-business/`. Fraza PL „agenci AI” (1300/mies., DataForSEO 23.11, `audyt-2026-11-23.md`), dodatkowa „agent AI dla firm”; EN „AI agents for business” (podpowiedzi hl=en, `frazy-uslug.md`). „Ile kosztuje agent AI” zostaje przy wpisie o kosztach, nowy wpis do niego linkuje. Fakty z internetu za zgodą Roberta: Gartner 25.06.2025 (przez SD Times 30.06.2025, strona Gartnera daje 403), AI Readiness Index dla Salesforce (SW Research, ITBC, 200 firm, AI Obserwator 01.06.2026; badanie zamówione przez dostawcę AI, zaznaczone w tekście). Przykłady tylko z kart na stronie (meble HoReCa, reaktywacja, obieg wniosków). 3 grafiki i miniatura PL i EN (`docs/blog-szkice/podglad/agenci-ai*.html`, `zrzut-agenci-ai.mjs`). `dnk.ts` OK, `npm run sprawdz` exit 0 (248 testów, 193 e2e, 25 par tłumaczeń, 0 sekretów).
