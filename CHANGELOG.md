@@ -1,6 +1,6 @@
 ## 2026-11-27 17:50, Claude Code
 
-**✅ Zmierzone (zrzuty Bing Webmaster Tools od Roberta, 27.11):** strona jest w BWT, `sitemap-index.xml` zaimportowana 11.11, odczyt 11.11 „Success”, ale „URLs discovered: 1” (sam wpis mapy podrzędnej). Site Explorer: 0 zaindeksowanych adresów; skuteczność: 0 wyświetleń; zakładka IndexNow jeszcze bez danych. URL Inspection `https://robert-debicki.pl/`: **„Not discovered, the inspected URL is not known to Bing”**. Robert dodał `sitemap-0.xml` bezpośrednio (27.11, status „Processing”). Serwer bez przeszkód (curl): `robots.txt` `Allow: /`, strona, obie mapy 200 dla user-agenta bingbot.
+**✅ Zmierzone (zrzuty Bing Webmaster Tools od Roberta, 27.11):** strona jest w BWT, `sitemap-index.xml` zaimportowana 11.11, odczyt 11.11 „Success”, ale „URLs discovered: 1” (sam wpis mapy podrzędnej). Site Explorer: 0 zaindeksowanych adresów; skuteczność: 0 wyświetleń; zakładka IndexNow jeszcze bez danych. URL Inspection `https://robert-debicki.pl/`: **„Not discovered, the inspected URL is not known to Bing”**. Robert dodał `sitemap-0.xml` bezpośrednio (27.11, status „Processing”). Live URL strony głównej (17:21): **„URL can be indexed by Bing”**, „No SEO/GEO issues found”, rozpoznane JSON-LD i OpenGraph, czyli strona technicznie gotowa, Bing jej jeszcze nie odwiedził. Serwer bez przeszkód (curl): `robots.txt` `Allow: /`, strona, obie mapy 200 dla user-agenta bingbot.
 
 **🚧 W toku:** czy Bing przetworzy `sitemap-0.xml` i zgłoszenie IndexNow z 27.11 (202).
 
