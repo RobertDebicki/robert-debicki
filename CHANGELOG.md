@@ -1,3 +1,11 @@
+## 2026-11-27 17:50, Claude Code
+
+**✅ Zmierzone (zrzuty Bing Webmaster Tools od Roberta, 27.11):** strona jest w BWT, `sitemap-index.xml` zaimportowana 11.11, odczyt 11.11 „Success”, ale „URLs discovered: 1” (sam wpis mapy podrzędnej). Site Explorer: 0 zaindeksowanych adresów; skuteczność: 0 wyświetleń; zakładka IndexNow jeszcze bez danych. URL Inspection `https://robert-debicki.pl/`: **„Not discovered, the inspected URL is not known to Bing”**. Robert dodał `sitemap-0.xml` bezpośrednio (27.11, status „Processing”). Serwer bez przeszkód (curl): `robots.txt` `Allow: /`, strona, obie mapy 200 dla user-agenta bingbot.
+
+**🚧 W toku:** czy Bing przetworzy `sitemap-0.xml` i zgłoszenie IndexNow z 27.11 (202).
+
+**🎯 Następny krok:** 30.11 w BWT: Sitemaps (`sitemap-0.xml` ma pokazać 38 adresów), zakładka IndexNow, URL Inspection strony głównej. Jeśli dalej „Not discovered”: zakładka Live URL i zgłoszenie przez „Request indexing”.
+
 ## 2026-11-27 16:58, Claude Code
 
 **✅ Zrobione (wgranie za zgodą Roberta „zrób PR i wdróż na produkcji”):** PR #21 (CI: kontrole, testy i Lighthouse pass) scalony przez Roberta (`main` = 80f81ae). `npm run wdroz -- --wgraj`: 232 pliki, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-27T15-54-55-817Z`, odbiór zgodny, .htaccess działa. `npm run test:produkcja`: 5 passed. Plik klucza na żywo (curl): 200, `text/plain`, treść = klucz. `npx tsx skrypty/indexnow.ts`: 38 adresów, odpowiedź **202** (przyjęte, Bing jeszcze sprawdza klucz).
