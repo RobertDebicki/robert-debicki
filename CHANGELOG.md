@@ -1,3 +1,21 @@
+## 2026-11-27 17:50, Claude Code
+
+**✅ Zmierzone (zrzuty Bing Webmaster Tools od Roberta, 27.11):** strona jest w BWT, `sitemap-index.xml` zaimportowana 11.11, odczyt 11.11 „Success”, ale „URLs discovered: 1” (sam wpis mapy podrzędnej). Site Explorer: 0 zaindeksowanych adresów; skuteczność: 0 wyświetleń; zakładka IndexNow jeszcze bez danych. URL Inspection `https://robert-debicki.pl/`: **„Not discovered, the inspected URL is not known to Bing”**. Robert dodał `sitemap-0.xml` bezpośrednio (27.11, status „Processing”). Live URL strony głównej (17:21): **„URL can be indexed by Bing”**, „No SEO/GEO issues found”, rozpoznane JSON-LD i OpenGraph, czyli strona technicznie gotowa, Bing jej jeszcze nie odwiedził. Serwer bez przeszkód (curl): `robots.txt` `Allow: /`, strona, obie mapy 200 dla user-agenta bingbot.
+
+Tego samego dnia: `sitemap-0.xml` odczytana, „Success”, **38 adresów** (razem z indeksem 39). Robert kliknął „Request indexing” dla `/`, `/uslugi/`, `/wpisy/`.
+
+**🚧 W toku:** czy Bing zaindeksuje strony (Site Explorer) i czy zakładka IndexNow pokaże zgłoszenie z 27.11 (202).
+
+**🎯 Następny krok:** 30.11 w BWT: Site Explorer (zaindeksowane adresy), zakładka IndexNow, URL Inspection strony głównej (zakładka Bing Index zamiast „Not discovered”).
+
+## 2026-11-27 16:58, Claude Code
+
+**✅ Zrobione (wgranie za zgodą Roberta „zrób PR i wdróż na produkcji”):** PR #21 (CI: kontrole, testy i Lighthouse pass) scalony przez Roberta (`main` = 80f81ae). `npm run wdroz -- --wgraj`: 232 pliki, kopia serwera `~/Backups/robert-debicki-ftp/2026-11-27T15-54-55-817Z`, odbiór zgodny, .htaccess działa. `npm run test:produkcja`: 5 passed. Plik klucza na żywo (curl): 200, `text/plain`, treść = klucz. `npx tsx skrypty/indexnow.ts`: 38 adresów, odpowiedź **202** (przyjęte, Bing jeszcze sprawdza klucz).
+
+**🚧 W toku / nie wdrożone:** czy strona jest w Bing Webmaster Tools, nie wiem (`/BingSiteAuth.xml` 404); tam widać, czy zgłoszenia IndexNow doszły.
+
+**🎯 Następny krok:** po każdym wgraniu z nowymi stronami `npx tsx skrypty/indexnow.ts`; pomiar AI 30.11 według `docs/seo/pomiar-ai.md`; kontrola GSC 21.12.2026.
+
 ## 2026-11-27 16:55, Claude Code
 
 **✅ Zrobione (gałąź `indexnow`, zlecenie Roberta 27.11):** zgłaszanie stron do Binga przez IndexNow, przeniesione z wdrożenia u innego klienta. Z indeksu Binga korzysta wyszukiwarka w ChatGPT; Google IndexNow nie obsługuje (tam bez zmian, GSC). Nowy klucz `openssl rand -hex 16`, plik `public/<klucz>.txt` bez nowej linii, `src/lib/indexnow.ts` (klucz, odczyt mapy i indeksu map), `skrypty/indexnow.ts` (host `robert-debicki.pl`, mapa `sitemap-index.xml`), test `testy/jednostkowe/indexnow.test.ts` (najpierw czerwony), opis `docs/seo/indexnow.md`, zasada w `AGENTS.md`. `hosting/htaccess` nie dotyka pliku klucza. `npx tsx skrypty/indexnow.ts --sucho`: 38 adresów, bez `/admin/`; nieznana flaga i obcy adres kończą się kodem 1.
